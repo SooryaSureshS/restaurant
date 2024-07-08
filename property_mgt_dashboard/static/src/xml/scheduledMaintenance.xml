@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<template id="scheduledMaintenanceTem">
+    <t t-name="scheduledMaintenance">
+        <div class="lowRowCont left">
+            <div class="row">
+                <div class="col-lg-9">
+                    <span class="lowRowHeads">Scheduled Maintenance</span>
+                </div>
+                <div class="col-lg-3">
+                    <span class="lowRowVAll">View all
+                        <i class="fa fa-long-arrow-right"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="row lrTd">
+                <table style="width:100%;">
+                    <tr>
+                        <td>
+                            <input type="checkbox" readonly="1"/>
+                        </td>
+                        <td>
+                            <span class="lrTcB">#1234</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Fix bathroom rail in ensuite</span>
+                        </td>
+                        <td>
+                            <button class="btn btn-block btn-outline-danger" style="border-radius:5px;">Urgent
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" readonly="1"/>
+                        </td>
+                        <td>
+                            <span class="lrTcB">#1234</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Fix bathroom rail in ensuite</span>
+                        </td>
+                        <td>
+                            <button class="btn btn-block btn-outline-danger" style="border-radius:5px;">Urgent
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" readonly="1"/>
+                        </td>
+                        <td>
+                            <span class="lrTcB">#1234</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Fix bathroom rail in ensuite</span>
+                        </td>
+                        <td>
+                            <button class="btn btn-block btn-outline-danger" style="border-radius:5px;">Urgent
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </t>
+</template>

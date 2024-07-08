@@ -1,0 +1,127 @@
+html .o_web_client > .o_action_manager {
+    overflow:scroll;
+}
+/*highOne*/
+.row.highOne {padding: 10px 20px; background:#e6f3f5; border: 1px solid #2baab6; margin: 20px 1px;
+border-radius: 7px;}
+.hoHead{font-size:17px; font-weight:bold;}
+.hoDesc {font-size:13px; margin-top:-10px; line-height: 17px;}
+.approve {color:#2baab6; border-radius: 7px !important; padding: 7px; position:absolute; bottom: 10px; right: -10px;}
+.hoRightCol {position:relative;}
+
+/*highFour*/
+.bg-d-purple{background:#2baab6;color:#FFFFFF;border-radius: 20px; margin-bottom:0px !important;}
+.bg-l-purple{background:#9adfe6;color:#FFFFFF;border-radius: 20px; margin-bottom:0px !important;}
+.hf.row{margin-top:20px;}
+.hf.count{font-size:40px;font-weight:bold;}
+.hf.desc{font-size:12px;margin-top: -27px !important;width: 110px;}
+
+/*lowRow*/
+.lowRowCont {padding: 10px 20px; background:#e6f3f5; border: 1px solid #2baab6; margin: 20px 1px;
+border-radius: 7px;}
+.lowRowCont.left{min-height: auto;}
+.lowRowHeads{font-size:20px; font-weight:900;}
+.lowRowHeadInf {color:#F7C88A; background:#FEF6EB; border-radius:10px; padding: 1px 10px; width:94px;}
+.lowRowVAll{font-size:13px; color:#2baab6; display: block; margin-top: 8px;}
+.lowRowVAll2nd{font-size:13px; color:#2baab6; display: block; margin-top: 8px; margin-left: 50px;}
+.lrTd{overflow-x: auto;}
+.lrTd > table > tbody > tr > td {padding:5px 10px;}
+.lrTcB {font-weight:700;}
+.lrTcN {color:#767A7D;}
+.purpleBtn {background:#2baab6;color:#FFFFFF; border-radius:5px !important; padding:7px 10px;}
+.donutCenter {position:absolute; top:27px; left:75px; text-align:center;}
+.donutLegendRect { height:35px; width:5px; margin-right: 20px;}
+
+.DashboardTitle {
+font-weight:900; font-size:30px;
+}
+.checked {
+  color: #352b8c;
+}
+.unchecked {
+  color: #a2a2a3;
+}
+
+
+
+
+.fa-instagram{
+text-align: center;
+padding: 9px;
+border-radius: 50%;
+font-size: 16px;
+  background: #a6a6e0;
+  color:#4a4a91;
+  width: 37px;
+}
+.fa-facebook {
+text-align: center;
+padding: 9px;
+border-radius: 50%;
+font-size: 16px;
+  background: #a6a6e0;
+  color: #4a4a91;
+  width: 37px;
+}
+.fa-twitter {
+text-align: center;
+padding: 9px;
+border-radius: 50%;
+font-size: 16px;
+  background: #a6a6e0;
+  color: #4a4a91;
+  width: 37px;
+}
+
+.lowRowContSub {
+background:#F0EFFB;
+border: 1px solid #746AF0;
+border-radius: 7px;
+margin-right: 43px;
+padding-left:9px;
+padding-bottom: 1px;
+padding-top: 3px;
+margin-top: -2px;}
+
+
+
+
+.fa-gift{
+text-align: center;
+padding: 9px;
+border-radius: 50%;
+font-size: 16px;
+  background: #0d0d30;
+  color:white;
+}
+
+.fa-bell{
+text-align: center;
+padding: 9px;
+border-radius: 50%;
+font-size: 16px;
+  background: orange;
+  color:white;
+}
+.fa-sticky-note-o{
+text-align: center;
+padding: 9px;
+border-radius: 50%;
+font-size: 16px;
+  background: #6262b5;
+  color:white;
+}
+
+.button{
+margin-top:27px;
+width:100%;
+}
+
+
+.fa-home{
+text-align: center;
+padding: 9px;
+border-radius: 35%;
+font-size: 30px;
+  background: green;
+  color:white;}

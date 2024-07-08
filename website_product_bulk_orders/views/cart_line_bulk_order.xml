@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="cart_line_bulk_order" inherit_id="website_sale.cart_lines"
+              name="cart_line_bulk_order">
+        <xpath expr="//table/thead" position="replace">
+            <thead>
+                <tr>
+                    <th class="td-img">Product</th>
+                    <th/>
+                    <th>Price</th>
+                    <th class="text-center td-qty">
+                        <t t-if="show_qty">
+                            Quantity
+                        </t>
+                    </th>
+                    <th class="text-center td-price">Subtotal</th>
+                    <th class="text-center"/>
+                    <th class="text-center td-action"/>
+                </tr>
+            </thead>
+        </xpath>
+        <xpath expr="//table/tbody" position="replace">
+            <tbody class="newCartLine">
+                <t t-foreach="website_sale_order_grouped" t-as="line_group">
+                    <t t-set="line_group"
+                       t-value="website_sale_order_grouped[line_group]"/>
+                    <tr>
+                        <td class='td-product_name' colspan="2">
+                            <div class="row">
+                                <small>
+                                    <t t-esc="line_group['line']['name']"/>
+                                </small>
+                            </div>
+                        </td>
+                        <td align="center">
+                            <button t-attf-class="btn expand expand_{{ line_group['line']['id'] }}" t-att-value="line_group['line']['id']"><i class="fa fa-caret-down"/></button>
+                            <button t-attf-class="btn shrink shrink_{{ line_group['line']['id'] }}" t-att-value="line_group['line']['id']" style="display:none;"><i class="fa fa-caret-up"/></button>
+                        </td>
+                        <td align="center">
+                            <small>
+                                <t t-esc="line_group['line']['qty']"/>
+                            </small>
+                        </td>
+                        <td align="center">
+                            <small>
+                                <span style="white-space: nowrap;">
+                                    <t t-esc="website_sale_order.currency_id.symbol"/>
+                                    <t t-esc="'%.2f'% line_group['line']['total']"/>
+                                </span>
+                            </small>
+                        </td>
+                        <td>
+                            <div class="new_order_popup">
+                                <button id="new_order_button"
+                                        t-att-data-product_id="line_group['line']['rec'].id"
+                                        t-if="line_group['line']['rec'].product_bulk_order and 'color' in line_group['line']['rec'].attribute_line_ids.mapped('attribute_id').mapped('bulk_attribute') and 'size' in line_group['line']['rec'].attribute_line_ids.mapped('attribute_id').mapped('bulk_attribute')"
+                                        class="btn btn-primary mt-3 mb-3">
+                                    <i class="fa fa-shopping-cart mr-2"/>
+                                    Bulk Order
+                                </button>
+                                <div class="modal fade" id="myModal" tabindex="-1"
+                                     role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg"
+                                         role="document"
+                                         style="padding-top:46px;">
+                                        <div class="modal-content">
+                                            <div class="row px-4">
+                                                <div class="text-left col-6 mt-3">
+                                                    <h3>
+                                                        <t t-esc="line_group['line']['name']"/>
+                                                    </h3>
+                                                </div>
+                                                <div style="padding:10px;text-align: right;"
+                                                     class="col-6">
+                                                    <button class="ml-3 px-4 bg-black btn btn-lg btn-primary text-white text-uppercase model_bulk_add_to_cart">
+                                                        Add To Cart
+                                                    </button>
+                                                    <button class="px-4 bg-warning btn btn-lg btn-primary  text-white text-uppercase"
+                                                            data-dismiss="modal">
+                                                        Cancel
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="modal-body"
+                                                 style="padding:0px;">
+                                                <table id="variantTable"
+                                                       class="table table-bordered">
+                                                    <thead/>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <a href='#' aria-label="Remove from cart"
+                               title="Remove from cart" t-att-data-prod_tmpl="line_group['line']['rec'].id"
+                               class='js_delete_product_group no-decoration'>
+                                <small>
+                                    <i class='fa fa-trash-o'/>
+                                </small>
+                            </a>
+                        </td>
+                    </tr>
+                    <t t-set="lines" t-value="line_group['sublines']"/>
+                    <t t-foreach="lines" t-as="line">
+                        <tr t-attf-class="{{ 'optional_product info' if line.linked_line_id else None }} subline_{{ line_group['line']['id'] }} subline" style="display:none;">
+                            <td t-if="not line.product_id" colspan="2"
+                                class='td-img'/>
+                            <t t-else="">
+                                <td align="center" class='td-img'>
+                                    <span t-if="line._is_not_sellable_line() and line.product_id.image_128">
+                                        <img t-att-src="image_data_uri(line.product_id.image_128)"
+                                             class="img o_image_64_max rounded"
+                                             t-att-alt="line.name_short"/>
+                                    </span>
+                                    <span t-else=""
+                                          t-field="line.product_id.image_128"
+                                          t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max'}"
+                                    />
+                                </td>
+                                <td class='td-product_name'>
+                                    <div>
+                                        <t t-call="website_sale.cart_line_product_link">
+                                            <strong t-field="line.name_short"/>
+                                        </t>
+                                    </div>
+                                    <t t-call="website_sale.cart_line_description_following_lines">
+                                        <t t-set="div_class"
+                                           t-value="'d-none d-md-block'"/>
+                                    </t>
+                                </td>
+                            </t>
+                            <td class="text-center td-price" name="price">
+                                <t t-set="combination"
+                                   t-value="line.product_id.product_template_attribute_value_ids + line.product_no_variant_attribute_value_ids"/>
+                                <t t-set="combination_info"
+                                   t-value="line.product_id.product_tmpl_id._get_combination_info(combination, pricelist=website_sale_order.pricelist_id, add_qty=line.product_uom_qty)"/>
+                                <t groups="account.group_show_line_subtotals_tax_excluded">
+                                    <span t-field="line.price_reduce_taxexcl"
+                                          style="white-space: nowrap;"
+                                          t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                                </t>
+                                <t groups="account.group_show_line_subtotals_tax_included">
+                                    <span t-field="line.price_reduce_taxinc"
+                                          style="white-space: nowrap;"
+                                          t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                                </t>
+                                <t t-if="line.discount">
+                                    <del t-attf-class="#{'text-danger mr8'}"
+                                         style="white-space: nowrap;"
+                                         t-esc="combination_info['list_price']"
+                                         t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                                </t>
+                                <small t-if="not line._is_not_sellable_line() and line.product_id.base_unit_price"
+                                       class="cart_product_base_unit_price d-block text-muted"
+                                       groups="website_sale.group_show_uom_price">
+                                    <t t-call='website_sale.base_unit_price'>
+                                        <t t-set='product'
+                                           t-value='line.product_id'/>
+                                    </t>
+                                </small>
+                            </td>
+                            <td class="text-center td-qty">
+                                <small>
+                                    <t t-esc="line.product_uom_qty"/>
+                                </small>
+<!--                                <div class="css_quantity input-group mx-auto justify-content-center">-->
+<!--                                    <t t-if="not line._is_not_sellable_line()">-->
+<!--                                        <t t-if="show_qty">-->
+<!--                                            <a t-attf-href="#"-->
+<!--                                               class="btn btn-link js_add_cart_json d-none d-md-inline-block"-->
+<!--                                               aria-label="Remove one"-->
+<!--                                               title="Remove one">-->
+<!--                                                <i class="fa fa-minus"></i>-->
+<!--                                            </a>-->
+<!--                                            <input type="text"-->
+<!--                                                   class="js_quantity form-control quantity"-->
+<!--                                                   t-att-data-line-id="line.id"-->
+<!--                                                   t-att-data-product-id="line.product_id.id"-->
+<!--                                                   t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"/>-->
+<!--                                            <t t-if="line._get_shop_warning(clear=False)">-->
+<!--                                                <a t-attf-href="#"-->
+<!--                                                   class="btn btn-link">-->
+<!--                                                    <i class='fa fa-warning text-warning'-->
+<!--                                                       t-att-title="line._get_shop_warning()"-->
+<!--                                                       role="img"-->
+<!--                                                       aria-label="Warning"/>-->
+<!--                                                </a>-->
+<!--                                            </t>-->
+<!--                                            <a t-else='' t-attf-href="#"-->
+<!--                                               class="btn btn-link float_left js_add_cart_json d-none d-md-inline-block"-->
+<!--                                               aria-label="Add one"-->
+<!--                                               title="Add one">-->
+<!--                                                <i class="fa fa-plus"></i>-->
+<!--                                            </a>-->
+<!--                                        </t>-->
+<!--                                        <t t-else="">-->
+<!--                                            <input type="hidden"-->
+<!--                                                   class="js_quantity form-control quantity"-->
+<!--                                                   t-att-data-line-id="line.id"-->
+<!--                                                   t-att-data-product-id="line.product_id.id"-->
+<!--                                                   t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"/>-->
+<!--                                        </t>-->
+<!--                                    </t>-->
+<!--                                    <t t-else="">-->
+<!--                                        <span class="text-muted w-100"-->
+<!--                                              t-esc="int(line.product_uom_qty)"/>-->
+<!--                                        <input type="hidden"-->
+<!--                                               class="js_quantity form-control quantity"-->
+<!--                                               t-att-data-line-id="line.id"-->
+<!--                                               t-att-data-product-id="line.product_id.id"-->
+<!--                                               t-att-value="line.product_uom_qty"/>-->
+<!--                                    </t>-->
+<!--                                </div>-->
+                            </td>
+                            <td>
+                                <small>
+                                    <t t-esc="website_sale_order.currency_id.symbol"/>
+                                    <t t-esc="'%.2f'% line.price_subtotal"/>
+                                </small>
+                            </td>
+                            <td/>
+                            <td class="td-action">
+<!--                                <a href='#' aria-label="Remove from cart"-->
+<!--                                   title="Remove from cart"-->
+<!--                                   class='js_delete_product no-decoration'>-->
+<!--                                    <small>-->
+<!--                                        <i class='fa fa-trash-o'></i>-->
+<!--                                    </small>-->
+<!--                                </a>-->
+                            </td>
+                        </tr>
+                    </t>
+                </t>
+            </tbody>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="obst_stories">
+        <t t-call="website.layout">
+            <div class="obst-container-stories">
+                <div class="container-main">
+                    <div class="article-content-stories">
+                        <div class="article-headline-stories GT_Pressura_Regular text-center">
+                            <h1 class="h1-stories-obst GT_Pressura_Pro_Mono">News <span>・</span>Stories <span>・</span>Events
+                            </h1>
+                        </div>
+                        <div class="article-list">
+                            <div class="">
+                                <section id="o_wblog_index_content"
+                                         t-att-class="opt_blog_cards_design and 'o_wblog_page_cards_bg'">
+                                    <div class=" py-4">
+                                        <div t-if="original_search and posts" class="alert alert-warning mt8">
+                                            No results found for '<span t-esc="original_search"/>'. Showing results for
+                                            '<span
+                                                t-esc="search"/>'.
+                                        </div>
+                                        <div t-attf-class="row #{opt_blog_sidebar_show and 'justify-content-between' or 'justify-content-center'}">
+                                            <div id="o_wblog_posts_loop_container"
+                                                 t-attf-class="col #{'o_container_small mx-0' if opt_blog_list_view else ''}">
+
+                                                <t t-call="gio_obstgemuese_theme.custom_posts_loop">
+                                                    <t t-if="not blog" t-set="posts_list_show_parent_blog"
+                                                       t-value="True"/>
+                                                </t>
+
+                                                <t t-call="website.pager">
+                                                    <t t-set="classname" t-valuef="justify-content-center"/>
+                                                    <t t-set="extraLinkClass" t-valuef="post_link"/>
+                                                </t>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+
+    <template id="custom_posts_loop" name="Posts List">
+        <div id="o_wblog_posts_loop" t-att-class="'o_wblog_list_view' if opt_blog_list_view else ''">
+
+            <!-- Allow to filter post by published state. Visible only in edit-mode
+                 and if both published/unpublished number is > 0 -->
+            <t t-if="state_info" t-set="state" t-value="state_info['state']"/>
+
+            <!-- Check for active options -->
+            <t t-set="opt_posts_loop_show_cover" t-value="is_view_active('website_blog.opt_posts_loop_show_cover')"/>
+
+            <div groups="website.group_website_designer"
+                 t-if="state_info and (state_info['published'] > 0 and state_info['unpublished'] > 0)">
+                <div class="bg-200 py-2 mb-4 alert alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">&#215;</button>
+                    <span class="mr-1">Show:</span>
+                    <div class="btn-group btn-group-sm">
+                        <a t-attf-class="btn #{state == 'published' and 'btn-success' or 'btn-default bg-white border'}"
+                           t-attf-href="#{state == 'published' and blog_url(state='') or blog_url(state='published')}">
+                            <i t-attf-class="fa mr-1 #{state == 'published' and 'fa-check-square-o' or 'fa-square-o'}"/>
+                            Published (<t t-esc="state_info['published']"/>)
+                        </a>
+                        <a t-attf-class="btn #{state == 'unpublished' and 'btn-success' or 'btn-default bg-white border'}"
+                           t-attf-href="#{state == 'unpublished' and blog_url(state='') or blog_url(state='unpublished')}">
+                            <i t-attf-class="fa mr-1 #{state == 'unpublished' and 'fa-check-square-o' or 'fa-square-o'}"/>
+                            Unpublished (<t t-esc="state_info['unpublished']"/>)
+                        </a>
+                    </div>
+                    <div class="pt-1 font-italic small">This box will not be visible to your visitors</div>
+                </div>
+            </div>
+
+            <div t-attf-class="row #{posts and not opt_blog_readable and 'mx-n2'}">
+                <!-- Filters -->
+                <div t-if="tag or date_begin or search" class="col-12 mb-3">
+                    <div t-if="posts" class="h4 mb-3">
+                        <t t-esc="len(posts)"/>
+                        <t t-if="len(posts) &lt; 2">Article</t>
+                        <t t-else="">Articles</t>
+                    </div>
+                    <span t-if="search" class="align-items-baseline border d-inline-flex pl-2 rounded mb-2">
+                        <i class="fa fa-search mr-2 text-muted"/>
+                        <t t-esc="search"/>
+                        <a t-att-href="blog_url(search=False, tag=tag)" class="btn border-0 py-1 post_link">&#215;</a>
+                    </span>
+                    <t t-if="tag">
+                        <!-- Show active tags with a category set -->
+                        <t t-foreach="tag_category" t-as="nav_tag_category">
+                            <t t-call="website_blog.tags_list">
+                                <t t-set='tags' t-value='nav_tag_category.tag_ids'/>
+                                <t t-set='dismissibleBtn' t-value="True"/>
+                            </t>
+                        </t>
+
+                        <!-- Show active tags without a category set -->
+                        <t t-call="website_blog.tags_list">
+                            <t t-set='tags' t-value='other_tags'/>
+                            <t t-set='dismissibleBtn' t-value="True"/>
+                        </t>
+                    </t>
+                    <span t-if="date_begin" class="align-items-baseline border d-inline-flex pl-2 rounded mb-2">
+                        <i class="fa fa-calendar-o mr-2 text-muted"/>
+                        <t t-esc="date_begin" t-options="{'widget': 'date', 'format': 'MMM yyyy'}"></t>
+                        <a t-attf-href="#{blog_url(date_begin=False, date_end=False)}" class="btn border-0 py-1">
+                            &#215;
+                        </a>
+                    </span>
+                    <hr class="mt-2"/>
+                </div>
+
+                <!-- No blog post yet -->
+                <div t-if="not posts" class="col">
+                    <t t-set="no_results_str">No results for "%s".</t>
+                    <h2 t-if="search" t-esc="no_results_str % search" class="font-weight-bold"/>
+                    <h2 t-else="">No blog post yet.</h2>
+                    <div class="alert alert-info" groups="website.group_website_designer">
+                        Click on "<b>New</b>" in the top-right corner to write your first blog post.
+                    </div>
+                </div>
+
+                <!-- Posts -->
+
+                <!-- Define 'colWidth' qWeb variable, to be assigned later.
+                Adjust accordingly if sidebar and/or readability modes are active. -->
+                <t t-if="not opt_blog_list_view">
+                    <t t-if="opt_blog_readable">
+                        <t t-if="opt_blog_sidebar_show" t-set="colWidth" t-value="'col-md-6'"/>
+                        <t t-else="" t-set="colWidth" t-value="'col-md-6 col-xl-4'"/>
+                    </t>
+                    <t t-else="">
+                        <t t-if="opt_blog_sidebar_show" t-set="colWidth" t-value="'px-2 col-md-6 col-xl-4'"/>
+                        <t t-else="" t-set="colWidth" t-value="'px-2 col-sm-6 col-lg-4 col-xl-3'"/>
+                    </t>
+                </t>
+                <!-- Loop through posts: exclude the first one if already displayed as top banner -->
+                <t t-foreach="posts" t-as="blog_post">
+                    <!-- Assign 'colWidth': 'col-12' is default for List-View and mobile -->
+                    <div t-attf-class="pb-4 col-12 #{colWidth}">
+                        <article
+                                t-attf-class="o_wblog_post position-relative #{'card h-100' if opt_blog_cards_design else ''}"
+                                name="blog_post">
+                            <t t-if="opt_posts_loop_show_cover" t-call="gio_obstgemuese_theme.custom_post_cover_image"/>
+                            <span t-if="not blog_post.website_published"
+                                  class="bg-danger small py-1 px-2 position-absolute o_not_editable"
+                                  style="top:0; right:0">unpublished
+                            </span>
+                        </article>
+                        <h2>
+                            <a t-attf-href="/blog/#{slug(blog_post.blog_id)}/#{slug(blog_post)}"
+                               t-field="blog_post.name"
+                               t-attf-class="d-block text-reset article-title-cls GT_Pressura_Regular text-decoration-none o_blog_post_title my-0 #{'h3' if opt_blog_list_view else ('h5' if opt_blog_readable else 'h6')}">
+                                Untitled Post
+                            </a>
+                        </h2>
+                        <h5 class="text-center">
+                            <time t-field="blog_post.post_date"
+                                  class="text-muted article-time-cls text-nowrap GT_Pressura_Regular"
+                                  t-options='{"format": "MMM d, yyyy"}'/>
+                            <span class="article-time-cls text-muted">・</span>
+                            <span class="text-muted GT_Pressura_Regular article-time-cls">
+                                <t t-esc="blog_post.blog_id.name"/>
+                            </span>
+                        </h5>
+                    </div>
+                    <div t-if="opt_blog_list_view and not blog_post_last" class="col-12 mt-2 mb-5 px-2">
+                        <hr/>
+                    </div>
+                </t>
+            </div>
+        </div>
+    </template>
+
+    <template id="custom_post_cover_image">
+        <t t-if="opt_blog_cards_design and not opt_blog_list_view" t-set="classes" t-value="'card-img-top mb-2'"/>
+        <t t-if="not opt_blog_cards_design and opt_blog_list_view" t-set="classes"
+           t-value="'o_wblog_post_cover_nocard'"/>
+
+        <a t-attf-href="/blog/#{slug(blog_post.blog_id)}/#{slug(blog_post)}"
+           t-attf-class="text-decoration-none d-block #{classes or 'mb-2'}"
+           t-att-style="not blog_post.website_published and 'opacity:0.6;'">
+
+            <t t-set="_record" t-value="blog_post"/>
+            <t t-set="post_image" t-value="blog_post._get_website_image_url()"/>
+            <t t-set="additionnal_classes"
+               t-value="'o_list_cover o_not_editable ' + (not opt_blog_cards_design and ' rounded overflow-hidden shadow mb-3' or '')"/>
+            <img sizes="400px" class="lazy img-fluid loaded article-img-cls" data-ll-status="loaded"
+                 t-att-src="post_image"/>
+        </a>
+    </template>
+
+    <template id="custom_record_cover">
+        <t t-set="_cp" t-value="_cp or json.loads(_record.cover_properties)"/>
+        <t t-set="_name" t-value="_name or _record._name"/>
+        <t t-set="_id" t-value="_id or _record.id"/>
+        <t t-set="_bg" t-value="_bg or _record._get_website_image_url()"/>
+        <t t-set="default_cover_name">Cover</t>
+        <div t-att-data-name="display_opt_name or default_cover_name"
+             t-att-style="_cp.get('background_color_style')"
+             t-att-data-use_size="use_size"
+             t-att-data-use_filters="use_filters"
+             t-att-data-use_text_align="use_text_align"
+             t-att-data-res-model="request.env.user.has_group('website.group_website_publisher') and _name"
+             t-att-data-res-id="request.env.user.has_group('website.group_website_publisher') and _id"
+             t-attf-class="o_record_cover_container d-flex flex-column h-100 o_colored_level o_cc #{_cp.get('background_color_class')} #{use_size and _cp.get('resize_class')} #{use_text_align and _cp.get('text_align_class')} #{additionnal_classes}">
+            <div t-attf-class="o_record_cover_component o_record_cover_image #{snippet_autofocus and 'o_we_snippet_autofocus'}"
+                 t-attf-style="background-image: #{_bg};"/>
+            <div t-if="use_filters" t-attf-class="o_record_cover_component o_record_cover_filter oe_black"
+                 t-attf-style="opacity: #{_cp.get('opacity', 0.0)};"/>
+            <t t-out="0"/>
+        </div>
+    </template>
+
+    <template id="custom_pager_inherit" inherit_id="portal.pager">
+        <xpath expr="//ul" position="replace">
+            <ul t-if="pager['page_count'] > 1" t-attf-class="#{ classname or '' } pagination m-0 #{_classes}"
+                t-att-style="style or None">
+                <li t-attf-class="page-item #{'disabled' if pager['page']['num'] == 1 else ''}">
+                    <a t-att-href=" pager['page_previous']['url'] if pager['page']['num'] != 1 else None"
+                       t-attf-class="page-link pager-inactive text-dark border-0 #{extraLinkClass}">&lt;
+                    </a>
+                </li>
+                <t t-foreach="pager['pages']" t-as="page">
+                    <li t-attf-class="page-item #{'active bg-white text-dark' if page['num'] == pager['page']['num'] else ''}">
+                        <a t-att-href="page['url']"
+                           t-attf-class="page-link pager-inactive text-dark border-0 #{extraLinkClass} #{'bg-white text-dark pager-active' if page['num'] == pager['page']['num'] else ''}"
+                           t-out="page['num']"/>
+                    </li>
+                </t>
+                <li t-attf-class="page-item #{'disabled' if pager['page']['num'] == pager['page_count'] else ''}">
+                    <a t-att-href="pager['page_next']['url'] if pager['page']['num'] != pager['page_count'] else None"
+                       t-attf-class="page-link pager-inactive text-dark border-0 #{extraLinkClass}">&gt;
+                    </a>
+                </li>
+            </ul>
+        </xpath>
+    </template>
+
+    <template id="custom_blog_post_complete_inherit" inherit_id="website_blog.blog_post_complete">
+        <xpath expr="//section[@id='o_wblog_post_top']" position="replace">
+            <div class="article-detail pb-0">
+                <article>
+                    <div class="card mb-lg-3 obst-story-card">
+                        <div class="card-title">
+                            <h1 class="GT_Pressura_Regular">
+                                <t t-esc="blog_post.name"/>
+                            </h1>
+                            <time t-field="blog_post.post_date"
+                                  class="text-muted article-time-cls text-nowrap GT_Pressura_Regular"
+                                  t-options='{"format": "MMM d, yyyy"}'/>
+                            <span class="article-time-cls text-muted">・</span>
+                            <span class="text-muted GT_Pressura_Regular article-time-cls">
+                                <t t-esc="blog_post.blog_id.name"/>
+                            </span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </xpath>
+        <xpath expr="//section[@id='o_wblog_post_main']" position="attributes">
+            <attribute name="t-attf-class"
+                       add="article-detail pt-4 pb-5 #{'anim' in request.params and 'o_wblog_post_main_transition'}"
+                       remove="container pt-4 pb-5 #{'anim' in request.params and 'o_wblog_post_main_transition'}"/>
+        </xpath>
+        <xpath expr="//section[@id='o_wblog_post_main']/div[2]" position="attributes">
+            <attribute name="t-attf-class" add="#{opt_blog_post_readable}"
+                       remove="#{opt_blog_post_readable and 'o_container_small'}"/>
+        </xpath>
+        <xpath expr="//section[@id='o_wblog_post_main']/div[2]/div/div" position="attributes">
+            <attribute name="t-attf-class" add="#{opt_blog_post_readable and 'w-100 flex-shrink-0'}"
+                       remove="#{opt_blog_post_readable and 'o_container_small w-100 flex-shrink-0'}"/>
+        </xpath>
+        <xpath expr="//section[@id='o_wblog_post_main']" position="after">
+            <div class="home_product_view pt-5 pb-5">
+                <div class="row">
+                    <t t-set="products"
+                       t-value="request.env['product.template'].sudo().search([('is_published', '=', True)],limit=4)"/>
+                    <t t-set="base_url"
+                       t-value="request.env.company.get_base_url()"/>
+                    <t t-foreach="products" t-as="product">
+                        <div class="col-md-3 card oe_product_cart" style="background: white !important;">
+                            <a class="o_product_link css_editable_mode_hidden"
+                               t-att-href="base_url + product.website_url"/>
+                            <div class="card-body p-1 oe_product_image"
+                                 style="background-color:white !important; height:100%">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <a t-att-href="base_url + product.website_url" class="d-block h-100" itemprop="url">
+                                    <t t-set="image_holder" t-value="product._get_image_holder()"/>
+                                    <span t-field="product.image_1920"
+                                          t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256', 'itemprop': 'image'}"
+                                          class="d-flex h-100 justify-content-center align-items-center"/>
+                                </a>
+                            </div>
+                            <div class="card-body p-0 o_wsale_product_information  text-center"
+                                 style="background-color: white !important; color: black;">
+                                <div class="p-2 o_wsale_product_information_text">
+                                    <h6 class="o_wsale_products_item_title GT_Pressura_Regular">
+                                        <a class="text-dark text-decoration-none" itemprop="name"
+                                           t-att-href="base_url + product.website_url" t-att-content="product.name"
+                                           t-field="product.name"/>
+                                    </h6>
+                                </div>
+                                <div class="o_wsale_product_btn pl-2 d-none"/>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+            <div class="more_stories_section">
+                <t t-set="story_list"
+                   t-value="request.env['blog.post'].sudo().search([('is_published', '=', 'True'), ('id', '!=', blog_post.id)], limit=4)"/>
+                <div class="">
+                    <div class="GT_Pressura_Regular text-center">
+                        <h2 class="GT_Pressura_Pro_Mono">Weitere News <span>・</span>Stories <span>・</span>Events
+                        </h2>
+                    </div>
+                    <div class="">
+                        <section id="o_wblog_index_content">
+                            <div class=" py-4">
+                                <div class="">
+                                    <div id="o_wblog_posts_loop_container" class="col ">
+                                        <div id="o_wblog_posts_loop" class="">
+                                            <div class="row mx-n2">
+                                                <t t-foreach="story_list" t-as="story">
+                                                    <div class="pb-4 col-12 px-2 col-sm-6 col-lg-4 col-xl-3">
+                                                        <article name="blog_post"
+                                                                 class="o_wblog_post position-relative ">
+                                                            <a t-att-href="story.website_url"
+                                                               class="text-decoration-none d-block mb-2">
+                                                                <img sizes="400px"
+                                                                     class="lazy img-fluid loaded article-img-cls"
+                                                                     data-ll-status="loaded"
+                                                                     t-att-src="story._get_website_image_url()"
+                                                                     loading="lazy" style=""/>
+                                                            </a>
+                                                        </article>
+                                                        <h2>
+                                                            <a t-att-href="story.website_url"
+                                                               class="d-block text-reset article-title-cls GT_Pressura_Regular text-decoration-none o_blog_post_title my-0 h6">
+                                                                <t t-esc="story.name"/>
+                                                            </a>
+                                                        </h2>
+                                                        <h5 class="text-center">
+                                                            <time t-field="story.post_date"
+                                                                  class="text-muted article-time-cls text-nowrap GT_Pressura_Regular"
+                                                                  t-options='{"format": "MMM d, yyyy"}'/>
+                                                            <span class="article-time-cls text-muted">・</span>
+                                                            <span class="text-muted GT_Pressura_Regular article-time-cls">
+                                                                <t t-esc="story.blog_id.name"/>
+                                                            </span>
+                                                        </h5>
+                                                    </div>
+                                                </t>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//section[@id='o_wblog_post_main']/div/div/div" position="attributes">
+            <attribute name="t-attf-class" add="#{opt_blog_post_readable and 'o_container_small mx-0 w-100 flex-shrink-0 GT_Pressura_Regular text-muted' or 'w-lg-75'}"
+                       remove="#{opt_blog_post_readable and 'o_container_small mx-0 w-100 flex-shrink-0' or 'w-lg-75'}"/>
+        </xpath>
+        <xpath expr="//section[@id='o_wblog_post_main']/div[2]/div/div" position="attributes">
+            <attribute name="t-attf-class" add="#{opt_blog_post_readable and 'o_container_small w-100 flex-shrink-0 GT_Pressura_Regular text-muted'}"
+                       remove="#{opt_blog_post_readable and 'o_container_small w-100 flex-shrink-0'}"/>
+        </xpath>
+        <xpath expr="//section[@id='o_wblog_post_footer']" position="attributes">
+            <attribute name="class" add="d-none"/>
+        </xpath>
+    </template>
+
+</odoo>

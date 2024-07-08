@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="obst_mobile_menu" name="obstgemuse cart page">
+        <div class="menu-box-container">
+            <div class="offcanvas is-right cart-offcanvas is-open" style="background: #ffffff !important">
+                <button class="btn btn-light btn-block offcanvas-close js-offcanvas-close sticky-top">
+                    <div class="col-3">
+                        <img src="/gio_obstgemuese_theme/static/src/svg/65-cross2.svg"
+                             class="menu-box-close p-2"/>
+                    </div>
+                </button>
+                <div class="offcanvas-content-container">
+                    <div class="offcanvas-cart">
+                        <div id="filter-panel-wrapper" class="filter-panel-wrapper"
+                             data-offcanvas-filter-content="true">
+                            <div class="filter-reset-all-products-container">
+                                <a href="#" class="filter-reset-all-products filter-reset-all-products-sidebar"
+                                   style="display:none">Alle Filter zurücksetzen
+                                </a>
+                            </div>
+                            <a href="#" class="sidebar-filter-close">
+                                <span class="iconOG icon-cross2"></span>
+                            </a>
+                            <div class="row">
+                                <div class="col-2"></div>
+                                <div class="col-8 pt-5">
+                                    <h5 class="pl-3 text-muted">Filtern</h5>
+                                    <form class="js_attributes mb-2" method="get">
+<!--                                        <input t-if="category" type="hidden" name="category"-->
+<!--                                               t-att-value="category.id"/>-->
+<!--                                        <input type="hidden" name="search" t-att-value="search"/>-->
+<!--                                        <input type="hidden" id="website_pagination"-->
+<!--                                               name="website_pagination" value="1"/>-->
+<!--                                        <input type="hidden" id="website_current_url"-->
+<!--                                               name="website_current_url" value="/shop"/>-->
+<!--                                        <input type="hidden" id="scroll_action"-->
+<!--                                               name="website_current_url" value="true"/>-->
+<!--                                        <input type="hidden" id="page_limit"-->
+<!--                                               name="website_current_url" value="false"/>-->
+<!--                                        <input type="hidden" name="search" t-att-value="search"/>-->
+                                        <div class="col-12 pt-3">
+                                            <li style="list-style-type: none;">
+                                                <select class="custom-select css_attribute_select GT_Pressura_Regular"
+                                                        id="CategoryFilter">
+                                                    <option value="">Sortiment</option>
+                                                    <t t-foreach="categories" t-as="c">
+                                                        <option t-att-value="keep('/shop/category/' + slug(c), category=0)"
+                                                                t-esc="c.name"
+                                                                t-att-data-link-href="keep('/shop/category/' + slug(c), category=0)"
+                                                                t-att-selected="c.id == category.id"/>
+                                                    </t>
+                                                </select>
+                                            </li>
+                                        </div>
+                                        <t t-foreach="attributes" t-as="a">
+                                            <t t-if="a.name == 'Legs'">
+                                                <t t-set="marke" t-value="a"/>
+                                            </t>
+                                            <t t-if="a.name == 'Brand'">
+                                                <t t-set="farbe" t-value="a"/>
+                                            </t>
+                                            <t t-if="a.name == 'Color'">
+                                                <t t-set="kollektion" t-value="a"/>
+                                            </t>
+                                            <t t-if="a.name == 'Duration'">
+                                                <t t-set="kategorie" t-value="a"/>
+                                            </t>
+                                            <t t-if="a.name == 'Legs'">
+                                                <t t-set="produkt" t-value="a"/>
+                                            </t>
+                                        </t>
+                                        <div class="col-12 pt-3">
+                                            <li style="list-style-type: none;">
+                                                <select class="custom-select css_attribute_select GT_Pressura_Regular"
+                                                        name="attrib">
+                                                    <option value="0-0">Marke</option>
+                                                    <t t-if="marke">
+                                                        <t t-foreach="marke.value_ids"
+                                                           t-as="v">
+                                                            <option t-att-value="'%s-%s' % (marke.id,v.id)"
+                                                                    t-esc="v.name"
+                                                                    t-att-selected="v.id in attrib_set"/>
+                                                        </t>
+                                                    </t>
+                                                </select>
+                                            </li>
+                                        </div>
+                                        <div class="col-12 pt-3">
+                                            <li style="list-style-type: none;">
+                                                <select class="custom-select css_attribute_select GT_Pressura_Regular"
+                                                        name="attrib">
+                                                    <option value="0-0">Farbe</option>
+                                                    <t t-if="farbe">
+                                                        <t t-foreach="farbe.value_ids"
+                                                           t-as="v">
+                                                            <option t-att-value="'%s-%s' % (farbe.id, v.id)"
+                                                                    t-esc="v.name"
+                                                                    t-att-selected="v.id in attrib_set"/>
+                                                        </t>
+                                                    </t>
+                                                </select>
+                                            </li>
+                                        </div>
+                                        <div class="col-12 pt-3">
+                                            <li style="list-style-type: none;">
+                                                <select class="custom-select css_attribute_select GT_Pressura_Regular"
+                                                        name="attrib">
+                                                    <option value="0-0">Kollektion</option>
+                                                    <t t-if="kollektion">
+                                                        <t t-foreach="kollektion.value_ids"
+                                                           t-as="v">
+                                                            <option t-att-value="'%s-%s' % (kollektion.id,v.id)"
+                                                                    t-esc="v.name"
+                                                                    t-att-selected="v.id in attrib_set"/>
+                                                        </t>
+                                                    </t>
+                                                </select>
+                                            </li>
+                                        </div>
+                                        <div class="col-12 pt-3">
+                                            <li style="list-style-type: none;">
+                                                <select class="custom-select css_attribute_select GT_Pressura_Regular"
+                                                        name="attrib">
+                                                    <option value="0-0">Kategorie</option>
+                                                    <t t-if="kategorie">
+                                                        <t t-foreach="kategorie.value_ids"
+                                                           t-as="v">
+                                                            <option t-att-value="'%s-%s' % (kategorie.id,v.id)"
+                                                                    t-esc="v.name"
+                                                                    t-att-selected="v.id in attrib_set"/>
+                                                        </t>
+                                                    </t>
+                                                </select>
+                                            </li>
+                                        </div>
+                                        <div class="col-12 pt-3">
+                                            <li style="list-style-type: none;">
+                                                <select class="custom-select css_attribute_select GT_Pressura_Regular"
+                                                        name="attrib">
+                                                    <option value="0-0">Produkt</option>
+                                                    <t t-if="produkt">
+                                                        <t t-foreach="produkt.value_ids"
+                                                           t-as="v">
+                                                            <option t-att-value="'%s-%s' % (produkt.id,v.id)"
+                                                                    t-esc="v.name"
+                                                                    t-att-selected="v.id in attrib_set"/>
+                                                        </t>
+                                                    </t>
+                                                </select>
+                                            </li>
+                                        </div>
+                                    </form>
+                                    <div class="sorting-title pl-2 mb-0">
+                                        <span>Sortieren nach</span>
+                                    </div>
+                                    <div>
+                                        <div class="col-12">
+                                            <li style="list-style-type: none;">
+                                                <t t-set="list_price_asc_label">Price - Low to High</t>
+                                                <t t-set="list_price_desc_label">Price - High to Low</t>
+                                                <t t-set="newest_arrivals_desc_label">Newest arrivals</t>
+                                                <t t-set="name_asc_label">Name</t>
+                                                <t t-set="website_sale_sortable" t-value="[
+                                            (list_price_asc_label, 'list_price asc'),
+                                            (list_price_desc_label, 'list_price desc'),
+                                            (newest_arrivals_desc_label, 'create_date desc'),
+                                            (name_asc_label, 'name asc')]"/>
+                                                <t t-set="website_sale_sortable_current"
+                                                   t-value="[sort for sort in website_sale_sortable if sort[1]==request.params.get('order', '')]"/>
+                                                <select class="custom-select custom-sort-select GT_Pressura_Regular">
+                                                    <t t-if='website_sale_sortable_current'>
+                                                        <option value="0-0"
+                                                                t-esc="website_sale_sortable_current[0][0]"/>
+                                                    </t>
+                                                    <t t-else='1'>
+                                                        <option value="0-0">Neuigkeiten</option>
+                                                    </t>
+                                                    <t t-foreach="website_sale_sortable" t-as="sortby">
+                                                        <option t-att-value="keep('/shop', order=sortby[1])"
+                                                                t-esc="sortby[0]"/>
+                                                    </t>
+                                                </select>
+                                            </li>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center pt-5">
+                                        <a href="/shop" class="d-none mobile-reset-button">
+                                            <font class="privacy-hover"
+                                                  style="vertical-align: inherit;">
+                                                Reset all filters
+                                            </font>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-none hidden-line-items-information"></div>
+                </div>
+            </div>
+            <div class="modal-backdrop modal-backdrop-open"></div>
+        </div>
+    </template>
+</odoo>

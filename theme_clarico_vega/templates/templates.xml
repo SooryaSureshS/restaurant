@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="wizard_checkout" inherit_id="website_sale.wizard_checkout" name="Wizard Checkout">
+        <xpath expr="//div[hasclass('progress-wizard')]/a[1]" position="replace"/>
+    </template>
+    <template id="address" inherit_id="website_sale.address" name="address">
+        <xpath expr="//div[hasclass('oe_cart')]/../div[1]" position="replace"/>
+    </template>
+    <template id="payment_footer" inherit_id="website_sale.payment_footer" name="payment_footer">
+        <xpath expr="//div[hasclass('float-start')]/a" position="replace">
+            <a role="button" href="/shop/checkout" class="btn btn-secondary">
+                <i class="fa fa-chevron-left"/> Return to Cart
+            </a>
+        </xpath>
+        <xpath expr="//div[hasclass('float-end')]/button" position="replace">
+            <button name="o_payment_submit_button"
+                    type="submit"
+                    class="btn btn-primary"
+                    disabled="true"
+                    data-icon-class="fa-chevron-right">
+                Confirm Order <i class="fa fa-chevron-right"/>
+            </button>
+        </xpath>
+    </template>
+</odoo>

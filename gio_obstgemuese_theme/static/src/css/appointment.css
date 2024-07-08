@@ -1,0 +1,237 @@
+.cms-block-container-bookus-custom{
+    width: 100%;
+    max-width: 90rem;
+    margin: 0 auto;
+    padding: -11.75rem 3.125rem;
+    padding-top: 3.125rem;
+    padding-bottom: 3.125rem;
+    max-width: 52.5rem !important;
+}
+.obst-bookus-row{
+    margin: 0;
+}
+.reservation-content-block.js-reservation-form {
+    width: 100%;
+}
+.reservation-intro {
+    padding-bottom: 1.875rem;
+    font-size: 1.25rem;
+    color: #4a4a4a;
+    font-family: "GT Pressura Pro";
+    font-weight: normal;
+}
+.reservation_intro_h1{
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    color: #000 !important;
+    font-size: 2.8125rem;
+    line-height: 1.2;
+    letter-spacing: -.003125rem;
+}
+.reservation_intro_p {
+    font-size: 1.25rem;
+    color: #4a4a4a;
+    font-weight: normal;
+}
+.reservation-select-form {
+    padding-bottom: 1.875rem;
+}
+.reservation-info {
+    padding-bottom: 1.875rem;
+    font-size: 1.25rem;
+    color: #4a4a4a;
+    font-family: "GT Pressura Pro";
+    font-weight: normal;
+}
+.reservation-book-label{
+    margin-bottom: .1875rem;
+    font-size: .75rem;
+    color: #9b9b9b;
+}
+.filter_select_category_appointment{
+    min-width: 23.25rem !important;
+}
+
+.appointment-hr{
+    margin: 1.875rem 0;
+    border: 0;
+    border-bottom: 2px solid #bbb;
+}
+.appointment-text-h3{
+    font-size: 1.5625rem;
+}
+.appointment-text-h4{
+    font-size: 1.5625rem;
+    padding: .9375rem 0;
+    color: #9b9b9b !important;
+}
+.obst-round-calender{
+    font-size: 38px;
+    padding: .9375rem 0;
+    color: #9b9b9b !important;
+}
+.obst-calender-table-row {
+    border-top: 2px solid #bbb !important;
+}
+
+.obst-calender-table-body{
+    width: 14.28% !important;
+    padding: 1.5rem 0 !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+    font-size:  1.25rem !important;
+    font-weight: normal !important;
+    border-top: 2px solid #bbbbbb !important;
+
+}
+.obst-calender-table-head{
+    width: 14.28% !important;
+    padding: 1.5rem 0 !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+    font-size: 1.5625rem !important;
+    font-weight: normal !important;
+    border-top: 2px solid #bbbbbb !important;
+
+}
+.o_appointment_days .o_day {
+    border: 2px solid #35979c;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+.o_appointment_days .o_weekend {
+    background-color: #f7f7f7 !important;
+    color: #9b9b9b;
+}
+.o_appointment_days .o_today div {
+    border-bottom: 3px solid #efefef !important;
+}
+td.align-middle.p-md-2.obst-calender-table-body.p-1.text-center.o_weekend.o_today{
+    background: #efefef !important;
+}
+.o_appointment_days .o_day:hover, .o_appointment_days .o_slot_selected {
+    color: white;
+    background-color: #eeca00 !important;
+}
+.o_appointment_days .o_day {
+    border: 2px solid #d0d0d0;
+    border-radius: 0rem;
+    cursor: pointer;
+}
+.o_appointment_days .o_day {
+    border: #d0d0d0;
+    background: #d0d0d0;
+    cursor: pointer;
+}
+.reservation-btn {
+    margin: 3.125rem auto 0 auto;
+    display: table;
+    color: #fff;
+    background-color: #eeca00;
+    border-color: #eeca00;
+    font-weight: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 1.25rem;
+    line-height: 1;
+    padding: .375rem 1.5625rem .375rem 1.5625rem;
+    border-width: 2px;
+    border-radius: 1.875rem;
+    letter-spacing: .5px;
+    width: 25% !important;
+    height: 36px !important
+}
+.reservation-btn:hover {
+    color: #eeca00 !important;
+    background-color: #fff !important;
+    border-color: #eeca00 !important;
+}
+.obst-round-calender:hover{
+    text-decoration: none !important;
+    color: #e0d8d8 !important
+
+}
+.cms-block-container-appointment{
+    width: 100%;
+    max-width: 52.5rem !important;
+    margin: 0 auto;
+    padding: 6.25rem 3.125rem;
+    padding-top: 3.125rem;
+    padding-bottom: 3.125rem;
+    }
+.reservation-title-appointment{
+    font-size: 2.1875rem;
+    padding-bottom: 1.5625rem;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    color: #000;
+    }
+
+.reservation-info-appointment{
+    padding-bottom: 1.875rem;
+    font-size: 1.25rem;
+    color: #4a4a4a;
+    font-weight: normal;
+}
+.alert-content-container-appointment{
+    background-color: #eeca00;
+    color: #fff;
+    }
+.alert-content-appointment{
+    background-color: #eeca00;
+    color: #fff;
+    padding: 2rem 4rem;
+    }
+
+.alert-success-appointment{
+    background: #eecb2c;
+    border: #eecb2c;
+}
+.filter_select_appointment_day{
+    min-width: 100px !important;
+    background: #d0d0d0 !important;
+    border: #d0d0d0 !important;
+    overflow-y: hidden;
+}
+.filter_select_appointment_day:hover{
+    background: #eeca00 !important;
+    border: #eeca00 !important
+}
+.app-mt10{
+    margin-top: 10% !important;
+    font-family: "GT Pressura Pro" !important;
+}
+.hover-yellow:hover{
+    background-color: #eeca00 !important;
+}
+.text-family-Pressura{
+font-family: "GT Pressura Pro";
+}
+
+h5{
+font-family: "GT Pressura Regular";
+}
+
+article.h-100.card.border-0.shadow-sm {
+    background: white !important;
+    box-shadow: none !important;
+}
+.d-lg-flex.col.pl-0.mb-2.o_not_editable,select#selectEmployee{
+    font-family: 'GT Pressura Regular';
+}
+a.btn.btn-block.btn-outline-primary.text-black.col-12 {
+    width: 119.9px !important;
+    height: 35px !important;
+    margin: 10px 10px 10px 10px !important;
+    font-family: "GT Pressura Regular" !important;
+    padding: 5px 0 10px !important;
+    border-radius: 20px !important;
+    background: #698789;
+    border: #698789;
+}
+.o_calendar_intro.mb32 {
+    font-family: 'GT Pressura Regular';
+}

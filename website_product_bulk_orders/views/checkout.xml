@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="checkout_bulk_order" inherit_id="website_sale.checkout"
+              name="cart_line_bulk_order">
+        <xpath expr="//div[hasclass('oe_cart')]/../div[2]" position="replace">
+        </xpath>
+        <xpath expr="//div[hasclass('oe_cart')]" position="replace">
+            <div class="col-12 col-xl order-xl-1 oe_cart new_order_popup">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="o_page_header mt8" style="position: relative" id="billing" edit="false">
+                            Billing Address
+<!--                            <i  style="position: absolute; right: 0;" class="fa fa-angle-down"/>-->
+<!--                            <i  style="position: absolute; right: 0; display:none;" class="fa fa-angle-up"/>-->
+                        </h3>
+                    </div>
+                    <div class="col-lg-6 one_kanban">
+                        <t t-call="website_sale.address_kanban">
+                            <t t-set='contact' t-value="order.partner_id"/>
+                            <t t-set='selected' t-value="1"/>
+                            <t t-set='readonly' t-value="1"/>
+                            <t t-set='allow_edit' t-value="0"/>
+                        </t>
+                    </div>
+                </div>
+                <t t-if="not only_services" groups="account.group_delivery_invoice_address">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h3 class="o_page_header mt16 mb4" style="position: relative" id="shipping">
+                                Shipping Address
+<!--                                <i  style="position: absolute; right: 0;" class="fa fa-angle-down"/>-->
+<!--                                <i  style="position: absolute; right: 0; display:none;" class="fa fa-angle-up"/>-->
+                            </h3>
+
+                        </div>
+                    </div>
+                    <div class="row all_shipping">
+                        <div class="col-lg-12">
+                            <div class="row mt8">
+                                <div class="col-md-12 col-lg-12 one_kanban">
+                                    <form action="/shop/address" method="post" class=''>
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        <a role="button" href="#" class='a-submit btn btn-secondary mb-2 btn-block'>
+                                            <i class="fa fa-plus-square"/>
+                                            <span>Add an address</span>
+                                        </a>
+                                    </form>
+                                </div>
+                                <t t-foreach="shippings" t-as="ship">
+                                    <div class="col-md-12 col-lg-6 one_kanban mb-2">
+                                        <t t-call="website_sale.address_kanban">
+                                            <t t-set='contact' t-value="ship"/>
+                                            <t t-set='selected' t-value="order.partner_shipping_id==ship"/>
+                                            <t t-set='readonly' t-value="bool(len(shippings)==1)"/>
+                                            <t t-set='edit_billing' t-value="bool(ship==order.partner_id)"/>
+                                            <t t-set="allow_edit"
+                                               t-value="not order.partner_id or (ship.id in order.partner_id.child_ids.ids)"/>
+                                        </t>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <t t-foreach="lines" t-as="line">
+                            <t t-set="sublines" t-value="lines[line]['sublines']"/>
+                            <t t-set="line" t-value="lines[line]['line']"/>
+                            <div class="col-lg-12" style="overflow-x: auto; margin-top:10px; border-radius: 10px; border: 1px solid #EDEDED; padding: 10px;">
+                                <div class="row">
+                                    <img t-attf-src="/web/image/product.template/{{ line['rec'].id }}/image_128" style="width: 180px; height: 180px; object-fit: contain;" alt="Product image"/>
+                                    <div class="col-6"><b><t t-esc="line['rec'].name"/></b></div>
+                                </div>
+                                <table style="width: 100%; margin: 10px 0px 10px 0px;">
+                                    <thead>
+                                        <tr>
+                                            <th width="15%" style="position: sticky; top: 0;">Options</th>
+                                            <t t-foreach="line['sizes']" t-as="size">
+                                                <th style="text-align:center; position: sticky; top: 0;">
+                                                    <t t-esc="size[1]"/>
+                                                </th>
+                                            </t>
+                                            <th width="10%" style="text-align:right;">Qty</th>
+<!--                                            <th width="10%" style="text-align:right;">Price</th>-->
+                                            <th width="10%" style="text-align:right;">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="line['colors']" t-as="color">
+                                            <t t-set="tot_qty" t-value="0"/>
+                                            <t t-set="unit_price" t-value="0"/>
+                                            <t t-set="tot_price" t-value="0"/>
+                                            <tr>
+                                                <th><t t-esc="color[1]"/></th>
+                                                <t t-foreach="line['sizes']" t-as="size">
+                                                    <t t-set="cs_map" t-value="line['prod_att_data']['color_size_variant_mapping'][str(color[0])+'-'+str(size[0])]"/>
+                                                    <t t-set="tot_qty" t-value="tot_qty+(cs_map[3].product_uom_qty if len(cs_map)>3 else 0)"/>
+                                                    <t t-set="tot_price" t-value="tot_price + sum([(t.price_subtotal if t.product_id.id == cs_map[0] else 0) for t in sublines])"/>
+<!--                                                    <t t-set="unit_price" t-value="unit_price+line['total']"/>-->
+<!--                                                    <t t-set="tot_price" t-value="tot_price+line['total']"/>-->
+                                                    <td valign="middle" style="vertical-align: middle;">
+                                                        <input type="number" min="0"
+                                                               t-att-value="'%.0f' % cs_map[3].product_uom_qty if len(cs_map)>3 else 0"
+                                                               t-att-data-product-id="cs_map[0]" t-att-data-size-id="size[0]" t-att-data-color-id="color[0]" t-att-data-unit_price="cs_map[1]" t-att-data-ptl="line['rec'].id"
+                                                               t-attf-class="form-control product_variant_qty input-{{line['rec'].id}}-{{color[0]}}"/>
+<!--                                                        <p style="margin: 0px; font-family: arial, sans-serif; font-weight: 400; font-size: 12px; color: #1a1a18; text-align:center;"><t t-esc="cs_map[2]"/> in stock</p>-->
+                                                    </td>
+                                                </t>
+                                                <td style="text-align:right;" t-attf-id="qty-{{line['rec'].id}}-{{color[0]}}"><t t-esc="'%.0f' % tot_qty"/></td>
+<!--                                                <td style="text-align:right;"><t t-if="tot_qty" t-esc="line['prod_att_data']['currency_symbol']+str(unit_price)"/></td>-->
+                                                <td style="text-align:right;"><span t-esc="line['prod_att_data']['currency_symbol']"/><span t-esc="tot_price" t-attf-id="price-{{line['rec'].id}}-{{color[0]}}"/></td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between mt-3" style="float:right;">
+<!--                    <a role="button" href="/shop/cart" class="btn btn-secondary mb32">-->
+<!--                        <i class="fa fa-chevron-left"/>-->
+<!--                        <span>Return to Cart</span>-->
+<!--                    </a>-->
+                    <a role="button" href="#" class="btn btn-primary mb32 model_bulk_add_to_cart">
+                        <span>Confirm</span>
+                        <i class="fa fa-chevron-right"/>
+                    </a>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<template id="featuredSaleOffersTem">
+    <t t-name="featuredSaleOffers">
+        <div class="lowRowCont left">
+            <div class="row">
+                <div class="col-lg-9">
+                    <span class="lowRowHeads">Featured Sale Offers</span>
+                </div>
+                <div class="col-lg-3">
+                    <span class="lowRowVAll">View all
+                        <i class="fa fa-long-arrow-right"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="row lrTd">
+                <table style="width:100%;">
+                    <tr>
+                        <td>
+                            <span class="lrTcN">Property Name</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Customer Name</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Type</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Date</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Price</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Status</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <!--                                    <div class="row">-->
+                            <!--                                        <div></div>-->
+                            <div>
+                                <span class="lrTcB">Rosemary house</span>
+                                <br/>
+                                <span class="lrTcN">Southeast Washington DC</span>
+                            </div>
+                            <!--                                    </div>-->
+                        </td>
+                        <td>
+                            <span class="lrTcB">Kristin Watson</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Rent</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Jul 01, 2022</span>
+                        </td>
+                        <td>
+                            <span class="lrTcB">$700</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Paid</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <!--                                    <div class="row">-->
+                            <!--                                        <div></div>-->
+                            <div>
+                                <span class="lrTcB">Rosemary house</span>
+                                <br/>
+                                <span class="lrTcN">Southeast Washington DC</span>
+                            </div>
+                            <!--                                    </div>-->
+                        </td>
+                        <td>
+                            <span class="lrTcB">Kristin Watson</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Rent</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Jul 01, 2022</span>
+                        </td>
+                        <td>
+                            <span class="lrTcB">$700</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Paid</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </t>
+</template>

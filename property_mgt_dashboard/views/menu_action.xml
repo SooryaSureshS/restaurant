@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="prop_mgt_dashboard_action" model="ir.actions.client">
+            <field name="name">Dashboard</field>
+            <field name="tag">prop_mgt_dashboard</field>
+        </record>
+        <menuitem id="prop_mgt_dashboard"
+                  action="prop_mgt_dashboard_action"
+                  parent="property_rental_mgt_app.menu_property_root"
+                  sequence="-10"/>
+    </data>
+</odoo>

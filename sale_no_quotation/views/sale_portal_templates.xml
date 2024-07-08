@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_my_home_sale" inherit_id="sale.portal_my_home_sale">
+        <xpath expr='//t[@t-call="portal.portal_docs_entry"]' position="replace">
+        </xpath>
+    </template>
+</odoo>

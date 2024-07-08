@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="contact_us_inherit" inherit_id="website.contactus">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <t t-set="company" t-value="request.env.user.company_id"/>
+            <div class="contact-container contact_wrap">
+                <div class="contact-block-container ">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="">
+                                <h1 class="GT_Pressura_Regular contact-address-header-cls">
+                                    OBST&amp;GEMÜSE
+                                </h1>
+                            </div>
+                            <ul class="list-unstyled mb-0 GT_Pressura_Regular mt-4 color_dim contact-address-cls">
+                                <li>
+                                    <t t-esc="company.name"/>
+                                </li>
+                                <li>
+                                    <i class="fa fa-map-marker fa-fw mr-2"/>
+                                    <span class="o_force_ltr">
+                                        <t t-esc="company.street"/>
+                                        <br/>
+                                        <t t-esc="company.city"/>,
+                                        <t t-esc="company.state_id.name"/>,
+                                        (<t t-esc="company.zip"/>),
+                                        <t t-esc="company.country_id.name"/>
+                                    </span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-phone fa-fw mr-2"/>
+                                    <span class="o_force_ltr">
+                                        <t
+                                                t-esc="company.phone"/>
+                                    </span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-1x fa-fw fa-envelope mr-2"/>
+                                    <span>
+                                        <t t-esc="company.email"/>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <br/>
+                        <div class="col-md-6">
+                            <div id="g_map"/>
+                            <script
+                                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&amp;callback=initMap&amp;v=weekly"
+                            ></script>
+                        </div>
+                    </div>
+                    <div class="cms-block-container">
+                        <div class="cms-block-container-row row cms-row ">
+                            <div class="contact-content-block js-contact-form">
+                                <div class="card contact-headline contact-headline-hide-cls">
+                                    <div class="card-body">
+                                        <br/>
+                                        <h2 class="GT_Pressura_Regular contact-address-header-cls font-spacing-privacy text-dark">
+                                            Kontaktformular
+                                        </h2>
+                                        <br/>
+                                        <div class="contact-info contact-address-cls">
+                                            <p>* Bitte fülle <strong
+                                                    class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                alle
+                                            </strong> Felder aus. Falls Du
+                                                einen Termin buchen willst,
+                                                kannst Du das <a
+                                                        href="/book-us/"
+                                                        class="privacy-hover">
+                                                    hier
+                                                </a> tun.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="card contact-form contact-form-section">
+                                    <div class="card-body">
+                                        <form action="/website/form/"
+                                              method="post"
+                                              enctype="multipart/form-data"
+                                              data-mark="*"
+                                              data-model_name="mail.mail"
+                                              data-success-mode="redirect"
+                                              data-success-page="/contactus-thank-you"
+                                              data-pre-fill="true"
+                                              data-form-ajax-submit-options="{&quot;replaceSelectors&quot;: &quot;.js-contact-form&quot;}"
+                                              novalidate="novalidate"
+                                              class="o_mark_required">
+                                            <input type="hidden" id="CsrfToken"
+                                                   name="csrf_token"
+                                                   t-att-value="request.csrf_token()"/>
+                                            <div>
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-6 s_website_form_field">
+                                                        <div class="form-group contact-firstname">
+                                                            <label class="form-label contact-form-label-cls"
+                                                                   for="contactFirstName">
+                                                                Vorname/Nachname
+                                                                *
+                                                            </label>
+                                                            <input id="CustomerName"
+                                                                   type="text"
+                                                                   placeholder="Vorname/Nachname *"
+                                                                   class="form-control s_website_form_input log_reg_input GT_Pressura_Regular"
+                                                                   name="name"
+                                                                   required=""
+                                                                   data-fill-with="name"/>
+                                                            <p class="website_form_field_valid">
+                                                                Dieses Feld ist
+                                                                ein
+                                                                Pflichtfeld.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 s_website_form_field col-md-6">
+                                                        <div class="form-group contact-email">
+                                                            <label class="form-label contact-form-label-cls"
+                                                                   for="contactMail">
+                                                                Deine
+                                                                E-Mail-Adresse*
+                                                            </label>
+                                                            <input id="CustomerEmail"
+                                                                   placeholder="E-Mail-Adresse*"
+                                                                   type="email"
+                                                                   class="form-control s_website_form_input log_reg_input GT_Pressura_Regular"
+                                                                   name="email_from"
+                                                                   required=""
+                                                                   data-fill-with="email"/>
+                                                            <p class="website_form_field_valid">
+                                                                Dieses Feld ist
+                                                                ein
+                                                                Pflichtfeld.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form-row s_website_form_field">
+                                                            <div class="form-group col-md-12 contact-department">
+                                                                <label class="form-label contact-form-label-cls"
+                                                                       for="contactDepartment">
+                                                                    Anliegen*
+                                                                </label>
+                                                                <select name="department"
+                                                                        id="contactDepartment"
+                                                                        required="required"
+                                                                        class="custom-select contact-select s_website_form_input">
+                                                                    <option selected="selected"
+                                                                            value="">
+                                                                        Anliegen*
+                                                                    </option>
+                                                                    <option value="customerservice@obstundgemuese.ch">
+                                                                        Kundenservice
+                                                                    </option>
+                                                                    <option value="customerservice@obstundgemuese.ch">
+                                                                        Fragen
+                                                                        zu
+                                                                        einem
+                                                                        Produkt
+                                                                    </option>
+                                                                    <option value="customerservice@obstundgemuese.ch">
+                                                                        Service-
+                                                                        &amp;
+                                                                        Reparaturtermin
+                                                                        für
+                                                                        Gastvelo
+                                                                    </option>
+                                                                    <option value="support@obstundgemuese.ch">
+                                                                        Technischer
+                                                                        Support
+                                                                    </option>
+                                                                    <option value="customerservice@obstundgemuese.ch">
+                                                                        Fragen
+                                                                        zu
+                                                                        Deiner
+                                                                        Bestellung
+                                                                    </option>
+                                                                    <option value="accounting@obstundgemuese.ch">
+                                                                        Rechnung
+                                                                        &amp;
+                                                                        Zahlung
+                                                                    </option>
+                                                                </select>
+                                                                <p class="website_form_field_valid">
+                                                                    Dieses Feld
+                                                                    ist ein
+                                                                    Pflichtfeld.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12 s_website_form_field">
+                                                        <div class="form-group contact-comment">
+                                                            <label class="form-label contact-form-label-cls"
+                                                                   for="contactComment">
+                                                                Kommentar*
+                                                            </label>
+                                                            <textarea
+                                                                    id="ContactMessage"
+                                                                    placeholder="Kommentar eingeben ...*"
+                                                                    rows="5"
+                                                                    class="form-control s_website_form_input log_reg_input GT_Pressura_Regular"
+                                                                    name="description"
+                                                                    required=""></textarea>
+                                                            <p class="website_form_field_valid">
+                                                                Dieses Feld ist
+                                                                ein
+                                                                Pflichtfeld.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-12 s_website_form_submit"
+                                                     data-name="Submit Button">
+                                                    <div class="s_website_form_label"></div>
+                                                    <a href="#" role="button"
+                                                       class="btn log_reg_btn obst-btn-secondary-web send-contact-form-cls">
+                                                        Submit
+                                                    </a>
+                                                    <span id="s_website_form_result"></span>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="cms-block  pos-1 contact-form-success-section cms-block-contact-form"
+                                     style="">
+                                    <div class="cms-block-container">
+                                        <div class="contact-content-block js-contact-form">
+                                            <div class="card contact-headline">
+                                                <div class="card-body">
+                                                    <h2 class="contact-title GT_Pressura_Regular contact-address-header-cls font-spacing-privacy text-dark">
+                                                        Das Formular wurde
+                                                        erfolgreich abgegeben.
+                                                    </h2>
+                                                    <br/>
+                                                    <div class="contact-info-cls">
+                                                        <div role="alert"
+                                                             class="alert alert-success contact-success-cls">
+                                                            <div class="alert-content-container-contact">
+                                                                <div class="alert-content">
+                                                                    Dein
+                                                                    Formular
+                                                                    wurde
+                                                                    erfolgreich
+                                                                    gesendet
+                                                                    und wir
+                                                                    kontaktieren
+                                                                    Dich in
+                                                                    Kürze.
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="impressum-newsletter">
+                <div class="block-newsletter" id="newsletter-subscribe">
+                    <div class="block-container">
+                        <div class="block-container-row row">
+                            <div class="newsletter-block">
+                                <div class="newsletter-headline">
+                                    <h1>NewsLetter</h1>
+                                </div>
+                                <div class="newsletter-info">
+                                    <p>
+                                        Möchtest Du mit uns in Kontakt bleiben?
+                                        Dann abonniere unseren
+                                        Newsletter. Du erhältst spannende News
+                                        sowie Informationen zu neuen
+                                        Produkten, Events oder Rabattaktionen.
+                                    </p>
+                                </div>
+                                <br/>
+                                <div>
+                                    <div class="row">
+                                        <div class="col-10">
+                                            <div class="float-left">
+                                                <label class="checkbox-button">
+                                                    <input type="checkbox"
+                                                           class="checkbox-button__input"
+                                                           id="hasCargoBike"/>
+                                                    <span class="checkbox-button__control"></span>
+                                                    <span class="checkbox-button__label">
+                                                        Cargobike
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="float-left">
+                                                <label class="checkbox-button">
+                                                    <input type="checkbox"
+                                                           class="checkbox-button__input"
+                                                           id="hasPerfomance"/>
+                                                    <span class="checkbox-button__control"></span>
+                                                    <span class="checkbox-button__label">
+                                                        Perfomance
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-8 col-sm-4">
+                                            <div class="news-letter-email">
+                                                <div class="input-group js_subscribe"
+                                                     data-list-id="0"
+                                                     id="newsletterobs">
+                                                    <input type="email"
+                                                           name="email"
+                                                           class="js_subscribe_email form-control shadow-none"
+                                                           placeholder="your email..."
+                                                           id="newsletteremail"/>
+                                                    <span class="input-group-append">
+                                                        <button role="button"
+                                                                class="btn btn-inverse btn-lg btn-newsletter js_subscribe_mymail">
+                                                            <span>
+                                                                <img class="newsletter_img"
+                                                                     src="gio_obstgemuese_theme/static/src/svg/64-check-white.svg"
+                                                                     loading="lazy"
+                                                                     style="min-height: 1px;"
+                                                                     data-lazy-loading-initial-min-height=""/>
+                                                            </span>
+                                                        </button>
+                                                        <button role="button"
+                                                                class="btn btn-success js_subscribed_btn d-none"
+                                                                disabled="disabled">
+                                                            Thanks
+                                                        </button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="block-newsletter pt-4 d-none"
+                     id="thanks-for-subscribing">
+                    <div class="block-container">
+                        <div class="block-container-row row">
+                            <div class="newsletter-block">
+                                <div class="newsletter-headline"
+                                     style="width:70%">
+                                    <h1>
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">
+                                                You always want to be informed?
+                                            </font>
+                                            <font style="vertical-align: inherit;">
+                                                No problem with our newsletter
+                                            </font>
+                                        </font>
+                                    </h1>
+                                </div>
+                                <div class="newsletter-info">
+                                    <p>
+                                    </p>
+                                    <p>Thank you for subscribing to our
+                                        newsletter.
+                                    </p>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cms-block  pos-2 cms-block-social">
+                <div class="cms-block-container">
+                    <div class="cms-block-container-row row cms-row ">
+                        <div class="social-content-block">
+                            <div class="card social-headline">
+                                <div class="card-body social-media-card-body"
+                                     style="background-color: white!important">
+                                    <h2 class="social-title GT_Pressura_Regular font-spacing-privacy text-dark">
+                                        Social
+                                        Media
+                                    </h2>
+                                    <div class="social-info GT_Pressura_Regular">
+                                        <p>Newsletter sind für Dich out? Oder
+                                            nicht Dein Ding? Kein Problem! Wir
+                                            sind
+                                            auf verschiedenen Kanälen aktiv.
+                                            Wir freuen uns, mit Dir ins
+                                            Gespräch zu
+                                            kommen.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card social-icons">
+                                <div class="card-body social-icon-card-body"
+                                     style="background-color: white!important">
+                                    <div class="row">
+                                        <div class="col-lg-1 col-2">
+                                            <a href="https://www.instagram.com/obstundgemuese/"
+                                               class="social-media-icons-cls"
+                                               title="Instagram"
+                                               target="_blank"
+                                               rel="noopener">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                     width="30" height="30"
+                                                     fill="currentColor"
+                                                     class="bi bi-instagram social-media-icons-cls-mobile"
+                                                     viewBox="0 0 16 16">
+                                                    <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-1 col-2">
+                                            <a href="https://www.facebook.com/obstundgemuese.jam"
+                                               class="social-media-icons-cls"
+                                               title="Facebook"
+                                               data-shareurl="https://www.facebook.com/obstundgemuese.jam"
+                                               target="_blank" rel="noopener">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                     width="30" height="30"
+                                                     fill="currentColor"
+                                                     class="bi bi-facebook social-media-icons-cls-mobile"
+                                                     viewBox="0 0 16 16">
+                                                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-1 col-2">
+                                            <a href="https://www.komoot.de/user/obstundgemuese"
+                                               class="social-media-icons-cls"
+                                               title="Komoot" target="_blank"
+                                               rel="noopener">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                     width="30" height="30"
+                                                     fill="currentColor"
+                                                     class="bi bi-facebook social-media-icons-cls-mobile"
+                                                     viewBox="0 0 25 25">
+                                                    <path d="M9.8 14.829l2.2-3.43 2.2 3.43 5.962 5.962A11.946 11.946 0 0 1 12 24c-3.043 0-5.935-1.14-8.162-3.209zM0 12C0 5.385 5.385 0 12 0c6.62 0 12 5.385 12 12 0 2.663-.855 5.175-2.469 7.284l-6.018-6.018c.15-.412.226-.839.226-1.27A3.743 3.743 0 0 0 12 8.257a3.743 3.743 0 0 0-3.739 3.739c0 .431.075.858.226 1.27l-6.018 6.018A11.865 11.865 0 0 1 0 12Z"
+                                                          id="mainIconPathAttribute"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-1 col-2">
+                                            <a href="https://www.strava.com/clubs/8561"
+                                               class="social-media-icons-cls"
+                                               title="Strava" target="_blank"
+                                               rel="noopener">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                     width="30" height="30"
+                                                     fill="currentColor"
+                                                     class="bi bi-strava social-media-icons-cls-mobile"
+                                                     viewBox="0 0 16 16">
+                                                    <path d="M6.731 0 2 9.125h2.788L6.73 5.497l1.93 3.628h2.766L6.731 0zm4.694 9.125-1.372 2.756L8.66 9.125H6.547L10.053 16l3.484-6.875h-2.112z"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-1 col-2">
+                                            <a href="https://vimeo.com/obstundgemuese"
+                                               class="social-media-icons-cls"
+                                               title="Vimeo" target="_blank"
+                                               rel="noopener">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                     width="30" height="30"
+                                                     fill="currentColor"
+                                                     class="bi bi-vimeo social-media-icons-cls-mobile"
+                                                     viewBox="0 0 16 16">
+                                                    <path d="M15.992 4.204c-.071 1.556-1.158 3.687-3.262 6.393-2.175 2.829-4.016 4.243-5.522 4.243-.933 0-1.722-.861-2.367-2.583L3.55 7.523C3.07 5.8 2.556 4.94 2.007 4.94c-.118 0-.537.253-1.254.754L0 4.724a209.56 209.56 0 0 0 2.334-2.081c1.054-.91 1.845-1.388 2.373-1.437 1.243-.123 2.01.728 2.298 2.553.31 1.968.526 3.19.646 3.666.36 1.631.756 2.446 1.186 2.445.334 0 .836-.53 1.508-1.587.671-1.058 1.03-1.863 1.077-2.415.096-.913-.263-1.37-1.077-1.37a3.022 3.022 0 0 0-1.185.261c.789-2.573 2.291-3.825 4.508-3.756 1.644.05 2.419 1.117 2.324 3.2z"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,235 @@
+.kanban_billing_address_edit_cls{
+    display: none;
+}
+.kanban_shipping_address_edit_cls{
+    display: none;
+}
+.add_shipping_address_cls {
+    display: none;
+}
+.specify-color {
+    accent-color: yellow;
+}
+.custom-bounce {
+  outline: 0;
+  border-color: red;
+  animation-name: bounce;
+  animation-duration: .5s;
+  animation-delay: 0.25s;
+}
+
+
+@keyframes custom-bounce {
+  0% {
+    transform: translateX(0px);
+    timing-function: ease-in;
+  }
+  37% {
+    transform: translateX(5px);
+    timing-function: ease-out;
+  }
+  55% {
+    transform: translateX(-5px);
+    timing-function: ease-in;
+  }
+  73% {
+    transform: translateX(4px);
+    timing-function: ease-out;
+  }
+  82% {
+    transform: translateX(-4px);
+    timing-function: ease-in;
+  }
+  91% {
+    transform: translateX(2px);
+    timing-function: ease-out;
+  }
+  96% {
+    transform: translateX(-2px);
+    timing-function: ease-in;
+  }
+  100% {
+    transform: translateX(0px);
+    timing-function: ease-in;
+  }
+}
+label > input[type="radio"] {
+  display: none;
+}
+label > input[type="radio"] + *::before {
+  content: "";
+  display: inline-block;
+  vertical-align: bottom;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.3rem;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 0.1rem;
+  border-color: gray;
+}
+label > input[type="radio"]:checked + *::before {
+  background: radial-gradient(#eeca00 0%, #eeca00 40%, transparent 50%, transparent);
+  border-color: #eeca00;
+}
+
+.confirm_payment_button{
+    background: #eeca00;
+    border: #eeca00;
+}
+.custom_wrap_padding{
+    padding-top: 4rem !important;
+}
+div.progress-wizard-step.complete span.progress-wizard-dot.d-md-inline-block.round-tab {
+    background: #9b9b9b !important;
+    color: #fff !important;
+    border-color: #9b9b9b !important;
+}
+.progress-wizard .progress-wizard-step.complete .progress-wizard-dot:after {
+    display: none !important;
+}
+.progress-wizard .progress-wizard-step.active .progress-wizard-dot{
+    box-shadow: none !important;
+}
+.text-center.progress-wizard-steplabel.pl-4 {
+    font-style: normal;
+    font-weight: 400;
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: 700;
+}
+/*.btn-primary {
+    width: 120px !important;
+    height: 35px !important;
+    margin: 40px 26px 20px 7px !important;
+    padding: 6px 0 11px !important;
+    border-radius: 20px !important;
+    background-color: var(--golden);
+}*/
+label.col-form-label {
+    margin-bottom: 0.1875rem;
+    font-size: .85rem;
+    color: #9b9b9b;
+    font-weight: normal;
+    font-family: "GT Pressura Regular";
+}
+.progress-wizard .progress-wizard-step.complete .progress-wizard-steplabel {
+    color: #9b9b9b !important;
+}
+.obst-btn-primary {
+  width: 120px !important;
+  height: 35px !important;
+  margin: 20px 20px 20px 20px !important;
+  padding: 3px 0 11px !important;
+  font-family: "GT Pressura Regular" !important;
+  border-radius: 20px !important;
+  background-color: var(--golden) !important;
+}
+.obst-btn-primary:hover{
+    background-color: white !important;
+    color: #eeca00 !important;
+    border: 2px solid #eeca00 !important;
+}
+.obt-Primary {
+  width: 120px !important;
+  height: 18px !important;
+  font-size: 20px !important;
+  font-weight: normal !important;
+  font-stretch: normal !important;
+  font-style: normal !important;
+  line-height: 1.45 !important;
+  letter-spacing: 0.06px !important;
+  text-align: center !important;
+  color: var(--white) !important;
+}
+.obst-btn-secondary {
+  width: 119.9px !important;
+  height: 35px !important;
+  margin: 20px 20px 20px 20px !important;
+  font-family: "GT Pressura Regular" !important;
+  padding: 5px 0 10px !important;
+  border-radius: 20px !important;
+  background: #9b9b9b;
+  border: #9b9b9b;
+}
+.obst-btn-secondary-web {
+  width: 119.9px !important;
+  height: 35px !important;
+  margin: 20px 0px 20px 0px !important;
+  font-family: "GT Pressura Regular" !important;
+  padding: 5px 0 10px !important;
+  border-radius: 20px !important;
+  background: #9b9b9b;
+  border: #9b9b9b;
+}
+input.form-control {
+    font-family: 'GT Pressura Regular' !important;
+}
+select#country_id {
+    font-family: 'GT Pressura Regular';
+}
+.obst_card_body{
+    background: #efefef !important;
+}
+.show_coupon{
+    color:black;
+}
+.show_coupon:hover{
+    background:#eeca00;
+}
+.obst-btn-one {
+  width: 100px !important;
+  height: 35px !important;
+  margin: 0 1px 0 0 !important;
+  padding: 5.6px 34px 7.4px !important;
+  border-radius: 150px 0 0 150px !important;
+  background-color: #9b9b9b !important;
+}
+.obst-btn-three {
+  width: 100px !important;
+  height: 35px !important;
+  border-radius:0 150px 150px 0 !important;
+  margin: 0 0 0 1px !important;
+  padding: 5.6px 27px 7.4px !important;
+  background-color: #9b9b9b !important;
+}
+.o_page_header {
+    border: none;
+}
+i.fa.fa-edit {
+    color: black;
+}
+.o_wsale_delivery_badge_price {
+    background: #698789;
+}
+input[type="radio"]:checked + *::before {
+    background: radial-gradient(#eeca00 0%, #eeca00 40%, transparent 50%, transparent);
+    border-color: #eeca00;
+}
+input[type="radio"] + *::before {
+    content: "";
+    display: inline-block;
+    vertical-align: bottom;
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.3rem;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 0.1rem;
+    border-color: gray;
+}
+input[type="radio"] {
+    display: none;
+}
+.obst-info{
+    background: #eeca00 !important;
+}
+.obst-danger{
+    background: #4a4a4a !important;
+}
+.obst-card-header-success {
+    background: #eeca00 !important;
+}
+.obst-card-header-danger {
+    background: #4a4a4a !important;
+}

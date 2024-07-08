@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ================ Added new custom Header in customize option ================ -->
+    <template id="header_custom_options" inherit_id="website.snippet_options">
+        <xpath expr="//we-select[@data-variable='header-template']/we-button[last()]" position="after">
+            <we-button title="Vega Style 1"
+                       data-name="header_style_1_opt"
+                       data-customize-website-views="theme_clarico_vega.customized_header_style_1"
+                       data-customize-website-variable="'header_style_1'"
+                       data-img="/theme_clarico_vega/static/src/img/customise_option/header_01.png"/>
+            <we-button title="Vega Style 2"
+                       data-name="header_style_2_opt"
+                       data-customize-website-views="theme_clarico_vega.customized_header_style_2"
+                       data-customize-website-variable="'header_style_2'"
+                       data-img="/theme_clarico_vega/static/src/img/customise_option/header_02.png"/>
+            <we-button title="Vega Style 3"
+                       data-name="header_style_3_opt"
+                       data-customize-website-views="theme_clarico_vega.customized_header_style_3"
+                       data-customize-website-variable="'header_style_3'"
+                       data-img="/theme_clarico_vega/static/src/img/customise_option/header_03.png"/>
+        </xpath>
+        <xpath expr="//we-select[@data-variable='header-template']" position="after">
+            <we-checkbox
+                    data-dependencies="header_style_1_opt, header_style_2_opt, header_style_3_opt"
+                    string="Display Preheader"
+                    data-name="is_preheader"
+                    data-customize-website-views="theme_clarico_vega.pre_header"
+                    data-reload="/"/>
+            <we-select string="Language &amp; Currency Switcher in "
+                       data-dependencies="header_style_1_opt, header_style_2_opt, header_style_3_opt"
+                       data-reload="/">
+                <we-button data-name="place_in_preheader" string="Preheader"
+                           data-customize-website-variable="'place_in_preheader'"
+                           data-customize-website-views="theme_clarico_vega.place_in_preheader"/>
+                <we-button data-name="place_in_header" string="Header"
+                           data-customize-website-variable="'place_in_header'"
+                           data-customize-website-views="theme_clarico_vega.place_in_header"/>
+            </we-select>
+            <we-colorpicker data-dependencies="header_style_1_opt, header_style_2_opt, header_style_3_opt" string="Header Top BG Color"
+                            data-color="header_top_bg_color" data-color-type="theme" data-customize-website-color=""/>
+            <we-colorpicker data-dependencies="header_style_1_opt, header_style_2_opt, header_style_3_opt" string="Header Top Text Color"
+                            data-color="header_top_text_color" data-color-type="theme" data-customize-website-color=""/>
+        </xpath>
+        <xpath expr="//*[@data-selector='theme-options']//we-select[@data-variable='btn-primary-outline']"
+               position="after">
+            <we-select string="Animation" data-variable="button-template">
+                <we-button data-name="none" data-customize-website-variable="'none'">None</we-button>
+                <we-button data-name="style_1" data-customize-website-variable="'style_1'">Fade In</we-button>
+                <we-button data-name="style_2" data-customize-website-variable="'style_2'">Shadow</we-button>
+                <we-button data-name="style_3" data-customize-website-variable="'style_3'">Slide Down</we-button>
+                <we-button data-name="style_5" data-customize-website-variable="'style_5'">Skew</we-button>
+                <we-button data-name="style_6" data-customize-website-variable="'style_6'">With Gradient</we-button>
+                <we-button data-name="style_7" data-customize-website-variable="'style_7'">Slide Up</we-button>
+            </we-select>
+            <we-colorpicker data-dependencies="style_1, style_2, style_3, style_4, style_5, style_6, style_7" string="Text Color"
+                            data-color="animation_text_color" data-color-type="theme" data-customize-website-color=""/>
+            <we-colorpicker data-dependencies="style_1, style_2, style_3, style_4, style_5, style_6, style_7" string="Text Hover color"
+                            data-color="animation_hover_color" data-color-type="theme" data-customize-website-color=""/>
+            <we-colorpicker string="Gradient color 1"
+                            data-color="button_gradient_1" data-color-type="theme" data-customize-website-color=""/>
+            <we-colorpicker string="Gradient color 2"
+                            data-color="button_gradient_2" data-color-type="theme" data-customize-website-color=""/>
+        </xpath>
+    </template>
+
+    <template id="s_dynamic_snippet_products_template_options" inherit_id="website_sale.s_dynamic_snippet_products_template_options">
+        <xpath expr="//we-select[@data-name='product_category_opt']" position="after">
+            <we-select string="Brand" data-name="product_brand_opt" data-attribute-name="productBrandId" data-no-preview="true">
+                <we-button data-select-data-attribute="all">All Brands</we-button>
+                <we-button data-select-data-attribute="current">Current Brand or All</we-button>
+            </we-select>
+        </xpath>
+    </template>
+</odoo>

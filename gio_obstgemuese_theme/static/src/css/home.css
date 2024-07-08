@@ -1,0 +1,406 @@
+#wrapwrap{
+    scroll-behavior:smooth;
+}
+#panorama-360-view {
+    width: 100vw;
+    height: 100vh;
+}
+.custom-hotspot {
+        height: 50px;
+        width: 50px;
+        background: #f00;
+}
+.plus_border{
+     width:max-content;
+     height:auto;
+     border-radius:50%;
+     border:2px solid white;
+     background:transparent;
+}
+.plus_icon{
+    padding:10px;
+    width:100%;
+    font-size:20px;
+}
+.panorama_popup{
+    display:none;
+    position:fixed;
+    width:50%;
+    height:100vh;
+    background:white;
+    top:0;
+    right:0;
+    z-index:15;
+}
+.panorama_popup_close{
+    width:3%;
+    cursor:pointer;
+}
+.pano_click_product_img{
+    width:50%;
+    height:20vw;
+}
+.buy_link{
+    text-decoration: none;
+    padding: 8px 32px;
+    border-radius: 37px;
+    background: #9b9b9b;
+    color: white;
+}
+.buy_link:hover{
+    text-decoration: none;
+    border:2px solid #9b9b9b;
+    background:white;
+    color:#9b9b9b;
+}
+.pano_shop{
+    color:black !important;
+    font-size:24px;
+}
+.cargo_bike{
+    width:100%;
+    height:100%;
+}
+.obst_home_range {
+    padding: 3px 10px 3px 10px;
+    color: #1a1919 !important;
+    position: absolute;
+    z-index: 1;
+    left: 20%;
+    bottom: 50%;
+    text-decoration: none;
+    opacity: 0;
+    text-align: center;
+}
+.obst_home_range:hover{
+    text-decoration:none;
+}
+.obst_to_shop{
+    padding: 3px 10px 3px 10px;
+    background: white;
+    color: black !important;
+    position: absolute;
+    z-index: 1;
+    left:15px;
+    bottom: 15px;
+    text-decoration:underline #eeca00;
+}
+.obst_to_shop:hover{
+    text-decoration:underline #eeca00;
+}
+.bg_theme_color{
+    background:#eeca00;
+}
+.bg_performance_color{
+    background: #c2b18b;
+}
+.mob_go_down{
+    display:none;
+    position:absolute;
+    padding:10px;
+    background:white;
+    border-radius:50px;
+    z-index:1;
+    bottom:3%;
+    right:2%;
+}
+@media only screen and (max-width: 600px) {
+    .mob_go_down{
+        display:block;
+    }
+}
+/*news_letter_checkbox design*/
+.news_letter_check {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.news_letter_check input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.news_letter_check .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: transperant;
+  z-index:10;
+}
+.news_letter_check .check_cover{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 22px;
+  width: 22px;
+  border:1px solid white;
+  background-color: transperant;
+  z-index:10;
+}
+.news_letter_check input:checked ~ .checkmark {
+  	background-color: white;
+    width: 10px;
+    height: 10px;
+    left: 6px;
+    top: 6px;
+}
+.news_letter_check input:checked ~ .check_cover {
+	border:1px solid white;
+}
+.news_letter_check .checkmark:after {
+
+  position: absolute;
+  display: none;
+}
+.news_letter_check input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.newsletter_input{
+    border-bottom:2px solid white;
+    border-left:0px;
+    border-right:0px;
+    border-top:0px;
+    width:85%;
+    font-size:1.5rem;
+    color:white;
+}
+.newsletter_img{
+    width:100%;
+}
+.newsletter_btn{
+    width: 10%;
+    background: rgb(0 0 0 / 0%);
+    border: 0px;
+    margin-left: 0;
+    outline:none;
+}
+.newsletter_btn:focus{
+    outline:none;
+    border:none;
+}
+.height_70{
+    height:70vh;
+}
+.pnlm-about-msg{
+    display:none !important;
+}
+nav#oe_main_menu_navbar{
+    position:initial !important;
+    margin-top:-47px;
+}
+/* width */
+#wrapwrap::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+#wrapwrap::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+#wrapwrap::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+#wrapwrap::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.pano_image {
+    width: 20%;
+    position: absolute;
+    z-index: 1;
+    left: 2vw;
+    bottom: 4vw;
+}
+.home_product_img{
+    width:100%;
+    height:auto;
+}
+.prod_img_home{
+    height:12vw !important;
+}
+.cargo_performance_div:hover {
+  filter: opacity(80%);
+  transition: 0.2s ease-in-out;
+}
+
+.cargo_performance_div:hover .obst_home_range{
+    opacity: 100% !important;
+}
+.obst-placeholder-header-brand{
+    text-align: center;
+}
+.home-story-mobile-container{
+    display: none;
+}
+/*h6.o_wsale_products_item_title.GT_Pressura_Regular.mb-1 {
+    height: 48px;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.45;
+    letter-spacing: 0.06px;
+    text-align: center;
+    color: var(--black);
+}*/
+h6.o_wsale_products_item_title {
+    height: 48px;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.45;
+    letter-spacing: 0.06px;
+    text-align: center;
+    color: var(--black);
+}
+@media only screen and (max-width: 600px) {
+    .obst-cookie-accept{
+        font-size: 15px !important;
+    }
+    .cookie-permission-container .cookie-permission-content {
+      margin-bottom: 1.5625rem;
+      color: #000;
+      font-size: 15px !important;
+    }
+    .home-story-mobile-container{
+        display: block;
+    }
+    .home-story-container{
+        display: none;
+    }
+    /*h6.o_wsale_products_item_title.GT_Pressura_Regular.mb-1 {
+      height: 38px;
+      font-size: 15px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.47;
+      letter-spacing: 0.05px;
+      text-align: center;
+      color: var(--black);
+    }*/
+    h6.o_wsale_products_item_title {
+      height: 38px;
+      font-size: 15px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.47;
+      letter-spacing: 0.05px;
+      text-align: center;
+      color: var(--black);
+}
+}
+.col-article .element-article {
+    padding: 0;
+    min-height: 31.875rem;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    background: #d0d0d0;
+}
+.col-article .element-article .card {
+    padding: 2.1875rem;
+    height: inherit;
+    box-sizing: border-box;
+    position: relative;
+}
+.col-article .element-article .card .card-body {
+    height: inherit;
+    box-sizing: border-box;
+    position: relative;
+}
+.col-article .element-article .card .card-body .time {
+    font-size: 1.375rem;
+    color: #000;
+    display: block;
+    padding-bottom: 1.25rem;
+}
+.col-article .element-article .card .card-body h2 {
+    font-size: 1.875rem;
+    line-height: 2.4375rem;
+    color: #000;
+    width: 100%;
+}
+.col-article .element-article .card .card-body h2 a {
+    color: #000;
+    text-decoration: none !important;
+    border: none !important;
+    background: none !important;
+}
+.performance_article_color{
+    background: none !important;
+}
+.story-time-class {
+    display: block;
+    padding-bottom: 1.25rem;
+}
+.story-font-size{
+    font-size: 1.375rem !important;
+}
+.home_page_continue_shop{
+    font-size: 30px;
+}
+.cookie-permission-container {
+    display: none;
+    max-width: 25rem;
+    background: #efefef;
+    border: 0px;
+    right: 0;
+    position: fixed;
+    bottom: 2.5rem;
+    left: initial !important;
+    margin-left: 1.5625rem;
+    padding: 1.875rem;
+    text-align: left;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    z-index: 110000 !important;
+    color: #000;
+    font-family: "GT Pressura Regular";
+}
+.cookie-permission-container .cookie-permission-content {
+    margin-bottom: 1.5625rem;
+    color: #000;
+    font-size: 1.25rem;
+}
+.btn-close-cookie {
+    margin-right: 33px;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.cookie-permission-container {
+    display: none;
+    max-width: 25rem;
+    background: #efefef;
+    border: 0px;
+    right: 0;
+    position: fixed;
+    bottom: 2.5rem;
+    left: initial !important;
+    margin-left: 1.5625rem;
+    padding: 1.875rem;
+    text-align: left;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    z-index: 1100;
+    color: #000;
+    font-family: "GT Pressura Regular";
+}

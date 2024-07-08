@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="privacy_page" name="Privacy">
+        <t t-call="website.layout">
+            <main>
+                <div class="container-main">
+                    <div class="cms-page">
+                        <div class="cms-sections">
+                            <div class="cms-section  pos-0 cms-section-default" style="">
+                                <div class="cms-section-default boxed">
+                                    <div class="cms-block  pos-0 cms-block-text" style="">
+                                        <div class="cms-block-container">
+                                            <t t-set="base_url" t-value="request.env.company.get_base_url()"/>
+                                            <div class="cms-block-container-row row cms-row ">
+                                                <div class="col-12"
+                                                     data-cms-element-id="571b61bfbb934a719803bed13a418073">
+                                                    <div class="GT_Pressura_Regular cms-element-text">
+                                                        <p></p>
+                                                        <h3 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            Datenschutzerklärung
+                                                        </h3>
+                                                        <br/>
+                                                        <p>
+                                                            <span style="background-color: transparent; letter-spacing: 0px;">
+                                                                Im Folgenden informieren wir über die Erhebung
+                                                                personenbezogener Daten bei Nutzung der Website   <a
+                                                                    target="_self" class="privacy-hover"
+                                                                    t-att-href="base_url">www.obstundgemuese.com
+                                                            </a>  einschliesslich etwaiger Länderversionen und
+                                                                Subdomains (nachfolgend «Website»). Das ist keine
+                                                                abschliessende Beschreibung; die allgemeinen
+                                                                Geschäftsbedingungen und ähnliche Dokumente sind
+                                                                gegebenenfalls ebenso zu beachten.
+                                                            </span>
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            1. Verantwortliche und Kontakt
+                                                        </h4>
+                                                        <br/>
+                                                        <p>
+                                                            <span style="background-color: transparent; letter-spacing: 0px;">
+                                                                Verantwortlich für die Erhebung und Bearbeitung von
+                                                                Daten ist die OBST&amp;GEMÜSE jam GmbH. Deine
+                                                                datenschutzrechtlichen Anliegen kannst Du richten an:
+                                                            </span>
+                                                        </p>
+                                                        <p>OBST&amp;GEMÜSE jam GmbH
+                                                            <br/>
+                                                            <span style="letter-spacing: 0px; background-color: transparent;">
+                                                                Kasernenstrasse 32<br/>4058 Basel
+                                                            </span>
+                                                        </p>
+                                                        <p>
+                                                            <span style="letter-spacing: 0px; background-color: transparent;">
+                                                                oder an
+                                                            </span>
+                                                        </p>
+                                                        <p>
+                                                            <a href="mailto:hello@obstundgemuese.ch"
+                                                               class="privacy-hover" target="_self">
+                                                                hello[at]obstundgemuese.ch
+                                                            </a>
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            2. Erhebung und Bearbeitung von Personendaten
+                                                        </h4>
+                                                        <br/>
+                                                        <p>
+                                                            <span style="background-color: transparent; letter-spacing: 0px;">
+                                                                Wir bearbeiten in erster Linie die Personendaten, die
+                                                                wir im Rahmen unserer Geschäftsbeziehung mit unseren
+                                                                Kunden und anderen Geschäftspartnern von diesen und
+                                                                weiteren daran beteiligten Personen erhalten (z. B. bei
+                                                                der Nutzung unseres Online Store) oder die wir beim
+                                                                Betrieb unserer Website von deren Nutzern erheben.
+                                                            </span>
+                                                        </p>
+                                                        <p>Bei der bloss informatorischen Nutzung der Website, also wenn
+                                                            Du Dich nicht zur Nutzung der Website anmeldest,
+                                                            registrierst, das Anmeldeformular für den Newsletter
+                                                            ausfüllst, Social Media-Plugins anklickst oder uns sonst
+                                                            Informationen übermittelst, erheben wir keine
+                                                            personenbezogenen Daten, mit Ausnahme der Daten, die Dein
+                                                            Browser übermittelt, um Dir den Besuch der Website zu
+                                                            ermöglichen. Diese sind:
+                                                            <br/>
+                                                        </p>
+                                                        <ul>
+                                                            <li>
+                                                                <span style="letter-spacing: 0px; background-color: transparent;">
+                                                                    IP-Adresse
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span style="letter-spacing: 0px; background-color: transparent;">
+                                                                    Datum und Uhrzeit der Anfrage
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span style="letter-spacing: 0px; background-color: transparent;">
+                                                                    Zeitzonendifferenz zur Greenwich Mean Time (GMT)
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span style="letter-spacing: 0px; background-color: transparent;">
+                                                                    Inhalt der Anforderung (konkrete Seite)
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span style="letter-spacing: 0px; background-color: transparent;">
+                                                                    Zugriffsstatus/HTTP-Statuscode
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span style="letter-spacing: 0px; background-color: transparent;">
+                                                                    jeweils übertragene Datenmenge
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span style="letter-spacing: 0px; background-color: transparent;">
+                                                                    Website, von der die Anforderung kommt
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span style="letter-spacing: 0px; background-color: transparent;">
+                                                                    Browser
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span style="letter-spacing: 0px; background-color: transparent;">
+                                                                    Betriebssystem und dessen Oberfläche
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span style="letter-spacing: 0px; background-color: transparent;">
+                                                                    Sprache und Version der Browsersoftware
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            3. Verarbeitungszwecke und Rechtsgrundlage
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Die Datenverarbeitung erfolgt insbesondere zur Analyse des
+                                                            Internetverkehrs unserer Website, zur Verbesserung der
+                                                            Funktionalität unserer Website, zu Werbezwecken und um
+                                                            unsere Verträge mit unseren Kundinnen und Kunden sowie
+                                                            Geschäftspartner/-innen abzuwickeln, so insbesondere im
+                                                            Rahmen des Vertriebs von Fahrrädern. Die Verarbeitung Deiner
+                                                            Daten ist zur Wahrung unserer berechtigten Interessen
+                                                            erforderlich.
+                                                        </p>
+                                                        <p>Soweit Du uns eine Einwilligung zur Bearbeitung Deiner
+                                                            Personaldaten für bestimmte Zwecke erteilt hast (zum
+                                                            Beispiel bei Deiner Anmeldung zum Erhalt des Newsletters),
+                                                            bearbeiten wir Deine Personendaten im Rahmen und gestützt
+                                                            auf diese Einwilligung, soweit wir keine andere
+                                                            Rechtsgrundlage haben und wir eine solche benötigen. Eine
+                                                            erteilte Einwilligung kann jederzeit widerrufen werden, was
+                                                            jedoch keine Auswirkung auf bereits erfolgte
+                                                            Datenbearbeitungen hat.
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            4. Datenkategorien
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Wir verarbeiten die Daten, die im Rahmen der Nutzung unserer
+                                                            Website entstehen bzw. die Daten, die von Dir (z. B. bei der
+                                                            Registrierung im Rahmen des Online Stores) angegeben werden.
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            5. Datenempfänger
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Wir geben im Rahmen unserer geschäftlichen Aktivitäten und
+                                                            Zwecke soweit erlaubt Personendaten auch Dritten bekannt.
+                                                            Dabei geht es insbesondere um folgende Datenempfänger:
+                                                        </p>
+                                                        <ul>
+                                                            <li>
+                                                                <span style="font-size: 20px; letter-spacing: 0.06px;">
+                                                                    Dienstleister der OBST&amp;GEMÜSE jam GmbH,
+                                                                    einschliesslich der in dieser Datenschutzerklärung
+                                                                    genannten Unternehmen und Auftragsbearbeitern (z. B.
+                                                                    IT-Provider);
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span style="font-size: 20px; letter-spacing: 0.06px;">
+                                                                    Dritte im Rahmen der Erfüllung von rechtlichen
+                                                                    Verpflichtungen.
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                        <p>Diese Empfänger sind teilweise in der Schweiz, können aber
+                                                            auch im Ausland sein. Du musst insbesondere mit der
+                                                            Übermittlung Deiner Daten in alle Länder rechnen, wo sich
+                                                            die von uns benutzten Dienstleister befinden (wie z. B.
+                                                            Google). Wenn wir Daten in ein Land ohne angemessenen
+                                                            gesetzlichen Datenschutz übermitteln, sorgen wir wie
+                                                            gesetzlich vorgesehen mittels Einsatz von entsprechenden
+                                                            Verträgen (namentlich auf Basis der sog.
+                                                            Standardvertragsklauseln der Europäischen Kommission) für
+                                                            ein angemessenes Schutzniveau oder stützen uns auf die
+                                                            gesetzlichen Ausnahmetatbestände der Einwilligung, der
+                                                            Vertragsabwicklung, der Feststellung, Ausübung oder
+                                                            Durchsetzung von Rechtsansprüchen, überwiegender
+                                                            öffentlicher Interessen, der veröffentlichten Personendaten
+                                                            oder weil es zum Schutz der Unversehrtheit der betroffenen
+                                                            Personen nötig ist.
+                                                        </p>
+                                                        <p></p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            6. Cookies
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Wir setzen auf unserer Website typischerweise «Cookies» und
+                                                            vergleichbare Techniken ein, mit denen Dein Browser oder
+                                                            Dein Gerät identifiziert werden kann. Bei Cookies handelt es
+                                                            sich um kleine Textdateien, die auf Deiner Festplatte dem
+                                                            von Dir verwendeten Browser zugeordnet gespeichert werden
+                                                            und durch welche der Stelle, die den Cookie setzt (in diesem
+                                                            Fall also uns), bestimmte Informationen zufliessen. Sie
+                                                            dienen dazu, das Internetangebot insgesamt
+                                                            nutzerfreundlicher und effektiver zu machen und das
+                                                            Surfverhalten der Website-Besucher zu analysieren. Wir
+                                                            setzen Cookies dazu ein, um Dich für Folgebesuche
+                                                            identifizieren zu können, falls Du über einen Account bei
+                                                            uns verfügst. Andernfalls musst Du Dich für jeden Besuch
+                                                            erneut einloggen.
+                                                        </p>
+                                                        <p>Diese Website nutzt folgende funktionalen Cookies:</p>
+                                                        <ul>
+                                                            <li>
+                                                                <span style="font-size: 20px; letter-spacing: 0.06px;">
+                                                                    PHPSESSID
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span style="font-size: 20px; letter-spacing: 0.06px;">
+                                                                    allowCookie
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span style="font-size: 20px; letter-spacing: 0.06px;">
+                                                                    session
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span style="font-size: 20px; letter-spacing: 0.06px;">
+                                                                    sw-cache-hash
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span style="font-size: 20px; letter-spacing: 0.06px;">
+                                                                    sw-states
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span style="font-size: 20px; letter-spacing: 0.06px;">
+                                                                    timezone
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                        <p>Diese Website nutzt folgende Tracking-Cookies:</p>
+                                                        <ul>
+                                                            <li>
+                                                                <span style="font-size: 20px; letter-spacing: 0.06px;">
+                                                                    ga
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span style="font-size: 20px; letter-spacing: 0.06px;">
+                                                                    gat_UA
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span style="font-size: 20px; letter-spacing: 0.06px;">
+                                                                    gid_GA
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                        <p>Gemäss anwendbarem Recht können wir Cookies auf Deinem Gerät
+                                                            speichern, wenn diese für den Betrieb der Website technisch
+                                                            notwendig sind. Für andere Cookie-Typen, sofern wir diese
+                                                            einsetzen, benötigen wir Deine Erlaubnis, die Du durch
+                                                            Anklicken der entsprechenden Felder im Pop-up-Button geben
+                                                            kannst. Du kannst Deine Browser-Einstellung entsprechend
+                                                            Deinen Wünschen konfigurieren und z.B. die Annahme von
+                                                            Third-Party-Cookies oder allen Cookies ablehnen. Wir weisen
+                                                            Dich jedoch darauf hin, dass Du dann eventuell nicht alle
+                                                            Funktionen dieser Website nutzen kannst.
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            7. Google Analytics
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Diese Website benutzt verschiedene Statistikdienste,
+                                                            insbesondere Google Analytics, einen Webanalysedienst der
+                                                            Google Inc. («Google»). Google Analytics verwendet Cookies
+                                                            bzw. Textdateien, die auf Deinem Computer gespeichert werden
+                                                            und die eine Analyse der Benutzung der Website durch Dich
+                                                            ermöglichen. Die durch den Cookie erzeugten Informationen
+                                                            über Deine Benutzung der Website werden in der Regel an
+                                                            einen Server von Google in den USA übertragen und dort
+                                                            gespeichert. Die im Rahmen von Google Analytics von Deinem
+                                                            Browser übermittelte IP-Adresse wird nicht mit anderen Daten
+                                                            von Google zusammengeführt. Wir haben zudem auf dieser
+                                                            Website Google Analytics um den Code «anonymizeIP»
+                                                            erweitert. Dies garantiert die Maskierung Deiner IP-Adresse,
+                                                            sodass alle Daten anonym erhoben werden. Nur in
+                                                            Ausnahmefällen wird die volle IP-Adresse an einen Server von
+                                                            Google in den USA übertragen und dort gekürzt.
+                                                        </p>
+                                                        <p>Im Auftrag des Betreibers dieser Website wird Google diese
+                                                            Information benutzen, um Deine Nutzung der Website
+                                                            auszuwerten, um Reports über die Website-Aktivitäten
+                                                            zusammenzustellen und um weitere mit der Website-Nutzung und
+                                                            der Internetnutzung verbundene Dienstleistungen gegenüber
+                                                            dem Website-Betreiber zu erbringen. Du kannst die
+                                                            Speicherung der Cookies durch eine entsprechende Einstellung
+                                                            Deiner Browser-Software verhindern; wir weisen Dich jedoch
+                                                            darauf hin, dass Du in diesem Fall möglicherweise nicht
+                                                            sämtliche Funktionen dieser Website vollumfänglich wirst
+                                                            nutzen können.
+                                                        </p>
+                                                        <p>Du kannst darüber hinaus die Erfassung der durch das Cookie
+                                                            erzeugten und auf Deine Nutzung der Website bezogenen Daten
+                                                            (inkl. Deiner IP-Adresse) an Google sowie die Verarbeitung
+                                                            dieser Daten durch Google verhindern, indem Du das unter dem
+                                                            folgenden Link verfügbare Browser-Plugin herunterlädst und
+                                                            installierst:
+                                                            <a target="_blank" class="privacy-hover"
+                                                               href="http://tools.google.com/dlpage/gaoptout?hl=de">
+                                                                http://tools.google.com/dlpage/gaoptout?hl=de
+                                                                <br/>
+                                                            </a>
+                                                        </p>
+                                                        <p>Wir verwenden Google Analytics einschliesslich der Funktionen
+                                                            von Google Signal/Remarketing und von Universal Analytics.
+                                                            Universal Analytics erlaubt es uns, die Aktivitäten auf
+                                                            unseren Seiten geräteübergreifend zu analysieren (z.B. bei
+                                                            Zugriffen mittels Laptop und später über ein Tablet). Dies
+                                                            wird durch die pseudonyme Zuweisung einer User-ID zu
+                                                            einer/einem Nutzer/-in ermöglicht. Eine solche Zuweisung
+                                                            erfolgt etwa, wenn Du Dich für ein Kundenkonto registrierst
+                                                            bzw. Dich bei Deinem Kundenkonto anmeldest. Es werden jedoch
+                                                            keine personenbezogenen Daten an Google weitergeleitet. Auch
+                                                            wenn mit Universal Analytics zusätzliche Funktionen zu
+                                                            Google Analytics hinzukommen, bedeutet dies nicht, dass
+                                                            damit eine Einschränkung von Massnahmen zum Datenschutz wie
+                                                            IP-Masking oder das Browser-Add-on verbunden ist.
+                                                        </p>
+                                                        <p>Willst Du die Erfassung durch Google Analytics verhindern,
+                                                            musst Du ein Opt-Out-Cookie setzen, das die zukünftige
+                                                            Erfassung Deiner Daten beim Besuch dieser Website
+                                                            verhindert. Der Opt-Out-Cookie gilt nur in diesem Browser
+                                                            und nur für unsere Website und wird auf Deinem Gerät
+                                                            abgelegt. Löschst Du die Cookies in diesem Browser, musst Du
+                                                            das Opt-Out-Cookie erneut setzen. Unter folgendem Link wird
+                                                            ebenfalls erklärt, wie sich Google Analytics deaktivieren
+                                                            lässt:
+                                                            <a target="_blank" class="privacy-hover"
+                                                               href="https://tools.google.com/dlpage/gaoptout?hl=de">
+                                                                https://tools.google.com/dlpage/gaoptout?hl=de
+                                                            </a>
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            8. Weitere Tools
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Zum Zwecke der fortlaufenden Optimierung des Google-Rankings
+                                                            unserer Website nutzen wir Google Search Console, ein
+                                                            Werbeanalysedienst von Google. Im Rahmen der Nutzung von
+                                                            Google Search Console werden keine personenbezogenen
+                                                            Nutzerdaten verarbeitet oder an Google übermittelt.
+                                                        </p>
+                                                        <p></p>
+                                                        <p>Weiter nutzen wir das Angebot von Google Ads Conversion, um
+                                                            mit Hilfe von Werbemitteln auf externen Websites auf unsere
+                                                            Angebote aufmerksam zu machen. Zudem verwenden wir die
+                                                            Remarketing-Funktion innerhalb des Google Ads-Dienstes.
+                                                            Damit können wir Nutzern unserer Website innerhalb des
+                                                            Google-Werbenetzwerks interessenbezogene Werbeanzeigen
+                                                            präsentieren.
+                                                        </p>
+                                                        <p>Von Facebook benutzen wir auf unserer Website die
+                                                            Retargeting-Funktion «Custom Audiences». Mittels dieser
+                                                            Funktion können wir die Nutzer der Website auf Facebook
+                                                            zielgerichtet mit Werbung ansprechen, indem für Nutzer der
+                                                            Website interessenbezogene Facebook-Ads geschaltet werden,
+                                                            wenn sie Facebook besuchen. Zur Durchführung dieser Funktion
+                                                            wird auf der Website das sogenannte Facebook-Pixel
+                                                            implementiert. Über dieses Pixel wird beim Besuch der
+                                                            Website eine direkte Verbindung zu den Facebook-Servern
+                                                            hergestellt. Nähere Informationen zur Erhebung und Nutzung
+                                                            der Daten durch Facebook findest Du in den
+                                                            Datenschutzhinweisen ( <a target="_blank"
+                                                                                      class="privacy-hover"
+                                                                                      href="https://www.facebook.com/about/privacy/">
+                                                                https://www.facebook.com/about/privacy/</a>) sowie in
+                                                            der Cookie-Richtlinie ( <a target="_blank"
+                                                                                       class="privacy-hover"
+                                                                                       href="https://www.facebook.com/policies/cookies/">
+                                                                https://www.facebook.com/policies/cookies/</a>) von
+                                                            Facebook. Wenn Du nicht möchtest, dass Facebook die
+                                                            gesammelten Informationen Deinem Facebook-Benutzerkonto
+                                                            zuordnet, kannst Du die Remarketing-Funktion «Custom
+                                                            Audiences» hier deaktivieren. Dazu musst Du bei Facebook
+                                                            angemeldet sein.
+                                                        </p>
+                                                        <p></p>
+                                                        <p>Wir verwenden ausserdem Hotjar, um erkennen zu können, wie
+                                                            die Nutzer/-innen auf unserer Website interagieren. Hotjar
+                                                            ist eine Dienstleistung von Hotjar Limited. Wir benutzen
+                                                            Website-Tags von Twitter und LinkedIn.
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            9. Newsletter
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Gerne informieren wir Dich mit unserem Newsletter über
+                                                            aktuelle Themen rund um die OBST&amp;GEMÜSE jam GmbH und
+                                                            unsere Produkte. Zum Versand eines Newsletters benötigen wir
+                                                            Deinen Namen und Deine E-Mail-Adresse. Beides kannst Du in
+                                                            die dafür vorgesehenen Felder eingeben. Nachdem Du diese
+                                                            Daten abgesendet hast, erhältst Du von uns eine E-Mail an
+                                                            die von Dir angegebene E-Mail-Adresse, in der Du zur
+                                                            Verifizierung der von Dir angegebenen E-Mail-Adresse einen
+                                                            Bestätigungslink anklicken musst.
+                                                        </p>
+                                                        <p>Deine Daten werden von uns nur zum Zwecke des
+                                                            Newsletter-Versands verwendet und gespeichert.
+                                                            <br/>
+                                                            Du kannst Dich jederzeit vom Newsletter wieder abmelden und
+                                                            damit der weiteren Verwendung Deiner Daten widersprechen. Du
+                                                            kannst Dich am Ende eines Newsletters aus dem Verteiler
+                                                            austragen.
+                                                        </p>
+                                                        <p>Wir bauen in unseren Newsletter und sonstige
+                                                            Marketing-E-Mails teilweise und soweit erlaubt auch sicht-
+                                                            und unsichtbare Bildelemente ein, durch deren Abruf von
+                                                            unseren Servern wir feststellen können, ob und wann Du die
+                                                            E-Mail geöffnet hast, damit wir auch hier messen und besser
+                                                            verstehen können, wie Du unsere Angebote nutzst und sie auf
+                                                            Dich zuschneiden können. Du kannst dies in Deinem
+                                                            E-Mail-Programm blockieren; die meisten sind so
+                                                            voreingestellt, dass sie dies tun.
+                                                        </p>
+                                                        <p>Für den Versand unseres Newsletters nutzen wir die
+                                                            Applikation «GetRevue», eine Dienstleistung der «Revue
+                                                            Holding B.V.», in Amsterdam, Niederlande. Weitere
+                                                            Informationen zum Datenschutz findest Du   <a
+                                                                    class="privacy-hover"
+                                                                    href="https://www.getrevue.co/terms"
+                                                                    target="_blank">hier</a>.
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            10. Dauer der Speicherung von Personendaten
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Soweit nicht anders angegeben, speichern wir Nutzungsdaten
+                                                            oder andere personenbezogene Daten so lange wie wir dies zur
+                                                            Einhaltung der geltenden Gesetze als notwendig oder
+                                                            angemessen erachten oder so lange wir es für die Zwecke, für
+                                                            die sie bearbeitet werden, als notwendig erachten. Wir
+                                                            löschen Deine Daten sobald diese nicht mehr benötigt werden
+                                                            und auf jeden Fall nach Ablauf der gesetzlich
+                                                            vorgeschriebenen maximalen Aufbewahrungsfrist.
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            11. Datensicherheit
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Wir unterhalten aktuelle technische Massnahmen zur
+                                                            Gewährleistung der Datensicherheit, insbesondere zum Schutz
+                                                            Deiner personenbezogenen Daten vor Gefahren bei
+                                                            Datenübertragungen sowie vor Kenntniserlangung durch Dritte.
+                                                            Diese werden dem aktuellen Stand der Technik entsprechend
+                                                            jeweils angepasst.
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            12. Rechte der betroffenen Personen
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Dir stehen bei Vorliegen der massgebenden gesetzlichen
+                                                            Voraussetzungen folgende Rechte zu:
+                                                        </p>
+                                                        <ul>
+                                                            <li>
+                                                                <span style="font-size: 20px; letter-spacing: 0.06px;">
+                                                                    Recht auf Auskunft
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span style="font-size: 20px; letter-spacing: 0.06px;">
+                                                                    Berichtigung
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span style="font-size: 20px; letter-spacing: 0.06px;">
+                                                                    Löschung
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span style="font-size: 20px; letter-spacing: 0.06px;">
+                                                                    Einschränkung der Verarbeitung
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span style="font-size: 20px; letter-spacing: 0.06px;">
+                                                                    Unterrichtung
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span style="font-size: 20px; letter-spacing: 0.06px;">
+                                                                    Datenübertragbarkeit
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                        <p>Ausserdem steht Dir ein jederzeitiges Widerspruchsrecht gegen
+                                                            die Verarbeitung zu, die auf einer von Dir erteilten
+                                                            Einwilligung oder unseren berechtigten Interessen beruht.
+                                                        </p>
+                                                        <p>Bitte beachte aber, dass wir uns vorbehalten, unsererseits
+                                                            die gesetzlich vorgesehenen Einschränkungen geltend zu
+                                                            machen, etwa wenn wir zur Aufbewahrung oder Bearbeitung
+                                                            gewisser Daten verpflichtet sind, daran ein überwiegendes
+                                                            Interesse haben (soweit wir uns darauf berufen dürfen) oder
+                                                            sie für die Geltendmachung von Ansprüchen benötigen.
+                                                        </p>
+                                                        <p>Die Ausübung solcher Rechte setzt in der Regel voraus, dass
+                                                            Du Deine Identität eindeutig nachweist (z. B. durch eine
+                                                            Ausweiskopie, wo Deine Identität sonst nicht klar ist bzw.
+                                                            verifiziert werden kann). Zur Geltendmachung Deiner Rechte
+                                                            kannst Du uns unter der oben angegebenen Adresse
+                                                            kontaktieren.
+                                                        </p>
+                                                        <p>Jede betroffene Person hat überdies das Recht, ihre Ansprüche
+                                                            gerichtlich durchzusetzen oder bei der zuständigen
+                                                            Datenschutzbehörde eine Beschwerde einzureichen. Die
+                                                            zuständige Datenschutzbehörde der Schweiz ist der   <a
+                                                                    class="privacy-hover" target="_blank"
+                                                                    href="http://www.edoeb.admin.ch">Eidgenössische
+                                                                Datenschutz- und Öffentlichkeitsbeauftragte</a>.
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            13. Änderungen
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Wir können diese Datenschutzerklärung jederzeit ohne
+                                                            Vorankündigung anpassen. Es gilt die jeweils aktuelle, auf
+                                                            unserer Website publizierte Fassung.
+                                                        </p>
+                                                        <p>Stand: 11. Juni 2020</p>
+                                                        <p></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </t>
+    </template>
+</odoo>

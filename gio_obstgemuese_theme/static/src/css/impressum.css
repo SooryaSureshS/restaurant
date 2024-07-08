@@ -1,0 +1,394 @@
+@font-face {
+	font-family: "GT Pressura Regular";
+	src: url("/gio_obstgemuese_website/static/src/fonts/GT-Pressura-Regular.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "GT Pressura Pro Mono";
+	src: url("/gio_obstgemuese_website/static/src/fonts/GT-Pressura-Mono.otf") format("opentype");
+}
+
+
+.GT_Pressura_Pro_Mono {
+	font-family: "GT Pressura Pro Mono";
+}
+
+.block-text {
+	max-width: 100%;
+	padding-top: 12.5rem;
+	padding-left: 30%;
+}
+
+.impressum-text {
+	font-family: "GT Pressura Regular";
+	font-size: 1.25rem;
+	letter-spacing: .00375rem;
+	line-height: 1.8125rem;
+	font-weight: normal;
+	color: #4a4a4a;
+}
+
+.impressum-text h1 {
+	font-family: "GT Pressura Pro Mono";
+	font-size: 2.8125rem;
+	line-height: 3.375rem;
+	letter-spacing: -.003125rem;
+	margin-bottom: 3.125rem;
+	color:  #000;
+}
+
+.impressum-text h2 {
+	font-size: 2.1875rem;
+	line-height: 2.75rem;
+	letter-spacing: -.0025rem;
+	margin-bottom: 2.5rem;
+	color: #000;
+	font-family: "GT Pressura Pro Mono";
+}
+
+.impressum-text p {
+	font-family: "GT Pressura Regular";
+    font-style: normal;
+    font-stretch: normal;
+    font-size: 1.25rem;
+    line-height: 1.8125rem;
+    letter-spacing: .00375rem;
+    margin-bottom: 1.25rem;
+}
+
+.impressum-text a:hover {
+	background-color: yellow;
+}
+
+.block-newsletter {
+	max-width: 100%;
+	padding-top: 3.25rem;
+	padding-left: 18%;
+	padding-bottom: 2.125rem;
+}
+
+.block-newsletter h1 {
+	font-family: "GT Pressura Pro Mono";
+	font-size: 2.8125rem;
+	line-height: 3.4375rem;
+	padding-bottom: 15px;
+	color: #fff;
+}
+
+.newsletter-info p {
+	font-family: "GT Pressura Regular";
+	font-size: 1.25rem;
+	letter-spacing: .00375rem;
+	line-height: 1.8125rem;
+	font-weight: normal;
+	color: #fff;
+	width: 75%;
+}
+
+.impressum-newsletter {
+	background-color: #eeca00;
+}
+
+.social-media-block {
+	max-width: 100%;
+	padding-top: 3.25rem;
+	padding-left: 30%;
+	padding-bottom: 2.125rem;
+}
+
+.social-media-block h1 {
+	font-family: "GT Pressura Pro Mono";
+	font-size: 2.8125rem;
+	line-height: 3.4375rem;
+	padding-bottom: 15px;
+	color: #000;
+}
+
+.social-media-block p {
+	font-family: "GT Pressura Regular";
+	font-size: 1.25rem;
+	letter-spacing: .00375rem;
+	line-height: 1.8125rem;
+	font-weight: normal;
+	color: #4a4a4a;
+	width: 75%;
+}
+
+.social-media-block ul {
+	padding: 0;
+	list-style-type: none;
+}
+
+.social-media-block li {
+	display: inline;
+	padding-right: 2%;
+}
+
+input[type=checkbox] {
+	box-sizing: border-box;
+	padding: 0;
+}
+
+input {
+	font-size: 1rem;
+	line-height: 1.5;
+	padding: 11px 23px;
+	border: 1px solid rgba(0, 0, 0, .15);
+	border-radius: 0;
+	outline: 0;
+	background-color: transparent;
+}
+
+.checkbox-button {
+	margin-right: 3rem;
+	color: #ffff;
+	font-family: 'GT Pressura Regular';
+	font-size: 20px;
+}
+
+.checkbox-button__input {
+	opacity: 0;
+	position: absolute;
+}
+
+.checkbox-button__control {
+	position: relative;
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	margin-right: 1px;
+	vertical-align: middle;
+	background-color: inherit;
+	color: #ffff;
+	border: 2px solid #fff;
+}
+
+
+.checkbox-button__input:checked+.checkbox-button__control:after {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	right: 2px;
+	bottom: 2px;
+	width: 16px;
+	height: 16px;
+	background-color: #ffff;
+}
+
+.checkbox-button__input:checked+.checkbox-button__control {
+	border-color: #ffff;
+}
+
+.checkbox-button__control {
+	transform: scale(0.75);
+}
+
+#newsletteremail {
+	background: transparent;
+	color: #fff;
+	border: 0;
+	border-bottom: 1px solid #fff !important;
+	font-size: 1.6875rem;
+	height: 3.125rem;
+	line-height: 3.125rem;
+	padding-left: 0;
+	text-indent: 0;
+	font-weight: normal;
+}
+
+input#newsletteremail::placeholder {
+	color: #fff;
+}
+
+.btn-newsletter {
+	color: #fff;
+	font-size: 1.8125rem;
+	padding: 0;
+	border: 0;
+	margin-top: 1.4375rem;
+}
+
+
+@media screen and (max-width: 1100px) {
+	.block-text {
+		padding-left: 10%;
+	}
+
+	.block-newsletter {
+		padding-left: 10%;
+	}
+
+	.social-media-block {
+		padding-left: 10%;
+	}
+}
+
+.cms-section.boxed .cms-block:first-of-type.cms-block-text, .cms-section-default.boxed .cms-block:first-of-type.cms-block-text, .cms-section.boxed .cms-block:first-of-type.cms-block-text-two-column, .cms-section-default.boxed .cms-block:first-of-type.cms-block-text-two-column, .cms-section.boxed .cms-block:first-of-type.cms-block-image-text-row, .cms-section-default.boxed .cms-block:first-of-type.cms-block-image-text-row {
+    padding-top: 12.5rem;
+}
+.cms-section.boxed .cms-block:first-of-type, .cms-section-default.boxed .cms-block:first-of-type {
+    padding-top: 7.5rem;
+}
+.cms-section.boxed .cms-block.cms-block-text, .cms-section-default.boxed .cms-block.cms-block-text, .cms-section.boxed .cms-block.cms-block-text-two-column, .cms-section-default.boxed .cms-block.cms-block-text-two-column, .cms-section.boxed .cms-block.cms-block-text-three-column, .cms-section-default.boxed .cms-block.cms-block-text-three-column, .cms-section.boxed .cms-block.cms-block-image-text-row, .cms-section-default.boxed .cms-block.cms-block-image-text-row, .cms-section.boxed .cms-block.cms-block-text-hero, .cms-section-default.boxed .cms-block.cms-block-text-hero, .cms-section.boxed .cms-block.cms-block-text-teaser, .cms-section-default.boxed .cms-block.cms-block-text-teaser, .cms-section.boxed .cms-block.cms-block-text-teaser-section, .cms-section-default.boxed .cms-block.cms-block-text-teaser-section, .cms-section.boxed .cms-block.cms-block-image-text, .cms-section-default.boxed .cms-block.cms-block-image-text, .cms-section.boxed .cms-block.cms-block-image-text-cover, .cms-section-default.boxed .cms-block.cms-block-image-text-cover, .cms-section.boxed .cms-block.cms-block-center-text, .cms-section-default.boxed .cms-block.cms-block-center-text, .cms-section.boxed .cms-block.cms-block-image-text-gallery, .cms-section-default.boxed .cms-block.cms-block-image-text-gallery, .cms-section.boxed .cms-block.cms-block-image-text-bubble, .cms-section-default.boxed .cms-block.cms-block-image-text-bubble, .cms-section.boxed .cms-block.cms-block-image-text-reversed, .cms-section-default.boxed .cms-block.cms-block-image-text-reversed, .cms-section.boxed .cms-block.cms-element-form, .cms-section-default.boxed .cms-block.cms-element-form, .cms-section.boxed .cms-block.cms-block-product-three-column, .cms-section-default.boxed .cms-block.cms-block-product-three-column {
+    width: 100%;
+    max-width: 90rem;
+    max-width: 60.625rem !important;
+    margin: 0 auto;
+    padding: 6.25rem 3.125rem;
+    padding: 3.125rem 3.125rem;
+}
+.cms-block {
+    overflow: hidden;
+}
+.cms-section.boxed .cms-block.cms-block-text .cms-block-container, .cms-section-default.boxed .cms-block.cms-block-text .cms-block-container, .cms-section.boxed .cms-block.cms-block-text-two-column .cms-block-container, .cms-section-default.boxed .cms-block.cms-block-text-two-column .cms-block-container, .cms-section.boxed .cms-block.cms-block-text-three-column .cms-block-container, .cms-section-default.boxed .cms-block.cms-block-text-three-column .cms-block-container, .cms-section.boxed .cms-block.cms-block-image-text-row .cms-block-container, .cms-section-default.boxed .cms-block.cms-block-image-text-row .cms-block-container, .cms-section.boxed .cms-block.cms-block-text-hero .cms-block-container, .cms-section-default.boxed .cms-block.cms-block-text-hero .cms-block-container, .cms-section.boxed .cms-block.cms-block-text-teaser .cms-block-container, .cms-section-default.boxed .cms-block.cms-block-text-teaser .cms-block-container, .cms-section.boxed .cms-block.cms-block-text-teaser-section .cms-block-container, .cms-section-default.boxed .cms-block.cms-block-text-teaser-section .cms-block-container, .cms-section.boxed .cms-block.cms-block-image-text .cms-block-container, .cms-section-default.boxed .cms-block.cms-block-image-text .cms-block-container, .cms-section.boxed .cms-block.cms-block-image-text-cover .cms-block-container, .cms-section-default.boxed .cms-block.cms-block-image-text-cover .cms-block-container, .cms-section.boxed .cms-block.cms-block-center-text .cms-block-container, .cms-section-default.boxed .cms-block.cms-block-center-text .cms-block-container, .cms-section.boxed .cms-block.cms-block-image-text-gallery .cms-block-container, .cms-section-default.boxed .cms-block.cms-block-image-text-gallery .cms-block-container, .cms-section.boxed .cms-block.cms-block-image-text-bubble .cms-block-container, .cms-section-default.boxed .cms-block.cms-block-image-text-bubble .cms-block-container, .cms-section.boxed .cms-block.cms-block-image-text-reversed .cms-block-container, .cms-section-default.boxed .cms-block.cms-block-image-text-reversed .cms-block-container, .cms-section.boxed .cms-block.cms-element-form .cms-block-container, .cms-section-default.boxed .cms-block.cms-element-form .cms-block-container, .cms-section.boxed .cms-block.cms-block-product-three-column .cms-block-container, .cms-section-default.boxed .cms-block.cms-block-product-three-column .cms-block-container {
+    padding: 0;
+    max-width: 100%;
+}
+.cms-section.boxed .cms-block .cms-block-container, .cms-section-default.boxed .cms-block .cms-block-container {
+    width: 100%;
+    max-width: 90rem;
+    margin: 0 auto;
+    padding: 6.25rem 3.125rem;
+    padding-top: 3.125rem;
+    padding-bottom: 3.125rem;
+}
+.cms-section.boxed .cms-block.cms-block-text .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-text .cms-block-container p, .cms-section.boxed .cms-block.cms-block-text-two-column .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-text-two-column .cms-block-container p, .cms-section.boxed .cms-block.cms-block-text-three-column .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-text-three-column .cms-block-container p, .cms-section.boxed .cms-block.cms-block-image-text-row .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-image-text-row .cms-block-container p, .cms-section.boxed .cms-block.cms-block-text-hero .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-text-hero .cms-block-container p, .cms-section.boxed .cms-block.cms-block-text-teaser .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-text-teaser .cms-block-container p, .cms-section.boxed .cms-block.cms-block-text-teaser-section .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-text-teaser-section .cms-block-container p, .cms-section.boxed .cms-block.cms-block-image-text .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-image-text .cms-block-container p, .cms-section.boxed .cms-block.cms-block-image-text-cover .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-image-text-cover .cms-block-container p, .cms-section.boxed .cms-block.cms-block-center-text .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-center-text .cms-block-container p, .cms-section.boxed .cms-block.cms-block-image-text-gallery .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-image-text-gallery .cms-block-container p, .cms-section.boxed .cms-block.cms-block-image-text-bubble .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-image-text-bubble .cms-block-container p, .cms-section.boxed .cms-block.cms-block-image-text-reversed .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-image-text-reversed .cms-block-container p, .cms-section.boxed .cms-block.cms-element-form .cms-block-container p, .cms-section-default.boxed .cms-block.cms-element-form .cms-block-container p, .cms-section.boxed .cms-block.cms-block-product-three-column .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-product-three-column .cms-block-container p, .cms-section.boxed .cms-block.cms-block-text .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-text .cms-block-container div, .cms-section.boxed .cms-block.cms-block-text-two-column .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-text-two-column .cms-block-container div, .cms-section.boxed .cms-block.cms-block-text-three-column .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-text-three-column .cms-block-container div, .cms-section.boxed .cms-block.cms-block-image-text-row .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-image-text-row .cms-block-container div, .cms-section.boxed .cms-block.cms-block-text-hero .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-text-hero .cms-block-container div, .cms-section.boxed .cms-block.cms-block-text-teaser .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-text-teaser .cms-block-container div, .cms-section.boxed .cms-block.cms-block-text-teaser-section .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-text-teaser-section .cms-block-container div, .cms-section.boxed .cms-block.cms-block-image-text .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-image-text .cms-block-container div, .cms-section.boxed .cms-block.cms-block-image-text-cover .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-image-text-cover .cms-block-container div, .cms-section.boxed .cms-block.cms-block-center-text .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-center-text .cms-block-container div, .cms-section.boxed .cms-block.cms-block-image-text-gallery .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-image-text-gallery .cms-block-container div, .cms-section.boxed .cms-block.cms-block-image-text-bubble .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-image-text-bubble .cms-block-container div, .cms-section.boxed .cms-block.cms-block-image-text-reversed .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-image-text-reversed .cms-block-container div, .cms-section.boxed .cms-block.cms-element-form .cms-block-container div, .cms-section-default.boxed .cms-block.cms-element-form .cms-block-container div, .cms-section.boxed .cms-block.cms-block-product-three-column .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-product-three-column .cms-block-container div {
+    font-size: 1.25rem;
+    letter-spacing: .00375rem;
+    line-height: 1.8125rem;
+    font-weight: normal;
+    color: #4a4a4a;
+}
+.cms-block .cms-block-container .cms-block-container-row {
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+.cms-section.boxed .cms-block.cms-block-text .cms-block-container .cms-element-text, .cms-section-default.boxed .cms-block.cms-block-text .cms-block-container .cms-element-text, .cms-section.boxed .cms-block.cms-block-text-two-column .cms-block-container .cms-element-text, .cms-section-default.boxed .cms-block.cms-block-text-two-column .cms-block-container .cms-element-text, .cms-section.boxed .cms-block.cms-block-text-three-column .cms-block-container .cms-element-text, .cms-section-default.boxed .cms-block.cms-block-text-three-column .cms-block-container .cms-element-text {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+.cms-section.boxed .cms-block.cms-block-text .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-text .cms-block-container p, .cms-section.boxed .cms-block.cms-block-text-two-column .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-text-two-column .cms-block-container p, .cms-section.boxed .cms-block.cms-block-text-three-column .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-text-three-column .cms-block-container p, .cms-section.boxed .cms-block.cms-block-image-text-row .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-image-text-row .cms-block-container p, .cms-section.boxed .cms-block.cms-block-text-hero .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-text-hero .cms-block-container p, .cms-section.boxed .cms-block.cms-block-text-teaser .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-text-teaser .cms-block-container p, .cms-section.boxed .cms-block.cms-block-text-teaser-section .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-text-teaser-section .cms-block-container p, .cms-section.boxed .cms-block.cms-block-image-text .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-image-text .cms-block-container p, .cms-section.boxed .cms-block.cms-block-image-text-cover .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-image-text-cover .cms-block-container p, .cms-section.boxed .cms-block.cms-block-center-text .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-center-text .cms-block-container p, .cms-section.boxed .cms-block.cms-block-image-text-gallery .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-image-text-gallery .cms-block-container p, .cms-section.boxed .cms-block.cms-block-image-text-bubble .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-image-text-bubble .cms-block-container p, .cms-section.boxed .cms-block.cms-block-image-text-reversed .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-image-text-reversed .cms-block-container p, .cms-section.boxed .cms-block.cms-element-form .cms-block-container p, .cms-section-default.boxed .cms-block.cms-element-form .cms-block-container p, .cms-section.boxed .cms-block.cms-block-product-three-column .cms-block-container p, .cms-section-default.boxed .cms-block.cms-block-product-three-column .cms-block-container p, .cms-section.boxed .cms-block.cms-block-text .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-text .cms-block-container div, .cms-section.boxed .cms-block.cms-block-text-two-column .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-text-two-column .cms-block-container div, .cms-section.boxed .cms-block.cms-block-text-three-column .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-text-three-column .cms-block-container div, .cms-section.boxed .cms-block.cms-block-image-text-row .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-image-text-row .cms-block-container div, .cms-section.boxed .cms-block.cms-block-text-hero .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-text-hero .cms-block-container div, .cms-section.boxed .cms-block.cms-block-text-teaser .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-text-teaser .cms-block-container div, .cms-section.boxed .cms-block.cms-block-text-teaser-section .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-text-teaser-section .cms-block-container div, .cms-section.boxed .cms-block.cms-block-image-text .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-image-text .cms-block-container div, .cms-section.boxed .cms-block.cms-block-image-text-cover .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-image-text-cover .cms-block-container div, .cms-section.boxed .cms-block.cms-block-center-text .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-center-text .cms-block-container div, .cms-section.boxed .cms-block.cms-block-image-text-gallery .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-image-text-gallery .cms-block-container div, .cms-section.boxed .cms-block.cms-block-image-text-bubble .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-image-text-bubble .cms-block-container div, .cms-section.boxed .cms-block.cms-block-image-text-reversed .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-image-text-reversed .cms-block-container div, .cms-section.boxed .cms-block.cms-element-form .cms-block-container div, .cms-section-default.boxed .cms-block.cms-element-form .cms-block-container div, .cms-section.boxed .cms-block.cms-block-product-three-column .cms-block-container div, .cms-section-default.boxed .cms-block.cms-block-product-three-column .cms-block-container div {
+    font-size: 1.25rem;
+    letter-spacing: .00375rem;
+    line-height: 1.8125rem;
+    font-weight: normal;
+    color: #4a4a4a;
+}
+.font-spacing-privacy {
+    letter-spacing: 3px;
+}
+.privacy-hover{
+    color: #4a4a4a;
+    border-bottom: 1px solid black;
+
+}
+.privacy-hover:hover{
+    text-decoration: none;
+    background: #eeca00;
+    color: black;
+}
+@media (max-width: 575.98px){}
+.cms-section.boxed .cms-block.cms-block-text, .cms-section-default.boxed .cms-block.cms-block-text, .cms-section.boxed .cms-block.cms-block-text-two-column, .cms-section-default.boxed .cms-block.cms-block-text-two-column, .cms-section.boxed .cms-block.cms-block-text-three-column, .cms-section-default.boxed .cms-block.cms-block-text-three-column, .cms-section.boxed .cms-block.cms-block-image-text-row, .cms-section-default.boxed .cms-block.cms-block-image-text-row, .cms-section.boxed .cms-block.cms-block-text-hero, .cms-section-default.boxed .cms-block.cms-block-text-hero, .cms-section.boxed .cms-block.cms-block-text-teaser, .cms-section-default.boxed .cms-block.cms-block-text-teaser, .cms-section.boxed .cms-block.cms-block-text-teaser-section, .cms-section-default.boxed .cms-block.cms-block-text-teaser-section, .cms-section.boxed .cms-block.cms-block-image-text, .cms-section-default.boxed .cms-block.cms-block-image-text, .cms-section.boxed .cms-block.cms-block-image-text-cover, .cms-section-default.boxed .cms-block.cms-block-image-text-cover, .cms-section.boxed .cms-block.cms-block-center-text, .cms-section-default.boxed .cms-block.cms-block-center-text, .cms-section.boxed .cms-block.cms-block-image-text-gallery, .cms-section-default.boxed .cms-block.cms-block-image-text-gallery, .cms-section.boxed .cms-block.cms-block-image-text-bubble, .cms-section-default.boxed .cms-block.cms-block-image-text-bubble, .cms-section.boxed .cms-block.cms-block-image-text-reversed, .cms-section-default.boxed .cms-block.cms-block-image-text-reversed, .cms-section.boxed .cms-block.cms-element-form, .cms-section-default.boxed .cms-block.cms-element-form, .cms-section.boxed .cms-block.cms-block-product-three-column, .cms-section-default.boxed .cms-block.cms-block-product-three-column {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+}
+.cms-block.cms-block-social {
+    background: #fff;
+}
+.cms-block.cms-block-social {
+    background: #fff;
+}
+.cms-block {
+    overflow: hidden;
+}
+.cms-section.boxed .cms-block .cms-block-container, .cms-section-default.boxed .cms-block .cms-block-container {
+    width: 100%;
+    max-width: 90rem;
+    margin: 0 auto;
+    padding: 6.25rem 3.125rem;
+    padding-top: 3.125rem;
+    padding-bottom: 3.125rem;
+}
+.cms-block.cms-block-social .cms-block-container {
+    width: 100%;
+    max-width: 90rem;
+    max-width: 60.625rem !important;
+    margin: 0 auto;
+    padding: 6.25rem 3.125rem;
+    padding: 3.125rem 3.125rem;
+    padding-left: 1px;
+}
+.cms-block.cms-block-social .cms-block-container .cms-row {
+    margin: 0;
+}
+.cms-block.cms-block-social .cms-block-container .cms-row {
+    margin: 0;
+}
+.cms-block .cms-block-container .cms-block-container-row {
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+.cms-block.cms-block-social .cms-block-container .cms-row .social-content-block {
+    width: 100%;
+}
+.cms-block.cms-block-social .cms-block-container .cms-row .social-content-block {
+    width: 100%;
+}
+.cms-block.cms-block-social .cms-block-container .cms-row .social-content-block h2 {
+    font-size: 2.1875rem;
+    padding-bottom: 25px;
+}
+.cms-block.cms-block-social .cms-block-container .cms-row .social-content-block h2 {
+    font-size: 2.1875rem;
+    padding-bottom: 25px;
+}
+h2, .h2 {
+    line-height: 34px;
+}
+.cms-block.cms-block-social .cms-block-container .cms-row .social-content-block .social-info {
+    font-size: 1.25rem;
+    letter-spacing: .00375rem;
+    line-height: 1.8125rem;
+    font-weight: normal;
+    color: #4a4a4a;
+}
+.cms-block.cms-block-social .cms-block-container .cms-row .social-content-block .social-info {
+    font-size: 1.25rem;
+    letter-spacing: .00375rem;
+    line-height: 1.8125rem;
+    font-weight: normal;
+    color: #4a4a4a;
+}
+.cms-block.cms-block-social .cms-block-container .cms-row .social-content-block .social-media-list {
+    padding: 1.25rem 0 0 0;
+}
+.cms-block.cms-block-social .cms-block-container .cms-row .social-content-block .social-media-list {
+    padding: 1.25rem 0 0 0;
+}
+.social-media-card-body{
+    background: white !important;
+}
+.social-icon-card-body{
+    background: white !important;
+}
+.social-media-icons-cls {
+    display: initial;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    font-size: 2.5rem;
+    line-height: 1.3;
+    color: #9b9b9b !important;
+}
+.social-media-icons-cls:hover {
+    color: black !important;
+}
+@media only screen and (max-width: 600px) {
+        .social-media-icons-cls-mobile {
+        width: 25px !important;
+    }
+}

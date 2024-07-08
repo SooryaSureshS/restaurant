@@ -1,0 +1,2279 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--    &lt;!&ndash;    add edit billing and shipping address&ndash;&gt;-->
+    <!--    <template id="edit_add_address_template">-->
+    <!--        <div class="form-row">-->
+    <!--            <div t-attf-class="form-group  col-lg-12 div_name d-none">-->
+    <!--                <input type="hidden" name="partner_id"-->
+    <!--                       t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control" t-att-value="partner.id"/>-->
+    <!--            </div>-->
+    <!--            <div t-attf-class="form-group  col-lg-12 div_name d-none">-->
+    <!--                <input type="hidden" name="sale_order_id"-->
+    <!--                       t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control" t-att-value="order.id"/>-->
+    <!--            </div>-->
+    <!--            <div t-attf-class="form-group  col-lg-12 div_name">-->
+    <!--                <label class="col-form-label log_reg_label GT_Pressura_Pro_Mono"-->
+    <!--                       for="name">Name-->
+    <!--                </label>-->
+    <!--                <input type="text" name="name"-->
+    <!--                       t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control" t-att-value="partner.name"/>-->
+    <!--            </div>-->
+    <!--            <div class="w-100"/>-->
+    <!--            <div t-attf-class="form-group  col-lg-6"-->
+    <!--                 id="div_email">-->
+    <!--                <label t-attf-class="log_reg_label GT_Pressura_Pro_Mono col-form-label " for="email">Email</label>-->
+    <!--                <input type="email" name="email" t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control "-->
+    <!--                       t-att-value="partner.email"/>-->
+    <!--            </div>-->
+    <!--            <div t-attf-class="form-group col-lg-6"-->
+    <!--                 id="div_phone">-->
+    <!--                <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label"-->
+    <!--                       for="phone">-->
+    <!--                    Phone-->
+    <!--                </label>-->
+    <!--                <input type="tel" name="phone"-->
+    <!--                       t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control " t-att-value="partner.phone"/>-->
+    <!--            </div>-->
+    <!--            <div class="w-100"/>-->
+    <!--            <div t-attf-class="form-group  col-lg-12 div_street">-->
+    <!--                <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label"-->
+    <!--                       for="street">-->
+    <!--                    Street-->
+    <!--                    <span class="d-none d-md-inline">and-->
+    <!--                        Number-->
+    <!--                    </span>-->
+    <!--                </label>-->
+    <!--                <input type="text" name="street"-->
+    <!--                       t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control " t-att-value="partner.street"-->
+    <!--                />-->
+    <!--            </div>-->
+    <!--            <div t-attf-class="form-group  col-lg-12 div_street2">-->
+    <!--                <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label label-optional"-->
+    <!--                       for="street2">Street 2-->
+    <!--                </label>-->
+    <!--                <input type="text" name="street2"-->
+    <!--                       t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control " t-att-value="partner.street2"-->
+    <!--                />-->
+    <!--            </div>-->
+    <!--            <div class="w-100"/>-->
+
+
+    <!--            <div t-attf-class="form-group col-md-4 div_zip">-->
+    <!--                <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label label-optional"-->
+    <!--                       for="zip">Zip Code-->
+    <!--                </label>-->
+    <!--                <input type="text" name="zip"-->
+    <!--                       t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control" t-att-value="partner.zip"-->
+    <!--                />-->
+    <!--            </div>-->
+
+    <!--            <div t-attf-class="form-group  col-md-8 div_city">-->
+    <!--                <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label"-->
+    <!--                       for="city">-->
+    <!--                    City-->
+    <!--                </label>-->
+    <!--                <input type="text" name="city"-->
+    <!--                       t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control " t-att-value="partner.city"-->
+    <!--                />-->
+    <!--            </div>-->
+
+    <!--            <div class="w-100"/>-->
+    <!--            <div t-attf-class="form-group col-lg-6 div_country">-->
+    <!--                <label class="col-form-label" for="country_id">Country</label>-->
+    <!--                <select id="country_id" name="country_id" t-attf-class="form-control and 'is-invalid' or ''}">-->
+    <!--                    <option value="">Country...</option>-->
+    <!--                    <t t-foreach="countries" t-as="c">-->
+    <!--                        <option t-att-value="c.id" t-att-selected="c.id == (country and country.id or -1)">-->
+    <!--                            <t t-esc="c.name"/>-->
+    <!--                        </option>-->
+    <!--                    </t>-->
+    <!--                </select>-->
+    <!--            </div>-->
+    <!--            <div t-attf-class="form-group col-lg-6 div_state"-->
+    <!--                 t-att-style="(not country or not country.state_ids) and 'display: none'">-->
+    <!--                <label class="col-form-label" for="state_id">State / Province</label>-->
+    <!--                <select name="state_id" t-attf-class="form-control" data-init="1">-->
+    <!--                    <option value="">State / Province...</option>-->
+    <!--                    <t t-foreach="country_states" t-as="s">-->
+    <!--                        <option t-att-value="s.id" t-att-selected="s.id">-->
+    <!--                            <t t-esc="s.name"/>-->
+    <!--                        </option>-->
+    <!--                    </t>-->
+    <!--                </select>-->
+    <!--            </div>-->
+    <!--            <div class="w-100"/>-->
+    <!--        </div>-->
+    <!--        <style>-->
+    <!--            .card-body{-->
+    <!--            background-color:whitesmoke !important;-->
+    <!--            font-family: "GT Pressura Pro Mono" !important;-->
+    <!--            }-->
+    <!--            .card{-->
+    <!--            border:0px solid;-->
+    <!--            }-->
+    <!--        </style>-->
+    <!--    </template>-->
+
+    <!--    &lt;!&ndash;    address template not login&ndash;&gt;-->
+    <!--    <template id="obst_address">-->
+    <!--        <div class="row ">-->
+    <!--            <div class="col-md-6">-->
+    <!--                <h2 class="GT_Pressura_Pro_Mono mt-2">As Customer</h2>-->
+    <!--                <form class="mt-5" role="form"-->
+    <!--                      t-attf-action="/web/login?redirect=/process/checkout/page" method="post">-->
+    <!--                    <input type="hidden" name="csrf_token"-->
+    <!--                           t-att-value="request.csrf_token()"/>-->
+
+    <!--                    <div class="form-group field-db"-->
+    <!--                         t-if="databases and len(databases) &gt; 1">-->
+    <!--                        <label for="db" class="col-form-label">-->
+    <!--                            Database-->
+    <!--                        </label>-->
+    <!--                        <div t-attf-class="input-group {{'input-group-sm' if form_small else ''}}">-->
+    <!--                            <input type="text" name="db"-->
+    <!--                                   t-att-value="request.db" id="db"-->
+    <!--                                   t-attf-class="form-control #{'form-control-sm' if form_small else ''}"-->
+    <!--                                   required="required"-->
+    <!--                                   readonly="readonly"/>-->
+    <!--                            <span class="input-group-append">-->
+    <!--                                <a role="button"-->
+    <!--                                   href="/web/database/selector"-->
+    <!--                                   class="btn btn-secondary">Select-->
+    <!--                                    <i class="fa fa-database" role="img"-->
+    <!--                                       aria-label="Database"-->
+    <!--                                       title="Database"></i>-->
+    <!--                                </a>-->
+    <!--                            </span>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+
+    <!--                    <div class="form-group field-login">-->
+    <!--                        <label class="log_reg_label GT_Pressura_Pro_Mono"-->
+    <!--                               for="login">Your e-mail address-->
+    <!--                        </label>-->
+    <!--                        <input type="text" placeholder="Email"-->
+    <!--                               name="login" t-att-value="login"-->
+    <!--                               id="login"-->
+    <!--                               t-attf-class="form-control login_input log_reg_input GT_Pressura_Pro_Mono"-->
+    <!--                               required="required"-->
+    <!--                               autocapitalize="off">-->
+    <!--                            <img class="input_close"-->
+    <!--                                 src="/gio_obstgemuese_theme/static/src/svg/65-cross2.svg"/>-->
+    <!--                            <img class="input_tick"-->
+    <!--                                 src="/gio_obstgemuese_theme/static/src/svg/64-check.svg"/>-->
+    <!--                        </input>-->
+    <!--                        <div class="validation_error_email GT_Pressura_Pro_Mono"></div>-->
+    <!--                    </div>-->
+
+    <!--                    <div class="form-group field-password">-->
+    <!--                        <label class="log_reg_label GT_Pressura_Pro_Mono"-->
+    <!--                               for="password">Your password-->
+    <!--                        </label>-->
+    <!--                        <input type="password" placeholder="Password"-->
+    <!--                               name="password" id="password"-->
+    <!--                               t-attf-class="form-control login_input log_reg_input GT_Pressura_Pro_Mono"-->
+    <!--                               required="required"-->
+    <!--                               autocomplete="current-password"-->
+    <!--                               t-att-autofocus="'autofocus' if login else None"-->
+    <!--                               maxlength="4096">-->
+    <!--                            <img class="input_close"-->
+    <!--                                 src="/gio_obstgemuese_theme/static/src/svg/65-cross2.svg"/>-->
+    <!--                            <img class="input_tick"-->
+    <!--                                 src="/gio_obstgemuese_theme/static/src/svg/64-check.svg"/>-->
+
+    <!--                        </input>-->
+    <!--                        <div class="validation_error_password"></div>-->
+    <!--                    </div>-->
+
+    <!--                    <p class="alert alert-danger" t-if="error"-->
+    <!--                       role="alert">-->
+    <!--                        <t t-esc="error"/>-->
+    <!--                    </p>-->
+    <!--                    <p class="alert alert-success" t-if="message"-->
+    <!--                       role="status">-->
+    <!--                        <t t-esc="message"/>-->
+    <!--                    </p>-->
+    <!--                    <div class="row">-->
+    <!--                        <div class="col">-->
+    <!--                            <label class="del_add_checkbox GT_Pressura_Pro_Mono font-weight-normal">-->
+    <!--                                Remember me-->
+    <!--                                <input type="checkbox"-->
+    <!--                                       class="rem_me_checkbox"/>-->
+    <!--                                <span class='check_cover'></span>-->
+    <!--                                <span class="checkmark"></span>-->
+    <!--                            </label>-->
+    <!--                        </div>-->
+    <!--                        <div class="col text-right">-->
+    <!--                            <a href="/web/reset_password"-->
+    <!--                               class="GT_Pressura_Pro_Mono forgot_password">-->
+    <!--                                Forgot-->
+    <!--                                Password-->
+    <!--                            </a>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                    <div t-attf-class="clearfix oe_login_buttons text-center mb-1 {{'pt-2' if form_small else 'pt-3'}}">-->
+    <!--                        <button type="submit"-->
+    <!--                                class="log_reg_btn btn-block GT_Pressura_Pro_Mono">-->
+    <!--                            Login-->
+    <!--                        </button>-->
+    <!--                        &lt;!&ndash;                                <t t-if="debug">&ndash;&gt;-->
+    <!--                        &lt;!&ndash;                                    <button type="submit" name="redirect" value="/web/become"&ndash;&gt;-->
+    <!--                        &lt;!&ndash;                                            class="GT_Pressura_Pro_Mono btn btn-link btn-sm btn-block">&ndash;&gt;-->
+    <!--                        &lt;!&ndash;                                        Log in as superuser&ndash;&gt;-->
+    <!--                        &lt;!&ndash;                                    </button>&ndash;&gt;-->
+    <!--                        &lt;!&ndash;                                </t>&ndash;&gt;-->
+    <!--                        <div class="o_login_auth"/>-->
+    <!--                    </div>-->
+
+    <!--                    <input type="hidden" name="redirect"-->
+    <!--                           t-att-value="redirect"/>-->
+    <!--                </form>-->
+    <!--            </div>-->
+    <!--            <div class="col-md-6">-->
+    <!--                <h2 class="GT_Pressura_Pro_Mono mt-2">As Guest-->
+
+    <!--                </h2>-->
+    <!--                <div class="form-row add_billing_address_public_cls">-->
+    <!--                    <div t-attf-class="form-group  col-lg-12 div_name d-none">-->
+    <!--                        <input type="hidden" name="partner_id"-->
+    <!--                               t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control"/>-->
+    <!--                    </div>-->
+    <!--                    <div t-attf-class="form-group  col-lg-12 div_name d-none">-->
+    <!--                        <input type="hidden" name="sale_order_id"-->
+    <!--                               t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control" t-att-value="order.id"/>-->
+    <!--                    </div>-->
+    <!--                    <div t-attf-class="form-group  col-lg-12 div_name">-->
+    <!--                        <label class="col-form-label log_reg_label GT_Pressura_Pro_Mono"-->
+    <!--                               for="name">Name-->
+    <!--                        </label>-->
+    <!--                        <input type="text" name="name"-->
+    <!--                               t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control"/>-->
+    <!--                    </div>-->
+    <!--                    <div class="w-100"/>-->
+    <!--                    <div t-attf-class="form-group  col-lg-6"-->
+    <!--                         id="div_email">-->
+    <!--                        <label t-attf-class="log_reg_label GT_Pressura_Pro_Mono col-form-label " for="email">Email-->
+    <!--                        </label>-->
+    <!--                        <input type="email" name="email"-->
+    <!--                               t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control "/>-->
+    <!--                    </div>-->
+    <!--                    <div t-attf-class="form-group col-lg-6"-->
+    <!--                         id="div_phone">-->
+    <!--                        <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label"-->
+    <!--                               for="phone">-->
+    <!--                            Phone-->
+    <!--                        </label>-->
+    <!--                        <input type="tel" name="phone"-->
+    <!--                               t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control "/>-->
+    <!--                    </div>-->
+    <!--                    <div class="w-100"/>-->
+    <!--                    <div t-attf-class="form-group  col-lg-12 div_street">-->
+    <!--                        <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label"-->
+    <!--                               for="street">-->
+    <!--                            Street-->
+    <!--                            <span class="d-none d-md-inline">and-->
+    <!--                                Number-->
+    <!--                            </span>-->
+    <!--                        </label>-->
+    <!--                        <input type="text" name="street"-->
+    <!--                               t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control "/>-->
+    <!--                    </div>-->
+    <!--                    <div t-attf-class="form-group  col-lg-12 div_street2">-->
+    <!--                        <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label label-optional"-->
+    <!--                               for="street2">Street 2-->
+    <!--                        </label>-->
+    <!--                        <input type="text" name="street2"-->
+    <!--                               t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control "/>-->
+    <!--                    </div>-->
+    <!--                    <div class="w-100"/>-->
+
+
+    <!--                    <div t-attf-class="form-group col-md-4 div_zip">-->
+    <!--                        <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label label-optional"-->
+    <!--                               for="zip">Zip Code-->
+    <!--                        </label>-->
+    <!--                        <input type="text" name="zip"-->
+    <!--                               t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control"/>-->
+    <!--                    </div>-->
+
+    <!--                    <div t-attf-class="form-group  col-md-8 div_city">-->
+    <!--                        <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label"-->
+    <!--                               for="city">-->
+    <!--                            City-->
+    <!--                        </label>-->
+    <!--                        <input type="text" name="city"-->
+    <!--                               t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control "/>-->
+    <!--                    </div>-->
+
+    <!--                    <div class="w-100"/>-->
+    <!--                    <div t-attf-class="form-group col-lg-6 div_country">-->
+    <!--                        <label class="col-form-label" for="country_id">Country</label>-->
+    <!--                        <select id="country_id" name="country_id" t-attf-class="form-control and 'is-invalid' or ''}">-->
+    <!--                            <option value="">Country...</option>-->
+    <!--                            <t t-foreach="countries" t-as="c">-->
+    <!--                                <option t-att-value="c.id" t-att-selected="c.id == (country and country.id or -1)">-->
+    <!--                                    <t t-esc="c.name"/>-->
+    <!--                                </option>-->
+    <!--                            </t>-->
+    <!--                        </select>-->
+    <!--                    </div>-->
+    <!--                    <div t-attf-class="form-group col-lg-6 div_state"-->
+    <!--                         t-att-style="(not country or not country.state_ids) and 'display: none'">-->
+    <!--                        <label class="col-form-label" for="state_id">State / Province</label>-->
+    <!--                        <select name="state_id" t-attf-class="form-control" data-init="1">-->
+    <!--                            <option value="">State / Province...</option>-->
+    <!--                            <t t-foreach="country_states" t-as="s">-->
+    <!--                                <option t-att-value="s.id" t-att-selected="s.id">-->
+    <!--                                    <t t-esc="s.name"/>-->
+    <!--                                </option>-->
+    <!--                            </t>-->
+    <!--                        </select>-->
+    <!--                    </div>-->
+    <!--                    <div class="w-100"/>-->
+    <!--                </div>-->
+    <!--                <div class="d-flex justify-content-between">-->
+    <!--                    <a role="button" href="#"-->
+    <!--                       class="btn log_reg_btn GT_Pressura_Pro_Mono mb32 a-submit a-submit-disable a-submit-loading public_usr_address_add">-->
+    <!--                        <span>Next</span>-->
+    <!--                        <i class="fa fa-chevron-right"/>-->
+    <!--                    </a>-->
+    <!--                </div>-->
+    <!--                <style>-->
+    <!--                    .card-body{-->
+    <!--                    background-color:whitesmoke !important;-->
+    <!--                    font-family: "GT Pressura Pro Mono" !important;-->
+    <!--                    }-->
+    <!--                    .card{-->
+    <!--                    border:0px solid;-->
+    <!--                    }-->
+    <!--                </style>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </template>-->
+
+    <!--    &lt;!&ndash;    address kanban view&ndash;&gt;-->
+    <!--    <template id="address_kanban" name="Kanban address">-->
+    <!--        <form action="/shop/checkout" method="POST" class="d-none">-->
+    <!--            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>-->
+    <!--            <input type="hidden" name="partner_id" t-att-value="contact.id"/>-->
+    <!--            <t t-if='edit_billing'>-->
+    <!--                <input type="hidden" name="callback" value="/shop/checkout?use_billing"/>-->
+    <!--            </t>-->
+    <!--            <input type='submit'/>-->
+    <!--        </form>-->
+    <!--        <div t-attf-class="card #{selected and 'border border-primary' or 'js_change_shipping'}">-->
+    <!--            <t t-set="partner_id" t-value="contact.id"/>-->
+    <!--            <div class='card-body' t-att-id="'partner_' + str(partner_id)"-->
+    <!--                 t-att-style="'border-bottom: none' if not readonly else ''" style="">-->
+    <!--                <a t-if="allow_edit" href="#" t-att-id="str(partner_id)"-->
+    <!--                   class="btn btn-link float-right p-0 js_edit_address ob_edit_address no-decoration" role="button"-->
+    <!--                   title="Edit this address" aria-label="Edit this address">-->
+    <!--                    <i class='fa fa-edit'/>-->
+    <!--                </a>-->
+    <!--                <t t-esc="contact" t-options="dict(widget='contact', fields=['name', 'address'], no_marker=True)"/>-->
+    <!--            </div>-->
+    <!--            <div class='card-footer' t-if='not readonly' style="background: whitesmoke;border: none;">-->
+    <!--                <span class='btn-ship' t-att-style="'' if selected else 'display:none;'">-->
+    <!--                    <a role="button" href='#' class="btn btn-block">-->
+    <!--                        <i class='fa fa-check'></i>-->
+    <!--                        Ship to this address-->
+    <!--                    </a>-->
+    <!--                </span>-->
+    <!--                <span class='btn-ship' t-att-style="'' if not selected else 'display:none;'">-->
+    <!--                    <a role="button" href='#' class="btn btn-block">-->
+    <!--                        Select this address-->
+    <!--                    </a>-->
+    <!--                </span>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </template>-->
+
+    <!--    &lt;!&ndash;    billing address and shipping address template address tab&ndash;&gt;-->
+    <!--    <template id="obst_partner_address">-->
+    <!--        <div class="row" t-if="address_redirection == True">-->
+    <!--            <div class="col-md-12">-->
+    <!--                <h4 class="pb-2 GT_Pressura_Pro_Mono">-->
+    <!--                    Your Address-->
+    <!--                </h4>-->
+    <!--                <div class="d-flex justify-content-between col-md-6">-->
+    <!--                    <a role="button" href="#" style="background: white; border: none;"-->
+    <!--                       class="btn log_reg_btn GT_Pressura_Pro_Mono mb32">-->
+    <!--                    </a>-->
+    <!--                </div>-->
+    <!--                <div class="kanban_partner_address_add_cls" t-att-id="'partner_address_' + str(order.partner_id.id)">-->
+    <!--                    <t t-call="gio_obstgemuese_theme.edit_add_address_template">-->
+    <!--                        <t t-set='partner' t-value="order.partner_id"/>-->
+    <!--                    </t>-->
+    <!--                    <div class="row">-->
+    <!--                        <div class="d-flex justify-content-between col-md-6">-->
+    <!--                            <a role="button" href="#"-->
+    <!--                               class="btn log_reg_btn GT_Pressura_Pro_Mono mb32 bill_add_edit_back">-->
+    <!--                                <span>cancel</span>-->
+    <!--                                <i class="fa fa-chevron-right"/>-->
+    <!--                            </a>-->
+    <!--                        </div>-->
+    <!--                        <div class="col-md-6" style="text-align: right;">-->
+    <!--                            <a role="button" href="#"-->
+    <!--                               class="btn log_reg_btn GT_Pressura_Pro_Mono mb32 add_partner_address_btn">-->
+    <!--                                <span>>></span>-->
+    <!--                                <i class="fa fa-chevron-right"/>-->
+    <!--                            </a>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--        <div t-else="" class="row">-->
+    <!--            <div class="col-md-6">-->
+    <!--                <h4 class="pb-2 GT_Pressura_Pro_Mono">-->
+    <!--                    Billing Address-->
+    <!--                </h4>-->
+    <!--                <div class="d-flex justify-content-between col-md-6">-->
+    <!--                    <a role="button" href="#" style="background: white; border: none;"-->
+    <!--                       class="btn log_reg_btn GT_Pressura_Pro_Mono mb32">-->
+    <!--                    </a>-->
+    <!--                </div>-->
+    <!--                <div class="one_kanban">-->
+    <!--                    <div class="kanban_billing_address_cls">-->
+    <!--                        <t t-call="gio_obstgemuese_theme.address_kanban">-->
+    <!--                            <t t-set='contact' t-value="request.website.sale_get_order().partner_id"/>-->
+    <!--                            <t t-set='selected' t-value="1"/>-->
+    <!--                            <t t-set='readonly' t-value="1"/>-->
+    <!--                            <t t-set='allow_edit' t-value="1"/>-->
+    <!--                        </t>-->
+    <!--                    </div>-->
+    <!--                    <div class="kanban_billing_address_edit_cls"-->
+    <!--                         t-att-id="'partner_address_' + str(order.partner_id.id)">-->
+    <!--                        <t t-call="gio_obstgemuese_theme.edit_add_address_template">-->
+    <!--                            <t t-set='partner' t-value="order.partner_id"/>-->
+    <!--                        </t>-->
+    <!--                        <div class="row">-->
+    <!--                            <div class="d-flex justify-content-between col-md-6">-->
+    <!--                                <a role="button" href="#"-->
+    <!--                                   class="btn log_reg_btn GT_Pressura_Pro_Mono mb32 bill_add_edit_back">-->
+    <!--                                    <span>cancel</span>-->
+    <!--                                    <i class="fa fa-chevron-right"/>-->
+    <!--                                </a>-->
+    <!--                            </div>-->
+    <!--                            <div class="d-flex justify-content-between col-md-6">-->
+    <!--                                <a role="button" href="#"-->
+    <!--                                   class="btn log_reg_btn GT_Pressura_Pro_Mono mb32 edit_billing_address_btn">-->
+    <!--                                    <span>>></span>-->
+    <!--                                    <i class="fa fa-chevron-right"/>-->
+    <!--                                </a>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--            <div class="col-md-6 ">-->
+    <!--                <h4 class="pb-2 GT_Pressura_Pro_Mono">-->
+    <!--                    Shipping Address-->
+    <!--                </h4>-->
+    <!--                <div class="row">-->
+    <!--                    <div class="d-flex justify-content-between col-md-6">-->
+    <!--                        <a role="button" href="#"-->
+    <!--                           class="btn log_reg_btn GT_Pressura_Pro_Mono mb32 add_shipping_address_btn">-->
+    <!--                            <span>Add an Address</span>-->
+    <!--                            <i class="fa fa-chevron-right"/>-->
+    <!--                        </a>-->
+    <!--                    </div>-->
+    <!--                    <t t-foreach="shippings" t-as="ship">-->
+    <!--                        <div class="col-md-12 one_kanban mb-2">-->
+    <!--                            <t t-call="gio_obstgemuese_theme.address_kanban">-->
+    <!--                                <t t-set='contact' t-value="ship"/>-->
+    <!--                                <t t-set='selected' t-value="order.partner_shipping_id==ship"/>-->
+    <!--                                <t t-set='readonly' t-value="bool(len(shippings)==1)"/>-->
+    <!--                                <t t-set='edit_billing' t-value="bool(ship==order.partner_id)"/>-->
+    <!--                                <t t-set="allow_edit"-->
+    <!--                                   t-value="not order.partner_id or (ship.id in order.partner_id.child_ids.ids)"/>-->
+    <!--                            </t>-->
+    <!--                        </div>-->
+    <!--                        <div class="kanban_shipping_address_edit_cls" t-att-id="'partner_address_' + str(ship.id)">-->
+    <!--                            <t t-call="gio_obstgemuese_theme.edit_add_address_template">-->
+    <!--                                <t t-set='partner' t-value="ship"/>-->
+    <!--                            </t>-->
+    <!--                            <div class="row">-->
+    <!--                                <div class="d-flex justify-content-between col-md-6">-->
+    <!--                                    <a role="button" href="#"-->
+    <!--                                       class="btn log_reg_btn GT_Pressura_Pro_Mono mb32 bill_add_edit_back">-->
+    <!--                                        <span>cancel</span>-->
+    <!--                                        <i class="fa fa-chevron-right"/>-->
+    <!--                                    </a>-->
+    <!--                                </div>-->
+    <!--                                <div class="d-flex justify-content-between col-md-6">-->
+    <!--                                    <a role="button" href="#"-->
+    <!--                                       class="btn log_reg_btn GT_Pressura_Pro_Mono mb32 edit_shipping_address_btn">-->
+    <!--                                        <span>>></span>-->
+    <!--                                        <i class="fa fa-chevron-right"/>-->
+    <!--                                    </a>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </t>-->
+    <!--                </div>-->
+    <!--                <div class="add_shipping_address_cls">-->
+    <!--                    <t t-call="gio_obstgemuese_theme.edit_add_address_template"/>-->
+    <!--                    <t t-set='partner' t-value=""/>-->
+    <!--                    <div class="row">-->
+    <!--                        <div class="d-flex justify-content-between col-md-6">-->
+    <!--                            <a role="button" href="#"-->
+    <!--                               class="btn log_reg_btn GT_Pressura_Pro_Mono mb32 ship_address_add_back">-->
+    <!--                                <span>Cancel</span>-->
+    <!--                                <i class="fa fa-chevron-right"/>-->
+    <!--                            </a>-->
+    <!--                        </div>-->
+    <!--                        <div class="d-flex justify-content-between col-md-6">-->
+    <!--                            <a role="button" href="#"-->
+    <!--                               class="btn log_reg_btn GT_Pressura_Pro_Mono mb32 kanban_shipping_address_add_cls">-->
+    <!--                                <span>Save</span>-->
+    <!--                                <i class="fa fa-chevron-right"/>-->
+    <!--                            </a>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </template>-->
+
+    <!--    &lt;!&ndash;    checkout page toggle banner template O___O___O___O&ndash;&gt;-->
+    <!--    <template id="checkout_toggle_banner">-->
+    <!--        <div class="wizard-inner">-->
+    <!--            <div class="connecting-line"></div>-->
+    <!--            <ul class="nav nav-tabs" role="tablist">-->
+    <!--                <li role="presentation" class="active">-->
+    <!--                    <a href="#step1" data-toggle="tab"-->
+    <!--                       aria-controls="step1" role="tab"-->
+    <!--                       aria-expanded="true">-->
+    <!--                        <span class="round-tab">1</span>-->
+    <!--                        <i>registration</i>-->
+    <!--                    </a>-->
+    <!--                </li>-->
+    <!--                <li role="presentation"-->
+    <!--                    class="disabled">-->
+    <!--                    <a href="#step2" data-toggle="tab" id="shipping_method_select_tab"-->
+    <!--                       aria-controls="step2" role="tab"-->
+    <!--                       aria-expanded="false">-->
+    <!--                        <span class="round-tab">2</span>-->
+    <!--                        <i>Shipping method</i>-->
+    <!--                    </a>-->
+    <!--                </li>-->
+    <!--                <li role="presentation"-->
+    <!--                    class="disabled">-->
+    <!--                    <a href="#step3" data-toggle="tab" id="payment_method_select_tab"-->
+    <!--                       aria-controls="step3" role="tab">-->
+    <!--                        <span class="round-tab">3</span>-->
+    <!--                        <i>Payment method</i>-->
+    <!--                    </a>-->
+    <!--                </li>-->
+    <!--                <li role="presentation"-->
+    <!--                    class="disabled">-->
+    <!--                    <a href="#step4" data-toggle="tab" id="confirmation_select_tab"-->
+    <!--                       aria-controls="step4" role="tab">-->
+    <!--                        <span class="round-tab">4</span>-->
+    <!--                        <i>Confirmation</i>-->
+    <!--                    </a>-->
+    <!--                </li>-->
+    <!--            </ul>-->
+    <!--        </div>-->
+    <!--    </template>-->
+
+    <!--    <template id="checkout_toggle_banner_confirmation">-->
+    <!--        <div class="wizard-inner">-->
+    <!--            <div class="connecting-line"></div>-->
+    <!--            <ul class="nav nav-tabs" role="tablist">-->
+    <!--                <li role="presentation" class="disabled">-->
+    <!--                    <a href="#step1" data-toggle="tab"-->
+    <!--                       aria-controls="step1" role="tab">-->
+    <!--                        <span class="round-tab">1</span>-->
+    <!--                        <i>registration</i>-->
+    <!--                    </a>-->
+    <!--                </li>-->
+    <!--                <li role="presentation"-->
+    <!--                    class="disabled">-->
+    <!--                    <a href="#step2" data-toggle="tab"-->
+    <!--                       aria-controls="step2" role="tab"-->
+    <!--                       aria-expanded="false">-->
+    <!--                        <span class="round-tab">2</span>-->
+    <!--                        <i>Shipping method</i>-->
+    <!--                    </a>-->
+    <!--                </li>-->
+    <!--                <li role="presentation"-->
+    <!--                    class="disabled">-->
+    <!--                    <a href="#step3" data-toggle="tab"-->
+    <!--                       aria-controls="step3" role="tab">-->
+    <!--                        <span class="round-tab">3</span>-->
+    <!--                        <i>Payment method</i>-->
+    <!--                    </a>-->
+    <!--                </li>-->
+    <!--                <li role="presentation"-->
+    <!--                    class="active">-->
+    <!--                    <a href="#step4" data-toggle="tab"-->
+    <!--                       aria-controls="step4" role="tab" aria-expanded="true">-->
+    <!--                        <span class="round-tab">4</span>-->
+    <!--                        <i>Confirmation</i>-->
+    <!--                    </a>-->
+    <!--                </li>-->
+    <!--            </ul>-->
+    <!--        </div>-->
+    <!--    </template>-->
+
+    <!--    &lt;!&ndash;    registration tab template&ndash;&gt;-->
+    <!--    <template id="registration_tab">-->
+    <!--        <div class="tab-pane active"-->
+    <!--             role="tabpanel" id="step1">-->
+    <!--            <div class="row">-->
+    <!--                <div class="col-md-9">-->
+    <!--                    <h3 class="text-left GT_Pressura_Pro_Mono">-->
+    <!--                        Order-->
+    <!--                    </h3>-->
+    <!--                    <div id="registration">-->
+    <!--                        <t t-if="user_partner_id ==  order_partner_id">-->
+    <!--                            <t t-call="gio_obstgemuese_theme.obst_address"/>-->
+    <!--                        </t>-->
+    <!--                        <t t-else="">-->
+    <!--                            <t t-call="gio_obstgemuese_theme.obst_partner_address"/>-->
+    <!--                        </t>-->
+    <!--                        <input type="hidden" name="partner_id"-->
+    <!--                               t-attf-class="partner-id-class"-->
+    <!--                               t-att-value="request.website.sale_get_order().partner_id.id"/>-->
+    <!--                    </div>-->
+    <!--                    <ul class="list-inline pull-right">-->
+    <!--                        <li>-->
+    <!--                            <button type="button"-->
+    <!--                                    t-att-class="'log_reg_btn next-step reg_next_step_btn d-none' if address_redirection == True else 'log_reg_btn next-step reg_next_step_btn'"-->
+    <!--                                    class="log_reg_btn next-step reg_next_step_btn">-->
+    <!--                                >>-->
+    <!--                            </button>-->
+    <!--                        </li>-->
+    <!--                    </ul>-->
+    <!--                </div>-->
+    <!--                <div class="col-md-3">-->
+    <!--                    <div class="col-12 col-xl-auto order-xl-2">-->
+    <!--                        <t t-call="gio_obstgemuese_theme.custom_cart_summary"/>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </template>-->
+
+    <!--    &lt;!&ndash;    shipping method tab template&ndash;&gt;-->
+    <!--    <template id="shipping_method_tab">-->
+    <!--        <div class="tab-pane" role="tabpanel"-->
+    <!--             id="step2">-->
+    <!--            <div class="row">-->
+    <!--                <div class="col-md-9 shp_mthd_cls">-->
+    <!--                    <h3 class="text-left GT_Pressura_Pro_Mono">-->
+    <!--                        Shipping Method-->
+    <!--                    </h3>-->
+    <!--                    <div class="row mt-5 GT_Pressura_Pro_Mono">-->
+    <!--                        <div class="col-12">-->
+    <!--                            <t t-call="gio_obstgemuese_theme.custom_payment_delivery_shipping_method"/>-->
+    <!--                            <t t-call="gio_obstgemuese_theme.custom_payment_delivery"/>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="col-md-3">-->
+    <!--                    <div class="col-12 col-xl-auto order-xl-2">-->
+    <!--                        <t t-call="gio_obstgemuese_theme.custom_cart_summary"/>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </template>-->
+
+    <!--    &lt;!&ndash;    payment tab template&ndash;&gt;-->
+    <!--    <template id="payment_method_tab">-->
+    <!--        <div class="tab-pane" role="tabpanel"-->
+    <!--             id="step3">-->
+    <!--            <h4 class="text-center">Payment Method</h4>-->
+    <!--            <div class="row">-->
+    <!--                <div class="col-md-9 payment_method_select_div_cls">-->
+    <!--                    <t t-call="payment.checkout">-->
+    <!--                        <t t-set="footer_template_id" t-value="'website_sale.payment_footer'"/>-->
+    <!--                        <t t-set="submit_button_label">Pay Now</t>-->
+    <!--                    </t>-->
+    <!--                    <ul class="list-inline pull-right">-->
+    <!--                        <li>-->
+    <!--                            <button type="button"-->
+    <!--                                    class="log_reg_btn payment_next_step_btn">-->
+    <!--                                >>-->
+    <!--                            </button>-->
+    <!--                        </li>-->
+    <!--                    </ul>-->
+    <!--                </div>-->
+    <!--                <div class="col-md-3">-->
+    <!--                    <div class="col-12 col-xl-auto order-xl-2">-->
+    <!--                        <t t-call="gio_obstgemuese_theme.custom_cart_summary"/>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </template>-->
+
+    <!--    &lt;!&ndash;    payment tab template&ndash;&gt;-->
+    <!--    <template id="payment_footer_custom" inherit_id="website_sale.payment_footer">-->
+    <!--        <xpath expr="//div[hasclass('float-right')]" position="replace">-->
+    <!--            <div class="float-right mt-2  d-none">-->
+    <!--                <button name="o_payment_submit_button"-->
+    <!--                        type="submit"-->
+    <!--                        class="btn btn-primary  d-none"-->
+    <!--                        disabled="true"-->
+    <!--                        data-icon-class="fa-chevron-right">-->
+    <!--                    <t t-esc="submit_button_label"/>-->
+    <!--                    <i class="fa fa-chevron-right"/>-->
+    <!--                </button>-->
+    <!--            </div>-->
+    <!--        </xpath>-->
+    <!--        <xpath expr="//div[hasclass('float-left')]" position="replace">-->
+    <!--            <div class="float-left mt-2  d-none">-->
+    <!--                <a role="button" href="/shop/cart" class="btn btn-secondary d-none">-->
+    <!--                    <i class="fa fa-chevron-left"/>-->
+    <!--                    Return to Cart-->
+    <!--                </a>-->
+    <!--            </div>-->
+    <!--        </xpath>-->
+    <!--    </template>-->
+
+    <!--    &lt;!&ndash;    confirmation tab template&ndash;&gt;-->
+    <!--    <template id="confirmation_tab">-->
+    <!--        <div class="tab-pane" role="tabpanel"-->
+    <!--             id="step4" style="margin-left: 20px;">-->
+    <!--            <h4 class="text-left font-weight-normal">Confirmation</h4>-->
+    <!--            <div class="row w-100">-->
+    <!--                <div class="one_kanban  col-md-3">-->
+    <!--                    <div class="kanban_billing_address_cls kanban_billing_address_cls_modal">-->
+    <!--                        <t t-set='contact' t-value="request.website.sale_get_order().partner_id"/>-->
+    <!--                        <t t-set="partner_id" t-value="contact.id"/>-->
+    <!--                        <div class='card-body ' t-att-id="'partner_' + str(partner_id)">-->
+    <!--                            <a t-if="allow_edit" href="#" t-att-id="str(partner_id)"-->
+    <!--                               class="btn btn-link float-right p-0 js_edit_address ob_edit_address no-decoration"-->
+    <!--                               role="button" title="Edit this address" aria-label="Edit this address">-->
+    <!--                                <i class='fa fa-edit'/>-->
+    <!--                            </a>-->
+    <!--                            <strong>Billing Address</strong>-->
+    <!--                            <br/>-->
+    <!--                            <br/>-->
+    <!--                            <t t-esc="contact"-->
+    <!--                               t-options="dict(widget='contact', fields=['name', 'address'], no_marker=True)"/>-->
+    <!--                            <br/>-->
+    <!--                            <button type="button"-->
+    <!--                                    class="log_reg_btn" data-toggle="modal" data-target="#edit_billing_address_id">-->
+    <!--                                Edit-->
+    <!--                            </button>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="modal fade" id="edit_billing_address_id" tabindex="-1" role="dialog"-->
+    <!--                     aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+    <!--                    <div class="modal-dialog" role="document">-->
+    <!--                        <div class="modal-content">-->
+    <!--                            <div class="modal-header">-->
+    <!--                                <h5 class="modal-title" id="exampleModalLabel">Edit Billing Address</h5>-->
+    <!--                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+    <!--                                    <span aria-hidden="true"></span>-->
+    <!--                                </button>-->
+    <!--                            </div>-->
+    <!--                            <div class="modal-body">-->
+    <!--                                <div class="kanban_billing_address_edit_cls_modal" style="display: block !important;"-->
+    <!--                                     t-att-id="'partner_address_' + str(request.website.sale_get_order().partner_id.id)">-->
+    <!--                                    <t t-call="gio_obstgemuese_theme.edit_add_address_template">-->
+    <!--                                        <t t-set='partner' t-value="request.website.sale_get_order().partner_id"/>-->
+    <!--                                    </t>-->
+    <!--                                    <div class="row">-->
+    <!--                                        <div class="d-flex justify-content-between col-md-6">-->
+    <!--                                            &lt;!&ndash;                                            <a role="button" href="#"&ndash;&gt;-->
+    <!--                                            &lt;!&ndash;                                               class="btn log_reg_btn GT_Pressura_Pro_Mono mb32 bill_add_edit_back">&ndash;&gt;-->
+    <!--                                            &lt;!&ndash;                                                <span>cancel</span>&ndash;&gt;-->
+    <!--                                            &lt;!&ndash;                                                <i class="fa fa-chevron-right"/>&ndash;&gt;-->
+    <!--                                            &lt;!&ndash;                                            </a>&ndash;&gt;-->
+    <!--                                        </div>-->
+    <!--                                        <div class="d-flex justify-content-between col-md-6">-->
+    <!--                                            <a role="button" href="#"-->
+    <!--                                               class="btn log_reg_btn GT_Pressura_Pro_Mono mb32 edit_billing_address_btn_modal">-->
+    <!--                                                <span>Save</span>-->
+    <!--                                                <i class="fa fa-chevron-right"/>-->
+    <!--                                            </a>-->
+    <!--                                        </div>-->
+    <!--                                    </div>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <t t-foreach="shippings" t-as="ship">-->
+    <!--                    <t t-if="order.partner_shipping_id==ship">-->
+    <!--                        <div class="one_kanban kanban_shipping_address_cls_modal col-md-3">-->
+    <!--                            <div class="kanban_billing_address_cls">-->
+    <!--                                <t t-set='contact' t-value="ship"/>-->
+    <!--                                <t t-set="partner_id" t-value="contact.id"/>-->
+    <!--                                <div class='card-body ' t-att-id="'partner_' + str(partner_id)">-->
+    <!--                                    <a t-if="allow_edit" href="#" t-att-id="str(partner_id)"-->
+    <!--                                       class="btn btn-link float-right p-0 js_edit_address ob_edit_address no-decoration"-->
+    <!--                                       role="button" title="Edit this address" aria-label="Edit this address">-->
+    <!--                                        <i class='fa fa-edit'/>-->
+    <!--                                    </a>-->
+    <!--                                    <strong>Shipping Address</strong>-->
+    <!--                                    <br/>-->
+    <!--                                    <br/>-->
+    <!--                                    <t t-esc="contact"-->
+    <!--                                       t-options="dict(widget='contact', fields=['name', 'address'], no_marker=True)"/>-->
+    <!--                                    <br/>-->
+    <!--                                    <button type="button"-->
+    <!--                                            class="log_reg_btn" data-toggle="modal"-->
+    <!--                                            data-target="#edit_Shipping_address_id">-->
+    <!--                                        Edit-->
+    <!--                                    </button>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                        <div class="modal fade" id="edit_Shipping_address_id" tabindex="-1" role="dialog"-->
+    <!--                             aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+    <!--                            <div class="modal-dialog" role="document">-->
+    <!--                                <div class="modal-content">-->
+    <!--                                    <div class="modal-header">-->
+    <!--                                        <h5 class="modal-title" id="exampleModalLabel">Edit Shipping Address</h5>-->
+    <!--                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+    <!--                                            <span aria-hidden="true"></span>-->
+    <!--                                        </button>-->
+    <!--                                    </div>-->
+    <!--                                    <div class="modal-body">-->
+    <!--                                        <div class="kanban_shipping_address_edit_cls_modal"-->
+    <!--                                             style="display: block !important;"-->
+    <!--                                             t-att-id="'partner_address_' + str(ship.id)">-->
+    <!--                                            <t t-call="gio_obstgemuese_theme.edit_add_address_template">-->
+    <!--                                                <t t-set='partner' t-value="ship"/>-->
+    <!--                                            </t>-->
+    <!--                                            <div class="row">-->
+    <!--                                                <div class="d-flex justify-content-between col-md-6">-->
+
+    <!--                                                </div>-->
+    <!--                                                <div class="d-flex justify-content-between col-md-6">-->
+    <!--                                                    <a role="button" href="#"-->
+    <!--                                                       class="btn log_reg_btn GT_Pressura_Pro_Mono mb32 edit_shipping_address_btn_modal">-->
+    <!--                                                        <span>Save</span>-->
+    <!--                                                        <i class="fa fa-chevron-right"/>-->
+    <!--                                                    </a>-->
+    <!--                                                </div>-->
+    <!--                                            </div>-->
+    <!--                                        </div>-->
+    <!--                                    </div>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </t>-->
+    <!--                </t>-->
+    <!--                <div class="one_kanban col-md-3">-->
+    <!--                    <div class="kanban_billing_address_cls">-->
+    <!--                        <div t-attf-class="card #{selected and 'border border-primary' or 'js_change_shipping'}">-->
+    <!--                            <div class='card-body '>-->
+    <!--                                <strong>Shipping Method</strong>-->
+    <!--                                <br/>-->
+    <!--                                <br/>-->
+    <!--                                <span id="shipping_method_name"/>-->
+    <!--                                <t t-esc="request.website.sale_get_order().carrier_id.name"/>-->
+    <!--                                <br/>-->
+    <!--                                <br/>-->
+    <!--                                <button type="button"-->
+    <!--                                        class="log_reg_btn" data-toggle="modal" data-target="#shipping_methods_id">-->
+    <!--                                    Edit-->
+    <!--                                </button>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                        <div class="modal fade" id="shipping_methods_id" tabindex="-1" role="dialog"-->
+    <!--                             aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+    <!--                            <div class="modal-dialog" role="document">-->
+    <!--                                <div class="modal-content">-->
+    <!--                                    <div class="modal-header">-->
+    <!--                                        <h5 class="modal-title" id="exampleModalLabel">Shipping Methods</h5>-->
+    <!--                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+    <!--                                            <span aria-hidden="true"></span>-->
+    <!--                                        </button>-->
+    <!--                                    </div>-->
+    <!--                                    <div class="modal-body">-->
+    <!--                                        <t t-call="gio_obstgemuese_theme.custom_payment_delivery_modal"/>-->
+    <!--                                    </div>-->
+    <!--                                    <div class="modal-footer">-->
+    <!--                                        <a role="button" href="#"-->
+    <!--                                           class="btn log_reg_btn GT_Pressura_Pro_Mono mb32 edit_shipping_method_btn_modal">-->
+    <!--                                            <span>Save</span>-->
+    <!--                                            <i class="fa fa-chevron-right"/>-->
+    <!--                                        </a>-->
+    <!--                                    </div>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="one_kanban col-md-3">-->
+    <!--                    <div class="kanban_billing_address_cls">-->
+    <!--                        <div t-attf-class="card #{selected and 'border border-primary' or 'js_change_shipping'}">-->
+    <!--                            <div class='card-body '>-->
+    <!--                                <strong>Payment Method</strong>-->
+    <!--                                <br/>-->
+    <!--                                <br/>-->
+    <!--                                <span id="payment_acquire_name"/>-->
+    <!--                                <br/>-->
+    <!--                                <br/>-->
+    <!--                                <button type="button"-->
+    <!--                                        class="log_reg_btn" data-toggle="modal" data-target="#payment_method_id">-->
+    <!--                                    Edit-->
+    <!--                                </button>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                        <div class="modal fade" id="payment_method_id" tabindex="-1" role="dialog"-->
+    <!--                             aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+    <!--                            <div class="modal-dialog" role="document">-->
+    <!--                                <div class="modal-content">-->
+    <!--                                    <div class="modal-header">-->
+    <!--                                        <h5 class="modal-title" id="exampleModalLabel">Select Payment Method</h5>-->
+    <!--                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+    <!--                                            <span aria-hidden="true"></span>-->
+    <!--                                        </button>-->
+    <!--                                    </div>-->
+    <!--                                    <div class="modal-body">-->
+    <!--                                        <t t-call="payment.checkout">-->
+    <!--                                            <t t-set="footer_template_id" t-value="'website_sale.payment_footer'"/>-->
+    <!--                                            <t t-set="submit_button_label">Pay Now</t>-->
+    <!--                                        </t>-->
+    <!--                                    </div>-->
+    <!--                                    <div class="modal-footer">-->
+    <!--                                        <button type="button" class="btn btn-primary edit_payment_method_class">Save-->
+    <!--                                            changes-->
+    <!--                                        </button>-->
+    <!--                                    </div>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--            <br/>-->
+    <!--            <div>-->
+    <!--                <t t-call="gio_obstgemuese_theme.cart_summary_confirmation_page"/>-->
+    <!--            </div>-->
+    <!--            <br/>-->
+    <!--            <div class="row">-->
+    <!--                <div class="col-md-4">-->
+    <!--                </div>-->
+    <!--                <div class="col-md-4" style="text-align: center;">-->
+    <!--                    <a href="#">-->
+    <!--                        Please also note our cancellation policy when placing your order-->
+    <!--                    </a>-->
+    <!--                </div>-->
+    <!--                <div class="col-md-4">-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--            <br/>-->
+    <!--            <div class="row">-->
+    <!--                <div class="col-4">-->
+    <!--                </div>-->
+    <!--                <div class="col-4" style="text-align: center;">-->
+    <!--                    <button type="button"-->
+    <!--                            class="log_reg_btn confirm_payment_button">-->
+    <!--                        Complete order-->
+    <!--                    </button>-->
+    <!--                </div>-->
+    <!--                <div class="col-4">-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"-->
+    <!--             aria-hidden="true">-->
+    <!--            <div class="modal-dialog modal-lg">-->
+    <!--                <div class="modal-content">-->
+    <!--                    <t t-call="gio_obstgemuese_theme.shipping_method_tab"/>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </template>-->
+
+    <!--    <template id="confirmation_custom_tab">-->
+    <!--        <div class="tab-pane active" role="tabpanel"-->
+    <!--             id="step4">-->
+    <!--            <h4 class="text-left">Confirmation</h4>-->
+    <!--        </div>-->
+    <!--    </template>-->
+
+    <!--    &lt;!&ndash;    obsteandgemuse custom checkout page main checkout template&ndash;&gt;-->
+    <!--    <template id="custom_checkout_obst">-->
+    <!--        <t t-call="website.layout">-->
+    <!--            <section class="step-container mt-5 pt-5">-->
+    <!--                <div class="">-->
+    <!--                    <div class="row d-flex justify-content-center">-->
+    <!--                        <div class="col-md-10">-->
+    <!--                            <div class="wizard" style="position: relative">-->
+    <!--                                <div class="checkout_layout_index"-->
+    <!--                                     style="z-index: 5; padding-bottom: 120px; position: absolute; width: 100%;"/>-->
+    <!--                                <t t-call="gio_obstgemuese_theme.checkout_toggle_banner"/>-->
+    <!--                                <br/>-->
+    <!--                                <br/>-->
+    <!--                                <br/>-->
+    <!--                                <div action="index.html"-->
+    <!--                                     class="login-box">-->
+    <!--                                    <div class="tab-content main_form_class" id="main_form">-->
+    <!--                                        <t t-call="gio_obstgemuese_theme.registration_tab"/>-->
+    <!--                                        <t t-call="gio_obstgemuese_theme.shipping_method_tab"/>-->
+    <!--                                        <t t-call="gio_obstgemuese_theme.payment_method_tab"/>-->
+    <!--                                        <t t-call="gio_obstgemuese_theme.confirmation_tab"/>-->
+    <!--                                        <div class="clearfix"></div>-->
+    <!--                                    </div>-->
+
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </section>-->
+    <!--        </t>-->
+    <!--    </template>-->
+
+    <!--    <template id="custom_checkout_confirmation_obst">-->
+    <!--        <section class="step-container mt-5 pt-5">-->
+    <!--            <div class="">-->
+    <!--                <div class="row d-flex justify-content-center">-->
+    <!--                    <div class="col-md-10">-->
+    <!--                        <div class="wizard">-->
+    <!--                            <t t-call="gio_obstgemuese_theme.checkout_toggle_banner_confirmation"/>-->
+    <!--                            <br/>-->
+    <!--                            <br/>-->
+    <!--                            <br/>-->
+    <!--                            <div action="index.html"-->
+    <!--                                 class="login-box">-->
+    <!--                                <div class="tab-content" id="main_form">-->
+    <!--                                    <t t-call="gio_obstgemuese_theme.confirmation_custom_tab"/>-->
+    <!--                                    <div class="clearfix"></div>-->
+    <!--                                </div>-->
+
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </section>-->
+    <!--    </template>-->
+
+    <!--    &lt;!&ndash;    custom cart summary checkout top right&ndash;&gt;-->
+    <!--    <template id="custom_cart_summary" name="Cart right column">-->
+    <!--        <div class="card">-->
+    <!--            <div class="card-body p-xl-0">-->
+    <!--                <div class="toggle_summary d-xl-none">-->
+    <!--                    <b>Your order:</b>-->
+    <!--                    <span id="amount_total_summary" class="monetary_field" t-field="website_sale_order.amount_total"-->
+    <!--                          t-options='{"widget": "monetary", "display_currency": website_sale_order.pricelist_id.currency_id}'/>-->
+    <!--                    <span class='fa fa-chevron-down fa-border float-right' role="img" aria-label="Details"-->
+    <!--                          title="Details"></span>-->
+    <!--                </div>-->
+    <!--                <div t-if="not website_sale_order or not website_sale_order.website_order_line"-->
+    <!--                     class="alert alert-info">-->
+    <!--                    Your cart is empty!-->
+    <!--                </div>-->
+    <!--                <div class="toggle_summary_div d-none d-xl-block">-->
+    <!--                    <table class="table table-sm" id="cart_products"-->
+    <!--                           t-if="website_sale_order and website_sale_order.website_order_line">-->
+    <!--                        <thead>-->
+    <!--                        </thead>-->
+    <!--                        <tbody>-->
+    <!--                            <tr t-foreach="website_sale_order.website_order_line" t-as="line">-->
+    <!--                                <td class='td-product_name' t-if="line.product_id.product_tmpl_id">-->
+    <!--                                    <div>-->
+    <!--                                        <span t-field="line.name_short"/>-->
+    <!--                                    </div>-->
+    <!--                                </td>-->
+    <!--                                <td class="text-center td-price">-->
+    <!--                                    <span t-field="line.price_reduce_taxexcl" style="white-space: nowrap;"-->
+    <!--                                          t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"-->
+    <!--                                          groups="account.group_show_line_subtotals_tax_excluded"/>-->
+    <!--                                    <span t-field="line.price_reduce_taxinc" style="white-space: nowrap;"-->
+    <!--                                          t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"-->
+    <!--                                          groups="account.group_show_line_subtotals_tax_included"/>-->
+    <!--                                </td>-->
+    <!--                            </tr>-->
+    <!--                        </tbody>-->
+    <!--                    </table>-->
+    <!--                    <t t-call="gio_obstgemuese_theme.custom_total">-->
+    <!--                        <t t-set='redirect' t-value="redirect or '/shop/payment'"></t>-->
+    <!--                    </t>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </template>-->
+
+    <!--    &lt;!&ndash;    custom total checkout top right&ndash;&gt;-->
+    <!--    <template id="custom_total">-->
+    <!--        <div id="cart_total" t-att-class="extra_class or ''"-->
+    <!--             t-if="website_sale_order and website_sale_order.website_order_line">-->
+    <!--            <table class="table">-->
+    <!--                <tr id="empty">-->
+    <!--                    <t t-if='not no_rowspan'>-->
+    <!--                        <td rowspan="10" class="border-0"/>-->
+    <!--                    </t>-->
+    <!--                    <td class="col-md-2 col-3 border-0"></td>-->
+    <!--                    <td class="col-md-2 col-3 border-0"></td>-->
+    <!--                </tr>-->
+    <!--                <tr id="order_delivery" t-if="website_sale_order and website_sale_order.carrier_id">-->
+    <!--                    <td class="text-right border-0 text-muted"-->
+    <!--                        title="Delivery will be updated after choosing a new delivery method">Delivery:-->
+    <!--                    </td>-->
+    <!--                    <td class="text-xl-right border-0 text-muted">-->
+    <!--                        <span t-field="website_sale_order.amount_delivery" class="monetary_field"-->
+    <!--                              style="white-space: nowrap;" t-options='{-->
+    <!--                      "widget": "monetary",-->
+    <!--                      "display_currency": website_sale_order.currency_id,-->
+    <!--                  }'/>-->
+    <!--                    </td>-->
+    <!--                </tr>-->
+    <!--                <tr id="order_total_untaxed">-->
+    <!--                    <td class="text-right border-0">Subtotal:</td>-->
+    <!--                    <td class="text-xl-right border-0">-->
+    <!--                        <span t-field="website_sale_order.amount_untaxed" class="monetary_field"-->
+    <!--                              style="white-space: nowrap;"-->
+    <!--                              t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>-->
+    <!--                    </td>-->
+    <!--                </tr>-->
+    <!--                <tr id="order_total_taxes">-->
+    <!--                    <td class="text-right border-0">Taxes:</td>-->
+    <!--                    <td class="text-xl-right border-0">-->
+    <!--                        <span t-field="website_sale_order.amount_tax" class="monetary_field"-->
+    <!--                              style="white-space: nowrap;"-->
+    <!--                              t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>-->
+    <!--                    </td>-->
+    <!--                </tr>-->
+    <!--                <tr id="order_total">-->
+    <!--                    <td class="text-right">-->
+    <!--                        <strong>Total:</strong>-->
+    <!--                    </td>-->
+    <!--                    <td class="text-xl-right">-->
+    <!--                        <strong t-field="website_sale_order.amount_total" class="monetary_field"-->
+    <!--                                t-options='{"widget": "monetary", "display_currency": website_sale_order.pricelist_id.currency_id}'/>-->
+    <!--                    </td>-->
+    <!--                </tr>-->
+    <!--            </table>-->
+    <!--        </div>-->
+    <!--    </template>-->
+
+    <!--    &lt;!&ndash;    shipping method call template shipping method tab&ndash;&gt;-->
+    <!--    <template id="custom_payment_delivery_methods">-->
+    <!--        <label>-->
+    <!--            <input t-att-value="delivery.id" t-att-id="'delivery_%i' % delivery.id" type="radio" name="delivery_type"-->
+    <!--                   t-att-checked="order.carrier_id and order.carrier_id.id == delivery.id and 'checked' or False"-->
+    <!--                   t-att-class="'d-none' if delivery_nb == 1 else ''"/>-->
+    <!--            <span/>-->
+    <!--        </label>-->
+    <!--        <label class="label-optional" t-field="delivery.name"/>-->
+    <!--        <t t-set='badge_class' t-value="(delivery_nb != 1 and 'float-right ' or '') + 'badge badge-secondary'"/>-->
+    <!--        <t t-if="delivery.website_description">-->
+    <!--            <div t-field="delivery.website_description" class="text-muted mt8"/>-->
+    <!--        </t>-->
+    <!--    </template>-->
+
+    <!--    <template id="custom_payment_delivery_shipping_method" name="Delivery Shipping method">-->
+    <!--        <t t-set="delivery_nb" t-value="deliveries and len(deliveries)"/>-->
+    <!--        <div t-if="delivery_nb == 1" id="delivery_carrier" class="mt4">-->
+    <!--            <t t-foreach="deliveries" t-as="delivery">-->
+    <!--                <t t-call="gio_obstgemuese_theme.custom_payment_delivery_methods"/>-->
+    <!--                <br/>-->
+    <!--                <br/>-->
+    <!--                &lt;!&ndash;                <li style="background: white;">&ndash;&gt;-->
+    <!--                <button type="button"-->
+    <!--                        class="log_reg_btn shipping_next_step_btn_nb">-->
+    <!--                    >>-->
+    <!--                </button>-->
+    <!--                &lt;!&ndash;                </li>&ndash;&gt;-->
+    <!--            </t>-->
+    <!--        </div>-->
+    <!--    </template>-->
+
+    <!--    <template id="custom_payment_delivery" name="Delivery Costs">-->
+    <!--        <div t-if="deliveries" id="delivery_carrier">-->
+    <!--            <t t-set="delivery_nb" t-value="len(deliveries)"/>-->
+    <!--            <div t-if="delivery_nb &gt; 1" class="card border-0" id="delivery_method">-->
+    <!--                <ul class="list-group">-->
+    <!--                    <t t-foreach="deliveries" t-as="delivery">-->
+    <!--                        <li class="list-group-item o_delivery_carrier_select" style="border:none">-->
+    <!--                            <t t-call="gio_obstgemuese_theme.custom_payment_delivery_methods"/>-->
+    <!--                        </li>-->
+    <!--                        <li style="background: white;">-->
+    <!--                            <button type="button"-->
+    <!--                                    class="log_reg_btn shipping_next_step_btn">-->
+    <!--                                >>-->
+    <!--                            </button>-->
+    <!--                        </li>-->
+    <!--                    </t>-->
+    <!--                </ul>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--        <div t-else="">-->
+    <!--            <label class="label-optional">No Shipping Methods For selected Products</label>-->
+    <!--            <br/>-->
+    <!--            <button type="button"-->
+    <!--                    class="log_reg_btn next-step">-->
+    <!--                >>-->
+    <!--            </button>-->
+    <!--        </div>-->
+    <!--    </template>-->
+
+    <!--    <template id="custom_payment_delivery_modal" name="Delivery Costs">-->
+    <!--        <div t-if="deliveries" id="delivery_carrier">-->
+    <!--            <t t-set="delivery_nb" t-value="len(deliveries)"/>-->
+    <!--            <div t-if="delivery_nb &gt; 1" class="card border-0" id="delivery_method">-->
+    <!--                <ul class="list-group">-->
+    <!--                    <t t-foreach="deliveries" t-as="delivery">-->
+    <!--                        <li class="list-group-item o_delivery_carrier_select" style="border:none">-->
+    <!--                            <t t-call="gio_obstgemuese_theme.custom_payment_delivery_methods"/>-->
+    <!--                        </li>-->
+    <!--                    </t>-->
+    <!--                </ul>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--        <div t-else="">-->
+    <!--            <label class="label-optional">No Shipping Methods For selected Products</label>-->
+    <!--            <br/>-->
+    <!--        </div>-->
+    <!--    </template>-->
+
+    <!--    <template id="checkout_inherit" inherit_id="payment.checkout">-->
+    <!--        <xpath expr="//form/div/t/div[1]" position="replace">-->
+    <!--            <div name="o_payment_option_card" class="card-body o_payment_option_card"-->
+    <!--                 style="background: white !important;">-->
+    <!--                <label>-->
+    <!--                    &lt;!&ndash; === Radio button === &ndash;&gt;-->
+    <!--                    &lt;!&ndash; Only shown if linked to the only payment option &ndash;&gt;-->
+    <!--                    <input name="o_payment_radio"-->
+    <!--                           type="radio"-->
+    <!--                           t-att-checked="acquirer.id == default_payment_option_id"-->
+    <!--                           t-att-class="'' if acquirer_count + token_count > 1 else 'd-none'"-->
+    <!--                           t-att-data-payment-option-id="acquirer.id"-->
+    <!--                           t-att-data-provider="acquirer.provider"-->
+    <!--                           data-payment-option-type="acquirer"/>-->
+    <!--                    &lt;!&ndash; === Acquirer name === &ndash;&gt;-->
+    <!--                    <span class="payment_option_name">-->
+    <!--                        <b t-esc="acquirer.display_as or acquirer.name"-->
+    <!--                           style="font-family: 'GT Pressura Pro Mono' !important;"/>-->
+    <!--                    </span>-->
+    <!--                    &lt;!&ndash; === "Test Mode" badge === &ndash;&gt;-->
+    <!--                    <span t-if="acquirer.state == 'test'"-->
+    <!--                          class="badge-pill badge-warning ml-1">-->
+    <!--                        Test Mode-->
+    <!--                    </span>-->
+    <!--                    &lt;!&ndash; === Extra fees badge === &ndash;&gt;-->
+    <!--                    <t t-if="fees_by_acquirer.get(acquirer)">-->
+    <!--                        <span class="badge-pill badge-secondary ml-1">-->
+    <!--                            +-->
+    <!--                            <t t-esc="fees_by_acquirer.get(acquirer)"-->
+    <!--                               t-options="{'widget': 'monetary', 'display_currency': currency}"/>-->
+    <!--                            Fees-->
+    <!--                        </span>-->
+    <!--                    </t>-->
+    <!--                </label>-->
+    <!--                &lt;!&ndash; === Payment icon list === &ndash;&gt;-->
+    <!--                <t t-call="payment.icon_list"/>-->
+    <!--                &lt;!&ndash; === Help message === &ndash;&gt;-->
+    <!--                <div t-if="not is_html_empty(acquirer.pre_msg)"-->
+    <!--                     t-out="acquirer.pre_msg"-->
+    <!--                     class="text-muted ml-3"/>-->
+    <!--            </div>-->
+    <!--        </xpath>-->
+    <!--        <xpath expr="//form/div/t/div[2]" position="replace">-->
+    <!--            <div t-attf-id="o_payment_acquirer_inline_form_{{acquirer.id}}"-->
+    <!--                 name="o_payment_inline_form"-->
+    <!--                 class="card-footer d-none" style="background: white !important;">-->
+    <!--                &lt;!&ndash; === Inline form content (filled by acquirer) === &ndash;&gt;-->
+    <!--                <t t-if="acquirer.sudo()._should_build_inline_form(is_validation=False)">-->
+    <!--                    <t t-set="inline_form_xml_id"-->
+    <!--                       t-value="acquirer.sudo().inline_form_view_id.xml_id"/>-->
+    <!--                    <div t-if="inline_form_xml_id" class="clearfix">-->
+    <!--                        <t t-call="{{inline_form_xml_id}}">-->
+    <!--                            <t t-set="acquirer_id" t-value="acquirer.id"/>-->
+    <!--                        </t>-->
+    <!--                    </div>-->
+    <!--                </t>-->
+    <!--                &lt;!&ndash; === "Save my payment details" checkbox === &ndash;&gt;-->
+    <!--                &lt;!&ndash; Only included if partner is known and if the choice is given &ndash;&gt;-->
+    <!--                <t t-set="tokenization_required"-->
+    <!--                   t-value="acquirer._is_tokenization_required(provider=acquirer.provider)"/>-->
+    <!--                <label t-if="show_tokenize_input and acquirer.allow_tokenization and not tokenization_required">-->
+    <!--                    <input name="o_payment_save_as_token" type="checkbox"/>-->
+    <!--                    Save my payment details-->
+    <!--                </label>-->
+    <!--            </div>-->
+    <!--        </xpath>-->
+    <!--        <xpath expr="//form/div/t[2]/div" position="replace">-->
+    <!--            <div name="o_payment_option_card" class="card-body o_payment_option_card"-->
+    <!--                 style="background:white !important;">-->
+    <!--                <label>-->
+    <!--                    &lt;!&ndash; === Radio button === &ndash;&gt;-->
+    <!--                    <input name="o_payment_radio"-->
+    <!--                           type="radio"-->
+    <!--                           t-att-checked="token.id == default_payment_option_id"-->
+    <!--                           t-att-data-payment-option-id="token.id"-->
+    <!--                           t-att-data-provider="token.provider"-->
+    <!--                           data-payment-option-type="token"/>-->
+    <!--                    &lt;!&ndash; === Token name === &ndash;&gt;-->
+    <!--                    <span class="payment_option_name" t-esc="token.name"-->
+    <!--                          style="font-family: 'GT Pressura Pro Mono' !important;"/>-->
+    <!--                    &lt;!&ndash; === "V" check mark === &ndash;&gt;-->
+    <!--                    <t t-call="payment.verified_token_checkmark"/>-->
+    <!--                </label>-->
+    <!--            </div>-->
+    <!--        </xpath>-->
+    <!--    </template>-->
+
+    <!--    <template id="payment_status_inherit" inherit_id="payment.payment_status">-->
+    <!--        <xpath expr="//div[hasclass('wrap')]" position="replace">-->
+    <!--            <div id="wrap">-->
+
+    <!--                <section class="step-container mt-5 pt-5">-->
+    <!--                    <div class="">-->
+    <!--                        <div class="row d-flex justify-content-center">-->
+    <!--                            <div class="col-md-10">-->
+    <!--                                <div class="wizard">-->
+    <!--                                    <t t-call="gio_obstgemuese_theme.checkout_toggle_banner_confirmation"/>-->
+    <!--                                    <br/>-->
+    <!--                                    <br/>-->
+    <!--                                    <br/>-->
+    <!--                                    <div action="index.html"-->
+    <!--                                         class="login-box">-->
+    <!--                                        <div class="tab-content" id="main_form">-->
+    <!--                                            <div class="container d-none">-->
+    <!--                                                &lt;!&ndash; Portal breadcrumb &ndash;&gt;-->
+    <!--                                                <t t-call="payment.portal_breadcrumb"/>-->
+    <!--                                                &lt;!&ndash; Status page &ndash;&gt;-->
+    <!--                                                <div name="o_payment_status">-->
+    <!--                                                    <div name="o_payment_status_content"-->
+    <!--                                                         class="col-sm-6 col-sm-offset-3">-->
+    <!--                                                        &lt;!&ndash; The content is generated in JavaScript &ndash;&gt;-->
+    <!--                                                    </div>-->
+    <!--                                                </div>-->
+    <!--                                            </div>-->
+    <!--                                            <div class="clearfix"></div>-->
+    <!--                                        </div>-->
+
+    <!--                                    </div>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </section>-->
+    <!--            </div>-->
+    <!--        </xpath>-->
+    <!--    </template>-->
+
+    <!--    <template id="confirm_inherit" inherit_id="payment.confirm">-->
+    <!--        <xpath expr="//div[hasclass('wrap')]" position="replace">-->
+    <!--            <div id="wrap">-->
+    <!--                <div class="container d-none">-->
+    <!--                    &lt;!&ndash; Portal breadcrumb &ndash;&gt;-->
+    <!--                    <t t-call="payment.portal_breadcrumb"/>-->
+    <!--                    &lt;!&ndash; Confirmation page &ndash;&gt;-->
+    <!--                    <div class="row">-->
+    <!--                        <div class="col-lg-6">-->
+    <!--                            <div>-->
+    <!--                                &lt;!&ndash; message is the content of either the HTML field describing the-->
+    <!--                                transaction state computed while processing feedback data, or the-->
+    <!--                                HTML field associated with the transaction state, defined on the-->
+    <!--                                acquirer.  &ndash;&gt;-->
+    <!--                                <div t-attf-class="alert alert-#{status}"-->
+    <!--                                     t-out="message"-->
+    <!--                                     role="status"/>-->
+    <!--                                <div class="form-group row">-->
+    <!--                                    <label for="form_partner_name" class="col-md-3 col-form-label">-->
+    <!--                                        From-->
+    <!--                                    </label>-->
+    <!--                                    <span name="form_partner_name"-->
+    <!--                                          class="col-md-9 col-form-label"-->
+    <!--                                          t-esc="tx.partner_name"/>-->
+    <!--                                </div>-->
+    <!--                                <hr/>-->
+    <!--                                <div class="form-group row">-->
+    <!--                                    <label for="form_reference" class="col-md-3 col-form-label">-->
+    <!--                                        Reference-->
+    <!--                                    </label>-->
+    <!--                                    <span name="form_reference"-->
+    <!--                                          class="col-md-9 col-form-label"-->
+    <!--                                          t-esc="tx.reference"/>-->
+    <!--                                </div>-->
+    <!--                                <hr/>-->
+    <!--                                <div class="form-group row">-->
+    <!--                                    <label for="form_amount" class="col-md-3 col-form-label">-->
+    <!--                                        Amount-->
+    <!--                                    </label>-->
+    <!--                                    <span name="form_amount"-->
+    <!--                                          class="col-md-9 col-form-label"-->
+    <!--                                          t-esc="tx.amount"-->
+    <!--                                          t-options="{'widget': 'monetary', 'display_currency': tx.currency_id}"/>-->
+    <!--                                </div>-->
+    <!--                                <hr/>-->
+    <!--                                <div class="row">-->
+    <!--                                    <div class="col-md-5 text-muted">-->
+    <!--                                        Processed by-->
+    <!--                                        <t t-esc="tx.acquirer_id.sudo().name"/>-->
+    <!--                                    </div>-->
+    <!--                                    <div class="col-md-4 offset-md-3 mt-2 pl-0">-->
+    <!--                                        <a role="button"-->
+    <!--                                           t-attf-class="btn btn-#{status} float-right"-->
+    <!--                                           href="/my/home">-->
+    <!--                                            <i class="fa fa-arrow-circle-right"/>-->
+    <!--                                            Back to My Account-->
+    <!--                                        </a>-->
+    <!--                                    </div>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <section class="step-container mt-5 pt-5">-->
+    <!--                    <div class="">-->
+    <!--                        <div class="row d-flex justify-content-center">-->
+    <!--                            <div class="col-md-10">-->
+    <!--                                <div class="wizard">-->
+    <!--                                    <t t-call="gio_obstgemuese_theme.checkout_toggle_banner_confirmation"/>-->
+    <!--                                    <br/>-->
+    <!--                                    <br/>-->
+    <!--                                    <br/>-->
+    <!--                                    <div action="index.html"-->
+    <!--                                         class="login-box">-->
+    <!--                                        <div class="tab-content" id="main_form">-->
+    <!--                                            <div class="container">-->
+    <!--                                                &lt;!&ndash; Portal breadcrumb &ndash;&gt;-->
+    <!--                                                <t t-call="payment.portal_breadcrumb"/>-->
+    <!--                                                &lt;!&ndash; Confirmation page &ndash;&gt;-->
+    <!--                                                <div class="row">-->
+    <!--                                                    <div class="col-lg-6">-->
+    <!--                                                        <div>-->
+    <!--                                                            &lt;!&ndash; message is the content of either the HTML field describing the-->
+    <!--                                                            transaction state computed while processing feedback data, or the-->
+    <!--                                                            HTML field associated with the transaction state, defined on the-->
+    <!--                                                            acquirer.  &ndash;&gt;-->
+    <!--                                                            <div t-attf-class="alert alert-#{status}"-->
+    <!--                                                                 t-out="message"-->
+    <!--                                                                 role="status"/>-->
+    <!--                                                            <div class="form-group row">-->
+    <!--                                                                <label for="form_partner_name"-->
+    <!--                                                                       class="col-md-3 col-form-label">-->
+    <!--                                                                    From-->
+    <!--                                                                </label>-->
+    <!--                                                                <span name="form_partner_name"-->
+    <!--                                                                      class="col-md-9 col-form-label"-->
+    <!--                                                                      t-esc="tx.partner_name"/>-->
+    <!--                                                            </div>-->
+    <!--                                                            <hr/>-->
+    <!--                                                            <div class="form-group row">-->
+    <!--                                                                <label for="form_reference"-->
+    <!--                                                                       class="col-md-3 col-form-label">-->
+    <!--                                                                    Reference-->
+    <!--                                                                </label>-->
+    <!--                                                                <span name="form_reference"-->
+    <!--                                                                      class="col-md-9 col-form-label"-->
+    <!--                                                                      t-esc="tx.reference"/>-->
+    <!--                                                            </div>-->
+    <!--                                                            <hr/>-->
+    <!--                                                            <div class="form-group row">-->
+    <!--                                                                <label for="form_amount"-->
+    <!--                                                                       class="col-md-3 col-form-label">-->
+    <!--                                                                    Amount-->
+    <!--                                                                </label>-->
+    <!--                                                                <span name="form_amount"-->
+    <!--                                                                      class="col-md-9 col-form-label"-->
+    <!--                                                                      t-esc="tx.amount"-->
+    <!--                                                                      t-options="{'widget': 'monetary', 'display_currency': tx.currency_id}"/>-->
+    <!--                                                            </div>-->
+    <!--                                                            <hr/>-->
+    <!--                                                            <div class="row">-->
+    <!--                                                                <div class="col-md-5 text-muted">-->
+    <!--                                                                    Processed by-->
+    <!--                                                                    <t t-esc="tx.acquirer_id.sudo().name"/>-->
+    <!--                                                                </div>-->
+    <!--                                                                <div class="col-md-4 offset-md-3 mt-2 pl-0">-->
+    <!--                                                                    <a role="button"-->
+    <!--                                                                       t-attf-class="btn btn-#{status} float-right"-->
+    <!--                                                                       href="/my/home">-->
+    <!--                                                                        <i class="fa fa-arrow-circle-right"/>-->
+    <!--                                                                        Back to My Account-->
+    <!--                                                                    </a>-->
+    <!--                                                                </div>-->
+    <!--                                                            </div>-->
+    <!--                                                        </div>-->
+    <!--                                                    </div>-->
+    <!--                                                </div>-->
+    <!--                                            </div>-->
+    <!--                                            <div class="clearfix"></div>-->
+    <!--                                        </div>-->
+
+    <!--                                    </div>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </section>-->
+    <!--            </div>-->
+    <!--        </xpath>-->
+    <!--    </template>-->
+
+    <!--    <template id="confirmations_inherit" inherit_id="website_sale.confirmation">-->
+    <!--        <xpath expr="//div[@id='wrap']" position="replace">-->
+    <!--            <div id="wrap">-->
+    <!--                <section class="step-container mt-5 pt-5">-->
+    <!--                    <div class="">-->
+    <!--                        <div class="row d-flex justify-content-center">-->
+    <!--                            <div class="col-md-10">-->
+    <!--                                <div class="wizard">-->
+    <!--                                    <t t-call="gio_obstgemuese_theme.checkout_toggle_banner_confirmation"/>-->
+    <!--                                    <br/>-->
+    <!--                                    <br/>-->
+    <!--                                    <br/>-->
+    <!--                                    <div action="index.html"-->
+    <!--                                         class="login-box">-->
+    <!--                                        <div class="tab-content" id="main_form">-->
+    <!--                                            <div class="oe_website_sale py-2 " style="text-align: center;">-->
+    <!--                                                <h1>-->
+    <!--                                                    <span>Successful order!-->
+    <!--                                                    </span>-->
+    <!--                                                </h1>-->
+    <!--                                                <br/>-->
+    <!--                                                <h3>-->
+    <!--                                                    <span>-->
+    <!--                                                        Thank you for your order.-->
+    <!--                                                        We have received your order and will process it as quickly as-->
+    <!--                                                        possible. If you have any questions, please feel free to contact-->
+    <!--                                                        us, please have your order number ready.-->
+    <!--                                                    </span>-->
+    <!--                                                </h3>-->
+    <!--                                                <br/>-->
+    <!--                                                <br/>-->
+    <!--                                                <div class="col-12 pl-5 pr-5">-->
+    <!--                                                    <div class="row">-->
+    <!--                                                        <t t-set="prod_cate"-->
+    <!--                                                           t-value="order.order_line[0].product_template_id"/>-->
+    <!--                                                        <t t-set="product_template"-->
+    <!--                                                           t-value="request.env['product.template'].sudo().search([('is_published', '=', True)], limit=4)"/>-->
+    <!--                                                        <t t-foreach="product_template" t-as="pro">-->
+    <!--                                                            <t t-set="product_href" t-value=""/>-->
+    <!--                                                            <div class="col-md-3 mt-3">-->
+    <!--                                                                <div>-->
+    <!--                                                                    <input type="hidden" name="csrf_token"-->
+    <!--                                                                           t-att-value="request.csrf_token()"/>-->
+    <!--                                                                    <a t-att-href="product_href" class="d-block h-100"-->
+    <!--                                                                       itemprop="url">-->
+    <!--                                                                        <t t-set="image_holder"-->
+    <!--                                                                           t-value="pro._get_image_holder()"/>-->
+    <!--                                                                        <span t-field="image_holder.image_1920"-->
+    <!--                                                                              t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256', 'itemprop': 'image'}"-->
+    <!--                                                                              class="d-flex h-100 justify-content-center align-items-center"/>-->
+    <!--                                                                    </a>-->
+    <!--                                                                </div>-->
+    <!--                                                                <div class="text-center">-->
+    <!--                                                                    <h1 class="GT_Pressura_Pro_Mono PAS_product_header_similar"-->
+    <!--                                                                        itemprop="name" t-field="pro.name">Product Name-->
+    <!--                                                                    </h1>-->
+    <!--                                                                    <span class="Subheader PAS_product_header_similar"-->
+    <!--                                                                          style="color: #666;">-->
+    <!--                                                                        <t t-esc="pro.sub_header"/>-->
+    <!--                                                                    </span>-->
+    <!--                                                                </div>-->
+    <!--                                                            </div>-->
+    <!--                                                        </t>-->
+    <!--                                                    </div>-->
+    <!--                                                </div>-->
+    <!--                                                <h1 class="d-none">-->
+    <!--                                                    <span>Order</span>-->
+    <!--                                                    <em t-field="order.name"/>-->
+    <!--                                                    <t t-if="order.state == 'sale'">-->
+    <!--                                                        <span>Confirmed</span>-->
+    <!--                                                    </t>-->
+    <!--                                                </h1>-->
+
+    <!--                                                <div class="row d-none">-->
+    <!--                                                    <div class="col-12 col-xl">-->
+    <!--                                                        <div class="oe_cart">-->
+    <!--                                                            <t t-set="payment_tx_id"-->
+    <!--                                                               t-value="order.get_portal_last_transaction()"/>-->
+    <!--                                                            <t t-if="payment_tx_id.state == 'done'">-->
+    <!--                                                                <div class="thanks_msg">-->
+    <!--                                                                    <h2>Thank you for your order.-->
+    <!--                                                                        <a role="button"-->
+    <!--                                                                           class="btn btn-primary d-none d-md-inline-block"-->
+    <!--                                                                           href="/shop/print" target="_blank"-->
+    <!--                                                                           aria-label="Print" title="Print">-->
+    <!--                                                                            <i class="fa fa-print"></i>-->
+    <!--                                                                            Print-->
+    <!--                                                                        </a>-->
+    <!--                                                                    </h2>-->
+    <!--                                                                </div>-->
+    <!--                                                            </t>-->
+    <!--                                                            <t t-if="request.env['res.users']._get_signup_invitation_scope() == 'b2c' and request.website.is_public_user()">-->
+    <!--                                                                <p class="alert alert-info mt-3" role="status">-->
+    <!--                                                                    <a role="button"-->
+    <!--                                                                       t-att-href='order.partner_id.signup_prepare() and order.partner_id.with_context(relative_url=True).signup_url'-->
+    <!--                                                                       class='btn btn-primary'>Sign Up-->
+    <!--                                                                    </a>-->
+    <!--                                                                    to follow your order.-->
+    <!--                                                                </p>-->
+    <!--                                                            </t>-->
+    <!--                                                            <div class="oe_structure clearfix mt-3"-->
+    <!--                                                                 id="oe_structure_website_sale_confirmation_1"/>-->
+    <!--                                                            <h3 class="text-left mt-3">-->
+    <!--                                                                <strong>Payment Information:</strong>-->
+    <!--                                                            </h3>-->
+    <!--                                                            <table class="table">-->
+    <!--                                                                <tbody>-->
+    <!--                                                                    <tr>-->
+    <!--                                                                        <td colspan="2">-->
+    <!--                                                                            <t t-esc="order.get_portal_last_transaction().acquirer_id.sudo().name"/>-->
+    <!--                                                                        </td>-->
+    <!--                                                                        <td class="text-right" width="100">-->
+    <!--                                                                            <strong>Total:</strong>-->
+    <!--                                                                        </td>-->
+    <!--                                                                        <td class="text-right" width="100">-->
+    <!--                                                                            <strong t-field="order.amount_total"-->
+    <!--                                                                                    t-options="{'widget': 'monetary', 'display_currency': order.pricelist_id.currency_id}"/>-->
+    <!--                                                                        </td>-->
+    <!--                                                                    </tr>-->
+    <!--                                                                </tbody>-->
+    <!--                                                            </table>-->
+    <!--                                                            <t t-call="gio_obstgemuese_theme.payment_confirmation_status"/>-->
+    <!--                                                            <div class="card mt-3"-->
+    <!--                                                                 style="background: white !important;">-->
+    <!--                                                                <div class="card-body"-->
+    <!--                                                                     style="background: white !important;">-->
+    <!--                                                                    <t t-set="same_shipping"-->
+    <!--                                                                       t-value="bool(order.partner_shipping_id==order.partner_id or only_services)"/>-->
+    <!--                                                                    <div>-->
+    <!--                                                                        <b>Billing <t-->
+    <!--                                                                                t-if="same_shipping and not only_services">-->
+    <!--                                                                            &amp; Shipping</t>:-->
+    <!--                                                                        </b>-->
+    <!--                                                                        <span t-esc='order.partner_id'-->
+    <!--                                                                              t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"-->
+    <!--                                                                              class="address-inline"/>-->
+    <!--                                                                    </div>-->
+    <!--                                                                    <div t-if="not same_shipping and not only_services"-->
+    <!--                                                                         groups="sale.group_delivery_invoice_address">-->
+    <!--                                                                        <b>Shipping:</b>-->
+    <!--                                                                        <span t-esc='order.partner_shipping_id'-->
+    <!--                                                                              t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"-->
+    <!--                                                                              class="address-inline"/>-->
+    <!--                                                                    </div>-->
+    <!--                                                                </div>-->
+    <!--                                                            </div>-->
+    <!--                                                            <div class="oe_structure mt-3"-->
+    <!--                                                                 id="oe_structure_website_sale_confirmation_2"/>-->
+    <!--                                                        </div>-->
+    <!--                                                    </div>-->
+    <!--                                                    <div class="col-12 col-xl-auto">-->
+    <!--                                                        <t t-set="website_sale_order" t-value="order"/>-->
+    <!--                                                        <t t-call="website_sale.cart_summary">-->
+    <!--                                                            <t t-set="hide_promotions" t-value="1"/>-->
+    <!--                                                        </t>-->
+    <!--                                                    </div>-->
+    <!--                                                </div>-->
+    <!--                                            </div>-->
+    <!--                                            <div class="oe_structure" id="oe_structure_website_sale_confirmation_3"/>-->
+    <!--                                            <div class="clearfix"></div>-->
+    <!--                                        </div>-->
+
+    <!--                                    </div>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </section>-->
+    <!--            </div>-->
+    <!--        </xpath>-->
+    <!--    </template>-->
+
+    <!--    <template id="payment_confirmation_status">-->
+    <!--        <div class="oe_website_sale_tx_status mt-3" t-att-data-order-id="order.id"-->
+    <!--             t-att-data-order-tracking-info="json.dumps(order_tracking_info)">-->
+    <!--            <t t-set="payment_tx_id" t-value="order.get_portal_last_transaction()"/>-->
+    <!--            <div t-attf-class="card #{-->
+    <!--                (payment_tx_id.state == 'pending' and 'bg-white') or-->
+    <!--                (payment_tx_id.state == 'done' and 'bg-white') or-->
+    <!--                (payment_tx_id.state == 'authorized' and 'bg-white') or-->
+    <!--                'bg-danger'}" style="background: white !important;">-->
+    <!--                <div class="card-header" style="background: white !important;">-->
+    <!--                    <a role="button" groups="base.group_system" class="btn btn-sm btn-link text-white float-right"-->
+    <!--                       target="_blank" aria-label="Edit" title="Edit"-->
+    <!--                       t-att-href="'/web#model=%s&amp;id=%s&amp;action=%s&amp;view_type=form' % ('payment.acquirer', payment_tx_id.acquirer_id.id, 'payment.action_payment_acquirer')">-->
+    <!--                        <i class="fa fa-pencil"></i>-->
+    <!--                    </a>-->
+    <!--                    <t t-if="payment_tx_id.state == 'pending'">-->
+    <!--                        <t t-out="payment_tx_id.acquirer_id.sudo().pending_msg"/>-->
+    <!--                    </t>-->
+    <!--                    <t t-if="payment_tx_id.state == 'done'">-->
+    <!--                        <span t-if='payment_tx_id.acquirer_id.sudo().done_msg'-->
+    <!--                              t-out="payment_tx_id.acquirer_id.sudo().done_msg"/>-->
+    <!--                    </t>-->
+    <!--                    <t t-if="payment_tx_id.state == 'cancel'">-->
+    <!--                        <t t-out="payment_tx_id.acquirer_id.sudo().cancel_msg"/>-->
+    <!--                    </t>-->
+    <!--                    <t t-if="payment_tx_id.state == 'authorized'">-->
+    <!--                        <span>Your payment has been authorized.</span>-->
+    <!--                    </t>-->
+    <!--                    <t t-if="payment_tx_id.state == 'error'">-->
+    <!--                        <span t-esc="payment_tx_id.state_message"/>-->
+    <!--                    </t>-->
+    <!--                </div>-->
+    <!--                <t t-if="payment_tx_id.provider == 'transfer'">-->
+    <!--                    <div t-if="order.reference" class="card-body" style="background: white !important;">-->
+    <!--                        <b>Communication:</b>-->
+    <!--                        <span t-esc='order.reference'/>-->
+    <!--                    </div>-->
+    <!--                    <div t-if="payment_tx_id.acquirer_id.sudo().qr_code">-->
+    <!--                        <t t-set="qr_code"-->
+    <!--                           t-value="payment_tx_id.company_id.partner_id.bank_ids[:1].build_qr_code_base64(order.amount_total,payment_tx_id.reference, None, payment_tx_id.currency_id, payment_tx_id.partner_id)"/>-->
+    <!--                        <div class="card-body" t-if="qr_code" style="background: white !important;">-->
+    <!--                            <h3>Or scan me with your banking app.</h3>-->
+    <!--                            <img class="border border-dark rounded" t-att-src="qr_code"/>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </t>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </template>-->
+
+    <!--    <template id="cart_summary_confirmation_page" name="Cart right column">-->
+    <!--        <div class="card">-->
+    <!--            <div class="card-body" style="background: white !important;">-->
+    <!--                <div class="toggle_summary d-xl-none">-->
+    <!--                    <b>Your order:</b>-->
+    <!--                    <span id="amount_total_summary" class="monetary_field" t-field="website_sale_order.amount_total"-->
+    <!--                          t-options='{"widget": "monetary", "display_currency": website_sale_order.pricelist_id.currency_id}'/>-->
+    <!--                    <span class='fa fa-chevron-down fa-border float-right' role="img" aria-label="Details"-->
+    <!--                          title="Details"></span>-->
+    <!--                </div>-->
+    <!--                <div t-if="not website_sale_order or not website_sale_order.website_order_line"-->
+    <!--                     class="alert alert-info">-->
+    <!--                    Your cart is empty!-->
+    <!--                </div>-->
+    <!--                <div class="toggle_summary_div" style="background: white; border-bottom: 1px solid #dee2e6;">-->
+    <!--                    <table class="table table-sm" style="border-bottom: 1px solid #dee2e6;" id="cart_products"-->
+    <!--                           t-if="website_sale_order and website_sale_order.website_order_line">-->
+    <!--                        <tbody>-->
+    <!--                            <tr t-foreach="website_sale_order.website_order_line" t-as="line">-->
+    <!--                                <td colspan="2" t-if="not line.product_id.product_tmpl_id"></td>-->
+    <!--                                <td class='td-img text-center' t-if="line.product_id.product_tmpl_id">-->
+    <!--                                    <span t-if="line._is_not_sellable_line() and line.product_id.image_128">-->
+    <!--                                        <img t-att-src="image_data_uri(line.product_id.image_128)" class="img rounded"-->
+    <!--                                             t-att-alt="line.name_short"/>-->
+    <!--                                    </span>-->
+    <!--                                    <span t-else=""-->
+    <!--                                          t-field="line.product_id.image_128"-->
+    <!--                                          t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded'}"-->
+    <!--                                    />-->
+    <!--                                </td>-->
+    <!--                                <td class='td-product_name' t-if="line.product_id.product_tmpl_id">-->
+    <!--                                    <div>-->
+    <!--                                        <strong t-field="line.name_short"/>-->
+    <!--                                    </div>-->
+    <!--                                </td>-->
+    <!--                                <td class='td-qty'>-->
+    <!--                                    <div t-esc="line.product_uom_qty"/>-->
+    <!--                                </td>-->
+    <!--                                <td class="text-center td-price">-->
+    <!--                                    <span t-field="line.price_reduce_taxexcl" style="white-space: nowrap;"-->
+    <!--                                          t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"-->
+    <!--                                          groups="account.group_show_line_subtotals_tax_excluded"/>-->
+    <!--                                    <span t-field="line.price_reduce_taxinc" style="white-space: nowrap;"-->
+    <!--                                          t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"-->
+    <!--                                          groups="account.group_show_line_subtotals_tax_included"/>-->
+    <!--                                </td>-->
+    <!--                            </tr>-->
+    <!--                        </tbody>-->
+    <!--                    </table>-->
+
+    <!--                    <t t-call="gio_obstgemuese_theme.total">-->
+    <!--                        <t t-set='redirect' t-value="redirect or '/shop/payment'"></t>-->
+    <!--                    </t>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </template>-->
+
+    <!--    <template id="total">-->
+    <!--        <div id="cart_total" t-att-class="extra_class or ''"-->
+    <!--             t-if="website_sale_order and website_sale_order.website_order_line">-->
+    <!--            <table class="table">-->
+    <!--                <tr id="empty">-->
+    <!--                    <t t-if='not no_rowspan'>-->
+    <!--                        <td rowspan="10" class="border-0"/>-->
+    <!--                    </t>-->
+    <!--                    <td class="col-md-2 col-3 border-0"></td>-->
+    <!--                    <td class="col-md-2 col-3 border-0"></td>-->
+    <!--                </tr>-->
+    <!--                <tr id="order_total_untaxed" class="text-center">-->
+    <!--                    <td class="text-right border-0">Subtotal:</td>-->
+    <!--                    <td class="col-md-2 col-3 border-0"></td>-->
+    <!--                    <td class="col-md-2 col-3 border-0"></td>-->
+    <!--                    <td class="text-xl-right border-0">-->
+    <!--                        <span t-field="website_sale_order.amount_untaxed" class="monetary_field"-->
+    <!--                              style="white-space: nowrap;"-->
+    <!--                              t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>-->
+    <!--                    </td>-->
+    <!--                </tr>-->
+    <!--                <tr id="order_total_taxes" class="text-center">-->
+    <!--                    <td class="text-right border-0">Taxes:</td>-->
+    <!--                    <td class="col-md-2 col-3 border-0"></td>-->
+    <!--                    <td class="col-md-2 col-3 border-0"></td>-->
+    <!--                    <td class="border-0 text-center">-->
+    <!--                        <span t-field="website_sale_order.amount_tax" class="monetary_field"-->
+    <!--                              style="white-space: nowrap;"-->
+    <!--                              t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>-->
+    <!--                    </td>-->
+    <!--                </tr>-->
+    <!--                <tr id="order_total" class="text-center">-->
+    <!--                    <td class="text-right border-0">-->
+    <!--                        <strong>Total:</strong>-->
+    <!--                    </td>-->
+    <!--                    <td class="col-md-2 col-3 border-0"></td>-->
+    <!--                    <td class="col-md-2 col-3 border-0"></td>-->
+    <!--                    <td class="border-0 text-center">-->
+    <!--                        <strong t-field="website_sale_order.amount_total" class="monetary_field"-->
+    <!--                                t-options='{"widget": "monetary", "display_currency": website_sale_order.pricelist_id.currency_id}'/>-->
+    <!--                    </td>-->
+    <!--                </tr>-->
+    <!--            </table>-->
+    <!--        </div>-->
+    <!--    </template>-->
+
+    <template id="custom_address_iherit" inherit_id="website_sale.address">
+        <xpath expr="//div[@id='wrap']" position="attributes">
+            <attribute name="class" add="custom_wrap_padding"/>
+        </xpath>
+        <xpath expr="//div[@id='wrap']/div/div[2]/div[2]/div//h2" position="attributes">
+            <attribute name="class" add="o_page_header mt8 GT_Pressura_Regular border-0" remove="o_page_header mt8"/>
+        </xpath>
+        <xpath expr="//div[@id='wrap']/div/div[2]/div[2]/div//h2//a" position="attributes">
+            <attribute name="style" add="margin-top: 20px !important; padding-top: 3px !important;"
+                       remove="margin-top: -11px"/>
+            <attribute name="class" add="obst-btn-primary btn btn-primary GT_Pressura_Regular"
+                       remove="btn btn-primary"/>
+        </xpath>
+        <xpath expr="//div[@id='wrap']/div/div[2]/div[2]/div//h2//small" position="attributes">
+            <attribute name="class" add="GT_Pressura_Regular border-0" remove="o_page_header mt8"/>
+        </xpath>
+        <xpath expr="//div[@id='wrap']/div/div[2]" position="attributes">
+            <attribute name="class" add="row pt-5" remove="row"/>
+        </xpath>
+        <xpath expr="//div[hasclass('justify-content-between')]/a[2]" position="attributes">
+            <attribute name="class"
+                       add="btn obst-btn-primary btn-primary mb32 a-submit a-submit-disable a-submit-loading "
+                       remove="btn btn-primary mb32 a-submit a-submit-disable a-submit-loading"/>
+        </xpath>
+        <xpath expr="//div[hasclass('justify-content-between')]/a[1]" position="attributes">
+            <attribute name="class" add="btn btn-secondary mb32 obst-btn-secondary" remove="btn btn-secondary mb32 "/>
+        </xpath>
+        <xpath expr="//div[hasclass('checkbox')]" position="replace">
+            <label class="del_add_checkbox">
+                <input type="checkbox" id='shipping_use_same' class="mr8 rem_me_checkbox" name='use_same' value="1"
+                       checked='checked'/>
+                Ship to the same address
+                <span class='ship_to_other text-muted' style="display: none">&amp;nbsp;(
+                    <i>Your shipping address will be requested later)</i>
+                </span>
+                <span class="check_cover"></span>
+                <span class="checkmark"></span>
+            </label>
+        </xpath>
+    </template>
+
+    <template id="custom_cart_iherit" inherit_id="website_sale.cart">
+        <xpath expr="//div[@id='wrap']" position="attributes">
+            <attribute name="class" add="custom_wrap_padding"/>
+        </xpath>
+        <xpath expr="//div[@id='wrap']/div/div/div[2]" position="attributes">
+            <attribute name="class" add="col-12 col-xl-8 oe_cart pt-3" remove="col-12 col-xl-8 oe_cart"/>
+        </xpath>
+        <xpath expr="//div[hasclass('clearfix')]/../a[1]" position="attributes">
+            <attribute name="class" add="btn btn-secondary mb32 d-none d-xl-inline-block obst-btn-secondary"
+                       remove="btn btn-secondary mb32 d-none d-xl-inline-block"/>
+            <attribute name="style" add="width: 180px !IMPORTANT;"/>
+        </xpath>
+        <xpath expr="//div[hasclass('clearfix')]/../a[2]" position="attributes">
+            <attribute name="class" add="btn btn-primary float-right d-none d-xl-inline-block obst-btn-primary"
+                       remove="btn btn-primary float-right d-none d-xl-inline-block"/>
+            <attribute name="style" add="width: 180px !IMPORTANT; font-size: 18px !important;"/>
+        </xpath>
+    </template>
+
+    <template id="custom_short_cart_summary_inherit" inherit_id="website_sale.short_cart_summary">
+        <xpath expr="//div[hasclass('card-body')]" position="attributes">
+            <attribute name="class" add="obst_card_body GT_Pressura_Regular p-4" remove="card-body"/>
+        </xpath>
+        <xpath expr="//hr" position="replace"/>
+        <xpath expr="//h4" position="attributes">
+            <attribute name="class" add="d-none d-xl-block GT_Pressura_Regular" remove="d-none d-xl-block"/>
+        </xpath>
+        <xpath expr="//div/div/div/a[1]" position="attributes">
+            <attribute name="class" add="btn btn-secondary obst-btn-secondary float-right d-none d-xl-inline-block"
+                       remove="btn btn-secondary float-right d-none d-xl-inline-block"/>
+            <attribute name="style" add="width: 135px !important; margin-right: 0px !important;"/>
+        </xpath>
+    </template>
+
+    <template id="custom_cart_summary_inherit" inherit_id="website_sale.cart_summary">
+        <xpath expr="//div[hasclass('p-xl-0')]" position="attributes">
+            <attribute name="class" add="p-xl-0 obst_card_body" remove="card-body p-xl-0"/>
+        </xpath>
+        <xpath expr="//div[hasclass('toggle_summary_div')]" position="replace">
+            <div class="toggle_summary_div d-none d-xl-block">
+                <table class="table table-sm" id="cart_products"
+                       t-if="website_sale_order and website_sale_order.website_order_line">
+                    <thead>
+                        <tr>
+                            <th class="border-0 td-img">Product</th>
+                            <th class="border-0"></th>
+                            <th class="border-0 td-qty">Quantity</th>
+                            <th class="border-0 text-center td-price">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="website_sale_order.website_order_line" t-as="line">
+                            <td colspan="2" class="border-0" t-if="not line.product_id.product_tmpl_id"></td>
+                            <td class='td-img text-center border-0' t-if="line.product_id.product_tmpl_id">
+                                <span t-if="line._is_not_sellable_line() and line.product_id.image_128">
+                                    <img t-att-src="image_data_uri(line.product_id.image_128)"
+                                         class="img o_image_64_max rounded"
+                                         t-att-alt="line.name_short"/>
+                                </span>
+                                <span t-else=""
+                                      t-field="line.product_id.image_128"
+                                      t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max'}"
+                                />
+                            </td>
+                            <td class='td-product_name border-0' t-if="line.product_id.product_tmpl_id">
+                                <div>
+                                    <strong t-field="line.name_short"/>
+                                </div>
+                            </td>
+                            <td class='td-qty border-0'>
+                                <div t-esc="line.product_uom_qty"/>
+                            </td>
+                            <td class="text-center td-price border-0">
+                                <span t-field="line.price_reduce_taxexcl" style="white-space: nowrap;"
+                                      t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"
+                                      groups="account.group_show_line_subtotals_tax_excluded"/>
+                                <span t-field="line.price_reduce_taxinc" style="white-space: nowrap;"
+                                      t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"
+                                      groups="account.group_show_line_subtotals_tax_included"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <t t-call="website_sale.total">
+                    <t t-set='redirect' t-value="redirect or '/shop/payment'"></t>
+                </t>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="custom_total_inherit" inherit_id="website_sale.total">
+        <xpath expr="//tr[@id='order_total']" position="replace">
+            <tr id="order_total">
+                <td class="text-right border-0">
+                    <strong>Total:</strong>
+                </td>
+                <td class="text-xl-right border-0">
+                    <strong t-field="website_sale_order.amount_total" class="monetary_field"
+                            t-options='{"widget": "monetary", "display_currency": website_sale_order.pricelist_id.currency_id}'/>
+                </td>
+            </tr>
+        </xpath>
+    </template>
+
+    <template id="custom_wizard_checkout_iherit" inherit_id="website_sale.wizard_checkout">
+        <xpath expr="//div[hasclass('progress-wizard')]" position="replace">
+            <div class="progress-wizard">
+                <a class="no-decoration" t-att-href="step&gt;=10 and '/shop/cart' or '#'">
+                    <div id="wizard-step10"
+                         t-att-class="'progress-wizard-step %s' % (step == 10 and 'active' or step&gt;10 and 'complete' or 'disabled')">
+                        <div class="progress-wizard-bar d-none d-md-block"/>
+                        <span class="progress-wizard-dot d-none d-md-inline-block round-tab">1</span>
+                        <div class="text-center progress-wizard-steplabel pl-4 GT_Pressura_Regular">Review Order</div>
+                    </div>
+                </a>
+                <a class="no-decoration" t-att-href="step&gt;=20 and '/shop/checkout' or '#'">
+                    <div id="wizard-step20"
+                         t-att-class="'progress-wizard-step %s' % (step == 20 and 'active' or step&gt;20 and 'complete' or 'disabled')">
+                        <div class="progress-wizard-bar d-none d-md-block"/>
+                        <span class="progress-wizard-dot d-none d-md-inline-block round-tab">2</span>
+                        <div class="text-center progress-wizard-steplabel pl-4 GT_Pressura_Regular">Address</div>
+                    </div>
+                </a>
+                <a class="no-decoration" t-att-href="step&gt;=40 and '/shop/payment' or '#'">
+                    <div id="wizard-step40"
+                         t-att-class="'progress-wizard-step %s' % (step == 40 and 'active' or step&gt;40 and 'complete' or 'disabled')">
+                        <div class="progress-wizard-bar d-none d-md-block"/>
+                        <span class="progress-wizard-dot d-none d-md-inline-block round-tab">3</span>
+                        <div class="text-center progress-wizard-steplabel pl-4 GT_Pressura_Regular">Confirm Order</div>
+                    </div>
+                </a>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="custom_cart_lines_inherit" inherit_id="website_sale.cart_lines">
+        <xpath expr="//table" position="replace">
+            <table class="mb16 table table-sm js_cart_lines" id="cart_products"
+                   t-if="website_sale_order and website_sale_order.website_order_line">
+                <thead>
+                    <tr>
+                        <th class="td-img d-none">Product</th>
+                        <th class="d-none"></th>
+                        <th class="text-center td-qty d-none">
+                            <t t-set="show_qty" t-value="is_view_active('website_sale.product_quantity')"/>
+                            <t t-if="show_qty">
+                                Quantity
+                            </t>
+                        </th>
+                        <th class="text-center td-price d-none">Price</th>
+                        <th class="text-center td-action d-none"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="website_sale_order.website_order_line" t-as="line">
+                        <tr t-att-class="'optional_product info' if line.linked_line_id else None"
+                            style="border-bottom: 1px solid #dfdddd;">
+                            <td colspan="2" t-if="not line.product_id.product_tmpl_id" class='td-img'></td>
+                            <td align="center" t-if="line.product_id.product_tmpl_id" class='td-img'>
+                                <span t-if="line._is_not_sellable_line() and line.product_id.image_128">
+                                    <img t-att-src="image_data_uri(line.product_id.image_128)"
+                                         style="max-width: 150px; max-height: 150px;"
+                                         class="img o_image_64_max rounded" t-att-alt="line.name_short"/>
+                                </span>
+                                <span t-else=""
+                                      t-field="line.product_id.image_128" style="max-width: 150px; max-height: 150px;"
+                                      t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max'}"
+                                />
+                            </td>
+                            <td t-if="line.product_id.product_tmpl_id" class='td-product_name GT_Pressura_Regular'>
+                                <div>
+                                    <t t-call="website_sale.cart_line_product_link">
+                                        <strong t-field="line.name_short" class="text-dark"/>
+                                    </t>
+                                </div>
+                                <t t-call="website_sale.cart_line_description_following_lines">
+                                    <t t-set="div_class" t-value="'d-none d-md-block text-dark GT_Pressura_Regular'"/>
+                                </t>
+                            </td>
+                            <td class="text-center td-qty">
+                                <div class="css_quantity input-group mx-auto justify-content-center">
+                                    <t t-if="not line._is_not_sellable_line()">
+                                        <t t-if="show_qty">
+                                            <div class="input-group-prepend">
+                                                <a t-attf-href="#"
+                                                   class="btn obst-btn-one btn-link js_add_cart_json d-none d-md-inline-block"
+                                                   aria-label="Remove one" title="Remove one">
+                                                    <i class="fa fa-minus text-white"></i>
+                                                </a>
+                                            </div>
+                                            <input type="text"
+                                                   class="js_quantity form-control quantity GT_Pressura_Regular"
+                                                   t-att-data-line-id="line.id"
+                                                   t-att-data-product-id="line.product_id.id"
+                                                   style="color: white; background: #9b9b9b; border-top: 1px; border-bottom: 1px;"
+                                                   t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"/>
+                                            <div class="input-group-append">
+                                                <a t-attf-href="#"
+                                                   class="btn obst-btn-three btn-link float_left js_add_cart_json d-none d-md-inline-block"
+                                                   aria-label="Add one" title="Add one">
+                                                    <i class="fa fa-plus text-white"></i>
+                                                </a>
+                                            </div>
+                                        </t>
+                                        <t t-else="">
+                                            <input type="hidden" class="js_quantity form-control quantity"
+                                                   t-att-data-line-id="line.id"
+                                                   t-att-data-product-id="line.product_id.id"
+                                                   t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"/>
+                                        </t>
+                                    </t>
+                                    <t t-else="">
+                                        <span class="text-muted w-100" t-esc="int(line.product_uom_qty)"/>
+                                        <input type="hidden" class="js_quantity form-control quantity"
+                                               t-att-data-line-id="line.id" t-att-data-product-id="line.product_id.id"
+                                               t-att-value="line.product_uom_qty"/>
+                                    </t>
+                                </div>
+                            </td>
+                            <td class="text-center td-price GT_Pressura_Regular" name="price">
+                                <t t-set="combination"
+                                   t-value="line.product_id.product_template_attribute_value_ids + line.product_no_variant_attribute_value_ids"/>
+                                <t t-set="combination_info"
+                                   t-value="line.product_id.product_tmpl_id._get_combination_info(combination, pricelist=website_sale_order.pricelist_id, add_qty=line.product_uom_qty)"/>
+
+                                <t t-set="list_price_converted"
+                                   t-value="website.currency_id._convert(combination_info['list_price'], website_sale_order.currency_id, website_sale_order.company_id, date)"/>
+                                <t groups="account.group_show_line_subtotals_tax_excluded"
+                                   t-if="(website_sale_order.pricelist_id.discount_policy == 'without_discount' and website_sale_order.currency_id.compare_amounts(list_price_converted, line.price_reduce_taxexcl) == 1) or website_sale_order.currency_id.compare_amounts(line.price_unit, line.price_reduce) == 1"
+                                   name="order_line_discount">
+                                    <del t-attf-class="#{'text-danger mr8'}" style="white-space: nowrap;"
+                                         t-esc="list_price_converted"
+                                         t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                                </t>
+                                <span t-field="line.price_reduce_taxexcl" style="white-space: nowrap;"
+                                      t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"
+                                      groups="account.group_show_line_subtotals_tax_excluded"/>
+                                <t groups="account.group_show_line_subtotals_tax_included"
+                                   t-if="(website_sale_order.pricelist_id.discount_policy == 'without_discount' and website_sale_order.currency_id.compare_amounts(list_price_converted, line.price_reduce_taxinc) == 1) or website_sale_order.currency_id.compare_amounts(line.price_unit, line.price_reduce) == 1"
+                                   name="order_line_discount">
+                                    <del t-attf-class="#{'text-danger mr8'}" style="white-space: nowrap;"
+                                         t-esc="list_price_converted"
+                                         t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                                </t>
+                                <span t-field="line.price_reduce_taxinc" style="white-space: nowrap;"
+                                      t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"
+                                      groups="account.group_show_line_subtotals_tax_included"/>
+                                <small t-if="not line._is_not_sellable_line() and line.product_id.base_unit_price"
+                                       class="cart_product_base_unit_price d-block text-muted"
+                                       groups="website_sale.group_show_uom_price">
+                                    <t t-call='website_sale.base_unit_price'>
+                                        <t t-set='product' t-value='line.product_id'/>
+                                    </t>
+                                </small>
+                            </td>
+                            <td class="td-action">
+                                <a href='#' aria-label="Remove from cart" title="Remove from cart"
+                                   class='js_delete_product no-decoration'>
+                                    <small>
+                                        <i class='fa fa-trash-o text-dark'></i>
+                                    </small>
+                                </a>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </xpath>
+    </template>
+
+    <template id="custom_coupon_form_inherit" inherit_id="website_sale.coupon_form">
+        <xpath expr="//div[hasclass('input-group-append')]/a" position="attributes">
+            <attribute name="class" add="btn btn-secondary a-submit obst-btn-secondary"
+                       remove="btn btn-secondary a-submit"/>
+            <attribute name="style" add="margin-top: 0px !important;"/>
+        </xpath>
+    </template>
+
+    <template id="custom_payment_iherit" inherit_id="website_sale.payment">
+        <xpath expr="//div[@id='wrap']" position="attributes">
+            <attribute name="class" add="custom_wrap_padding"/>
+        </xpath>
+        <xpath expr="//h3[hasclass('mb24')]" position="attributes">
+            <attribute name="class" add="mb24 GT_Pressura_Regular" remove="mb24"/>
+        </xpath>
+
+    </template>
+
+    <template id="custom_checkout_iherit" inherit_id="website_sale.checkout">
+        <xpath expr="//div[@id='wrap']" position="attributes">
+            <attribute name="class" add="custom_wrap_padding"/>
+        </xpath>
+        <xpath expr="//form/a" position="attributes">
+            <attribute name="class" add="a-submit btn btn-secondary mb-2 btn-block obst-btn-secondary"
+                       remove="a-submit btn btn-secondary mb-2 btn-block"/>
+            <attribute name="style" add="width: 162px !important; background: #698789 !important;"/>
+        </xpath>
+        <xpath expr="//div[hasclass('justify-content-between')]/a" position="attributes">
+            <attribute name="class" add="btn btn-secondary mb32 obst-btn-secondary" remove="btn btn-secondary mb32"/>
+            <attribute name="style" add="width: 145px !important;"/>
+        </xpath>
+        <xpath expr="//div[hasclass('justify-content-between')]/a[2]" position="attributes">
+            <attribute name="class" add="btn btn-primary mb32 obst-btn-primary" remove="btn btn-primary mb32"/>
+            <attribute name="style" add="width: 145px !important;"/>
+        </xpath>
+        <xpath expr="//div[hasclass('justify-content-between')]/a[2]/span" position="attributes">
+            <attribute name="class" add="pl-3"/>
+        </xpath>
+    </template>
+
+    <template id="custom_address_kanban_inherit" inherit_id="website_sale.address_kanban">
+        <xpath expr="//div[hasclass('card-body')]" position="attributes">
+            <attribute name="class" add="obst-card-body p-4" remove="card-body"/>
+        </xpath>
+        <xpath expr="//div[hasclass('card-footer')]" position="attributes">
+            <attribute name="class" add="obst-card-body p-4" remove="card-footer"/>
+        </xpath>
+        <xpath expr="//div/div[2]/span/a" position="attributes">
+            <attribute name="class" add="btn btn-block btn-primary obst-btn-primary"
+                       remove="btn btn-block btn-primary"/>
+            <attribute name="style"
+                       add="margin-left: 0px !important; width: 160px !important;font-size: 14px; padding-top: 6px !important;"/>
+        </xpath>
+        <xpath expr="//div/div[2]/span[2]/a" position="attributes">
+            <attribute name="class" add="btn btn-block btn-secondary obst-btn-secondary"
+                       remove="btn btn-block btn-secondary"/>
+            <attribute name="style" add="margin-left: 0px !important; width: 160px !important;"/>
+        </xpath>
+    </template>
+
+    <template id="custom_address_on_payment_iherit" inherit_id="website_sale.address_on_payment">
+        <xpath expr="//div[hasclass('card-body')]" position="attributes">
+            <attribute name="class" add="obst-card-body p-4" remove="card-body"/>
+        </xpath>
+        <xpath expr="//a[hasclass('float-right')]" position="replace">
+            <a class="float-right no-decoration" href="/shop/checkout">
+                <i class="fa fa-edit"/>
+            </a>
+        </xpath>
+    </template>
+
+    <template id="custom_payment_footer_inherit" inherit_id="website_sale.payment_footer">
+        <xpath expr="//div[hasclass('float-left')]/a" position="attributes">
+            <attribute name="class" add="btn btn-secondary obst-btn-secondary" remove="btn btn-secondary"/>
+            <attribute name="style" add="width: 160px !important;"/>
+        </xpath>
+        <xpath expr="//div[hasclass('float-right')]/button" position="attributes">
+            <attribute name="class" add="btn btn-primary obst-btn-primary" remove="btn btn-primary"/>
+            <attribute name="style"
+                       add="width: 160px !important; padding-top: 6px !important; padding-left: 10px !important;"/>
+        </xpath>
+    </template>
+
+    <template id="custom_confirmation_inherit" inherit_id="website_sale.confirmation">
+        <xpath expr="//div[@id='wrap']" position="attributes">
+            <attribute name="class" add="custom_wrap_padding"/>
+        </xpath>
+        <xpath expr="//h1" position="attributes">
+            <attribute name="class" add="GT_Pressura_Pro_Mono"/>
+        </xpath>
+        <xpath expr="//h3" position="attributes">
+            <attribute name="class" add="text-left mt-3 GT_Pressura_Pro_Mono" remove="text-left mt-3"/>
+        </xpath>
+        <xpath expr="//table" position="attributes">
+            <attribute name="class" add="table GT_Pressura_Pro_Mono" remove="table"/>
+        </xpath>
+    </template>
+
+    <template id="custom_payment_confirmation_status_inherit" inherit_id="website_sale.payment_confirmation_status">
+        <xpath expr="//div/div/div" position="attributes">
+            <attribute name="t-attf-class" add="card-header #{
+                (payment_tx_id.state == 'pending' and 'obst-card-header-success') or
+                (payment_tx_id.state == 'done' and 'obst-card-header-success') or
+                (payment_tx_id.state == 'authorized' and 'obst-card-header-success') or
+                'obst-card-header-danger'}"/>
+            <attribute name="class" remove="card-header"/>
+        </xpath>
+    </template>
+
+    <!--    <template id="custom_payment_delivery_methods_inherit" inherit_id="website_sale_delivery.payment_delivery_methods">-->
+    <!--        <xpath expr="." position="replace">-->
+    <!--             <input t-att-value="delivery.id" t-att-id="'delivery_%i' % delivery.id" type="radio"  name="delivery_type" t-att-checked="order.carrier_id and order.carrier_id.id == delivery.id and 'checked' or False" class="d-none"/>-->
+    <!--        <label class="label-optional" t-field="delivery.name"/>-->
+    <!--        <t t-set='badge_class' t-value="(delivery_nb != 1 and 'float-right ' or '') + 'badge badge-secondary'" />-->
+    <!--        <span t-attf-class="#{badge_class} o_wsale_delivery_badge_price">Select to compute delivery rate</span>-->
+    <!--        <t t-if="delivery.website_description">-->
+    <!--            <div t-field="delivery.website_description" class="text-muted mt8"/>-->
+    <!--        </t>-->
+    <!--        </xpath>-->
+    <!--    </template>-->
+
+    <!--    <template id="custom_payment_delivery_checkout" inherit_id="website_sale.payment_delivery">-->
+    <!--        <xpath expr="//h3" position="attributes">-->
+    <!--            <attribute name="class" add="GT_Pressura_Regular mb24" remove="mb24"/>-->
+    <!--        </xpath>-->
+    <!--    </template>-->
+
+
+</odoo>
+

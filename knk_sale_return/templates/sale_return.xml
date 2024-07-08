@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="sale_order_re_order_btn" inherit_id="sale.sale_order_portal_template" name="Sale Order Return">
+        <xpath expr="//t[@t-set='entries']/ul/li" position="after">
+            <li class="list-group-item flex-grow-1">
+                <button class="btn btn-primary w-100" data-toggle="modal" data-target="#returnModal" onclick="$('#returnModal').modal('show')">
+                    <i class="fa fa-undo me-1"/>
+                    Return
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="returnModal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Return</h5>
+                            </div>
+                            <div class="modal-body">
+                                <table style="width:100%;">
+                                    <thead>
+                                        <tr>
+                                            <td>Product</td>
+                                            <td>Qty</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="sale_order.order_line" t-as="line">
+                                            <tr>
+                                                <th><t t-esc="line.product_id.name"/></th>
+                                                <td>
+                                                    <input class="returnProductQty" type="number" step="1" min="0"
+                                                           t-att-max="line.product_uom_qty"
+                                                           t-att-data-pid="line.product_id.id" t-att-data-lid="line.id"/>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                                <p id="returnMessage"></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="$('#returnModal').modal('hide')">Close</button>
+                                <button type="button" class="btn btn-primary" id="confirmReturn" t-att-data-order_id="sale_order.id">Confirm</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </xpath>
+    </template>
+</odoo>

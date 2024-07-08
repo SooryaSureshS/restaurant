@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="agb_page" name="AGB">
+        <t t-call="website.layout">
+            <main>
+                <div class="container-main">
+                    <div class="cms-page">
+                        <div class="cms-sections">
+                            <div class="cms-section  pos-0 cms-section-default" style="">
+                                <div class="cms-section-default boxed">
+                                    <div class="cms-block  pos-0 cms-block-text" style="">
+                                        <div class="cms-block-container">
+                                            <div class="cms-block-container-row row cms-row ">
+                                                <div class="col-12"
+                                                     data-cms-element-id="5b6e1b1a60384a078b449a37d59a8e4a">
+                                                    <div class="GT_Pressura_Regular cms-element-text">
+                                                        <h3 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            Allgemeine Geschäftsbedingungen
+                                                        </h3>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            1. Geltungsbereich
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Die Allgemeinen Geschäftsbedingungen (nachfolgend «AGB»
+                                                            genannt) gelten zwischen der/dem Kundin/Kunden («Kunde») und
+                                                            der OBST&amp;GEMÜSE jam GmbH («OBST&amp;GEMÜSE», «wir» oder
+                                                            «uns») für sämtliche Rechtsgeschäfte, die über den Online
+                                                            Store www.obstundgemuese.ch («Online Store»), im Laden an
+                                                            der Kasernenstrasse 32 in Basel, per E-Mail oder über unser
+                                                            Offerten-Tool abgeschlossen werden.
+                                                        </p>
+                                                        <p>Massgebend ist jeweils die zum Zeitpunkt der Bestellung
+                                                            geltende Version dieser AGB. OBST&amp;GEMÜSE kann die AGB
+                                                            jederzeit nach eigenem Ermessen ergänzen oder ändern.
+                                                            Abweichende, zusätzliche oder widersprüchliche Bedingungen
+                                                            des Kunden werden nur dann anerkannt, wenn OBST&amp;GEMÜSE
+                                                            deren Gültigkeit ausdrücklich zugestimmt hat.
+                                                        </p>
+                                                        <p>Sämtliche Korrespondenz wird über OBST&amp;GEMÜSE,
+                                                            Kasernenstrasse 32, 4058 Basel oder per E-Mail
+                                                            (hello[at]obstundgemuese.ch) abgewickelt.
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            2. Benutzerkonto/Angaben des Kunden
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Der Kunde hat die Möglichkeit, sich in unseren
+                                                            Vertriebskanälen kostenlos als Kunde zu registrieren. Mit
+                                                            der Registrierung wird ein dauerhaftes Kundenkonto erstellt.
+                                                            Über dieses Kundenkonto können zukünftige Bestellungen
+                                                            aufgegeben werden, ohne dass der Kunde jedes Mal Angaben
+                                                            über sich tätigen muss. Die Registrierung ist nicht
+                                                            Voraussetzung für eine Bestellung. Ein Anspruch auf
+                                                            Registrierung besteht nicht.
+                                                        </p>
+                                                        <p>Für die Registrierung als Kunde und Erstellung eines
+                                                            Kundenkontos muss der Kunde unter anderem eine aktuell
+                                                            gültige E-Mail-Adresse und ein Passwort angeben. Die
+                                                            E-Mail-Adresse dient als Nutzername und zusammen mit dem
+                                                            Passwort als Anmeldedaten. Die E-Mail-Adresse dient zugleich
+                                                            der Kommunikation mit dem Kunden.
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            3. Waren und Preis
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Abbildungen von Waren im Online Store, im Laden, im
+                                                            Offerten-Tool sowie Werbung, Prospekte etc. dienen der
+                                                            Illustration und sind unverbindlich.
+                                                        </p>
+                                                        <p>Alle angegebenen Preise verstehen sich inkl. Mehrwertsteuer
+                                                            (MwSt) und allfälliger vorgezogener Recyclinggebühren (vRG)
+                                                            in Schweizer Franken.
+                                                        </p>
+                                                        <p>Nebenkosten (z. B. Versandkosten, Verpackungskosten,
+                                                            Zuschläge für bestimmte Zahlungsmittel, Transportgarantie,
+                                                            Serviceleistungen und Montagegebühren) oder Kosten für den
+                                                            Zoll bei Lieferungen ins Ausland sind im Preis nicht
+                                                            enthalten und werden separat ausgewiesen und können
+                                                            zusätzlich verrechnet werden. Die Höhe der Zollkosten können
+                                                            wir nur schätzen, es ist auf die Angaben der Behörden
+                                                            abzustellen. Technische Änderungen, Irrtümer und Druckfehler
+                                                            bleiben vorbehalten.
+                                                        </p>
+                                                        <p>Wir haben das Recht, die Preise jederzeit zu ändern. Es gilt
+                                                            der Preis, der zum Zeitpunkt der Bestellung publiziert ist.
+                                                            Preisänderungen, die nach der Bestellung erfolgt sind,
+                                                            werden nicht berücksichtigt.
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            4. Vertragsabschluss
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Das Angebot von www.obstundgemuese.ch richtet sich an
+                                                            handlungsfähige Kunden über 18 Jahren mit Wohnsitz in
+                                                            Europa.
+                                                        </p>
+                                                        <p>Die Warenpräsentation in unseren Vertriebskanälen stellt
+                                                            keinen verbindlichen Antrag auf den Abschluss eines
+                                                            Vertrages mit uns dar. Vielmehr handelt es sich um eine
+                                                            unverbindliche Aufforderung, im jeweiligen Vertriebskanal
+                                                            Waren bei uns zu bestellen.
+                                                        </p>
+                                                        <p>Auf den Produktbildern abgebildetes Zubehör, Dekoration und
+                                                            Ähnliches gehören nicht zum Angebot, es sei denn, dass diese
+                                                            ausdrücklich darin eingeschlossen sind.
+                                                        </p>
+                                                        <p>Der Kunde gibt mit seiner Bestellung im Online Store durch
+                                                            Betätigung der Schaltfläche mit der Beschriftung «Bestellung
+                                                            abschliessen», per Unterschrift im Offerten-Tool oder durch
+                                                            eine zustimmende Rückantwort per Mail eine verbindliche
+                                                            Offerte zum Abschluss eines Vertrages ab. Auch die Offerten
+                                                            von OBST&amp;GEMÜSE im Laden gelten als rechtmässige
+                                                            Offerten, die vom Kunden angenommen werden können.
+                                                        </p>
+                                                        <p>Nach Eingang der Bestellung bei uns erhält der Kunde eine
+                                                            automatisch erzeugte E-Mail, mit der wir bestätigen, dass
+                                                            wir seine Bestellung erhalten haben (Eingangsbestätigung).
+                                                            Diese Eingangsbestätigung stellt noch keine Annahme dieser
+                                                            Offerte dar. Ein Vertrag kommt durch die Eingangsbestätigung
+                                                            noch nicht zustande. Wir behalten uns vor, Bestellungen
+                                                            insbesondere dann nicht anzunehmen, wenn mehr als übliche
+                                                            Mengen eines Artikels bestellt werden.
+                                                        </p>
+                                                        <p>Ein Vertrag über die Ware kommt erst zustande, wenn wir
+                                                            ausdrücklich die Annahme erklären oder wenn wir die Ware –
+                                                            ohne vorherige ausdrückliche Annahmeerklärung – an den
+                                                            Kunden versenden.
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            5. Lieferung/Liefertermin
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Wir legen grossen Wert darauf, Verfügbarkeiten und
+                                                            Lieferzeiten in unseren Vertriebskanälen aktuell und
+                                                            möglichst genau anzugeben. Wird nach der Bestellbestätigung
+                                                            festgestellt, dass ein Artikel nicht lieferbar oder nicht
+                                                            verfügbar ist, wird der Kunde informiert und die
+                                                            entsprechende Bestellung storniert. Weitergehende Ansprüche
+                                                            kann der Kunde nicht geltend machen.
+                                                        </p>
+                                                        <p>Der (allfällige) Versand erfolgt mit der Schweizer Post,
+                                                            Planzer sowie nationalen und internationalen Kurierdiensten.
+                                                        </p>
+                                                        <p>Die im Angebot oder in der Bestelleingangsbestätigung
+                                                            genannte Lieferfrist oder Abholfrist gilt nur als Richtwert
+                                                            und ist nicht verbindlich. Mit der Bestellbestätigung wird
+                                                            dem Kunden ein provisorischer Liefertermin mitgeteilt oder
+                                                            es wird mit dem Kunden Kontakt aufgenommen und ein
+                                                            individueller Liefertermin vereinbart.
+                                                        </p>
+                                                        <p>Die Montage beim Kunden vor Ort kann als Zusatzleistung
+                                                            separat vereinbart werden. Die Montage beinhaltet das
+                                                            Liefern, Auspacken und Montieren der bestellten Produkte
+                                                            inkl. Rücknahme des Verpackungsmaterials. Die Stornierung
+                                                            einer Montage mindestens 5 Werktage vor dem vereinbarten
+                                                            Montagetermin ist für den Kunden kostenfrei. Wird die
+                                                            Montage später vom Kunden storniert, sind wir berechtigt, 50
+                                                            % der Montagekosten zu verlangen.
+                                                        </p>
+                                                        <p>Werden Waren mit offensichtlichen Transportschäden an den
+                                                            Kunden geliefert, so muss der Kunde dies unverzüglich beim
+                                                            Versandunternehmen reklamieren und auch uns so bald wie
+                                                            möglich darüber informieren.
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            6. Filialabholung
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Im Online Store, per E-Mail oder im Offerten-Tool bestellte
+                                                            Ware kann auch im Laden an der Kasernenstrasse 32 in Basel
+                                                            zu den auf der Website angegebenen Öffnungszeiten abgeholt
+                                                            werden.
+                                                        </p>
+                                                        <p>Falls der Kunde die bestellten Produkte nicht innerhalb von
+                                                            14 Kalendertagen seit der Abholbereitschaft in der Filiale
+                                                            abholt, kann OBST&amp;GEMÜSE den Vertrag auflösen
+                                                            (stornieren).
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            7. Prüfpflicht
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Der Kunde ist verpflichtet, die gelieferte Ware sofort nach
+                                                            Eingang der Lieferung zu prüfen und uns allfällige Mängel
+                                                            unverzüglich, spätestens aber nach sieben Tagen schriftlich
+                                                            per Brief oder E-Mail an die jeweils angegebene Adresse zu
+                                                            melden.
+                                                        </p>
+                                                        <p>Bei Waren, deren Beschaffenheit beanstandet wird, müssen die
+                                                            Originalverpackungen aufbewahrt werden. Die
+                                                            Originalverpackung darf erst nach schriftlicher Zustimmung
+                                                            von uns entsorgt werden. Bei Speditionslieferungen ist ein
+                                                            allfälliger Lieferschaden auf dem Lieferschein zu vermerken.
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            8. Gewährleistung
+                                                        </h4>
+                                                        <br/>
+                                                        <h5 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            8.1. Grundbestimmungen
+                                                        </h5>
+                                                        <br/>
+                                                        <p>Vertragsgegenstand sind die in der Bestellung des Kunden
+                                                            ausgewiesenen und in der Bestellbestätigung aufgeführten
+                                                            Waren. Fehler und Auslassungen sind vorbehalten,
+                                                            insbesondere wenn diese die Verfügbarkeit der Waren
+                                                            betreffen.
+                                                        </p>
+                                                        <p>Die Eigenschaften der Waren basieren auf den
+                                                            Produktbeschreibungen in den jeweiligen Vertriebskanälen.
+                                                        </p>
+                                                        <p>Wir bemühen uns, Waren in einwandfreier Qualität zu liefern.
+                                                            Der Lieferschein plus Rechnung bzw. Kassenzettel gilt als
+                                                            Garantieschein. Dieser ist sorgfältig aufzubewahren.
+                                                        </p>
+                                                        <p>Die Gewährleistungsfrist bei Verkäufen an <strong>
+                                                            Privatpersonen
+                                                        </strong> beträgt 2 Jahre, sofern nicht ausdrücklich etwas
+                                                            anderes vereinbart wird (z. B. längere Gewährleistungsfrist
+                                                            des Herstellers). Die Gewährleistungsfrist beginnt mit dem
+                                                            Lieferdatum, bei einem Kauf im Laden mit dem Kaufdatum.
+                                                        </p>
+                                                        <p>Die Gewährleistungsfrist bei Verkäufen an <strong>Händler
+                                                        </strong> beträgt 1 Jahr, sofern nicht ausdrücklich etwas
+                                                            anderes vereinbart wurde.
+                                                        </p>
+                                                        <p>Es liegt in unserem Ermessen im Falle eines Mangels, die
+                                                            Gewährleistung durch gleichwertigen Ersatz, Nachbesserung
+                                                            oder durch Rückerstattung des Preises zu erbringen.
+                                                            Entschliessen wir uns zu einer Nachbesserung oder
+                                                            Ersatzleistung, sind die Ansprüche der Kunden auf Wandelung
+                                                            des Vertrags oder Minderung des Preises sowie auf
+                                                            Schadenersatz ausgeschlossen. Weitere Ansprüche werden,
+                                                            soweit gesetzlich zulässig, ausgeschlossen.
+                                                        </p>
+                                                        <p>Werden unsere Betriebs- oder Wartungsanweisungen nicht
+                                                            befolgt, Änderungen vorgenommen, Teile ausgewechselt oder
+                                                            Verbrauchsmaterialien verwendet, die nicht den
+                                                            Originalspezifikationen entsprechen, so entfällt jede
+                                                            Gewährleistung, soweit der Mangel hierauf zurückzuführen
+                                                            ist. Dies gilt auch, soweit der Mangel auf unsachgemässe
+                                                            Benutzung, Lagerung und Handhabung der Geräte oder
+                                                            Fremdeingriff sowie das Öffnen von Geräten, Batterien oder
+                                                            Akkus zurückzuführen ist. Von der Gewährleistung
+                                                            ausgeschlossen sind Schäden infolge von Stürzen aller Art,
+                                                            Stössen, Schlägen etc. Die Gewährleistung für normale
+                                                            Abnutzung von Verbrauchsmaterial, Zubehör, Batterien oder
+                                                            Akkus ist ausgeschlossen. Unwesentliche Abweichungen von
+                                                            zugesicherten Eigenschaften der Ware lösen keine
+                                                            Gewährleistungsrechte aus.
+                                                        </p>
+                                                        <p>Die Gewährleistungsansprüche sind auf den Erstkäufer der Ware
+                                                            beschränkt und nicht übertragbar.
+                                                        </p>
+                                                        <br/>
+                                                        <h5 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            8.2. Verkauf von gebrauchten Gegenständen
+                                                        </h5>
+                                                        <br/>
+                                                        <p>Die Gewährleistungsfrist für den Verkauf von gebrauchten
+                                                            Gegenständen beträgt ein Jahr.
+                                                        </p>
+                                                        <br/>
+                                                        <h5 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            8.3. Garantieverlängerung und Versicherungsmöglichkeiten
+                                                        </h5>
+                                                        <br/>
+                                                        <p>Der Kunde hat die Möglichkeit, bei neuwertigen Gegenständen
+                                                            eine Garantieverlängerung um maximal 2 Jahre zu erwerben
+                                                            (insgesamt 4 Jahre unter Berücksichtigung der 2-jährigen
+                                                            Gewährleistungsfrist). Die Garantieverlängerung kann direkt
+                                                            während des Produktekaufs oder bis zum Ablauf der
+                                                            Gewährleistungsfrist nach Ziff. 8.1 abgeschlossen werden.
+                                                        </p>
+                                                        <p>Die Dauer der Garantieverlängerung läuft ungeachtet der
+                                                            Erbringung allfälliger Garantie- bzw.
+                                                            Gewährleistungsleistungen weiter. OBST&amp;GEMÜSE kann die
+                                                            Garantie wahlweise durch
+                                                        </p>
+                                                        <div>
+                                                            <ul>
+                                                                <li>kostenlose Reparatur (ursprüngliche
+                                                                    Gewährleistungsfrist läuft auf gesamtem Produkt
+                                                                    weiter);
+                                                                </li>
+                                                                <li>teilweisen oder vollständigen Ersatz durch ein
+                                                                    gleichwertiges gebrauchtes/repariertes Produkt (bei
+                                                                    Ersatz beträgt die Gewährleistungsfrist 1 Jahr ab
+                                                                    Zeitpunkt des Austausches);
+                                                                </li>
+                                                                <li>Ersatz durch ein neues Produkt durch OBST&amp;GEMÜSE
+                                                                    (neue Gewährleistungsfrist von 2 Jahren ab Ersatz);
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <p>erbringen.</p>
+                                                        <p>Der Kunde hat insbesondere die Möglichkeit, beim Kauf eines
+                                                            Akkus die Garantiefrist um maximal 2 Jahre zu verlängern
+                                                            (insgesamt 4 Jahre unter Berücksichtigung der 2-jährigen
+                                                            Gewährleistungsfrist).
+                                                        </p>
+                                                        <p>Der Kunde hat beim Kauf eines Fahrrads ausserdem die
+                                                            Möglichkeit, dieses im Falle eines Diebstahls auf den
+                                                            Neupreis versichern zu lassen.
+                                                        </p>
+                                                        <p>Schliesslich hat der Kunde beim Kauf von Devices wie z. B.
+                                                            GPS-Geräte die Möglichkeit, diese versichern zu lassen
+                                                            und/oder eine Garantieverlängerung zu erwerben.
+                                                        </p>
+                                                        <div></div>
+                                                        <br/>
+                                                        <h5 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            8.4. Service für Gast-Produkte
+                                                        </h5>
+                                                        <br/>
+                                                        <p>Hat der Kunde Probleme mit einem Produkt, das er nicht von
+                                                            uns respektive nicht von unserem Online Store bezogen hat,
+                                                            kann OBST&amp;GEMÜSE helfen, Kontakt zu den jeweiligen
+                                                            Herstellern und/oder Lieferanten herzustellen. Dafür hat uns
+                                                            der Kunde bei Standardfällen CHF 80 zu bezahlen, bei
+                                                            komplizierten Fällen wird nach vorheriger Absprache die
+                                                            Entschädigung nach Aufwand berechnet.
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            9. Haftung
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Die Haftung von OBST&amp;GEMÜSE beschränkt sich unter allen
+                                                            Anspruchsgrundlagen auf vorsätzlich oder grobfahrlässig
+                                                            verursachte unmittelbare und direkte Schäden. Jede weitere
+                                                            Haftung inklusive für indirekte und/oder mittelbare sowie
+                                                            Folgeschäden oder entgangenen Gewinn wird im Rahmen des
+                                                            rechtlich Zulässigen wegbedungen.
+                                                        </p>
+                                                        <p>Für fehlerfreie und/oder ständig verfügbare
+                                                            Datenkommunikation über das Internet mit aktuell verfügbarer
+                                                            Technologie kann keine Garantie übernommen werden. Daher ist
+                                                            OBST&amp;GEMÜSE weder haftbar für die kontinuierliche und
+                                                            ununterbrochene Verfügbarkeit des Online Stores noch für
+                                                            technische und elektronische Fehler während eines
+                                                            Bestellvorgangs, die sich der Kontrolle von OBST&amp;GEMÜSE
+                                                            entziehen.
+                                                        </p>
+                                                        <p>Links auf der Website zu anderen Websites werden
+                                                            ausschliesslich zur Information der Kunden und für eine
+                                                            bessere Navigation bereitgestellt. Falls Links zu anderen
+                                                            Websites oder Quellen erstellt werden, ist OBST&amp;GEMÜSE
+                                                            nicht verantwortlich oder haftbar für die Verfügbarkeit der
+                                                            externen Websites oder Quellen. Die auf derartigen Websites
+                                                            oder über derartigen Quellen zugänglichen Inhalte sind nicht
+                                                            die Inhalte von OBST&amp;GEMÜSE und jegliche Haftung oder
+                                                            Gewährleistung in Bezug auf diese Inhalte ist
+                                                            ausgeschlossen.
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            10. Zahlung
+                                                        </h4>
+                                                        <br/>
+                                                        <h5 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            10.1. Zahlungsvarianten
+                                                        </h5>
+                                                        <br/>
+                                                        <p>Es gelten die in den Vertriebskanälen angegebenen
+                                                            Zahlungsmittel. Die Zahlung des Preises erfolgt in der
+                                                            Schweiz wahlweise mittels Vorauszahlung, Kreditkarte,
+                                                            Gutschein, PostFinance, DebitCard, Paypal, Twint, Apple Pay,
+                                                            Google Pay. Wir haben das Recht, einzelne Zahlungsmittel
+                                                            ohne weitere Begründung generell oder für einzelne Kunden
+                                                            auszuschliessen. Darüber hinaus haben wir das Recht, auf
+                                                            einzelne Zahlungsmittel Zuschläge zu erheben.
+                                                        </p>
+                                                        <br/>
+                                                        <h5 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            10.2. Zahlungsverzug
+                                                        </h5>
+                                                        <br/>
+                                                        <p>Hat der Kunde bis zum Fälligkeitsdatum weder die Rechnung
+                                                            bezahlt noch schriftlich und begründet Einwände dagegen
+                                                            erhoben, fällt er ohne Weiteres in Verzug und OBST&amp;GEMÜSE
+                                                            kann, soweit gesetzlich zulässig, Massnahmen zur
+                                                            Verhinderung wachsenden Schadens treffen und/oder den
+                                                            Vertrag frist- und entschädigungslos auflösen. Der Kunde
+                                                            trägt sämtliche Kosten, die OBST&amp;GEMÜSE durch den
+                                                            Zahlungsverzug entstehen. Insbesondere schuldet der Kunde
+                                                            OBST&amp;GEMÜSE einen Verzugszins von 5 % sowie eine
+                                                            Mahngebühr von CHF 15 pro Mahnung. Hat OBST&amp;GEMÜSE
+                                                            Zweifel hinsichtlich der vertragsgemässen Einhaltung der
+                                                            Zahlungsbedingungen, kann OBST&amp;GEMÜSE auch eine
+                                                            Vorauszahlung oder Sicherheit verlangen. Leistet der Kunde
+                                                            sie nicht, kann OBST&amp;GEMÜSE die gleichen Massnahmen
+                                                            treffen wie beim Zahlungsverzug.
+                                                        </p>
+                                                        <br/>
+                                                        <h5 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            10.3. Eigentumsvorbehalt
+                                                        </h5>
+                                                        <br/>
+                                                        <p>Die gelieferten Waren bleiben bis zur vollen Bezahlung
+                                                            Eigentum von OBST&amp;GEMÜSE.
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            11. Umtausch und Rückgabe
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Ein Umtausch oder eine Rückgabe ist nicht möglich bei für den
+                                                            Kunden persönlich konfigurierten Artikeln (z. B. Fahrräder).
+                                                        </p>
+                                                        <p>Andere Artikel, die bei uns gekauft werden, können ohne
+                                                            Angabe von Gründen innert 30 Tagen zurückgebracht werden
+                                                            oder umgetauscht werden. Voraussetzung ist, dass sie
+                                                            ungebraucht und in tadellosem Zustand sind. Die
+                                                            Kassenquittung oder der Lieferschein muss vorhanden sein
+                                                            sowie die Originalverpackung. Die Rückerstattung erfolgt in
+                                                            Form eines Gutscheins.
+                                                        </p>
+                                                        <p>Ausgeschlossen ist die Rückgabe oder der Umtausch von
+                                                            reduzierten Waren.
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            12. Reparaturen ausserhalb der Gewährleistung
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Reparaturen ausserhalb der Gewährleistung sind vom Kunden
+                                                            nach Aufwand zu entschädigen.
+                                                        </p>
+                                                        <p>Vor Beginn der jeweiligen Reparatur stellt OBST&amp;GEMÜSE
+                                                            dem Kunden eine kostenlose Reparaturofferte aus. Die
+                                                            Reparaturofferte entspricht einer ungefähren
+                                                            Kostenschätzung. Gestützt darauf kann der Kunde entscheiden,
+                                                            ob er die Reparatur durchführen lassen will oder nicht.
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            13. Copyright
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Alle dargestellten Logos, Bilder und Grafiken sind Eigentum
+                                                            der entsprechenden Firmen oder von OBST&amp;GEMÜSE und
+                                                            unterliegen dem Copyright der entsprechenden Lizenzgeber.
+                                                            Sie dürfen nicht ohne Einverständnis kopiert oder
+                                                            anderweitig genutzt werden.
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            14. Datenschutz
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Bei allen Besuchen des Online Stores oder des Offerten-Tools
+                                                            gilt die <a href="/service/datenschutz/" target="_self">
+                                                                Datenschutzerklärung</a>, die ihrerseits den AGB
+                                                            unterliegt. Hiermit erklärt sich der Kunde einverstanden
+                                                            damit, dass es OBST&amp;GEMÜSE gestattet ist, die vom Kunden
+                                                            bereitgestellten personenbezogenen Informationen zu
+                                                            verwenden. Die Datenschutzerklärung bildet die Grundlage für
+                                                            die entsprechende Nutzung der personenbezogenen
+                                                            Informationen. Durch die Nutzung der Website stimmt der
+                                                            Kunde der Datenschutzerklärung zu. Die AGB verpflichten den
+                                                            Kunden zur Einhaltung der einschlägigen Bestimmungen der
+                                                            Datenschutzerklärung.
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            15. Teilungültigkeit
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Sollte eine Bestimmung dieser AGB, aus welchem Grund auch
+                                                            immer, nichtig sein, bleibt die Geltung der übrigen
+                                                            Bestimmungen hiervon unberührt.
+                                                        </p>
+                                                        <br/>
+                                                        <h4 class="GT_Pressura_Regular font-spacing-privacy text-dark">
+                                                            16. Gerichtsstand und anwendbares Recht
+                                                        </h4>
+                                                        <br/>
+                                                        <p>Für Klagen des Kunden ist das Gericht am Sitz/Wohnsitz des
+                                                            Kunden oder von OBST&amp;GEMÜSE (in Basel) zuständig. Für
+                                                            Klagen von OBST&amp;GEMÜSE ist das Gericht am Sitz/Wohnsitz
+                                                            des Kunden zuständig.
+                                                        </p>
+                                                        <p>Es ist ausschliesslich Schweizer Recht anwendbar, unter
+                                                            ausdrücklichem Ausschluss des Bundesgesetzes über das
+                                                            Internationale Privatrecht (IPRG) sowie dem Übereinkommen
+                                                            der Vereinten Nationen über Verträge über den
+                                                            internationalen Warenkauf (CISG).
+                                                        </p>
+                                                        <p>Basel, 15. Dezember 2020</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </t>
+    </template>
+</odoo>

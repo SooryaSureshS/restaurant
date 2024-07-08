@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem
+        id="menu_hidden_menus"
+        name="Hidden Menus"
+        parent="base.menu_custom"
+        sequence="100"
+        groups="base.group_no_one"/>
+
+    <menuitem name="Quotations"
+        id="sale.menu_sale_quotations"
+        parent="menu_hidden_menus"
+        groups="base.group_no_one"/>
+    <menuitem name="Requests for Quotation"
+        id="purchase.menu_purchase_rfq"
+        parent="menu_hidden_menus"
+        action="purchase.purchase_rfq"
+        groups="base.group_no_one"/>
+    <menuitem id="sale.menu_sale_order"
+              name="Orders"
+              action="sale.action_orders"
+              groups="sales_team.group_sale_salesman"
+              parent="sale.sale_order_menu"
+              sequence="-100"/>
+</odoo>

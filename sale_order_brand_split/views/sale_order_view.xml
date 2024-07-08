@@ -1,0 +1,24 @@
+<odoo>
+    <data>
+        <record id="view_order_form_inherit" model="ir.ui.view">
+            <field name="name">sales.order.split</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="brand_id" readonly="1" attrs="{'invisible':[('brand_id','==',False)]}"/>
+                </xpath>
+                <xpath expr="//page/field[@name='order_line']/.." position="after">
+                    <page string="Split Orders" attrs="{'invisible':[('split_order_ids','=',[])]}">
+                        <field name="split_order_ids" readonly="1">
+                            <tree>
+                                <field name="name"/>
+                                <field name="brand_id"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

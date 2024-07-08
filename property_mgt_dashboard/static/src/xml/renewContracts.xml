@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<template id="renewContractsTem">
+    <t t-name="renewContracts">
+        <div class="lowRowCont">
+            <div class="row">
+                <div class="col-lg-9">
+                    <span class="lowRowHeads">Renew Contracts</span>
+                </div>
+                <div class="col-lg-3"/>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-4">
+                    <div class="description-block border-right">
+                        <span class="description-percentage text-success">
+                            <i class="fa fa-circle" style="color: #2baab6;"></i>
+                            <span class="lrTcN">Total</span>
+                        </span>
+                        <h5 class="description-header">12</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-4">
+                    <div class="description-block border-right">
+                        <span class="description-percentage text-success">
+                            <i class="fa fa-circle" style="color: #61B061;"></i>
+                            <span class="lrTcN">On Time</span>
+                        </span>
+                        <h5 class="description-header">12</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-4">
+                    <div class="description-block border-right">
+                        <span class="description-percentage text-success">
+                            <i class="fa fa-circle" style="color: #E76264;"></i>
+                            <span class="lrTcN">Delayed</span>
+                        </span>
+                        <h5 class="description-header">12</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3" style="text-align:right;">
+                    <button class="btn purpleBtn">View Contracts</button>
+                </div>
+            </div>
+        </div>
+    </t>
+</template>

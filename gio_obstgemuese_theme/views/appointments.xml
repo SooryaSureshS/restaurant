@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="obst_book_us_template">
+        <t t-call="website.layout">
+            <main>
+                <div class="container-main">
+                    <div class="cms-page">
+                        <div class="cms-sections">
+                            <div class="cms-section  pos-0 cms-section-default"
+                                 style="">
+                                <div class="cms-section-default boxed">
+                                    <div class="cms-block  pos-0 cms-block-reservation"
+                                         style="">
+                                        <div class="cms-block-container-bookus-custom">
+                                            <div class="cms-block-container-row row cms-row obst-bookus-row ">
+                                                <div class="reservation-content-block js-reservation-form">
+                                                    <div class="card reservation-headline">
+                                                        <form class="appointment_submit_form o_mark_required"
+                                                              t-attf-action="/calendar/#{ slug(appointment_type) }/submit"
+                                                              method="POST">
+                                                            <input type="hidden"
+                                                                   id="csrf_token"
+                                                                   name="csrf_token"
+                                                                   t-att-value="request.csrf_token()"/>
+                                                            <input type="hidden"
+                                                                   id="datetime_str"
+                                                                   required="1"
+                                                                   class="form-control"
+                                                                   name="datetime_str"
+                                                                   t-att-value="datetime_str"/>
+                                                            <input type="hidden"
+                                                                   id="duration_str"
+                                                                   name="duration_str"
+                                                                   class="form-control"
+                                                                   t-att-value="duration_str"/>
+                                                            <input type="hidden"
+                                                                   id="employee_id"
+                                                                   name="employee_id"
+                                                                   class="form-control"
+                                                                   t-att-value="employee_id"/>
+                                                            <input type="hidden"
+                                                                   id="appointment_type"
+                                                                   t-att-value="slug(appointment_type)"/>
+                                                            <div class="card-body">
+                                                                <div class="reservation-intro">
+                                                                    <h1 class="reservation_intro_h1 GT_Pressura_Regular">
+                                                                        <span style="font-weight: 400;">
+                                                                            Book
+                                                                            us
+                                                                        </span>
+                                                                    </h1>
+                                                                    <p class="GT_Pressura_Regular reservation_intro_p">
+                                                                        <span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Du bist auf unserer Buchungsplattform gelandet. Mit dieser Plattform gehen wir neue Wege. Wir wollen es Dir einfacher machen, mit uns in Kontakt zu treten. Du kannst hier Termine für Probefahrten, Services oder Beratungsgespräche buchen. In der aktuellen Situation beraten wir Dich gerne online. Wähle zuerst die Art Deines Termins und dann im Kalender Datum und Uhrzeit. Wir bestätigen Dir im Anschluss den gebuchten Termin und senden Dir alle nötigen Informationen. Für alle anderen Anliegen kannst Du unser Kontaktformular nutzen.&quot;}"
+                                                                              data-sheets-userformat="{&quot;2&quot;:15235,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:16777215},&quot;10&quot;:0,&quot;11&quot;:4,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:6710886},&quot;15&quot;:&quot;inherit&quot;,&quot;16&quot;:12}">
+                                                                            <span style="font-weight: 400;">
+                                                                                Willkommen
+                                                                                auf
+                                                                                unserer
+                                                                                Buchungsplattform.
+                                                                                Hier
+                                                                                buchst
+                                                                                Du
+                                                                                schnell
+                                                                                und
+                                                                                einfach
+                                                                                Termine
+                                                                                für
+                                                                                Probefahrten,
+                                                                                Standard-Services
+                                                                                für
+                                                                                Cargo-
+                                                                                und
+                                                                                Performance
+                                                                                Bikes
+                                                                                sowie
+                                                                                Beratungsgespräche.
+                                                                                Wähle
+                                                                                die
+                                                                                Art
+                                                                                Deines
+                                                                                Termins,
+                                                                                Datum
+                                                                                und
+                                                                                Uhrzeit.
+                                                                                Wir
+                                                                                bestätigen
+                                                                                den
+                                                                                Termin
+                                                                                per
+                                                                                Mail
+                                                                                und
+                                                                                senden
+                                                                                Dir
+                                                                                weitere
+                                                                                Informationen.
+                                                                                Wir
+                                                                                empfehlen
+                                                                                für
+                                                                                Cargobikes
+                                                                                einen
+                                                                                Service
+                                                                                alle
+                                                                                1500
+                                                                                km
+                                                                                oder
+                                                                                mindestens
+                                                                                einmal
+                                                                                pro
+                                                                                Jahr.
+                                                                            </span>
+                                                                        </span>
+                                                                    </p>
+                                                                    <div id="companion-installed"
+                                                                         class="provisioned"
+                                                                         style="display: none;"></div>
+                                                                </div>
+                                                                <div class="reservation-select-form">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-12 col-md-6">
+                                                                            <div class="">
+                                                                                <div class="">
+                                                                                    <t t-set="calendar_appointment_type"
+                                                                                       t-value="request.env['calendar.appointment.type'].sudo().search([('is_published', '=', 'True')])"/>
+                                                                                    <div class="col-mb-2 filter_col_mobile col-2 p-0 pb-3">
+                                                                                        <li style="list-style-type: none;">
+                                                                                            <select class="filter_select_category filter_select_category_appointment GT_Pressura_Pro_Mono filter_select mx-auto mb-2"
+                                                                                                    name="">
+                                                                                                <option value="0">
+                                                                                                    CargoBike
+                                                                                                    Service
+                                                                                                </option>
+                                                                                                <t t-foreach="calendar_appointment_type"
+                                                                                                   t-as="c">
+                                                                                                    <option t-att-value="c.id"
+                                                                                                            t-att-name="c.name"
+                                                                                                            t-esc="c.name"
+                                                                                                            t-attf-class="'select-wrap' if c.id == selected_form_id else ''"
+                                                                                                            t-att-selected="c.id == selected_form_id"/>
+                                                                                                </t>
+                                                                                            </select>
+                                                                                        </li>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="reservation-info GT_Pressura_Regular">
+                                                                    <p class="GT_Pressura_Regular reservation_intro_p"
+                                                                       dir="ltr"
+                                                                       style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;">
+                                                                        <t t-esc="appointment_type.message_intro"/>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="card reservation-form">
+                                                                    <div class="card-body p-0 pt-4">
+                                                                        <div class="captcha--honeypot">
+                                                                            <input type="text"
+                                                                                   name="shopware_surname_confirm"
+                                                                                   class="d-none"
+                                                                                   value=""
+                                                                                   tabindex="-1"
+                                                                                   autocapitalize="off"
+                                                                                   spellcheck="false"
+                                                                                   autocomplete="off"/>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="form-group reservation-name">
+                                                                                    <label class="form-label reservation-book-label"
+                                                                                           for="reservationName">
+                                                                                        Vorname/Nachname
+                                                                                    </label>
+                                                                                    <input type="char"
+                                                                                           placeholder="Vorname/Nachname"
+                                                                                           class="form-control s_website_form_input log_reg_input GT_Pressura_Regular"
+                                                                                           name="name"
+                                                                                           required="1"/>
+                                                                                    <p class="website_form_field_valid">
+                                                                                        Dieses
+                                                                                        Feld
+                                                                                        ist
+                                                                                        ein
+                                                                                        Pflichtfeld.
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-12">
+                                                                                <div class="form-group reservation-street">
+                                                                                    <label class="form-label reservation-book-label"
+                                                                                           for="reservationStreet">
+                                                                                        Strasse
+                                                                                    </label>
+                                                                                    <input name="street"
+                                                                                           id="reservationStreet"
+                                                                                           type="text"
+                                                                                           placeholder="Strasse"
+                                                                                           required="required"
+                                                                                           value=""
+                                                                                           class="form-control s_website_form_input log_reg_input GT_Pressura_Regular"/>
+                                                                                    <p class="website_form_field_valid">
+                                                                                        Dieses
+                                                                                        Feld
+                                                                                        ist
+                                                                                        ein
+                                                                                        Pflichtfeld.
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12 col-md-6">
+                                                                                <div class="form-group reservation-zipcode">
+                                                                                    <label class="form-label reservation-book-label"
+                                                                                           for="reservationZipcode">
+                                                                                        PLZ
+                                                                                    </label>
+                                                                                    <input name="zipcode"
+                                                                                           id="reservationZipcode"
+                                                                                           type="text"
+                                                                                           placeholder="PLZ "
+                                                                                           required="required"
+                                                                                           value=""
+                                                                                           class="form-control s_website_form_input log_reg_input GT_Pressura_Regular"/>
+                                                                                    <p class="website_form_field_valid">
+                                                                                        Dieses
+                                                                                        Feld
+                                                                                        ist
+                                                                                        ein
+                                                                                        Pflichtfeld.
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-12 col-md-6">
+                                                                                <div class="form-group reservation-city">
+                                                                                    <label class="form-label reservation-book-label"
+                                                                                           for="reservationCity">
+                                                                                        Ort
+                                                                                    </label>
+                                                                                    <input name="city"
+                                                                                           id="reservationCity"
+                                                                                           type="text"
+                                                                                           placeholder="Ort "
+                                                                                           required="required"
+                                                                                           value=""
+                                                                                           class="form-control s_website_form_input log_reg_input GT_Pressura_Regular"/>
+                                                                                    <p class="website_form_field_valid">
+                                                                                        Dieses
+                                                                                        Feld
+                                                                                        ist
+                                                                                        ein
+                                                                                        Pflichtfeld.
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12 col-md-6">
+                                                                                <div class="form-group reservation-email">
+                                                                                    <label class="form-label reservation-book-label"
+                                                                                           for="reservationMail">
+                                                                                        E-Mail
+                                                                                    </label>
+                                                                                    <input type="email"
+                                                                                           class="form-control s_website_form_input log_reg_input GT_Pressura_Regular"
+                                                                                           name="email"
+                                                                                           required="1"/>
+                                                                                    <p class="website_form_field_valid">
+                                                                                        Dieses
+                                                                                        Feld
+                                                                                        ist
+                                                                                        ein
+                                                                                        Pflichtfeld.
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-12 col-md-6">
+                                                                                <div class="form-group reservation-phone">
+                                                                                    <label class="form-label reservation-book-label"
+                                                                                           for="reservationPhone">
+                                                                                        Telefon
+                                                                                    </label>
+                                                                                    <input type="tel"
+                                                                                           class="form-control s_website_form_input log_reg_input GT_Pressura_Regular"
+                                                                                           name="phone"
+                                                                                           required="1"
+                                                                                           id="phone_field"/>
+                                                                                    <p class="website_form_field_valid">
+                                                                                        Dieses
+                                                                                        Feld
+                                                                                        ist
+                                                                                        ein
+                                                                                        Pflichtfeld.
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <hr class="appointment-hr"/>
+                                                                    </div>
+                                                                </div>
+                                                                <t t-call="gio_obstgemuese_theme.appointment_calendar_custom"/>
+                                                                <br/>
+                                                                <hr class="appointment-hr"/>
+                                                                <div class="card reservation-form">
+                                                                    <div class="card-body p-0 pt-4">
+                                                                        <t t-foreach="appointment_type.question_ids"
+                                                                           t-as="question">
+                                                                            <div class="form-group mx-auto"
+                                                                                 t-if="question.question_type!='text'">
+                                                                                <h3 class="appointment-text-h3 GT_Pressura_Regular">
+                                                                                    <t t-out="question.name"/>
+                                                                                </h3>
+                                                                                <div class="col-md-8">
+                                                                                    <t t-if="question.question_type == 'char'">
+                                                                                        <input type="char"
+                                                                                               class="form-control s_website_form_input log_reg_input GT_Pressura_Regular"
+                                                                                               t-attf-name="question_#{question.id}"
+                                                                                               t-att-required="question.question_required or None"
+                                                                                               t-att-placeholder="question.placeholder"/>
+                                                                                        <p class="website_form_field_valid">
+                                                                                            Dieses
+                                                                                            Feld
+                                                                                            ist
+                                                                                            ein
+                                                                                            Pflichtfeld.
+                                                                                        </p>
+                                                                                    </t>
+                                                                                    <t t-if="question.question_type == 'select'">
+                                                                                        <select t-attf-name="question_#{question.id}"
+                                                                                                class="form-control s_website_form_input log_reg_input GT_Pressura_Regular"
+                                                                                                t-att-required="question.question_required or None"
+                                                                                                t-att-placeholder="question.placeholder">
+                                                                                            <t t-foreach="question.answer_ids or []"
+                                                                                               t-as="answer">
+                                                                                                <option t-att-value="answer.name">
+                                                                                                    <t t-out="answer.name"/>
+                                                                                                </option>
+                                                                                            </t>
+                                                                                        </select>
+                                                                                    </t>
+                                                                                    <t t-if="question.question_type == 'radio'">
+                                                                                        <div class="checkbox"
+                                                                                             t-foreach="question.answer_ids or []"
+                                                                                             t-as="answer">
+                                                                                            <label>
+                                                                                                <input type="radio"
+                                                                                                       t-attf-name="question_#{question.id}"
+                                                                                                       t-att-required="question.question_required or None"
+                                                                                                       t-att-value="answer.name"
+                                                                                                       class="mr-1"/>
+                                                                                                <t t-out="answer.name"/>
+                                                                                            </label>
+                                                                                        </div>
+                                                                                    </t>
+                                                                                    <t t-if="question.question_type == 'checkbox'">
+                                                                                        <div t-attf-class="checkbox-group #{question.question_required and 'required' or ''}">
+                                                                                            <div class="checkbox"
+                                                                                                 t-foreach="question.answer_ids or []"
+                                                                                                 t-as="answer">
+                                                                                                <label>
+                                                                                                    <input type="checkbox"
+                                                                                                           t-attf-name="question_#{question.id}_answer_#{answer.id}"
+                                                                                                           t-att-value="answer.name"
+                                                                                                           class="mr-2"/>
+                                                                                                    <t t-out="answer.name"/>
+                                                                                                </label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </t>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group mx-auto"
+                                                                                 t-if="question.question_type == 'text'">
+                                                                                <h3 class="appointment-text-h3 GT_Pressura_Regular">
+                                                                                    <t t-out="question.name"/>
+                                                                                </h3>
+                                                                                <div class="col-md-8 p-0">
+                                                                                    <textarea
+                                                                                            class="form-control s_website_form_input log_reg_input GT_Pressura_Regular"
+                                                                                            rows="5"
+                                                                                            t-att-required="question.question_required or None"
+                                                                                            t-attf-name="question_#{question.id}"
+                                                                                            t-att-placeholder="question.placeholder"/>
+                                                                                    <p class="website_form_field_valid">
+                                                                                        Dieses
+                                                                                        Feld
+                                                                                        ist
+                                                                                        ein
+                                                                                        Pflichtfeld.
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </t>
+                                                                    </div>
+                                                                </div>
+                                                                <hr class="appointment-hr"/>
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div>
+                                                                            <a
+                                                                                    class="btn btn-secondary reservation-btn reservation-submit-btn">
+                                                                                Anfrage
+                                                                                senden
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row col-xl-8 mx-auto d-none">
+                                                                        <div class="offset-md-4 col-md-8 o_not_editable">
+                                                                            <button type="submit"
+                                                                                    class="btn btn-primary reservation-submit-btn-actl">
+                                                                                Confirm
+                                                                                Appointment
+                                                                                <span class="fa fa-arrow-right"/>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </t>
+    </template>
+
+    <template id="appointment_calendar_custom" name="Online Appointment">
+        <br/>
+        <h3 class="appointment-text-h3 GT_Pressura_Regular">What is your
+            desired date?
+        </h3>
+        <div id="slots_availabilities" class="d-lg-flex mt-3">
+            <div id="calendar" class="col-lg-12 px-0">
+                <div t-foreach="slots" t-as="month"
+                     t-attf-id="month-#{month['id']}"
+                     t-attf-class="o_appointment_month #{'d-none' if month['id'] > 0 else ''}">
+                    <div id="calendarHeader" class="">
+                        <div class="row p-0">
+                            <div t-if="month['id'] > 0" class="col-1 p-0">
+                                <a href="#" action="-1"
+                                   class="obst-previous-calender obst-round-calender">
+                                    &#8249;
+                                </a>
+                            </div>
+                            <div class="col-3">
+                                <h4 t-out="month['month']"
+                                    class="col GT_Pressura_Regular appointment-text-h4"/>
+                            </div>
+                            <div t-if="len(slots) > month['id'] + 1"
+                                 class="col-1 p-0">
+                                <a href="#" action="+1"
+                                   class="obst-previous-calender obst-round-calender">
+                                    &#8250;
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table mt-1">
+                        <tr class="active obst-calender-table-row">
+                            <t t-foreach="formated_days" t-as="day">
+                                <th class="text-center p-md-2 p-1 align-middle obst-calender-table-head"
+                                    t-out="day"/>
+                            </t>
+                        </tr>
+                        <tr t-foreach="month['weeks']" t-as="weeks"
+                            class="o_appointment_days obst-calender-table-row">
+                            <t t-foreach="weeks" t-as="day">
+                                <td t-attf-class="align-middle p-md-2 obst-calender-table-body p-1 text-center#{day['slots'] and ' o_day' or ''} #{day['weekend_cls']} #{day['today_cls']}"
+                                    t-attf-title="#{day['today_cls'] and 'Today' or ''}">
+                                    <t t-if="day['slots']">
+                                        <select class="filter_select_category GT_Pressura_Pro_Mono filter_select filter_select_appointment_day"
+                                                name="">
+                                            <option class="text-center"
+                                                    t-att-value="day['day'].day">
+                                                <t t-esc="day['day'].day"/>
+                                            </option>
+                                            <t t-foreach="day['slots']"
+                                               t-as="day_slot">
+                                                <option t-att-value="json.dumps(day_slot)"
+                                                        t-esc="day_slot['hours']"/>
+                                            </t>
+                                        </select>
+                                    </t>
+                                    <t t-if="not day['slots']">
+                                        <div t-out="day['day'].day"
+                                             t-attf-class="mx-auto w-50 #{day['mute_cls']}"/>
+                                    </t>
+                                </td>
+                            </t>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="appointment_validated"
+              name="Website Appointment: Appointment Confirmed"
+              inherit_id="appointment.appointment_validated">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <div id="wrap" class="container-main">
+                <div class="cms-page">
+                    <div class="cms-sections">
+                        <div class="cms-section  pos-0 cms-section-default"
+                             style="">
+                            <div class="cms-section-default boxed">
+                                <div class="cms-block  pos-0 cms-block-reservation"
+                                     style="">
+                                    <div class="cms-block-container cms-block-container-appointment">
+                                        <div class="cms-block-container-row row cms-row ">
+                                            <div class="reservation-content-block js-reservation-form">
+                                                <div class="card reservation-headline">
+                                                    <div class="card-body">
+                                                        <h2 class="reservation-title-appointment GT_Pressura_Regular">
+                                                            Vielen Dank für
+                                                            Deine Buchung!
+                                                        </h2>
+                                                        <div class="reservation-info-appointment GT_Pressura_Regular">
+                                                            <div role="alert"
+                                                                 class="alert alert-success alert-success-appointment">
+                                                                <div class="alert-content-container-appointment">
+                                                                    <div class="alert-content alert-content-appointment">
+                                                                        Wir
+                                                                        haben
+                                                                        Deinen
+                                                                        Termin
+                                                                        eingeplant
+                                                                        und Dir
+                                                                        ein
+                                                                        Mail
+                                                                        gesendet.
+                                                                        Darin
+                                                                        findest
+                                                                        Du die
+                                                                        detaillierten
+                                                                        Informationen
+                                                                        und
+                                                                        einen
+                                                                        Link,
+                                                                        falls
+                                                                        Du den
+                                                                        Termin
+                                                                        stornieren
+                                                                        willst.
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="website_appointment.appointments_cards_layout" name="Appointments Cards Layout">
+        <t t-call="website.layout">
+            <div id="wrap" class="o_appointment_index h-100">
+                <div class="oe_structure"/>
+                <div class="o_appointment_appointments_list opt_appointments_list_cards_bg h-100"
+                     style="background-color: #FFFFFF !important;">
+                    <div class="container">
+                        <div id="o_appointment_index_main_col" class="col-md pt-5 appointments_list_columns mt-5">
+                            <h1 class="reservation_intro_h1 GT_Pressura_Regular">
+                                <span style="font-weight: 400;">
+                                    Book us
+                                </span>
+                            </h1>
+                            <div class="row">
+                                <t t-call="website_appointment.appointments_cards"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+            </div>
+        </t>
+    </template>
+
+    <template id="appointment_form_obs" name="Website Appointment: Your Data" inherit_id="appointment.appointment_info">
+        <xpath expr="//nav[hasclass('navbar')]" position="replace"/>
+        <xpath expr="//ul[hasclass('wizard')]" position="replace"/>
+        <xpath expr="//h1[hasclass('o_page_header')]" position="replace"/>
+        <!--        <xpath expr="//div[@id='o_appointment']" position="attributes">-->
+        <!--            <attribute name="class" value="mt-5"/>-->
+        <!--        </xpath>-->
+        <xpath expr="//div[hasclass('clearfix')]" position="after">
+            <div class="app-mt10"/>
+        </xpath>
+    </template>
+
+    <template id="appointment_form" name="Website Appointment: Your Data" inherit_id="appointment.appointment_form">
+        <xpath expr="//nav[hasclass('navbar')]" position="replace"/>
+        <xpath expr="//h2[hasclass('o_page_header')]" position="replace"/>
+        <xpath expr="//div[hasclass('oe_structure')]" position="before">
+            <div class="app-mt10"/>
+        </xpath>
+        <xpath expr="//button[hasclass('btn')]" position="replace">
+            <button type="submit" class="btn btn-primary" style="padding-bottom: 29px !important;">Confirm Appointment
+                <span class="fa fa-arrow-right" aria-hidden="true" style="display: inline !important;"></span>
+            </button>
+        </xpath>
+
+        <xpath expr="//div[hasclass('oe_structure')]" position="attributes">
+            <attribute name="class" value="text-family-Pressura"/>
+        </xpath>
+
+        <xpath expr="//ul[hasclass('float-right')]" position="replace">
+            <ul class="wizard mt32 d-none d-md-block pl-4">
+                <li class="text-success bg-white border-0 text-dark GT_Pressura_Regular">Time
+                    <span class="chevron"></span>
+                </li>
+                <li class="text-primary bg-white border-0 GT_Pressura_Regular" style="color: #eeca00 !important;">Confirmation
+                    <span class="chevron"></span>
+                </li>
+            </ul>
+        </xpath>
+        <xpath expr="//div[@id='wrap']/div/section/div" position="attributes">
+            <attribute name="class" add="container GT_Pressura_Regular" remove="container"/>
+        </xpath>
+
+    </template>
+
+    <template id="appointment.appointment_calendar" name="Online Appointment">
+        <!--        <div class="o_appointment_slots_loading d-flex align-items-center pb-5 mt-n5">-->
+        <!--            <i class="fa fa-3x fa-spin fa-spinner mx-auto text-o-color-2"/>-->
+        <!--        </div>-->
+        <div id="slots_availabilities" class="mt-3 d-lg-flex">
+            <div id="calendar" class="col-lg-8 px-0">
+                <div t-foreach="slots" t-as="month" t-attf-id="month-#{month['id']}"
+                     t-attf-class="o_appointment_month px-1 px-md-3 #{'d-none' if month['id'] > 0 else ''}">
+                    <div id="calendarHeader" class="d-inline-flex align-items-baseline container-fluid">
+                        <button t-if="month['id'] > 0" type="button" id="prevCal"
+                                t-attf-class="btn btn-primary obst-btn-primary o_js_calendar_navigate">
+                            <i class="fa fa-arrow-left"/>
+                        </button>
+                        <div t-else="" class="btn disabled fa fa-arrow-left mr-1 GT_Pressura_Regular text-white"/>
+                        <h3 t-out="month['month']" class="col text-center GT_Pressura_Regular"/>
+                        <button t-if="len(slots) > month['id'] + 1" type="button" id="nextCal"
+                                t-attf-class="btn btn-primary obst-btn-primary o_js_calendar_navigate ml-1">
+                            <i class="fa fa-arrow-right"/>
+                        </button>
+                        <div t-else="" class="btn disabled fa fa-arrow-right ml-1 GT_Pressura_Regular text-white"/>
+                    </div>
+                    <table class="table mt-1">
+                        <tr class="active obst-calender-table-row">
+                            <t t-foreach="formated_days" t-as="day">
+                                <th class="text-center p-md-2 p-1 align-middle obst-calender-table-head GT_Pressura_Regular"
+                                    t-out="day"/>
+                            </t>
+                        </tr>
+                        <tr t-foreach="month['weeks']" t-as="weeks" class="o_appointment_days obst-calender-table-row">
+                            <t t-foreach="weeks" t-as="day">
+                                <td t-attf-class="obst-calender-table-body align-middle p-md-2 p-1 GT_Pressura_Regular text-center#{day['slots'] and ' o_day' or ''} #{day['weekend_cls']} #{day['today_cls']}"
+                                    t-attf-title="#{day['today_cls'] and 'Today' or ''}">
+                                    <t t-if="day['slots']">
+                                        <div t-att-id="day['day']" class="o_slot_button mx-auto w-50"
+                                             t-out="day['day'].day"
+                                             t-att-data-available-slots="json.dumps(day['slots'])"/>
+                                    </t>
+                                    <t t-if="not day['slots']">
+                                        <div t-out="day['day'].day" t-attf-class="mx-auto w-50 #{day['mute_cls']}"/>
+                                    </t>
+                                </td>
+                            </t>
+                        </tr>
+                    </table>
+                </div>
+                <div id="timezoneSelection" class="mt-lg-0 mt-3">
+                    <span>Time displayed in
+                        <strong t-out="request.session['timezone']"/>
+                        timezone
+                    </span>
+                </div>
+            </div>
+            <div id="slotsList" class="o_appointment_availabilities col-lg-4"/>
+        </div>
+    </template>
+
+</odoo>

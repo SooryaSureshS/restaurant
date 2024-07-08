@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="product_template_enable_form_view" model="ir.ui.view">
+            <field name="name">product.template.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('oe_title')]" position="inside">
+                    <label for="name" string="Sub Header"/>
+                    <h2>
+                        <div class="d-flex">
+                            <field class="text-break" name="sub_header" placeholder="Eg:- Essential Jersey Green"/>
+                        </div>
+                        <div class="d-flex">
+                            <label for="cover_image" string="Cover Image"/>
+                            <field class="text-break" name="cover_image"/>
+                        </div>
+                        <div class="d-flex">
+                            <label for="data_sheet_file" string="Data Sheet"/>
+                            <field class="text-break" name="data_sheet_file"/>
+                        </div>
+                    </h2>
+                </xpath>
+                <xpath expr="//notebook/page[@name='general_information']" position="after">
+                    <page string="Product Detail" name="product_description">
+                        <group>
+                            <field name="features" class="oe_account_terms mt-5 w-100"
+                                   placeholder="Detailed description..."/>
+                            <field name="description" class="oe_account_terms mt-5 w-100" placeholder="description..."/>
+                            <field name="care_instruction" class="oe_account_terms mt-5 w-100"
+                                   placeholder="care instruction..."/>
+                        </group>
+                        <h4>Website Size</h4>
+                        <div>
+                            <group>
+                                <field name="website_size_x" type="integer"/>
+                            </group>
+                            <group>
+                                <field name="website_size_y" type="integer"/>
+                            </group>
+                        </div>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

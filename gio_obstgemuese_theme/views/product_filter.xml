@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="product_filter" inherit_id="website_sale.products">
+        <xpath expr="//div[hasclass('oe_website_sale')]" position="before">
+            <a href="#" class="sidebar-filter-toggle">
+                <span class="iconOG icon-more"></span>
+            </a>
+            <input type="hidden" id="website_pagination"
+                   name="website_pagination" value="1"/>
+            <input type="hidden" id="website_current_url"
+                   name="website_current_url" value="/shop"/>
+            <input type="hidden" id="scroll_action"
+                   name="website_current_url" value="true"/>
+            <input type="hidden" id="page_limit"
+                   name="website_current_url" value="false"/>
+            <input type="hidden" name="search" t-att-value="search"/>
+            <t t-call="gio_obstgemuese_theme.obst_mobile_menu"/>
+            <div class="col-12 obst_product_filter pt-5 obst_product_filter_tab">
+                <form class="js_attributes mb-2" method="get">
+                    <input t-if="category" type="hidden" name="category"
+                           t-att-value="category.id"/>
+                    <input type="hidden" name="search" t-att-value="search"/>
+                    <ul class="nav obst-nav">
+                        <div class="filter_col_mobile">
+                            <li style="list-style-type: none;">
+                                <select class="custom-select css_attribute_select GT_Pressura_Regular"
+                                        id="CategoryFilter">
+                                    <option value="">Sortiment</option>
+                                    <t t-foreach="categories" t-as="c">
+                                        <option t-att-value="keep('/shop/category/' + slug(c), category=0)"
+                                                t-esc="c.name"
+                                                t-att-data-link-href="keep('/shop/category/' + slug(c), category=0)"
+                                                t-att-selected="c.id == category.id"/>
+                                    </t>
+                                </select>
+                            </li>
+                        </div>
+                        <t t-foreach="attributes" t-as="a">
+                            <t t-if="a.name == 'Legs'">
+                                <t t-set="marke" t-value="a"/>
+                            </t>
+                            <t t-if="a.name == 'Brand'">
+                                <t t-set="farbe" t-value="a"/>
+                            </t>
+                            <t t-if="a.name == 'Color'">
+                                <t t-set="kollektion" t-value="a"/>
+                            </t>
+                            <t t-if="a.name == 'Duration'">
+                                <t t-set="kategorie" t-value="a"/>
+                            </t>
+                            <t t-if="a.name == 'Legs'">
+                                <t t-set="produkt" t-value="a"/>
+                            </t>
+                        </t>
+                        <div class="filter_col_mobile">
+                            <li style="list-style-type: none;">
+                                <select class="custom-select css_attribute_select GT_Pressura_Regular"
+                                        name="attrib">
+                                    <option value="0-0">Marke</option>
+                                    <t t-if="marke">
+                                        <t t-foreach="marke.value_ids"
+                                           t-as="v">
+                                            <option t-att-value="'%s-%s' % (marke.id,v.id)"
+                                                    t-esc="v.name"
+                                                    t-att-selected="v.id in attrib_set"/>
+                                        </t>
+                                    </t>
+                                </select>
+                            </li>
+                        </div>
+                        <div class="filter_col_mobile">
+                            <li style="list-style-type: none;">
+                                <select class="custom-select css_attribute_select GT_Pressura_Regular"
+                                        name="attrib">
+                                    <option value="0-0">Farbe</option>
+                                    <t t-if="farbe">
+                                        <t t-foreach="farbe.value_ids"
+                                           t-as="v">
+                                            <option t-att-value="'%s-%s' % (farbe.id, v.id)"
+                                                    t-esc="v.name"
+                                                    t-att-selected="v.id in attrib_set"/>
+                                        </t>
+                                    </t>
+                                </select>
+                            </li>
+                        </div>
+                        <div class="filter_col_mobile">
+                            <li style="list-style-type: none;">
+                                <select class="custom-select css_attribute_select GT_Pressura_Regular"
+                                        name="attrib">
+                                    <option value="0-0">Kollektion</option>
+                                    <t t-if="kollektion">
+                                        <t t-foreach="kollektion.value_ids"
+                                           t-as="v">
+                                            <option t-att-value="'%s-%s' % (kollektion.id,v.id)"
+                                                    t-esc="v.name"
+                                                    t-att-selected="v.id in attrib_set"/>
+                                        </t>
+                                    </t>
+                                </select>
+                            </li>
+                        </div>
+                        <div class="filter_col_mobile">
+                            <li style="list-style-type: none;">
+                                <select class="custom-select css_attribute_select GT_Pressura_Regular"
+                                        name="attrib">
+                                    <option value="0-0">Kategorie</option>
+                                    <t t-if="kategorie">
+                                        <t t-foreach="kategorie.value_ids"
+                                           t-as="v">
+                                            <option t-att-value="'%s-%s' % (kategorie.id,v.id)"
+                                                    t-esc="v.name"
+                                                    t-att-selected="v.id in attrib_set"/>
+                                        </t>
+                                    </t>
+                                </select>
+                            </li>
+                        </div>
+                        <div class="filter_col_mobile">
+                            <li style="list-style-type: none;">
+                                <select class="custom-select css_attribute_select GT_Pressura_Regular"
+                                        name="attrib">
+                                    <option value="0-0">Produkt</option>
+                                    <t t-if="produkt">
+                                        <t t-foreach="produkt.value_ids"
+                                           t-as="v">
+                                            <option t-att-value="'%s-%s' % (produkt.id,v.id)"
+                                                    t-esc="v.name"
+                                                    t-att-selected="v.id in attrib_set"/>
+                                        </t>
+                                    </t>
+                                </select>
+                            </li>
+                        </div>
+                    </ul>
+                </form>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('oe_website_sale')]" position="replace">
+            <div class="oe_website_sale pt-2">
+                <div class="row o_wsale_products_main_row">
+                    <div t-if="enable_left_column" id="products_grid_before"
+                         class="col-lg-3 pb-2">
+                        <div class="products_categories"/>
+                        <div class="products_attributes_filters"/>
+                    </div>
+                    <div id="products_grid"
+                         t-attf-class="col #{'o_wsale_layout_list' if layout_mode == 'list' else ''}">
+                        <div class="pr-5 products_header form-inline flex-md-nowrap justify-content-end mb-4 product_head_custom">
+                            <t t-call="website_sale.search">
+                                <t t-set="_classes"
+                                   t-valuef="w-100 w-md-auto mr-auto mb-2"/>
+                                <t t-set="search"
+                                   t-value="original_search or search"/>
+                            </t>
+                            <t t-call="website_sale.pricelist_list">
+                                <t t-set="_classes" t-valuef="ml-3 mb-2"/>
+                            </t>
+                            <div class="sorting-title">
+                                <span>Sortieren nach</span>
+                            </div>
+                            <div>
+                                <div class="filter_col_mobile">
+                                    <li style="list-style-type: none;">
+                                        <t t-set="list_price_asc_label">Price - Low to High</t>
+                                        <t t-set="list_price_desc_label">Price - High to Low</t>
+                                        <t t-set="newest_arrivals_desc_label">Newest arrivals</t>
+                                        <t t-set="name_asc_label">Name</t>
+                                        <t t-set="website_sale_sortable" t-value="[
+                                            (list_price_asc_label, 'list_price asc'),
+                                            (list_price_desc_label, 'list_price desc'),
+                                            (newest_arrivals_desc_label, 'create_date desc'),
+                                            (name_asc_label, 'name asc')]"/>
+                                        <t t-set="website_sale_sortable_current"
+                                           t-value="[sort for sort in website_sale_sortable if sort[1]==request.params.get('order', '')]"/>
+                                        <select class="custom-select custom-sort-select GT_Pressura_Regular">
+                                            <t t-if='website_sale_sortable_current'>
+                                                <option value="0-0"
+                                                        t-esc="website_sale_sortable_current[0][0]"/>
+                                            </t>
+                                            <t t-else='1'>
+                                                <option value="0-0">Neuigkeiten</option>
+                                            </t>
+                                            <t t-foreach="website_sale_sortable" t-as="sortby">
+                                                <option t-att-value="keep('/shop', order=sortby[1])"
+                                                        t-esc="sortby[0]"/>
+                                            </t>
+                                        </select>
+                                    </li>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center sort_reset_filter">
+                            <a href="/shop"
+                               class="filter-reset-all-products d-none">
+                                <font style="vertical-align: inherit;">
+                                    <font class="privacy-hover"
+                                          style="vertical-align: inherit;">
+                                        Reset all filters
+                                    </font>
+                                </font>
+                            </a>
+                        </div>
+                        <div t-if="original_search and bins"
+                             class="alert alert-warning mt8">
+                            No results found for '<span
+                                t-esc="original_search"/>'. Showing results for
+                            '<span
+                                t-esc="search"/>'.
+                        </div>
+                        <t t-if="category">
+                            <t t-set='editor_msg'>Drag building blocks here to
+                                customize the header for "<t
+                                        t-esc='category.name'/>" category.
+                            </t>
+                            <div class="mb16" id="category_header"
+                                 t-att-data-editor-message="editor_msg"
+                                 t-field="category.website_description"/>
+                        </t>
+                        <div class="product_list_custom_view container">
+                            <div t-if="bins"
+                                 class="o_wsale_products_grid_table_wrapper">
+                                <table class="table table-borderless m-0"
+                                       t-att-data-ppg="23"
+                                       t-att-data-ppr="ppr">
+                                    <colgroup t-ignore="true">
+                                        <!-- Force the number of columns (useful when only one row of (x < ppr) products) -->
+                                        <col t-foreach="ppr" t-as="p"/>
+                                    </colgroup>
+                                    <tbody class="table_body_shop">
+                                        <tr t-foreach="bins" t-as="tr_product">
+                                            <t t-foreach="tr_product"
+                                               t-as="td_product">
+                                                <t t-if="td_product">
+                                                    <t t-set="product"
+                                                       t-value="td_product['product']"/>
+                                                    <td t-att-colspan="td_product['x'] != 1 and td_product['x']"
+                                                        t-att-rowspan="td_product['y'] != 1 and td_product['y']"
+                                                        t-attf-class="oe_product"
+                                                        t-att-data-ribbon-id="td_product['ribbon'].id">
+                                                        <div t-attf-class="o_wsale_product_grid_wrapper o_wsale_product_grid_wrapper_#{td_product['x']}_#{td_product['y']}">
+                                                            <t t-call="website_sale.products_item">
+                                                                <t t-set="product_image_big"
+                                                                   t-value="td_product['x'] + td_product['y'] &gt; 2"/>
+                                                            </t>
+                                                        </div>
+                                                    </td>
+                                                </t>
+                                                <td t-else=""/>
+                                            </t>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <t t-else="">
+                                <div class="text-center text-muted mt128 mb256">
+                                    <t t-if="not search">
+                                        <h3 class="mt8">No product defined</h3>
+                                        <p t-if="category">No product defined
+                                            in category "
+                                            <strong
+                                                    t-esc="category.display_name"/>
+                                            ".
+                                        </p>
+                                    </t>
+                                    <t t-else="">
+                                        <h3 class="mt8">No results</h3>
+                                        <p>No results for "<strong
+                                                t-esc='search'/>"
+                                            <t t-if="category">in category "
+                                                <strong t-esc="category.display_name"/>
+                                                "
+                                            </t>
+                                            .
+                                        </p>
+                                    </t>
+                                    <p t-ignore="true"
+                                       groups="sales_team.group_sale_manager">
+                                        Click <i>'New'</i> in the
+                                        top-right corner to create your first
+                                        product.
+                                    </p>
+                                </div>
+                            </t>
+                        </div>
+                        <div class="product_list_mobile_view">
+                            <div t-if="bins"
+                                 class="o_wsale_products_grid_table_wrapper">
+                                <div class="table table-borderless m-0"
+                                     t-att-data-ppg="23" t-att-data-ppr="ppr">
+                                    <colgroup t-ignore="true">
+                                        <!-- Force the number of columns (useful when only one row of (x < ppr) products) -->
+                                        <col t-foreach="ppr" t-as="p"/>
+                                    </colgroup>
+                                    <div class="table_body_shop_mobile">
+                                        <div t-foreach="bins" t-as="tr_product"
+                                             class="row">
+                                            <t t-foreach="tr_product"
+                                               t-as="td_product">
+                                                <t t-if="td_product">
+                                                    <t t-set="product"
+                                                       t-value="td_product['product']"/>
+                                                    <div t-att-colspan="td_product['x'] != 1 and td_product['x']"
+                                                         t-att-rowspan="td_product['y'] != 1 and td_product['y']"
+                                                         t-attf-class="oe_product  #{'col-6' if td_product['x'] == 1 else 'col-12'}"
+                                                         t-att-data-ribbon-id="td_product['ribbon'].id">
+                                                        <div t-attf-class="o_wsale_product_grid_wrapper o_wsale_product_grid_wrapper_#{td_product['x']}_#{td_product['y']}">
+                                                            <t t-call="website_sale.products_item">
+                                                                <t t-set="product_image_big"
+                                                                   t-value="td_product['x'] + td_product['y'] &gt; 2"/>
+                                                            </t>
+                                                        </div>
+                                                    </div>
+                                                </t>
+                                                <div t-else=""/>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <t t-else="">
+                                <div class="text-center text-muted mt128 mb256">
+                                    <t t-if="not search">
+                                        <h3 class="mt8">No product defined</h3>
+                                        <p t-if="category">No product defined
+                                            in category "
+                                            <strong
+                                                    t-esc="category.display_name"/>
+                                            ".
+                                        </p>
+                                    </t>
+                                    <t t-else="">
+                                        <h3 class="mt8">No results</h3>
+                                        <p>No results for "<strong
+                                                t-esc='search'/>"
+                                            <t t-if="category">in category "
+                                                <strong t-esc="category.display_name"/>
+                                                "
+                                            </t>
+                                            .
+                                        </p>
+                                    </t>
+                                    <p t-ignore="true"
+                                       groups="sales_team.group_sale_manager">
+                                        Click <i>'New'</i> in the
+                                        top-right corner to create your first
+                                        product.
+                                    </p>
+                                </div>
+                            </t>
+                        </div>
+                        <div class="products_pager form-inline justify-content-center py-3">
+                            <svg class="spinner" id="product_pager_spinner"
+                                 width="65px" height="65px"
+                                 viewBox="0 0 66 66"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <circle class="path" fill="none"
+                                        stroke-width="6" stroke-linecap="round"
+                                        cx="33" cy="33"
+                                        r="30"></circle>
+                            </svg>
+                            <div class="pagination-limit ">
+                                <h4 class="GT_Pressura_Pro_Mono">You Have
+                                    Reached Maximum Limit !
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="products_item_inherit" name="Products item"
+              inherit_id="website_sale.products_item">
+        <xpath expr="//form[hasclass('oe_product_cart')]" position="replace">
+            <form action="/shop/cart/update" method="post"
+                  class="card oe_product_cart"
+                  t-att-data-publish="product.website_published and 'on' or 'off'"
+                  itemscope="itemscope" itemtype="http://schema.org/Product">
+                <a class="o_product_link css_editable_mode_hidden"
+                   t-att-href="product_href"/>
+                <div class="card-body p-1 oe_product_image"
+                     style="background-color:white !important">
+                    <input type="hidden" name="csrf_token"
+                           t-att-value="request.csrf_token()"/>
+                    <a t-att-href="product_href" class="d-block h-100"
+                       itemprop="url">
+                        <t t-set="image_holder"
+                           t-value="product._get_image_holder()"/>
+                        <span t-field="image_holder.image_1920"
+                              t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256', 'itemprop': 'image'}"
+                              class="d-flex h-100 justify-content-center align-items-center"/>
+                    </a>
+                </div>
+                <div class="card-body p-0 o_wsale_product_information  text-center"
+                     style="background-color: white !important; color: black;">
+                    <div class="p-2 o_wsale_product_information_text">
+                        <h6 class="o_wsale_products_item_title GT_Pressura_Regular">
+                            <a class="text-dark text-decoration-none GT_Pressura_Regular"
+                               itemprop="name"
+                               t-att-href="product_href"
+                               t-att-content="product.name"
+                               t-field="product.name"/>
+                            <a role="button"
+                               t-if="not product.website_published"
+                               t-att-href="product_href"
+                               class="btn btn-sm btn-danger"
+                               title="This product is unpublished.">Unpublished
+                            </a>
+                        </h6>
+                        <div class="product_price mb-1" itemprop="offers"
+                             itemscope="itemscope"
+                             itemtype="http://schema.org/Offer">
+                            <span class="GT_Pressura_Regular text-muted"
+                                  t-if="combination_info['price']"
+                                  t-esc="combination_info['price']"
+                                  t-options="{'widget': 'monetary', 'class': 'GT_Pressura_Regular', 'display_currency': website.currency_id}"/>
+                            <del t-attf-class="text-danger GT_Pressura_Regular ml-1 h6 {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                                 style="white-space: nowrap;"
+                                 t-esc="combination_info['list_price']"
+                                 t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                            <span itemprop="price" style="display:none;"
+                                  t-esc="combination_info['price']"/>
+                            <span itemprop="priceCurrency"
+                                  style="display:none;"
+                                  t-esc="website.currency_id.name"/>
+                        </div>
+                    </div>
+                    <div class="o_wsale_product_btn pl-2 d-none"/>
+                </div>
+                <t t-set="bg_color"
+                   t-value="td_product['ribbon']['bg_color'] or ''"/>
+                <t t-set="text_color"
+                   t-value="td_product['ribbon']['text_color']"/>
+                <t t-set="bg_class"
+                   t-value="td_product['ribbon']['html_class']"/>
+                <span t-attf-class="o_ribbon #{bg_class}"
+                      t-attf-style="#{text_color and ('color: %s; ' % text_color)}#{bg_color and 'background-color:' + bg_color}"
+                      t-out="td_product['ribbon']['html'] or ''"/>
+            </form>
+        </xpath>
+    </template>
+
+    <template id="custom_pagination" name="Pager">
+        <div t-if="pager['page_count'] > 1"
+             t-attf-class="#{ classname or '' } pagination m-0 #{_classes} pagination_custom"
+             t-att-style="style or None">
+            <div t-attf-class="page-item #{'disabled' if pager['page']['num'] == 1 else ''} pagination_custom_section">
+                <a t-att-href=" pager['page_previous']['url'] if pager['page']['num'] != 1 else None"
+                   t-attf-class="page-link #{extraLinkClass} pagination_custom_subsection pagination_button">
+                    &lt;
+                </a>
+            </div>
+            <t t-foreach="pager['pages']" t-as="page">
+                <div t-attf-class="page-item #{'active' if page['num'] == pager['page']['num'] else ''} pagination_custom_section">
+                    <a t-att-href="page['url']"
+                       t-attf-class="page-link #{extraLinkClass} pagination_custom_subsection"
+                       t-out="page['num']"/>
+                </div>
+            </t>
+            <div t-attf-class="page-item #{'disabled' if pager['page']['num'] == pager['page_count'] else ''} pagination_custom_section">
+                <a t-att-href="pager['page_next']['url'] if pager['page']['num'] != pager['page_count'] else None"
+                   t-attf-class="page-link #{extraLinkClass} pagination_custom_subsection pagination_button">
+                    &gt;
+                </a>
+            </div>
+        </div>
+    </template>
+    <template id="sort" customize_show="True" name="Show Sort by">
+        <t t-set="list_price_asc_label">Price - Low to High</t>
+        <t t-set="list_price_desc_label">Price - High to Low</t>
+        <t t-set="newest_arrivals_desc_label">Newest arrivals</t>
+        <t t-set="name_asc_label">Name</t>
+        <t t-set="website_sale_sortable" t-value="[
+                    (list_price_asc_label, 'list_price asc'),
+                    (list_price_desc_label, 'list_price desc'),
+                    (newest_arrivals_desc_label, 'create_date desc'),
+                    (name_asc_label, 'name asc')
+                ]"/>
+        <t t-set="website_sale_sortable_current"
+           t-value="[sort for sort in website_sale_sortable if sort[1]==request.params.get('order', '')]"/>
+        <div class="o_sortby_dropdown sort-dropdown-mobile dropdown dropdown_sorty_by pb-2 pr-3">
+            <span class="d-none d-lg-inline GT_Pressura_Pro_Mono font-weight-bold sorting-title">
+                Sortieren nach:
+            </span>
+            <a role="button" href="#"
+               class="dropdown-toggle btn btn-light border-0 px-0 text-muted align-baseline sort_by_section"
+               data-toggle="dropdown">
+                <span class="d-none d-lg-inline">
+                    <t t-if='website_sale_sortable_current'>
+                        <t t-esc="website_sale_sortable_current[0][0]"/>
+                    </t>
+                    <t t-else='1'>
+                        <span class="GT_Pressura_Pro_Mono">Featured</span>
+                    </t>
+                </span>
+                <!--                <i class="fa fa-sort-amount-asc d-lg-none"/>-->
+            </a>
+            <div class="dropdown-menu dropdown-menu-right sort_by_sec"
+                 role="menu">
+                <t t-foreach="website_sale_sortable" t-as="sortby">
+                    <a role="menuitem" rel="noindex,nofollow"
+                       t-att-href="keep('/shop', order=sortby[1])"
+                       class="dropdown-item">
+                        <span class="GT_Pressura_Pro_Mono" t-out="sortby[0]"/>
+                    </a>
+                </t>
+            </div>
+        </div>
+    </template>
+
+
+
+</odoo>

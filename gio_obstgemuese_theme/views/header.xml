@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="hamburger_header_new_replace" inherit_id="website.layout">
+        <xpath expr="//header" position="replace">
+            <t t-call="website.navbar">
+                <div class="chat-box-ui-block">
+                </div>
+                <t t-set="_navbar_expand_class" t-value="''"/>
+                <div id="top_menu_container" class="d-inline-flex w-100 GT_Pressura_Pro_Mono">
+                    <!-- Brand -->
+                    <t t-call="website.placeholder_header_brand">
+                        <t t-set="_link_class"
+                           t-valuef="mr-lg-auto mx-auto mr-0 ob_nav_logo pl-4"/>
+                    </t>
+                    <ul class="nav navbar-nav navbar-expand">
+                        <li class="nav-item pl-2 pr-2">
+                            <a class="nav-link">
+                                <img src="/gio_obstgemuese_theme/static/src/svg/56-magnifier.svg"
+                                     class="ob_icon ob_nav_search"/>
+                            </a>
+                            <div class="ob_search_overlay">
+                                <div class="row">
+                                    <div class="col-md-12 close-icon-div">
+                                        <img src="/gio_obstgemuese_theme/static/src/svg/65-cross2.svg"
+                                             class="close_icon close-icon-img ob_search_close float-right mr-2 mt-2"/>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="container-fluid-custom">
+                                            <div class="col-md-12 ">
+                                                <div class="search_box_input">
+                                                    <p class="GT_Pressura_Regular search-header">Suchbegriff + Enter</p>
+                                                    <input type="text" id="ob_search_input"
+                                                           class="ob_search_input search_input_field_cls GT_Pressura_Pro_Mono"
+                                                           value="" placeholder="Suchen"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row search_product_show">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- Sign In -->
+                        <t t-call="gio_obstgemuese_theme.custom_user_sign_in"/>
+                        <!-- User Dropdown -->
+                        <t t-call="portal.user_dropdown">
+                            <t t-set="_icon" t-value="true"/>
+                            <t t-set="_item_class"
+                               t-valuef="nav-item GT_Pressura_Pro_Mono dropdown pl-2 pr-2"/>
+                            <t t-set="_link_class" t-valuef="nav-link GT_Pressura_Pro_Mono"/>
+                            <t t-set="_dropdown_menu_class" t-valuef="position-absolute dropdown-menu-right"/>
+                        </t>
+                        <li class="nav-item pl-2 pr-4">
+                            <a class="nav-link ob_cart">
+                                <img src="/gio_obstgemuese_theme/static/src/svg/04-bag3.svg" class="ob_icon"/>
+                            </a>
+                        </li>
+                        <t t-call="gio_obstgemuese_theme.ob_cart_pop_up"/>
+                        <!--                        <li class="nav-item pl-3 pr-3">-->
+                        <!--                            <a class="nav-link">-->
+                        <!--                                <img src="/gio_obstgemuese_theme/static/src/svg/03-bubble-lines.svg" class="ob_icon"/>-->
+                        <!--                            </a>-->
+                        <!--                        </li>-->
+                    </ul>
+                    <!-- Navbar Toggler -->
+                    <t t-call="gio_obstgemuese_theme.ob_navbar_toggler">
+                        <t t-set="_toggler_class" t-valuef="order-first mr-auto pl-4"/>
+                    </t>
+                    <!-- Language Selector -->
+                    <t t-call="website.placeholder_header_language_selector">
+                        <t t-set="_div_classes" t-valuef="ml-2 d-none d-sm-block"/>
+                    </t>
+                    <!-- Navbar Collapse -->
+                    <div class="overlay main-menu-section">
+                        <div id="top_menu_collapse" class="d-block collapse ob_top_menu_collapse navbar-collapse">
+                            <div class="oe_structure oe_structure_solo" id="oe_structure_header_hamburger_2"/>
+                            <t t-call="website.navbar_nav">
+                                <!-- Menu -->
+                                <div class="col-2 pt-3 ">
+                                    <img src="/gio_obstgemuese_theme/static/src/svg/65-cross2.svg"
+                                         class="close_icon ob_icon ml-3 mt-3"/>
+                                </div>
+                                <div class="row pt-3">
+                                    <div class="col-md-12 obst-placeholder-header-brand">
+                                        <t t-call="website.placeholder_header_brand">
+                                            <t t-set="_link_class"
+                                               t-valuef="mr-lg-auto GT_Pressura_Pro_Mono mt-3 mr-0 p-3 nav_logo_mob_header"/>
+                                        </t>
+                                    </div>
+                                </div>
+                                <br/>
+                                <br/>
+                                <div class="ob_menu_list GT_Pressura_Pro_Mono">
+                                    <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                        <t t-call="website.submenu">
+                                            <t t-set="item_class" t-valuef="nav-item GT_Pressura_Pro_Mono text-dark"/>
+                                            <t t-set="link_class" t-valuef="nav-link GT_Pressura_Pro_Mono text-dark"/>
+                                        </t>
+                                    </t>
+                                </div>
+                                <div class="row obst-main-menu-tail-class">
+                                    <div class="col-2"></div>
+                                    <div class="col-8">
+                                        <div class="card social-icons">
+                                            <div class="social-icon-card-body"
+                                                 style="background-color: white!important">
+                                                <div class="row d-flex justify-content-center">
+                                                    <div class="col-lg-2 col-2">
+                                                        <a href="https://www.instagram.com/obstundgemuese/"
+                                                           class="social-media-icons-cls" title="Instagram"
+                                                           target="_blank" rel="noopener">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="30"
+                                                                 height="30" fill="currentColor"
+                                                                 class="bi bi-instagram social-media-icons-cls-mobile"
+                                                                 viewBox="0 0 16 16">
+                                                                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+                                                            </svg>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-lg-2 col-2">
+                                                        <a href="https://www.facebook.com/obstundgemuese.jam"
+                                                           class="social-media-icons-cls" title="Facebook"
+                                                           data-shareurl="https://www.facebook.com/obstundgemuese.jam"
+                                                           target="_blank" rel="noopener">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="30"
+                                                                 height="30" fill="currentColor"
+                                                                 class="bi bi-facebook social-media-icons-cls-mobile"
+                                                                 viewBox="0 0 16 16">
+                                                                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path>
+                                                            </svg>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-lg-2 col-2">
+                                                        <a href="https://www.komoot.de/user/obstundgemuese"
+                                                           class="social-media-icons-cls" title="Komoot" target="_blank"
+                                                           rel="noopener">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="30"
+                                                                 height="30" fill="currentColor"
+                                                                 class="bi bi-facebook social-media-icons-cls-mobile"
+                                                                 viewBox="0 0 25 25">
+                                                                <path d="M9.8 14.829l2.2-3.43 2.2 3.43 5.962 5.962A11.946 11.946 0 0 1 12 24c-3.043 0-5.935-1.14-8.162-3.209zM0 12C0 5.385 5.385 0 12 0c6.62 0 12 5.385 12 12 0 2.663-.855 5.175-2.469 7.284l-6.018-6.018c.15-.412.226-.839.226-1.27A3.743 3.743 0 0 0 12 8.257a3.743 3.743 0 0 0-3.739 3.739c0 .431.075.858.226 1.27l-6.018 6.018A11.865 11.865 0 0 1 0 12Z"
+                                                                      id="mainIconPathAttribute"></path>
+                                                            </svg>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-lg-2 col-2">
+                                                        <a href="https://www.strava.com/clubs/8561"
+                                                           class="social-media-icons-cls" title="Strava" target="_blank"
+                                                           rel="noopener">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="30"
+                                                                 height="30" fill="currentColor"
+                                                                 class="bi bi-strava social-media-icons-cls-mobile"
+                                                                 viewBox="0 0 16 16">
+                                                                <path d="M6.731 0 2 9.125h2.788L6.73 5.497l1.93 3.628h2.766L6.731 0zm4.694 9.125-1.372 2.756L8.66 9.125H6.547L10.053 16l3.484-6.875h-2.112z"></path>
+                                                            </svg>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-lg-2 col-2">
+                                                        <a href="https://vimeo.com/obstundgemuese"
+                                                           class="social-media-icons-cls" title="Vimeo" target="_blank"
+                                                           rel="noopener">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="30"
+                                                                 height="30" fill="currentColor"
+                                                                 class="bi bi-vimeo social-media-icons-cls-mobile"
+                                                                 viewBox="0 0 16 16">
+                                                                <path d="M15.992 4.204c-.071 1.556-1.158 3.687-3.262 6.393-2.175 2.829-4.016 4.243-5.522 4.243-.933 0-1.722-.861-2.367-2.583L3.55 7.523C3.07 5.8 2.556 4.94 2.007 4.94c-.118 0-.537.253-1.254.754L0 4.724a209.56 209.56 0 0 0 2.334-2.081c1.054-.91 1.845-1.388 2.373-1.437 1.243-.123 2.01.728 2.298 2.553.31 1.968.526 3.19.646 3.666.36 1.631.756 2.446 1.186 2.445.334 0 .836-.53 1.508-1.587.671-1.058 1.03-1.863 1.077-2.415.096-.913-.263-1.37-1.077-1.37a3.022 3.022 0 0 0-1.185.261c.789-2.573 2.291-3.825 4.508-3.756 1.644.05 2.419 1.117 2.324 3.2z"></path>
+                                                            </svg>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-2"></div>
+                                </div>
+                            </t>
+                            <div class="oe_structure oe_structure_solo" id="oe_structure_header_hamburger_3"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="ob_navbar_toggler" name="Navbar Toggler">
+        <button type="button" t-attf-class="navbar-toggler #{_toggler_class}"
+                data-target="#top_menu_collapse">
+            <span class=" o_not_editable">
+                <img class="ob_icon_menu" src="/gio_obstgemuese_theme/static/src/svg/60-menu.svg"/>
+            </span>
+        </button>
+    </template>
+    <template id="custom_user_sign_in" name="User Sign In" inherit_id="portal.placeholder_user_sign_in">
+        <xpath expr="." position="replace">
+            <li groups="base.group_public" t-attf-class="#{_item_class} nav-item o_no_autohide_item pr-4 pl-4">
+                <a t-attf-href="/web/login" t-attf-class="#{_link_class} nav-link">
+                    <img class="ob_icon" src="/gio_obstgemuese_theme/static/src/svg/21-user.svg"/>
+                </a>
+            </li>
+        </xpath>
+    </template>
+    <template id="user_inherit" inherit_id="portal.user_dropdown">
+        <xpath expr="//li" position="replace">
+            <li t-if="is_connected" t-attf-class="#{_item_class} o_no_autohide_item">
+                <a href="#" role="button" data-toggle="dropdown" t-attf-class="dropdown-toggle #{_link_class}">
+                    <t t-if="_avatar">
+                        <t t-set="avatar_source" t-value="image_data_uri(user_id.avatar_256)"/>
+                        <img t-att-src="avatar_source" t-attf-class="rounded-circle o_object_fit_cover #{_avatar_class}"
+                             width="24" height="24" alt="" loading="eager"/>
+                    </t>
+                    <span t-if="_icon">
+                        <img src="/gio_obstgemuese_theme/static/src/svg/21-user.svg" class="ob_icon"/>
+                    </span>
+                    <span t-if="_user_name" t-attf-class="#{_user_name_class}"
+                          t-esc="user_id.name[:23] + '...' if user_id.name and len(user_id.name) &gt; 25 else user_id.name"/>
+                </a>
+                <div t-attf-class="dropdown-menu js_usermenu #{_dropdown_menu_class}" role="menu">
+                    <a href="/my/home" class="dropdown-item">My Account</a>
+                    <div id="o_logout_divider" class="dropdown-divider"/>
+                    <a t-attf-href="/web/session/logout?redirect=/" role="menuitem" id="o_logout" class="dropdown-item">
+                        Logout
+                    </a>
+                </div>
+            </li>
+        </xpath>
+    </template>
+    <template id="ob_cart_pop_up" name="obstgemuse cart page">
+        <div class="cart-ui-block-container">
+        </div>
+        <div class="cart_container">
+            <div class="offcanvas is-right cart-offcanvas is-open">
+                <button class="btn btn-light btn-block offcanvas-close js-offcanvas-close sticky-top">
+                    <div class="col-3">
+                        <img src="/gio_obstgemuese_theme/static/src/svg/65-cross2.svg" class="cart_close p-2"/>
+                    </div>
+                </button>
+                <div class="offcanvas-content-container">
+                    <div class="offcanvas-cart">
+                        <div class="row align-items-center offcanvas-cart-header">
+                            <div class="col">
+                                <h2>
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">Warenkorb</font>
+                                    </font>
+                                </h2>
+                                <small class="offcanvas-cart-header-count">
+                                    <font style="vertical-align: inherit;">
+                                        <p class="item_count">0 items</p>
+                                    </font>
+                                </small>
+                            </div>
+                        </div>
+                        <div class="offcanvas-cart-content">
+                            <div class="flashbags"></div>
+                            <div class="row p-3 order_line">
+                            </div>
+                        </div>
+                        <div class="offcanvas-cart-actions-summary">
+                            <div class="offcanvas-summary">
+                                <dl class="row offcanvas-summary-list">
+                                    <dd class="col-12 summary-value summary-total">
+                                        CHF 927.–
+                                    </dd>
+                                </dl>
+                                <p class="offcanvas-cart-tax">
+                                    <small>
+                                        inkl. MwSt.
+                                    </small>
+                                </p>
+                            </div>
+                            <div class="offcanvas-cart-actions">
+                                <div class="btn-group w-100" role="group">
+                                    <a href="/shop" type="button" class="btn btn-block btn-cnt-shop-custom "
+                                       style="margin: auto; border: 1px solid white;" title="Weiter zur Kasse">
+                                        Weiter einkaufen
+                                    </a>
+                                    <a href="/shop/cart" type="button"
+                                       class="btn btn-block btn-checkout-custom "
+                                       style="margin: auto; border: 1px solid white;" title="Weiter zur Kasse">
+                                        zur Kasse
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-none hidden-line-items-information"></div>
+                </div>
+            </div>
+            <div class="modal-backdrop modal-backdrop-open"></div>
+        </div>
+    </template>
+</odoo>

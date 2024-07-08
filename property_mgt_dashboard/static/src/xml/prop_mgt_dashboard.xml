@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<template id="dashboard_main">
+    <t t-name="DashboardPropMgt">
+<!--        <div class="row hold-transition sidebar-mini layout-fixed layout-navbar-fixed"-->
+<!--             style="position:relative; overflow-y:auto;">-->
+<!--            &lt;!&ndash;<div class="container-fluid">&ndash;&gt;-->
+<!--            &lt;!&ndash;<t t-call="navBar"/>&ndash;&gt;-->
+<!--            &lt;!&ndash;</div>&ndash;&gt;-->
+<!--            &lt;!&ndash;<div class="content-wrapper" style="width: 100%;">&ndash;&gt;-->
+<!--            &lt;!&ndash;<section class="content">&ndash;&gt;-->
+            <div class="container" style="height:100vh;">
+                <t t-call="reviewApplication"/>
+                <t t-call="highFour"/>
+                <t t-call="lowRow"/>
+                <!--                <t t-call="lowRowSeller"/>-->
+            </div>
+            <!--</section>-->
+            <!--</div>-->
+<!--        </div>-->
+    </t>
+    <t t-name="reviewApplication">
+        <div class="row highOne">
+            <div class="col-8">
+                <p class="hoHead">Review New Property Application</p>
+                <p class="text-muted hoDesc">Let's review your tenancy application and get tips from us.</p>
+            </div>
+            <div class="col-4 hoRightCol">
+                <button class="btn btn-default approve">Review application</button>
+            </div>
+        </div>
+    </t>
+    <t t-name="highFour">
+        <div class="row hf">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-d-purple">
+                    <div class="inner row">
+                        <div class="col-7">
+                            <p class="hf count">150</p>
+                            <p class="hf desc">Properties for Sale</p>
+                        </div>
+                        <div class="col-5">
+                            <input type="hidden" class="knob" value="30" data-width="60" data-height="60"
+                                   data-bgColor="#69bfc7" data-fgColor="#FFFFFF"
+                                   data-readonly="true"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-l-purple">
+                    <div class="inner row">
+                        <div class="col-7">
+                            <p class="hf count">150</p>
+                            <p class="hf desc">Properties for Rent</p>
+                        </div>
+                        <div class="col-5">
+                            <input type="hidden" class="knob" value="30" data-width="60" data-height="60"
+                                   data-bgColor="#69bfc7" data-fgColor="#FFFFFF"
+                                   data-readonly="true"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-d-purple">
+                    <div class="inner row">
+                        <div class="col-7">
+                            <p class="hf count">150</p>
+                            <p class="hf desc">Total Customer</p>
+                        </div>
+                        <div class="col-5">
+                            <input type="hidden" class="knob" value="30" data-width="60" data-height="60"
+                                   data-bgColor="#69bfc7" data-fgColor="#FFFFFF"
+                                   data-readonly="true"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-l-purple">
+                    <div class="inner row">
+                        <div class="col-7">
+                            <p class="hf count">150</p>
+                            <p class="hf desc">Total City</p>
+                        </div>
+                        <div class="col-5">
+                            <input type="hidden" class="knob" value="30" data-width="60" data-height="60"
+                                   data-bgColor="#69bfc7" data-fgColor="#FFFFFF"
+                                   data-readonly="true"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+    <t t-name="lowRow">
+        <div class="row">
+            <div class="col-lg-6 order-md-2">
+                <t t-call="saleAnalytics"/>
+                <t t-call="propertiesOverview"/>
+                <t t-call="scheduledPayments"/>
+            </div>
+            <div class="col-lg-6">
+                <t t-call="featuredSaleOffers"/>
+                <t t-call="scheduledMaintenance"/>
+                <t t-call="renewContracts"/>
+            </div>
+        </div>
+<!--        <div class="row">-->
+<!--            <div class="col-lg-6">-->
+<!--                <t t-call="myProperties"/>-->
+<!--                <t t-call="renewContracts"/>-->
+<!--                <t t-call="scheduledPayments"/>-->
+<!--                <t t-call="userReviews"/>-->
+<!--            </div>-->
+<!--            <div class="col-lg-6">-->
+<!--                <t t-call="editProfileDetails"/>-->
+<!--                <t t-call="december2021"/>-->
+
+<!--            </div>-->
+
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-6">-->
+<!--                <t t-call="agentDetails"/>-->
+<!--                <t t-call="paymentDate"/>-->
+<!--            </div>-->
+<!--            <div class="col-lg-6">-->
+<!--                <t t-call="december2021"/>-->
+<!--            </div>-->
+
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-12">-->
+<!--                <t t-call="newMaintenanceRequest"/>-->
+
+<!--            </div>-->
+
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-12">-->
+<!--                <t t-call="rentHistory"/>-->
+
+<!--            </div>-->
+
+<!--        </div>-->
+    </t>
+</template>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<template id="propertiesOverviewTem">
+    <t t-name="propertiesOverview">
+        <div class="lowRowCont">
+            <div class="row">
+                <div class="col-lg-9">
+                    <span class="lowRowHeads">Properties Overview</span>
+                </div>
+                <div class="col-lg-3"/>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 3dChart">
+                    <div id="piechart_3d" style="width: 300px; height: 180px;"/>
+                </div>
+                <div class="col-lg-4">
+                    <div class="row">
+                        <div class="donutLegendRect" style="background:#2baab6;"/>
+                        <div>
+                            <span class="lrTcN">Properties for Sales</span>
+                            <br/>
+                            <span class="lrTcB">75%</span>
+                            <br/>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="donutLegendRect" style="background:#F0B51B;"/>
+                        <div>
+                            <span class="lrTcN">Properties for Rental</span>
+                            <br/>
+                            <span class="lrTcB">25%</span>
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</template>

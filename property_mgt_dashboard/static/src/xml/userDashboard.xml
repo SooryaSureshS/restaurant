@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<template id="userDashboard">
+    <t t-name="agentDetails">
+        <div class="lowRowCont">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h5>
+                        <strong>
+                            Agent Details
+                        </strong>
+                    </h5>
+                </div>
+                <div class="col-lg-6"/>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+
+                    <img style="border-radius:23px; margin-left: 16px;"
+                         src="property_mgt_dashboard/static/src/image/Admin Profile.png"
+                         width="80px" height="80px"></img>
+
+                </div>
+                <div class="col-lg-6">
+                    <p>
+                        <strong>Midnight Corner St.Suite 600 San Francisco,CADGE 94107</strong>
+                    </p>
+
+
+                    <a href="#" class="fa fa-instagram"></a>
+
+
+                    <a href="#" class="fa fa-facebook"></a>
+
+
+                    <a href="#" class="fa fa-twitter"></a>
+
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 p-2">
+                    <h5>
+                        <strong>
+                            Samuel Rodriguez
+                        </strong>
+                    </h5>
+                    <p style="margin-left: 46px;">Agent</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="lowRowCont">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <i class="fa fa-phone" style="font-size:24px; color:#6565db;"></i>
+                            </div>
+                            <div class="col-lg-9">
+                                <h5>
+                                    <strong>+12 5123 5512 66</strong>
+                                </h5>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </t>
+    <t t-name="paymentDate">
+        <div class="lowRowCont">
+            <div class="row">
+                <div class="col-lg-4">
+                    <span class="lowRowHeads">Payment Date</span>
+                </div>
+                <div class="col-lg-4">
+                    <p class="lowRowHeadInf">Due in 7 days</p>
+                </div>
+                <div class="col-lg-4">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-4">
+                    <div class="description-block border-right">
+                        <span class="description-percentage text-success">
+                            <i class="fa fa-circle" style="color: #2baab6;"></i>
+                            <span class="lrTcN">Total</span>
+                        </span>
+                        <h5 class="description-header">$1500</h5>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-4">
+                    <div class="description-block border-right">
+                        <span class="description-percentage text-success">
+                            <i class="fa fa-circle" style="color: #61B061;"></i>
+                            <span class="lrTcN">Paid</span>
+                        </span>
+                        <h5 class="description-header">$700</h5>
+                    </div>
+                </div>
+                <div class="col-lg-4" style="text-align:right;">
+                    <button class="btn purpleBtn">Pay Now</button>
+                </div>
+            </div>
+        </div>
+
+    </t>
+    <t t-name="newMaintenanceRequest">
+        <div class="lowRowCont">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="lowRowCont">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <h5>
+                                    <strong>Electrical</strong>
+                                </h5>
+                            </div>
+                            <div class="col-lg-7">
+
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="lowRowVAll">
+
+                                    <i class="fa fa-angle-down"></i>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-5">
+                    <button class="btn purpleBtn button">New Maintenance Request</button>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </t>
+    <t t-name="rentHistory">
+        <div class="lowRowCont">
+            <div class="row">
+                <div class="col-lg-3">
+                    <h5>
+                        <strong>Rent History</strong>
+                    </h5>
+                </div>
+                <div class="col-lg-7">
+
+                </div>
+                <div class="col-lg-2" style="text-align:center;">
+                    <div class="lowRowContSub">
+                        Download CSV
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-1">
+                    <a href="#" class="fa fa-home"></a>
+
+                </div>
+                <div class="col-lg-1">
+
+                    <p>Total Rent</p>
+                    <h5>
+                        <strong>$45567</strong>
+                    </h5>
+                </div>
+
+                <div class="col-lg-10">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+<!--                    <div id="chart_div" style="width: 900px; height: 500px"></div>-->
+                </div>
+
+            </div>
+        </div>
+    </t>
+
+</template>

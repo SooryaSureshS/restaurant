@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="obst_home_page" inherit_id="website.homepage">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <div id="wrap" class="obst_wrap">
+                <t t-call="gio_obstgemuese_theme.obst_panorama_view_landing"/>
+            </div>
+        </xpath>
+    </template>
+    <template id="obst_panorama_view_landing">
+        <div style="height: 100%;">
+            <div id="myPano" class="pano"
+                 style="height: 38pc; background-image: url('/gio_obstgemuese_theme/static/src/images/showroom-cargobikes-obstundgemuese.jpg'); background-position: 275px center; background-size: auto 100%; background-repeat: repeat-x;">
+            </div>
+        </div>
+        <div class="row m-0 cargo_performance" id="cargo_performance">
+            <div class="col-md-6 p-0 cargo_performance_div">
+                <a href="/shop">
+                    <img class="cargo_bike"
+                         src="/gio_obstgemuese_theme/static/src/images/home/cargo.jpg"/>
+                </a>
+                <h1 href="#" class="obst_home_range GT_Pressura_Pro_Mono">Cargo Bike Range
+                </h1>
+            </div>
+            <div class="col-md-6 p-0 cargo_performance_div">
+                <a href="/performance">
+                    <img class="cargo_bike"
+                         src="gio_obstgemuese_theme/static/src/images/home/performance.jpg"/>
+                </a>
+                <h1 href="#" class="obst_home_range GT_Pressura_Pro_Mono">Cargo Bike Range
+                </h1>
+            </div>
+        </div>
+        <div class="home_product_view pt-5 pb-5">
+            <div class="row">
+                <t t-set="products"
+                   t-value="request.env['product.template'].sudo().search([('is_published', '=', True)],limit=8)"/>
+                <t t-set="base_url"
+                   t-value="request.env.company.get_base_url()"/>
+                <t t-foreach="products" t-as="product">
+                    <div class="col-md-3 card oe_product_cart" style="background: white !important;">
+                        <a class="o_product_link css_editable_mode_hidden"
+                           t-att-href="base_url + product.website_url"/>
+                        <div class="card-body p-1 oe_product_image"
+                             style="background-color:white !important; height:100%">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <a t-att-href="base_url + product.website_url" class="d-block h-100" itemprop="url">
+                                <t t-set="image_holder" t-value="product._get_image_holder()"/>
+                                <span t-field="product.image_1920"
+                                      t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256', 'itemprop': 'image'}"
+                                      class="d-flex h-100 justify-content-center align-items-center"/>
+                            </a>
+                        </div>
+                        <!--                        <div class="card-body p-0 o_wsale_product_information  text-center"-->
+                        <!--                             style="background-color: white !important; color: black;">-->
+                        <!--                            <div class="p-2 o_wsale_product_information_text">-->
+                        <!--                                <h6 class="o_wsale_products_item_title GT_Pressura_Regular">-->
+                        <!--                                    <a class="text-dark text-decoration-none" itemprop="name"-->
+                        <!--                                       t-att-href="base_url + product.website_url" t-att-content="product.name"-->
+                        <!--                                       t-field="product.name"/>-->
+                        <!--                                </h6>-->
+                        <!--                            </div>-->
+                        <!--                            <div class="o_wsale_product_btn pl-2 d-none"/>-->
+                        <!--                        </div>-->
+                        <div class="card-body p-0 o_wsale_product_information  text-center"
+                             style="background-color: white !important; color: black;">
+                            <div class="p-2 o_wsale_product_information_text">
+                                <h6 class="o_wsale_products_item_title GT_Pressura_Regular">
+                                    <a class="text-dark text-decoration-none GT_Pressura_Regular"
+                                       itemprop="name"
+                                       t-att-href="product_href"
+                                       t-att-content="product.name"
+                                       t-field="product.name"/>
+                                </h6>
+                                <div class="product_price mb-1" itemprop="offers"
+                                     itemscope="itemscope"
+                                     itemtype="http://schema.org/Offer">
+                                    <span class="GT_Pressura_Regular text-muted"
+                                          t-esc="product.list_price"
+                                          t-options="{'widget': 'monetary', 'class': 'GT_Pressura_Regular', 'display_currency': website.currency_id}"/>
+<!--                                    <del t-attf-class="text-danger GT_Pressura_Regular ml-1 h6 {{'' if combination_info['has_discounted_price'] else 'd-none'}}"-->
+<!--                                         style="white-space: nowrap;"-->
+<!--                                         t-esc="combination_info['list_price']"-->
+<!--                                         t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>-->
+                                    <span itemprop="price" style="display:none;"
+                                          t-esc="product.list_price"
+                                    t-options="{'widget': 'monetary', 'class': 'GT_Pressura_Regular', 'display_currency': website.currency_id}"/>
+                                    <span itemprop="priceCurrency"
+                                          style="display:none;"
+                                          t-esc="website.currency_id.name"/>
+                                </div>
+                            </div>
+                            <div class="o_wsale_product_btn pl-2 d-none"/>
+                        </div>
+                    </div>
+                </t>
+            </div>
+            <div class="row">
+                <div class="col-md-5"/>
+                <div class="col-md-2 text-center">
+                    <a href="/shop" class="GT_Pressura_Regular nav-link home_page_continue_shop">
+                        <span class="privacy-hover">Zum Shop</span>
+                    </a>
+                </div>
+                <div class="col-md-5"/>
+            </div>
+        </div>
+        <div class="row news_letter_row m-0">
+            <div class="col-md-6 bg_theme_color p-5">
+                <h1 class="news_letter_title GT_Pressura_Pro_Mono text-white">
+                    You always want to be informed? No problem with our
+                    newsletter :
+                </h1>
+                <div class="row mt-5">
+                    <div class="col">
+                        <label
+                                class="news_letter_check text-white GT_Pressura_Pro_Mono font-weight-normal">
+                            Cargobike
+                            <input type="checkbox"
+                                   name="cargobike"
+                                   class="cargobike_check"/>
+                            <span class='check_cover'/>
+                            <span class="checkmark"/>
+                        </label>
+                    </div>
+                    <div class="col">
+                        <label
+                                class="news_letter_check text-white GT_Pressura_Pro_Mono font-weight-normal">
+                            Performance
+                            <input type="checkbox" name="performance"
+                                   class="performance_check"/>
+                            <span class='check_cover'/>
+                            <span class="checkmark"/>
+                        </label>
+                    </div>
+                    <div class="col"/>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="s_newsletter_subscribe_form ob_js_subscribe"
+                             data-vxml="001" data-list-id="0"
+                             data-name="Newsletter Form">
+                            <div class="d-inline-flex">
+                                <input type="email" name="email"
+                                       class="js_subscribe_email newsletter_input GT_Pressura_Pro_Mono pl-0 pr-0"
+                                       placeholder="your email..."/>
+                                <button role="button" href="#"
+                                        class="js_subscribe_btn o_submit newsletter_btn p-2">
+                                    <img class="newsletter_img"
+                                         src="gio_obstgemuese_theme/static/src/svg/64-check-white.svg"/>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="js_newsletter_message text-white GT_Pressura_Pro_Mono mt-2"/>
+            </div>
+            <t t-set="stories"
+               t-value="request.env['blog.post'].sudo().search([('is_published', '=', 'True')], limit=6)"/>
+            <t t-foreach="stories" t-as="story">
+                <div class="col-lg-3 col-sm-6 col-6 p-0 home-story-container">
+                    <img t-att-src="base_url + story._get_website_image_url()"
+                         class="d-block w-100 img-carousal-product-stories"
+                         alt=""/>
+                    <span class="product-story-author">
+                        <t t-esc="story.display_name"/>
+                    </span>
+                    <a t-att-href="story.website_url"
+                       t-att-title="story.display_name"
+                       class="story-read-more">
+                        <span>Weiterlesen</span>
+                    </a>
+                </div>
+            </t>
+        </div>
+        <div class="home-story-mobile-container">
+            <t t-set="related_stories"
+               t-value="request.env['blog.post'].sudo().search([('is_published', '=', 'True')], limit=6)"/>
+            <div class="tns-outer" id="product-gallery-slider-ow">
+                <div id="product-gallery-slider-mw" class="tns-ovh">
+                    <div class="tns-inner" id="product-gallery-slider-iw">
+                        <div class="product-gallery-slider  tns-slider tns-carousel tns-subpixel tns-calc tns-autowidth tns-horizontal"
+                             id="product-gallery-slider" style="transition-duration: 0s;">
+                            <div id="ProductStories" class="carousel slide show-neighbors"
+                                 data-ride="carousel">
+                                <ol class="carousel-indicators" style="display: none;">
+                                    <t t-set="s"
+                                       t-value="0"/>
+                                    <t t-foreach="related_stories"
+                                       t-as="rela_story">
+                                        <t t-if="s == 0">
+                                            <li data-target="#ProductStories"
+                                                t-att-data-slide-to="s" class="active"></li>
+                                        </t>
+                                        <t t-else="">
+                                            <li data-target="#ProductStories"
+                                                t-att-data-slide-to="s" class=""></li>
+                                        </t>
+                                        <t t-set="s" t-value="s + 1"/>
+                                    </t>
+                                </ol>
+                                <t t-if="len(related_stories) == 1">
+                                    <t t-foreach="related_stories"
+                                       t-as="rela_story">
+                                        <div>
+                                            <img t-att-src="base_url + rela_story._get_website_image_url()"
+                                                 class="d-block w-100 img-carousal-product-stories"
+                                                 alt=""/>
+                                            <span class="product-story-author">
+                                                <t t-esc="rela_story.display_name"/>
+                                            </span>
+                                            <a t-att-href="rela_story.website_url"
+                                               t-att-title="rela_story.display_name"
+                                               class="story-read-more">
+                                                <span>Weiterlesen</span>
+                                            </a>
+                                        </div>
+                                    </t>
+                                </t>
+                                <t t-else="">
+                                    <div class="carousel-inner">
+                                        <t t-set="s"
+                                           t-value="0"/>
+                                        <t t-foreach="related_stories"
+                                           t-as="rela_story">
+                                            <t t-if="s == 0">
+                                                <div class="carousel-item active">
+                                                    <div class="item__third">
+                                                        <img t-att-src="base_url + rela_story._get_website_image_url()"
+                                                             class="d-block w-100 img-carousal-product-stories"
+                                                             alt=""/>
+                                                        <span class="product-story-author">
+                                                            <t t-esc="rela_story.display_name"/>
+                                                        </span>
+                                                        <a t-att-href="rela_story.website_url"
+                                                           t-att-title="rela_story.display_name"
+                                                           class="story-read-more">
+                                                            <span>Weiterlesen</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                            <t t-else="">
+                                                <div class="carousel-item">
+                                                    <div class="item__third">
+                                                        <img t-att-src="base_url + rela_story._get_website_image_url()"
+                                                             class="d-block w-100 img-carousal-product-stories"
+                                                             alt=""/>
+                                                        <span class="product-story-author">
+                                                            <t t-esc="rela_story.display_name"/>
+                                                        </span>
+                                                        <a t-att-href="rela_story.website_url"
+                                                           t-att-title="rela_story.display_name"
+                                                           class="story-read-more">
+                                                            <span>Weiterlesen</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                            <t t-set="s"
+                                               t-value="s+1"/>
+                                        </t>
+                                    </div>
+                                </t>
+                                <a class="carousel-control-prev" href="#ProductStories"
+                                   role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon"
+                                          aria-hidden="true"></span>
+                                    <span class="sr-only">
+                                        Previous
+                                    </span>
+                                </a>
+                                <a class="carousel-control-next" href="#ProductStories"
+                                   role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon"
+                                          aria-hidden="true"></span>
+                                    <span class="sr-only">
+                                        Next
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+</odoo>

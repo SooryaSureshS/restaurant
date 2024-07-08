@@ -1,0 +1,221 @@
+.ob_livechat_pop_up {
+    display: block;
+    position: fixed;
+    z-index: 9;
+    width: 80px;
+    height: 75px;
+    padding-top: 14px;
+    bottom: 75px;
+    right: 50px;
+    overflow: auto;
+}
+.obst_Ellipse_has_notify{
+    width: 52px;
+    height: 52px;
+    margin: 0 0 0 22px;
+    padding: 9px 9px 8px 8px;
+    border-radius: 30px;
+    background-color: #0c0c0b;
+    cursor: pointer;
+    box-shadow: -1px 1px 11px #888888;
+    }
+.obst_Ellipse_has_notify{
+    width: 52px;
+    height: 52px;
+    margin: 0 0 0 22px;
+    padding: 9px 9px 8px 8px;
+    border-radius: 30px;
+    background-color: #ffffff;
+    cursor: pointer;
+    box-shadow: -1px 1px 11x #888888;
+    }
+.obst-live-chat-icon{
+    font-size: 26px;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding: 5px;
+}
+.obst-live-chat-icon-white{
+    font-size: 26px;
+    color: white;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding: 5px;
+}
+.chat-box-ui-block{
+    background: rgba(239,239,239,.7);
+    opacity: 1;
+    display: none;
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index:1050;
+}
+.menu-box-container{
+    display: block;
+    position: fixed;
+    background-color: white;
+    width: 35%;
+    height: 100%;
+    top: 0;
+    left: 110%;
+    z-index:1050;
+}
+/*.o_thread_window.o_in_home_menu{
+    display: none;
+}*/
+.obst-chats{
+    height: 33vw;
+    overflow-y: scroll;
+    margin: 1rem 0;
+    padding-right: .625rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 120%;
+    }
+
+
+
+
+
+.container {
+  overflow: hidden;
+}
+
+.sliding-background {
+  background: url("/gio_obstgemuese_theme/static/src/images/showroom-cargobikes-obstundgemuese.jpg") repeat-x;
+  height: 560px;
+  width: 5076px;
+  animation: slide 60s linear ;
+}
+
+@keyframes slide{
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-1692px, 0, 0);
+  }
+}
+
+
+
+.o_thread_window_header {
+    border-bottom: 3px solid #fff !important;
+    font-family: "GT Pressura Pro Mono";
+    padding: 1.5625rem 1.875rem 1.75rem 1.875rem !important;
+    background: #f7f7f7 !important;
+    margin: 0 !important;
+    color: #9b9b9b !important;
+}
+span.o_thread_window_title {
+    font-size: 1rem;
+    font-family: "GT Pressura Pro Mono";
+    color: #9b9b9b;
+    font-weight: normal;
+}
+.o_thread_window.o_in_home_menu {
+    position: fixed;
+    background-color: white;
+    width: 35%;
+    height: 100%;
+}
+.o_thread_message_content {
+    width: 273px;
+    height: 54px;
+    font-family: "GT Pressura Pro Mono";
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.45;
+    letter-spacing: 0.06px;
+    text-align: left;
+    color: var(--black);
+}
+strong.o_thread_author {
+    width: 140px;
+    height: 16px;
+    font-family: "GT Pressura Pro Mono";
+    margin: 0 0 5px;
+    font-size: 15px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.47;
+    letter-spacing: 0.05px;
+    text-align: left;
+    color: var(--black);
+    }
+
+small.o_mail_timestamp {
+    height: 16px;
+    margin: 5px 53px 0 0;
+    font-family: "GT Pressura Pro Mono";
+    font-size: 15px;
+    display: block;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.47;
+    letter-spacing: 0.05px;
+    text-align: left;
+    color: var(--brown-grey);
+}
+.openerp.o_livechat_button.d-print-none.o_bottom_fixed_element {
+    background-color: rgb(255 255 255 / 0%) !IMPORTANT;
+    color: rgb(255 255 255 / 0%) !IMPORTANT;
+    border: #ffffff00;
+    text-shadow: none;
+}
+span.o_thread_window_title::before {
+    content: 'Chat' !important;
+    display: block;
+    width: 77px;
+    height: 39px;
+    margin: 3px 81px 10px 0;
+    font-family: "GT Pressura Pro Mono";
+    font-size: 35px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.26;
+    letter-spacing: -0.04px;
+    text-align: left;
+    color: var(--black);
+}
+a.o_thread_window_close.fa.fa-close{
+    display: none !important;
+}
+i.fa.fa-heart-o.fa-2x {
+    color: black;
+}
+div#product_option_block {
+    margin-top: -25px;
+}
+@media only screen and (max-width: 900px) {
+    .o_thread_window.o_in_home_menu {
+        width: 50% !important;
+    }
+}
+@media only screen and (max-width: 700px) {
+    .o_thread_window.o_in_home_menu {
+        width: 64% !important;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .o_thread_window.o_in_home_menu {
+        width: 100% !important;
+    }
+}
+@media only screen and (max-width: 767.98px) {
+    .o_thread_window .o_thread_window_header {
+        height: 120px !important;
+
+    }
+}
+a.o_thread_window_close.fa.fa-1x.fa-arrow-left {
+    display: none !important;
+}

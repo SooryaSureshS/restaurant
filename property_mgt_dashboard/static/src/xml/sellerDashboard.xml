@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<template id="sellerDashboardTem">
+
+    <t t-name="myProperties">
+        <div class="lowRowCont left">
+            <div class="row">
+                <div class="col-lg-9">
+                    <span class="lowRowHeads">My Properties</span>
+                </div>
+                <div class="col-lg-3">
+                    <span class="lowRowVAll">View all
+                        <i class="fa fa-long-arrow-right"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="row lrTd">
+                <table style="width:100%;">
+                    <tr>
+                        <td>
+                            <span class="lrTcN">Property Name</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Customer Name</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Type</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Date</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Price</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Status</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <!--                                    <div class="row">-->
+                            <!--                                        <div></div>-->
+                            <div>
+                                <span class="lrTcB">Rosemary house</span>
+                                <br/>
+                                <span class="lrTcN">Southeast Washington DC</span>
+                            </div>
+                            <!--                                    </div>-->
+                        </td>
+                        <td>
+                            <span class="lrTcB">Kristin Watson</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Rent</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Jul 01, 2022</span>
+                        </td>
+                        <td>
+                            <span class="lrTcB">$700</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Paid</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <!--                                    <div class="row">-->
+                            <!--                                        <div></div>-->
+                            <div>
+                                <span class="lrTcB">Rosemary house</span>
+                                <br/>
+                                <span class="lrTcN">Southeast Washington DC</span>
+                            </div>
+                            <!--                                    </div>-->
+                        </td>
+                        <td>
+                            <span class="lrTcB">Kristin Watson</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Rent</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Jul 01, 2022</span>
+                        </td>
+                        <td>
+                            <span class="lrTcB">$700</span>
+                        </td>
+                        <td>
+                            <span class="lrTcN">Paid</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </t>
+    <t t-name="userReviews">
+        <div class="lowRowCont left">
+            <div class="row">
+                <div class="col-lg-9">
+                    <span class="lowRowHeads">User Reviews</span>
+                </div>
+                <div class="col-lg-3">
+                    <span class="lowRowVAll2nd">
+                        <i class="fa fa-long-arrow-left"></i>
+                        <i class="fa fa-long-arrow-right"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-5">
+                    <p>
+                        <strong>James Humbly</strong>
+                    </p>
+                    <p>2 June 2018-4 June 2019</p>
+
+                </div>
+                <div class="col-lg-5">
+                    <h5>Wonderful Coordination</h5>
+                </div>
+                <div class="col-lg-2">
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star unchecked"></span>
+                    <span class="fa fa-star unchecked"></span>
+                    <span class="fa fa-star unchecked"></span>
+                </div>
+                <div class="col-lg-6">
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </t>
+    <t t-name="editProfileDetails">
+        <div class="lowRowCont">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h5>
+                        <strong>
+                            <u>Edit Profile Details</u>
+                        </strong>
+                    </h5>
+                </div>
+                <div class="col-lg-6"/>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+
+                    <img style="border-radius:23px; margin-left: 16px;"
+                         src="property_mgt_dashboard/static/src/image/Admin Profile.png"
+                         width="80px" height="80px"></img>
+
+                </div>
+                <div class="col-lg-6">
+                    <p>
+                        <strong>Midnight Corner St.Suite 600 San Francisco,CADGE 94107</strong>
+                    </p>
+
+
+                    <a href="#" class="fa fa-instagram"></a>
+
+
+                    <a href="#" class="fa fa-facebook"></a>
+
+
+                    <a href="#" class="fa fa-twitter"></a>
+
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 p-2">
+                    <h5>
+                        <strong>
+                            Samuel Rodriguez
+                        </strong>
+                    </h5>
+                    <p style="margin-left: 46px;">Agent</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="lowRowCont">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <i class="fa fa-phone" style="font-size:24px; color:#6565db;"></i>
+                            </div>
+                            <div class="col-lg-9">
+                                <h5>
+                                    <strong>+12 5123 5512 66</strong>
+                                </h5>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </t>
+    <t t-name="december2021">
+        <div class="lowRowCont">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h5>
+                        <strong>December 2021</strong>
+                    </h5>
+                </div>
+                <div class="col-lg-5">
+
+                </div>
+                <div class="col-lg-3">
+                    <span class="lowRowVAll2nd">
+                        <i class="fa fa-angle-left	"></i>
+                        <i class="fa fa-angle-right"></i>
+                    </span>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-2">
+
+                    <h5>30</h5>
+                </div>
+                <div class="col-lg-2">
+                    <h5>1</h5>
+
+                </div>
+                <div class="col-lg-2">
+
+                    <h5>2</h5>
+                </div>
+                <div class="col-lg-2">
+
+                    <div class="lowRowContSub">
+                        <h5>3</h5>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <h5>4</h5>
+
+                </div>
+                <div class="col-lg-2">
+                    <h5>5</h5>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-5">
+                    <h5>
+                        <strong>Recent Activities</strong>
+                    </h5>
+                </div>
+                <div class="col-lg-7">
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-2">
+                    <a href="#" class="fa fa-gift"></a>
+                </div>
+                <div class="col-lg-7">
+                    <h5>
+                        <strong>Received an Offer</strong>
+                    </h5>
+                    <p>You just sent an offer for Beverly Springfield</p>
+                </div>
+                <div class="col-lg-3">
+                    <p>6:12 PM</p>
+                    <h5 class="text-success">OFFERED</h5>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-2">
+                    <a href="#" class="fa fa-bell"></a>
+                </div>
+                <div class="col-lg-7">
+                    <h5>
+                        <strong>Payment Reminder</strong>
+                    </h5>
+                    <p>$800 remaining payment due next week</p>
+                </div>
+                <div class="col-lg-3">
+                    <p>10:07 AM</p>
+                    <h5 class="text-warning">DUE JAN 1,2022</h5>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-2">
+                    <a href="#" class="fa fa-sticky-note-o"></a>
+                </div>
+                <div class="col-lg-7">
+                    <h5>
+                        <strong>Created Tenancy Form</strong>
+                    </h5>
+                    <p>Your tenancy application has been created.
+                        <a href="#">Click to review.</a>
+                    </p>
+                </div>
+                <div class="col-lg-3">
+                    <p>8:138 AM</p>
+                    <h5 class="text-success">COMPLETED</h5>
+                </div>
+
+            </div>
+
+        </div>
+
+    </t>
+</template>

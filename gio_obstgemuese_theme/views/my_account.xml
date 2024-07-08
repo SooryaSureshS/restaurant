@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="portal_inherit" inherit_id="portal.portal_layout">
+
+        <xpath expr="//div[@id='wrap']/div[hasclass('container')]" position="attributes">
+            <attribute name="class">mb64</attribute>
+        </xpath>
+
+        <xpath expr="//div[@id='o_my_sidebar']" position="before">
+                <div id="my_account_menus" t-attf-class="col-12 col-md col-lg-4">
+                    <t t-out="0"/>
+                </div>
+        </xpath>
+        <xpath expr="//div[@id='o_my_sidebar']" position="replace">
+            <div id="o_my_sidebar" class="col-12 col-md col-lg-8 o_my_sidebar">
+                <div id="overview" class="tab_content">
+                    <h3 class="GT_Pressura_Pro_Mono">Customer Account</h3>
+                    <div class="row mt-5">
+                        <div class="col">
+                            <p class="GT_Pressura_Pro_Mono">This is your customer
+                                account dashboard, where
+                                you have
+                                the
+                                ability to view your recent account activity and make
+                                changes to your personal information.
+                            </p>
+                        </div>
+                    </div>
+                    <t t-set="user"
+                       t-value="request.env['res.users'].sudo().search([('id','=',request.uid)])"/>
+                    <t t-set="partner"
+                       t-value="request.env.user.partner_id"/>
+
+                    <div class="row mt-5">
+                        <div class="col-md-2 pr-0">
+                            <div t-field="partner.image_1024"
+                                 class="profile_image rounded-circle"
+                                 t-options='{"widget": "image", "class": " " , "itemprop": "image"}'/>
+
+                        </div>
+                        <div class="col-md-10 pl-0">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h2 class="GT_Pressura_Pro_Mono">
+                                        <t t-esc="partner.name"/>
+                                    </h2>
+                                </div>
+                                <div class="col-12">
+                                    <t t-if="partner.company_name">
+                                        <p class="GT_Pressura_Pro_Mono">
+                                            <t t-esc="partner.company_name"/>
+                                        </p>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-md-6 GT_Pressura_Pro_Mono">
+                            <div class="overview_profile p-4">
+                                <h3 class="GT_Pressura_Pro_Mono">Profile</h3>
+                                <div class="pt-2">
+                                    <t t-if="partner.title">
+                                        <t t-esc="partner.title"/>
+                                    </t>
+                                    <t t-esc="partner.name"/>
+                                </div>
+                                <div class=""><t t-esc="partner.street"/>,
+                                    <t t-esc="partner.city"/>,<t
+                                            t-esc="partner.state_id.name"/>,<t
+                                            t-esc="partner.zip"/>,
+                                    <t
+                                            t-esc="partner.country_id.name"/>
+                                </div>
+                                <div class="">
+                                    <t t-esc="partner.email"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 GT_Pressura_Pro_Mono">
+                            <div class="overview_profile p-4">
+                                <h3 class="GT_Pressura_Pro_Mono">Payment Methode</h3>
+                                <div class="pt-2">Debit charge</div>
+                                <div class="">pre-authorized,
+                                    Payments are taken directly from the debiting
+                                    account...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5 p-3">
+                        <div class="col-12 overview_profile p-4">
+                            <h3 class="GT_Pressura_Pro_Mono">Newsletter</h3>
+                            <div class="row GT_Pressura_Pro_Mono mt-4">
+                                <div class="col-1 align-self-center">
+                                    <label class="del_add_checkbox GT_Pressura_Pro_Mono font-weight-normal">
+                                        <input type="checkbox" name="delivery_address"
+                                               class=""/>
+                                        <span class='check_cover'/>
+                                        <span class="checkmark"/>
+                                    </label>
+                                </div>
+                                <div class="col-11">
+                                    Yes, I would like to receive the fruit &amp;
+                                    vegetable
+                                    newsletter for free. You can unsubscribe at any
+                                    time!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5 pb-5">
+                        <div class="col-md-6 GT_Pressura_Pro_Mono">
+                            <div class="overview_profile p-4">
+                                <h3 class="GT_Pressura_Pro_Mono">Address</h3>
+                                <div class="pt-2">
+                                    <t t-esc="partner.name"/>
+                                </div>
+                                <div class=""><t t-esc="partner.street"/>,
+                                    <t t-esc="partner.city"/>,
+                                    <t t-esc="partner.state_id.name"/>,
+                                    <t t-esc="partner.zip"/>,
+                                </div>
+                                <div class="">
+                                    <t t-esc="partner.country_id.name"/>
+                                </div>
+                            </div>
+                        </div>
+                        <t t-set="partner"
+                           t-value="request.env.user.partner_id"/>
+                        <t t-set="res_partner"
+                           t-value="request.env['res.partner'].sudo().search([('id','=',partner.id)])"/>
+                        <t t-if="partner.child_ids">
+                            <div class="col-md-6 GT_Pressura_Pro_Mono">
+                                <t t-foreach="res_partner.child_ids"
+                                   t-as="partner_child">
+                                    <div class="overview_profile p-4">
+                                        <h3 class="GT_Pressura_Pro_Mono">shipping
+                                            address
+                                        </h3>
+                                        <div class="pt-2">
+                                            <t t-esc="partner_child.name"/>
+                                        </div>
+                                        <div class="">
+                                            <t t-esc="partner_child.street"/>,
+                                            <t t-esc="partner_child.city"/>,
+                                            <t t-esc="partner_child.state_id.name"/>,
+                                            <t t-esc="partner_child.zip"/>,
+                                        </div>
+                                        <div class="">
+                                            <t t-esc="partner_child.country_id.name"/>
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

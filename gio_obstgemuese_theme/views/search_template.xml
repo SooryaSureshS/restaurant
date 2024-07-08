@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="product_search_page_template" name="Search Template">
+        <t t-call="website.layout">
+            <main>
+                <div class="container-main">
+                    <div class="cms-page search-page">
+                        <h1 class="search-page-h1 GT_Pressura_Regular">Suchergebnisse für</h1>
+                        <form action="/search/products" method="get" data-search-form="true" data-url="/suggest?search="
+                              class="header-search-form">
+                            <div class="input-group">
+                                <input type="search" name="search"
+                                       class="form-control header-search-input header-search-input-page"
+                                       autocomplete="off" autocapitalize="off" placeholder="Suchen" maxlength="15"
+                                       t-attf-value="{{name}}" style="max-width: 66%; width: 55px;"/>
+                                <span class="header-search-input-placeholder GT_Pressura_Regular"/>
+                                <span class="search-results search-results-page GT_Pressura_Regular">
+                                    <t t-esc="count"/>
+                                    Treffer
+                                </span>
+                            </div>
+                        </form>
+                        <div class="product_search_section">
+                            <t t-if="has_product">
+                                <div class="cms-element-product-listing">
+                                    <div class="article-headline-stories GT_Pressura_Regular text-center">
+                                        <h1 class="h1-stories-obst GT_Pressura_Pro_Mono">Produkte
+                                        </h1>
+                                    </div>
+                                    <div class="row cms-listing-row product-listing-section">
+                                        <t t-set="base_url" t-value="request.env.company.get_base_url()"/>
+                                        <t t-foreach="product_list" t-as="product">
+                                            <div class="cms-listing-col col-4 col-sm-4 col-lg-4 col-xl-3">
+                                                <div class="card product-box box-minimal">
+                                                    <div class="card-body">
+                                                        <div class="product-image-wrapper">
+                                                            <a t-att-href="base_url + product.website_url"
+                                                               class="product-image-link is-standard">
+                                                                <img t-attf-src="/web/image/product.template/{{product.id}}/image_1920"
+                                                                     sizes="(max-width: 1920px) and (min-width: 1200px) 18.5rem, (max-width: 1199px) and (min-width: 992px) 350px, (max-width: 991px) and (min-width: 768px) 430px, (max-width: 767px) and (min-width: 576px) 320px, (max-width: 575px) and (min-width: 0px) 400px, 100vw"
+                                                                     class="lazy product-image is-standard loaded"
+                                                                     data-ll-status="loaded"/>
+                                                            </a>
+                                                        </div>
+                                                        <div class="product-info-search GT_Pressura_Regular">
+                                                            <a t-att-href="base_url + product.website_url"
+                                                               class="product-name-search GT_Pressura_Regular">
+                                                                <span class="GT_Pressura_Regular font-weight-bold text-decoration">
+                                                                    <t t-esc="product.name"/>
+                                                                </span>
+                                                            </a>
+                                                            <div class="product-price-info-search GT_Pressura_Regular">
+                                                                <p class="product-price-search GT_Pressura_Regular">
+                                                                    <t t-esc="product.list_price"/>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+
+                                    </div>
+                                </div>
+                            </t>
+                            <t t-else="">
+                                <div class="article-headline-stories GT_Pressura_Regular text-center">
+                                    <h1 class="h1-stories-obst GT_Pressura_Pro_Mono">Produkte
+                                    </h1>
+                                </div>
+                                <h2 class="no-results-search-head no-results-search GT_Pressura_Regular">Entschuldigung
+                                </h2>
+                                <p class="no-results-search GT_Pressura_Regular">Deine Suche ergab keine Treffer...</p>
+                            </t>
+                        </div>
+                        <t t-if="has_stories">
+                            <div class="story_search_section">
+                                <div class="">
+                                    <div class="article-headline-stories GT_Pressura_Regular text-center">
+                                        <h1 class="h1-stories-obst GT_Pressura_Pro_Mono">News <span>・</span>Stories <span>・</span>Events
+                                        </h1>
+                                    </div>
+                                    <div class="article-list product-listing-section">
+                                        <div class="">
+                                            <section id="o_wblog_index_content">
+                                                <div class=" py-4">
+                                                    <div class="">
+                                                        <div id="o_wblog_posts_loop_container" class="col ">
+                                                            <div id="o_wblog_posts_loop" class="">
+                                                                <div class="row mx-n2">
+                                                                    <t t-foreach="story_list" t-as="story">
+                                                                        <div class="pb-4 col-12 px-2 col-sm-6 col-lg-4 col-xl-3">
+                                                                            <article name="blog_post" class="o_wblog_post position-relative ">
+                                                                                <a t-att-href="story.website_url"
+                                                                                   class="text-decoration-none d-block mb-2">
+                                                                                    <img sizes="400px" class="lazy img-fluid loaded article-img-cls"
+                                                                                         data-ll-status="loaded" t-att-src="story._get_website_image_url()"
+                                                                                         loading="lazy" style=""/>
+                                                                                </a>
+                                                                            </article>
+                                                                            <h2>
+                                                                                <a t-att-href="story.website_url"
+                                                                                   class="d-block text-reset article-title-cls GT_Pressura_Regular text-decoration-none o_blog_post_title my-0 h6">
+                                                                                    <t t-esc="story.name"/>
+                                                                                </a>
+                                                                            </h2>
+                                                                            <h5 class="text-center">
+                                                                                <time t-field="story.post_date"
+                                                                                      class="text-muted article-time-cls text-nowrap GT_Pressura_Regular"
+                                                                                      t-options='{"format": "MMM d, yyyy"}'/>
+                                                                                <span class="article-time-cls text-muted">・</span>
+                                                                                <span class="text-muted GT_Pressura_Regular article-time-cls"><t t-esc="story.blog_id.name"/> </span>
+                                                                            </h5>
+                                                                        </div>
+                                                                    </t>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <div class="article-headline-stories GT_Pressura_Regular text-center">
+                                <h1 class="h1-stories-obst GT_Pressura_Pro_Mono">News <span>・</span>Stories <span>・</span>Events
+                                </h1>
+                            </div>
+                            <h2 class="no-results-search-head no-results-search GT_Pressura_Regular">Entschuldigung
+                            </h2>
+                            <p class="no-results-search GT_Pressura_Regular">Deine Suche ergab keine Treffer...</p>
+                        </t>
+                    </div>
+                </div>
+            </main>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,19 @@
+
+.image img {
+  width: 100%;
+  height: 300;
+      transition: all 0.25s ease-in;
+
+       overflow: hidden;
+
+}
+.image:hover img {
+      transform: scale(1.1);
+    cursor: pointer;
+     position: relative;
+
+}
+
+.details{
+background-color :#2baab6;
+}

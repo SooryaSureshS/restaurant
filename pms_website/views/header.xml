@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="custom_header" inherit_id="website.layout" name="Custom Header">
+        <xpath expr="//header" position="replace">
+            <header t-if="not no_header">
+                <nav class="navbar navbar-expand-lg navbar-light py-3 topbar">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#">
+                            <img style="height:60px; widht:auto;"
+                                 src="/pms_website/static/src/img/logo-white.png"/>
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link font-weight-medium text-white" href="#">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link font-weight-medium text-white" href="#">Listing</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link font-weight-medium text-white" href="#">Properties</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link font-weight-medium text-white" href="#">Features</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link font-weight-medium text-white" href="#">Contact Us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <t t-if="request.env.user.id == 4">
+                                        <a class="nav-link font-weight-medium text-white" href="/web/login">Login</a>
+                                    </t>
+                                    <t t-else="">
+                                        <a class="nav-link font-weight-medium text-white" href="/web/session/logout">Logout</a>
+                                    </t>
+                                </li>
+                            </ul>
+                            <div class="s_share text-left no_icon_color" data-snippet="s_share"
+                                 data-name="Social Media">
+                                <h5 class="s_share_title d-none">Follow us</h5>
+                                <a href="/website/social/facebook" class="s_share_facebook" target="_blank">
+                                    <i class="fa fa-facebook m-1 rounded-circle border"/>
+                                </a>
+                                <a href="/website/social/twitter" class="s_share_twitter" target="_blank">
+                                    <i class="fa fa-twitter m-1 rounded-circle border"/>
+                                </a>
+                                <a href="/website/social/google" class="s_share_google" target="_blank">
+                                    <i class="fa fa-google m-1 rounded-circle border"/>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        </xpath>
+    </template>
+</odoo>

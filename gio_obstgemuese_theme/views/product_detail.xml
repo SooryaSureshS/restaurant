@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--    product template inherit-->
+    <template id="product_view_inherit" inherit_id="website_sale.product">
+        <xpath expr="//section[@id='product_detail']" position="replace">
+            <section
+                    t-attf-class="oe_website_sale #{'discount' if combination_info['has_discounted_price'] else ''}"
+                    id="product_detail"
+                    t-att-data-view-track="view_track and '1' or '0'"
+                    t-att-data-product-tracking-info="json.dumps(request.env['product.template'].get_google_analytics_data(combination_info))">
+                <div class="container-main">
+                    <t t-set="base_url" t-value="request.env.company.get_base_url()"/>
+                    <a t-att-href="base_url + '/calendar'" class="try-now fa-spin">
+                    </a>
+                    <div class="product-detail" itemscope=""
+                         itemtype="https://schema.org/Product">
+                        <t t-set="product_images"
+                           t-value="product_variant._get_cover_image() if product_variant else product._get_cover_image()"/>
+                        <div class="product-detail-container">
+                            <div class="product-detail-headline">
+                                <t t-if="product_images[0].cover_image">
+                                    <img t-attf-src="data:image/*; base64,{{product_images[0].cover_image}}"/>
+                                </t>
+                                <t t-else="">
+                                    <img sizes="1920px"
+                                         class="lazy product-heading-image loaded"
+                                         alt="CARLA CARGO Carla"
+                                         title="CARLA CARGO Carla"
+                                         data-ll-status="loaded"
+                                         srcset="https://obstundgemuese.ch/thumbnail/30/ea/e7/1639047972/25e1849839fd4ac79e65292046c175a9_1920x1920.jpg 1920w, https://obstundgemuese.ch/thumbnail/30/ea/e7/1639047972/25e1849839fd4ac79e65292046c175a9_800x800.jpg 800w, https://obstundgemuese.ch/thumbnail/30/ea/e7/1639047972/25e1849839fd4ac79e65292046c175a9_400x400.jpg 400w"
+                                         src="https://obstundgemuese.ch/media/30/ea/e7/1639047972/25e1849839fd4ac79e65292046c175a9.jpg"/>
+                                </t>
+                                <div class="product-detail-headline-title">
+                                    <h1 class="GT_Pressura_Pro_Mono"
+                                        itemprop="name">
+                                        <t t-esc="product.name"/>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="product-detail-description"
+                                 itemprop="description">
+                                <span class="GT_Pressura_Regular">
+                                    <t t-set="product_features" t-value="product._get_product_features()"/>
+                                    <t t-esc="product_features"/>
+                                </span>
+                            </div>
+                            <div class="product-detail-technical">
+                                <div class="accordion" id="accordionExample">
+                                    <t t-if="product._has_content(product.description)">
+                                        <div class="card">
+                                            <div class="card-header obst-custom-card-header"
+                                                 id="headingOne">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <span class="custom-product-detail-collapse GT_Pressura_Regular">
+                                                            Beschreibung
+                                                        </span>
+                                                    </div>
+                                                    <div class="col text-right">
+                                                        <button class="btn btn-link collapsed obst-down-arrow-main-cls"
+                                                                type="button"
+                                                                data-toggle="collapse"
+                                                                data-target="#collapseOne"
+                                                                aria-expanded="false"
+                                                                aria-controls="collapseOne">
+                                                            <i class="fa fa-chevron-down obst-down-arrow"/>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div id="collapseOne"
+                                                 class="collapse"
+                                                 aria-labelledby="headingOne"
+                                                 data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    <t t-esc="product.description"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </t>
+                                    <t t-if="len(product.valid_product_template_attribute_line_ids) >= 1">
+                                        <div class="card">
+                                            <div class="card-header obst-custom-card-header"
+                                                 id="headingTwo">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <h5 class="custom-product-detail-collapse GT_Pressura_Regular">
+                                                            Produktinfos/Technical
+                                                            Infos
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col text-right">
+                                                        <button class="btn btn-link collapsed obst-down-arrow-main-cls"
+                                                                type="button"
+                                                                data-toggle="collapse"
+                                                                data-target="#collapseTwo"
+                                                                aria-expanded="false"
+                                                                aria-controls="collapseTwo">
+                                                            <i class="fa fa-chevron-down obst-down-arrow"/>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="collapseTwo"
+                                                 class="collapse"
+                                                 aria-labelledby="headingTwo"
+                                                 data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <table class="table">
+                                                                <tbody>
+                                                                    <t t-foreach="product.valid_product_template_attribute_line_ids"
+                                                                       t-as="ptal">
+                                                                        <tr>
+                                                                            <th class="obst-collapse-body-cls">
+                                                                                <t t-esc="ptal.attribute_id.name"/>
+                                                                            </th>
+                                                                        </tr>
+                                                                    </t>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <div class="col-8">
+                                                            <table class="table">
+                                                                <tbody>
+                                                                    <t t-foreach="product.valid_product_template_attribute_line_ids"
+                                                                       t-as="ptal">
+                                                                        <tr>
+                                                                            <td class="obst-collapse-body-cls">
+                                                                                <t t-foreach="ptal.product_template_value_ids._only_active()"
+                                                                                   t-as="ptav">
+                                                                                    <t t-if="ptav in combination">
+                                                                                        <t t-esc="ptav.name"/>
+                                                                                    </t>
+                                                                                </t>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </t>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </t>
+                                    <t t-if="product._has_content(product.care_instruction)">
+                                        <div class="card">
+                                            <div class="card-header obst-custom-card-header"
+                                                 id="headingThree">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <span class="custom-product-detail-collapse GT_Pressura_Regular">
+                                                            Pflegehinweise
+                                                        </span>
+                                                    </div>
+                                                    <div class="col text-right">
+                                                        <button class="btn btn-link collapsed obst-down-arrow-main-cls"
+                                                                type="button"
+                                                                data-toggle="collapse"
+                                                                data-target="#collapseThree"
+                                                                aria-expanded="false"
+                                                                aria-controls="collapseThree">
+                                                            <i class="fa fa-chevron-down obst-down-arrow"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="collapseThree"
+                                                 class="collapse"
+                                                 aria-labelledby="headingThree"
+                                                 data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    <t t-esc="product.care_instruction"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </t>
+                                    <t t-if="product._has_content(product.description_sale)">
+                                        <div class="card">
+                                            <div class="card-header obst-custom-card-header"
+                                                 id="headingThree">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <span class="custom-product-detail-collapse GT_Pressura_Regular">
+                                                            Lieferumfang
+                                                        </span>
+                                                    </div>
+                                                    <div class="col text-right">
+                                                        <button class="btn btn-link collapsed obst-down-arrow-main-cls"
+                                                                type="button"
+                                                                data-toggle="collapse"
+                                                                data-target="#collapseFour"
+                                                                aria-expanded="false"
+                                                                aria-controls="collapseFour">
+                                                            <i class="fa fa-chevron-down obst-down-arrow"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="collapseFour"
+                                                 class="collapse"
+                                                 aria-labelledby="headingThree"
+                                                 data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    <t t-esc="product.description_sale"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                            <t t-if="product.data_sheet_file">
+                                <div class="product-detail-technical">
+                                    <div class="card-body GT_Pressura_Regular">
+                                        <h4 class="GT_Pressura_Regular">Downloads</h4>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <table class="table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th class="obst-collapse-body-cls datasheet_font GT_Pressura_Regular">
+                                                                <span>Anleitung</span>
+                                                            </th>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="col-8">
+                                                <table class="table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="obst-collapse-body-cls GT_Pressura_Regular datasheet_font">
+                                                                <a class="privacy-hover datasheet_font_st" t-attf-href="data:application/pdf;base64,{{product.data_sheet_file}}" t-att-download="product.name"><t t-esc="product.name"/></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                            <div class="container-fluid product-variant-cls">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <form t-if="product._is_add_to_cart_possible()"
+                                              action="/shop/cart/update"
+                                              method="POST">
+                                            <input type="hidden"
+                                                   name="csrf_token"
+                                                   t-att-value="request.csrf_token()"/>
+                                            <div class="js_product js_main_product mb-3"
+                                                 style="padding-top: 50px;">
+                                                <div>
+                                                    <t t-call="gio_obstgemuese_theme.product_price_custom"/>
+                                                    <small class="ml-1 text-muted o_base_unit_price_wrapper d-none"
+                                                           groups="website_sale.group_show_uom_price">
+                                                        <t t-call='website_sale.base_unit_price'/>
+                                                    </small>
+                                                </div>
+                                                <t t-placeholder="select">
+                                                    <input type="hidden"
+                                                           class="product_id"
+                                                           name="product_id"
+                                                           t-att-value="product_variant.id"/>
+                                                    <input type="hidden"
+                                                           class="product_template_id"
+                                                           name="product_template_id"
+                                                           t-att-value="product.id"/>
+                                                    <input t-if="product.public_categ_ids.ids"
+                                                           type="hidden"
+                                                           class="product_category_id"
+                                                           name="product_category_id"
+                                                           t-att-value="product.public_categ_ids.ids[0]"/>
+                                                    <t t-if="combination"
+                                                       t-call="gio_obstgemuese_theme.custom_variants">
+                                                        <t t-set="ul_class"
+                                                           t-valuef="flex-column"/>
+                                                        <t t-set="parent_combination"
+                                                           t-value="None"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <ul class="d-none js_add_cart_variants"
+                                                            t-att-data-attribute_exclusions="{'exclusions: []'}"/>
+                                                    </t>
+                                                </t>
+                                                <p t-if="True"
+                                                   class="css_not_available_msg custom-obst-warning">
+                                                    This
+                                                    combination does not exist.
+                                                </p>
+                                                <div id="add_to_cart_wrap"
+                                                     class="add_to_cart_wrap">
+                                                    <a role="button"
+                                                       id="add_to_cart"
+                                                       class="text-dark GT_Pressura_Pro_Mono ob_in_the_cart js_check_product a-submit my-1 mr-1  flex-grow-1"
+                                                       href="#">
+                                                        <i class=""/>
+                                                        In den Warenkorb
+                                                    </a>
+                                                    <div id="product_option_block"
+                                                         class="d-inline-block align-middle"/>
+                                                    <div class="availability_messages o_not_editable"/>
+                                                </div>
+                                            </div>
+                                            <div id="o_product_terms_and_share"/>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <t t-call="website_sale.shop_product_carousel"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <t t-if="len(product_images) == 1 and product_variant in product_images">
+                            </t>
+                            <t t-else="">
+                                <div class="product-detail-media">
+                                    <div class="tns-outer"
+                                         id="product-gallery-slider-ow">
+                                        <div id="product-gallery-slider-mw"
+                                             class="tns-ovh"
+                                             style="height: 840px;">
+                                            <div class="tns-inner"
+                                                 id="product-gallery-slider-iw">
+                                                <div class="product-gallery-slider  tns-slider tns-carousel tns-subpixel tns-calc tns-autowidth tns-horizontal"
+                                                     id="product-gallery-slider"
+                                                     style="transition-duration: 0s;">
+                                                    <div id="carouselExampleCaptions"
+                                                         class="carousel slide show-neighbors"
+                                                         data-ride="carousel">
+                                                        <t t-set="product_images"
+                                                           t-value="product_variant._get_images() if product_variant else product._get_images()"/>
+                                                        <t t-if="not product_variant in product_images">
+                                                            <t t-esc="product_images"/>
+                                                        </t>
+                                                        <t t-if="len(product_images) == 1">
+                                                        </t>
+                                                        <t t-else="">
+                                                            <ol class="carousel-indicators">
+                                                                <t t-set="s"
+                                                                   t-value="0"/>
+                                                                <t t-foreach="product_images"
+                                                                   t-as="product_img">
+                                                                    <t t-if="not product_img == product_variant">
+                                                                        <t t-if="s == 0">
+                                                                            <li data-target="#carouselExampleCaptions"
+                                                                                data-slide-to="0"
+                                                                                class="active"></li>
+                                                                        </t>
+                                                                        <t t-else="">
+                                                                            <li data-target="#carouselExampleCaptions"
+                                                                                data-slide-to="1"></li>
+                                                                        </t>
+                                                                    </t>
+                                                                </t>
+                                                            </ol>
+                                                        </t>
+                                                        <t t-if="len(product_images) == 1">
+                                                        </t>
+                                                        <t t-else="">
+                                                            <div class="carousel-inner">
+                                                                <t t-set="s"
+                                                                   t-value="0"/>
+                                                                <t t-foreach="product_images"
+                                                                   t-as="product_img">
+                                                                    <t t-if="len(product_images) == 2">
+                                                                        <t t-if="not product_img == product_variant">
+                                                                            <div class="carousel-item active">
+                                                                                <div class="item__first">
+                                                                                    <img t-attf-src="data:image/*;base64,{{product_img.image_1920}}"
+                                                                                         class="d-block w-100 img-carousal-product"
+                                                                                         alt=""/>
+                                                                                </div>
+                                                                            </div>
+                                                                        </t>
+                                                                    </t>
+                                                                    <t t-else="">
+                                                                        <t t-if="not product_img == product_variant">
+                                                                            <t t-if="s == 0">
+                                                                                <div class="carousel-item active">
+                                                                                    <div class="item__third">
+                                                                                        <img t-attf-src="data:image/*;base64,{{product_img.image_1920}}"
+                                                                                             class="d-block w-100 img-carousal-product"
+                                                                                             alt=""/>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </t>
+                                                                            <t t-else="">
+                                                                                <div class="carousel-item">
+                                                                                    <div class="item__third">
+                                                                                        <img t-attf-src="data:image/*;base64,{{product_img.image_1920}}"
+                                                                                             class="d-block w-100 img-carousal-product"
+                                                                                             alt=""/>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </t>
+                                                                            <t t-set="s"
+                                                                               t-value="s+1"/>
+                                                                        </t>
+                                                                    </t>
+                                                                </t>
+                                                            </div>
+                                                        </t>
+                                                        <a class="carousel-control-prev"
+                                                           href="#carouselExampleCaptions"
+                                                           role="button"
+                                                           data-slide="prev">
+                                                            <span class="carousel-control-prev-icon"
+                                                                  aria-hidden="true"></span>
+                                                            <span class="sr-only">
+                                                                Previous
+                                                            </span>
+                                                        </a>
+                                                        <a class="carousel-control-next"
+                                                           href="#carouselExampleCaptions"
+                                                           role="button"
+                                                           data-slide="next">
+                                                            <span class="carousel-control-next-icon"
+                                                                  aria-hidden="true"></span>
+                                                            <span class="sr-only">
+                                                                Next
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                            <div class="home_product_view pt-5 pb-5">
+                                <div class="row">
+                                    <!--                                    <t t-set="product"-->
+                                    <!--                                       t-value="request.env['product.template'].sudo().search([('public_categ_ids', 'in', product.public_categ_ids.ids),('categ_id', '=', product.categ_id.id)], limit=4)"/>-->
+                                    <t t-set="related_products"
+                                       t-value="product._get_related_products()"/>
+                                    <t t-set="base_url"
+                                       t-value="request.env.company.get_base_url()"/>
+                                    <!--                                    <t t-set="product_len"-->
+                                    <!--                                       t-value="len(product)"/>-->
+                                    <t t-foreach="related_products" t-as="related_prod">
+                                        <div class="col-md-3 card oe_product_cart"
+                                             style="background: white !important;">
+                                            <a class="o_product_link css_editable_mode_hidden"
+                                               t-att-href="base_url + related_prod.website_url"/>
+                                            <div class="card-body p-1 oe_product_image"
+                                                 style="background-color:white !important; height:100%">
+                                                <input type="hidden"
+                                                       name="csrf_token"
+                                                       t-att-value="request.csrf_token()"/>
+                                                <a t-att-href="base_url + related_prod.website_url"
+                                                   class="d-block h-100"
+                                                   itemprop="url">
+                                                    <t t-set="image_holder"
+                                                       t-value="related_prod._get_image_holder()"/>
+                                                    <span t-field="related_prod.image_1920"
+                                                          t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256', 'itemprop': 'image'}"
+                                                          class="d-flex h-100 justify-content-center align-items-center"/>
+                                                </a>
+                                            </div>
+                                            <div class="card-body p-0 o_wsale_product_information  text-center"
+                                                 style="background-color: white !important; color: black;">
+                                                <div class="p-2 o_wsale_product_information_text">
+                                                    <h6 class="o_wsale_products_item_title GT_Pressura_Pro_Mono">
+                                                        <a class="text-dark text-decoration-none"
+                                                           itemprop="name"
+                                                           t-att-href="base_url + related_prod.website_url"
+                                                           t-att-content="related_prod.name"
+                                                           t-field="related_prod.name"/>
+                                                    </h6>
+                                                    <div class="product_price mb-1"
+                                                         itemprop="offers"
+                                                         itemscope="itemscope"
+                                                         itemtype="http://schema.org/Offer">
+                                                        <span class="GT_Pressura_Regular"
+                                                              t-if="combination_info['price']"
+                                                              t-esc="combination_info['price']"
+                                                              t-options="{'widget': 'monetary', 'class': 'GT_Pressura_Regular', 'display_currency': website.currency_id}"/>
+                                                        <del t-attf-class="text-danger GT_Pressura_Regular ml-1 h6 {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                                                             style="white-space: nowrap;"
+                                                             t-esc="combination_info['list_price']"
+                                                             t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                                        <span itemprop="price"
+                                                              style="display:none;"
+                                                              t-esc="combination_info['price']"/>
+                                                        <span itemprop="priceCurrency"
+                                                              style="display:none;"
+                                                              t-esc="website.currency_id.name"/>
+                                                    </div>
+                                                </div>
+                                                <div class="o_wsale_product_btn pl-2 d-none"/>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                            <t t-if="has_related_stories">
+                                <div class="product-related-stories">
+                                    <h3 class="GT_Pressura_Regular">
+                                        Du willst noch mehr erfahren?
+                                    </h3>
+                                    <h4 class="GT_Pressura_Regular">
+                                        Hintergrund und Stories
+                                    </h4>
+                                    <div class="story-item story-item-3">
+                                        <span class="story-author GT_Pressura_Regular">
+                                            <t t-esc="related_story.author_name"/>
+                                        </span>
+                                        <h5 class="GT_Pressura_Regular">
+                                            <t t-esc="related_story.display_name"/>
+                                        </h5>
+                                        <t t-set="post_content" t-value="related_story._get_post_content()"/>
+                                        <div class="story-item-content GT_Pressura_Regular">
+                                            <t t-esc="post_content"/>
+                                        </div>
+                                        <a t-att-href="related_story.website_url"
+                                           class=" d-table m-auto privacy-hover GT_Pressura_Regular">Weiterlesen
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="tns-outer" id="product-gallery-slider-ow">
+                                    <div id="product-gallery-slider-mw" class="tns-ovh">
+                                        <div class="tns-inner" id="product-gallery-slider-iw">
+                                            <div class="product-gallery-slider  tns-slider tns-carousel tns-subpixel tns-calc tns-autowidth tns-horizontal"
+                                                 id="product-gallery-slider" style="transition-duration: 0s;">
+                                                <div id="ProductStories" class="carousel slide show-neighbors"
+                                                     data-ride="carousel">
+                                                    <ol class="carousel-indicators" style="display: none;">
+                                                        <t t-set="s"
+                                                           t-value="0"/>
+                                                        <t t-foreach="related_stories"
+                                                           t-as="rela_story">
+                                                            <t t-if="s == 0">
+                                                                <li data-target="#ProductStories"
+                                                                    t-att-data-slide-to="s" class="active"></li>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <li data-target="#ProductStories"
+                                                                    t-att-data-slide-to="s" class=""></li>
+                                                            </t>
+                                                            <t t-set="s" t-value="s + 1"/>
+                                                        </t>
+                                                    </ol>
+                                                    <t t-if="len(related_stories) == 1">
+                                                        <t t-foreach="related_stories"
+                                                           t-as="rela_story">
+                                                            <div>
+                                                                <img t-att-src="base_url + rela_story._get_website_image_url()"
+                                                                     class="d-block w-100 img-carousal-product-stories"
+                                                                     alt=""/>
+                                                                <span class="product-story-author">
+                                                                    <t t-esc="rela_story.display_name"/>
+                                                                </span>
+                                                                <a t-att-href="rela_story.website_url"
+                                                                   title="OBST&amp;GEMÜSE // Die Geschichte"
+                                                                   class="story-read-more">
+                                                                    <span>Weiterlesen</span>
+                                                                </a>
+                                                            </div>
+                                                        </t>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <div class="carousel-inner">
+                                                            <t t-set="s"
+                                                               t-value="0"/>
+                                                            <t t-foreach="related_stories"
+                                                               t-as="rela_story">
+                                                                <t t-if="s == 0">
+                                                                    <div class="carousel-item active">
+                                                                        <div class="item__third">
+                                                                            <img t-att-src="base_url + rela_story._get_website_image_url()"
+                                                                                 class="d-block w-100 img-carousal-product-stories"
+                                                                                 alt=""/>
+                                                                            <span class="product-story-author">
+                                                                                <t t-esc="rela_story.display_name"/>
+                                                                            </span>
+                                                                            <a t-att-href="rela_story.website_url"
+                                                                               title="OBST&amp;GEMÜSE // Die Geschichte"
+                                                                               class="story-read-more">
+                                                                                <span>Weiterlesen</span>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <div class="carousel-item">
+                                                                        <div class="item__third">
+                                                                            <img t-att-src="base_url + rela_story._get_website_image_url()"
+                                                                                 class="d-block w-100 img-carousal-product-stories"
+                                                                                 alt=""/>
+                                                                            <span class="product-story-author">
+                                                                                <t t-esc="rela_story.display_name"/>
+                                                                            </span>
+                                                                            <a t-att-href="rela_story.website_url"
+                                                                               title="OBST&amp;GEMÜSE // Die Geschichte"
+                                                                               class="story-read-more">
+                                                                                <span>Weiterlesen</span>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </t>
+                                                                <t t-set="s"
+                                                                   t-value="s+1"/>
+                                                            </t>
+                                                        </div>
+                                                    </t>
+                                                    <a class="carousel-control-prev" href="#ProductStories"
+                                                       role="button" data-slide="prev">
+                                                        <span class="carousel-control-prev-icon"
+                                                              aria-hidden="true"></span>
+                                                        <span class="sr-only">
+                                                            Previous
+                                                        </span>
+                                                    </a>
+                                                    <a class="carousel-control-next" href="#ProductStories"
+                                                       role="button" data-slide="next">
+                                                        <span class="carousel-control-next-icon"
+                                                              aria-hidden="true"></span>
+                                                        <span class="sr-only">
+                                                            Next
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </xpath>
+        <xpath expr="//div[@id='product_full_description']" position="replace">
+        </xpath>
+        <xpath expr="//div[@id='oe_structure_website_sale_product_2']"
+               position="replace">
+        </xpath>
+    </template>
+
+    <template id="shop_product_carousel_custom_obst"
+              inherit_id="website_sale.shop_product_carousel">
+        <xpath expr="//a[hasclass('carousel-control-prev')]"
+               position="replace">
+        </xpath>
+        <xpath expr="//a[hasclass('carousel-control-next')]"
+               position="replace">
+        </xpath>
+    </template>
+    <template id="shop_product_carousel_custom_obst"
+              inherit_id="website_sale.carousel_product_indicators">
+        <xpath expr="//div" position="replace">
+        </xpath>
+    </template>
+    <!--    product_price custom template-->
+    <template id="product_price_custom">
+        <div itemprop="offers" itemscope="itemscope"
+             itemtype="http://schema.org/Offer"
+             class="product_price d-inline-block mt-2 mb-3">
+            <h3 class="css_editable_mode_hidden ">
+                <span class="oe_price" style="white-space: nowrap;"
+                      t-esc="combination_info['price']"
+                      t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                <span itemprop="price" style="display:none;"
+                      t-esc="combination_info['price']"/>
+                <span itemprop="priceCurrency" style="display:none;"
+                      t-esc="website.currency_id.name"/>
+                <span t-attf-class="text-danger oe_default_price ml-1 h5 {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                      style="text-decoration: line-through; white-space: nowrap;"
+                      t-esc="combination_info['list_price']"
+                      t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+            </h3>
+            <span class="inkl_cls GT_Pressura_Pro_Mono">Inkl. MwSt.</span>
+            <h3 class="css_non_editable_mode_hidden decimal_precision"
+                t-att-data-precision="str(website.currency_id.decimal_places)">
+                <span t-field="product.list_price"
+                      t-options='{
+                   "widget": "monetary",
+                   "display_currency": product.currency_id,
+               }'/>
+            </h3>
+        </div>
+    </template>
+    <!--product details page custom product variants design-->
+    <template id="custom_variants">
+        <t t-set="attribute_exclusions"
+           t-value="product._get_attribute_exclusions(parent_combination, parent_name)"/>
+        <ul t-attf-class="list-unstyled js_add_cart_variants #{ul_class}"
+            style="padding-top:10px"
+            t-att-data-attribute_exclusions="json.dumps(attribute_exclusions)">
+            <div class="row">
+                <t t-foreach="product.valid_product_template_attribute_line_ids"
+                   t-as="ptal">
+                    <!-- Attributes selection is hidden if there is only one value available and it's not a custom value -->
+                    <li t-att-data-attribute-id="ptal.attribute_id.id"
+                        t-att-data-attribute-name="ptal.attribute_id.name"
+                        t-attf-class="variant_attribute col-12 #{'d-none' if len(ptal.product_template_value_ids._only_active()) == 1 and not ptal.product_template_value_ids._only_active()[0].is_custom else ''}">
+
+                        <!-- Used to customize layout if the only available attribute value is custom -->
+                        <t t-set="single"
+                           t-value="len(ptal.product_template_value_ids._only_active()) == 1"/>
+                        <t t-set="single_and_custom"
+                           t-value="single and ptal.product_template_value_ids._only_active()[0].is_custom"/>
+                        <strong t-field="ptal.attribute_id.name"
+                                class="attribute_name d-none"/>
+                        <select
+                                t-att-data-attribute-id="ptal.attribute_id.id"
+                                t-attf-class="custom-select GT_Pressura_Pro_Mono css_attribute_select js_variant_change #{ptal.attribute_id.create_variant} #{'d-none' if single_and_custom else ''}"
+                                t-att-name="'ptal-%s' % ptal.id">
+                            <t t-foreach="ptal.product_template_value_ids._only_active()"
+                               t-as="ptav">
+                                <option t-att-value="ptav.id"
+                                        t-att-data-value-id="ptav.id"
+                                        t-att-data-value-name="ptav.name"
+                                        t-att-data-attribute-name="ptav.attribute_id.name"
+                                        t-att-data-is-custom="ptav.is_custom"
+                                        t-att-selected="ptav in combination"
+                                        t-att-data-is-single="single"
+                                        t-att-data-is_single_and_custom="single_and_custom">
+                                    <span t-field="ptav.name"/>
+                                    <t t-call="sale.badge_extra_price"/>
+                                </option>
+                            </t>
+                        </select>
+                    </li>
+                </t>
+            </div>
+        </ul>
+    </template>
+</odoo>
+
+

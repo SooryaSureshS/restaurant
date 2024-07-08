@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<template id="scheduledPaymentsTem">
+    <t t-name="scheduledPayments">
+        <div class="lowRowCont">
+            <div class="row">
+                <div class="col-lg-6">
+                    <span class="lowRowHeads">Scheduled Payments</span>
+                </div>
+                <div class="col-lg-6">
+                    <p class="lowRowHeadInf">Due in 7 days</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-4">
+                    <div class="description-block border-right">
+                        <span class="description-percentage text-success">
+                            <i class="fa fa-circle" style="color: #2baab6;"></i>
+                            <span class="lrTcN">Total</span>
+                        </span>
+                        <h5 class="description-header">$1500</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-4">
+                    <div class="description-block border-right">
+                        <span class="description-percentage text-success">
+                            <i class="fa fa-circle" style="color: #61B061;"></i>
+                            <span class="lrTcN">Paid</span>
+                        </span>
+                        <h5 class="description-header">$1500</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-4">
+                    <div class="description-block border-right">
+                        <span class="description-percentage text-success">
+                            <i class="fa fa-circle" style="color: #E76264;"></i>
+                            <span class="lrTcN">Remaining</span>
+                        </span>
+                        <h5 class="description-header">$1500</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3" style="text-align:right;">
+                    <button class="btn purpleBtn">Schedule Payment</button>
+                </div>
+            </div>
+        </div>
+    </t>
+</template>

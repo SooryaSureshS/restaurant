@@ -1,0 +1,278 @@
+.search-page {
+    width: 100%;
+    max-width: 90rem;
+    margin: 0 auto;
+    padding: 6.25rem 3.125rem;
+    padding-top: 12.5rem;
+}
+.header-search-form {
+    position: relative;
+}
+.search-page .header-search-input {
+    height: 3.75rem;
+    line-height: 3.75rem;
+    font-size: 2.8125rem;
+}
+.header-search-input:not(:placeholder-shown) {
+    max-width: 100%;
+    border-right: 1px solid #000;
+    border-left: 0;
+}
+.header-search-input {
+    border-radius: 0;
+    border: 0;
+    font-family: "GT Pressura Pro Mono";
+    color: #000;
+    height: 5.875rem;
+    line-height: 5.25rem;
+    font-size: 5.25rem;
+    caret-color: #9b9b9b;
+    border-left: 1px solid #000;
+    padding: .25rem 0;
+    text-indent: 0;
+    text-align: left;
+    -ms-flex: none !important;
+    flex: none !important;
+    width: auto;
+    max-width: 100%;
+    box-sizing: initial;
+}
+.search-page .header-search-input-placeholder {
+    font-size: 2.8125rem;
+    padding-right: 1.875rem;
+}
+.header-search-input-placeholder {
+    font-family: "GT Pressura Pro Mono";
+    font-size: 5.3125rem;
+    display: table;
+    width: auto;
+    position: absolute;
+    z-index: -1;
+    padding-right: 3.125rem;
+    opacity: 0;
+    box-sizing: border-box;
+}
+.search-page .search-results {
+    height: 3.75rem;
+    line-height: 3.75rem;
+    padding-left: 1.875rem;
+    font-size: 1.5625rem;
+}
+.search-results {
+    height: 5.9375rem;
+    line-height: 5.9375rem;
+    display: inline-table;
+    padding-left: 3.125rem;
+    color: #9b9b9b;
+    font-family: "GT Pressura Pro";
+    font-size: 1.5625rem;
+}
+.cms-element-product-listing {
+    width: 100%;
+}
+.search-page .cms-element-product-listing .cms-listing-row {
+    margin-top: 2.5rem;
+}
+.cms-element-product-listing .cms-listing-row {
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-top: 80px;
+}
+.cms-element-product-listing .cms-listing-row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.cms-element-product-listing .cms-listing-col.col-width-2 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+.cms-element-product-listing .cms-listing-col {
+    margin-bottom: 30px;
+}
+.cms-element-product-listing .cms-listing-col {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.cms-element-product-listing .cms-listing-col {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-bottom: 1.875rem !important;
+}
+.cms-element-product-listing .cms-listing-col {
+    margin-bottom: 30px;
+}
+.cms-element-product-listing .cms-listing-col {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.cms-element-product-listing .cms-listing-col {
+    margin-bottom: 1.5rem;
+}
+
+element.style {
+}
+.cms-element-product-listing .cms-listing-col.col-width-2 .product-image-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+.cms-element-product-listing .cms-listing-col .product-image-wrapper {
+    height: 18.4375rem;
+    -ms-flex-preferred-size: 18.4375rem;
+    flex-basis: 18.4375rem;
+    margin-bottom: .9375rem;
+}
+
+.product-image-wrapper {
+    height: 200px;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    -ms-flex-preferred-size: 180px;
+    flex-basis: 180px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.cms-element-product-listing .cms-listing-col.col-width-2 .product-image-wrapper img {
+    max-width: 100%;
+    max-height: 18.4375rem;
+    height: auto;
+    width: 100%;
+    object-fit: scale-down;
+}
+.cms-element-product-listing .cms-listing-col .product-image-wrapper img {
+    max-width: 100%;
+    max-height: 18.4375rem;
+    height: auto;
+    width: 100%;
+    object-fit: scale-down;
+}
+.product-image {
+    display: block;
+    max-width: 100%;
+    max-height: 200px;
+}
+.product-info-search {
+    position: relative;
+}
+.product-name-search {
+    color: #000;
+    text-align: center;
+    display: block;
+    height: auto;
+    margin-bottom: 0;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+    max-width: 18.75rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+.product-price-info-search {
+    margin-top: 0 !important;
+}
+.product-price-info-search {
+    margin-top: 10px;
+}
+.product-price-info-search .product-price-search {
+    margin-top: 0 !important;
+}
+.product-price {
+    height: auto;
+    overflow: auto;
+}
+
+element.style {
+}
+.product-price-info-search .product-price-search {
+    margin-top: 0 !important;
+}
+.product-price-search {
+    height: auto;
+    overflow: auto;
+}
+.product-price-search {
+    color: #4a4a4a;
+    text-align: center;
+    height: 1.875rem;
+    margin-bottom: .625rem;
+    margin-top: 0;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+    font-weight: normal;
+}
+.product-price-search {
+    color: #3f4c58;
+}
+.product-price-search {
+    color: #3f4c58;
+    min-height: 20px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 20px;
+    overflow: hidden;
+}
+@media screen and (max-width: 420px)
+.cms-element-product-listing .cms-listing-col .product-image-wrapper img {
+    max-height: 9.375rem !important;
+}
+@media (max-width: 575.98px)
+.cms-element-product-listing .cms-listing-col .product-image-wrapper img {
+    max-height: 12.5rem !important;
+}
+.no-results-search {
+    text-align: center;
+    color: #9b9b9b;
+    font-size: 2.1875rem;
+    line-height: 1.4;
+}
+.no-results-search-head{
+    padding-top: 7.5rem;
+}
+.search-page-h1{
+    font-size: 1.25rem;
+    padding-bottom: 1.25rem;
+}
+.close-icon-div {
+    padding-top: 35px
+}
+.close-icon-img {
+    padding-right: 52px;
+    width: 80px;
+}
+.search_input_field_cls {
+    max-width: 100%;
+    width: 100%;
+    border-radius: 0;
+    border: 0;
+    color: #000;
+    height: 5.875rem;
+    line-height: 5.25rem;
+    font-size: 5.25rem;
+    caret-color: #9b9b9b;
+    border-left: 1px solid #000;
+    padding: .25rem 0;
+    text-indent: 0;
+    text-align: left;
+    -ms-flex: none !important;
+    flex: none !important;
+    width: auto;
+    max-width: 100%;
+    box-sizing: initial;
+}
+.container-fluid-custom {
+    width: 100%;
+    max-width: 90rem;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 3.25rem 3.125rem;
+}
+.text-decoration:hover {
+    text-decoration: none !important;
+}
+a.product-name-search.GT_Pressura_Pro_Mono:hover {
+    text-decoration: none;
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="custom_404_inherit" inherit_id="http_routing.400">
+        <xpath expr="//div[@id='wrap']" position="attributes">
+            <attribute name="class" add="custom_wrap_padding"/>
+        </xpath>
+<!--        <xpath expr="//div[hasclass('oe_structure')]" position="attributes">-->
+<!--            <attribute name="class" add="list-inline-item mb-2 obst-btn-primary" remove="list-inline-item mb-2"/>-->
+<!--        </xpath>-->
+    </template>
+
+</odoo>

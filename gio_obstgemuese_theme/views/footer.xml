@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="obst_footer_custom" inherit_id="website.layout">
+        <xpath expr="//footer" position="replace">
+            <div class="row m-0 footer-pad bg-white">
+                <div class="pl-3 col-8 col-md-12 col-lg-3 order-1">
+                    <t t-call="website.placeholder_header_brand">
+                        <t t-set="_link_class" t-valuef="mr-lg-auto mr-0 ob_nav_logo_mob"/>
+                    </t>
+                </div>
+                <div class="social-media-list" style="display: none;">
+                    <div class="row">
+                        <div class="col-12">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=https://obstundgemuese.ch/service/impressum&amp;t=OBST%26GEM%C3%9CSE%20%7C%20Impressum"
+                               class="fbsharelink" title="Facebook"
+                               data-shareurl="https://www.facebook.com/sharer/sharer.php?u=https://obstundgemuese.ch/service/impressum&amp;t=OBST%26GEM%C3%9CSE%20%7C%20Impressum"
+                               target="_blank" rel="noopener">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                     class="bi bi-facebook" viewBox="0 0 16 16">
+                                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="col-12">
+                            <a href="https://twitter.com/share?url=https://obstundgemuese.ch/service/impressum&amp;text=OBST%26GEM%C3%9CSE%20%7C%20Impressum"
+                               class="twitter-share-button twsharelink" title="Twitter"
+                               data-shareurl="https://twitter.com/share?url=https://obstundgemuese.ch/service/impressum&amp;text=OBST%26GEM%C3%9CSE%20%7C%20Impressum"
+                               target="_blank" rel="noopener">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                     class="bi bi-twitter" viewBox="0 0 16 16">
+                                    <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-2 col-4 col-md-3 col-lg-2 order-3">
+                    <ul class="footer-service-menu-list list-unstyled">
+                        <li class="footer-service-menu-item">
+                            <img class="ob_icon ob_icon_mobile ob-share-social"
+                                 src="/gio_obstgemuese_theme/static/src/svg/55-share2.svg"/>
+                        </li>
+                        <li class="footer-service-menu-item">
+                            <img src="/gio_obstgemuese_theme/static/src/svg/72-arrow-up.svg"
+                                 class="ob_icon ob_icon_mobile scroll_to_top"/>
+                        </li>
+                    </ul>
+
+                    <!--                </div>-->
+                    <!--                <div class="col-lg-1 col-2 p-2">-->
+
+                </div>
+                <div class="o_footer_copyright_name mr-2 d-none"/>
+                <div class="footer_address pt-2 col-12 col-md-9 col-lg-7 order-2">
+                    <t t-set="base_url" t-value="request.env.company.get_base_url()"/>
+                    <ul class="footer-service-menu-list GT_Pressura_Regular list-unstyled">
+                        <li class="footer-service-menu-item">
+                            <a href="#" class="footer-service-menu-link-01 text-secondary inactive">©2023</a>
+                        </li>
+                        <li class="footer-service-menu-item">
+                            <a class="footer-service-menu-link text-secondary" t-att-href="base_url + '/impressum'"
+                               title="Impressum">
+                                Impressum
+                            </a>
+                        </li>
+                        <li class="footer-service-menu-item">
+                            <a class="footer-service-menu-link text-secondary" t-att-href="base_url + '/privacy'"
+                               title="Datenschutz">
+                                Datenschutz
+                            </a>
+                        </li>
+                        <li class="footer-service-menu-item">
+                            <a class="footer-service-menu-link text-secondary" t-att-href="base_url + '/agb'"
+                               title="AGB">
+                                AGB
+                            </a>
+                        </li>
+                    </ul>
+                    <!--                    <div class="row w-100 p-1">-->
+                    <!--                        <div class="col p-0">-->
+                    <!--                            <a class="nav-link">&amp;copy;-->
+                    <!--                                <span t-field="res_company.copyright_year" class="GT_Pressura_Pro_Mono"/>-->
+                    <!--                            </a>-->
+                    <!--                        </div>-->
+                    <!--                        <div class="col p-0">-->
+                    <!--                            <a href="/impressum" class="nav-link GT_Pressura_Pro_Mono text-dark">-->
+                    <!--                                <span>Imprint</span>-->
+                    <!--                            </a>-->
+                    <!--                        </div>-->
+                    <!--                        <div class="col p-0">-->
+                    <!--                            <a href="#" class="nav-link GT_Pressura_Pro_Mono text-dark">-->
+                    <!--                                <span>Privacy</span>-->
+                    <!--                            </a>-->
+                    <!--                        </div>-->
+                    <!--                        <div class="col p-0">-->
+                    <!--                            <a href="#" class="nav-link GT_Pressura_Pro_Mono text-dark">-->
+                    <!--                                <span>Conditions</span>-->
+                    <!--                            </a>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                </div>
+            </div>
+            <t t-call="gio_obstgemuese_theme.obst_cookie"/>
+        </xpath>
+    </template>
+
+    <template id="obst_cookie">
+        <div class="cookie-permission-container">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col cookie-permission-content">Wir verkaufen weder OBST noch GEMÜSE, haben aber Cookies.
+                        Du bekommst dank ihnen das beste Erlebnis auf unserer Website und wir brauchen sie für unsere
+                        Statistik. <a title="More information" class="obst-cookie-accept" data-toggle="modal"
+                                      data-target="#ObstCookieModal">Hier
+                        </a> erfährst Du mehr über Browser-Cookies.
+                    </div>
+                    <div class="col-12 cookie-permission-button js-cookie-permission-button">
+                        <a class="btn-close-cookie obst-cookie-accept">Ablehnen</a>
+                        <button type="submit" class="btn-accept-cookie obst-cookie-accept btn btn-link">Zulassen
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="ObstCookieModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">*</span>
+                    </button>
+                    <div class="modal-body GT_Pressura_Regular">
+                        <div class="cms-sections">
+                            <div class="cms-section  pos-0 cms-section-default" style="">
+                                <div class="cms-section-default boxed">
+                                    <div class="cms-block  pos-0 cms-block-text pt-5" style="">
+                                        <div class="cms-block-container">
+                                            <div class="cms-block-container-row row cms-row ">
+                                                <div class="col-12">
+                                                    <div class="cms-element-text GT_Pressura_Regular">
+                                                        <p></p>
+                                                        <h3 class="font-weight-normal GT_Pressura_Regular text-dark">Datenschutzerklärung
+                                                        </h3>
+                                                        <h4 class="font-weight-normal GT_Pressura_Regular text-dark">1. Verantwortliche und Kontakt
+                                                        </h4>
+                                                        <p>Verantwortlich für die Erhebung und Bearbeitung von Daten ist
+                                                            die OBST&amp;GEMÜSE jam GmbH. Deine datenschutzrechtlichen
+                                                            Anliegen kannst Du richten an:
+                                                        </p>
+                                                        <p>OBST&amp;GEMÜSE jam GmbH
+                                                        </p>
+                                                        <p>Kasernenstrasse 32
+                                                            <br/>
+                                                            4058 Basel
+                                                            <br/>
+                                                            oder an
+                                                            <br/>
+                                                            <a class="obst-cookie-accept" target="_self" href="mailto:hello@obstundgemuese.ch">
+                                                                hello[at]obstundgemuese.ch
+                                                            </a>
+                                                            <br/>
+                                                        </p>
+                                                        <h4 class="font-weight-normal GT_Pressura_Regular text-dark">2. Erhebung und Bearbeitung von Personendaten</h4>
+                                                        <p>
+                                                            Wir bearbeiten in erster Linie die Personendaten, die wir im
+                                                            Rahmen unserer Geschäftsbeziehung mit unseren Kunden und
+                                                            anderen Geschäftspartnern von diesen und weiteren daran
+                                                            beteiligten Personen erhalten (z. B. bei der Nutzung unseres
+                                                            Online Store) oder die wir beim Betrieb unserer Website von
+                                                            deren Nutzern erheben.
+                                                        </p>
+                                                        <p>
+                                                            Bei der bloss informatorischen Nutzung der Website, also
+                                                            wenn Du Dich nicht zur Nutzung der Website anmeldest,
+                                                            registrierst, das Anmeldeformular für den Newsletter
+                                                            ausfüllst, Social Media-Plugins anklickst oder uns sonst
+                                                            Informationen übermittelst, erheben wir keine
+                                                            personenbezogenen Daten, mit Ausnahme der Daten, die Dein
+                                                            Browser übermittelt, um Dir den Besuch der Website zu
+                                                            ermöglichen. Diese sind:
+                                                        </p>
+                                                        <ul>
+                                                            <li>
+                                                                IP-Adresse
+                                                            </li>
+                                                            <li>
+                                                                Datum und Uhrzeit der Anfrage
+                                                            </li>
+                                                            <li>
+                                                                Zeitzonendifferenz zur Greenwich Mean Time (GMT)
+                                                            </li>
+                                                            <li>
+                                                                Inhalt der Anforderung (konkrete Seite)
+                                                            </li>
+                                                            <li>
+                                                                Zugriffsstatus/HTTP-Statuscode
+                                                            </li>
+                                                            <li>
+                                                                jeweils übertragene Datenmenge
+                                                            </li>
+                                                            <li>
+                                                                Website, von der die Anforderung kommt
+                                                            </li>
+                                                            <li>
+                                                                Browser
+                                                            </li>
+                                                            <li>
+                                                                Betriebssystem und dessen Oberfläche
+                                                            </li>
+                                                            <li>
+                                                                Sprache und Version der Browsersoftware
+                                                            </li>
+                                                        </ul>
+                                                        <h4 class="font-weight-normal GT_Pressura_Regular text-dark">
+                                                            3. Verarbeitungszwecke und Rechtsgrundlage
+                                                        </h4>
+                                                        <p>
+                                                            Die Datenverarbeitung erfolgt insbesondere zur Analyse des
+                                                            Internetverkehrs unserer Website, zur Verbesserung der
+                                                            Funktionalität unserer Website, zu Werbezwecken und um
+                                                            unsere Verträge mit unseren Kundinnen und Kunden sowie
+                                                            Geschäftspartner/-innen abzuwickeln, so insbesondere im
+                                                            Rahmen des Vertriebs von Fahrrädern. Die Verarbeitung Deiner
+                                                            Daten ist zur Wahrung unserer berechtigten Interessen
+                                                            erforderlich.
+                                                        </p>
+                                                        <p>
+                                                            Soweit Du uns eine Einwilligung zur Bearbeitung Deiner
+                                                            Personaldaten für bestimmte Zwecke erteilt hast (zum
+                                                            Beispiel bei Deiner Anmeldung zum Erhalt des Newsletters),
+                                                            bearbeiten wir Deine Personendaten im Rahmen und gestützt
+                                                            auf diese Einwilligung, soweit wir keine andere
+                                                            Rechtsgrundlage haben und wir eine solche benötigen. Eine
+                                                            erteilte Einwilligung kann jederzeit widerrufen werden, was
+                                                            jedoch keine Auswirkung auf bereits erfolgte
+                                                            Datenbearbeitungen hat.
+                                                        </p>
+                                                        <h4 class="font-weight-normal GT_Pressura_Regular text-dark">
+                                                            4. Datenkategorien
+                                                        </h4>
+                                                        <p>
+                                                            Wir verarbeiten die Daten, die im Rahmen der Nutzung unserer
+                                                            Website entstehen bzw. die Daten, die von Dir (z. B. bei der
+                                                            Registrierung im Rahmen des Online Stores) angegeben werden.
+                                                        </p>
+                                                        <h4 class="font-weight-normal GT_Pressura_Regular text-dark">
+                                                            5. Datenempfänger
+                                                        </h4>
+                                                        <p>
+                                                            Wir geben im Rahmen unserer geschäftlichen Aktivitäten und
+                                                            Zwecke soweit erlaubt Personendaten auch Dritten bekannt.
+                                                            Dabei geht es insbesondere um folgende Datenempfänger:
+                                                        </p>
+                                                        <ul>
+                                                            <li>
+                                                                Dienstleister der OBST&amp;GEMÜSE jam GmbH,
+                                                                einschliesslich der in dieser Datenschutzerklärung
+                                                                genannten Unternehmen und Auftragsbearbeitern (z. B.
+                                                                IT-Provider);
+                                                            </li>
+                                                            <li>
+                                                                Dritte im Rahmen der Erfüllung von rechtlichen
+                                                                Verpflichtungen.
+                                                            </li>
+                                                        </ul>
+                                                        <p>
+                                                            Diese Empfänger sind teilweise in der Schweiz, können aber
+                                                            auch im Ausland sein. Du musst insbesondere mit der
+                                                            Übermittlung Deiner Daten in alle Länder rechnen, wo sich
+                                                            die von uns benutzten Dienstleister befinden (wie z. B.
+                                                            Google). Wenn wir Daten in ein Land ohne angemessenen
+                                                            gesetzlichen Datenschutz übermitteln, sorgen wir wie
+                                                            gesetzlich vorgesehen mittels Einsatz von entsprechenden
+                                                            Verträgen (namentlich auf Basis der sog.
+                                                            Standardvertragsklauseln der Europäischen Kommission) für
+                                                            ein angemessenes Schutzniveau oder stützen uns auf die
+                                                            gesetzlichen Ausnahmetatbestände der Einwilligung, der
+                                                            Vertragsabwicklung, der Feststellung, Ausübung oder
+                                                            Durchsetzung von Rechtsansprüchen, überwiegender
+                                                            öffentlicher Interessen, der veröffentlichten Personendaten
+                                                            oder weil es zum Schutz der Unversehrtheit der betroffenen
+                                                            Personen nötig ist.
+                                                        </p>
+                                                        <h4 class="font-weight-normal GT_Pressura_Regular text-dark">
+                                                            6. Cookies
+                                                        </h4>
+                                                        <p>
+                                                            Wir setzen auf unserer Website typischerweise «Cookies» und
+                                                            vergleichbare Techniken ein, mit denen Dein Browser oder
+                                                            Dein Gerät identifiziert werden kann. Bei Cookies handelt es
+                                                            sich um kleine Textdateien, die auf Deiner Festplatte dem
+                                                            von Dir verwendeten Browser zugeordnet gespeichert werden
+                                                            und durch welche der Stelle, die den Cookie setzt (in diesem
+                                                            Fall also uns), bestimmte Informationen zufliessen. Sie
+                                                            dienen dazu, das Internetangebot insgesamt
+                                                            nutzerfreundlicher und effektiver zu machen und das
+                                                            Surfverhalten der Website-Besucher zu analysieren. Wir
+                                                            setzen Cookies dazu ein, um Dich für Folgebesuche
+                                                            identifizieren zu können, falls Du über einen Account bei
+                                                            uns verfügst. Andernfalls musst Du Dich für jeden Besuch
+                                                            erneut einloggen.
+                                                        </p>
+                                                        <p>
+                                                            Diese Website nutzt folgende funktionalen Cookies:
+                                                        </p>
+                                                        <ul>
+                                                            <li>
+                                                                PHPSESSID
+                                                            </li>
+                                                            <li>
+                                                                allowCookie
+                                                            </li>
+                                                            <li>
+                                                                session
+                                                            </li>
+                                                            <li>
+                                                                sw-cache-hash
+                                                            </li>
+                                                            <li>
+                                                                sw-states
+                                                            </li>
+                                                            <li>
+                                                                timezone
+                                                            </li>
+                                                        </ul>
+                                                        <p>
+                                                            Diese Website nutzt folgende Tracking-Cookies:
+                                                        </p>
+                                                        <ul>
+                                                            <li>
+                                                                ga
+                                                            </li>
+                                                            <li>
+                                                                gat_UA
+                                                            </li>
+                                                            <li>
+                                                                gid_GA
+                                                            </li>
+                                                        </ul>
+                                                        <p>
+                                                            Gemäss anwendbarem Recht können wir Cookies auf Deinem Gerät
+                                                            speichern, wenn diese für den Betrieb der Website technisch
+                                                            notwendig sind. Für andere Cookie-Typen, sofern wir diese
+                                                            einsetzen, benötigen wir Deine Erlaubnis, die Du durch
+                                                            Anklicken der entsprechenden Felder im Pop-up-Button geben
+                                                            kannst. Du kannst Deine Browser-Einstellung entsprechend
+                                                            Deinen Wünschen konfigurieren und z.B. die Annahme
+                                                            von Third-Party-Cookies oder allen Cookies ablehnen. Wir
+                                                            weisen Dich jedoch darauf hin, dass Du dann eventuell nicht
+                                                            alle Funktionen dieser Website nutzen kannst.
+                                                        </p>
+                                                        <h4 class="font-weight-normal GT_Pressura_Regular text-dark">
+                                                            7. Google Analytics
+                                                        </h4>
+                                                        <p>
+                                                            Diese Website benutzt verschiedene Statistikdienste,
+                                                            insbesondere Google Analytics, einen Webanalysedienst der
+                                                            Google Inc. («Google»). Google Analytics verwendet Cookies
+                                                            bzw. Textdateien, die auf Deinem Computer gespeichert werden
+                                                            und die eine Analyse der Benutzung der Website durch Dich
+                                                            ermöglichen. Die durch den Cookie erzeugten Informationen
+                                                            über Deine Benutzung der Website werden in der Regel an
+                                                            einen Server von Google in den USA übertragen und dort
+                                                            gespeichert. Die im Rahmen von Google Analytics von Deinem
+                                                            Browser übermittelte IP-Adresse wird nicht mit anderen Daten
+                                                            von Google zusammengeführt. Wir haben zudem auf dieser
+                                                            Website Google Analytics um den Code «anonymizeIP»
+                                                            erweitert. Dies garantiert die Maskierung Deiner IP-Adresse,
+                                                            sodass alle Daten anonym erhoben werden. Nur in
+                                                            Ausnahmefällen wird die volle IP-Adresse an einen Server von
+                                                            Google in den USA übertragen und dort gekürzt.
+                                                        </p>
+                                                        <p>
+                                                            Im Auftrag des Betreibers dieser Website wird Google diese
+                                                            Information benutzen, um Deine Nutzung der Website
+                                                            auszuwerten, um Reports über die Website-Aktivitäten
+                                                            zusammenzustellen und um weitere mit der Website-Nutzung und
+                                                            der Internetnutzung verbundene Dienstleistungen gegenüber
+                                                            dem Website-Betreiber zu erbringen. Du kannst die
+                                                            Speicherung der Cookies durch eine entsprechende Einstellung
+                                                            Deiner Browser-Software verhindern; wir weisen Dich jedoch
+                                                            darauf hin, dass Du in diesem Fall möglicherweise nicht
+                                                            sämtliche Funktionen dieser Website vollumfänglich wirst
+                                                            nutzen können.
+                                                        </p>
+                                                        <p>
+                                                            Du kannst darüber hinaus die Erfassung der durch das Cookie
+                                                            erzeugten und auf Deine Nutzung der Website bezogenen Daten
+                                                            (inkl. Deiner IP-Adresse) an Google sowie die Verarbeitung
+                                                            dieser Daten durch Google verhindern, indem Du das unter dem
+                                                            folgenden Link verfügbare Browser-Plugin herunterlädst und
+                                                            installierst:
+                                                            <a class="obst-cookie-accept"
+                                                                    href="http://tools.google.com/dlpage/gaoptout?hl=de"
+                                                                    target="_blank">
+                                                                http://tools.google.com/dlpage/gaoptout?hl=de
+                                                            </a>
+                                                        </p>
+                                                        <p>
+                                                            Wir verwenden Google Analytics einschliesslich der
+                                                            Funktionen von Google Signal/Remarketing und von Universal
+                                                            Analytics. Universal Analytics erlaubt es uns, die
+                                                            Aktivitäten auf unseren Seiten geräteübergreifend zu
+                                                            analysieren (z.B. bei Zugriffen mittels Laptop und später
+                                                            über ein Tablet). Dies wird durch die pseudonyme Zuweisung
+                                                            einer User-ID zu einer/einem Nutzer/-in ermöglicht. Eine
+                                                            solche Zuweisung erfolgt etwa, wenn Du Dich für ein
+                                                            Kundenkonto registrierst bzw. Dich bei Deinem Kundenkonto
+                                                            anmeldest. Es werden jedoch keine personenbezogenen Daten an
+                                                            Google weitergeleitet. Auch wenn mit Universal Analytics
+                                                            zusätzliche Funktionen zu Google Analytics hinzukommen,
+                                                            bedeutet dies nicht, dass damit eine Einschränkung von
+                                                            Massnahmen zum Datenschutz wie IP-Masking oder das
+                                                            Browser-Add-on verbunden ist.
+                                                        </p>
+                                                        <p>
+                                                            Willst Du die Erfassung durch Google Analytics verhindern,
+                                                            musst Du ein Opt-Out-Cookie setzen, das die zukünftige
+                                                            Erfassung Deiner Daten beim Besuch dieser Website
+                                                            verhindert. Der Opt-Out-Cookie gilt nur in diesem Browser
+                                                            und nur für unsere Website und wird auf Deinem Gerät
+                                                            abgelegt. Löschst Du die Cookies in diesem Browser, musst Du
+                                                            das Opt-Out-Cookie erneut setzen. Unter folgendem Link wird
+                                                            ebenfalls erklärt, wie sich Google Analytics deaktivieren
+                                                            lässt:
+                                                            <a target="_blank" class="obst-cookie-accept"
+                                                               href="https://tools.google.com/dlpage/gaoptout?hl=de">
+                                                                https://tools.google.com/dlpage/gaoptout?hl=de
+                                                            </a>
+                                                        </p>
+                                                        <h4 class="font-weight-normal GT_Pressura_Regular text-dark">
+                                                            8. Weitere Tools
+                                                        </h4>
+                                                        <p>
+                                                            Zum Zwecke der fortlaufenden Optimierung des Google-Rankings
+                                                            unserer Website nutzen wir Google Search Console, ein
+                                                            Werbeanalysedienst von Google. Im Rahmen der Nutzung von
+                                                            Google Search Console werden keine personenbezogenen
+                                                            Nutzerdaten verarbeitet oder an Google übermittelt.
+                                                        </p>
+                                                        <p>
+                                                            Weiter nutzen wir das Angebot von Google Ads Conversion, um
+                                                            mit Hilfe von Werbemitteln auf externen Websites auf unsere
+                                                            Angebote aufmerksam zu machen. Zudem verwenden wir die
+                                                            Remarketing-Funktion innerhalb des Google Ads-Dienstes.
+                                                            Damit können wir Nutzern unserer Website innerhalb des
+                                                            Google-Werbenetzwerks interessenbezogene Werbeanzeigen
+                                                            präsentieren.
+                                                        </p>
+                                                        <p>
+                                                            Von Facebook benutzen wir auf unserer Website die
+                                                            Retargeting-Funktion «Custom Audiences». Mittels dieser
+                                                            Funktion können wir die Nutzer der Website auf Facebook
+                                                            zielgerichtet mit Werbung ansprechen, indem für Nutzer der
+                                                            Website interessenbezogene Facebook-Ads geschaltet werden,
+                                                            wenn sie Facebook besuchen. Zur Durchführung dieser Funktion
+                                                            wird auf der Website das sogenannte Facebook-Pixel
+                                                            implementiert. Über dieses Pixel wird beim Besuch der
+                                                            Website eine direkte Verbindung zu den Facebook-Servern
+                                                            hergestellt. Nähere Informationen zur Erhebung und Nutzung
+                                                            der Daten durch Facebook findest Du in den
+                                                            Datenschutzhinweisen (<a class="obst-cookie-accept"
+                                                                href="https://www.facebook.com/about/privacy/"
+                                                                target="_blank">
+                                                            https://www.facebook.com/about/privacy/</a>) sowie in der
+                                                            Cookie-Richtlinie (<a class="obst-cookie-accept"
+                                                                href="https://www.facebook.com/policies/cookies/"
+                                                                target="_blank">
+                                                            https://www.facebook.com/policies/cookies/</a>) von
+                                                            Facebook. Wenn Du nicht möchtest, dass Facebook die
+                                                            gesammelten Informationen Deinem Facebook-Benutzerkonto
+                                                            zuordnet, kannst Du die Remarketing-Funktion «Custom
+                                                            Audiences» hier deaktivieren. Dazu musst Du bei Facebook
+                                                            angemeldet sein.
+                                                        </p>
+                                                        <p>
+                                                            Wir verwenden ausserdem Hotjar, um erkennen zu können, wie
+                                                            die Nutzer/-innen auf unserer Website interagieren. Hotjar
+                                                            ist eine Dienstleistung von Hotjar Limited. Wir benutzen
+                                                            Website-Tags von Twitter und LinkedIn.
+                                                        </p>
+                                                        <h4 class="font-weight-normal GT_Pressura_Regular text-dark">
+                                                            9. Newsletter
+                                                        </h4>
+                                                        <p>
+                                                            Gerne informieren wir Dich mit unserem Newsletter über
+                                                            aktuelle Themen rund um die OBST&amp;GEMÜSE jam GmbH und
+                                                            unsere Produkte. Zum Versand eines Newsletters benötigen wir
+                                                            Deinen Namen und Deine E-Mail-Adresse. Beides kannst Du in
+                                                            die dafür vorgesehenen Felder eingeben. Nachdem Du diese
+                                                            Daten abgesendet hast, erhältst Du von uns eine E-Mail an
+                                                            die von Dir angegebene E-Mail-Adresse, in der Du zur
+                                                            Verifizierung der von Dir angegebenen E-Mail-Adresse einen
+                                                            Bestätigungslink anklicken musst.
+                                                        </p>
+                                                        <p>
+                                                            Deine Daten werden von uns nur zum Zwecke des
+                                                            Newsletter-Versands verwendet und gespeichert.
+                                                            <br/>
+                                                            Du kannst Dich jederzeit vom Newsletter wieder abmelden und
+                                                            damit der weiteren Verwendung Deiner Daten widersprechen. Du
+                                                            kannst Dich am Ende eines Newsletters aus dem Verteiler
+                                                            austragen.
+                                                            <br/>
+                                                            Wir bauen in unseren Newsletter und sonstige
+                                                            Marketing-E-Mails teilweise und soweit erlaubt auch sicht-
+                                                            und unsichtbare Bildelemente ein, durch deren Abruf von
+                                                            unseren Servern wir feststellen können, ob und wann Du die
+                                                            E-Mail geöffnet hast, damit wir auch hier messen und besser
+                                                            verstehen können, wie Du unsere Angebote nutzst und sie auf
+                                                            Dich zuschneiden können. Du kannst dies in Deinem
+                                                            E-Mail-Programm blockieren; die meisten sind so
+                                                            voreingestellt, dass sie dies tun.
+                                                        </p>
+                                                        <p>
+                                                            Für den Versand unseres Newsletters nutzen wir die
+                                                            Applikation «GetRevue», eine Dienstleistung der «Revue
+                                                            Holding B.V.», in Amsterdam, Niederlande. Weitere
+                                                            Informationen zum Datenschutz findest Du hier:
+                                                            <a class="obst-cookie-accept"
+                                                                    target="_blank"
+                                                                    href="https://www.getrevue.co/terms">
+                                                                https://www.getrevue.co/terms
+                                                            </a>
+                                                        </p>
+                                                        <h4 class="font-weight-normal GT_Pressura_Regular text-dark">
+                                                            10. Dauer der Speicherung von Personendaten
+                                                        </h4>
+                                                        <p>
+                                                            Soweit nicht anders angegeben, speichern wir Nutzungsdaten
+                                                            oder andere personenbezogene Daten so lange wie wir dies zur
+                                                            Einhaltung der geltenden Gesetze als notwendig oder
+                                                            angemessen erachten oder so lange wir es für die Zwecke, für
+                                                            die sie bearbeitet werden, als notwendig erachten. Wir
+                                                            löschen Deine Daten sobald diese nicht mehr benötigt werden
+                                                            und auf jeden Fall nach Ablauf der gesetzlich
+                                                            vorgeschriebenen maximalen Aufbewahrungsfrist.
+                                                        </p>
+                                                        <h4 class="font-weight-normal GT_Pressura_Regular text-dark">
+                                                            11. Datensicherheit
+                                                        </h4>
+                                                        <p>
+                                                            Wir unterhalten aktuelle technische Massnahmen zur
+                                                            Gewährleistung der Datensicherheit, insbesondere zum Schutz
+                                                            Deiner personenbezogenen Daten vor Gefahren bei
+                                                            Datenübertragungen sowie vor Kenntniserlangung durch Dritte.
+                                                            Diese werden dem aktuellen Stand der Technik entsprechend
+                                                            jeweils angepasst.
+                                                        </p>
+                                                        <h4 class="font-weight-normal GT_Pressura_Regular text-dark">
+                                                            12. Rechte der betroffenen Personen
+                                                        </h4>
+                                                        <p>
+                                                            Dir stehen bei Vorliegen der massgebenden gesetzlichen
+                                                            Voraussetzungen folgende Rechte zu:
+                                                        </p>
+                                                        <ul>
+                                                            <li>
+                                                                Recht auf Auskunft
+                                                            </li>
+                                                            <li>
+                                                                Berichtigung
+                                                            </li>
+                                                            <li>
+                                                                Löschung
+                                                            </li>
+                                                            <li>
+                                                                Einschränkung der Verarbeitung
+                                                            </li>
+                                                            <li>
+                                                                Unterrichtung
+                                                            </li>
+                                                            <li>
+                                                                Datenübertragbarkeit
+                                                            </li>
+                                                        </ul>
+                                                        <p>
+                                                            Ausserdem steht Dir ein jederzeitiges Widerspruchsrecht
+                                                            gegen die Verarbeitung zu, die auf einer von Dir erteilten
+                                                            Einwilligung oder unseren berechtigten Interessen beruht.
+                                                        </p>
+                                                        <p>
+                                                            Bitte beachte aber, dass wir uns vorbehalten, unsererseits
+                                                            die gesetzlich vorgesehenen Einschränkungen geltend zu
+                                                            machen, etwa wenn wir zur Aufbewahrung oder Bearbeitung
+                                                            gewisser Daten verpflichtet sind, daran ein überwiegendes
+                                                            Interesse haben (soweit wir uns darauf berufen dürfen) oder
+                                                            sie für die Geltendmachung von Ansprüchen benötigen.
+                                                        </p>
+                                                        <p>
+                                                            Die Ausübung solcher Rechte setzt in der Regel voraus, dass
+                                                            Du Deine Identität eindeutig nachweist (z. B. durch eine
+                                                            Ausweiskopie, wo Deine Identität sonst nicht klar ist bzw.
+                                                            verifiziert werden kann). Zur Geltendmachung Deiner Rechte
+                                                            kannst Du uns unter der oben angegebenen Adresse
+                                                            kontaktieren.
+                                                        </p>
+                                                        <p>
+                                                            Jede betroffene Person hat überdies das Recht, ihre
+                                                            Ansprüche gerichtlich durchzusetzen oder bei der zuständigen
+                                                            Datenschutzbehörde eine Beschwerde einzureichen. Die
+                                                            zuständige Datenschutzbehörde der Schweiz ist der
+                                                            Eidgenössische Datenschutz- und Öffentlichkeitsbeauftragte (<a class="obst-cookie-accept"
+                                                                href="http://www.edoeb.admin.ch" target="_blank">
+                                                            http://www.edoeb.admin.ch</a>).
+                                                        </p>
+                                                        <h4 class="font-weight-normal GT_Pressura_Regular text-dark">
+                                                            13. Änderungen
+                                                        </h4>
+                                                        <p>
+                                                            Wir können diese Datenschutzerklärung jederzeit ohne
+                                                            Vorankündigung anpassen. Es gilt die jeweils aktuelle, auf
+                                                            unserer Website publizierte Fassung.
+                                                        </p>
+                                                        <p>
+                                                            Stand: 11. Juni 2020
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+</odoo>

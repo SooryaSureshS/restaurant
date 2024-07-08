@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <record id="view_users_form_inherit" model="ir.ui.view">
+            <field name="name">res.users.form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="after">
+                    <header>
+                        <button string="Approve" type="object" name="action_approve_user"
+                                context="{'approval': 'approved'}" class="btn-primary"
+                                attrs="{'invisible':[('approval', 'not in', ['waiting'])]}"/>
+                        <button string="Reject" type="object" name="action_approve_user"
+                                context="{'approval': 'rejected'}" class="btn-warning"
+                                attrs="{'invisible':[('approval', 'not in', ['waiting'])]}"/>
+                        <button string="Block" type="object" name="action_approve_user"
+                                context="{'approval': 'blocked'}" class="btn-danger"
+                                attrs="{'invisible':[('approval', 'not in', ['waiting', 'approved', 'rejected'])]}"/>
+                        <button string="Review" type="object" name="action_approve_user"
+                                context="{'approval': 'waiting'}" class="btn-primary"
+                                attrs="{'invisible':[('approval', 'not in', ['rejected', 'blocked'])]}"/>
+                        <field name="approval" widget="statusbar"/>
+                    </header>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

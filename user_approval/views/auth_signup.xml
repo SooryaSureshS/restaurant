@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="auth_signup.signup" name="Sign up login">
+        <t t-call="website.layout">
+            <div class="container" id="signupForm">
+                <form class="" role="form" method="post" t-if="not message" enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <div class="s_website_form_rows row s_col_no_bgcolor">
+                        <div data-visibility-condition="" data-visibility-between=""
+                             class="s_website_form_field mb-3 col-12 s_website_form_required" data-type="char"
+                             data-name="Field">
+                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px"
+                                       for="ondvr5swpgv">
+                                    <span class="s_website_form_label_content">Client Name</span>
+                                    <span class="s_website_form_mark">*</span>
+                                </label>
+                                <div class="col-sm">
+                                    <input type="text" class="form-control s_website_form_input" name="name"
+                                           required="1" placeholder="" id="ondvr5swpgv" data-fill-with="name"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-visibility-condition="" data-visibility-between=""
+                             class="s_website_form_field mb-3 col-12 s_website_form_custom s_website_form_required"
+                             data-type="many2one" data-name="Field">
+                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px"
+                                       for="country">
+                                    <span class="s_website_form_label_content">Country/Region</span>
+                                    <span class="s_website_form_mark">*</span>
+                                </label>
+                                <div class="col-sm">
+                                    <select class="form-select s_website_form_input" name="country_id"
+                                            id="country" style="">
+                                        <option value="" selected="selected"/>
+                                        <t t-foreach="countries" t-as="country">
+                                            <option t-att-value="country.id"><t t-esc="country.name"/></option>
+                                        </t>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-visibility-condition="" data-visibility-between=""
+                             class="s_website_form_field mb-3 col-12 s_website_form_custom s_website_form_required"
+                             data-type="many2one" data-name="Field">
+                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px"
+                                       for="state">
+                                    <span class="s_website_form_label_content">State/Province</span>
+                                    <span class="s_website_form_mark">*</span>
+                                </label>
+                                <div class="col-sm">
+                                    <select class="form-select s_website_form_input" name="state_id"
+                                            id="state">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-visibility-condition="" data-visibility-between=""
+                             class="s_website_form_field mb-3 col-12 s_website_form_custom s_website_form_required"
+                             data-type="char" data-name="Field">
+                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px"
+                                       for="state">
+                                    <span class="s_website_form_label_content">City</span>
+                                    <span class="s_website_form_mark">*</span>
+                                </label>
+                                <div class="col-sm">
+                                    <input type="text" class="form-control s_website_form_input" name="city" id="city"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-visibility-condition="" data-visibility-between=""
+                             class="s_website_form_field mb-3 col-12 s_website_form_custom s_website_form_required"
+                             data-type="char" data-name="Field">
+                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px"
+                                       for="opinxt07x139">
+                                    <span class="s_website_form_label_content">Contact Person</span>
+                                    <span class="s_website_form_mark">*</span>
+                                </label>
+                                <div class="col-sm">
+                                    <input type="text" class="form-control s_website_form_input" name="contact"
+                                           placeholder="" id="opinxt07x139" data-fill-with="phone"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="s_website_form_field mb-3 col-12 s_website_form_required" data-type="email"
+                             data-name="Field" data-visibility-condition="" data-visibility-between="">
+                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px"
+                                       for="ohotcod6k1h">
+                                    <span class="s_website_form_label_content">Email</span>
+                                    <span class="s_website_form_mark">*</span>
+                                </label>
+                                <div class="col-sm">
+                                    <input type="email" class="form-control s_website_form_input" name="login"
+                                           required="1" data-fill-with="email" id="ohotcod6k1h"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-visibility-condition="" data-visibility-between=""
+                             class="s_website_form_field mb-3 col-12 s_website_form_required" data-type="char"
+                             data-name="Field">
+                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px"
+                                       for="o3lqjd52c1dm">
+                                    <span class="s_website_form_label_content">Shop Name</span>
+                                    <span class="s_website_form_mark">*</span>
+                                </label>
+                                <div class="col-sm">
+                                    <input type="text" class="form-control s_website_form_input" name="shop"
+                                           required="1" value="" placeholder="" id="o3lqjd52c1dm"
+                                           data-fill-with="commercial_company_name"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-visibility-condition="" data-visibility-between=""
+                             class="s_website_form_field mb-3 col-12 s_website_form_model_required" data-type="tel"
+                             data-name="Field">
+                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px"
+                                       for="olleu2t3uc6j">
+                                    <span class="s_website_form_label_content">Telephone No.</span>
+                                    <span class="s_website_form_mark">*</span>
+                                </label>
+                                <div class="col-sm">
+                                    <input type="tel" class="form-control s_website_form_input" name="phone"
+                                           value="" placeholder="" id="olleu2t3uc6j" data-fill-with="undefined"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-visibility-condition="" data-visibility-between=""
+                             class="s_website_form_field mb-3 col-12 s_website_form_custom s_website_form_required"
+                             data-type="tel" data-name="Field">
+                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px"
+                                       for="ouh345d4strk">
+                                    <span class="s_website_form_label_content">Mobile No.</span>
+                                    <span class="s_website_form_mark">*</span>
+                                </label>
+                                <div class="col-sm">
+                                    <input type="tel" class="form-control s_website_form_input" name="mobile"
+                                           value="" placeholder="" id="ouh345d4strk"
+                                           data-fill-with="undefined"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-visibility-condition="" data-visibility-between="" data-type="char" data-name="Field"
+                             class="s_website_form_field mb-3 col-12 s_website_form_required o_we_force_no_transition">
+                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px"
+                                       for="owy7w5ykggib">
+                                    <span class="s_website_form_label_content">Billing Address</span>
+                                    <span class="s_website_form_mark">*</span>
+                                </label>
+                                <div class="col-sm">
+                                    <input type="text" class="form-control s_website_form_input" name="street" value=""
+                                           placeholder="" id="owy7w5ykggib" data-fill-with="undefined" />
+                                </div>
+                            </div>
+                        </div>
+                        <div data-visibility-condition="" data-visibility-between="" data-type="char" data-name="Field"
+                             class="s_website_form_field mb-3 col-12 s_website_form_required o_we_force_no_transition">
+                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px"
+                                       for="owy7w5ykggib">
+                                    <span class="s_website_form_label_content">Business Registration</span>
+                                </label>
+                                <div class="col-sm">
+                                    <input type="file" class="form-control s_website_form_input" name="business_registration"
+                                           placeholder="" id="owy7w5ykggib" data-fill-with="undefined" />
+                                </div>
+                            </div>
+                        </div>
+                        <div data-visibility-condition="" data-visibility-between="" data-type="char" data-name="Field"
+                             class="s_website_form_field mb-3 col-12 s_website_form_required o_we_force_no_transition">
+                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px"
+                                       for="owy7w5ykggib">
+                                    <span class="s_website_form_label_content">Password</span>
+                                    <span class="s_website_form_mark">*</span>
+                                </label>
+                                <div class="col-sm">
+                                    <input type="password" class="form-control s_website_form_input" name="password" value=""
+                                           placeholder="" id="owy7w5ykggib" data-fill-with="undefined" required=""/>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-visibility-condition="" data-visibility-between="" data-type="char" data-name="Field"
+                             class="s_website_form_field mb-3 col-12 s_website_form_required o_we_force_no_transition">
+                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                <label class="col-form-label col-sm-auto s_website_form_label " style="width: 200px"
+                                       for="owy7w5ykggib">
+                                    <span class="s_website_form_label_content">Confirm Password</span>
+                                    <span class="s_website_form_mark">*</span>
+                                </label>
+                                <div class="col-sm">
+                                    <input type="password" class="form-control s_website_form_input" name="confirm_password" value=""
+                                           placeholder="" id="owy7w5ykggib" data-fill-with="undefined" required=""/>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-visibility-condition="" data-visibility-between=""
+                             class="s_website_form_field mb-3 col-12 s_website_form_custom s_website_form_required"
+                             data-type="char" data-name="Field">
+                            <p class="alert alert-danger" t-if="error" role="alert">
+                                <t t-esc="error"/>
+                            </p>
+                        </div>
+                        <div class="mb-0 py-2 col-12 s_website_form_submit" data-name="Submit Button"
+                             data-bs-original-title="" title="" aria-describedby="tooltip808807">
+                            <div style="width: 200px;" class="s_website_form_label"></div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <span id="s_website_form_result"></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </t>
+    </template>
+</odoo>
+

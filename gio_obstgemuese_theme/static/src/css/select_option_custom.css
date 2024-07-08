@@ -1,0 +1,105 @@
+/*.obst-custom-select-selection {
+  position: relative;
+  font-family: Arial;
+}
+
+.obst-custom-select-selection select {
+  display: none; *//*hide original SELECT element:*//*
+}
+
+.select-selected {
+  background-color: white;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+*//*style the arrow inside the select element:*//*
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+}
+
+*//*style the items (options), including the selected item:*//*
+.select-items div,.select-selected {
+  color: black;
+  padding: 8px 16px;
+  cursor: pointer;
+  user-select: none;
+}
+
+*//*style items (options):*//*
+.select-items {
+  position: absolute;
+  background-color: white;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-top: 1px solid white;
+  margin-top: -1px;
+  color: black !important;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+*//*hide the items when the select box is closed:*//*
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: yellow;
+}*/
+
+
+
+select {
+  --selectHoverCol: #999;
+  --selectedCol: white;
+  color: black !important;
+  width: 100%;
+  font-size: 1em;
+  padding: 0.3em;
+  background-color: #fff;
+  z-index: 0;
+}
+
+select:focus {
+  border-radius: 0px;
+  border-color: black;
+  background: #fff;
+  outline: none;
+  color: black !important;
+  z-index: 10;
+}
+
+option:hover {
+  background-color: #eeca00 !important;
+  color: #fff;
+  z-index: 10 !important;
+}
+
+option:checked {
+  box-shadow: 0 0 1em 100px #eeca00 inset;
+  color: black !important;
+  z-index: 0;
+}
+select.custom-select.css_attribute_select.GT_Pressura_Regular:focus{
+    position: relative;
+    z-index: 10 !important;
+}
+select#contactDepartment:focus{
+    position: relative;
+    z-index: 10 !important
+}
+select#contactDepartment {
+    border-radius: 0px;
+    border-color: #9b9b9b;
+}

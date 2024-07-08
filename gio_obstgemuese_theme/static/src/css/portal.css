@@ -1,0 +1,588 @@
+main{
+    background:white;
+}
+
+
+
+.tab {
+  float: left;
+  border: 0px solid #ccc;
+  background-color: inherit;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 15px 15px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+  font-family: "GT Pressura Pro Mono";
+}
+
+.tab button.active {
+  color:#eeca00 !important;
+}
+
+/* Style the tab content */
+.tab_content {
+  float: left;
+  padding: 0px 12px;
+  width: 100%;
+  border:none;
+  height:auto;
+}
+.order_line_image{
+        width:100px;
+        height:100px;
+}
+.profile_image{
+    width:70px;
+    height:70px;
+    z-index:1;
+}
+.profile_image img{
+    border-radius:50%;
+    width:70px;
+    height:70px;
+}
+.overview_profile{
+    background:whitesmoke;
+}
+.js_show_order_line{
+    cursor:pointer;
+}
+.profile_image_ob_add{
+    cursor:pointer;
+}
+.profile_image_ob_add img{
+     transition:0.5s;
+     cursor:pointer;
+}
+.profile_image_ob_add img:hover{
+     transition:0.5s;
+     filter: grayscale(1);
+}
+
+/*
+popup*/
+.ob_portal_pop_up {
+  display: block;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  padding-top:20%;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+
+  background-color: rgb(255 255 255 / 33%);
+}
+.ob_portal_pop_up-content {
+  background-color: #eeca00;
+  color:white;
+  margin: auto;
+  padding: 50px;
+  width: 50%;
+}
+.ob_portal_pop_up_close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  z-index:10009;
+}
+.ob_portal_pop_up_close:hover,
+.ob_portal_pop_up_close:focus {
+  color: whitesmoke;
+  text-decoration: none;
+  cursor: pointer;
+  transition:0.5s;
+  transform:rotate(360deg);
+}
+
+.change_email_container,.change_password_container{
+    display:none;
+}
+
+.a_underline{
+    text-decoration: underline 2px;
+    text-decoration-color:  #eeca00;
+    text-underline-offset: 4px;
+    color:black;
+}
+.a_underline:hover{
+    text-decoration: underline 2px;
+    text-decoration-color:  #eeca00;
+    text-underline-offset: 4px;
+}
+
+
+
+/* Odoo Portal Page Customization*/
+
+.o_portal_wrap{
+    padding-top: 80px;
+    font-family: "GT Pressura Pro Mono" !important;
+    color: black !important;
+}
+.o_portal_my_home h3{
+    font-family: "GT Pressura Pro Mono" !important;
+    font-size: 45px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: -0.05px;
+    text-align: center;
+    color: var(--black);
+}
+
+.o_portal_docs .list-group-item{
+    border: unset;
+    width: 270px;
+    height: 30px;
+    margin: 23px 165px 30px 55px;
+    font-size: 25px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.28;
+    letter-spacing: 0.08px;
+    text-align: left;
+    color: var(--black);
+}
+.o_portal_docs .list-group-item .badge-pill{
+    display: none;
+}
+.o_portal_my_home h3{
+    display: none;
+}
+
+.o_portal_wrap .justify-content-between{
+    justify-content: unset !important;
+}
+
+.o_portal_navbar {
+    display: none;
+}
+.o_portal_my_doc_table .tx_status .badge-pill > i.fa-clock-o{
+    display: none !important;
+}
+.o_portal_my_doc_table .tx_status .badge-pill{
+    background: unset;
+    width: unset;
+    color: black;
+}
+.o_portal_my_doc_table tr a {
+    color: black;
+    text-decoration: underline;
+}
+.o_portal_wrap .alert-warning{
+    background: #eeca00;
+    border: #eeca00;
+    color: white;
+}
+.o_portal main .css_editable_mode_hidden > div > div > a{
+    color: white;
+}
+.o_portal main .css_editable_mode_hidden{
+    margin-top: 80px;
+    position: unset;
+    font-family: "GT Pressura Pro Mono" !important;
+    background: #eeca00;
+    border: #eeca00;
+    color: white;
+}
+.css_editable_mode_hidden .close{
+    margin-top: 80px;
+    font-family: "GT Pressura Pro Mono" !important;
+}
+.o_portal main .container{
+    font-family: "GT Pressura Pro Mono" !important;
+}
+#quote_content .alert-warning h3, h4, p{
+    font-family: "GT Pressura Pro Mono" !important;
+}
+.o_portal .record_pager a{
+    width: 5vw;
+    height: unset;
+    background: none;
+    border: none;
+    color: black;
+}
+.o_portal_sidebar #sidebar_content.card > div.card-body{
+    font-family: "GT Pressura Pro Mono" !important;
+    border-top: 1px solid #DEE2E6;
+    border-right: 1px solid #DEE2E6;
+}
+.o_portal_sidebar #sidebar_content.card > div.card-footer{
+    display: none !important;
+}
+.o_portal_sidebar #sidebar_content.card > ul.list-group-flush{
+    font-family: "GT Pressura Pro Mono" !important;
+    border-right: 1px solid #DEE2E6;
+    border-bottom: 1px solid #DEE2E6;
+}
+.o_portal_sidebar #sidebar_content.card > ul.list-group-flush > li > a.btn-block:hover{
+    background: #eeca00;
+    text-decoration: underline #eeca00;
+}
+.o_portal_sidebar #sidebar_content.card > ul.list-group-flush > li > a.btn-block{
+    font-family: "GT Pressura Pro Mono" !important;
+    height: unset;
+    border: unset;
+    background: unset;
+    color: black;
+    cursor: pointer;
+    border-radius: unset;
+    font-size: 30px;
+    text-decoration: underline #eeca00;
+}
+.o_portal_sidebar #sidebar_content.card > ul.list-group-flush .o_download_btn:hover{
+    background: #eeca00;
+    text-decoration: underline #eeca00;
+
+}
+.o_portal_sidebar #sidebar_content.card > ul.list-group-flush .o_download_btn{
+    font-family: "GT Pressura Pro Mono" !important;
+    height: unset;
+    border: unset;
+    background: unset;
+    color: black;
+    cursor: pointer;
+    border-radius: unset;
+    font-size: 30px;
+    text-decoration: underline #eeca00;
+}
+.o_portal_sidebar #sidebar_content.card > ul.list-group-flush .o_portal_invoice_print:hover{
+    background: #eeca00 !important;
+    text-decoration: underline #eeca00 !important;
+}
+.o_portal_sidebar #sidebar_content.card > ul.list-group-flush .o_portal_invoice_print{
+    font-family: "GT Pressura Pro Mono" !important;
+    height: unset;
+    border: unset;
+    background: unset;
+    color: black;
+    cursor: pointer;
+    border-radius: unset;
+    font-size: 30px;
+    text-decoration: underline #eeca00;
+}
+.o_portal_sidebar #sidebar_content.card > ul > li > a > i.fa-check{
+    display:none !important;
+}
+.o_portal_sidebar #sidebar_content.card > ul.list-group-flush .o_download_btn > i.fa-download{
+    display:none !important;
+}
+.o_portal_sidebar #sidebar_content.card > ul.list-group-flush .o_portal_invoice_print > i.fa-print{
+    display:none !important;
+}
+
+.breadcrumb-item > a {
+    color: black;
+}
+.breadcrumb-item.active {
+    color: black;
+}
+.card-body > h2 > b{
+    font-family: "GT Pressura Pro Mono" !important;
+}
+
+#introduction >h2{
+    font-family: "GT Pressura Pro Mono" !important;
+}
+#introduction >h2{
+    font-family: "GT Pressura Pro Mono" !important;
+}
+#details >h3{
+    font-family: "GT Pressura Pro Mono" !important;
+}
+#terms >h3{
+    font-family: "GT Pressura Pro Mono" !important;
+}
+#terms >em{
+    color: black !important;
+    text-decoration: underline #eeca00;
+}
+#sale_order_communication >h2{
+    font-family: "GT Pressura Pro Mono" !important;
+}
+.o_portal_chatter_composer_body >textarea{
+    font-family: "GT Pressura Pro Mono" !important;
+}
+
+
+#quote_content .justify-content-center > div.col-sm-auto > a:hover{
+    background: #eeca00;
+    text-decoration: underline #eeca00;
+}
+#quote_content .justify-content-center > div.col-sm-auto > a{
+    font-family: "GT Pressura Pro Mono" !important;
+    height: unset;
+    border: unset;
+    background: unset;
+    color: black;
+    cursor: pointer;
+    border-radius: unset;
+    font-size: 30px;
+    text-decoration: underline #eeca00;
+}
+#quote_content .justify-content-center > div.col-sm-auto > a > i{
+    display: none !important
+}
+
+.o_portal_chatter_composer_btn{
+    font-family: "GT Pressura Pro Mono" !important;
+    height: unset !important;
+    border: unset !important;
+    background: unset !important;
+    color: black !important;
+    cursor: pointer !important;
+    border-radius: unset !important;
+    font-size: 30px !important;
+    text-decoration: underline #eeca00;
+
+}
+.o_portal_chatter_composer_btn: hover{
+    background: #eeca00 !important;
+    text-decoration: underline #eeca00 !important;
+}
+.o_portal_chatter_attachment_btn{
+    font-family: "GT Pressura Pro Mono" !important;
+    height: unset !important;
+    border: unset !important;
+    background: unset !important;
+    color: black !important;
+    cursor: pointer !important;
+    border-radius: unset !important;
+    font-size: 30px !important;
+    text-decoration: underline #eeca00;
+
+}
+.o_portal_chatter_attachment_btn: hover{
+    background: #eeca00 !important;
+    text-decoration: underline #eeca00 !important;
+}
+
+.sale_tbody #product_name > a >span{
+    color: black !important;
+/*
+    text-decoration: underline #eeca00 !important;
+*/
+}
+li > a.nav-link{
+    color: black !important;
+    text-decoration: underline #eeca00 !important;
+}
+
+.o_portal .o_portal_chatter_message_title .mb-1  {
+    font-family: "GT Pressura Pro Mono" !important;
+}
+.o_portal .o_portal_chatter_message_title .o_portal_chatter_puslished_date {
+    font-family: "GT Pressura Pro Mono" !important;
+}
+.o_portal .o_portal_chatter_message_title .p {
+    font-family: "GT Pressura Pro Mono" !important;
+}
+
+.o_portal .o_portal_message_internal_off > button: hover{
+    background-color: #eeca00;
+}
+.o_portal .o_portal_message_internal_off > button{
+    width: unset !important;
+    background: none;
+    border: none;
+    color: black;
+    text-decoration: underline #eeca00;
+    font-family: "GT Pressura Pro Mono" !important;
+}
+
+.fa-comment{
+    color: black;
+}
+
+.pl-0 > a{
+    color: black;
+}
+
+#invoice_communication > h2 {
+    font-family: "GT Pressura Pro Mono" !important;
+}
+
+.o_portal_chatter .o_portal_chatter_attachment .o_portal_chatter_attachment_name{
+    word-wrap: unset;
+    color: black;
+    font-family: "GT Pressura Pro Mono" !important;
+}
+.card-header .o_web_sign_draw_button:hover{
+    text-decoration: underline #eeca00;
+    background: #eeca00;
+    color: black;
+    background-color: unset;
+    border: unset;
+    font-family: "GT Pressura Pro Mono" !important;
+
+}
+.card-header .o_web_sign_draw_button:active{
+    text-decoration: underline #eeca00;
+    background: #eeca00;
+    color: black;
+    background-color: unset;
+    border: unset;
+    font-family: "GT Pressura Pro Mono" !important;
+
+}
+
+.card-header .o_web_sign_draw_button{
+    background: none;
+    border: none;
+    text-decoration: underline #eeca00;
+    width: unset;
+    color: black;
+    font-family: "GT Pressura Pro Mono" !important;
+
+}
+.card-header .o_web_sign_auto_button:hover{
+    text-decoration: underline #eeca00;
+    background: #eeca00;
+    color: black;
+    background-color: unset;
+    border: unset;
+    font-family: "GT Pressura Pro Mono" !important;
+
+}
+.card-header .o_web_sign_auto_button:active{
+    text-decoration: underline #eeca00;
+    background: #eeca00;
+    color: black;
+    background-color: unset;
+    border: unset;
+    font-family: "GT Pressura Pro Mono" !important;
+
+}
+
+.card-header .o_web_sign_auto_button{
+    background: none;
+    border: none;
+    text-decoration: underline #eeca00;
+    width: unset;
+    color: black;
+    font-family: "GT Pressura Pro Mono" !important;
+
+}
+.card-header .o_web_sign_load_button:hover{
+    text-decoration: underline #eeca00;
+    background: #eeca00;
+    color: black;
+    background-color: unset;
+    border: unset;
+    font-family: "GT Pressura Pro Mono" !important;
+
+}
+.card-header .o_web_sign_load_button:active{
+    text-decoration: underline #eeca00;
+    background: #eeca00;
+    color: black;
+    background-color: unset;
+    border: unset;
+    font-family: "GT Pressura Pro Mono" !important;
+
+}
+
+.card-header .o_web_sign_load_button{
+    background: none;
+    border: none;
+    text-decoration: underline #eeca00;
+    width: unset;
+    color: black;
+    font-family: "GT Pressura Pro Mono" !important;
+
+}
+.card-header .o_web_sign_draw_clear .btn-link:hover{
+    text-decoration: underline #eeca00;
+    background: #eeca00;
+    color: black;
+    background-color: unset;
+    border: unset;
+    font-family: "GT Pressura Pro Mono" !important;
+
+}
+.card-header .o_web_sign_draw_clear .btn-link:active{
+    text-decoration: underline #eeca00;
+    background: #eeca00;
+    color: black;
+    background-color: unset;
+    border: unset;
+    font-family: "GT Pressura Pro Mono" !important;
+
+}
+.card-header .o_web_sign_draw_clear .btn-link{
+    background: none;
+    border: none;
+    text-decoration: underline #eeca00;
+    width: unset;
+    color: black;
+    font-family: "GT Pressura Pro Mono" !important;
+
+}
+
+.o_portal_sign_submit > i{
+    display:none !important;
+}
+.o_portal_sign_submit: hover{
+    background: #eeca00 !important;
+    text-decoration: underline #eeca00 !important;
+
+}
+.o_portal_sign_submit{
+    background: none !important;
+    border: unset !important;
+    color: black !important;
+    text-decoration: underline #eeca00;
+    width: unset !important;
+    font-family: "GT Pressura Pro Mono" !important;
+
+}
+
+.o_web_sign_load_file > input{
+    width: unset;
+    height: unset;
+    color: black;
+    font-family: "GT Pressura Pro Mono" !important;
+
+}
+
+.list-group-item-action:hover, .list-group-item-action:focus {
+    z-index: 1;
+    color: #495057;
+    text-decoration: none;
+    background-color: #eeca00;
+}
+
+@media (min-width:320px)  {
+    .o_portal_sale_sidebar .list-group-item > a.btn-block{
+        width: 100%;
+    }
+    #quote_content .justify-content-center > div.col-sm-auto > a{
+        width: 100%;
+    }
+    .o_portal_chatter_attachment_btn {
+        float: right;
+    }
+    .overview_profile > div > div.col-11{
+        padding-top: 12px;
+    }
+}
+
+.o_portal_wrap .justify-content-between .col-lg-6{
+    display: none !important;
+}
