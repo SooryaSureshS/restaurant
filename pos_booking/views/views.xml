@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="pos_view_pos_config-booking_form">
+            <field name="name">pos.config.form.view.inherit</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="inside">
+                    <h2>Table Booking</h2>
+                    <div class="row mt16 o_settings_container" id="table_booking_config">
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="enable_table_booking"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="enable_table_booking"/>
+                                <div class="text-muted">
+                                    Enable to Table Booking in POS Interface.
+                                </div>
+<!--                                <div class="content-group" attrs="{'invisible' : [('enable_gift_card', '=', False)]}">-->
+<!--                                    <div class="row mt16">-->
+<!--                                        <label string="Product" for="gift_card_product_id"-->
+<!--                                               class="col-md-3 o_light_label"/>-->
+<!--                                        <field name="gift_card_product_id" domain="[('available_in_pos','=','True')]"-->
+<!--                                               attrs="{'invisible':[('enable_gift_card','=',False)],'required':[('enable_gift_card','=',True)]}"/>-->
+<!--                                    </div>-->
+<!--                                    <div class="row mt16">-->
+<!--                                        &lt;!&ndash;					<label string="Gift Card Payment Method" for="rounding_journal_id" class="col-md-3 o_light_label"/>&ndash;&gt;-->
+<!--                                        <label string="Gift Card Payment Method" for="enable_journal_id"-->
+<!--                                               class="col-md-3 o_light_label"/>-->
+<!--                                        &lt;!&ndash;					<field name="enable_journal_id"&ndash;&gt;-->
+<!--                                        &lt;!&ndash;						attrs="{'invisible' : [('enable_gift_card', '=', False)],'required':[('enable_gift_card','=',True)]}"&ndash;&gt;-->
+<!--                                        &lt;!&ndash;						domain = "[('allow_for_gift_cards','=',True)]"&ndash;&gt;-->
+<!--                                        &lt;!&ndash;						options="{'no_create':1}"/>&ndash;&gt;-->
+
+<!--                                        <field name="enable_journal_id" options="{'no_create':1}"/>-->
+<!--                                    </div>-->
+<!--                                    <div class="row mt16">-->
+<!--                                        <label string="Manual Card Number" for="manual_card_number"-->
+<!--                                               class="col-md-3 o_light_label"/>-->
+<!--                                        <field name="manual_card_number"/>-->
+<!--                                    </div>-->
+<!--                                    <div class="row mt16">-->
+<!--                                        <label string="Default Expire Month" for="default_exp_date"-->
+<!--                                               class="col-md-3 o_light_label"/>-->
+<!--                                        <field name="default_exp_date"/>-->
+<!--                                    </div>-->
+<!--                                    <div class="row mt16">-->
+<!--                                        <label string="Enable Confirmation Message" for="msg_before_card_pay"-->
+<!--                                               class="col-md-3 o_light_label"/>-->
+<!--                                        <field name="msg_before_card_pay"/>-->
+<!--                                    </div>-->
+<!--                                    <div class="row mt16">-->
+<!--                                        <label string="Print Gift Card Receipt" for="print_gift_card"-->
+<!--                                               class="col-md-3 o_light_label"/>-->
+<!--                                        <field name="print_gift_card"/>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt16 o_settings_container" id="Delivery Type Color">
+                      <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('enable_table_booking', '=', False)]}">
+
+                            <div class="o_setting_left_pane">
+                                <field name="table_available_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="table_available_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set pos table available color
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                     <div class="row mt16 o_settings_container" id="Delivery Type Color">
+                      <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('enable_table_booking', '=', False)]}">
+
+                             <div class="o_setting_left_pane">
+                                <field name="table_unavailable_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="table_unavailable_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set pos table unavailable color
+                                </div>
+                            </div>
+                      </div>
+                     </div>
+                    <div class="row mt16 o_settings_container" id="Delivery Type Color">
+                      <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('enable_table_booking', '=', False)]}">
+
+                                               <div class="o_setting_left_pane">
+                                <field name="table_unavailable_soon_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="table_unavailable_soon_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set pos table unavailable soon color
+                                </div>
+                            </div>
+                      </div>
+                     </div>
+                    <div class="row mt16 o_settings_container" id="Delivery Type Color">
+                      <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('enable_table_booking', '=', False)]}">
+                     <div class="o_setting_left_pane">
+                                <field name="table_available_soon_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="table_available_soon_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set pos table available soon color
+                                </div>
+                            </div>
+                      </div>
+                     </div>
+                    <div class="row mt16 o_settings_container" id="Delivery Type Color">
+                      <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('enable_table_booking', '=', False)]}">
+                         <div class="o_setting_left_pane">
+
+                                </div>
+                                <div class="o_setting_right_pane">
+                                  <field name="minimize_booking_gape" />
+                                    <div class="text-muted" style="font-size: 11px;">
+                                        Set pos table booking gap
+                                    </div>
+                                </div>
+                          </div>
+
+
+                         <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('enable_table_booking', '=', False)]}">
+                         <div class="o_setting_left_pane">
+
+                                </div>
+                                <div class="o_setting_right_pane">
+                                  <field name="booking_time_out" />
+                                    <div class="text-muted" style="font-size: 11px;">
+                                        Set pos booking time out
+                                    </div>
+                                </div>
+                          </div>
+                     </div>
+                    <div class="row mt16 o_settings_container" id="Delivery Type Color">
+                      <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('enable_table_booking', '=', False)]}">
+                         <div class="o_setting_left_pane">
+
+                                </div>
+                                <div class="o_setting_right_pane">
+                                  <field name="soon_available" />
+                                    <div class="text-muted" style="font-size: 11px;">
+                                        Soon become available
+                                    </div>
+                                </div>
+                           </div>
+
+                     </div>
+
+                </xpath>
+            </field>
+        </record>
+
+
+
+    </data>
+</odoo>

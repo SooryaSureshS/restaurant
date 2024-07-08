@@ -1,0 +1,24 @@
+<odoo>
+    <record model="report.paperformat" id="paperformat_quality_cost_report">
+        <field name="name">paperformat.quality.cost.report</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">20</field>
+        <field name="margin_right">10</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">15</field>
+        <field name="header_line" eval="True"/>
+        <field name="header_spacing">25</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <report id="report_quality_cost"
+            model="quality.cost.report"
+            string="Quality Cost Report"
+            report_type="qweb-pdf"
+            name="quality_cost_report.quality_cost_report_template"
+            paperformat="paperformat_quality_cost_report"
+            menu="False"/>
+</odoo>

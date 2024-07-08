@@ -1,0 +1,314 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* pragmatic_odoo_pos_whatsapp_integration
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-27 05:39+0000\n"
+"PO-Revision-Date: 2021-07-27 05:39+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#. openerp-web
+#: code:addons/pragmatic_odoo_pos_whatsapp_integration/static/src/xml/Popups/WhatsAppSendMsgPopup.xml:0
+#, python-format
+msgid "A phone number starting with the country code."
+msgstr "رقم هاتف يبدأ برمز الدولة."
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_pos_whatsapp_integration.whatsapp_message_template_form
+msgid "Add a message template..."
+msgstr "إضافة قالب رسالة ..."
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_pos_whatsapp_integration.whatsapp_message_template_form
+msgid "Add a short name..."
+msgstr "أضف اسمًا قصيرًا ..."
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model:ir.model.fields,help:pragmatic_odoo_pos_whatsapp_integration.field_pos_config__iface_whatsapp_receipt
+msgid "Allow to send POS Receipt to customer's Whatsapp"
+msgstr "السماح بإرسال إيصال نقاط البيع إلى الواتساب الخاص بالعميل"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model:ir.model.fields,help:pragmatic_odoo_pos_whatsapp_integration.field_pos_config__iface_whatsapp_receipt_auto
+msgid "Allow to send POS Receipt to customer's Whatsapp automatically"
+msgstr "السماح بإرسال إيصال نقاط البيع إلى Whatsapp الخاص بالعميل تلقائيًا"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model:ir.model.fields,help:pragmatic_odoo_pos_whatsapp_integration.field_pos_config__iface_whatsapp_grp_msg
+msgid "Allow to send Whatsapp group messages"
+msgstr "السماح بإرسال رسائل مجموعة Whatsapp"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model:ir.model.fields,help:pragmatic_odoo_pos_whatsapp_integration.field_pos_config__iface_whatsapp_msg
+msgid "Allow to send Whatsapp message to specific customer"
+msgstr "السماح بإرسال رسالة Whatsapp إلى عميل معين"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model:ir.model.fields,help:pragmatic_odoo_pos_whatsapp_integration.field_pos_config__iface_whatsapp_msg_template
+msgid "Allow to set Whatsapp default message template"
+msgstr "السماح بتعيين قالب رسالة Whatsapp الافتراضي"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#. openerp-web
+#: code:addons/pragmatic_odoo_pos_whatsapp_integration/static/src/xml/Popups/WhatsAppGroupSelectPopup.xml:0
+#, python-format
+msgid "Avatar"
+msgstr "الصورة الرمزية"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model_terms:ir.actions.act_window,help:pragmatic_odoo_pos_whatsapp_integration.action_whatsapp_message_template_form
+msgid "Create a new message template"
+msgstr "قم بإنشاء قالب رسالة جديد"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model:ir.model.fields,field_description:pragmatic_odoo_pos_whatsapp_integration.field_whatsapp_message_template__create_uid
+msgid "Created by"
+msgstr "انشأ من قبل"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model:ir.model.fields,field_description:pragmatic_odoo_pos_whatsapp_integration.field_whatsapp_message_template__create_date
+msgid "Created on"
+msgstr "تم إنشاؤها على"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model_terms:ir.actions.act_window,help:pragmatic_odoo_pos_whatsapp_integration.action_whatsapp_message_template_form
+msgid ""
+"Define the pre defined Whatsapp message template that will be available on "
+"the POS UI."
+msgstr ""
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model:ir.model.fields,field_description:pragmatic_odoo_pos_whatsapp_integration.field_pos_config__display_name
+#: model:ir.model.fields,field_description:pragmatic_odoo_pos_whatsapp_integration.field_whatsapp_message_template__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#. openerp-web
+#: code:addons/pragmatic_odoo_pos_whatsapp_integration/static/src/xml/Popups/WhatsAppSendMsgPopup.xml:0
+#, python-format
+msgid "Enter customer mobile number with country code."
+msgstr "أدخل رقم الهاتف المحمول للعميل مع رمز الدولة."
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#. openerp-web
+#: code:addons/pragmatic_odoo_pos_whatsapp_integration/static/src/xml/Screens/ProductScreen/ControlButtons/GroupWhatsappMessageButton.xml:0
+#, python-format
+msgid "Group Message"
+msgstr "رسالة مجموعة"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model:ir.model.fields,field_description:pragmatic_odoo_pos_whatsapp_integration.field_pos_config__id
+#: model:ir.model.fields,field_description:pragmatic_odoo_pos_whatsapp_integration.field_whatsapp_message_template__id
+msgid "ID"
+msgstr "المُعرف"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model:ir.model.fields,field_description:pragmatic_odoo_pos_whatsapp_integration.field_pos_config____last_update
+#: model:ir.model.fields,field_description:pragmatic_odoo_pos_whatsapp_integration.field_whatsapp_message_template____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model:ir.model.fields,field_description:pragmatic_odoo_pos_whatsapp_integration.field_whatsapp_message_template__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model:ir.model.fields,field_description:pragmatic_odoo_pos_whatsapp_integration.field_whatsapp_message_template__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model:ir.model.fields,field_description:pragmatic_odoo_pos_whatsapp_integration.field_whatsapp_message_template__message
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_pos_whatsapp_integration.whatsapp_message_template_form
+msgid "Message"
+msgstr "رسالة"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model:ir.model.fields,field_description:pragmatic_odoo_pos_whatsapp_integration.field_pos_config__whatsapp_msg_template_id
+msgid "Message Template"
+msgstr "نموذج الرسالة"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#. openerp-web
+#: code:addons/pragmatic_odoo_pos_whatsapp_integration/static/src/xml/Popups/WhatsAppSendMsgPopup.xml:0
+#, python-format
+msgid "Message:"
+msgstr "رسالة:"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: code:addons/pragmatic_odoo_pos_whatsapp_integration/models/pos_config.py:0
+#, python-format
+msgid ""
+"Missing Whatsapp credentials, \n"
+"contact to your Administrator."
+msgstr ""
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#. openerp-web
+#: code:addons/pragmatic_odoo_pos_whatsapp_integration/static/src/xml/Popups/WhatsAppSendMsgPopup.xml:0
+#, python-format
+msgid "Mobile Number:"
+msgstr "رقم الهاتف المحمول:"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model:ir.model.fields,field_description:pragmatic_odoo_pos_whatsapp_integration.field_whatsapp_message_template__name
+msgid "Name"
+msgstr "اسم"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#. openerp-web
+#: code:addons/pragmatic_odoo_pos_whatsapp_integration/static/src/js/Screens/ProductScreen/ControlButtons/GroupWhatsappMessageButton.js:0
+#, python-format
+msgid "Offline"
+msgstr "غير متصل على الانترنت"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model:ir.model,name:pragmatic_odoo_pos_whatsapp_integration.model_pos_config
+msgid "Point of Sale Configuration"
+msgstr "إعدادات نقطة البيع"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#. openerp-web
+#: code:addons/pragmatic_odoo_pos_whatsapp_integration/static/src/xml/Popups/WhatsAppGroupSelectPopup.xml:0
+#, python-format
+msgid "Search.."
+msgstr "بحث.."
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#. openerp-web
+#: code:addons/pragmatic_odoo_pos_whatsapp_integration/static/src/xml/Popups/WhatsAppSendMsgPopup.xml:0
+#, python-format
+msgid "Select Message:"
+msgstr "حدد الرسالة:"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_pos_whatsapp_integration.view_pos_config_form_inherit
+msgid "Select pre-configured Whatsapp message template."
+msgstr "حدد قالب رسالة Whatsapp الذي تم تكوينه مسبقًا."
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#. openerp-web
+#: code:addons/pragmatic_odoo_pos_whatsapp_integration/static/src/js/Screens/ClientListScreen/ClientListScreen.js:0
+#: code:addons/pragmatic_odoo_pos_whatsapp_integration/static/src/js/Screens/ProductScreen/ControlButtons/GroupWhatsappMessageButton.js:0
+#: code:addons/pragmatic_odoo_pos_whatsapp_integration/static/src/js/Screens/ProductScreen/ControlButtons/GroupWhatsappMessageButton.js:0
+#, python-format
+msgid "Send Message ?"
+msgstr "إرسال رسالة؟"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_pos_whatsapp_integration.view_pos_config_form_inherit
+msgid ""
+"Send POS receipt as a Whatsapp message directly to customer Whatsapp number."
+msgstr ""
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_pos_whatsapp_integration.view_pos_config_form_inherit
+msgid "Send POS receipt as a Whatsapp message to customer Whatsapp number."
+msgstr "أرسل إيصال نقاط البيع كرسالة Whatsapp إلى رقم Whatsapp الخاص بالعميل."
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#. openerp-web
+#: code:addons/pragmatic_odoo_pos_whatsapp_integration/static/src/xml/Screens/RecieptScreen/ReceiptScreen.xml:0
+#, python-format
+msgid "Send Receipt"
+msgstr "إرسال الإيصال"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_pos_whatsapp_integration.view_pos_config_form_inherit
+msgid "Send Whatsapp group messages."
+msgstr "إرسال رسائل مجموعة Whatsapp."
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_pos_whatsapp_integration.view_pos_config_form_inherit
+msgid "Send Whatsapp message to specific customer."
+msgstr "إرسال رسالة Whatsapp إلى عميل معين."
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#. openerp-web
+#: code:addons/pragmatic_odoo_pos_whatsapp_integration/static/src/js/Screens/ClientListScreen/ClientListScreen.js:0
+#: code:addons/pragmatic_odoo_pos_whatsapp_integration/static/src/js/Screens/ProductScreen/ControlButtons/GroupWhatsappMessageButton.js:0
+#, python-format
+msgid "Send a message to your customer on their Whatsapp number!"
+msgstr "أرسل رسالة إلى عميلك على رقم Whatsapp الخاص بهم!"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#. openerp-web
+#: code:addons/pragmatic_odoo_pos_whatsapp_integration/static/src/js/Screens/ProductScreen/ControlButtons/GroupWhatsappMessageButton.js:0
+#, python-format
+msgid "Send group whatsapp message!"
+msgstr "إرسال رسالة جماعية على الواتس اب!"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model:ir.model.fields,help:pragmatic_odoo_pos_whatsapp_integration.field_pos_config__whatsapp_msg_template_id
+msgid "Set default whatsapp message template"
+msgstr "تعيين قالب رسالة whatsapp الافتراضي"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#. openerp-web
+#: code:addons/pragmatic_odoo_pos_whatsapp_integration/static/src/js/Screens/ProductScreen/ControlButtons/GroupWhatsappMessageButton.js:0
+#, python-format
+msgid "Unable to load Whatsapp chat list."
+msgstr "تعذر تحميل قائمة دردشة Whatsapp."
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_pos_whatsapp_integration.view_pos_config_form_inherit
+msgid "Whatsapp"
+msgstr "ال WhatsApp"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_pos_whatsapp_integration.view_pos_config_form_inherit
+msgid "Whatsapp POS Receipt"
+msgstr "إيصال Whatsapp POS"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_pos_whatsapp_integration.view_pos_config_form_inherit
+msgid "Whatsapp POS Receipt Auto"
+msgstr "Whatsapp POS استلام تلقائي"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model:ir.model.fields,field_description:pragmatic_odoo_pos_whatsapp_integration.field_pos_config__iface_whatsapp_receipt
+msgid "Whatsapp Receipt"
+msgstr "إيصال Whatsapp"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model:ir.model.fields,field_description:pragmatic_odoo_pos_whatsapp_integration.field_pos_config__iface_whatsapp_receipt_auto
+msgid "Whatsapp Receipt Automatically"
+msgstr "استلام Whatsapp تلقائيًا"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model:ir.actions.act_window,name:pragmatic_odoo_pos_whatsapp_integration.action_whatsapp_message_template_form
+#: model:ir.ui.menu,name:pragmatic_odoo_pos_whatsapp_integration.menu_whatsapp_message_template
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_pos_whatsapp_integration.view_pos_config_form_inherit
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_pos_whatsapp_integration.whatsapp_message_template_form
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_pos_whatsapp_integration.whatsapp_message_template_tree
+msgid "Whatsapp Template"
+msgstr "قالب Whatsapp"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model:ir.model.fields,field_description:pragmatic_odoo_pos_whatsapp_integration.field_pos_config__iface_whatsapp_grp_msg
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_pos_whatsapp_integration.view_pos_config_form_inherit
+msgid "Whatsapp group message"
+msgstr "رسالة مجموعة Whatsapp"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model:ir.model.fields,field_description:pragmatic_odoo_pos_whatsapp_integration.field_pos_config__iface_whatsapp_msg
+#: model_terms:ir.ui.view,arch_db:pragmatic_odoo_pos_whatsapp_integration.view_pos_config_form_inherit
+msgid "Whatsapp message"
+msgstr "رسالة Whatsapp"
+
+#. module: pragmatic_odoo_pos_whatsapp_integration
+#: model:ir.model,name:pragmatic_odoo_pos_whatsapp_integration.model_whatsapp_message_template
+#: model:ir.model.fields,field_description:pragmatic_odoo_pos_whatsapp_integration.field_pos_config__iface_whatsapp_msg_template
+msgid "Whatsapp message template"
+msgstr "قالب رسالة Whatsapp"

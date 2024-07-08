@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+   <record id="hr_employee_view_form_inherit" model="ir.ui.view">
+       <field name="name">hr.employee.view.form.organize</field>
+       <field name="model">hr.employee</field>
+       <field name="inherit_id" ref="hr.view_employee_form"/>
+       <field name="arch" type="xml">
+           <xpath expr="//div[@id='o_work_employee_main']" position="inside">
+               <group name="organize" string="Scheduling">
+                   <field name="default_organize_role_id" />
+                   <field name="organize_role_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+               </group>
+           </xpath>
+           <xpath expr="//div[@name='button_box']" position="inside">
+               <button string="Scheduling" class="oe_stat_button" icon="fa-tasks" name="action_view_organize" type="object"/>
+           </xpath>
+       </field>
+   </record>
+
+   <record id="action_hr_employee_organize_view" model="ir.actions.server">
+       <field name="name">View Scheduling</field>
+       <field name="model_id" ref="hr.model_hr_employee"/>
+       <field name="binding_model_id" ref="hr.model_hr_employee"/>
+       <field name="state">code</field>
+       <field name="code">
+if records:
+   action = records.action_view_organize()
+       </field>
+   </record>
+
+</odoo>
+
+

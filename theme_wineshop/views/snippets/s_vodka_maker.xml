@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_vodka_maker" name="Vodka Maker">
+		<section class="vodka-homepage-family pt144 pb144" style="background-image: url('/theme_wineshop/static/src/img/family-bg.jpg');">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-7 col-lg-6 col-xl-5">
+							<div class="content">
+								<h1 class="text-white">Proin Tempor Massa Vitae</h1>
+								<p class="text-white">Pellentesque faucibus lacus eu facilisis aliquet. Nulla nec ipsum convallis, maximus purus ut, blandit turpis.</p>
+								<p class="text-white">Fusce nisi lorem, eleifend quis metus in, vestibulum semper elit. Sed nunc est, faucibus mattis eros in, consectetur eleifend lorem. Nam nec nulla a sapien auctor aliquam. Aenean accumsan urna lectus.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+	</template>
+</odoo>

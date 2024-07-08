@@ -1,0 +1,118 @@
+.content-banner{
+    background: url('/payment_cybersource/static/src/img/BG.png');
+    background-size: cover;
+    /* height: 500px; */
+/* padding: 6%;
+
+
+padding-left: 4% !important;
+padding-right: 4% !important; */
+font-family: 'Montserrat';
+line-height: 2;
+color: white;
+/* padding: 7%; */
+padding-bottom: 20%;
+display: flex;
+}
+.right-banner-your-order{
+    display: flex;
+}
+.content-banner-right{
+    background-color: white;
+    color:  #6E6E70;
+    flex: 65%;
+    margin: 6%;
+    border-radius: 10px;
+    padding: 2%;
+    font-size: 20px;
+    font-weight: 600;
+        height: fit-content;
+}
+.content-banner-left{
+    flex: 61%;
+    padding: 8%;
+    padding-left: 3%;
+    padding-right: 6%;
+}
+.right-banner-your-order span,.total span{
+float: right;
+}
+@media screen and (max-width: 990px){
+    .content-banner{
+        flex-wrap: wrap-reverse;
+        flex: 100%;
+    }
+}
+/* .order-right-content{ */
+    /* padding-left: 8%; */
+/* } */
+.total{
+    padding: 0% 8% 1% 8%;
+}
+.right-banner-your-order img{
+padding: 5%;
+}
+hr{
+    border: 1 !important;
+    opacity: 1!important;
+}
+.content-banner-left button{
+  background-color:   #626063;
+  border-radius: 11px;
+  border: none;
+  color: white;
+  padding: 0% 12% 0%;
+  font-size: 20px;
+  margin-top: 11%;
+  font-weight: 500;
+  
+}
+#pace_order-button{
+    width: -webkit-fill-available;
+    font-weight: 700;
+    height: 62px;
+}
+.content-banner-left input{
+    margin-top: 4%;
+    width: 27px;
+    height: 32px;
+    vertical-align: sub;
+    margin-right: 11px;
+}
+#payment-head{
+    font-size: 25px;
+    font-weight: 600;
+    color: #6e6e70;
+}
+.order-right-content{
+    width: -webkit-fill-available;
+}
+#payment-head {
+    font-size: 25px;
+    font-weight: 600;
+    color: #f9f9f9;
+}
+#payment-head {
+    font-size: 25px;
+    font-weight: 600;
+    color: #6e6e70;
+}
+.o_payment_form .payment_option_name {
+    font-size: 14px;
+    font-weight: normal !important;
+    font-family: Helvetica Neue, sans-serif;
+    line-height: 1.3em;
+    color: #ffffff;
+}
+#delivery_carrier p {
+        font-size: 25px;
+    font-weight: 600;
+        color: #f9f9f9;
+}
+
+.o_delivery_carrier_select1 label{
+        font-size: 14px;
+    font-weight: 900;
+    font-family: Helvetica Neue, sans-serif;
+    color: #ffffff;
+}

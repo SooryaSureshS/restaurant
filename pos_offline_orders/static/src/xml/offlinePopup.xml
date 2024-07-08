@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates id="template" xml:space="preserve">
+
+    <t t-name="OfflinePopupConfirmPopupWidget" owl="1">
+        <div class="modal-dialog">
+            <div class="popup popup-textinput">
+                <p class="title">Cache Memory Details</p>
+                <div>
+                    <table border="0" align="center" id="table1">
+                        <tr>
+                            <span>total unpaid orders</span>: <t t-esc="props.total_unpaid_orders"/>
+                        </tr>
+                        <tr>
+                            <span>total paid orders</span>: <t t-esc="props.total_paid_orders"/>
+                        </tr>
+                    </table>
+                </div>
+                <div class="footer">
+                      <div class="button cancel" t-on-click="clearCache">
+                        Clear Cache
+                    </div>
+                     <div class="button cancel" t-on-click="cancel">
+                           Cancel
+                     </div>
+
+                </div>
+            </div>
+        </div>
+    </t>
+
+
+</templates>

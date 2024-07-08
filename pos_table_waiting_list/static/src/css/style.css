@@ -1,0 +1,7 @@
+.pos-content .subwindow-container-fix .container .left_container{
+    position: unset !important;
+    margin: unset !important;
+    width: 215px !important;
+    padding-left: 10px!important;
+    padding-top: 58px !important;
+}

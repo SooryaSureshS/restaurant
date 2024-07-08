@@ -1,0 +1,31 @@
+#oe_main_menu_navbar{
+    display:none;
+}
+.header_class{
+    display: none;
+}
+
+body.o_connected_user {
+    padding-top: 0px !important;
+}
+#oe_main_menu_navbar{
+     display:none !important;
+}
+#wrapwrap{
+        overflow: hidden;
+}
+#logo_selection{
+         position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #222121;
+    background: #dfdfdf;
+    width: auto;
+    padding: 13px;
+    font-family: 'Montserrat';
+    border-radius: 10px;
+    font-size: 16px;
+}
+.blockElement{
+    left: 20% !important;
+}

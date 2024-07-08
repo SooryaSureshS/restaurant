@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="Shop_customize_mask-logo_page.css">
+    <title>customise</title>
+</head>
+<body>
+    <div class="banner container" >
+        <p> < Back </p>
+        <div id="process-bar"><img src="Customize Process.png" alt=""></div>
+        <div class="inner-flex">
+            <div class="left-flex">
+                <img src="Group 3232.png" alt="">
+
+                <div class="left-flex-images" >
+                <div>
+                    <img src="fold active.png" alt="" style="display:none;">
+                    <img src="fold notactive.png" alt=""style="display:block;">
+                    <p>Fold</p>
+                </div>
+                <div>
+                    <img src="3D active.png" alt="" style="display:none;">
+                    <img src="3D notactive.png" alt="" style="display:block;">
+                    <p>3D</p>
+                </div>
+                <div>
+                    <img src="image active.png" alt="" style="display:none;">
+                    <img src="image notactive.png" alt="" style="display:block;">
+                    <p>image</p>
+                </div>
+                </div>
+
+
+            </div >
+            <div class="right-flex">
+                <img src="Customize Process.png" alt="" style="width:87%;" id="right-flex-process" ><br>
+                <p id="mask-header">Korean Style Mask</p>
+               <br><br>
+                <p>Preview mode</p>
+               
+            <div>
+                <button id="preview-btn">Preview</button>
+            </div>
+
+            </div>
+        </div>
+                       
+    </div> 
+ <script>
+   const plus=document.querySelector(".plus"),
+   minus= document.querySelector(".minus"),
+   num =document.querySelector(".num");
+   
+   let a = 1000;
+   plus.addEventListener("click", ()=>{
+    a++;
+    a=(a<10)? "0"+ a:a;
+    num.innerText= a;
+    console.log("a");
+   });
+
+   minus.addEventListener("click", ()=>{
+    if(a>1){
+        a--;
+        a=(a<10)?"0" + a:a;
+        num.innerText =a;
+    }
+   });
+
+
+ </script>    
+</body>
+</html>

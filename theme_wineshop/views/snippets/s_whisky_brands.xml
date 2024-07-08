@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_whisky_brands" name="Whisky Brands">
+		<section class="whisky-homepage-brands pt40 pb40" style="background-image: url('/theme_wineshop/static/src/img/brands-bkg.jpg');">
+				<div class="container">
+					<div class="row">
+						<div class="col-6 col-md-2 mb-4 mb-md-0">
+							<div class="image">
+								<img class="img img-fluid" src="/theme_wineshop/static/src/img/brand-01.png" alt="image"/>
+							</div>
+						</div>
+						<div class="col-6 col-md-2 mb-4 mb-md-0">
+							<div class="image">
+								<img class="img img-fluid" src="/theme_wineshop/static/src/img/brand-02.png" alt="image"/>
+							</div>
+						</div>
+						<div class="col-6 col-md-2 mb-4 mb-md-0">
+							<div class="image">
+								<img class="img img-fluid" src="/theme_wineshop/static/src/img/brand-03.png" alt="image"/>
+							</div>
+						</div>
+						<div class="col-6 col-md-2 mb-4 mb-md-0">
+							<div class="image">
+								<img class="img img-fluid" src="/theme_wineshop/static/src/img/brand-04.png" alt="image"/>
+							</div>
+						</div>
+						<div class="col-6 col-md-2 mb-4 mb-md-0">
+							<div class="image">
+								<img class="img img-fluid" src="/theme_wineshop/static/src/img/brand-05.png" alt="image"/>
+							</div>
+						</div>
+						<div class="col-6 col-md-2 mb-4 mb-md-0">
+							<div class="image">
+								<img class="img img-fluid" src="/theme_wineshop/static/src/img/brand-01.png" alt="image"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+	</template>
+</odoo>

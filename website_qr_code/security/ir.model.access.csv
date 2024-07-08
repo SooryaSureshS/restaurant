@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_product_counters,access.product.counters,model_product_counters,,1,1,1,1
+
+

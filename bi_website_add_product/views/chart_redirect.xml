@@ -1,0 +1,901 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="wine_shop_product_info" inherit_id="website_sale.products_item">
+        <xpath expr="form" position="replace">
+            <style>
+                .mobileWidth {
+                    background-color:red;
+                    font: bold 15px Sans-Serif;
+                    color: white;
+                    text-align: center;
+                    -webkit-transform: rotate(45deg);
+                    -moz-transform: rotate(45deg);
+                    -ms-transform: rotate(45deg);
+                    -o-transform: rotate(45deg);
+                    position: relative;
+                    padding: 7px 0; left: 60px; top: 15px;
+                    width: 200px;
+                }
+                .mobileWidth_pickup {
+                    font: bold 15px Sans-Serif;
+                    color: #f16658;
+                    text-align: center;
+                    width: 100%;
+                }
+                @media only screen and (max-width: 600px) {
+                    .mobileWidth {
+                        height: 25px;
+                        width: 100%;
+                        background-color: red;
+                        top: 0px;
+                        position: relative;
+                        left: 0px;
+                        -webkit-transform: rotate(0deg);
+                        -moz-transform: rotate(0deg);
+                        -ms-transform: rotate(0deg);
+                        -o-transform: rotate(0deg);
+                    }
+                }
+            </style>
+
+            <t t-if="len(product.bundle_product_ids)>0">
+                <div class="card oe_product_cart"
+                     t-att-data-publish="product.website_published and 'on' or 'off'"
+                     itemscope="itemscope" itemtype="http://schema.org/Product" id="oe_product_cart_id">
+                    <div class="card-body p-1 oe_product_image_bundle oe_product_image">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <a t-att-href="product_href" class="d-block h-100" itemprop="url">
+                            <t t-set="image_holder" t-value="product._get_image_holder()"/>
+                            <span t-field="image_holder.image_1920"
+                                  t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256'}"
+                                  class="d-flex h-100 justify-content-center align-items-center"/>
+                        </a>
+                    </div>
+                    <div class="card-body p-0 text-center o_wsale_product_information">
+                        <div class="p-2 o_wsale_product_information_text">
+                            <h6 class="o_wsale_products_item_title">
+                                <t t-if="product.not_available_for_pickup">
+                                    <div class="mobileWidth_pickup">
+                                        <p>
+                                            <span>Not eligible for pickup</span>
+                                        </p>
+                                    </div>
+                                </t>
+
+                                <a itemprop="name" t-att-href="product_href" t-att-content="product.name"
+                                   t-field="product.name"/>
+                                <t t-if="product.v">
+                                    <a t-att-href="product_href" class="badge badge-pill" style="border-radius: 34px !important; padding: 6px 10px; text-align: center; background: #73a939; color: white; font-size: 15px; margin-left: 5px; position: relative; top: -5px;">V</a>
+                                </t>
+                                <t t-if="product.veg">
+                                    <a t-att-href="product_href" class="badge badge-pill" style="border-radius: 34px !important; padding: 6px 10px; text-align: center; background: yellow; color: black; font-size: 15px; margin-left: 5px; position: relative; top: -5px;">VEG</a>
+                                </t>
+                                <t t-if="product.gf">
+                                    <a t-att-href="product_href" class="badge badge-pill" style="border-radius: 34px !important; padding: 6px 10px; text-align: center; background: red; color: white; font-size: 15px; margin-left: 5px; position: relative; top: -5px;">GF</a>
+                                </t>
+                                <t t-if="product.df">
+                                    <a t-att-href="product_href" class="badge badge-pill" style="border-radius: 34px !important; padding: 6px 10px; text-align: center; background: #3f31b9; color: white; font-size: 15px; margin-left: 5px; position: relative; top: -5px;">DF</a>
+                                </t>
+                                <a role="button" t-if="not product.website_published" t-att-href="product_href"
+                                   class="btn btn-sm btn-danger" title="This product is unpublished.">Unpublished
+                                </a>
+                            </h6>
+                            <div class="product_price product_price_bundle" itemprop="offers" itemscope="itemscope"
+                                 itemtype="http://schema.org/Offer">
+                                <del t-attf-class="text-danger mr-2 {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                                     style="white-space: nowrap;" t-esc="combination_info['list_price']"
+                                     t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                <span t-if="combination_info['price']" t-esc="combination_info['price']"
+                                      t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                <span itemprop="price" style="display:none;" t-esc="combination_info['price']"/>
+                                <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name"/>
+                            </div>
+                        </div>
+                        <div class="o_wsale_product_btn"/>
+                    </div>
+                    <div>
+                        <t t-if="product.is_sold_out">
+                            <div class="mobileWidth">
+                                <p>
+                                    <span>Sold Out</span>
+                                </p>
+                            </div>
+                        </t>
+                    </div>
+                    <t t-set="bg_color" t-value="td_product['ribbon']['bg_color'] or ''"/>
+                    <t t-set="text_color" t-value="td_product['ribbon']['text_color']"/>
+                    <t t-set="bg_class" t-value="td_product['ribbon']['html_class']"/>
+                    <span t-attf-class="o_ribbon #{bg_class}"
+                          t-attf-style="#{text_color and ('color: %s; ' % text_color)}#{bg_color and 'background-color:' + bg_color}"
+                          t-raw="td_product['ribbon']['html'] or ''"/>
+                </div>
+            </t>
+            <t t-elif="len(product.optional_product_ids)>0">
+                <form action="/shop/cart/update" method="post" class="card oe_product_cart"
+                      t-att-data-publish="product.website_published and 'on' or 'off'"
+                      itemscope="itemscope" itemtype="http://schema.org/Product" id="oe_product_cart_id">
+                    <div class="card-body p-1 oe_product_image oe_product_image_optional">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <a t-att-href="product_href" class="d-block h-100" itemprop="url">
+                            <t t-set="image_holder" t-value="product._get_image_holder()"/>
+                            <span t-field="image_holder.image_1920"
+                                  t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256'}"
+                                  class="d-flex h-100 justify-content-center align-items-center"/>
+                        </a>
+                    </div>
+                    <div class="card-body p-0 text-center o_wsale_product_information">
+                        <div class="p-2 o_wsale_product_information_text">
+                            <h6 class="o_wsale_products_item_title">
+                                <t t-if="product.not_available_for_pickup">
+                                    <div class="mobileWidth_pickup">
+                                        <p>
+                                            <span>Not eligible for pickup</span>
+                                        </p>
+                                    </div>
+                                </t>
+
+                                <a itemprop="name" t-att-href="product_href" t-att-content="product.name"
+                                   t-field="product.name"/>
+                                <t t-if="product.v">
+                                    <a t-att-href="product_href" class="badge badge-pill" style="border-radius: 34px !important; padding: 6px 10px; text-align: center; background: #73a939; color: white; font-size: 15px; margin-left: 5px; position: relative; top: -5px;">V</a>
+                                </t>
+                                <t t-if="product.veg">
+                                    <a t-att-href="product_href" class="badge badge-pill" style="border-radius: 34px !important; padding: 6px 10px; text-align: center; background: yellow; color: black; font-size: 15px; margin-left: 5px; position: relative; top: -5px;">VEG</a>
+                                </t>
+                                <t t-if="product.gf">
+                                    <a t-att-href="product_href" class="badge badge-pill" style="border-radius: 34px !important; padding: 6px 10px; text-align: center; background: red; color: white; font-size: 15px; margin-left: 5px; position: relative; top: -5px;">GF</a>
+                                </t>
+                                <t t-if="product.df">
+                                    <a t-att-href="product_href" class="badge badge-pill" style="border-radius: 34px !important; padding: 6px 10px; text-align: center; background: #3f31b9; color: white; font-size: 15px; margin-left: 5px; position: relative; top: -5px;">DF</a>
+                                </t>
+                                <a role="button" t-if="not product.website_published" t-att-href="product_href"
+                                   class="btn btn-sm btn-danger" title="This product is unpublished.">Unpublished
+                                </a>
+                            </h6>
+                            <div class="product_price product_price_otional" itemprop="offers" itemscope="itemscope"
+                                 itemtype="http://schema.org/Offer">
+                                <del t-attf-class="text-danger mr-2 {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                                     style="white-space: nowrap;" t-esc="combination_info['list_price']"
+                                     t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                <span t-if="combination_info['price']" t-esc="combination_info['price']"
+                                      t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                <span itemprop="price" style="display:none;" t-esc="combination_info['price']"/>
+                                <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name"/>
+                            </div>
+                        </div>
+                        <div class="o_wsale_product_btn"/>
+                        <div>
+                            <t t-if="product.is_sold_out">
+                                <div class="mobileWidth">
+                                    <p>
+                                        <span>Sold Out</span>
+                                    </p>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                    <t t-set="bg_color" t-value="td_product['ribbon']['bg_color'] or ''"/>
+                    <t t-set="text_color" t-value="td_product['ribbon']['text_color']"/>
+                    <t t-set="bg_class" t-value="td_product['ribbon']['html_class']"/>
+                    <span t-attf-class="o_ribbon #{bg_class}"
+                          t-attf-style="#{text_color and ('color: %s; ' % text_color)}#{bg_color and 'background-color:' + bg_color}"
+                          t-raw="td_product['ribbon']['html'] or ''"/>
+                </form>
+            </t>
+            <t t-else="">
+
+                <div class="card oe_product_cart"
+                     t-att-data-publish="product.website_published and 'on' or 'off'"
+                     itemscope="itemscope" itemtype="http://schema.org/Product" id="oe_product_cart_id">
+                    <div class="card-body p-1 oe_product_image_new oe_product_image">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <a t-att-href="product_href" class="d-block h-100" itemprop="url">
+                            <t t-set="image_holder" t-value="product._get_image_holder()"/>
+                            <span t-field="image_holder.image_1920"
+                                  t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256'}"
+                                  class="d-flex h-100 justify-content-center align-items-center"/>
+                        </a>
+                    </div>
+                    <div class="card-body p-0 text-center o_wsale_product_information">
+                        <div class="p-2 o_wsale_product_information_text">
+                            <h6 class="o_wsale_products_item_title">
+                                <t t-if="product.not_available_for_pickup">
+                                    <div class="mobileWidth_pickup">
+                                        <p>
+                                            <span>Not eligible for pickup</span>
+                                        </p>
+                                    </div>
+                                </t>
+
+                                <a itemprop="name" t-att-href="product_href" t-att-content="product.name"
+                                   t-field="product.name"/>
+                                <t t-if="product.v">
+                                    <a t-att-href="product_href" class="badge badge-pill" style="border-radius: 34px !important; padding: 6px 10px; text-align: center; background: #73a939; color: white; font-size: 15px; margin-left: 5px; position: relative; top: -5px;">V</a>
+                                </t>
+                                <t t-if="product.veg">
+                                    <a t-att-href="product_href" class="badge badge-pill" style="border-radius: 34px !important; padding: 6px 10px; text-align: center; background: yellow; color: black; font-size: 15px; margin-left: 5px; position: relative; top: -5px;">VEG</a>
+                                </t>
+                                <t t-if="product.gf">
+                                    <a t-att-href="product_href" class="badge badge-pill" style="border-radius: 34px !important; padding: 6px 10px; text-align: center; background: red; color: white; font-size: 15px; margin-left: 5px; position: relative; top: -5px;">GF</a>
+                                </t>
+                                <t t-if="product.df">
+                                    <a t-att-href="product_href" class="badge badge-pill" style="border-radius: 34px !important; padding: 6px 10px; text-align: center; background: #3f31b9; color: white; font-size: 15px; margin-left: 5px; position: relative; top: -5px;">DF</a>
+                                </t>
+                                <a role="button" t-if="not product.website_published" t-att-href="product_href"
+                                   class="btn btn-sm btn-danger" title="This product is unpublished.">Unpublished
+                                </a>
+                            </h6>
+                            <div class="product_price product_price_new" itemprop="offers" itemscope="itemscope"
+                                 itemtype="http://schema.org/Offer">
+                                <del t-attf-class="text-danger mr-2 {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                                     style="white-space: nowrap;" t-esc="combination_info['list_price']"
+                                     t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                <span t-if="combination_info['price']" t-esc="combination_info['price']"
+                                      t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                <span itemprop="price" style="display:none;" t-esc="combination_info['price']"/>
+                                <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name"/>
+                            </div>
+                        </div>
+                        <div class="o_wsale_product_btn"/>
+                    </div>
+                    <div>
+                        <t t-if="product.is_sold_out">
+                            <div class="mobileWidth">
+                                <p>
+                                    <span>Sold Out</span>
+                                </p>
+                            </div>
+                        </t>
+                    </div>
+                    <t t-set="bg_color" t-value="td_product['ribbon']['bg_color'] or ''"/>
+                    <t t-set="text_color" t-value="td_product['ribbon']['text_color']"/>
+                    <t t-set="bg_class" t-value="td_product['ribbon']['html_class']"/>
+                    <span t-attf-class="o_ribbon #{bg_class}"
+                          t-attf-style="#{text_color and ('color: %s; ' % text_color)}#{bg_color and 'background-color:' + bg_color}"
+                          t-raw="td_product['ribbon']['html'] or ''"/>
+                </div>
+            </t>
+        </xpath>
+
+
+        <xpath expr="//span[@t-field='image_holder.image_1920']" position="replace">
+            <span t-field="image_holder.image_1920" t-options="{'widget': 'image', 'preview_image': 'image_1024'}"
+                  class="d-flex h-100 justify-content-center align-items-center"/>
+        </xpath>
+
+
+        <!-- kanban view-->
+        <xpath expr="//div[hasclass('oe_product_image_new')]" position="inside">
+            <div class="wineshop_product_info" id="kkk" style="text-align: center;">
+                <div class="content">
+                    <t t-if="product.year">
+                        <p class="subtitle text-primary" t-field="product.year" t-options='{"format": " yyyy"}'/>
+                    </t>
+                    <h3 class="product-name">
+                        <a itemprop="name" t-att-href="product_href" t-att-content="product.name"
+                           t-field="product.name"/>
+                        <a role="button" t-if="not product.website_published" t-att-href="product_href"
+                           class="btn btn-sm btn-danger" title="This product is unpublished.">Unpublished
+                        </a>
+                    </h3>
+                    <t t-if="is_view_active('website_sale.products_description')">
+                        <p class="prod-description text-white" t-field="product.description_sale"/>
+                    </t>
+                    <div class="wineshop_product_price" itemprop="offers" itemscope="itemscope"
+                         itemtype="http://schema.org/Offer">
+                        <del t-attf-class="text-danger mr-2 {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                             style="white-space: nowrap;" t-esc="combination_info['list_price']"
+                             t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                        <span t-if="combination_info['price']" t-esc="combination_info['price']"
+                              t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                        <span itemprop="price" style="display:none;" t-esc="combination_info['price']"/>
+                        <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name"/>
+                    </div>
+                    <div class="cart-btn">
+                        <t t-if="is_view_active('website_sale.products_add_to_cart')">
+                            <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                            <input name="product_id" t-att-value="product_variant_id" type="hidden"/>
+                            <t t-if="product_variant_id and not product.is_sold_out">
+
+                                <t t-if="len(product.bundle_product_ids)>0">
+                                    <button id="add_to_cart_bundle" t-att-data-product-product-id="product_variant_id"
+                                       class="btn btn-primary btn-md ml-4 add_to_cart_bundle js_check_product a-submit-btn d-block d-sm-inline-block">
+                                        Add to Cart
+                                    </button>
+                                </t>
+                                <t t-elif="len(product.optional_product_ids)>0">
+                                    <a role="button" id="add_to_cart"
+                                       class="btn btn-primary btn-md ml-4 js_check_product a-submit-btn d-block d-sm-inline-block"
+                                       href="#">Add to Cart
+                                    </a>
+                                </t>
+                                <t t-else="">
+                                    <button class="btn btn-primary list-cart cart-button"
+                                            t-att-data-product-product-id="product_variant_id">
+                                        <span>Add To Cart</span>
+                                    </button>
+                                </t>
+                            </t>
+                        </t>
+                    </div>
+                </div>
+                <div class="wishlist-compare">
+                    <div class="wishlist">
+                        <t t-if="is_view_active('website_sale_wishlist.add_to_wishlist')">
+                            <t t-set="in_wish" t-value="product._is_in_wishlist()"/>
+                            <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                            <button t-if="product_variant_id" type="button" role="button"
+                                    class="btn btn-secondary o_add_wishlist" t-att-disabled='in_wish or None'
+                                    title="Add to Wishlist" t-att-data-product-template-id="product.id"
+                                    t-att-data-product-product-id="product_variant_id" data-action="o_wishlist">
+                                <span class="fa fa-heart" role="img" aria-label="Add to wishlist"></span>
+                            </button>
+                        </t>
+                    </div>
+                    <div class="compare">
+                        <t t-if="is_view_active('website_sale_comparison.add_to_compare')">
+                            <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                            <button t-if="product_variant_id" type="button" role="button"
+                                    class="d-none d-md-inline-block btn btn-secondary o_add_compare" title="Compare"
+                                    aria-label="Compare" t-att-data-product-product-id="product_variant_id"
+                                    data-action="o_comparelist">
+                                <span class="fa fa-exchange"></span>
+                            </button>
+                        </t>
+                    </div>
+                </div>
+            </div>
+            <div class="mbl-btns d-block d-xl-none">
+                <div class="wishlist-btn">
+                    <t t-if="is_view_active('website_sale_wishlist.add_to_wishlist')">
+                        <t t-set="in_wish" t-value="product._is_in_wishlist()"/>
+                        <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                        <button t-if="product_variant_id" type="button" role="button"
+                                class="btn btn-outline-primary o_add_wishlist" t-att-disabled='in_wish or None'
+                                title="Add to Wishlist" t-att-data-product-template-id="product.id"
+                                t-att-data-product-product-id="product_variant_id" data-action="o_wishlist">
+                            <span class="fa fa-heart" role="img" aria-label="Add to wishlist"></span>
+                        </button>
+                    </t>
+                </div>
+                <div class="compare-btn">
+                    <t t-if="is_view_active('website_sale_comparison.add_to_compare')">
+                        <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                        <button t-if="product_variant_id" type="button" role="button"
+                                class="btn btn-outline-primary o_add_compare" title="Compare" aria-label="Compare"
+                                t-att-data-product-product-id="product_variant_id" data-action="o_comparelist">
+                            <span class="fa fa-exchange"></span>
+                        </button>
+                    </t>
+                </div>
+            </div>
+        </xpath>
+
+        <xpath expr="//div[hasclass('oe_product_image_optional')]" position="inside">
+            <div class="wineshop_product_info" id="kkk">
+                <div class="content">
+                    <t t-if="product.year">
+                        <p class="subtitle text-primary" t-field="product.year" t-options='{"format": " yyyy"}'/>
+                    </t>
+                    <h3 class="product-name">
+                        <a itemprop="name" t-att-href="product_href" t-att-content="product.name"
+                           t-field="product.name"/>
+                        <a role="button" t-if="not product.website_published" t-att-href="product_href"
+                           class="btn btn-sm btn-danger" title="This product is unpublished.">Unpublished
+                        </a>
+                    </h3>
+                    <t t-if="is_view_active('website_sale.products_description')">
+                        <p class="prod-description text-white" t-field="product.description_sale"/>
+                    </t>
+                    <div class="wineshop_product_price" itemprop="offers" itemscope="itemscope"
+                         itemtype="http://schema.org/Offer">
+                        <del t-attf-class="text-danger mr-2 {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                             style="white-space: nowrap;" t-esc="combination_info['list_price']"
+                             t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                        <span t-if="combination_info['price']" t-esc="combination_info['price']"
+                              t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                        <span itemprop="price" style="display:none;" t-esc="combination_info['price']"/>
+                        <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name"/>
+                    </div>
+                    <div class="cart-btn">
+                        <t t-if="is_view_active('website_sale.products_add_to_cart')">
+                            <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                            <input name="product_id" t-att-value="product_variant_id" type="hidden"/>
+                            <t t-if="product_variant_id and not product.is_sold_out">
+
+                                <t t-if="len(product.bundle_product_ids)>0">
+                                    <button id="add_to_cart_bundle" t-att-data-product-product-id="product_variant_id"
+                                       class="btn btn-primary btn-md ml-4 add_to_cart_bundle js_check_product a-submit-btn d-block d-sm-inline-block">
+                                        Add to Cart
+                                    </button>
+                                </t>
+                                <t t-elif="len(product.optional_product_ids)>0">
+                                    <a role="button" id="add_to_cart"
+                                       class="btn btn-primary btn-md ml-4 js_check_product a-submit-btn d-block d-sm-inline-block"
+                                       href="#">Add to Cart
+                                    </a>
+                                </t>
+                                <t t-else="">
+                                    <button class="btn btn-primary list-cart cart-button"
+                                            t-att-data-product-product-id="product_variant_id">
+                                        <span>Add To Cart</span>
+                                    </button>
+                                </t>
+                            </t>
+                        </t>
+                    </div>
+                </div>
+                <div class="wishlist-compare">
+                    <div class="wishlist">
+                        <t t-if="is_view_active('website_sale_wishlist.add_to_wishlist')">
+                            <t t-set="in_wish" t-value="product._is_in_wishlist()"/>
+                            <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                            <button t-if="product_variant_id" type="button" role="button"
+                                    class="btn btn-secondary o_add_wishlist" t-att-disabled='in_wish or None'
+                                    title="Add to Wishlist" t-att-data-product-template-id="product.id"
+                                    t-att-data-product-product-id="product_variant_id" data-action="o_wishlist">
+                                <span class="fa fa-heart" role="img" aria-label="Add to wishlist"></span>
+                            </button>
+                        </t>
+                    </div>
+                    <div class="compare">
+                        <t t-if="is_view_active('website_sale_comparison.add_to_compare')">
+                            <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                            <button t-if="product_variant_id" type="button" role="button"
+                                    class="d-none d-md-inline-block btn btn-secondary o_add_compare" title="Compare"
+                                    aria-label="Compare" t-att-data-product-product-id="product_variant_id"
+                                    data-action="o_comparelist">
+                                <span class="fa fa-exchange"></span>
+                            </button>
+                        </t>
+                    </div>
+                </div>
+            </div>
+            <div class="mbl-btns d-block d-xl-none">
+                <div class="wishlist-btn">
+                    <t t-if="is_view_active('website_sale_wishlist.add_to_wishlist')">
+                        <t t-set="in_wish" t-value="product._is_in_wishlist()"/>
+                        <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                        <button t-if="product_variant_id" type="button" role="button"
+                                class="btn btn-outline-primary o_add_wishlist" t-att-disabled='in_wish or None'
+                                title="Add to Wishlist" t-att-data-product-template-id="product.id"
+                                t-att-data-product-product-id="product_variant_id" data-action="o_wishlist">
+                            <span class="fa fa-heart" role="img" aria-label="Add to wishlist"></span>
+                        </button>
+                    </t>
+                </div>
+                <div class="compare-btn">
+                    <t t-if="is_view_active('website_sale_comparison.add_to_compare')">
+                        <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                        <button t-if="product_variant_id" type="button" role="button"
+                                class="btn btn-outline-primary o_add_compare" title="Compare" aria-label="Compare"
+                                t-att-data-product-product-id="product_variant_id" data-action="o_comparelist">
+                            <span class="fa fa-exchange"></span>
+                        </button>
+                    </t>
+                </div>
+            </div>
+        </xpath>
+
+        <xpath expr="//div[hasclass('oe_product_image_bundle')]" position="inside">
+            <div class="wineshop_product_info" id="kkk">
+                <div class="content">
+                    <t t-if="product.year">
+                        <p class="subtitle text-primary" t-field="product.year" t-options='{"format": " yyyy"}'/>
+                    </t>
+                    <h3 class="product-name">
+                        <a itemprop="name" t-att-href="product_href" t-att-content="product.name"
+                           t-field="product.name"/>
+                        <a role="button" t-if="not product.website_published" t-att-href="product_href"
+                           class="btn btn-sm btn-danger" title="This product is unpublished.">Unpublished
+                        </a>
+                    </h3>
+                    <t t-if="is_view_active('website_sale.products_description')">
+                        <p class="prod-description text-white" t-field="product.description_sale"/>
+                    </t>
+                    <div class="wineshop_product_price" itemprop="offers" itemscope="itemscope"
+                         itemtype="http://schema.org/Offer">
+                        <del t-attf-class="text-danger mr-2 {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                             style="white-space: nowrap;" t-esc="combination_info['list_price']"
+                             t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                        <span t-if="combination_info['price']" t-esc="combination_info['price']"
+                              t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                        <span itemprop="price" style="display:none;" t-esc="combination_info['price']"/>
+                        <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name"/>
+                    </div>
+                    <div class="cart-btn">
+                        <t t-if="is_view_active('website_sale.products_add_to_cart')">
+                            <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                            <input name="product_id" t-att-value="product_variant_id" type="hidden"/>
+                            <t t-if="product_variant_id and not product.is_sold_out">
+
+                                <t t-if="len(product.bundle_product_ids)>0">
+                                    <button id="add_to_cart_bundle" t-att-data-product-product-id="product_variant_id"
+                                       class="btn btn-primary btn-md ml-4 add_to_cart_bundle js_check_product a-submit-btn d-block d-sm-inline-block">
+                                        Add to Cart
+                                    </button>
+                                </t>
+                                <t t-elif="len(product.optional_product_ids)>0">
+                                    <a role="button" id="add_to_cart"
+                                       class="btn btn-primary btn-md ml-4 js_check_product a-submit-btn d-block d-sm-inline-block"
+                                       href="#">Add to Cart
+                                    </a>
+                                </t>
+                                <t t-else="">
+                                    <button class="btn btn-primary list-cart cart-button"
+                                            t-att-data-product-product-id="product_variant_id">
+                                        <span>Add To Cart</span>
+                                    </button>
+                                </t>
+                            </t>
+                        </t>
+                    </div>
+                </div>
+                <div class="wishlist-compare">
+                    <div class="wishlist">
+                        <t t-if="is_view_active('website_sale_wishlist.add_to_wishlist')">
+                            <t t-set="in_wish" t-value="product._is_in_wishlist()"/>
+                            <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                            <button t-if="product_variant_id" type="button" role="button"
+                                    class="btn btn-secondary o_add_wishlist" t-att-disabled='in_wish or None'
+                                    title="Add to Wishlist" t-att-data-product-template-id="product.id"
+                                    t-att-data-product-product-id="product_variant_id" data-action="o_wishlist">
+                                <span class="fa fa-heart" role="img" aria-label="Add to wishlist"></span>
+                            </button>
+                        </t>
+                    </div>
+                    <div class="compare">
+                        <t t-if="is_view_active('website_sale_comparison.add_to_compare')">
+                            <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                            <button t-if="product_variant_id" type="button" role="button"
+                                    class="d-none d-md-inline-block btn btn-secondary o_add_compare" title="Compare"
+                                    aria-label="Compare" t-att-data-product-product-id="product_variant_id"
+                                    data-action="o_comparelist">
+                                <span class="fa fa-exchange"></span>
+                            </button>
+                        </t>
+                    </div>
+                </div>
+            </div>
+            <div class="mbl-btns d-block d-xl-none">
+                <div class="wishlist-btn">
+                    <t t-if="is_view_active('website_sale_wishlist.add_to_wishlist')">
+                        <t t-set="in_wish" t-value="product._is_in_wishlist()"/>
+                        <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                        <button t-if="product_variant_id" type="button" role="button"
+                                class="btn btn-outline-primary o_add_wishlist" t-att-disabled='in_wish or None'
+                                title="Add to Wishlist" t-att-data-product-template-id="product.id"
+                                t-att-data-product-product-id="product_variant_id" data-action="o_wishlist">
+                            <span class="fa fa-heart" role="img" aria-label="Add to wishlist"></span>
+                        </button>
+                    </t>
+                </div>
+                <div class="compare-btn">
+                    <t t-if="is_view_active('website_sale_comparison.add_to_compare')">
+                        <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                        <button t-if="product_variant_id" type="button" role="button"
+                                class="btn btn-outline-primary o_add_compare" title="Compare" aria-label="Compare"
+                                t-att-data-product-product-id="product_variant_id" data-action="o_comparelist">
+                            <span class="fa fa-exchange"></span>
+                        </button>
+                    </t>
+                </div>
+            </div>
+        </xpath>
+
+
+        <!--		-->
+        <xpath expr="//*[hasclass('product_price_otional')]" position="before">
+            <t t-if="is_view_active('website_sale.products_description')">
+                <p class="prod-description" t-field="product.description_sale"/>
+            </t>
+        </xpath>
+
+        <xpath expr="//*[hasclass('product_price_new')]" position="before">
+            <t t-if="is_view_active('website_sale.products_description')">
+                <p class="prod-description" t-field="product.description_sale"/>
+            </t>
+        </xpath>
+
+        <xpath expr="//*[hasclass('product_price_bundle')]" position="before">
+            <t t-if="is_view_active('website_sale.products_description')">
+                <p class="prod-description" t-field="product.description_sale"/>
+            </t>
+        </xpath>
+
+
+        <!--		1-->
+        <xpath expr="//*[hasclass('product_price_otional')]" position="inside">
+            <t t-if="is_view_active('website_sale.products_add_to_cart')">
+                <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                <input name="product_id" t-att-value="product_variant_id" type="hidden"/>
+                <t t-if="product_variant_id and not product.is_sold_out">
+
+                    <t t-if="len(product.bundle_product_ids)>0">
+                        <br/>
+                        <button id="add_to_cart_bundle" style="display:none;" t-att-data-product-product-id="product_variant_id"
+                                class="btn btn-primary mbl-cart js_check_product add_to_cart_bundle a-submit-btn add_to_cart_large_scree_hide">
+                            Add to Cart
+                        </button>
+                    </t>
+                    <t t-elif="len(product.optional_product_ids)>0">
+                        <br/>
+                        <button role="button" id="add_to_cart" style="display:none;"
+                                class="btn btn-primary mbl-cart js_check_product a-submit-btn add_to_cart_large_scree_hide"
+                                href="#">
+                            Add to Cart
+                        </button>
+                    </t>
+                    <t t-else="">
+                        <br/>
+                        <button class="btn btn-primary mbl-cart cart-button add_to_cart_large_scree_hide"
+                                style="display:none;"
+                                t-att-data-product-product-id="product_variant_id">
+                            Add to Cart
+                        </button>
+                    </t>
+                </t>
+            </t>
+        </xpath>
+
+        <xpath expr="//*[hasclass('product_price_new')]" position="inside">
+            <t t-if="is_view_active('website_sale.products_add_to_cart')">
+                <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                <input name="product_id" t-att-value="product_variant_id" type="hidden"/>
+                <t t-if="product_variant_id and not product.is_sold_out">
+
+                    <t t-if="len(product.bundle_product_ids)>0">
+                        <button id="add_to_cart_bundle" t-att-data-product-product-id="product_variant_id"
+                           class="btn btn-primary btn-md ml-4 js_check_product add_to_cart_bundle a-submit-btn d-block d-sm-inline-block">
+                            Add to Cart
+                        </button>
+                    </t>
+                    <t t-elif="len(product.optional_product_ids)>0">
+                        <a role="button" id="add_to_cart"
+                           class="btn btn-primary btn-md ml-4 js_check_product a-submit-btn d-block d-sm-inline-block"
+                           href="#">Add to Cart
+                        </a>
+                    </t>
+                    <t t-else="">
+                        <br/>
+                        <button class="btn btn-primary mbl-cart cart-button"
+                                t-att-data-product-product-id="product_variant_id">
+                            <span>Add To Cart</span>
+                        </button>
+                    </t>
+
+                </t>
+            </t>
+        </xpath>
+
+        <xpath expr="//*[hasclass('product_price_bundle')]" position="inside">
+            <t t-if="is_view_active('website_sale.products_add_to_cart')">
+                <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                <input name="product_id" t-att-value="product_variant_id" type="hidden"/>
+                <t t-if="product_variant_id and not product.is_sold_out">
+                    <t t-if="len(product.bundle_product_ids)>0">
+                        <br/>
+                        <button id="add_to_cart_bundle" style="" t-att-data-product-product-id="product_variant_id"
+                                class="btn btn-primary mbl-cart js_check_product add_to_cart_bundle a-submit-btn add_to_cart_large_scree_hide">
+                            Add to Cart
+                        </button>
+                    </t>
+
+                    <t t-elif="len(product.optional_product_ids)>0">
+                        <a role="button" id="add_to_cart"
+                           class="btn btn-primary btn-md ml-4 js_check_product a-submit-btn d-block d-sm-inline-block"
+                           href="#">Add to Cart
+                        </a>
+                    </t>
+                    <t t-else="">
+                        <br/>
+                        <button class="btn btn-primary mbl-cart cart-button"
+                                t-att-data-product-product-id="product_variant_id">
+                            <span>Add To Cart</span>
+                        </button>
+                    </t>
+
+                </t>
+            </t>
+        </xpath>
+
+
+        <!--		list view class changed-->
+
+
+        <xpath expr="//*[hasclass('product_price_new')]" position="after">
+            <div class="list-btns d-none d-md-block mt-4">
+                <t t-if="is_view_active('website_sale.products_add_to_cart')">
+                    <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                    <input name="product_id" t-att-value="product_variant_id" type="hidden"/>
+                    <t t-if="product_variant_id and not product.is_sold_out">
+
+                        <t t-if="len(product.bundle_product_ids)>0">
+                            <button id="add_to_cart_bundle" t-att-data-product-product-id="product_variant_id"
+                               class="btn btn-primary btn-md js_check_product add_to_cart_bundle a-submit-btn d-block d-sm-inline-block">
+                                Add to Cart
+                            </button>
+                        </t>
+                        <t t-elif="len(product.optional_product_ids)>0">
+                            <a role="button" id="add_to_cart"
+                               class="btn btn-primary btn-md js_check_product a-submit-btn d-block d-sm-inline-block"
+                               href="#">Add to Cart
+                            </a>
+                        </t>
+                        <t t-else="">
+                            <button class="btn btn-primary list-cart cart-button"
+                                    t-att-data-product-product-id="product_variant_id">
+                                <span>Add To Cart</span>
+                            </button>
+                        </t>
+
+                    </t>
+                </t>
+
+                <t t-if="is_view_active('website_sale_wishlist.add_to_wishlist')">
+                    <t t-set="in_wish" t-value="product._is_in_wishlist()"/>
+                    <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                    <button t-if="product_variant_id" type="button" role="button"
+                            class="btn btn-primary o_add_wishlist list-wishlist" t-att-disabled='in_wish or None'
+                            title="Add to Wishlist" t-att-data-product-template-id="product.id"
+                            t-att-data-product-product-id="product_variant_id" data-action="o_wishlist">
+                        <span class="fa fa-heart" role="img" aria-label="Add to wishlist"></span>
+                    </button>
+                </t>
+
+                <t t-if="is_view_active('website_sale_comparison.add_to_compare')">
+                    <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                    <button t-if="product_variant_id" type="button" role="button"
+                            class="btn btn-primary o_add_compare list-compare" title="Compare" aria-label="Compare"
+                            t-att-data-product-product-id="product_variant_id" data-action="o_comparelist">
+                        <span class="fa fa-exchange"></span>
+                    </button>
+                </t>
+            </div>
+        </xpath>
+        <xpath expr="//*[hasclass('product_price_otional')]" position="after">
+            <div class="list-btns d-none d-md-block mt-4">
+                <t t-if="is_view_active('website_sale.products_add_to_cart')">
+                    <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                    <input name="product_id" t-att-value="product_variant_id" type="hidden"/>
+                    <t t-if="product_variant_id and not product.is_sold_out">
+
+                        <t t-if="len(product.bundle_product_ids)>0">
+                            <button id="add_to_cart_bundle" t-att-data-product-product-id="product_variant_id"
+                               class="btn btn-primary btn-md js_check_product add_to_cart_bundle a-submit-btn d-block d-sm-inline-block">
+                                Add to Cart
+                            </button>
+                        </t>
+                        <t t-elif="len(product.optional_product_ids)>0">
+                            <a role="button" id="add_to_cart"
+                               class="btn btn-primary btn-md js_check_product a-submit-btn d-block d-sm-inline-block"
+                               href="#">Add to Cart
+                            </a>
+                        </t>
+                        <t t-else="">
+                            <button class="btn btn-primary list-cart cart-button"
+                                    t-att-data-product-product-id="product_variant_id">
+                                <span>Add To Cart</span>
+                            </button>
+                        </t>
+
+                    </t>
+                </t>
+
+                <t t-if="is_view_active('website_sale_wishlist.add_to_wishlist')">
+                    <t t-set="in_wish" t-value="product._is_in_wishlist()"/>
+                    <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                    <button t-if="product_variant_id" type="button" role="button"
+                            class="btn btn-primary o_add_wishlist list-wishlist" t-att-disabled='in_wish or None'
+                            title="Add to Wishlist" t-att-data-product-template-id="product.id"
+                            t-att-data-product-product-id="product_variant_id" data-action="o_wishlist">
+                        <span class="fa fa-heart" role="img" aria-label="Add to wishlist"></span>
+                    </button>
+                </t>
+
+                <t t-if="is_view_active('website_sale_comparison.add_to_compare')">
+                    <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                    <button t-if="product_variant_id" type="button" role="button"
+                            class="btn btn-primary o_add_compare list-compare" title="Compare" aria-label="Compare"
+                            t-att-data-product-product-id="product_variant_id" data-action="o_comparelist">
+                        <span class="fa fa-exchange"></span>
+                    </button>
+                </t>
+            </div>
+        </xpath>
+        <xpath expr="//*[hasclass('product_price_bundle')]" position="after">
+            <div class="list-btns d-none d-md-block mt-4">
+                <t t-if="is_view_active('website_sale.products_add_to_cart')">
+                    <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                    <input name="product_id" t-att-value="product_variant_id" type="hidden"/>
+                    <t t-if="product_variant_id and not product.is_sold_out">
+                        <t t-if="len(product.bundle_product_ids)>0">
+                            <button id="add_to_cart_bundle" t-att-data-product-product-id="product_variant_id"
+                                    class="btn btn-primary btn-md js_check_product add_to_cart_bundle a-submit-btn d-block d-sm-inline-block">
+                                Add to Cart
+                            </button>
+                        </t>
+                        <t t-elif="len(product.optional_product_ids)>0">
+                            <a role="button" id="add_to_cart"
+                               class="btn btn-primary btn-md js_check_product a-submit-btn d-block d-sm-inline-block"
+                               href="#">Add to Cart
+                            </a>
+                        </t>
+                        <t t-else="">
+                            <button class="btn btn-primary list-cart cart-button"
+                                    t-att-data-product-product-id="product_variant_id">
+                                <span>Add To Cart</span>
+                            </button>
+                        </t>
+
+                    </t>
+                </t>
+
+                <t t-if="is_view_active('website_sale_wishlist.add_to_wishlist')">
+                    <t t-set="in_wish" t-value="product._is_in_wishlist()"/>
+                    <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                    <button t-if="product_variant_id" type="button" role="button"
+                            class="btn btn-primary o_add_wishlist list-wishlist" t-att-disabled='in_wish or None'
+                            title="Add to Wishlist" t-att-data-product-template-id="product.id"
+                            t-att-data-product-product-id="product_variant_id" data-action="o_wishlist">
+                        <span class="fa fa-heart" role="img" aria-label="Add to wishlist"></span>
+                    </button>
+                </t>
+
+                <t t-if="is_view_active('website_sale_comparison.add_to_compare')">
+                    <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                    <button t-if="product_variant_id" type="button" role="button"
+                            class="btn btn-primary o_add_compare list-compare" title="Compare" aria-label="Compare"
+                            t-att-data-product-product-id="product_variant_id" data-action="o_comparelist">
+                        <span class="fa fa-exchange"></span>
+                    </button>
+                </t>
+            </div>
+        </xpath>
+
+        <xpath expr="//h6[hasclass('o_wsale_products_item_title')]" position="before">
+            <t t-if="product.year">
+                <p class="subtitle text-primary" t-field="product.year" t-options='{"format": " yyyy"}'/>
+            </t>
+        </xpath>
+
+    </template>
+
+
+    <template id="product_page_gf_df_v_badge" inherit_id="website_sale.product">
+
+        <xpath expr="//div[@id='product_details']//h1" position="replace">
+           <h1 itemprop="name" >
+               <span t-field="product.name"/>
+               <t t-if="product.v">
+                <a t-att-href="product_href" class="badge badge-pill"
+                   style="border-radius: 34px !important; padding: 6px 10px; text-align: center; background: #73a939; color: white; font-size: 32px; margin-left: 5px; position: relative; top: -5px;">
+                    V
+                </a>
+            </t>
+            <t t-if="product.veg">
+                <a t-att-href="product_href" class="badge badge-pill"
+                   style="border-radius: 34px !important; padding: 6px 10px; text-align: center; background: yellow; color: black; font-size: 32px; margin-left: 5px; position: relative; top: -5px;">
+                    VEG
+                </a>
+            </t>
+            <t t-if="product.gf">
+                <a t-att-href="product_href" class="badge badge-pill"
+                   style="border-radius: 34px !important; padding: 6px 10px; text-align: center; background: red; color: white; font-size: 32px; margin-left: 5px; position: relative; top: -5px;">
+                    GF
+                </a>
+            </t>
+            <t t-if="product.df">
+                <a t-att-href="product_href" class="badge badge-pill"
+                   style="border-radius: 34px !important; padding: 6px 10px; text-align: center; background: #3f31b9; color: white; font-size: 32px; margin-left: 5px; position: relative; top: -5px;">
+                    DF
+                </a>
+            </t>
+           </h1>
+
+
+
+        </xpath>
+    </template>
+
+</odoo>

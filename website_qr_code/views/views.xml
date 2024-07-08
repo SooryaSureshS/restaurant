@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="sale_order_line_qrcode_adding" model="ir.ui.view">
+            <field name="name">sale.order.line.note</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_term_id']" position='after'>
+                    <field name="qrcode_order"/>
+                    <field name="dine_in_table"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="public_counter_website_category" model="ir.ui.view">
+            <field name="name">product.public.category.counter</field>
+            <field name="model">product.public.category</field>
+            <field name="inherit_id" ref="website_sale.product_public_category_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='website_id']" position='after'>
+                    <field name="counters"/>
+                </xpath>
+            </field>
+        </record>
+        <template id="qr_code_page_scan" name="qrcode scan">
+            <t t-call="website.layout">
+                <section
+                        class="our-wines-title pt152 pb152 o_colored_level o_editable note-air-editor note-editable o_dirty undefined o_cc o_cc1"
+                        data-snippet="s_restaurant_title" data-name="Restaurant Title" data-oe-model="ir.ui.view"
+                        data-oe-id="3036" data-oe-field="arch" data-oe-xpath="/t[1]/t[1]/section[1]" data-note-id="1"
+                        contenteditable="true">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 o_colored_level col-lg-6">
+                                <div class="content">
+                                    <p class="subtitle text-primary o_default_snippet_text">Feeling Hungry?</p>
+                                    <h1 class="text-black" style="color: #9e7b6d !important;">Scan Qr Code</h1>
+                                    <p class="text-black" style="color: #9e7b6d !important;font-size: 20px;">Great for
+                                        food and beverage menu
+                                    </p>
+                                    <p class="text-black" style="color: #9e7b6d !important;font-size: 20px;">Optimized
+                                        for smartphone and tablets
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-8 o_colored_level col-lg-6">
+                                <div class="content">
+                                    <img t-attf-src="data:image/*;base64,{{qr_image}}" style="width: 50%;"/>
+
+                                    <!--								<p class="subtitle text-primary o_default_snippet_text">THE RESTAURANT AT WINESHOP</p>-->
+                                    <!--								<h1 class="text-black">RESTAURANT</h1>-->
+                                    <!--								<p class="text-black">Cras dignissim mi diam, sit amet efficitur magna porta efficitur. Nulla ultricies dictum neque. Pellentesque faucibus lacus eu facilisis aliquet.</p>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </t>
+        </template>
+        <template id="address_customce" name="Custom QR Address" inherit_id="website_delivery_type.address_custom"
+                  priority="200">
+            <xpath expr="//div[hasclass('oe_cart')]" position="inside">
+                <div id="quick_pickup" class="col-lg-12" t-if="website_sale_order.qrcode_order"
+                     t-att-data-qr="website_sale_order.qrcode_order">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                            <tr style="border: 1px solid rgba(0, 0, 0, 0.125);border-radius: 0.25rem;line-height: 2.5;">
+                                <t t-if="website_sale_order.dine_in">
+                                    <th class="tip_class_category if_dine_in"
+                                        style="text-align: center;width:20%;border-right: 1px solid rgba(0, 0, 0, 0.125);"
+                                        t-att-data-order="website_sale_order.id" data-info="dine_in" id="dine_in">Dine
+                                        In
+                                    </th>
+                                </t>
+                                <t t-else="">
+                                    <th class="tip_class_category"
+                                        style="text-align: center;width:20%;border-right: 1px solid rgba(0, 0, 0, 0.125);"
+                                        t-att-data-order="website_sale_order.id" data-info="dine_in" id="dine_in">Dine
+                                        In
+                                    </th>
+                                </t>
+                                <t t-if="website_sale_order.take_away">
+                                    <th class="text-center td-price if_dine_in"
+                                        style="text-align: center;width:20%;border-right: 1px solid rgba(0, 0, 0, 0.125);"
+                                        t-att-data-order="website_sale_order.id" data-info="take_away" id="take_away">
+                                        Take Away
+                                    </th>
+                                </t>
+                                <t t-else="">
+                                    <th class="tip_class_category"
+                                        style="text-align: center;width:20%;border-right: 1px solid rgba(0, 0, 0, 0.125);"
+                                        t-att-data-order="website_sale_order.id" data-info="take_away" id="take_away">
+                                        Take Away
+                                    </th>
+
+                                </t>
+                            </tr>
+                            <tr id="grumble2"></tr>
+
+                        </thead>
+                    </table>
+                    <t t-if="website_sale_order.dine_in or website_sale_order.take_away">
+                        <div class="col-lg-12" id="quick_pick_up_form">
+                            <h4>Quick Pickup From</h4>
+                            <br/>
+                            <h4>4 Wongabel St, Kenmore, 4069</h4>
+                            <br/>
+                            <br/>
+                            <div class="">
+                                <t t-if="website_sale_order.dine_in and website_sale_order.dine_in_enable">
+                                    <select id="din_in_table_selection" class="curb_select_loc" style="background:white !important;">
+                                        <option value='failed'>Select Table</option>
+                                        <t t-foreach="request.env['restaurant.table'].sudo().search([])" t-as='table'>
+                                            <option t-att-value='table.id'>
+                                                <t t-esc='table.name'/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                    <br/>
+                                    <br/>
+                                </t>
+                                <t t-if="website_sale_order.website_delivery_type == 'dine_in'">
+                                    <input id="dine_in_website_order" style="display:none;" type="text" t-att-value="website_sale_order.website_delivery_type"/>
+                                </t>
+                                <t t-if="website_sale_order.website_delivery_type == 'pickup'">
+                                    <input id="dine_in_website_order" style="display:none;" t-att-value="website_sale_order.website_delivery_type" type="text"/>
+                                </t>
+
+                                <input id="partner_name_quick" type="text" placeholder="Enter Your Name"/>
+                                <label id="invalid_name_quick" style="display:none;color:red">Enter a valid name</label>
+                                <br/>
+                                <br/>
+                                <input id="partner_phone_quick" type="tel" placeholder="Enter Phone Number"/>
+                                <label id="invalid_phone_quick" style="display:none;color:red">Invalid Phone number
+                                </label>
+                                <br/>
+                                <br/>
+                                <input id="partner_email_quick" type="email" placeholder="Enter Your Email id"/>
+                                <label id="invalid_email_quick" style="display:none;color:red">Invalid Email Id</label>
+                            </div>
+                            <br/>
+                            <div id="invalid_products" style="display:none;">
+                                <div class="alert alert-danger">
+                                    <strong>Warning!</strong>
+                                    Some of the products in the cart are not eligible for Take Away. Please
+                                    remove it and try again
+                                </div>
+                            </div>
+                            <br/>
+                            <div id="invalid_time_range_data" style="display:none;">
+                                <div class="alert alert-danger">
+                                    <strong>Warning!</strong>
+                                    <div id="invalid_fields_qr">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="continue_div">
+                                <button id="continue_button_quick">Continue</button>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </xpath>
+        </template>
+
+        <template id="address_custom_pickup_qr" name="Pickup Address" inherit_id="website_sale.address" priority="200">
+            <xpath expr="//div[hasclass('oe_cart')]" position="inside">
+                <div id="quick_pickup" class="col-lg-12" t-if="website_sale_order.qrcode_order"
+                     t-att-data-qr="website_sale_order.qrcode_order">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                            <tr style="border: 1px solid rgba(0, 0, 0, 0.125);border-radius: 0.25rem;line-height: 2.5;">
+                                <t t-if="website_sale_order.dine_in">
+                                    <th class="tip_class_category if_dine_in"
+                                        style="text-align: center;width:20%;border-right: 1px solid rgba(0, 0, 0, 0.125);"
+                                        t-att-data-order="website_sale_order.id" data-info="dine_in" id="dine_in">Dine
+                                        In
+                                    </th>
+                                </t>
+                                <t t-else="">
+                                    <th class="tip_class_category"
+                                        style="text-align: center;width:20%;border-right: 1px solid rgba(0, 0, 0, 0.125);"
+                                        t-att-data-order="website_sale_order.id" data-info="dine_in" id="dine_in">Dine
+                                        In
+                                    </th>
+                                </t>
+                                <t t-if="website_sale_order.take_away">
+                                    <th class="text-center td-price if_dine_in"
+                                        style="text-align: center;width:20%;border-right: 1px solid rgba(0, 0, 0, 0.125);"
+                                        t-att-data-order="website_sale_order.id" data-info="take_away" id="take_away">
+                                        Take Away
+                                    </th>
+                                </t>
+                                <t t-else="">
+                                    <th class="tip_class_category"
+                                        style="text-align: center;width:20%;border-right: 1px solid rgba(0, 0, 0, 0.125);"
+                                        t-att-data-order="website_sale_order.id" data-info="take_away" id="take_away">
+                                        Take Away
+                                    </th>
+
+                                </t>
+                            </tr>
+                            <tr id="grumble2"></tr>
+
+                        </thead>
+                    </table>
+                    <t t-if="website_sale_order.dine_in or website_sale_order.take_away">
+                        <div class="col-lg-12" id="quick_pick_up_form">
+                            <h4>Quick Pickup From</h4>
+                            <br/>
+                            <h4>4 Wongabel St, Kenmore, 4069</h4>
+                            <br/>
+                            <br/>
+                            <div class="">
+                                <t t-if="website_sale_order.dine_in and website_sale_order.dine_in_enable">
+                                    <select id="din_in_table_selection" class="curb_select_loc" style="background:white !important;">
+                                        <option value='failed'>Select Table</option>
+                                        <t t-foreach="request.env['restaurant.table'].sudo().search([])" t-as='table'>
+                                            <option t-att-value='table.id'>
+                                                <t t-esc='table.name'/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                    <br/>
+                                    <br/>
+                                </t>
+
+                                <t t-if="website_sale_order.website_delivery_type == 'dine_in'">
+                                    <input id="dine_in_website_order" style="display:none;" type="text" t-att-value="website_sale_order.website_delivery_type"/>
+                                </t>
+                                <t t-if="website_sale_order.website_delivery_type == 'pickup'">
+                                    <input id="dine_in_website_order" style="display:none;" t-att-value="website_sale_order.website_delivery_type" type="text"/>
+                                </t>
+                                <input id="partner_name_quick" type="text" placeholder="Enter Your Name"/>
+                                <label id="invalid_name_quick" style="display:none;color:red">Enter a valid name</label>
+                                <br/>
+                                <br/>
+                                <input id="partner_phone_quick" type="tel" placeholder="Enter Phone Number"/>
+                                <label id="invalid_phone_quick" style="display:none;color:red">Invalid Phone number
+                                </label>
+                                <br/>
+                                <br/>
+                                <input id="partner_email_quick" type="email" placeholder="Enter Your Email id"/>
+                                <label id="invalid_email_quick" style="display:none;color:red">Invalid Email Id</label>
+                            </div>
+                            <br/>
+                            <div id="invalid_products" style="display:none;">
+                                <div class="alert alert-danger">
+                                    <strong>Warning!</strong>
+                                    Some of the products in the cart are not eligible for Take Away. Please
+                                    remove it and try again
+                                </div>
+                            </div>
+                            <br/>
+                            <div id="invalid_time_range_data" style="display:none;">
+                                <div class="alert alert-danger">
+                                    <strong>Warning!</strong>
+                                    <div id="invalid_fields_qr">
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div id="continue_div">
+                                <button id="continue_button_quick">Continue</button>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </xpath>
+        </template>
+
+        <template id="shipping_methos" name="Shipping Method" inherit_id="website_delivery_type.shipping_methods">
+            <xpath expr="//div[@id='oe_structure_website_sale_payment_1']" position="before">
+                <t t-if="website_sale_order.dine_in or website_sale_order.take_away">
+                    <br/>
+                    <table class="table table-striped table-sm" id="timeline_js_vals" t-att-data-dine-in="website_sale_order.dine_in" t-att-data-take-away="website_sale_order.take_away">
+                        <thead>
+                        </thead>
+                    </table>
+                </t>
+            </xpath>
+            <xpath expr="//div[@id='shipping_and_billing']" position="replace">
+                <t t-if="website_sale_order.dine_in or website_sale_order.take_away">
+                    <div class="card-body">
+                        <h6>
+                            <p>
+                                When your drinks order and/or your food order are ready, you will be notified to collect
+                                them from two separate areas.
+                            </p>
+                            <p>
+                                When notified to do so,please
+                                <br/>
+                                <b>collect your food from the kitchen pick up point and Drinks from the Bar area</b>
+                            </p>
+                        </h6>
+                    </div>
+                </t>
+                <t t-else="">
+                    <div class="card-body" id="shipping_and_billing">
+                        <t t-if="order.website_delivery_type == 'delivery'">
+                            <a class='float-right no-decoration' href='/shop/checkout'>
+                                <i class="fa fa-edit"/>
+                                Select Delivery Method
+                            </a>
+                            <t t-set="same_shipping"
+                               t-value="bool(order.partner_shipping_id==order.partner_id or only_services)"/>
+                            <div>
+                                <b>Billing<t t-if="same_shipping and not only_services">&amp; Delivering</t>:
+                                </b>
+                                <span t-esc='order.partner_id'
+                                      t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"
+                                      class="address-inline"/>
+                            </div>
+                            <div t-if="not same_shipping and not only_services"
+                                 groups="sale.group_delivery_invoice_address">
+                                <b>Delivery:</b>
+                                <span t-esc='order.partner_shipping_id'
+                                      t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"
+                                      class="address-inline"/>
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <a class='float-right no-decoration' href='/shop/checkout'>
+                                <i class="fa fa-edit"/>
+                                Select Delivery Method
+                            </a>
+                            <div>
+                                <b>Earliest Pickup Time
+                                </b>
+                                <span t-esc='order.pickup_date'
+                                      class="address-inline"/>
+                            </div>
+
+                        </t>
+                    </div>
+                </t>
+
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

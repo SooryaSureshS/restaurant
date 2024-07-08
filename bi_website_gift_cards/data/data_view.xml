@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_product_egift_product_template" model="product.template">
+        <field name="name">Bday E-Gift Card</field>
+        <field name="categ_id" ref="product.product_category_5"/>
+        <field name="standard_price">500.0</field>
+        <field name="list_price">750.0</field>
+        <field name="type">consu</field>
+        <field name="gift_ok">True</field>
+        <field name="gift_card_type">ecard</field>
+        <field name="card_validity">1</field>
+        <field name="validity_type">year</field>
+        <field name="uom_id" ref="uom.product_uom_unit"/>
+        <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        <field name="description_sale">Bday E-Gift Card</field>
+        <field name="image_1920" type="base64" file="bi_website_gift_cards/static/src/images/eGiftCard.jpg"/>
+    </record>  
+
+    <record id="product_product_pgift_product_template" model="product.template">
+        <field name="name">Bday Gift Card</field>
+        <field name="categ_id" ref="product.product_category_5"/>
+        <field name="standard_price">600.0</field>
+        <field name="list_price">850.0</field>
+        <field name="type">consu</field>
+        <field name="gift_ok">True</field>
+        <field name="gift_card_type">pcard</field>
+        <field name="card_validity">1</field>
+        <field name="validity_type">year</field>
+        <field name="uom_id" ref="uom.product_uom_unit"/>
+        <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        <field name="description_sale">Physical Bday Gift Card</field>
+        <field name="image_1920" type="base64" file="bi_website_gift_cards/static/src/images/printable.jpg"/>
+    </record>  
+
+    <!--Email template -->
+    <record id="email_template_edi_giftcard" model="mail.template">
+        <field name="name">Gift Card: Send by email</field>
+        <field name="model_id" ref="website_discount_voucher.model_web_gift_coupon"/>
+        <field name="email_from">${object.user_id.email_formatted |safe}</field>
+        <field name="partner_to">${object.partner_id.id}</field>
+        <field name="subject">${object.name}</field>
+        <field name="body_html" type="html">
+            
+        <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; background-color:teal; color:white; ">
+            <center>
+                <span style="font-size: 48px;font-family:cursive;font-weight: bold;font-stretch: condensed" class="text-white"><i>Happy Birthday</i> <br/><br/></span>
+            </center>
+            <div style="color:white;"> 
+                <span style="font-size: 24px">Dear ${object.partner_id.name}, </span> <br/>
+                <span style="font-size: 18px">
+                    Here is your gift card.<br/>
+                    Secret code of gift card is <b>${object.c_barcode}</b><br/>
+                    Total amount of voucher is ${object.amount} it is valid up to ${object.expiry_date}.<br/><br/>
+                </span>
+            </div> 
+            % if object.id:
+                <div style="text-align:center;margin-top:5px;margin-bottom:2px;">
+                    <img src="/web/image?model=web.gift.coupon&amp;id=${object.id}&amp;field=c_barcode_img" width="250" height="150" alt="Barcode" />
+                </div>
+            % endif
+            <br/>
+            <span style="font-size: 12px;color:white;"> 
+                Note:-  Do not share code with anyone.
+            </span>       
+       </div>
+
+        </field>
+    </record>
+
+</odoo>
+

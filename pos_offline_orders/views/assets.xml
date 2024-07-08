@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="assets_pos_offline_js" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/pos_offline_orders/static/src/js/pos_offline.js"></script>
+            <script type="text/javascript" src="/pos_offline_orders/static/src/js/offline_popup.js"></script>
+        </xpath>
+    </template>
+
+    <template id="assets_website_cache_clear" inherit_id="web.assets_frontend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/pos_offline_orders/static/src/js/website_cache_remove.js"></script>
+        </xpath>
+    </template>
+
+</odoo>

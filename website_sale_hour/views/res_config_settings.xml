@@ -1,0 +1,385 @@
+<odoo>
+    <data>
+        <record id="res_config_settings_view_day" model="ir.ui.view">
+            <field name="name">res.config.settings.view.day</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="1"/>
+            <field name="inherit_id" ref="website.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@id='website_selection_settings']" position="after">
+                    <div class="pickup" string="Pickup">
+                        <h2>Pickup</h2>
+                        <span class="o_form_label" style="margin-left: 58px;">Customers can order for pickup</span>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box"
+                                 title="Here You can set minimum picking time">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <div class="content-group">
+                                        <div class="row">
+                                            <label string="Orders are ready for pickup in" for="pickup_time"
+                                                   class="o_light_label" style="width:100%;margin-left: 15px;"/>
+                                            <field name="pickup_time" widget="float_time"
+                                                   style="width:70px;margin-left: 15px;"/>
+                                            <br/>
+                                            <span>HH:MM</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="o_form_label" style="margin-left: 58px;">
+                            <b>Pick Up Order Time
+                                Range
+                            </b>
+                        </span>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box"
+                                 title="Here You can set the time range for days">
+                                <div class="o_setting_right_pane">
+                                    <div class="content-group">
+                                        <div class="row">
+                                            <div style="display: flex;">
+                                                <span class="o_form_label" style="margin-left: 15px;">Sunday:</span>
+                                                <label string="From" style="margin-left:40px;"
+                                                       for="time_from_pickup_sunday" class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="time_from_pickup_sunday"
+                                                       style="width: 70px;text-align: center;"/>
+                                                <label string="To" for="time_to_pickup_sunday"
+                                                       class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="time_to_pickup_sunday"
+                                                       style="width: 70px;text-align: center;"/>
+                                            </div>
+                                            <div style="display: flex;">
+                                                <span class="o_form_label" style="margin-left: 15px;">Monday:</span>
+                                                <label string="From" style="margin-left:37px;"
+                                                       for="time_from_pickup_monday" class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="time_from_pickup_monday"
+                                                       style="width: 70px;text-align: center;"/>
+                                                <label string="To" for="time_to_pickup_monday"
+                                                       class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="time_to_pickup_monday"
+                                                       style="width: 70px;text-align: center;"/>
+                                            </div>
+                                            <div style="display: flex;">
+                                                <span class="o_form_label" style="margin-left: 15px;">Tuesday:</span>
+                                                <label string="From" style="margin-left:34px;"
+                                                       for="time_from_pickup_tuesday" class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="time_from_pickup_tuesday"
+                                                       style="width: 70px;text-align: center;"/>
+                                                <label string="To" for="time_to_pickup_tuesday"
+                                                       class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="time_to_pickup_tuesday"
+                                                       style="width: 70px;text-align: center;"/>
+                                            </div>
+                                            <div style="display: flex;">
+                                                <span class="o_form_label" style="margin-left: 15px;">Wednesday:</span>
+                                                <label string="From" for="time_from_pickup_wednesday"
+                                                       style="margin-left:14px;" class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="time_from_pickup_wednesday"
+                                                       style="width: 70px;text-align: center;"/>
+                                                <label string="To" for="time_to_pickup_wednesday"
+                                                       class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="time_to_pickup_wednesday"
+                                                       style="width: 70px;text-align: center;"/>
+                                            </div>
+                                            <div style="display: flex;">
+                                                <span class="o_form_label" style="margin-left: 15px;">Thursday:</span>
+                                                <label string="From" style="margin-left:27px;"
+                                                       for="time_from_pickup_thursday" class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="time_from_pickup_thursday"
+                                                       style="width: 70px;text-align: center;"/>
+                                                <label string="To" for="time_to_pickup_thursday"
+                                                       class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="time_to_pickup_thursday"
+                                                       style="width: 70px;text-align: center;"/>
+                                            </div>
+                                            <div style="display: flex;">
+                                                <span class="o_form_label" style="margin-left: 15px;">Friday:</span>
+                                                <label string="From" style="margin-left:47px;"
+                                                       for="time_from_pickup_friday" class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="time_from_pickup_friday"
+                                                       style="width: 70px;text-align: center;"/>
+                                                <label string="To" for="time_to_pickup_friday"
+                                                       class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="time_to_pickup_friday"
+                                                       style="width: 70px;text-align: center;"/>
+                                            </div>
+                                            <div style="display: flex;">
+                                                <span class="o_form_label" style="margin-left: 15px;">Saturday:</span>
+                                                <label string="From" style="margin-left:30px;"
+                                                       for="time_from_pickup_saturday" class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="time_from_pickup_saturday"
+                                                       style="width: 70px;text-align: center;"/>
+                                                <label string="To" for="time_to_pickup_saturday"
+                                                       class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="time_to_pickup_saturday"
+                                                       style="width: 70px;text-align: center;"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box"
+                                 title="Here You can set minimum picking time">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <div class="content-group">
+                                        <div class="row">
+                                            <span class="o_form_label" style="margin-left: 15px;">Kerbside Pickup</span>
+                                            <field name="curb_side_pickup" style="width:20%;margin-left: 15px;"/>
+                                        </div>
+                                        <div class="row">
+                                            <span class="o_form_label" style="margin-left: 15px;">Website Delivery
+                                            </span>
+                                            <field name="website_delivery" style="width:20%;margin-left: 15px;"/>
+                                        </div>
+                                        <div class="row">
+                                            <span class="o_form_label" style="margin-left: 15px;">Pre Orders Kitchen
+                                                Display Time
+                                            </span>
+                                            <field name="pre_order_kitchen_display" widget="float_time"
+                                                   style="width:70px;margin-left: 15px;"/>
+                                            <span>HH:MM</span>
+                                        </div>
+                                        <div class="row">
+                                            <span class="o_form_label" style="margin-left: 15px;">POS Orders Kitchen
+                                                Display Time
+                                            </span>
+                                            <field name="pos_order_kitchen_display" widget="float_time"
+                                                   style="width:70px;margin-left: 15px;"/>
+                                            <span>HH:MM</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="future_orders" string="Pickup">
+                        <h2>Future Orders</h2>
+                        <span class="o_form_label" style="margin-left: 58px;">How far in advance customer can Place an
+                            order
+                        </span>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box"
+                                 title="Here You can set minimum and maximum picking time">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <div class="content-group">
+                                        <div class="row">
+                                            <label string="From" for="future_order_from"
+                                                   class="o_light_label" style="width:100%;margin-left: 15px;"/>
+                                            <field name="future_order_from" style="width:20%;margin-left: 15px;"/>
+                                            <field name="future_order_from_type" style="width:20%;margin-left: 15px;"/>
+                                        </div>
+                                        <div class="row">
+                                            <label string="TO" for="future_order_to"
+                                                   class="o_light_label" style="width:100%;margin-left: 15px;"/>
+                                            <field name="future_order_to" style="width:20%;margin-left: 15px;"/>
+                                            <field name="future_order_to_type" style="width:20%;margin-left: 15px;"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day_type" string="Day">
+                        <h2>Kitchen Working Time</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box"
+                                 title="Here You can set the time range for days">
+                                <div class="o_setting_right_pane    ">
+                                    <div class="content-group">
+                                        <div class="row">
+                                            <div style="display: flex;">
+                                                <span class="o_form_label" style="margin-left: 15px;">Sunday:</span>
+                                                <label string="From" style="margin-left:40px;" for="sunday_from"
+                                                       class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="sunday_from"
+                                                       style="width: 70px;text-align: center;"/>
+                                                <label string="To" for="sunday_to" class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="sunday_to"
+                                                       style="width: 70px;text-align: center;"/>
+                                            </div>
+                                            <div style="display: flex;">
+                                                <span class="o_form_label" style="margin-left: 15px;">Monday:</span>
+                                                <label string="From" style="margin-left:37px;" for="monday_from"
+                                                       class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="monday_from"
+                                                       style="width: 70px;text-align: center;"/>
+                                                <label string="To" for="monday_to" class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="monday_to"
+                                                       style="width: 70px;text-align: center;"/>
+                                            </div>
+                                            <div style="display: flex;">
+                                                <span class="o_form_label" style="margin-left: 15px;">Tuesday:</span>
+                                                <label string="From" style="margin-left:34px;" for="tuesday_from"
+                                                       class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="tuesday_from"
+                                                       style="width: 70px;text-align: center;"/>
+                                                <label string="To" for="tuesday_to" class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="tuesday_to"
+                                                       style="width: 70px;text-align: center;"/>
+                                            </div>
+                                            <div style="display: flex;">
+                                                <span class="o_form_label" style="margin-left: 15px;">Wednesday:</span>
+                                                <label string="From" for="wednesday_from" style="margin-left:14px;"
+                                                       class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="wednesday_from"
+                                                       style="width: 70px;text-align: center;"/>
+                                                <label string="To" for="wednesday_to" class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="wednesday_to"
+                                                       style="width: 70px;text-align: center;"/>
+                                            </div>
+                                            <div style="display: flex;">
+                                                <span class="o_form_label" style="margin-left: 15px;">Thursday:</span>
+                                                <label string="From" style="margin-left:27px;" for="thursday_from"
+                                                       class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="thursday_from"
+                                                       style="width: 70px;text-align: center;"/>
+                                                <label string="To" for="thursday_to" class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="thursday_to"
+                                                       style="width: 70px;text-align: center;"/>
+                                            </div>
+                                            <div style="display: flex;">
+                                                <span class="o_form_label" style="margin-left: 15px;">Friday:</span>
+                                                <label string="From" style="margin-left:47px;" for="friday_from"
+                                                       class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="friday_from"
+                                                       style="width: 70px;text-align: center;"/>
+                                                <label string="To" for="friday_to" class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="friday_to"
+                                                       style="width: 70px;text-align: center;"/>
+                                            </div>
+                                            <div style="display: flex;">
+                                                <span class="o_form_label" style="margin-left: 15px;">Saturday:</span>
+                                                <label string="From" style="margin-left:30px;" for="saturday_from"
+                                                       class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="saturday_from"
+                                                       style="width: 70px;text-align: center;"/>
+                                                <label string="To" for="saturday_to" class="col-lg-3 o_light_label"/>
+                                                <field widget="float_time" name="saturday_to"
+                                                       style="width: 70px;text-align: center;"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="future_orders" string="Pickup">
+                        <h2>Delivery Orders</h2>
+                        <br/>
+                        <div class="row" style="margin-left:44px;">
+                            <span class="o_form_label" style="margin-left: 15px;">Delivery Orders - Minimum Delivery
+                                Time
+                            </span>
+                            <field name="delivery_time" widget="float_time" style="width:70px;margin-left: 15px;"/>
+                            <span>HH:MM</span>
+                        </div>
+                    </div>
+
+                    <span class="o_form_label" style="margin-left: 58px;">
+                        <b>Delivery Order Time
+                            Range
+                        </b>
+                    </span>
+
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box"
+                             title="Here You can set the time range for days">
+                            <div class="o_setting_right_pane    ">
+                                <div class="content-group">
+                                    <div class="row">
+                                        <div style="display: flex;">
+                                            <span class="o_form_label" style="margin-left: 15px;">Sunday:</span>
+                                            <label string="From" style="margin-left:40px;" for="time_from_delivery_sunday"
+                                                   class="col-lg-3 o_light_label"/>
+                                            <field widget="float_time" name="time_from_delivery_sunday"
+                                                   style="width: 70px;text-align: center;"/>
+                                            <label string="To" for="time_to_delivery_sunday"
+                                                   class="col-lg-3 o_light_label"/>
+                                            <field widget="float_time" name="time_to_delivery_sunday"
+                                                   style="width: 70px;text-align: center;"/>
+                                        </div>
+                                        <div style="display: flex;">
+                                            <span class="o_form_label" style="margin-left: 15px;">Monday:</span>
+                                            <label string="From" style="margin-left:37px;" for="time_from_delivery_monday"
+                                                   class="col-lg-3 o_light_label"/>
+                                            <field widget="float_time" name="time_from_delivery_monday"
+                                                   style="width: 70px;text-align: center;"/>
+                                            <label string="To" for="time_to_delivery_monday"
+                                                   class="col-lg-3 o_light_label"/>
+                                            <field widget="float_time" name="time_to_delivery_monday"
+                                                   style="width: 70px;text-align: center;"/>
+                                        </div>
+                                        <div style="display: flex;">
+                                            <span class="o_form_label" style="margin-left: 15px;">Tuesday:</span>
+                                            <label string="From" style="margin-left:34px;"
+                                                   for="time_from_delivery_tuesday" class="col-lg-3 o_light_label"/>
+                                            <field widget="float_time" name="time_from_delivery_tuesday"
+                                                   style="width: 70px;text-align: center;"/>
+                                            <label string="To" for="time_to_delivery_tuesday"
+                                                   class="col-lg-3 o_light_label"/>
+                                            <field widget="float_time" name="time_to_delivery_tuesday"
+                                                   style="width: 70px;text-align: center;"/>
+                                        </div>
+                                        <div style="display: flex;">
+                                            <span class="o_form_label" style="margin-left: 15px;">Wednesday:</span>
+                                            <label string="From" for="time_from_delivery_wednesday"
+                                                   style="margin-left:14px;" class="col-lg-3 o_light_label"/>
+                                            <field widget="float_time" name="time_from_delivery_wednesday"
+                                                   style="width: 70px;text-align: center;"/>
+                                            <label string="To" for="time_to_delivery_wednesday"
+                                                   class="col-lg-3 o_light_label"/>
+                                            <field widget="float_time" name="time_to_delivery_wednesday"
+                                                   style="width: 70px;text-align: center;"/>
+                                        </div>
+                                        <div style="display: flex;">
+                                            <span class="o_form_label" style="margin-left: 15px;">Thursday:</span>
+                                            <label string="From" style="margin-left:27px;"
+                                                   for="time_from_delivery_thursday" class="col-lg-3 o_light_label"/>
+                                            <field widget="float_time" name="time_from_delivery_thursday"
+                                                   style="width: 70px;text-align: center;"/>
+                                            <label string="To" for="time_to_delivery_thursday"
+                                                   class="col-lg-3 o_light_label"/>
+                                            <field widget="float_time" name="time_to_delivery_thursday"
+                                                   style="width: 70px;text-align: center;"/>
+                                        </div>
+                                        <div style="display: flex;">
+                                            <span class="o_form_label" style="margin-left: 15px;">Friday:</span>
+                                            <label string="From" style="margin-left:47px;" for="time_from_delivery_friday"
+                                                   class="col-lg-3 o_light_label"/>
+                                            <field widget="float_time" name="time_from_delivery_friday"
+                                                   style="width: 70px;text-align: center;"/>
+                                            <label string="To" for="time_to_delivery_friday"
+                                                   class="col-lg-3 o_light_label"/>
+                                            <field widget="float_time" name="time_to_delivery_friday"
+                                                   style="width: 70px;text-align: center;"/>
+                                        </div>
+                                        <div style="display: flex;">
+                                            <span class="o_form_label" style="margin-left: 15px;">Saturday:</span>
+                                            <label string="From" style="margin-left:30px;"
+                                                   for="time_from_delivery_saturday" class="col-lg-3 o_light_label"/>
+                                            <field widget="float_time" name="time_from_delivery_saturday"
+                                                   style="width: 70px;text-align: center;"/>
+                                            <label string="To" for="time_to_delivery_saturday"
+                                                   class="col-lg-3 o_light_label"/>
+                                            <field widget="float_time" name="time_to_delivery_saturday"
+                                                   style="width: 70px;text-align: center;"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

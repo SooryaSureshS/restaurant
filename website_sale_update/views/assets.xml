@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="theme_wineshop_inherit_sassets" name="Theme WineShop Inherit Assetss" inherit_id="website.assets_frontend">
+		<xpath expr="." position="inside">
+            <script type="text/javascript" src="/website_sale_update/static/src/js/website_updates.js" />
+            <script type="text/javascript" src="/website_sale_update/static/src/js/website_sale.js"/>
+
+        </xpath>
+    </template>
+</odoo>

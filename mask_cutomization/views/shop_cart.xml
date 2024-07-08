@@ -1,0 +1,166 @@
+<odoo>
+    <data>
+        <template id="carts" inherit_id="website_sale.cart" name="Cart Inherit">
+             <xpath expr="//div[@id='wrap']" position="replace">
+<!--        <xpath expr="//div[hasclass('oe_website_sale')]" position="replace">-->
+<!--            <t t-call="website.layout">-->
+                <t t-set="additional_title">Shop Cart</t>
+                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/cart_page.css"/>
+                <t t-set="no_footer" t-value="1"/>
+                <t t-call="mask_cutomization.header_banner_xml"/>
+                <div class="content-banner container" id="shop_cart_container" style="position: relative;">
+                     <t t-set="cart_empty" t-value=""/>
+
+                    <t t-set="order_sale_website" t-value="request.website.sale_get_order()"/>
+                        <t t-if="request.env['sale.order.line'].sudo().search_count([('order_id','=',website_sale_order.id),('is_delivery','=',False)]) == 0">
+                              <t t-set="cart_empty" t-value="'display:none;'"/>
+                                <div class="content-banner-success">
+                                     <div class="order-success">
+                                     <link rel="stylesheet" href="/mask_cutomization/static/src/scss/checkout_page_order_success.css"/>
+                                    <img src="/mask_cutomization/static/src/image/image_empty_cart/Group 3351.png" alt="bag"/>
+                                    <p>Your Cart is Empty</p>
+                                    <p id="small">Add something to make me happy :)</p><br/>
+                                         <a class="shop_button" href="/">Continue shopping</a>
+                                         <br/>
+                                    <br/><br/><br/>
+                            </div>
+                            </div>
+
+                     </t>
+                   <span class="cart_information" t-att-style="cart_empty">
+
+
+                    <div id="overlay">
+                            <div class="popupdiv" id="popup_alert_message" style="display:none;">
+                                <input type="hidden" id="product_line"/>
+                                <input type="hidden" id="product_qty"/>
+                                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/cartpopup.css"/>
+                                <div class="card" >
+                                    <p>Are you sure to remove this item?</p>
+                                    <button id="cbtn1" >YES</button>
+                                    <button id="cbtn2">CANCEL</button>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="bg-color">
+                        <table class="table" id="table_cart">
+                            <tr>
+                                <th><span>Delete</span></th>
+                                <th><span>Image</span></th>
+                                <th style="width:41% ;"><span>Product Name</span></th>
+                                <th style="width:11% ;"><span>Quantity</span></th>
+                                <th><span>Subtotal</span></th>
+                            </tr>
+                            <t t-foreach="website_sale_order.website_order_line" t-as="line">
+                                <t t-if="line.product_id.is_discount_product">
+                                    <t t-set="discount_line" t-value="line"/>
+                                </t>
+                                <t t-else="">
+                                    <tr>
+                                        <td>
+                                            <div id="product_delete" class="product_delete" t-att-data_line_id="line.id">x</div>
+                                        </td>
+                                        <td>
+                                            <span t-if="line._is_not_sellable_line() and line.product_id.image_128">
+                                                <img t-att-src="image_data_uri(line.product_id.image_128)" class="img o_image_64_max rounded" t-att-alt="line.name_short"/>
+                                            </span>
+                                            <span t-else=""
+                                                t-field="line.product_id.image_128"
+                                                t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max'}"
+                                            />
+                                        </td>
+                                        <td>
+                                            <t t-esc="line.name_short"/>
+                                            <br/>
+                                            <t t-if="line.nose_pad_product">
+                                                (+Nosepads HK$100 / box)
+                                            </t>
+                                        </td>
+                                        <td>
+                                            <input type="number" placeholder="0" id="qnty-width" t-att-value="line.product_uom_qty" t-att-data_line_id="line.id"
+                                                   t-att-min="line.product_id.minimum_order_quantity" t-att-step="line.product_id.minimum_quantity_step"
+                                                   t-att-data_min_qty="line.product_id.minimum_order_quantity" t-att-data_min_qty_step="line.product_id.minimum_quantity_step"/>
+                                        </td>
+                                        <td>
+        <!--                                    <t t-set="combination" t-value="line.product_id.product_template_attribute_value_ids + line.product_no_variant_attribute_value_ids"/>-->
+        <!--                                    <t t-set="combination_info" t-value="line.product_id.product_tmpl_id._get_combination_info(combination, pricelist=website_sale_order.pricelist_id, add_qty=line.product_uom_qty)"/>-->
+
+        <!--                                    <t t-set="list_price_converted" t-value="website.currency_id._convert(combination_info['list_price'], website_sale_order.currency_id, website_sale_order.company_id, date)"/>-->
+        <!--                                    <t groups="account.group_show_line_subtotals_tax_excluded" t-if="(website_sale_order.pricelist_id.discount_policy == 'without_discount' and website_sale_order.currency_id.compare_amounts(list_price_converted, line.price_reduce_taxexcl) == 1) or website_sale_order.currency_id.compare_amounts(line.price_unit, line.price_reduce) == 1" name="order_line_discount">-->
+        <!--                                        <del t-attf-class="#{'text-danger mr8'}" style="white-space: nowrap;" t-esc="list_price_converted" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}" />-->
+        <!--                                    </t>-->
+        <!--                                    <span t-field="line.price_reduce_taxexcl" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}" groups="account.group_show_line_subtotals_tax_excluded" />-->
+        <!--                                    <t groups="account.group_show_line_subtotals_tax_included" t-if="(website_sale_order.pricelist_id.discount_policy == 'without_discount' and website_sale_order.currency_id.compare_amounts(list_price_converted, line.price_reduce_taxinc) == 1) or website_sale_order.currency_id.compare_amounts(line.price_unit, line.price_reduce) == 1" name="order_line_discount">-->
+        <!--                                        <del t-attf-class="#{'text-danger mr8'}" style="white-space: nowrap;" t-esc="list_price_converted" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}" />-->
+        <!--                                    </t>-->
+        <!--                                    <span t-field="line.price_reduce_taxinc" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}" groups="account.group_show_line_subtotals_tax_included" />-->
+        <!--                                    <small t-if="not line._is_not_sellable_line() and line.product_id.base_unit_price" class="cart_product_base_unit_price d-block text-muted" groups="website_sale.group_show_uom_price">-->
+        <!--                                        <t t-call='website_sale.base_unit_price'><t t-set='product' t-value='line.product_id' /></t>-->
+        <!--                                    </small>-->
+                                            <span t-field="line.price_subtotal" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}" />
+                                        </td>
+                                    </tr>
+                                </t>
+                            </t>
+                        </table>
+                        <br/>
+                        <!-- /second teable -->
+                        <div class="second-table">
+                            <table class="table" style="vertical-align: unset;">
+                                <tr>
+                                    <th style="width:20%">Cart Totals</th>
+                                    <th></th>
+                                    <th style="width:20%">
+                                        <t t-if="website_sale_order" t-set="website_amount_subtotal" t-value="website_sale_order.amount_untaxed - website_sale_order.amount_delivery"/>
+                                        <span t-if="website_sale_order" t-esc="website_amount_subtotal" class="monetary_field" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                                    </th>
+                                </tr>
+<!--                                <tr id="table-second-row">-->
+<!--                                    <th>Shipping</th>-->
+<!--                                    <td>-->
+<!--                                        <t t-if="website_sale_order.carrier_id">-->
+<!--                                            <t t-esc="website_sale_order.carrier_id.name"/>-->
+<!--                                        </t>-->
+
+<!--                                    </td>-->
+<!--                                    <td>-->
+<!--                                         <span t-field="website_sale_order.amount_delivery" class="monetary_field" style="white-space: nowrap;" t-options='{-->
+<!--                                              "widget": "monetary",-->
+<!--                                              "display_currency": website_sale_order.currency_id,-->
+<!--                                          }'/>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+                                <t t-set="amount_total" t-value="website_sale_order.amount_total"/>
+                                <t t-if="discount_line">
+                                    <tr>
+                                        <th><t t-esc="discount_line.product_id.name"/></th>
+                                        <td></td>
+                                        <th>
+                                            <span t-field="discount_line.price_subtotal" style="white-space: nowrap;"
+                                                  t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                                        </th>
+                                    </tr>
+                                    <t t-set="amount_total" t-value="amount_total - discount_line.price_subtotal"/>
+                                </t>
+                                <tr>
+                                    <th>Subtotal</th>
+                                    <td></td>
+                                    <td>
+                                        <strong t-if="website_sale_order" t-esc="amount_total" class="monetary_field" t-options='{"widget": "monetary", "display_currency": website_sale_order.pricelist_id.currency_id}'/>
+                                    </td>
+                                </tr>
+                            </table>
+<!--                            <a role="button" id="checkout_button" t-if="website_sale_order and website_sale_order.website_order_line" class="btn btn-primary float-right d-none d-xl-inline-block" href="/shop/checkout?express=1">-->
+<!--                                    <span class="">Process To Checkout</span>-->
+<!--                            </a>-->
+
+                            <button id="checkout_button">Proceed To Checkout</button>
+                        </div>
+                    </div>
+                </span>
+                </div>
+                <t t-call="mask_cutomization.skypro_footer"/>
+        </xpath>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="allow_pos_category_form_news" model="ir.ui.view">
+            <field name="name">pos.category.pos.category.card.inherit</field>
+            <field name="model">pos.category</field>
+            <field name="inherit_id" ref="point_of_sale.product_pos_category_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='parent_id']" position="after">
+                    <field name="color" widget="color"/>
+                    <field name="hide_in_categories"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,52 @@
+.pos-content .subwindow-container-fix .container .left_container{
+        z-index: 9999;
+    float: left;
+    width: 151px;
+    position: relative;
+    margin: 107px;
+}
+.pos-content .subwindow-container-fix .container .left_container .pos_button{
+        width: 200px;
+    background-color: #8f9192;
+    color: white;
+    text-align: center;
+    height: 30px;
+    padding-top: 18px;
+    font-size: 19px;
+        margin-bottom: 15px;
+}
+.pos-content .subwindow-container-fix .container .left_container .pos_order_button{
+        width: 200px;
+    background-color: #8f9192;
+    color: white;
+    text-align: center;
+    height: 30px;
+    padding-top: 18px;
+    font-size: 19px;
+}
+.pos-content .subwindow-container-fix .container .right_container{
+    float: right;
+    width: 100%;
+}
+
+.ticket-screen .screen-content .card_container{
+           background-color: #5787d0;
+    color: white;
+    width: 200px;
+    height: 125px;
+    margin: 10px;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 900;
+    padding-top: 14px;
+}
+.ticket-screen .screen-content .card_container .client_name{
+    padding-top: 15px;
+}
+
+.pos .pos-branding {
+    display:none !important;
+}
+.pos .ticket-button{
+    display:none !important;
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_scrap_report" model="ir.actions.act_window">
+        <field name="name">Scrap Report</field>
+        <field name="res_model">scrap.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="report_wizard_form_scrap"/>
+        <field name="target">new</field>
+    </record>
+
+
+
+
+    <record id="report_scrap" model="ir.actions.report">
+        <field name="name">Scrap Report</field>
+        <field name="model">scrap.report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">scrap_report.report_scrap</field>
+        <field name="report_file">scrap_report.report_scrap</field>
+<!--        <field name="binding_model_id" ref="model_stock_scrap"/>-->
+        <field name="binding_type">report</field>
+    </record>
+
+     <menuitem id="menu_scrap_report"
+              name="Scrap Report"
+              action="action_scrap_report" parent="stock.menu_warehouse_report" sequence="150"/>
+
+
+
+</odoo>

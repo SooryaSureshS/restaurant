@@ -1,0 +1,70 @@
+.grumble{position:absolute;background-image:url(../images/bubble-sprite.png);background-repeat:no-repeat;z-index:99999}.grumble-text{position:absolute;text-align:center;z-index:99999;display:table;overflow:hidden;text-transform:uppercase;font-size:14px;line-height:14px}.ie7 .grumble-text,.ie6 .grumble-text{display:block}.grumble-text .outer{display:table-cell;vertical-align:middle;color:white}.ie7 .grumble-text .outer,.ie6 .grumble-text .outer{display:block;width:85%;position:absolute;top:48%;left:0}.ie7 .inner,.ie6 .inner{position:relative;top:-50%}.grumble-text50 .outer{padding:6px}.grumble-text100 .outer{padding:8px}.grumble-text150 .outer{padding:10px}.grumble-text200 .outer{padding:12px}.grumble50{background-position:0 0}.grumble100{background-position:0 -50px}.grumble150{background-position:0 -150px}.grumble200{background-position:0 -300px}.alt-grumble50{background-position:-200px 0}.alt-grumble100{background-position:-200px -50px}.alt-grumble150{background-position:-200px -150px}.alt-grumble200{background-position:-200px -300px}.grumble-button{position:absolute;width:20px;height:12px;-moz-border-radius:3px;border-radius:3px;background:#ff5c00;color:#fff;text-align:center;font-size:.8em;line-height:.9em;-moz-box-shadow:1px 1px 1px #ccc;-webkit-box-shadow:1px 1px 1px #ccc;box-shadow:1px 1px 1px #ccc;cursor:pointer;z-index:99999}
+#partner_name_quick, #partner_phone_quick, #partner_email_quick {
+   text-align: center;
+     padding: 12px;
+    font-size: 20px;
+    width: 100% !important;
+    border: 1px solid black;
+}
+
+#continue_button_quick {
+    text-align: center;
+    padding: 12px;
+    font-size: 20px;
+    width: 100% !important;
+    border: 1px solid #dd2904;
+    background: #dd2904;
+    color: white;
+}
+.if_dine_in {
+    background-color:rgba(255, 0, 0, .2);
+    border:2px solid rgba(255, 0, 0, 1);
+    border-top:2px solid rgba(255, 0, 0, 1) !important;
+    border-bottom: 2px solid rgba(255, 0, 0, 1)  !important;;
+    border-right: 2px solid rgba(255, 0, 0, 1)  !important;;
+}
+
+.grumble-text {
+    position: absolute;
+    text-align: center;
+    z-index: 99999;
+    display: table;
+    overflow: hidden;
+    text-transform: unset !important;
+    font-size: 14px;
+    line-height: 13px !important;
+
+}
+
+#calculate_tarck_item_new .td-product_name{
+    vertical-align: middle;
+    color: #b0976d;
+}
+#calculate_tarck_item_new .td-qty{
+    vertical-align: middle;
+    color: #b0976d;
+}
+#calculate_tarck_item_new .td-price{
+    vertical-align: middle;
+    color: #b0976d;
+}
+#calculate_tarck_item_new .header_title_tr{
+        line-height: 3.5;
+    background-color: #b0976d;
+}
+
+#a2016-1 .badge{
+    background: #01BEFE;
+}
+#a2016-2 .badge{
+    background: #FFDD00;
+}
+#a2016-3 .badge{
+    background: #FF006D;
+}
+section#timeline article div.panel div.badge:last-child {
+    background-color: #ADFF02 !important;
+    width: 20px;
+    height: 20px;
+    margin: 0 0 0 -10px;
+}

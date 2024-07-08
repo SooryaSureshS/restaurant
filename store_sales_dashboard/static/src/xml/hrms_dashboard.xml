@@ -1,0 +1,2012 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="HrDashboardMain">
+        <div class="oh_dashboards">
+            <div class="container-fluid o_hr_dashboard">
+            </div>
+        </div>
+    </t>
+
+
+    <t t-name="StoreSalesData">
+       <div class="store-sales" style="margin-top:10px;">
+            <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+                <div class="row" style="margin:0px;">
+                    <div class="col-md-12" id="col-graph">
+                        <div class="card" style="background: #5b8cee6e;">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <b>
+                                        <h3 class="custom-h3">Store Sales Data</h3>
+                                    </b>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+<!--                                        <t t-if="widget['company_ids']">-->
+                                        <!--                                            <input id="select_company_name1"/>-->
+                                        <input class='get_company_ids' type='text' id="itemSearch"
+                                               placeholder='Company'/>
+                                        <!--                                            <select id="select_company_name" style="width:50%;" multiple="true">-->
+                                        <!--                                                    <t t-foreach="widget['company_ids']" t-as="v">-->
+                                        <!--                                                        <option t-att-value="'%s' % (v['id'])" t-esc="v['name']"/>-->
+                                        <!--                                                    </t>-->
+                                        <!--                                            </select>-->
+                                        <!--                                        </t>-->
+                                        <!--                                        <t t-else="">-->
+                                        <!--                                            <input type="date" id="select_date" name="select date"-->
+                                        <!--                                                   class="date_change_dashboard"/>-->
+                                        <!--                                        </t>-->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <t t-if="widget['date_val']">
+                                            <input type="date" t-att-value="widget['date_val']" id="select_date"
+                                                   name="select date"
+                                                   class="date_change_dashboard"/>
+                                        </t>
+                                        <t t-else="">
+                                            <input type="date" id="select_date" name="select date"
+                                                   class="date_change_dashboard"/>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body mt-3">
+                                <div class="row">
+                                        <table style="border: 1px solid black;width:90%;border-collapse: collapse;text-align: center;margin-left: 5%;height:250px;">
+                                            <thead>
+                                            <tr>
+                                                <th colspan="4" style="padding: 20px;">
+                                                    <div class="restaurant_name" style="font-size: 20px;float: left;">
+                                                        <t t-esc="widget['date_val1']"/>
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                                <tr>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">Net Sales</th>
+                                                    <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">Status</th>
+                                                    <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">
+                                                    Transactions
+                                                </th>
+                                                    <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">Net
+                                                    Avg. per sale
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                                    <p style="color:red;">$<t t-esc="widget['this_week_total_sales']"/></p>
+                                                    <p>$<t t-esc="widget['last_week_total_sales']"/>(Last Week)</p>
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                                    <t t-if="widget['variance']==2">
+                                                        <p><i class="fa fa-chevron-down"></i></p>
+                                                    </t>
+                                                    <t t-if="widget['variance']==1">
+                                                        <p><i class="fa fa-chevron-up"></i></p>
+                                                    </t>
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                                    <p style="color:red;"><t t-esc="widget['this_week_total_transactions']"/></p>
+                                                    <p><t t-esc="widget['last_week_total_transactions']"/></p>
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                                    <p style="color:red;">$<t t-esc="widget['this_week_average_sale']"/></p>
+                                                    <p>$<t t-esc="widget['last_week_average_sale']"/></p>
+                                                </td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="card-body mt-3">
+                                <div class="row respTable">
+                                        <table style="border: 0px solid black;width:100%;border-collapse: collapse;text-align: center;height:250px;">
+                                            <thead>
+                                            <tr>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"></th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="2">Monday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="2">Tuesday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="2">Wednesday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="2">Thursday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="2">Friday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="2">Saturday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="2">Sunday</th>
+
+                                            </tr>
+                                        </thead>
+                                            <tbody>
+                                                   <tr>
+                                                   <td style="border: 1px solid black;border-collapse: collapse;">
+                                                       <span></span>
+                                                   </td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                       Sales
+                                                   </td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                       Transactions
+                                                   </td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                       Sales
+                                                   </td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                       Transactions
+                                                   </td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                       Sales
+                                                   </td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                       Transactions
+                                                   </td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                       Sales
+                                                   </td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                       Transactions
+                                                   </td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                       Sales
+                                                   </td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                       Transactions
+                                                   </td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                       Sales
+                                                   </td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                       Transactions
+                                                   </td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                       Sales
+                                                   </td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                       Transactions
+                                                   </td>
+                                            </tr>
+                                                <tr>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;width: 10%;">
+                                                        <span>9 AM</span>
+                                                    </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        $<t t-esc="widget['monday_9am_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="widget['monday_9am_sale_transactions']"/>
+                                                    </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        $<t t-esc="widget['tuesday_9am_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="widget['tuesday_9am_sale_transactions']"/>
+                                                    </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        $<t t-esc="widget['wednesday_9am_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="widget['wednesday_9am_sale_transactions']"/>
+                                                    </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        $<t t-esc="widget['thursday_9am_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="widget['thursday_9am_sale_transactions']"/>
+                                                    </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        $<t t-esc="widget['friday_9am_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="widget['friday_9am_sale_transactions']"/>
+                                                    </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        $<t t-esc="widget['saturday_9am_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="widget['saturday_9am_sale_transactions']"/>
+                                                    </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        $<t t-esc="widget['sunday_9am_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="widget['sunday_9am_sale_transactions']"/>
+                                                    </td>
+                                            </tr>
+                                                <tr>
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 10%;">
+                                                       <span>10 AM</span>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        $<t t-esc="widget['monday_10am_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="widget['monday_10am_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        $<t t-esc="widget['tuesday_10am_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="widget['tuesday_10am_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        $<t t-esc="widget['wednesday_10am_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="widget['wednesday_10am_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        $<t t-esc="widget['thursday_10am_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="widget['thursday_10am_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        $<t t-esc="widget['friday_10am_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="widget['friday_10am_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        $<t t-esc="widget['saturday_10am_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="widget['saturday_10am_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        $<t t-esc="widget['sunday_10am_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="widget['sunday_10am_sale_transactions']"/>
+                                                   </td>
+                                            </tr>
+
+                                                <tr>
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 10%;">
+                                                       <span>11 AM</span>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        $<t t-esc="widget['monday_11am_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="widget['monday_11am_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        $<t t-esc="widget['tuesday_11am_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="widget['tuesday_11am_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        $<t t-esc="widget['wednesday_11am_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="widget['wednesday_11am_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        $<t t-esc="widget['thursday_11am_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="widget['thursday_11am_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        $<t t-esc="widget['friday_11am_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="widget['friday_11am_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        $<t t-esc="widget['saturday_11am_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="widget['saturday_11am_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        $<t t-esc="widget['sunday_11am_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="widget['sunday_11am_sale_transactions']"/>
+                                                   </td>
+                                            </tr>
+                                                <tr>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;width: 10%;">
+                                                           <span>12 PM</span>
+                                                       </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                           $<t t-esc="widget['monday_12pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"><t t-esc="widget['monday_12pm_sale_transactions']"/>
+                                                       </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                           $<t t-esc="widget['tuesday_12pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"><t t-esc="widget['tuesday_12pm_sale_transactions']"/>
+                                                       </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                           $<t t-esc="widget['wednesday_12pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['wednesday_12pm_sale_transactions']"/>
+                                                       </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                           $<t t-esc="widget['thursday_12pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['thursday_12pm_sale_transactions']"/>
+                                                       </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                           $<t t-esc="widget['friday_12pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"><t t-esc="widget['friday_12pm_sale_transactions']"/>
+                                                       </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                           $<t t-esc="widget['saturday_12pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['saturday_12pm_sale_transactions']"/>
+                                                       </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                           $<t t-esc="widget['sunday_12pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['sunday_12pm_sale_transactions']"/>
+                                                       </td>
+                                                </tr>
+
+                                                <tr>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;width: 10%;">
+                                                           <span>1 PM</span>
+                                                       </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                           $<t t-esc="widget['monday_1pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['monday_1pm_sale_transactions']"/>
+                                                       </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                           $<t t-esc="widget['tuesday_1pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['tuesday_1pm_sale_transactions']"/>
+                                                       </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                           $<t t-esc="widget['wednesday_1pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['wednesday_1pm_sale_transactions']"/>
+                                                       </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                           $<t t-esc="widget['thursday_1pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['thursday_1pm_sale_transactions']"/>
+                                                       </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                           $<t t-esc="widget['friday_1pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['friday_1pm_sale_transactions']"/>
+                                                       </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                           $<t t-esc="widget['saturday_1pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['saturday_1pm_sale_transactions']"/>
+                                                       </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                           $<t t-esc="widget['sunday_1pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['sunday_1pm_sale_transactions']"/>
+                                                       </td>
+                                                </tr>
+
+                                                <tr>
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 10%;">
+                                                       <span>2 PM</span>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                       $<t t-esc="widget['monday_2pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['monday_2pm_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                       $<t t-esc="widget['tuesday_2pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['tuesday_2pm_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                       $<t t-esc="widget['wednesday_2pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['wednesday_2pm_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                       $<t t-esc="widget['thursday_2pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['thursday_2pm_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                       $<t t-esc="widget['friday_2pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['friday_2pm_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                       $<t t-esc="widget['saturday_2pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['saturday_2pm_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                       $<t t-esc="widget['sunday_2pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['sunday_2pm_sale_transactions']"/>
+                                                   </td>
+                                            </tr>
+
+                                                <tr>
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 10%;">
+                                                       <span>3 PM</span>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                       $<t t-esc="widget['monday_3pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['monday_3pm_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                       $<t t-esc="widget['tuesday_3pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['tuesday_3pm_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                       $<t t-esc="widget['wednesday_3pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['wednesday_3pm_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                       $<t t-esc="widget['thursday_3pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['thursday_3pm_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                       $<t t-esc="widget['friday_3pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['friday_3pm_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                       $<t t-esc="widget['saturday_3pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['saturday_3pm_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                       $<t t-esc="widget['sunday_3pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['sunday_3pm_sale_transactions']"/>
+                                                   </td>
+                                            </tr>
+                                                <tr>
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 10%;">
+                                                       <span>4 PM</span>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                       $<t t-esc="widget['monday_4pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['monday_4pm_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                       $<t t-esc="widget['tuesday_4pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['tuesday_4pm_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                       $<t t-esc="widget['wednesday_4pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['wednesday_4pm_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                       $<t t-esc="widget['thursday_4pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['thursday_4pm_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                       $<t t-esc="widget['friday_4pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['friday_4pm_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                       $<t t-esc="widget['saturday_4pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['saturday_4pm_sale_transactions']"/>
+                                                   </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                       $<t t-esc="widget['sunday_4pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['sunday_4pm_sale_transactions']"/>
+                                                   </td>
+                                            </tr>
+                                                <tr>
+                                               <td style="border: 1px solid black;border-collapse: collapse;width: 10%;">
+                                                   <span>5 PM</span>
+                                               </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                   $<t t-esc="widget['monday_5pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['monday_5pm_sale_transactions']"/>
+                                               </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                   $<t t-esc="widget['tuesday_5pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['tuesday_5pm_sale_transactions']"/>
+                                               </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                   $<t t-esc="widget['wednesday_5pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['wednesday_5pm_sale_transactions']"/>
+                                               </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                   $<t t-esc="widget['thursday_5pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['thursday_5pm_sale_transactions']"/>
+                                               </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                   $<t t-esc="widget['friday_5pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['friday_5pm_sale_transactions']"/>
+                                               </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                   $<t t-esc="widget['saturday_5pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['saturday_5pm_sale_transactions']"/>
+                                               </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                   $<t t-esc="widget['sunday_5pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['sunday_5pm_sale_transactions']"/>
+                                               </td>
+                                        </tr>
+
+                                        <tr>
+                                           <td style="border: 1px solid black;border-collapse: collapse;width: 10%;">
+                                               <span>6 PM</span>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['monday_6pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['monday_6pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['tuesday_6pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['tuesday_6pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['wednesday_6pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['wednesday_6pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['thursday_6pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['thursday_6pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['friday_6pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['friday_6pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['saturday_6pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['saturday_6pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['sunday_6pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                            <t t-esc="widget['sunday_6pm_sale_transactions']"/>
+                                           </td>
+                                    </tr>
+
+                                    <tr>
+                                           <td style="border: 1px solid black;border-collapse: collapse;width: 10%;">
+                                               <span>7 PM</span>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['monday_7pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['monday_7pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['tuesday_7pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['tuesday_7pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['wednesday_7pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['wednesday_7pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['thursday_7pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['thursday_7pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['friday_7pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['friday_7pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['saturday_7pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['saturday_7pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['sunday_7pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['sunday_7pm_sale_transactions']"/>
+                                           </td>
+                                    </tr>
+
+                                    <tr>
+                                           <td style="border: 1px solid black;border-collapse: collapse;width: 10%;">
+                                               <span>8 PM</span>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['monday_8pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['monday_8pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['tuesday_8pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['tuesday_8pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['wednesday_8pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['wednesday_8pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['thursday_8pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['thursday_8pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['friday_8pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['friday_8pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['saturday_8pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['saturday_8pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['sunday_8pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['sunday_8pm_sale_transactions']"/>
+                                           </td>
+                                    </tr>
+
+                                    <tr>
+                                           <td style="border: 1px solid black;border-collapse: collapse;width: 10%;">
+                                               <span>9 PM</span>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['monday_9pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['monday_9pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['tuesday_9pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['tuesday_9pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['wednesday_9pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['wednesday_9pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['thursday_9pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['thursday_9pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['friday_9pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['friday_9pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['saturday_9pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['saturday_9pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['sunday_9pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['sunday_9pm_sale_transactions']"/>
+                                           </td>
+                                    </tr>
+
+                                    <tr>
+                                           <td style="border: 1px solid black;border-collapse: collapse;width: 10%;">
+                                               <span>10 PM</span>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['monday_10pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['monday_10pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['tuesday_10pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['tuesday_10pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['wednesday_10pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['wednesday_10pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['thursday_10pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['thursday_10pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['friday_10pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['friday_10pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['saturday_10pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['saturday_10pm_sale_transactions']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['sunday_10pm_total']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['sunday_10pm_sale_transactions']"/>
+                                           </td>
+                                    </tr>
+
+                                    <tr>
+                                           <td style="font-weight:bold;border: 1px solid black;font-size: 12px;border-collapse: collapse;width: 10%;">
+                                               <span>Net sales</span>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['net_sales_monday']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['net_sales_monday_count']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['net_sales_tuesday']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['net_sales_tuesday_count']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['net_sales_wednesday']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['net_sales_wednesday_count']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['net_sales_thursday']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['net_sales_thursday_count']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['net_sales_friday']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"><t t-esc="widget['net_sales_friday_count']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['net_sales_saturday']"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['net_sales_saturday_count']"/>
+                                           </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                               $<t t-esc="widget['net_sales_sunday']"/> </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;"> <t
+                                                            t-esc="widget['net_sales_sunday_count']"/>
+                                           </td>
+                                    </tr>
+
+                                            </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-12" id="col-graph">
+                        <div class="card" style="background:#5b8cee6e;">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <b>
+                                        <h3 class="custom-h3">Store Sales - Graph</h3>
+                                    </b>
+                                </div>
+                                <div class="card-tools">
+
+                                </div>
+                            </div>
+                            <div class="card-body" id="">
+                                <div class="row">
+                                    <div class="col-md-12 mt-3">
+                                          <div class="container">
+
+                                                <script>
+                                                var xValues = [1,2,3,4,5,6,7];
+
+                                                new Chart("barChartStore", {
+                                                  type: "line",
+                                                  data: {
+                                                    labels: xValues,
+                                                    datasets: [{
+                                                      data: <t t-if="widget['this_week_order_data_graph']">
+                                                                  [<t t-esc="widget['this_week_order_data_graph']"/>]
+
+                                                            </t>
+                                                            <t t-else="">
+                                                                []
+                                                            </t> ,
+
+                                                    borderColor: "red",
+                                                    fill: false,
+                                                    label: '# This Week Sales',
+                                                    }, {
+                                                    data:
+                                                    <t t-if="widget['last_week_order_data_graph']">
+                                                                  [<t t-esc="widget['last_week_order_data_graph']"/>]
+                                                            </t>
+                                                    <t t-else="">
+                                                        []
+                                                    </t>,
+
+                                                    borderColor: "green",
+                                                    fill: false,
+                                                    label: '# Last Week Sales',
+                                                    }]
+                                                    },
+                                                    options: {
+                                                    responsive: true,
+                                                    maintainAspectRatio: false,
+                                                    legend: {display: true, fill: true},
+                                                    scales: {
+                                                    yAxes: [{
+                                                    scaleLabel: {
+                                                    display: true,
+                                                    labelString: 'Net Sales'
+                                                    }
+                                                    }],
+                                                    xAxes: [{
+                                                    scaleLabel: {
+                                                    display: true,
+                                                    labelString: 'Days'
+                                                    }
+                                                    }]
+                                                    }
+                                                    }
+                                                    });
+                                                </script>
+
+                                              <canvas id="barChartStore" style="" width="500" height="500"></canvas>
+                                              <!--                                              <canvas id="barChartStore" style="max-height: 320px;overflow: auto;" width="250" height="294"></canvas>-->
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+<!--           <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12" style="margin-top:10px;">-->
+<!--                <div class="row" style="margin:0px;">-->
+<!--                    <div class="col-md-12" id="col-graph">-->
+<!--                        <div class="card" style="background:#5b8cee6e;">-->
+<!--                            <div class="card-header">-->
+<!--                                <div class="card-title">-->
+<!--                                    <b>-->
+<!--                                        <h3 class="custom-h3">Store Sales - Graph</h3>-->
+<!--                                    </b>-->
+<!--                                </div>-->
+<!--                                <div class="card-tools">-->
+
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="card-body" id="">-->
+<!--                                <div class="row">-->
+<!--                                    <div class="col-md-12 mt-3">-->
+<!--                                          <div class="container">-->
+
+<!--                                                <script>-->
+<!--                                                var xValues = [1,2,3,4,5,6,7];-->
+
+<!--                                                new Chart("barChartStore", {-->
+<!--                                                  type: "line",-->
+<!--                                                  data: {-->
+<!--                                                    labels: xValues,-->
+<!--                                                    datasets: [{-->
+<!--                                                      data: <t t-if="widget['this_week_order_data_graph']">-->
+<!--                                                                  [<t t-esc="widget['this_week_order_data_graph']"/>]-->
+<!--                                                            </t>-->
+<!--                                                            <t t-else="">-->
+<!--                                                                []-->
+<!--                                                            </t>-->
+<!--                                                    ,-->
+<!--                                                    borderColor: "red",-->
+<!--                                                    fill: false,-->
+<!--                                                    label: '# This Week Sales',-->
+<!--                                                    }, {-->
+<!--                                                    data: <t t-if="widget['last_week_order_data_graph']">-->
+<!--                                                                  [<t t-esc="widget['last_week_order_data_graph']"/>]-->
+<!--                                                            </t>-->
+<!--                                                        <t t-else="">-->
+<!--                                                            []-->
+<!--                                                        </t>-->
+
+<!--                                                    ,-->
+<!--                                                    borderColor: "green",-->
+<!--                                                    fill: false,-->
+<!--                                                    label: '# Last Week Sales',-->
+<!--                                                    }]-->
+<!--                                                    },-->
+<!--                                                    options: {-->
+<!--                                                    responsive: true,-->
+<!--                                                    maintainAspectRatio: false,-->
+<!--                                                    legend: {display: true, fill: true},-->
+<!--                                                    scales: {-->
+<!--                                                    yAxes: [{-->
+<!--                                                    scaleLabel: {-->
+<!--                                                    display: true,-->
+<!--                                                    labelString: 'Net Sales'-->
+<!--                                                    }-->
+<!--                                                    }],-->
+<!--                                                    xAxes: [{-->
+<!--                                                    scaleLabel: {-->
+<!--                                                    display: true,-->
+<!--                                                    labelString: 'Days'-->
+<!--                                                    }-->
+<!--                                                    }]-->
+<!--                                                    }-->
+<!--                                                    }-->
+<!--                                                    });-->
+<!--                                                </script>-->
+
+<!--                                              <canvas id="barChartStore" style="" width="500" height="500"></canvas>-->
+<!--                                              &lt;!&ndash;                                              <canvas id="barChartStore" style="max-height: 320px;overflow: auto;" width="250" height="294"></canvas>&ndash;&gt;-->
+<!--                                            </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+
+    </t>
+    <t t-name="OrderTypeReport">
+       <div class="order-type" style="margin-top:10px;">
+            <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+                <div class="row" style="margin:0px;">
+                    <div class="col-md-6" id="col-graph">
+                        <div class="card" style="background: #5b8cee6e;">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <b>
+                                        <h3 class="custom-h3">Aggregator Channel Mix</h3>
+                                    </b>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <t t-if="widget['start_date']">
+                                        <label style="padding-left:5px;">Start Date:</label>
+                                            <input type="date" t-att-value="widget['start_date']" id="select_date"
+                                                   name="select date" class="date_change_start_order_type"/>
+                                        </t>
+                                        <t t-else="">
+                                         <label style="padding-left:5px;">Start Date:</label>
+                                            <input type="date" id="select_date" name="select date"
+                                                   class="date_change_start_order_type"/>
+
+                                        </t>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <t t-if="widget['end_date']">
+                                            <label style="padding-left:5px;">End Date:</label>
+                                            <input type="date" t-att-value="widget['end_date']" id="select_date"
+                                                   name="select date" class="date_change_end_order_type"/>
+                                        </t>
+                                        <t t-else="">
+                                             <label style="padding-left:5px;">End Date:</label>
+                                            <input type="date" id="select_date" name="select date"
+                                                   class="date_change_end_order_type"/>
+                                        </t>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body mt-3">
+                                <div class="row">
+                                <table style="border: 1px solid black;width:90%;border-collapse: collapse;text-align: center;margin-left: 5%;height:250px;">
+                                <thead>
+                            <tr>
+
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"></th>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">
+                                    Transaction count
+                                </th>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">Net
+                                    sales
+                                </th>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">%</th>
+                            </tr>
+                        </thead>
+                                    <tbody>
+                            <tr>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <span>Uber</span>
+                                </td>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['uber']['count']"/>
+                                </td>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['uber']['amount']"/>
+                                </td>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['uber']['percentage']"/>
+                                </td>
+
+                            </tr>
+                                        <tr>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <span>Menulog</span>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['menulog']['count']"/>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['menulog']['amount']"/>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['menulog']['percentage']"/>
+                                </td>
+
+                            </tr>
+                                        <tr>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <span>Deliveroo</span>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['deliveroo']['count']"/>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['deliveroo']['amount']"/>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['deliveroo']['percentage']"/>
+                                </td>
+
+                            </tr>
+                                        <tr>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <span>DoorDash</span>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['door_dash']['count']"/>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['door_dash']['amount']"/>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['door_dash']['percentage']"/>
+                                </td>
+
+                            </tr>
+                                        <tr>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <span><b>Total</b></span>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['uber']['count']+widget['data']['menulog']['count']+widget['data']['deliveroo']['count']+widget['data']['door_dash']['count']"/>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['uber']['amount']+widget['data']['menulog']['amount']+widget['data']['deliveroo']['amount']+widget['data']['door_dash']['amount']"/>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                </td>
+
+
+                            </tr>
+                        </tbody>
+                                </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" id="col-graph">
+                        <div class="card" style="background:#5b8cee6e;">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <b>
+                                        <h3 class="custom-h3">Report Pie Graph</h3>
+                                    </b>
+                                </div>
+                                <div class="card-tools">
+
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body" id="">
+                                <div class="row">
+                                    <div class="col-md-12 mt-3">
+                                          <div class="container">
+
+                                              <script>
+                                                jQuery(document).ready(function() {
+                                                var chartDiv = $("#barChart");
+                                                var myChart = new Chart(chartDiv, {
+                                                type: 'pie',
+                                                data: {
+                                                labels: ["Uber", "Menulog", "Deliveroo", "DoorDash","Nothing Found"],
+                                                datasets: [
+                                                {
+
+                                                data: [<t t-if="widget['data']['uber']['percentage']"><t t-esc="widget['data']['uber']['percentage']"/></t>
+                                                  <t t-else="">0</t>,
+                                                  <t t-if="widget['data']['menulog']['percentage']"><t t-esc="widget['data']['menulog']['percentage']"/></t>
+                                                  <t t-else="">0</t>,
+                                                  <t t-if="widget['data']['deliveroo']['percentage']"> <t
+                                                          t-esc="widget['data']['deliveroo']['percentage']"/></t>
+                                                  <t t-else="">0</t>,
+                                                  <t t-if="widget['data']['door_dash']['percentage']"> <t
+                                                          t-esc="widget['data']['door_dash']['percentage']"/></t>
+                                                  <t t-else="">0</t>
+                                                  ,
+                                                  <t t-if="widget['data']['no_order']['percentage']"> <t
+                                                          t-esc="widget['data']['no_order']['percentage']"/></t>
+                                                  <t t-else="">0</t>],
+
+                                                  backgroundColor: [
+                                                  "#FF6384",
+                                                  "#4BC0C0",
+                                                  "#FFCE56",
+                                                  "#0000FF",
+                                                  "#000000",
+                                                  ]
+                                                  }]
+                                                  },
+                                                  options: {
+                                                  title: {
+                                                  display: true,
+                                                  text: 'Tender Type'
+                                                  },
+                                                  responsive: true,
+                                                  maintainAspectRatio: false,
+                                                  }
+                                                  });
+                                                  });
+                                                </script>
+
+                                              <canvas id="barChart" width="250" height="250"></canvas>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </t>
+    <t t-name="TopSoldProduct">
+       <div class="top-sold" style="margin-top:10px;">
+            <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+                <div class="row" style="margin:0px;">
+                    <div class="col-md-6" id="col-graph">
+                        <div class="card" style="background: #5b8cee6e;">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <b>
+                                        <h3 class="custom-h3">Top Selling Products</h3>
+                                    </b>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <t t-if="widget['start_date']">
+                                        <label style="padding-left:5px;">Start Date:</label>
+                                            <input type="date" t-att-value="widget['start_date']" id="select_date"
+                                                   name="select date" class="date_change_start_top_selling"/>
+                                        </t>
+                                        <t t-else="">
+                                         <label style="padding-left:5px;">Start Date:</label>
+                                            <input type="date" id="select_date" name="select date"
+                                                   class="date_change_start_top_selling"/>
+
+                                        </t>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <t t-if="widget['end_date']">
+                                            <label style="padding-left:5px;">End Date:</label>
+                                            <input type="date" t-att-value="widget['end_date']" id="select_date"
+                                                   name="select date" class="date_change_end_top_selling"/>
+                                        </t>
+                                        <t t-else="">
+                                             <label style="padding-left:5px;">End Date:</label>
+                                            <input type="date" id="select_date" name="select date"
+                                                   class="date_change_end_top_selling"/>
+                                        </t>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body mt-3">
+                                <div class="row">
+                                    <table style="border: 1px solid black;width:90%;border-collapse: collapse;text-align: center;margin-left: 5%;height:250px;">
+                                        <thead>
+                                            <tr>
+
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">
+                                                    Sales
+                                                </th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">
+                                                    COGS
+                                                </th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">Product Name</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">%</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-if="widget['data']">
+                                                <t t-set="total" t-value="0"/>
+                                                <t t-foreach="widget['data']" t-as="pros">
+                                                    <tr>
+                                                        <td style="padding-top: 10px;padding-bottom: 10px;border: 1px solid black;border-collapse: collapse;">
+                                                            QTY: <t t-esc="pros[1]['product_uom_qty']"/>
+                                                            <br/>
+                                                            $
+                                                            <t t-esc="pros[1]['amount']"/>
+                                                        </td>
+                                                        <td style="border: 1px solid black;border-collapse: collapse;">
+                                                            <t t-esc="pros[1]['cogs']"/>
+                                                        </td>
+                                                        <td style="border: 1px solid black;border-collapse: collapse;">
+                                                            <t t-esc="pros[1]['name']"/>
+                                                        </td>
+                                                        <td style="border: 1px solid black;border-collapse: collapse;">
+                                                            <t t-esc="pros[1]['percentage']"/>
+                                                        </td>
+
+                                                    </tr>
+                                                    <t t-set="total" t-value="pros[1]['amount'] + total"/>
+                                                </t>
+                                            </t>
+                                            <tr>
+                                                <t t-if="total">
+                                                    <td style="padding-top: 10px;padding-bottom: 10px;border: 1px solid black;border-collapse: collapse;">
+                                                        <span><b>Total</b></span>
+                                                        : $
+                                                        <t t-esc="Math.round(total*100)/100"/>
+                                                    </td>
+                                                </t>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" id="col-graph">
+                        <div class="card" style="background:#5b8cee6e;">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <b>
+                                        <h3 class="custom-h3">Top Selling Products - Pie Chart</h3>
+                                    </b>
+                                </div>
+                                <div class="card-tools">
+
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body" id="">
+                                <div class="row">
+                                    <div class="col-md-12 mt-3">
+                                          <div class="container">
+
+                                              <script>
+                                                jQuery(document).ready(function() {
+
+                                                var chartDiv = $("#barChartTopSelling");
+                                                var myChart = new Chart(chartDiv, {
+                                                type: 'pie',
+                                                data: {
+                                                labels: [
+                                                  <t t-if="widget['data']">
+                                                      <t t-foreach="widget['data']" t-as="pros">
+                                                          "<t t-esc="pros[1]['name']"/>",
+                                                      </t>
+                                                  </t>
+                                                  <t t-else="">
+                                                      "Nothing Found"
+                                                  </t>
+                                                  ],
+                                                  datasets: [
+                                                  {
+
+                                                  data: [
+                                                  <t t-if="widget['data']">
+                                                      <t t-foreach="widget['data']" t-as="pros">
+                                                          "<t t-esc="pros[1]['percentage']"/>",
+                                                      </t>
+                                                  </t>
+                                                  <t t-else="">
+                                                      "100"
+                                                  </t>
+                                                  ],
+
+                                                  backgroundColor: [
+                                                  "#CC2012",
+                                                  "#CFBC48",
+                                                  "#ACFC86",
+                                                  "#824000",
+                                                  "#906BE7",
+                                                  "#054074",
+                                                  "#B4069F",
+                                                  "#22E692",
+                                                  "#839942",
+                                                  "#0B636D",
+                                                  ]
+                                                  }]
+                                                  },
+                                                  options: {
+                                                  title: {
+                                                  display: true,
+                                                  text: 'Products'
+                                                  },
+                                                  responsive: true,
+                                                  maintainAspectRatio: false,
+                                                  }
+                                                  });
+                                                  });
+                                                </script>
+
+                                              <canvas id="barChartTopSelling" style="height: 564px;" width="250" height="560"></canvas>
+                                            </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </t>
+    <t t-name="TopSoldProductChannel">
+       <div class="top-channel" style="margin-top:10px;">
+            <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+                <div class="row" style="margin:0px;">
+                    <div class="col-md-6" id="col-graph">
+                        <div class="card" style="background:#5b8cee6e;">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <b>
+                                        <h3 class="custom-h3">Channel Mix</h3>
+                                    </b>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <t t-if="widget['start_date']">
+                                        <label style="padding-left:5px;">Start Date:</label>
+                                            <input type="date" t-att-value="widget['start_date']" id="select_date"
+                                                   name="select date" class="date_change_start_top_selling_channel"/>
+                                        </t>
+                                        <t t-else="">
+                                         <label style="padding-left:5px;">Start Date:</label>
+                                            <input type="date" id="select_date" name="select date"
+                                                   class="date_change_start_top_selling_channel"/>
+
+                                        </t>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <t t-if="widget['end_date']">
+                                            <label style="padding-left:5px;">End Date:</label>
+                                            <input type="date" t-att-value="widget['end_date']" id="select_date"
+                                                   name="select date" class="date_change_end_top_selling_channel"/>
+                                        </t>
+                                        <t t-else="">
+                                             <label style="padding-left:5px;">End Date:</label>
+                                            <input type="date" id="select_date" name="select date"
+                                                   class="date_change_end_top_selling_channel"/>
+                                        </t>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body mt-3">
+                                <div class="row">
+                                <table style="border: 1px solid black;width:90%;border-collapse: collapse;text-align: center;margin-left: 5%;height:250px;">
+                                <thead>
+                            <tr>
+
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"></th>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">
+                                    Transaction count
+                                </th>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">Net
+                                    sales
+                                </th>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">%</th>
+                            </tr>
+                        </thead>
+                                    <tbody>
+                            <tr>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <span>Uber</span>
+                                </td>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['uber']['count']"/>
+                                </td>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['uber']['amount']"/>
+                                </td>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['uber']['percentage']"/>
+                                </td>
+
+                            </tr>
+                                        <tr>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <span>Menulog</span>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['menulog']['count']"/>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['menulog']['amount']"/>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['menulog']['percentage']"/>
+                                </td>
+
+                            </tr>
+                                        <tr>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <span>Deliveroo</span>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['deliveroo']['count']"/>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['deliveroo']['amount']"/>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['deliveroo']['percentage']"/>
+                                </td>
+
+                            </tr>
+                                        <tr>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <span>DoorDash</span>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['door_dash']['count']"/>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['door_dash']['amount']"/>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['door_dash']['percentage']"/>
+                                </td>
+
+                            </tr>
+                                        <tr>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <span>DineIn</span>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['dine_in']['count']"/>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['dine_in']['amount']"/>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['dine_in']['percentage']"/>
+                                </td>
+
+                            </tr>
+                                        <tr>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <span>Takeaway</span>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['takeaway']['count']"/>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['takeaway']['amount']"/>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['takeaway']['percentage']"/>
+                                </td>
+
+                            </tr>
+                                        <tr>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <span><b>Total</b></span>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="widget['data']['uber']['count']+widget['data']['menulog']['count']+widget['data']['deliveroo']['count']+widget['data']['door_dash']['count']+widget['data']['dine_in']['count']+widget['data']['takeaway']['count']"/>
+                                </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                            <t t-esc="widget['data']['uber']['amount']+widget['data']['menulog']['amount']+widget['data']['deliveroo']['amount']+widget['data']['door_dash']['amount']+widget['data']['dine_in']['amount']+widget['data']['takeaway']['amount']"/>
+                                            </td>
+                                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                </td>
+
+
+                            </tr>
+                        </tbody>
+                                </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" id="col-graph">
+                        <div class="card" style="background:#5b8cee6e;">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <b>
+                                        <h3 class="custom-h3">Channel Mix</h3>
+                                    </b>
+                                </div>
+                                <div class="card-tools">
+
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body" id="graphview">
+                                <div class="row">
+                                    <div class="col-md-12 mt-3">
+                                          <div class="container">
+
+
+                                              <script>
+                                                jQuery(document).ready(function() {
+                                                var chartDiv = $("#barChartChannelMix");
+                                                var myChart = new Chart(chartDiv, {
+                                                type: 'pie',
+                                                data: {
+                                                labels: ["Uber", "Menulog", "Deliveroo", "DoorDash","DineIn","Takeaway","Nothing Found"],
+                                                datasets: [
+                                                {
+
+                                                data: [<t t-if="widget['data']['uber']['percentage']"><t t-esc="widget['data']['uber']['percentage']"/></t>
+                                                  <t t-else="">0</t>,
+                                                  <t t-if="widget['data']['menulog']['percentage']"><t t-esc="widget['data']['menulog']['percentage']"/></t>
+                                                  <t t-else="">0</t>,
+                                                  <t t-if="widget['data']['deliveroo']['percentage']"> <t
+                                                          t-esc="widget['data']['deliveroo']['percentage']"/></t>
+                                                  <t t-else="">0</t>,
+                                                  <t t-if="widget['data']['door_dash']['percentage']"> <t
+                                                          t-esc="widget['data']['door_dash']['percentage']"/></t>
+                                                  <t t-else="">0</t>
+                                                  ,
+                                                  <t t-if="widget['data']['dine_in']['percentage']"> <t
+                                                          t-esc="widget['data']['dine_in']['percentage']"/></t>
+                                                  <t t-else="">0</t>,
+                                                  <t t-if="widget['data']['takeaway']['percentage']"> <t
+                                                          t-esc="widget['data']['takeaway']['percentage']"/></t>
+                                                  <t t-else="">0</t>,
+                                                  <t t-if="widget['data']['no_order']['percentage']"> <t
+                                                          t-esc="widget['data']['no_order']['percentage']"/></t>
+                                                  <t t-else="">0</t>],
+
+                                                  backgroundColor: [
+                                                  "#FF6384",
+                                                  "#4BC0C0",
+                                                  "#FFCE56",
+                                                  "#0000FF",
+                                                  "#839942",
+                                                  "#0B636D",
+                                                  "#000000",
+                                                  ]
+                                                  }]
+                                                  },
+                                                  options: {
+                                                  title: {
+                                                  display: true,
+                                                  text: 'Channels'
+                                                  },
+                                                  responsive: true,
+                                                  maintainAspectRatio: false,
+                                                  }
+                                                  });
+                                                  });
+                                                </script>
+
+                                              <canvas id="barChartChannelMix" width="250" height="250"></canvas>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </t>
+
+
+    <t t-name="PairedProducts">
+       <div  style="margin-top:10px;">
+            <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+                <div class="row" style="margin:0px;">
+                    <div class="col-md-12 top-paired" id="col-graph">
+                        <div class="card" style="background: #5b8cee6e;">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <b>
+                                        <h3 class="custom-h3">Paired Products</h3>
+                                    </b>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <t t-if="widget['start_date']">
+                                        <label style="padding-left:5px;">Start Date:</label>
+                                            <input type="date" t-att-value="widget['start_date']" id="select_date"
+                                                   name="select date" class="date_change_start_top_paired"/>
+                                        </t>
+                                        <t t-else="">
+                                         <label style="padding-left:5px;">Start Date:</label>
+                                            <input type="date" id="select_date" name="select date"
+                                                   class="date_change_start_top_paired"/>
+
+                                        </t>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <t t-if="widget['end_date']">
+                                            <label style="padding-left:5px;">End Date:</label>
+                                            <input type="date" t-att-value="widget['end_date']" id="select_date"
+                                                   name="select date" class="date_change_end_top_paired"/>
+                                        </t>
+                                        <t t-else="">
+                                             <label style="padding-left:5px;">End Date:</label>
+                                            <input type="date" id="select_date" name="select date"
+                                                   class="date_change_end_top_paired"/>
+                                        </t>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body mt-3">
+                                <div class="row">
+                                    <table style="border: 1px solid black;width:90%;border-collapse: collapse;text-align: center;margin-left: 5%;height:250px;">
+                                        <thead>
+                                            <tr>
+
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">
+                                                    QTY
+                                                </th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">
+                                                    Pairing
+                                                </th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">%</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                                <t t-foreach="widget['data']" t-as="pros">
+                                                    <tr>
+
+                                                        <td style="border: 1px solid black;border-collapse: collapse;">
+
+                                                            <t  t-esc="pros[1]['qty']"/>
+                                                        </td>
+                                                        <td style="border: 1px solid black;border-collapse: collapse;">
+                                                             <t  t-esc="pros[0]"/>
+                                                        </td>
+                                                        <td style="border: 1px solid black;border-collapse: collapse;">
+                                                            <t t-esc="Math.round((pros[1]['qty']/widget['total_qty'])*100)"/>
+                                                        </td>
+
+                                                    </tr>
+
+                                                </t>
+                                            <tr>
+
+                                                    </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </t>
+
+
+    <t t-name="OptionalProducts">
+       <div  style="margin-top:10px;">
+            <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+                <div class="row " style="margin:0px;">
+                    <div class="col-md-12 optional-products" id="col-graph">
+                        <div class="card" style="background: #5b8cee6e;">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <b>
+                                        <h3 class="custom-h3">Optional Products</h3>
+                                    </b>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <t t-if="widget['start_date']">
+                                        <label style="padding-left:5px;">Start Date:</label>
+                                            <input type="date" t-att-value="widget['start_date']" id="select_date"
+                                                   name="select date" class="date_change_start_optional"/>
+                                        </t>
+                                        <t t-else="">
+                                         <label style="padding-left:5px;">Start Date:</label>
+                                            <input type="date" id="select_date" name="select date"
+                                                   class="date_change_start_optional"/>
+
+                                        </t>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <t t-if="widget['end_date']">
+                                            <label style="padding-left:5px;">End Date:</label>
+                                            <input type="date" t-att-value="widget['end_date']" id="select_date"
+                                                   name="select date" class="date_change_end_top_optional"/>
+                                        </t>
+                                        <t t-else="">
+                                             <label style="padding-left:5px;">End Date:</label>
+                                            <input type="date" id="select_date" name="select date"
+                                                   class="date_change_end_top_optional"/>
+                                        </t>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body mt-3">
+                                <div class="row">
+                                    <table style="border: 1px solid black;width:90%;border-collapse: collapse;text-align: center;margin-left: 5%;height:250px;">
+                                        <thead>
+                                            <tr>
+
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">
+                                                    Optional Product
+                                                </th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">
+                                                    Total times added
+
+                                                </th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">Top product added to</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        <t t-foreach="widget['data']" t-as="pros">
+                                            <tr>
+
+                                                <td style="border: 1px solid black;border-collapse: collapse;">
+
+                                                    <t  t-esc="widget['data'][pros]['product_name']"/>
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                                     <t  t-esc="widget['data'][pros]['quantity']"/>
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                                    <t t-esc="widget['data'][pros]['parent']"/>
+                                                </td>
+
+                                            </tr>
+
+                                        </t>
+                                            <tr>
+
+                                                    </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </t>
+
+    <t t-name="ServiceSpeed">
+       <div class="service_speed" style="margin-top:10px;">
+            <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+                <div class="row" style="margin:0px;">
+                    <div class="col-md-6" id="col-graph">
+                        <div class="card" style="background: #5b8cee6e;">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <b>
+                                        <h3 class="custom-h3">Service Speed</h3>
+                                    </b>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <t t-if="widget['start_date']">
+                                        <label style="padding-left:5px;">Start Date:</label>
+                                            <input type="date" t-att-value="widget['start_date']" id="select_date"
+                                                   name="select date" class="date_change_start_service_speed"/>
+                                        </t>
+                                        <t t-else="">
+                                         <label style="padding-left:5px;">Start Date:</label>
+                                            <input type="date" id="select_date1" name="select date"
+                                                   class="date_change_start_service_speed"/>
+                                            <script type="text/javascript">
+                                                var d = new Date();
+                                                var datestring = d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" +
+                                                ("0" + d.getDate()).slice(-2);
+                                                document.getElementById('select_date1').value = datestring;
+                                        </script>
+
+                                        </t>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <t t-if="widget['end_date']">
+                                            <label style="padding-left:5px;">End Date:</label>
+                                            <input type="date" t-att-value="widget['end_date']" id="select_date"
+                                                   name="select date" class="date_change_end_service_speed"/>
+                                        </t>
+                                        <t t-else="">
+                                             <label style="padding-left:5px;">End Date:</label>
+                                            <input type="date" id="select_date2" name="select date"
+                                                   class="date_change_end_service_speed"/>
+                                            <script type="text/javascript">
+                                                var d = new Date();
+                                                var datestring = d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" +
+                                                ("0" + d.getDate()).slice(-2);
+                                                document.getElementById('select_date2').value = datestring;
+                                        </script>
+                                        </t>
+
+                                    </div>
+                                    <div class="col-md-3">
+                                        <t t-if="widget['time_interval']">
+                                            <label style="padding-left:5px;">Time Interval (Min):</label>
+                                            <input type="number" t-att-value="widget['time_interval']" id="time_interval"
+                                                   name="time interval" min="1" max="60" value="0" class="time_interval_change_service_speed"/>
+
+                                        </t>
+                                        <t t-else="">
+                                             <label style="padding-left:5px;">Time Interval (Min):</label>
+                                            <input type="number" id="time_interval" name="time interval"  min="1" max="60" value="60"
+                                                   class="time_interval_change_service_speed"/>
+                                        </t>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body mt-3">
+                                <div class="row">
+                                    <t t-if="widget['intervals']">
+                                        <table style="border: 1px solid black;width:90%;border-collapse: collapse;text-align: center;margin-left: 5%;height:250px;">
+                                            <thead>
+                                                <tr>
+                                                    <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">Interval</th>
+                                                    <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">
+                                                        Sales
+                                                    </th>
+                                                    <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;word-break: break-all;">Net
+                                                        Customer Count
+                                                    </th>
+                                                    <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;word-break: break-all;">
+                                                        Average POS Speed
+                                                    </th>
+                                                    <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;word-break: break-all;">
+                                                        Cook Count
+                                                    </th>
+                                                    <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;word-break: break-all;">
+                                                        Cook Late(total late cook time)
+                                                    </th>
+                                                    <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;word-break: break-all;">
+                                                        Average Cook Time
+                                                    </th>
+                                                    <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;word-break: break-all;">
+                                                        Front Pass Complete
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <t t-foreach="widget['intervals']" t-as="interval">
+                                                    <tr>
+                                                        <style>
+                                                             .shekServicespeedTD{border: 1px solid black;border-collapse: collapse;}
+                                                        </style>
+                                                        <td class="shekServicespeedTD"><t t-esc="interval"/></td>
+                                                        <td class="shekServicespeedTD"><t t-esc="widget['data'][interval]['sales']"/></td>
+                                                        <td class="shekServicespeedTD"><t t-esc="widget['data'][interval]['customers']"/></td>
+                                                        <td class="shekServicespeedTD"><t t-esc="widget['data'][interval]['speed']"/></td>
+                                                        <td class="shekServicespeedTD"><t t-esc="widget['data'][interval]['count']"/></td>
+                                                        <td class="shekServicespeedTD"><t t-esc="widget['data'][interval]['late']"/></td>
+                                                        <td class="shekServicespeedTD"><t t-esc="widget['data'][interval]['time']"/></td>
+                                                        <td class="shekServicespeedTD"><t t-esc="widget['data'][interval]['pass']"/></td>
+                                                    </tr>
+                                                </t>
+                                            </tbody>
+                                        </table>
+                                    </t>
+                                    <t t-else="">
+                                        <div class="container">
+                                            <h4>No Orders Found. Please change start date/end date/interval.</h4>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" id="col-graph">
+                        <div class="card" style="background:#5b8cee6e; height: 100%;">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <b>
+                                        <h3 class="custom-h3">Service Speed</h3>
+                                    </b>
+                                </div>
+                                <div class="card-tools">
+
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body" id="graphview">
+                                <div class="row">
+                                    <div class="col-md-12 mt-3">
+                                          <div class="container">
+                                             <script>
+                                                jQuery(document).ready(function() {
+
+                                                var chartDiv = $("#barChartServiceSpeed");
+                                                var myChart = new Chart(chartDiv, {
+                                                type: 'pie',
+                                                data: {
+                                                labels: [
+                                                  <t t-if="widget['intervals']">
+                                                      <t t-foreach="widget['intervals']" t-as="pros">
+                                                          "<t t-esc="pros"/>",
+                                                      </t>
+                                                  </t>
+                                                 <t t-else="">
+                                                      "Nothing Found"
+                                                  </t>
+                                                 ],
+                                                 datasets: [
+                                                 {
+
+                                                 data: [
+                                                 <t t-if="widget['intervals']">
+                                                      <t t-foreach="widget['intervals']" t-as="interval">
+                                                          "<t t-esc="widget['data'][interval]['count']"/>",
+                                                      </t>
+                                                  </t>
+                                                 <t t-else="">
+                                                      "100"
+                                                  </t>
+                                                 ],
+
+                                                 backgroundColor: [
+                                                 <t t-if="widget['colours']">
+                                                     <t t-foreach="widget['colours']" t-as="colour">
+                                                         "<t t-esc="colour"/>",
+                                                     </t>
+                                                 </t>
+                                                 ]
+                                                 }]
+                                                 },
+                                                 options: {
+                                                 title: {
+                                                 display: true,
+                                                 text: 'Interval / Cook Count'
+                                                 },
+                                                 responsive: true,
+                                                 maintainAspectRatio: false,
+                                                 }
+                                                 });
+                                                 });
+                                                </script>
+
+                                              <canvas id="barChartServiceSpeed" width="250" height="1000"></canvas>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </t>
+
+
+
+
+
+
+</templates>

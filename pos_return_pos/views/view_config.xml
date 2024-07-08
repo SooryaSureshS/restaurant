@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_config_view_form_inherit_pos_returnx" model="ir.ui.view">
+        <field name="name">pos.config.form.inherit.pos.returns</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+             <h2 name="order" position="before">
+                 <h2 name="Return">Order Return</h2>
+                 <div class="row mt16 o_settings_container" id="Return_orders_screen">
+                     <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="return_order"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="return_order" string="Return Orders"/>
+                                <div class="text-muted mb16">
+                                    Allow to return Pos Orders / Sale orders using Strip Payment Gateway
+                                </div>
+                                <div class="content-group pos_iot_config" attrs="{'invisible' : [('return_order', '=', False)]}">
+                                    <div class="row">
+                                        <label string="Pos Refund Policy Days" for="pos_order_days" class="col-lg-4 o_light_label"/>
+                                        <field name="pos_order_days"/>
+                                    </div>
+                                     <div class="row">
+                                        <label string="Sale Refund Policy Days" for="sale_order_days" class="col-lg-4 o_light_label"/>
+                                        <field name="sale_order_days"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                 </div>
+             </h2>
+        </field>
+    </record>
+</odoo>

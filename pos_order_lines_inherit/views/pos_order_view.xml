@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="pos_order_line_edit" model="ir.ui.view">
+        <field name="name">pos.order.line.edit</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='lines']" position='before'>
+                <field name="edit_line" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='lines']" position='attributes'>
+                <attribute name="attrs">{'readonly': [('edit_line','=',False)]}</attribute>
+            </xpath>
+        </field>
+    </record>
+    </data>
+</odoo>
+

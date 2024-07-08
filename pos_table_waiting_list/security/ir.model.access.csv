@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_table_waiting_line,pos_table_waiting_list.table_waiting_line,model_table_waiting_line,base.group_user,1,1,1,1

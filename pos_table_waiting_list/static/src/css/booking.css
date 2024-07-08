@@ -1,0 +1,466 @@
+#booking_table{
+       min-height: 500px;
+       margin-top: 7%;
+           margin-bottom: 7%;
+
+}
+@font-face{
+    font-family: 'BrandonText';
+    src: url(../src/css/BrandonText-Bold.otf);
+}
+#booking_table .reservation_table_title{
+           font-family: system-ui;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+#booking_table .reservation_container{
+        width: 500px;
+    margin: auto;
+}
+#booking_table .reservation_container .nice-select{
+    width: 125px;
+}
+
+
+#modify_booking_table .reservation_table_title{
+           font-family: system-ui;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+#modify_booking_table .reservation_container{
+        width: 500px;
+    margin: auto;
+}
+#modify_booking_table .reservation_container .nice-select{
+    width: 125px;
+}
+
+#booking_table .reservation_container .find_table{
+    width: 125px;
+    height: 40px;
+    position: relative;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 0px;
+    text-decoration: none;
+    text-align: center;
+    outline: none;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: rgb(218, 55, 67);
+    color: rgb(255, 255, 255);
+    padding: 0.7rem 1rem;
+    margin: 0px;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 300ms ease-out 0s;
+    font-family: system-ui;
+}
+
+#modify_booking_table .reservation_container .change_table{
+    width: 125px;
+    height: 40px;
+    position: relative;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 0px;
+    text-decoration: none;
+    text-align: center;
+    outline: none;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: rgb(218, 55, 67);
+    color: rgb(255, 255, 255);
+    padding: 0.7rem 1rem;
+    margin: 0px;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 300ms ease-out 0s;
+    font-family: system-ui;
+}
+#booking_table .reservation_container #select_time{
+        width: 125px;
+    height: 42px;
+    border: 1px solid #e8e8e8;
+    background: white;
+}
+#booking_table .reservation_container .container_model{
+    border-radius: 5px;
+    background-color: white;
+    width: 600px;
+    margin: auto;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+#booking_table .reservation_container .container_form{
+    width: 500px;
+    margin: auto;
+}
+#booking_table .reservation_container .headding_find_table{
+    font-family: system-ui;
+    font-size: 15px;
+    font-weight: 900;
+}
+
+
+#modify_booking_table .reservation_container #select_time{
+        width: 125px;
+    height: 42px;
+    border: 1px solid #e8e8e8;
+    background: white;
+}
+#modify_booking_table .reservation_container .container_model{
+    border-radius: 5px;
+    background-color: white;
+    width: 600px;
+    margin: auto;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+#modify_booking_table .reservation_container .container_form{
+    width: 500px;
+    margin: auto;
+}
+#modify_booking_table .reservation_container .headding_find_table{
+    font-family: system-ui;
+    font-size: 15px;
+    font-weight: 900;
+}
+
+#booking_table .reservation_container .border-bottom_hr{
+          border-bottom: 1px solid #c6c3c3;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#modify_booking_table .reservation_container .border-bottom_hr{
+          border-bottom: 1px solid #c6c3c3;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.btn_table {
+     background-color: #c6083d;
+    border: none;
+    color: white;
+    padding: 6px 19px;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: system-ui;
+    font-weight: 900;
+    border-radius: 8px;
+}
+
+#booking_table .floor_container{
+            background-color: white;
+    width: 500px;
+    padding-bottom: 7%;
+        margin: auto;
+}
+
+#modify_booking_table .floor_container{
+            background-color: white;
+    width: 500px;
+    padding-bottom: 7%;
+        margin: auto;
+}
+
+#booking_table .floor_back{
+        margin-left: 25px;
+    margin-top: 34px;
+    font-family: system-ui;
+    font-size: 14px;
+    color: #c00000;
+
+}
+
+#modify_booking_table .floor_back{
+        margin-left: 25px;
+    margin-top: 34px;
+    font-family: system-ui;
+    font-size: 14px;
+    color: #c00000;
+
+}
+
+#booking_table .floor_title{
+    text-align: center;
+    font-family: system-ui;
+    font-size: 20px;
+    margin-top: 10px;
+
+}
+
+#modify_booking_table .floor_title{
+    text-align: center;
+    font-family: system-ui;
+    font-size: 20px;
+    margin-top: 10px;
+
+}
+#booking_table .floor_description{
+        text-align: center;
+    margin-top: 10px;
+    font-family: system-ui;
+}
+
+#modify_booking_table .floor_description{
+        text-align: center;
+    margin-top: 10px;
+    font-family: system-ui;
+}
+
+#booking_table .border-bottom_hr{
+        border-bottom: 1px solid #e3dede;
+    width: 80%;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+#modify_booking_table .border-bottom_hr{
+        border-bottom: 1px solid #e3dede;
+    width: 80%;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+#booking_table .floor_details_title{
+        float: left;
+    text-align: center;
+    font-family: system-ui;
+}
+
+#modify_booking_table .floor_details_title{
+        float: left;
+    text-align: center;
+    font-family: system-ui;
+}
+#booking_table .floor_button{
+          background-color: #c80404;
+    color: white;
+    width: 150px;
+    padding: 6px;
+    border: unset;
+    border-radius: 4px;
+    font-family: system-ui;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#modify_booking_table .change_floor_button{
+          background-color: #c80404;
+    color: white;
+    width: 150px;
+    padding: 6px;
+    border: unset;
+    border-radius: 4px;
+    font-family: system-ui;
+    font-size: 15px;
+    font-weight: 700;
+}
+#booking_table .floor_button_unavilable{
+         background-color: #bebebe;
+    color: #8d8d8d;
+    width: 150px;
+    padding: 6px;
+    border: unset;
+    border-radius: 4px;
+    font-family: system-ui;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#modify_booking_table .floor_button_unavilable{
+         background-color: #bebebe;
+    color: #8d8d8d;
+    width: 150px;
+    padding: 6px;
+    border: unset;
+    border-radius: 4px;
+    font-family: system-ui;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#booking_table .your_details_booking{
+        background-color: white;
+    width: 500px;
+    padding-bottom: 7%;
+    margin: auto;
+}
+
+#modify_booking_table .your_details_booking{
+        background-color: white;
+    width: 500px;
+    padding-bottom: 7%;
+    margin: auto;
+}
+
+#booking_table .your_details_title{
+        font-family: system-ui;
+    font-size: 16px;
+    padding-top: 28px;
+    padding-left: 20px;
+}
+
+#modify_booking_table .your_details_title{
+        font-family: system-ui;
+    font-size: 16px;
+    padding-top: 28px;
+    padding-left: 20px;
+}
+
+#booking_table .your_message_status{
+        background-color: #d9e9f8;
+    font-family: system-ui;
+    height: 23px;
+    padding-top: 4px;
+    margin-bottom: 20px;
+
+}
+
+modify_booking_table .your_message_status{
+        background-color: #d9e9f8;
+    font-family: system-ui;
+    height: 23px;
+    padding-top: 4px;
+    margin-bottom: 20px;
+
+}
+
+.input_ypu_details{
+        text-align: center;
+    width: 82%;
+    height: 39px;
+    border: 1px solid #dfdfdf;
+    border-radius: 4px;
+    margin-top: 15px;
+        font-family: system-ui;
+}
+.input_datas_details{
+    font-family: system-ui;
+    font-size: 12px;
+    margin-top: 14px;
+    }
+#booking_table .confirm_button{
+        margin-top: 20px;
+    width: 100%;
+    border: unset;
+    font-family: system-ui;
+    height: 48px;
+    background-color: rgb(218, 55, 67);
+    color: rgb(255, 255, 255);
+    border-radius: 3px;
+}
+
+#modify_booking_table ._confirm_button_modify{
+        margin-top: 20px;
+    width: 100%;
+    border: unset;
+    font-family: system-ui;
+    height: 48px;
+    background-color: rgb(218, 55, 67);
+    color: rgb(255, 255, 255);
+    border-radius: 3px;
+}
+@media only screen and (max-width: 600px) {
+    #booking_table .reservation_container .nice-select {
+           width: 60% !important;
+               margin-bottom: 7px;
+    }
+    #booking_table .reservation_container #booking_date{
+           width: 60% !important;
+               margin-bottom: 7px;
+    }
+    #booking_table .reservation_container #select_time {
+            width: 60% !important;
+                margin-bottom: 7px;
+    }
+    #booking_table .floor_button {
+        margin-bottom: 10px;
+    }
+    #modify_booking_table .change_floor_button {
+        margin-bottom: 10px;
+    }
+    #booking_table .floor_button_unavilable {
+        margin-bottom: 10px;
+    }
+
+    #modify_booking_table .floor_button_unavilable {
+        margin-bottom: 10px;
+    }
+    .rowpp .col-md-12{
+          text-align: left !important;
+    }
+    #booking_table .reservation_container .container_model {
+        width:100%;
+    }
+    #booking_table .reservation_container {
+        width: 100%;
+    }
+    #booking_table .reservation_container .container_form {
+        width: 100%;
+            margin-left: 34px;
+    }
+    #modify_booking_table .reservation_container .container_form {
+        width: 100%;
+            margin-left: 34px;
+    }
+    #booking_table .reservation_container .border-bottom_hr {
+        margin-right: 60px;
+    }
+    #booking_table .floor_container{
+            width: 100%;
+    }
+    #booking_table .your_details_booking{
+            width: 100%;
+    }
+
+    #modify_booking_table .reservation_container .border-bottom_hr {
+        margin-right: 60px;
+    }
+    #modify_booking_table .floor_container{
+            width: 100%;
+    }
+    #modify_booking_table .your_details_booking{
+            width: 100%;
+    }
+    .input_ypu_details{
+            width: 100%;
+    }
+}
+
+.input-container input {
+    border: none;
+    box-sizing: border-box;
+    outline: 0;
+    padding: .75rem;
+    position: relative;
+    width: 100%;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+#selection_person_booking_no {
+    width:100%;padding:4%;border-bottom:1px solid #C3C0BF;margin:0px;
+}
+#selection_person_booking_no .nice-select{
+        border: none;
+        width: 80% !important;
+}
+#selection_person_booking_no .nice-select ul{
+        width: 100%;
+}
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_vodka_parallex" name="Vodka Parallex">
+		<section class="vodka-homepage-parallax pt104 pb104 s_cover parallax s_parallax_is_fixed s_parallax_no_overflow_hidden" data-scroll-background-ratio="1" data-name="Cover" style="background-image: none;">
+				<span class="s_parallax_bg oe_img_bg oe_custom_bg" style="background-image: url('/theme_wineshop/static/src/img/parallax-bg.jpg'); background-position: 50% 0;"></span>
+				<div class="container">
+					<div class="content text-center">
+						<h1 class="text-o-color-3">Alcoholic Sale!</h1>
+						<p class="text-black">Get Up to 70% OFF on Vodka</p>
+						<div class="s_btn" data-name="Button">
+							<a href="#" class="btn btn-o-color-3 btn-sm">SHOP Now</a>
+						</div>
+					</div>
+				</div>
+			</section>
+	</template>
+</odoo>

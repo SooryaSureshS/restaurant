@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates id="template" xml:space="preserve">
+
+    <t t-name="TableConfirmPopupWidget" owl="1">
+        <div class="modal-dialog">
+            <div class="popup popup-textinput">
+                <p class="title">Table booking confirm</p>
+                <div>
+                    <table border="0" align="center" id="table1">
+                        <tr>
+                            <td colspan="2">Please click confirm to choose table booking</td>
+                        </tr>
+                        <tr>
+                            <td>Enter number of people:</td>
+                            <td><input type="number" min="1" step="1" id="people_number" t-att-value="props.table.input_no_of_people"/></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="footer">
+                      <div class="button cancel" t-on-click="confirmed">
+                        Book table
+                    </div>
+                     <div class="button cancel" t-on-click="selected">
+                           Select table
+                     </div>
+                     <div class="button cancel" t-on-click="cancel">
+                           Close
+                     </div>
+                     <div class="button edit_booking_info" t-on-click="edit_table_booking" style="display:none;">
+                           Edit Booking
+                     </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="TableNewBooking" owl="1">
+        <div class="modal-dialog">
+            <div class="popup popup-textinput" >
+                <p class="title" style="position:relative;">Table Booking<span id="table_booking_counter" style="position:absolute; top:0px;"/></p>
+                <div>
+                    <table border="0" align="center" id="table1">
+                        <tr>
+                            <td style="color: #ca0000;">Selected Table For Booking  : <t t-esc="props.table.name"/></td>
+                        </tr>
+                        <tr>
+                            <td style="color: #ca0000;">
+                                Seat Capacity:<t t-esc="props.table.seats"/>
+                                <input type="hidden" id="booking_selected_table" t-att-value="props.table.id"/>
+                                <input type="hidden" id="booking_selected_floor" t-att-value="props.table.floor['id']"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Select People </td>
+                            <td><select name="" onclick="return false;" id="select_person" style="width: 100%;height: 40px;" t-on-change="ChangeSeatCapacity">
+                                            <option value="1">1 people </option>
+                                            <option value="2">2 people</option>
+                                            <option value="3">3 people</option>
+                                            <option value="4">4 people</option>
+                                            <option value="5">5 people</option>
+                                            <option value="6">6 people</option>
+                                            <option value="7">7 people</option>
+                                            <option value="8">8 people</option>
+                                            <option value="9">9 people</option>
+                                            <option value="10">10 people</option>
+                                            <option value="11">11 people</option>
+                                            <option value="12">12 people</option>
+                                            <option value="13">13 people</option>
+                                            <option value="14">14 people</option>
+                                            <option value="15">15 people</option>
+                                            <option value="16">16 people</option>
+                                            <option value="17">17 people</option>
+                                            <option value="18">18 people</option>
+                                            <option value="19">19 people</option>
+                                            <option value="20">20 people</option>
+                                     </select> </td>
+                        </tr>
+                        <tr style="display:none" id="merge_tr">
+                            <td>Select Merge Table </td>
+                            <td><select name="" onclick="return false;" id="select_merge" style="width: 100%;height: 40px;" >
+                                     </select> </td>
+                        </tr>
+                        <tr>
+                            <td>Select Booking Date</td>
+                            <td>
+                                <input type="date" t-on-change="BookingDate" data-date-inline-picker="true" id="booking_date" style="height: 42px;border: solid 1px #e8e8e8;width: 100%;font-size: small;"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Select Time</td>
+                            <td>
+                                <select name="" onclick="return false;" id="select_time" style="width: 100%;height: 40px;">
+                                    </select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="footer">
+                      <div class="button cancel" id="save_changes" t-on-click="confirmed">
+                        Book table
+                    </div>
+                     <div class="button cancel" t-on-click="cancel">
+                           Cancel
+                     </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="TableBookingInfoWidget" owl="1">
+        <div class="modal-dialog">
+            <div class="popup popup-textinput">
+                <p class="title">Table booking User Information</p>
+                <div>
+                    <input type="hidden" id="booking_selected_table" t-att-value="props.booking_selected_table"/>
+                    <input type="hidden" id="booking_selected_floor" t-att-value="props.booking_selected_floor"/>
+                    <input type="hidden" id="select_person" t-att-value="props.select_person"/>
+                    <input type="hidden" id="booking_date" t-att-value="props.booking_date"/>
+                    <input type="hidden" id="select_time" t-att-value="props.select_time"/>
+                    <table border="0" align="center" id="table1">
+                        <tr>
+                            <td>Selected Table<t t-esc="props.booking_selected_table"/> </td>
+                            <td>No Of persons<t t-esc="props.select_person"/></td>
+                        </tr>
+                         <tr>
+                             <td>Selected Date and time</td>
+                             <td><t t-esc="props.booking_date"/> <t t-esc="props.select_time"/></td>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td><input type="text" id="name_person"/> </td>
+                        </tr>
+                        <tr>
+                            <td>occasion</td>
+                            <td> <select name="" onclick="return false;" id="occasion" class="input_ypu_details occasion" style="background-color: white;height: 42px;">
+                                    <option value="">Select an occasion(optional) </option>
+                                    <option value="none">None</option>
+                                    <option value="birthday">Birthday</option>
+                                    <option value="date">Date</option>
+                                    <option value="business">Business Meal</option>
+                                    <option value="special">Special Occasion</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Note</td>
+                            <td><input type="text" id="note"/></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><input type="email" id="email"/></td>
+                        </tr>
+                         <tr>
+                            <td>Phone</td>
+                            <td><input type="phone" id="phone"/></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="footer">
+                      <div class="button cancel" t-on-click="confirmed_booking">
+                        Confirm
+                    </div>
+                     <div class="button cancel" t-on-click="cancel">
+                           Cancel
+                     </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="TableEditingBooking" owl="1">
+        <div class="modal-dialog">
+            <div class="popup popup-textinput">
+                <p class="title">Table is already booked </p>
+                <div>
+                    <table border="0" align="center" id="table1">
+                        <div class="button" id="edit_table_enable" t-on-click="edit_booking">
+                        Edit Booking
+                    </div>
+                    </table>
+                </div>
+                <div>
+                    <table id="table_informations">
+                        <tr>
+                            <input type="hidden" t-att-value="reservation.id" id="reservation_id"/>
+                        </tr>
+                        <tr>
+                            <td>Reservation Name</td>
+                            <td><t t-esc="reservation['name']"/> <t t-esc="reservation_string"/></td>
+                        </tr>
+                        <tr>
+                            <td>Date Reserve start</td>
+                            <td><input type="datetime-local" id="reservation_start" t-att-value="date_reserved" class="edit_mode_off"/></td>
+                        </tr>
+                        <tr>
+                            <td>Date Reserve ends</td>
+                            <td><input type="datetime-local" id="reservation_ends" t-att-value="date_reserved_end" class="edit_mode_off"/></td>
+                        </tr>
+                        <tr>
+                            <td>Special Request</td>
+                            <td><input type="text" id="special_request" t-att-value="reservation.special_request" class="edit_mode_off"/> </td>
+                        </tr>
+                         <tr>
+                             <td>Occasion</td>
+                            <td> <select name="" onclick="return false;" id="occasion" class="input_ypu_details occasion needsclick edit_mode_off" style="background-color: white;height: 42px;    width: 258px;">
+                                    <option value="">Select an occasion(optional) </option>
+                                    <option value="none">None</option>
+                                    <option value="birthday">Birthday</option>
+                                    <option value="date">Date</option>
+                                    <option value="business">Business Meal</option>
+                                    <option value="special">Special Occasion</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Party size</td>
+                            <td><input type="number" id="party_size" t-att-value="reservation.no_of_people"/></td>
+                        </tr>
+                        <tr>
+                            <td>Customer</td>
+                            <td><input type="text" t-att-value="reservation.partner_id" class="edit_mode_off"/> </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="footer">
+                      <div class="button cancel" id="save_details_info" t-on-click="save_details" style="display:none;">
+                        Save Details
+                    </div>
+                     <div class="button cancel" id="table_available_info" t-on-click="available" style="width: 200px;">
+                         Change Table to Available
+                     </div>
+                     <div class="button cancel" t-on-click="cancel">
+                         Cancel
+                     </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="TableFutureBooking" owl="1">
+        <div class="modal-dialog">
+            <div class="popup popup-textinput">
+                <p class="title">Edit Future Booking </p>
+                <div>
+                    <table id="table_informations">
+                        <tr>
+                            <input type="hidden" t-att-value="reservation.id" id="reservation_id"/>
+                        </tr>
+                        <tr>
+                            <td>Reservation Name</td>
+                            <td><t t-esc="reservation['name']"/> <t t-esc="reservation_string" /></td>
+                        </tr>
+                        <tr>
+                            <td>Date Reserve start</td>
+                            <td><input type="datetime-local" id="reservation_start" t-att-value="date_reserved" /></td>
+                        </tr>
+                        <tr>
+                            <td>Date Reserve ends</td>
+                            <td><input type="datetime-local" id="reservation_ends" t-att-value="date_reserved_end" /></td>
+                        </tr>
+                        <tr>
+                            <td>Special Request</td>
+                            <td><input type="text" id="special_request" t-att-value="reservation.special_request" /> </td>
+                        </tr>
+                         <tr>
+                             <td>Occasion</td>
+                            <td> <select name="" onclick="return false;" id="occasion" class="input_ypu_details occasion needsclick" style="background-color: white;height: 42px;    width: 258px;">
+                                    <option value="">Select an occasion(optional) </option>
+                                    <option value="none">None</option>
+                                    <option value="birthday">Birthday</option>
+                                    <option value="date">Date</option>
+                                    <option value="business">Business Meal</option>
+                                    <option value="special">Special Occasion</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Party size</td>
+                            <td><input type="number" id="party_size" t-att-value="reservation.no_of_people"/> </td>
+                        </tr>
+                        <tr>
+                            <td>Customer</td>
+                            <td><input type="text" t-att-data_partner_id="reservation.partner_id" t-att-value="reservation.partner_name" class="edit_mode_off"/> </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="footer">
+                      <div class="button cancel" id="save_details_info" t-on-click="save_details" >
+                        Save Details
+                    </div>
+                     <div class="button cancel" id="table_available_info" t-on-click="available" style="width: 200px;">
+                         Cancel Reservation
+                     </div>
+                     <div class="button cancel" t-on-click="cancel">
+                         Cancel
+                     </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

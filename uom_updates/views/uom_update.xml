@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit uom form -->
+    <record id="uom_form_inherit" model="ir.ui.view">
+        <field name="name">uom.uom.form</field>
+        <field name="model">uom.uom</field>
+        <field name="inherit_id" ref="uom.product_uom_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='uom_details']" position="replace">
+                <group name="uom_details">
+                    <field name="name"/>
+                    <field name="category_id"/>
+                    <field name="uom_type"/>
+                    <label for="factor"
+                           attrs="{'invisible':[('uom_type','!=','smaller')]}"/>
+                    <div attrs="{'invisible':[('uom_type','!=','smaller')]}" class="o_row">
+                        <field name="factor"
+                               digits="[42,5]"
+                               attrs="{'readonly':[('uom_type','=','bigger')]}"/>
+                    </div>
+                    <label for="factor_inv"
+                           attrs="{'invisible':[('uom_type','!=','bigger')]}"/>
+                    <div attrs="{'invisible':[('uom_type','!=','bigger')]}" class="o_row">
+                        <field name="factor_inv"
+                               digits="[42,5]"
+                               attrs="{'readonly':[('uom_type','!=','bigger')]}"/>
+                    </div>
+                    <div attrs="{'invisible':[('uom_type','=','reference')]}" class="o_row">
+                        <span class="oe_grey">
+                            e.g: 1*(this unit)=ratio*(reference unit)
+                        </span>
+                    </div>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

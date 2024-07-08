@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <!--'KITCHEN ORDER' BUTTON IN POS ACTION PAD WIDGET-->
+    <t t-name="MessageButton" owl="1">
+        <span class="control-button Message_button_order">
+            <i class="fa fa-envelope"></i>
+            <span> </span>
+            <span>Message</span>
+        </span>
+    </t>
+    <t t-name="TextAreaPopupUpdates" owl="1">
+        <div role="dialog" class="modal-dialog">
+            <Draggable>
+                <div class="popup popup-textarea">
+                    <header class="title drag-handle">
+                        <t t-esc="props.title" />
+                    </header>
+
+                    <textarea t-model="state.inputValue" t-ref="input" style="width: 86%;"></textarea><br/>
+
+                     <select class="detail needsclick room_textArea_selection" style="font-size: 20px;color: black;
+                      height: 48px;width: 90%;-webkit-scrollbar: scroll;overflow: visible;">
+                        <option value='all'>All</option>
+                            <t t-foreach='props.session' t-as='session'>
+                                <t t-if="env.pos.pos_session.id != session.id">
+                                    <option  t-att-value='session.id' ><t t-esc='session.name'/> ->  <t t-esc='session.user_id[1]'/></option>
+                                </t>
+                            </t>
+                    </select>
+
+                    <footer class="footer">
+                        <div class="button confirm" t-on-click="confirm">
+                            <t t-esc="props.confirmText" />
+                        </div>
+                        <div class="button cancel" t-on-click="cancel">
+                            <t t-esc="props.cancelText" />
+                        </div>
+                    </footer>
+                </div>
+            </Draggable>
+        </div>
+    </t>
+
+    <t t-name="SequencePopup" owl="1">
+        <div role="dialog" class="modal-dialog">
+
+            <Draggable>
+                <div class="popup popup-textarea">
+                    <header class="title drag-handle" style="color: white;background-color: #4376c4;">
+                        <t t-esc="props.title" />
+                    </header>
+
+<!--                    <textarea t-model="state.inputValue" t-ref="input" style="width: 86%;"></textarea><br/>-->
+
+<!--                     <select class="detail needsclick room_textArea_selection" style="font-size: 20px;color: black;-->
+<!--                      height: 48px;width: 90%;-webkit-scrollbar: scroll;overflow: visible;">-->
+<!--                        <option value='all'>All</option>-->
+<!--                            <t t-foreach='props.session' t-as='session'>-->
+<!--                                <option  t-att-value='session.id' ><t t-esc='session.name'/> ->  <t t-esc='session.user_id[1]'/></option>-->
+<!--                            </t>-->
+<!--                    </select>-->
+                    <div class="">
+                        Move This order to position:
+                    </div>
+
+                        <div class="css_quantity input-group" contenteditable="false" style="display: inline-flex;margin-top: 13px;">
+                            <div class="input-group-prepend" style="width: 50px;background-color: #48b94b;height: 50px;" t-on-click="prepend">
+                                <a t-attf-href="#" class="btn btn-secondary js_add_cart_json" aria-label="Remove one" title="Remove one">
+                                    <i class="fa fa-minus" style="color: white;padding-top: 14px;"></i>
+                                </a>
+                            </div>
+                            <input type="text" class="form-control quantity" data-min="1" name="add_qty" t-att-value="add_qty or 1" style="height: 50px;text-align: center;width:116px;"/>
+                            <div class="input-group-append" style="width: 50px;background-color: #48b94b;height: 50px;" t-on-click="append">
+                                <a t-attf-href="#" class="btn btn-secondary float_left js_add_cart_json" aria-label="Add one" title="Add one">
+                                    <i class="fa fa-plus" style="color: white;padding-top: 14px;"></i>
+                                </a>
+                            </div>
+                        </div>
+
+<!--                    <div class="">-->
+<!--                        Position Number:-->
+<!--                    </div>-->
+<!--                    <div class="">-->
+<!--                        <div class="sub_div" style="width: 57px;-->
+<!--                            height: 30px;-->
+<!--                            display: inline-flex;-->
+<!--                            background-color: #d2d2d2;-->
+<!--                            border: 1px solid #c2bebe;-->
+<!--                            border-radius: 4px;" t-on-click="sub_div_button" t-att-value="1">-->
+<!--                            <span style="margin: auto;">1</span>-->
+<!--                        </div>-->
+<!--                        <div class="sub_div" style="width: 57px;-->
+<!--                            height: 30px;-->
+<!--                            display: inline-flex;-->
+<!--                            background-color: #d2d2d2;-->
+<!--                            border: 1px solid #c2bebe;-->
+<!--                            border-radius: 4px;" t-on-click="sub_div_button">-->
+<!--                            <span style="margin: auto;">2</span>-->
+<!--                        </div>-->
+<!--                        <div class="sub_div" style="width: 57px;-->
+<!--                            height: 30px;-->
+<!--                            display: inline-flex;-->
+<!--                            background-color: #d2d2d2;-->
+<!--                            border: 1px solid #c2bebe;-->
+<!--                            border-radius: 4px;" t-on-click="sub_div_button">-->
+<!--                            <span style="margin: auto;">3</span>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+<!--                    <div class="">-->
+<!--                        selected position: <span id="selected_position"></span>-->
+<!--                    </div>-->
+
+                    <footer class="footer">
+                       <div class="button confirm" t-on-click="confirm_position()">
+                            Return
+                        </div>
+                        <div class="button cancel" t-on-click="cancel">
+                            Cancel
+                        </div>
+                    </footer>
+                </div>
+            </Draggable>
+        </div>
+    </t>
+</templates>

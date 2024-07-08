@@ -1,0 +1,6 @@
+.toggle_summary_div{
+    display: block !important;
+}
+.toggle_summary .fa fa-chevron-down span{
+    display: none;
+}

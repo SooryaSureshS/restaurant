@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="organize_organize_action_form" model="ir.ui.view">
+        <field name="name">organize.action.form</field>
+        <field name="model">organize.action</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <div class="o_row">
+                            <field name="start_datetime" widget="daterange"
+                                   options='{"related_end_date": "end_datetime"}'/>
+                            <i class="fa fa-long-arrow-right mx-2" aria-label="Arrow icon" title="Arrow"/>
+                            <field name="end_datetime" widget="daterange"
+                                   options='{"related_start_date": "start_datetime"}'/>
+                        </div>
+                    </group>
+                    <group>
+                        <tree create="false" edit="false">
+                            <field name="slot_ids"/>
+                        </tree>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_delete" type="object" string="Delete" class='btn-primary'/>
+                    <button name="discard" string="Discard" class='btn-secondary' special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="organize_organize_action" model="ir.actions.act_window">
+        <field name="name">Add Slots to Delete</field>
+        <field name="res_model">organize.action</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

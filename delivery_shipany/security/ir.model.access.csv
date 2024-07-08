@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_shipany_carrier,access_shipany_carrier,model_shipany_carrier,base.group_user,1,1,1,1
+access_shipany_service_locations,access_shipany_service_locations,model_shipany_service_locations,base.group_user,1,1,1,1
+access_delivery_carrier_shipany,access_delivery_carrier_shipany,model_delivery_carrier_shipany,base.group_user,1,1,1,1
+access_shipany_waybill,access_shipany_waybill,model_shipany_waybill,base.group_user,1,1,1,1
+
+
+

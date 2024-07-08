@@ -1,0 +1,51 @@
+.pos .product-list-container {
+    overflow: hidden;
+    overflow-y: auto;
+    flex-grow: 1;
+    width:90% !important;
+}
+.size_enabled{
+    background-color: green !important;
+}
+.circle_cat_v {
+  background: red;
+      width: 40px;
+    height: 10px;
+    border-radius: 5px;
+    padding: 1px;
+    color: white;
+    font-size: 14px;
+    font-weight: 900;
+    padding: 4px;
+    margin: 4px;
+    position: absolute;
+    z-index: 999;
+}
+.circle_cat_gf {
+     background: red;
+      width: 40px;
+    height: 10px;
+    border-radius: 5px;
+    padding: 1px;
+    color: white;
+    font-size: 14px;
+    font-weight: 900;
+    padding: 4px;
+    margin: 4px;
+    position: absolute;
+    z-index: 999;
+}
+.circle_cat_veg {
+ background: red;
+      width: 40px;
+    height: 10px;
+    border-radius: 5px;
+    padding: 1px;
+    color: white;
+    font-size: 14px;
+    font-weight: 900;
+    padding: 4px;
+    margin: 4px;
+    position: absolute;
+    z-index: 999;
+}

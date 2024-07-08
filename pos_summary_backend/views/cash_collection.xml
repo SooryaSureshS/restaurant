@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="pos_session_summary_view_tree" model="ir.ui.view">
+        <field name="name">pos.session.summary.tree</field>
+        <field name="model">pos.session.summary</field>
+        <field name="arch" type="xml">
+            <tree create="0">
+                <field name="closing_date" readonly="1" string="Date entered"/>
+                <field name="insert_bag_number" readonly="1" string="Bag number"/>
+                <field name="total_payments_amount" readonly="1" string="Cash in bag"/>
+                <field name="status" invisible="1"/>
+                <field name="approve_status" readonly="0" widget="boolean_toggle" string="Collection approved"/>
+            </tree>
+        </field>
+    </record>
+
+        <record id="pos_session_summary_tree_action" model="ir.actions.act_window">
+            <field name="name">Cash collection</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pos.session.summary</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="pos_summary_backend.pos_session_summary_view_tree"/>
+            <field name="domain">[('status', '=', ['dropped', False])]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                No Cash collections till Now, Let's create one!
+              </p>
+            </field>
+        </record>
+
+<!--    <menuitem action="pos_session_summary_tree_action"-->
+<!--              id="track_cash_menu"-->
+<!--              parent="point_of_sale.menu_point_rep"-->
+<!--              sequence="0"/>-->
+
+
+
+    <record model="ir.ui.view" id="safe_count_cash_view">
+        <field name="name">Safe Count Login</field>
+        <field name="model">safe.count.login</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Safe Count Login">
+                <group>
+                    <group>
+                        <field name="user_id"/>
+                    </group>
+                </group>
+
+                <group>
+                    <group>
+                        <field name="login_pin" password="True"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="%(pos_summary_backend.pos_session_summary_tree_action)d" type="action" string="Login" class="oe_highlight"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+
+            </form>
+        </field>
+    </record>
+
+
+    <act_window id="action_safe_count_login_1"
+                name="Cash collection"
+                res_model="safe.count.login"
+                view_mode="form"
+                view_id="pos_summary_backend.safe_count_cash_view"
+                target="new"/>
+
+    <menuitem action="action_safe_count_login_1"
+              id="cash_collection_menu"
+              name="Cash collection"
+              parent="point_of_sale.menu_point_rep"
+              sequence="0"/>
+
+</odoo>

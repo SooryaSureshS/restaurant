@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_whatsapp_messages_filter_marketing" model="ir.ui.view">
+        <field name="name">whatsapp.messages.filter</field>
+        <field name="model">whatsapp.messages</field>
+        <field name="inherit_id" ref="pragmatic_odoo_whatsapp_integration.whatsapp_messages_search"/>
+        <field name="arch" type="xml">
+            <group expand="1" string="Group By">
+                <filter string="Whatsapp Contact" name="whatsapp_contact_id" context="{'group_by':'whatsapp_contact_id'}"/>
+                <filter string="Whatsapp Group" name="whatsapp_group_id" context="{'group_by':'whatsapp_group_id'}"/>
+            </group>
+        </field>
+    </record>
+</odoo>

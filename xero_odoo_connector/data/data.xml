@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Automated Action To Refresh Xero Access Token -->
+        <record id="ir_cron_schedular_refresh_access_token" model="ir.cron">
+            <field name="name">Refresh - Xero Access Token</field>
+            <field name="model_id" ref="model_xero_xero" />
+            <field name="state">code</field>
+            <field name="code">model.RefereshToken()</field>
+            <field name="interval_number">20</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False" />
+        </record>
+
+        <!-- Automated Action To Import All Xero Data -->
+        <record forcecreate="True" id="ir_cron_schedular_import" model="ir.cron">
+            <field name="name">Import All Data From Xero</field>
+            <field name="model_id" ref="model_xero_xero" />
+            <field name="active" eval="False" />
+            <field name="user_id" ref="base.user_root" />
+            <field name="state">code</field>
+            <field name="code">model.BaseSchedularXeroImport()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False" />
+        </record>
+
+        <!-- Automated Action To Export All Xero Data -->
+        <record forcecreate="True" id="ir_cron_schedular_export" model="ir.cron">
+            <field name="name">Export All Data From Odoo</field>
+            <field name="model_id" ref="model_xero_xero" />
+            <field name="active" eval="False" />
+            <field name="user_id" ref="base.user_root" />
+            <field name="state">code</field>
+            <field name="code">model.BaseSchedularXeroExport()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False" />
+        </record>
+    
+    </data>
+</odoo>

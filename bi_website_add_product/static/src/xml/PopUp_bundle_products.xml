@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template_notification" xml:space="preserve">
+    <t t-name="bi_website_add_product.PopUp_bundle_products">
+        <div class="modal o_legacy_dialog show modal_shown" style="overflow-x: hidden;overflow-y: auto;display:block;" id="modal_confimation_bundle"
+             role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div id="bundle_popup" class="modal-content">
+
+                    <div class="modal-header" style="border: white;">
+                        <h3 class="mb-0">Add to cart!</h3>
+                        <button type="button" class="close close_model_note" data-dismiss="modal" aria-label="Close">
+                            <span class="fa fa-times"></span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="popup_auto_scroll">
+                        <table class="table table-striped table-sm">
+                            <thead>
+                                <tr>
+                                    <th class="td-img">Product</th>
+                                    <th></th>
+                                    <th class="text-center td-qty">Quantity</th>
+                                    <th class="text-center td-price">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="js_product in_cart main_product" style="background-color: unset !important;">
+                                    <td class='td-img'>
+                                        <img t-att-src="data['image_url']"
+                                             alt="Product Image"/>
+                                    </td>
+                                    <td class='td-product_name'>
+                                        <input type="hidden" id="bundle_product_id" t-att-value="data['product']"/>
+                                        <strong t-esc="data['parent_name']"/>
+                                        <div class="text-muted small">
+                                            <t t-if="data['description']">
+                                                <div t-esc="data['description']"/>
+                                            </t>
+                                            <div class="js_attributes"/>
+                                        </div>
+                                    </td>
+                                    <td class="text-center td-qty">
+                                        <div class="css_quantity input-group">
+                                            <div class="input-group-prepend">
+                                                <button t-attf-href="#"
+                                                        class="btn btn-primary js_add_minus_bundle d-md-inline-block"
+                                                        aria-label="Remove one" title="Remove one">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                            </div>
+                                            <input type="text" id="js_quantity_no_varaible"
+                                                   class="js_quantity form-control quantity" data-min="1" name="add_qty"
+                                                   t-att-value="add_qty or 1"/>
+                                            <div class="input-group-append">
+                                                <button t-attf-href="#"
+                                                        class="btn btn-primary float_left js_add_plus_bundle d-md-inline-block"
+                                                        aria-label="Add one" title="Add one">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center td-price" name="price">
+                                        <span>
+                                            <b>$&amp;nbsp;
+                                                <t t-esc="Math.round(data['price']*100)/100"/>
+                                            </b>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3>Available Items</h3>
+                        <input type="hidden" t-att-value="data['total_count']" id="total_product_count"/>
+<!--                        <hr/>-->
+                        <div>
+                            <t t-set="custom_val" t-value="1"/>
+                            <t t-foreach="data['variant_values']" t-as="bundle_product">
+                                <t t-set="choice_count" t-value="1"/>
+                                <t t-foreach="bundle_product['bundle_product_qty']" t-as="l">
+                                    <div class="product_choice" style="padding: 2px;padding-bottom: 22px;border-bottom: 4px solid #bdb9b9;padding-top: 22px;">
+                                        <t t-if="bundle_product['bundle_product_qty'] > 1">
+                                            <div class="" style="display: flex;">
+                                                <h3 style="width: 90%;">
+                                                    <strong style="font-size: 20px;"
+                                                            t-esc="bundle_product['bundle_product_name']"/>
+                                                    <strong style="font-size: 20px;" t-esc="choice_count"/>
+                                                </h3>
+                                                <h3 style="width: 10%;">
+                                                    <button style="width: 45px;height: 45px;border: 1px solid;"
+                                                            t-att-value="choice_count+custom_val+bundle_product['bundle_product_id']"
+                                                            t-att-id="choice_count+custom_val+bundle_product['bundle_product_id']+'open'"
+                                                            class="btn open_choice"><i class="fa fa-caret-down"></i></button>
+                                                    <button style="display:none;width: 45px;height: 45px;border: 1px solid;"
+                                                            t-att-value="choice_count+custom_val+bundle_product['bundle_product_id']"
+                                                            t-att-id="choice_count+custom_val+bundle_product['bundle_product_id']+'close'"
+                                                            class="btn close_choice"><i class="fa fa-caret-up"></i></button>
+                                                </h3>
+                                            </div>
+                                            <p style="color:red;" id="popup_req">Required</p>
+                                            <p style="display:none;color:green;" id="popup_sel">Selected</p>
+                                            <p><label id=""></label></p>
+                                        </t>
+                                        <t t-if="bundle_product['bundle_product_qty'] > 1">
+                                            <div style="display:none;padding-top: 5px;border-top: 3px solid #bdb9b9;" t-att-id="choice_count+custom_val+bundle_product['bundle_product_id']+'data'">
+                                                <br/>
+                                                <t t-set="var_count" t-value="1"/>
+                                                <t t-foreach="bundle_product['choice_products']" t-as="products">
+                                                    <br/>
+                                                    <div class="radio_options">
+                                                        <div style="display: flex;font-size: 16px;font-weight: 700;">
+                                                            <input style="margin-top: 1.4%;width: 25px;height: 25px;" class="radio_choice" type="radio" t-att-id="products['choice_product_id']"
+                                                                   t-att-variant_id="products['choice_product_id']"
+                                                                   t-att-choice-count="choice_count"
+                                                                   t-att-custom_val="custom_val"
+                                                                   t-att-check_val="choice_count+custom_val+products['choice_product_id']"
+                                                                   t-att-name="choice_count+'choice'+custom_val+'choice_check_radio'"/>
+                                                            <label class="container" t-att-id="var_count+choice_count+custom_val+products['choice_product_id']+'label'" style="padding-top: 4px;font-size: 20px;">
+                                                                <label style="line-height: 30px;padding-left: 8px;"><t t-esc="products['choice_product_name']"/></label>
+                                                                <t t-if="products['bundle_extra_price'] > 0">
+                                                                    <label style="padding-left: 2%;">
+                                                                        $ <t t-esc="Math.round(products['bundle_extra_price']*100)/100"/>
+                                                                    </label>
+                                                                </t>
+                                                                <t t-if="products['optional_product_length'] > 0">
+                                                                    <button style="font-size: 18px;height: 30px;float: right;"
+                                                                        t-att-value="var_count+choice_count+custom_val+products['choice_product_id']"
+                                                                        t-att-id="var_count+choice_count+custom_val+products['choice_product_id']+'down'"
+                                                                        class="btn-primary btn-md ml-4 js_check_product a-submit-btn open_optional custom_custom">Customise
+                                                                    </button>
+                                                                    <button style="display:none;font-size: 18px;height: 30px;float: right;"
+                                                                        t-att-value="var_count+choice_count+custom_val+products['choice_product_id']"
+                                                                        t-att-id="var_count+choice_count+custom_val+products['choice_product_id']+'up'"
+                                                                        class="btn-primary btn-md ml-4 js_check_product a-submit-btn close_optional done_custom">Done
+                                                                    </button>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <button style="padding-top: 8px;padding-left: 2%;border:unset;background:unset;float: right;"
+                                                                        t-att-value="choice_count+custom_val+products['choice_product_id']"
+                                                                        t-att-id="choice_count+custom_val+products['choice_product_id']+'up'"
+                                                                        class=""><i class="fa fa-angle-up" style="color: white;"></i>
+                                                                    </button>
+                                                                </t>
+                                                            </label>
+
+                                                            <br/>
+                                                        </div>
+                                                        <t t-set="choice_product_data" t-value="products['choice_product_id']"/>
+                                                        <t t-set="choice_check_val" t-value="choice_count+custom_val+products['choice_product_id']"/>
+                                                        <div class="optional_product" style="display:none; padding-left: 5%;" t-att-id="var_count+choice_count+custom_val+products['choice_product_id']+'optional'" t-att-class="choice_count+custom_val+products['choice_product_id']+'optional'">
+                                                            <t t-foreach="products['optional_product']" t-as="optional_pro">
+                                                                <br/>
+                                                                <strong><t t-esc="optional_pro['optional_product_name']"/></strong>
+                                                                <br/>
+                                                                <t t-foreach="optional_pro['products']" t-as="variants">
+                                                                    <br/>
+                                                                    <div class="row">
+                                                                        <input style="width: 19px;height: 19px;" t-att-check_val="choice_check_val" class="variant_checkbox" t-att-variant_value="choice_product_data" t-att-variant_id="variants['product_id']" type="checkbox"></input>
+                                                                        <strong style="width: 70%;padding-left: 2%;">
+                                                                            <t t-esc="variants['product_name']"/>
+                                                                        </strong>
+                                                                        <strong style="width: 20%;">
+                                                                            $ <t t-esc="Math.round(variants['price']*100)/100"/>
+                                                                        </strong>
+                                                                    </div>
+                                                                </t>
+                                                            </t>
+                                                        </div>
+                                                    </div>
+                                                    <t t-set="var_count" t-value="var_count+1"/>
+                                                </t>
+                                            </div>
+                                            <t t-set="choice_count" t-value="choice_count+1"/>
+                                        </t>
+                                        <t t-else="">
+                                            <h3 style="width: 90%;">
+                                                <strong style="font-size: 20px;"
+                                                        t-esc="bundle_product['bundle_product_name']"/>
+                                            </h3>
+                                            <p style="padding-top: 12px;position: absolute;color:red;" id="popup_req">Required</p>
+                                            <p style="padding-top: 12px;position: absolute;display:none;color:green;" id="popup_sel">Selected</p>
+
+                                            <div style="padding-top: 5px;" t-att-id="choice_count+custom_val+bundle_product['bundle_product_id']+'data'">
+                                                <br/>
+                                                <t t-set="var_count" t-value="1"/>
+                                                <t t-foreach="bundle_product['choice_products']" t-as="products">
+                                                    <br/>
+                                                    <div class="radio_options">
+                                                        <div style="display: flex;font-size: 16px;font-weight: 700;">
+                                                            <input style="margin-top: 1.4%;width: 25px;height: 25px;" class="radio_choice" type="radio" t-att-id="products['choice_product_id']"
+                                                                   t-att-variant_id="products['choice_product_id']"
+                                                                   t-att-choice-count="choice_count"
+                                                                   t-att-custom_val="custom_val"
+                                                                   t-att-check_val="choice_count+custom_val+products['choice_product_id']"
+                                                                   t-att-name="choice_count+'choice'+custom_val+'choice_check_radio'"/>
+                                                            <label class="container" t-att-id="var_count+choice_count+custom_val+products['choice_product_id']+'label'" style="padding-top: 4px;font-size: 20px;">
+                                                                <label style="line-height: 30px;padding-left: 8px;"><t t-esc="products['choice_product_name']"/></label>
+                                                                <t t-if="products['bundle_extra_price'] > 0">
+                                                                    <label style="padding-left: 2%;">
+                                                                        $ <t t-esc="Math.round(products['bundle_extra_price']*100)/100"/>
+                                                                    </label>
+                                                                </t>
+                                                                <t t-if="products['optional_product_length'] > 0">
+                                                                    <button style="font-size: 18px;height: 30px;float: right;"
+                                                                        t-att-value="var_count+choice_count+custom_val+products['choice_product_id']"
+                                                                        t-att-id="var_count+choice_count+custom_val+products['choice_product_id']+'down'"
+                                                                        class="btn-primary btn-md ml-4 js_check_product a-submit-btn open_optional custom_custom">Customise
+                                                                    </button>
+                                                                    <button style="display:none;font-size: 18px;height: 30px;float: right;"
+                                                                        t-att-value="var_count+choice_count+custom_val+products['choice_product_id']"
+                                                                        t-att-id="var_count+choice_count+custom_val+products['choice_product_id']+'up'"
+                                                                        class="btn-primary btn-md ml-4 js_check_product a-submit-btn close_optional done_custom">Done
+                                                                    </button>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <button style="padding-top: 8px;padding-left: 2%;border:unset;background:unset;float: right;"
+                                                                        t-att-value="choice_count+custom_val+products['choice_product_id']"
+                                                                        t-att-id="choice_count+custom_val+products['choice_product_id']+'up'"
+                                                                        class=""><i class="fa fa-angle-up" style="color: white;"></i>
+                                                                    </button>
+                                                                </t>
+                                                            </label>
+
+                                                            <br/>
+                                                        </div>
+                                                        <t t-set="choice_product_data" t-value="products['choice_product_id']"/>
+                                                        <t t-set="choice_check_val" t-value="choice_count+custom_val+products['choice_product_id']"/>
+                                                        <div class="optional_product" style="display:none; padding-left: 5%;" t-att-id="var_count+choice_count+custom_val+products['choice_product_id']+'optional'" t-att-class="choice_count+custom_val+products['choice_product_id']+'optional'">
+                                                            <t t-foreach="products['optional_product']" t-as="optional_pro">
+                                                                <br/>
+                                                                <strong><t t-esc="optional_pro['optional_product_name']"/></strong>
+                                                                <br/>
+                                                                <t t-foreach="optional_pro['products']" t-as="variants">
+                                                                    <br/>
+                                                                    <div class="row">
+                                                                        <input style="width: 19px;height: 19px;" t-att-check_val="choice_check_val" class="variant_checkbox" t-att-variant_value="choice_product_data" t-att-variant_id="variants['product_id']" type="checkbox"></input>
+                                                                        <strong style="width: 70%;padding-left: 2%;">
+                                                                            <t t-esc="variants['product_name']"/>
+                                                                        </strong>
+                                                                        <strong style="width: 20%;">
+                                                                            $ <t t-esc="Math.round(variants['price']*100)/100"/>
+                                                                        </strong>
+                                                                    </div>
+                                                                </t>
+                                                            </t>
+                                                        </div>
+                                                    </div>
+                                                    <t t-set="var_count" t-value="var_count+1"/>
+                                                </t>
+                                            </div>
+                                            <t t-set="choice_count" t-value="choice_count+1"/>
+                                        </t>
+                                    </div>
+                                </t>
+                                <t t-set="custom_val" t-value="custom_val+1"/>
+                            </t>
+                        </div>
+                        <br/>
+                        <div class="" id="cart_popup_attribute" t-att-data-product_id="product_id" style="height:auto;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <textarea rows="5" placeholder="Notes" class="form-control"
+                                              name="checkout_text_update" id="checkout_text_update"
+                                              style="border: 1px solid #989393 !important;text-align: center;font-size: 17px;"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="cart_popup_btn ">
+                            <button class="text-center btn btn-primary checkout_shop_bundle">
+                                Add To Cart
+                            </button>
+                            <button class="checkout_cart_bundle btn text-center btn btn-primary">
+                                Proceed to checkout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="bi_website_add_product.PopUp_bundle_products_details">
+        <div class="modal o_legacy_dialog show modal_shown" style="overflow-x: hidden;overflow-y: auto;display:block;" id="modal_confimation_bundle"
+             role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div id="bundle_popup" class="modal-content">
+
+                    <div class="modal-header" style="border: white;">
+                        <h3 class="mb-0">Add to cart!</h3>
+                        <button type="button" class="close close_model_note" data-dismiss="modal" aria-label="Close">
+                            <span class="fa fa-times"></span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="popup_auto_scroll">
+                        <table class="table table-striped table-sm">
+                            <thead>
+                                <tr>
+                                    <th class="td-img">Product</th>
+                                    <th></th>
+                                    <th class="text-center td-qty">Quantity</th>
+                                    <th class="text-center td-price">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="js_product in_cart main_product" style="background-color: unset !important;">
+                                    <td class='td-img'>
+                                        <img t-att-src="data['image_url']"
+                                             alt="Product Image"/>
+                                    </td>
+                                    <td class='td-product_name'>
+                                        <input type="hidden" id="bundle_product_id" t-att-value="data['product']"/>
+                                        <strong t-esc="data['parent_name']"/>
+                                        <div class="text-muted small">
+                                            <t t-if="data['description']">
+                                                <div t-esc="data['description']"/>
+                                            </t>
+                                            <div class="js_attributes"/>
+                                        </div>
+                                    </td>
+                                    <td class="text-center td-qty">
+                                        <div class="css_quantity input-group">
+                                            <div class="input-group-prepend">
+                                                <button t-attf-href="#"
+                                                        class="btn btn-primary js_add_minus_bundle d-md-inline-block"
+                                                        aria-label="Remove one" title="Remove one">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                            </div>
+                                            <input type="text" id="js_quantity_no_varaible"
+                                                   class="js_quantity form-control quantity" data-min="1" name="add_qty"
+                                                   t-att-value="add_qty or 1"/>
+                                            <div class="input-group-append">
+                                                <button t-attf-href="#"
+                                                        class="btn btn-primary float_left js_add_plus_bundle d-md-inline-block"
+                                                        aria-label="Add one" title="Add one">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center td-price" name="price">
+                                        <span>
+                                            <b>$&amp;nbsp;
+                                                <t t-esc="Math.round(data['price']*100)/100"/>
+                                            </b>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3>Available Items</h3>
+                        <input type="hidden" t-att-value="data['total_count']" id="total_product_count"/>
+<!--                        <hr/>-->
+                        <div>
+                            <t t-set="custom_val" t-value="1"/>
+                            <t t-foreach="data['variant_values']" t-as="bundle_product">
+                                <t t-set="choice_count" t-value="1"/>
+                                <t t-foreach="bundle_product['bundle_product_qty']" t-as="l">
+                                    <div class="product_choice" style="padding: 2px;padding-bottom: 22px;border-bottom: 4px solid #bdb9b9;padding-top: 22px;">
+                                        <t t-if="bundle_product['bundle_product_qty'] > 1">
+                                            <div class="" style="display: flex;">
+                                                <h3 style="width: 90%;">
+                                                    <strong style="font-size: 20px;"
+                                                            t-esc="bundle_product['bundle_product_name']"/>
+                                                    <strong style="font-size: 20px;" t-esc="choice_count"/>
+                                                </h3>
+                                                <h3 style="width: 10%;">
+                                                    <button style="width: 45px;height: 45px;border: 1px solid;"
+                                                            t-att-value="choice_count+custom_val+bundle_product['bundle_product_id']"
+                                                            t-att-id="choice_count+custom_val+bundle_product['bundle_product_id']+'open'"
+                                                            class="btn open_choice"><i class="fa fa-caret-down"></i></button>
+                                                    <button style="display:none;width: 45px;height: 45px;border: 1px solid;"
+                                                            t-att-value="choice_count+custom_val+bundle_product['bundle_product_id']"
+                                                            t-att-id="choice_count+custom_val+bundle_product['bundle_product_id']+'close'"
+                                                            class="btn close_choice"><i class="fa fa-caret-up"></i></button>
+                                                </h3>
+                                            </div>
+                                            <p style="color:red;" id="popup_req">Required</p>
+                                            <p style="display:none;color:green;" id="popup_sel">Selected</p>
+                                            <p><label id=""></label></p>
+                                        </t>
+                                        <t t-if="bundle_product['bundle_product_qty'] > 1">
+                                            <div style="display:none;padding-top: 5px;border-top: 3px solid #bdb9b9;" t-att-id="choice_count+custom_val+bundle_product['bundle_product_id']+'data'">
+                                                <br/>
+                                                <t t-set="var_count" t-value="1"/>
+                                                <t t-foreach="bundle_product['choice_products']" t-as="products">
+                                                    <br/>
+                                                    <div class="radio_options">
+                                                        <div style="display: flex;font-size: 16px;font-weight: 700;">
+                                                            <input style="margin-top: 1.4%;width: 25px;height: 25px;" class="radio_choice" type="radio" t-att-id="products['choice_product_id']"
+                                                                   t-att-variant_id="products['choice_product_id']"
+                                                                   t-att-choice-count="choice_count"
+                                                                   t-att-custom_val="custom_val"
+                                                                   t-att-check_val="choice_count+custom_val+products['choice_product_id']"
+                                                                   t-att-name="choice_count+'choice'+custom_val+'choice_check_radio'"/>
+                                                            <label class="container" t-att-id="var_count+choice_count+custom_val+products['choice_product_id']+'label'" style="padding-top: 4px;font-size: 20px;">
+                                                                <label style="line-height: 30px;padding-left: 8px;"><t t-esc="products['choice_product_name']"/></label>
+                                                                <t t-if="products['bundle_extra_price'] > 0">
+                                                                    <label style="padding-left: 2%;">
+                                                                        $ <t t-esc="Math.round(products['bundle_extra_price']*100)/100"/>
+                                                                    </label>
+                                                                </t>
+                                                                <t t-if="products['optional_product_length'] > 0">
+                                                                    <button style="font-size: 20px;font-size: 18px;height: 30px;float: right;"
+                                                                        t-att-value="var_count+choice_count+custom_val+products['choice_product_id']"
+                                                                        t-att-id="var_count+choice_count+custom_val+products['choice_product_id']+'down'"
+                                                                        class="btn-primary btn-md ml-4 js_check_product a-submit-btn open_optional custom_custom">Customise
+                                                                    </button>
+                                                                    <button style="display:none;font-size: 18px;height: 30px;float: right;"
+                                                                        t-att-value="var_count+choice_count+custom_val+products['choice_product_id']"
+                                                                        t-att-id="var_count+choice_count+custom_val+products['choice_product_id']+'up'"
+                                                                        class="btn-primary btn-md ml-4 js_check_product a-submit-btn close_optional done_custom">Done
+                                                                    </button>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <button style="padding-top: 8px;padding-left: 2%;border:unset;background:unset;"
+                                                                        t-att-value="choice_count+custom_val+products['choice_product_id']"
+                                                                        t-att-id="choice_count+custom_val+products['choice_product_id']+'up'"
+                                                                        class=""><i class="fa fa-angle-up" style="color: white;"></i>
+                                                                    </button>
+                                                                </t>
+                                                            </label>
+
+                                                            <br/>
+                                                        </div>
+                                                        <t t-set="choice_product_data" t-value="products['choice_product_id']"/>
+                                                        <t t-set="choice_check_val" t-value="choice_count+custom_val+products['choice_product_id']"/>
+                                                        <div class="optional_product" style="display:none; padding-left: 5%;" t-att-id="var_count+choice_count+custom_val+products['choice_product_id']+'optional'" t-att-class="choice_count+custom_val+products['choice_product_id']+'optional'">
+                                                            <t t-foreach="products['optional_product']" t-as="optional_pro">
+                                                                <br/>
+                                                                <strong><t t-esc="optional_pro['optional_product_name']"/></strong>
+                                                                <br/>
+                                                                <t t-foreach="optional_pro['products']" t-as="variants">
+                                                                    <br/>
+                                                                    <div class="row">
+                                                                        <input style="width: 19px;height: 19px;" t-att-check_val="choice_check_val" class="variant_checkbox" t-att-variant_value="choice_product_data" t-att-variant_id="variants['product_id']" type="checkbox"></input>
+                                                                        <strong style="width: 70%;padding-left: 2%;">
+                                                                            <t t-esc="variants['product_name']"/>
+                                                                        </strong>
+                                                                        <strong style="width: 20%;">
+                                                                            $ <t t-esc="Math.round(variants['price']*100)/100"/>
+                                                                        </strong>
+                                                                    </div>
+                                                                </t>
+                                                            </t>
+                                                        </div>
+                                                    </div>
+                                                    <t t-set="var_count" t-value="var_count+1"/>
+                                                </t>
+                                            </div>
+                                            <t t-set="choice_count" t-value="choice_count+1"/>
+                                        </t>
+                                        <t t-else="">
+                                            <h3 style="width: 90%;">
+                                                <strong style="font-size: 20px;"
+                                                        t-esc="bundle_product['bundle_product_name']"/>
+                                            </h3>
+                                            <p style="padding-top: 12px;position: absolute;color:red;" id="popup_req">Required</p>
+                                            <p style="padding-top: 12px;position: absolute;display:none;color:green;" id="popup_sel">Selected</p>
+
+                                            <div style="padding-top: 5px;" t-att-id="choice_count+custom_val+bundle_product['bundle_product_id']+'data'">
+                                                <br/>
+                                                <t t-set="var_count" t-value="1"/>
+                                                <t t-foreach="bundle_product['choice_products']" t-as="products">
+                                                    <br/>
+                                                    <div class="radio_options">
+                                                        <div style="display: flex;font-size: 16px;font-weight: 700;">
+                                                            <input style="margin-top: 1.4%;width: 25px;height: 25px;" class="radio_choice" type="radio" t-att-id="products['choice_product_id']"
+                                                                   t-att-variant_id="products['choice_product_id']"
+                                                                   t-att-choice-count="choice_count"
+                                                                   t-att-custom_val="custom_val"
+                                                                   t-att-check_val="choice_count+custom_val+products['choice_product_id']"
+                                                                   t-att-name="choice_count+'choice'+custom_val+'choice_check_radio'"/>
+                                                            <label class="container" t-att-id="var_count+choice_count+custom_val+products['choice_product_id']+'label'" style="padding-top: 4px;font-size: 20px;">
+                                                                <label style="line-height: 30px;padding-left: 8px;"><t t-esc="products['choice_product_name']"/></label>
+                                                                <t t-if="products['bundle_extra_price'] > 0">
+                                                                    <label style="padding-left: 2%;">
+                                                                        $ <t t-esc="Math.round(products['bundle_extra_price']*100)/100"/>
+                                                                    </label>
+                                                                </t>
+                                                                <t t-if="products['optional_product_length'] > 0">
+                                                                    <button style="font-size: 18px;height: 30px;float: right;"
+                                                                        t-att-value="var_count+choice_count+custom_val+products['choice_product_id']"
+                                                                        t-att-id="var_count+choice_count+custom_val+products['choice_product_id']+'down'"
+                                                                        class="btn-primary btn-md ml-4 js_check_product a-submit-btn open_optional custom_custom">Customise
+                                                                    </button>
+                                                                    <button style="display:none;font-size: 18px;height: 30px;float: right;"
+                                                                        t-att-value="var_count+choice_count+custom_val+products['choice_product_id']"
+                                                                        t-att-id="var_count+choice_count+custom_val+products['choice_product_id']+'up'"
+                                                                        class="btn-primary btn-md ml-4 js_check_product a-submit-btn close_optional done_custom">Done
+                                                                    </button>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <button style="padding-top: 8px;padding-left: 2%;border:unset;background:unset;"
+                                                                        t-att-value="choice_count+custom_val+products['choice_product_id']"
+                                                                        t-att-id="choice_count+custom_val+products['choice_product_id']+'up'"
+                                                                        class=""><i class="fa fa-angle-up" style="color: white;"></i>
+                                                                    </button>
+                                                                </t>
+                                                            </label>
+
+                                                            <br/>
+                                                        </div>
+                                                        <t t-set="choice_product_data" t-value="products['choice_product_id']"/>
+                                                        <t t-set="choice_check_val" t-value="choice_count+custom_val+products['choice_product_id']"/>
+                                                        <div class="optional_product" style="display:none; padding-left: 5%;" t-att-id="var_count+choice_count+custom_val+products['choice_product_id']+'optional'" t-att-class="choice_count+custom_val+products['choice_product_id']+'optional'">
+                                                            <t t-foreach="products['optional_product']" t-as="optional_pro">
+                                                                <br/>
+                                                                <strong><t t-esc="optional_pro['optional_product_name']"/></strong>
+                                                                <br/>
+                                                                <t t-foreach="optional_pro['products']" t-as="variants">
+                                                                    <br/>
+                                                                    <div class="row">
+                                                                        <input style="width: 19px;height: 19px;" t-att-check_val="choice_check_val" class="variant_checkbox" t-att-variant_value="choice_product_data" t-att-variant_id="variants['product_id']" type="checkbox"></input>
+                                                                        <strong style="width: 70%;padding-left: 2%;">
+                                                                            <t t-esc="variants['product_name']"/>
+                                                                        </strong>
+                                                                        <strong style="width: 20%;">
+                                                                            $ <t t-esc="Math.round(variants['price']*100)/100"/>
+                                                                        </strong>
+                                                                    </div>
+                                                                </t>
+                                                            </t>
+                                                        </div>
+                                                    </div>
+                                                    <t t-set="var_count" t-value="var_count+1"/>
+                                                </t>
+                                            </div>
+                                            <t t-set="choice_count" t-value="choice_count+1"/>
+                                        </t>
+                                    </div>
+                                </t>
+                                <t t-set="custom_val" t-value="custom_val+1"/>
+                            </t>
+                        </div>
+                        <br/>
+                        <div class="" id="cart_popup_attribute" t-att-data-product_id="product_id" style="height:auto;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <textarea rows="5" placeholder="Notes" class="form-control"
+                                              name="checkout_text_update" id="checkout_text_update"
+                                              style="border: 1px solid #989393 !important;text-align: center;font-size: 17px;"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="cart_popup_btn ">
+                            <button class="text-center btn btn-primary checkout_shop_bundle">
+                                Add To Cart
+                            </button>
+                            <button class="checkout_cart_bundle btn text-center btn btn-primary">
+                                Proceed to checkout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

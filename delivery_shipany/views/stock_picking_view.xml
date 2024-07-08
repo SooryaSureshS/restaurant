@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_picking_inherit_shipany" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit.shipany</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_cancel']" position="after">
+                <button name="action_get_shipany_waybill" type="object" string="Attach ShipAny WayBill" class="btn-primary"
+                        attrs="{'invisible': [('shipany_order_id', '=', False)]}"/>
+                <button name="action_create_shipany_order" type="object" string="Create ShipAny Order"
+                        class="btn-primary"
+                        attrs="{'invisible': ['|',('shipany_order_id', '!=', False),('state', 'in', ('cancel','done'))]}"/>
+            </xpath>
+            <xpath expr="//notebook[last()]" position="inside">
+                <page string="Delivery Method" name="delivery_method">
+                    <group>
+                        <group string="Information" name="infos">
+                            <field name="shipany_delivery_method"/>
+                            <field name="shipany_delivery_address"
+                                   attrs="{'required': [('shipany_delivery_method', '=', 'std_delivery')]}"/>
+                            <field name="shipany_locker_no"
+                                   attrs="{'required': [('shipany_delivery_method', '=','locker')]}"/>
+                            <field name="shipany_locker"/>
+                            <button name="get_service_locations" type="object" string="Get locker" class="btn-primary"
+                                    invisible="1"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//notebook/page[@name='extra']" position="inside">
+                <group>
+                    <field name="shipany_order_id"/>
+                    <field name="shipany_waybill_url" invisible="1"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="sale_shipany_get_rate">
+        <field name="name">sale.order.shipany.get.rate</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='client_order_ref']" position="after">
+                <field name="carrier_id"/>
+                <field name="carrier_quots_uid" invisible="1"/>
+                <field name="courier_quot_uid" invisible="1"/>
+                <field name="courier_uid" invisible="1"/>
+                <field name="courier_type" invisible="1"/>
+                <field name="ship_amount" invisible="1"/>
+                <field name="courier_plan" invisible="1"/>
+            </xpath>
+            <xpath expr="//notebook[last()]" position="inside">
+                <page string="Delivery Method" name="delivery_method">
+                    <group>
+                        <group string="Information" name="infos">
+                            <field name="shipany_delivery_method"/>
+                            <field name="shipany_delivery_address"
+                                   attrs="{'required': [('shipany_delivery_method', '=', 'std_delivery')]}"/>
+                            <field name="shipany_locker_no"
+                                   attrs="{'required': [('shipany_delivery_method', '=','locker')]}"/>
+                            <field name="shipany_locker"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

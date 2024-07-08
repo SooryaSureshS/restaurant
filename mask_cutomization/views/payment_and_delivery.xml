@@ -1,0 +1,47 @@
+<odoo>
+    <data>
+        <template id="payment_and_delivery_page" name="Payment and delivery Process">
+            <t t-call="website.layout">
+                <t t-set="additional_title">Payment and delivery Process</t>
+                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/payment_and_delivery_page.css"/>
+                <t t-set="no_footer" t-value="1"/>
+                <t t-call="mask_cutomization.header_banner_xml"/>
+                <div class="container">
+                    <div class="payment-form-banner">
+                        <h4>Delivery and payment methods</h4>
+                        <p>You can choose whether your products are delivered to a post office or to your door, and now
+                            Posti’s parcel points are also available as an option. If you would like delivery to your
+                            door, please provide your telephone number with your order so that Posti can arrange a
+                            delivery time. If you wish your products to be delivered to a parcel point, please remember
+                            to give your mobile phone number so that you can receive a delivery alert by text message.
+                        </p>
+
+                        <p>If you so wish, we are able to deliver gifts directly to the recipient. If you select home
+                            delivery as your delivery method, please give the recipient’s telephone number so that Posti
+                            can arrange a delivery time.
+                        </p>
+
+                        <p>If the products that you order are in stock, the estimated delivery time is 2–5 business
+                            days. If a product is temporarily out of stock, we will e-mail you to notify you of the
+                            delay.
+                        </p>
+
+                        <p>We will deliver your order to your home address. If your order involves customs or other
+                            issues concerning local taxes, we will contact you before the order is delivered. Please
+                            make sure that your contact details are correct.
+                        </p>
+                        <h4>Returns</h4>
+                        <p>You can inspect the products you have ordered from Aarikka for 14 days after receiving them
+                            and decide whether you want to keep them.
+                            If the product does not meet your expectations, you can return it or exchange it for another
+                            product within 14 days. We require the product to be unused and in its original condition.
+                            Products must always be returned in their original packaging.
+                        </p>
+
+                        |
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

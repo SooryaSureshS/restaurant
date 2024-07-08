@@ -1,0 +1,107 @@
+
+.banner_container{
+    background:black;
+/*
+    background: #4187a0 url("/mask_cutomization/static/src/image/container_banner.png") no-repeat center;
+*/
+    width: 100%;
+/*
+    height:750px;
+    background-size: cover;
+*/
+    position: relative;
+}
+.banner_container_mask{
+    position: absolute;
+    right: 0;
+    transform: translateY(-50%) !important;
+    z-index: 1;
+        top: 50%;
+}
+.banner_contents_mask{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 73px;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+.banner_contents_mask{
+        position: absolute;
+    top: 50%;
+    transform: translateY(-50%) !important;
+    z-index: 2;
+    right: 50%;
+    width: 484px;
+}
+.container_mask_image{
+        width: 100%;
+}
+@media only screen and (max-width: 768px) {
+    .container_mask_image{
+        width: 100%;
+    }
+    .banner_contents_mask {
+            right: unset;
+                    width: fit-content;t;
+    }
+    .banner_text{
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 27px;
+        line-height: 39px;
+        color: #FFFFFF;
+        position: absolute;
+        top: 39px;
+        left: 35%;
+        transform: translateX(-50%) !important;
+        width: 234px;
+        display: block !important;
+    }
+   /* .banner_container{
+            height: 477px;
+    }*/
+    .banner_container_mask {
+        position: absolute;
+        right: 0;
+        transform: translateY(0%) !important;
+        z-index: 1;
+        top: 50%;
+    }
+
+}
+
+@media only screen and (max-width: 999px){
+.banner_contents_mask {
+    right: unset;
+    width: fit-content;
+    font-weight: 600;
+    font-size: 40px;
+    display: none;
+}
+
+/*
+.banner_container_mask{
+    display: none;
+}
+
+    .banner_container_mask{
+        display: none;
+    }
+
+
+.banner_container{
+       background:black;
+       background: #4187a0 url("/mask_cutomization/static/src/image/6009665 2.png") no-repeat center;
+       width: 100%;
+       height:750px;
+       background-size: cover;
+       position: relative;
+}
+*/
+}
+

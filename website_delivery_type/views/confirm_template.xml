@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--    <template id="order_confirm_inherit" name="Pickup Address" inherit_id="website_sale.confirmation" priority="100">-->
+<!--        <xpath expr="//div[hasclass('oe_website_sale')]" position="replace">-->
+
+
+
+
+<!--            <div class="oe_cart">-->
+
+<!--                <div class="oe_structure clearfix mt-3" id="oe_structure_website_sale_confirmation_1"/>-->
+<!--                <h3 class="text-left mt-3">-->
+<!--                    <strong>Payment Information:</strong>-->
+<!--                </h3>-->
+
+<!--       -->
+
+
+<!--                <t t-set="payment_tx_id" t-value="order.get_portal_last_transaction()"/>-->
+<!--                <t t-if="payment_tx_id.state == 'done'">-->
+<!--                    <div class="thanks_msg">-->
+<!--                        <h2>Thank you for your order.-->
+<!--                            <br/>-->
+
+<!--                            <t t-if="order.website_delivery_type == 'curb'">-->
+<!--                                <label style="color:#ca0520;font-size:20px;">Please turn on your hazard lights, so our staff can easily find you.</label>-->
+<!--                                <br/>-->
+<!--                            </t>-->
+<!--                            <a style="color:#ca0520;font-size:20px;transition: 0.2s;" id="track_click" t-att-href="order.get_urls_data()"-->
+<!--                               target="_blank">-->
+<!--                                Track the progress of your order by clicking HERE.-->
+<!--                            </a>-->
+<!--                        </h2>-->
+<!--                    </div>-->
+<!--                </t>-->
+<!--                <div class="oe_structure clearfix mt-3" id="oe_structure_website_sale_confirmation_1"/>-->
+<!--                <h3 class="text-left mt-3">-->
+<!--                    <strong>Payment Information:</strong>-->
+<!--                </h3>-->
+<!--                <table class="table">-->
+<!--                    <tbody>-->
+<!--                        <tr>-->
+<!--                            <td colspan="2">-->
+<!--                                <t t-esc="order.get_portal_last_transaction().acquirer_id.name"/>-->
+<!--                            </td>-->
+<!--                            <td class="text-right" width="100">-->
+<!--                                <strong>Total:</strong>-->
+<!--                            </td>-->
+<!--                            <td class="text-right" width="100">-->
+<!--                                <strong t-field="order.amount_total"-->
+<!--                                        t-options="{'widget': 'monetary', 'display_currency': order.pricelist_id.currency_id}"/>-->
+<!--                            </td>-->
+
+
+<!--                        </tr>-->
+<!--                        <t t-if="order.website_delivery_type == 'pickup'">-->
+<!--                            <t t-if="order.pickup_date_string">-->
+<!--                                <tr>-->
+<!--                                    <td colspan="2">-->
+<!--                                        <strong>Pickup Time:</strong>-->
+<!--                                    </td>-->
+
+<!--                                    <td class="text-right" width="100" colspan="2">-->
+<!--                                        <strong t-field="order.pickup_date_string"/>-->
+<!--                                    </td>-->
+
+<!--                                </tr>-->
+<!--                            </t>-->
+<!--                            <t t-else="">-->
+<!--                                <tr>-->
+<!--                                    <td colspan="2">-->
+<!--                                        <strong>Take Away</strong>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                            </t>-->
+<!--                        </t>-->
+<!--                        <t t-elif="order.website_delivery_type == 'curb'">-->
+<!--                            <tr>-->
+<!--                                <td colspan="2">-->
+<!--                                    <strong>Kerbside Pickup Time:</strong>-->
+<!--                                </td>-->
+
+<!--                                <td class="text-right" width="100" colspan="2">-->
+<!--                                    <strong t-field="order.pickup_date_string"/>-->
+<!--                                </td>-->
+
+<!--                            </tr>-->
+<!--                        </t>-->
+<!--                        <t t-elif="order.website_delivery_type == 'dine_in'">-->
+<!--                            <tr>-->
+<!--                                <td colspan="2">-->
+<!--                                    <strong>Dine In</strong>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                        </t>-->
+<!--                    </tbody>-->
+<!--                </table>-->
+<!--                <t t-call="website_sale.payment_confirmation_status"/>-->
+<!--                <div class="card mt-3" style="color: #2c6552;">-->
+<!--                    <div class="card-body">-->
+<!--                        <t t-set="same_shipping"-->
+<!--                           t-value="bool(order.partner_shipping_id==order.partner_id or only_services)"/>-->
+<!--                        <t t-if="order.website_delivery_type == 'pickup'">-->
+<!--                            <t t-if="order.pickup_date_string">-->
+
+<!--                                <div>-->
+<!--                                    <b>-->
+<!--                                        Pick Up from this address:-->
+<!--                                    </b>-->
+<!--                                    <span t-esc='order.partner_id'-->
+<!--                                          t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"-->
+<!--                                          class="address-inline"/>-->
+<!--                                </div>-->
+<!--                            </t>-->
+<!--                            <t t-else="">-->
+<!--                                <div>-->
+<!--                                    <b>-->
+<!--                                        Take Away from this address:-->
+<!--                                    </b>-->
+<!--                                    <span t-esc='order.partner_id'-->
+<!--                                          t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"-->
+<!--                                          class="address-inline"/>-->
+<!--                                </div>-->
+<!--                            </t>-->
+<!--                        </t>-->
+<!--                        <t t-elif="order.website_delivery_type == 'curb'">-->
+<!--                            <div>-->
+<!--                                <b>-->
+<!--                                    Delivery:-->
+<!--                                </b>-->
+<!--                                <span t-esc='order.partner_id'-->
+<!--                                      t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"-->
+<!--                                      class="address-inline"/>-->
+<!--                            </div>-->
+<!--                        </t>-->
+<!--                        <t t-elif="order.website_delivery_type == 'dine_in'">-->
+<!--                            <div>-->
+<!--                                <b>-->
+<!--                                    Dine In:-->
+<!--                                </b>-->
+<!--                                <span t-esc='order.partner_id'-->
+<!--                                      t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"-->
+<!--                                      class="address-inline"/>-->
+<!--                            </div>-->
+<!--                        </t>-->
+<!--                        <t t-elif="order.website_delivery_type == 'delivery'">-->
+<!--                            <div>-->
+<!--                                <b>-->
+<!--                                    Delivery Address:-->
+<!--                                </b>-->
+<!--                                <span t-esc='order.partner_id'-->
+<!--                                      t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"-->
+<!--                                      class="address-inline"/>-->
+<!--                            </div>-->
+<!--                        </t>-->
+<!--                        <t t-else="">-->
+<!--                            <div>-->
+<!--                                <b>-->
+<!--                                    Delivery Address:-->
+<!--                                </b>-->
+<!--                                <span t-esc='order.partner_id'-->
+<!--                                      t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"-->
+<!--                                      class="address-inline"/>-->
+<!--                            </div>-->
+<!--                        </t>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <t t-if="order.website_delivery_type == 'curb'">-->
+<!--                    <div class="card mt-3" style="color: #2c6552;">-->
+<!--                        <div class="card-body">-->
+<!--                            <div style="color:#272b2f;">-->
+<!--                                <strong>Your order will be delivered to your car.-->
+<!--                                </strong>-->
+<!--                                <br/>-->
+<!--                                <br/>-->
+<!--                                <t t-if="order.vehicle_type.type_name"><label>Vehicle Type : <t t-esc="order.vehicle_type.type_name"/></label><br/></t>-->
+<!--                                <t t-if="order.vehicle_make.make_name"><label>Vehicle Make : <t t-esc="order.vehicle_make.make_name"/></label><br/></t>-->
+<!--                                <t t-if="order.vehicle_color"><label>Vehicle Color : <t t-esc="order.vehicle_color"/></label><br/></t>-->
+<!--                                <t t-if="order.license_plate_no"><label>Licence Plate No : <t t-esc="order.license_plate_no"/></label><br/></t>-->
+<!--                                <t t-if="order.approximate_location.location_name"><label>Vehicle Location : <t t-esc="order.approximate_location.location_name"/></label><br/></t>-->
+<!--                                <t t-if="order.location_notes"><label>Location Note : <t t-esc="order.location_notes"/></label><br/></t>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </t>-->
+<!--                <div class="oe_structure mt-3" id="oe_structure_website_sale_confirmation_2"/>-->
+<!--            </div>-->
+<!--        </xpath>-->
+<!--    </template>-->
+
+    <template id="order_payment_inherit" name="Pickup Address" inherit_id="website_sale.payment" priority="100">
+        <xpath expr="//div[hasclass('card')]" position="replace">
+            <div class="card">
+                <div class="card-body" id="shipping_and_billing">
+                    <a class='float-right no-decoration' href='/shop/checkout'>
+                        <i class="fa fa-edit"/>
+                        Select Delivery or Pickup Method
+                    </a>
+                    <t t-set="same_shipping"
+                       t-value="bool(order.partner_shipping_id==order.partner_id or only_services)"/>
+                    <div>
+                        <b>Billing<t t-if="same_shipping and not only_services">&amp; Delivery</t>:
+                        </b>
+                        <span t-esc='order.partner_id'
+                              t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"
+                              class="address-inline"/>
+                    </div>
+                    <div t-if="not same_shipping and not only_services" groups="sale.group_delivery_invoice_address">
+                        <b>Delivery:</b>
+                        <span t-esc='order.partner_shipping_id'
+                              t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"
+                              class="address-inline"/>
+                    </div>
+                </div>
+            </div>
+
+        </xpath>
+    </template>
+</odoo>

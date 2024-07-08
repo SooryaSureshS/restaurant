@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_homepage_whisky" name="Home Page whisky">
+		<section class="s_homepage_whisky">
+			<div class="oe_structure"/>
+			<!-- banner start -->
+			<section class="whisky-banner">
+				<div id="banner-carousel" class="whisky-banner-slider carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="7000">
+		          	<div class="carousel-inner" role="listbox">
+		            	<div class="carousel-item active ls-slide" style="background-image: url('/theme_wineshop/static/src/img/whisky-banner1.jpg');">
+		            		<div class="container">
+			            		<div class="content text-center">
+			            			<h1 class="text-white">Drinks for Cognoscente</h1>
+			            			<img class="img img-fluid" src="/theme_wineshop/static/src/img/down-lines.png" alt="image"/>
+			            			<p class="text-white w-100 w-lg-75 mx-auto">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem.</p>
+			            			<h2 class="discount text-white">Get 25% OFF</h2>
+			            			<div class="s_btn" data-name="Button">
+				            			<a href="#" class="btn btn-outline-primary btn-lg">Shop Now</a>
+				            		</div>
+			            		</div>
+			              	</div>
+		            	</div>
+		            	<div class="carousel-item ls-slide" style="background-image: url('/theme_wineshop/static/src/img/whisky-banner2.jpg');">
+		            		<div class="container">
+			            		<div class="content text-center">
+			            			<h1 class="text-white">Drinks for Cognoscente</h1>
+			            			<img class="img img-fluid" src="/theme_wineshop/static/src/img/down-lines.png" alt="image"/>
+			            			<p class="text-white w-100 w-lg-75 mx-auto">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem.</p>
+			            			<h2 class="discount text-white">Get 25% OFF</h2>
+			            			<div class="s_btn" data-name="Button">
+				            			<a href="#" class="btn btn-outline-primary btn-lg">Shop Now</a>
+				            		</div>
+			            		</div>
+			              	</div>
+			            </div>
+			            <div class="carousel-item ls-slide" style="background-image: url('/theme_wineshop/static/src/img/whisky-banner3.jpg');">
+		            		<div class="container">
+			            		<div class="content text-center">
+			            			<h1 class="text-white">Drinks for Cognoscente</h1>
+			            			<img class="img img-fluid" src="/theme_wineshop/static/src/img/down-lines.png" alt="image"/>
+			            			<p class="text-white w-100 w-lg-75 mx-auto">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem.</p>
+			            			<h2 class="discount text-white">Get 25% OFF</h2>
+			            			<div class="s_btn" data-name="Button">
+				            			<a href="#" class="btn btn-outline-primary btn-lg">Shop Now</a>
+				            		</div>
+			            		</div>
+			              	</div>
+			            </div>
+			            <div class="slider-control">
+		              		<a class="left carousel-control-prev text-white font-14" data-target="#banner-carousel" role="button" data-slide="prev">
+			                	<span class="fa fa-angle-left"/>
+			               	 	<b class="sr-only font-normal o_default_snippet_text">Previous</b>
+			              	</a>
+			              	<a class="right carousel-control-next text-white font-14" data-target="#banner-carousel" role="button" data-slide="next">
+			                	<span class="fa fa-angle-right"/>
+			                	<b class="sr-only font-normal o_default_snippet_text">Next</b>
+			              	</a>
+			            </div>
+		          	</div>
+		        </div>
+			</section>
+			<!-- banner end -->
+			<div class="oe_structure"/>
+			<!-- brands start -->
+			<section class="whisky-homepage-brands pt40 pb40" style="background-image: url('/theme_wineshop/static/src/img/brands-bkg.jpg');">
+				<div class="container">
+					<div class="row">
+						<div class="col-6 col-md-2 mb-4 mb-md-0">
+							<div class="image">
+								<img class="img img-fluid" src="/theme_wineshop/static/src/img/brand-01.png" alt="image"/>
+							</div>
+						</div>
+						<div class="col-6 col-md-2 mb-4 mb-md-0">
+							<div class="image">
+								<img class="img img-fluid" src="/theme_wineshop/static/src/img/brand-02.png" alt="image"/>
+							</div>
+						</div>
+						<div class="col-6 col-md-2 mb-4 mb-md-0">
+							<div class="image">
+								<img class="img img-fluid" src="/theme_wineshop/static/src/img/brand-03.png" alt="image"/>
+							</div>
+						</div>
+						<div class="col-6 col-md-2 mb-4 mb-md-0">
+							<div class="image">
+								<img class="img img-fluid" src="/theme_wineshop/static/src/img/brand-04.png" alt="image"/>
+							</div>
+						</div>
+						<div class="col-6 col-md-2 mb-4 mb-md-0">
+							<div class="image">
+								<img class="img img-fluid" src="/theme_wineshop/static/src/img/brand-05.png" alt="image"/>
+							</div>
+						</div>
+						<div class="col-6 col-md-2 mb-4 mb-md-0">
+							<div class="image">
+								<img class="img img-fluid" src="/theme_wineshop/static/src/img/brand-01.png" alt="image"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- brands end -->
+			<div class="oe_structure"/>
+			<!-- sale image start -->
+			<section class="whisky-homepage-sale">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-6 p-0">
+							<div class="image">
+								<a href="#">
+									<img class="img img-fluid" src="/theme_wineshop/static/src/img/sale1.jpg" alt="image"/>
+								</a>
+							</div>
+						</div>
+						<div class="col-md-6 p-0">
+							<div class="image">
+								<a href="#">
+									<img class="img img-fluid" src="/theme_wineshop/static/src/img/sale2.jpg" alt="image"/>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- sale image end -->
+			<div class="oe_structure"/>
+			<!-- service-row start -->
+			<section class="whisky-homepage-service pt64 pb96 bg-secondary">
+				<div class="container">
+					<div class="title text-center mb-5">
+						<h3 class="text-white-50">Why Choose Us</h3>
+						<img class="img img-fluid" src="/theme_wineshop/static/src/img/down-lines.png" alt="image"/>
+					</div>
+					<div class="row">
+						<div class="col-md-4 mb-4 mb-md-0">
+							<div class="service-box">
+								<div class="icon">
+									<span class="fa fa-bullhorn text-white-50"></span>
+								</div>
+								<h6 class="text-primary">Quality</h6>
+								<p class="text-white-50">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem.</p>
+							</div>
+						</div>
+						<div class="col-md-4 mb-4 mb-md-0">
+							<div class="service-box">
+								<div class="icon">
+									<span class="fa fa-clock-o text-white-50"></span>
+								</div>
+								<h6 class="text-primary">Fast Delivery</h6>
+								<p class="text-white-50">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem.</p>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="service-box">
+								<div class="icon">
+									<span class="fa fa-credit-card text-white-50"></span>
+								</div>
+								<h6 class="text-primary">Best Price</h6>
+								<p class="text-white-50">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- service-row end -->
+			<div class="oe_structure"/>
+			<!-- testimonial start -->
+			<section class="whisky-homepage-testimonial pt64 pb96" style="background-image: url('/theme_wineshop/static/src/img/testimonial-bg.jpg');">
+				<div class="container">
+					<div class="title text-center mb-5">
+						<h3 class="text-white-50">Testimonials</h3>
+						<img class="img img-fluid" src="/theme_wineshop/static/src/img/down-lines.png" alt="image"/>
+					</div>
+					<div id="testimonial-carousel" class="whisky-testimonial-slider carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="7000">
+			          	<div class="carousel-inner" role="listbox">
+			            	<div class="carousel-item active ls-slide">
+			            		<div class="container">
+				            		<div class="row">
+				            			<div class="col-lg-4 mb-5 mb-lg-0">
+				            				<div class="content-box">
+				            					<div class="content">
+				            						<div class="icon">
+				            							<span class="fa fa-quote-left text-primary"></span>
+				            						</div>
+				            						<p class="text-white-50">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem. Cras dignissim mi diam, sit amet efficitur magna porta efficitur...</p>
+				            					</div>
+				            					<div class="author d-flex">
+				            						<img class="img img-fluid" src="/theme_wineshop/static/src/img/testimonial2.jpg" alt="image"/>
+				            						<div class="info">
+				            							<h6 class="text-white name">Jon Doe</h6>
+				            							<p class="text-primary">Designer</p>
+				            						</div>
+				            					</div>
+				            				</div>
+				            			</div>
+				            			<div class="col-lg-4 mb-5 mb-lg-0">
+				            				<div class="content-box">
+				            					<div class="content">
+				            						<div class="icon">
+				            							<span class="fa fa-quote-left text-primary"></span>
+				            						</div>
+				            						<p class="text-white-50">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem. Cras dignissim mi diam, sit amet efficitur magna porta efficitur...</p>
+				            					</div>
+				            					<div class="author d-flex">
+				            						<img class="img img-fluid" src="/theme_wineshop/static/src/img/testimonial3.jpg" alt="image"/>
+				            						<div class="info">
+				            							<h6 class="text-white name">Jon Doe</h6>
+				            							<p class="text-primary">Manager</p>
+				            						</div>
+				            					</div>
+				            				</div>
+				            			</div>
+				            			<div class="col-lg-4">
+				            				<div class="content-box">
+				            					<div class="content">
+				            						<div class="icon">
+				            							<span class="fa fa-quote-left text-primary"></span>
+				            						</div>
+				            						<p class="text-white-50">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem. Cras dignissim mi diam, sit amet efficitur magna porta efficitur...</p>
+				            					</div>
+				            					<div class="author d-flex">
+				            						<img class="img img-fluid" src="/theme_wineshop/static/src/img/testimonial1.jpg" alt="image"/>
+				            						<div class="info">
+				            							<h6 class="text-white name">Jon Doe</h6>
+				            							<p class="text-primary">Customer Care Executive</p>
+				            						</div>
+				            					</div>
+				            				</div>
+				            			</div>
+				            		</div>
+				              	</div>
+			            	</div>
+			            	<div class="carousel-item ls-slide">
+			            		<div class="container">
+				            		<div class="row">
+				            			<div class="col-lg-4 mb-5 mb-lg-0">
+				            				<div class="content-box">
+				            					<div class="content">
+				            						<div class="icon">
+				            							<span class="fa fa-quote-left text-primary"></span>
+				            						</div>
+				            						<p class="text-white-50">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem. Cras dignissim mi diam, sit amet efficitur magna porta efficitur...</p>
+				            					</div>
+				            					<div class="author d-flex">
+				            						<img class="img img-fluid" src="/theme_wineshop/static/src/img/testimonial1.jpg" alt="image"/>
+				            						<div class="info">
+				            							<h6 class="text-white name">Jon Doe</h6>
+				            							<p class="text-primary">Customer Care Executive</p>
+				            						</div>
+				            					</div>
+				            				</div>
+				            			</div>
+				            			<div class="col-lg-4 mb-5 mb-lg-0">
+				            				<div class="content-box">
+				            					<div class="content">
+				            						<div class="icon">
+				            							<span class="fa fa-quote-left text-primary"></span>
+				            						</div>
+				            						<p class="text-white-50">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem. Cras dignissim mi diam, sit amet efficitur magna porta efficitur...</p>
+				            					</div>
+				            					<div class="author d-flex">
+				            						<img class="img img-fluid" src="/theme_wineshop/static/src/img/testimonial2.jpg" alt="image"/>
+				            						<div class="info">
+				            							<h6 class="text-white name">Jon Doe</h6>
+				            							<p class="text-primary">Designer</p>
+				            						</div>
+				            					</div>
+				            				</div>
+				            			</div>
+				            			<div class="col-lg-4">
+				            				<div class="content-box">
+				            					<div class="content">
+				            						<div class="icon">
+				            							<span class="fa fa-quote-left text-primary"></span>
+				            						</div>
+				            						<p class="text-white-50">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem. Cras dignissim mi diam, sit amet efficitur magna porta efficitur...</p>
+				            					</div>
+				            					<div class="author d-flex">
+				            						<img class="img img-fluid" src="/theme_wineshop/static/src/img/testimonial3.jpg" alt="image"/>
+				            						<div class="info">
+				            							<h6 class="text-white name">Jon Doe</h6>
+				            							<p class="text-primary">Manager</p>
+				            						</div>
+				            					</div>
+				            				</div>
+				            			</div>
+				            		</div>
+				              	</div>
+				            </div>
+				            <div class="carousel-item ls-slide">
+			            		<div class="container">
+				            		<div class="row">
+				            			<div class="col-lg-4 mb-5 mb-lg-0">
+				            				<div class="content-box">
+				            					<div class="content">
+				            						<div class="icon">
+				            							<span class="fa fa-quote-left text-primary"></span>
+				            						</div>
+				            						<p class="text-white-50">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem. Cras dignissim mi diam, sit amet efficitur magna porta efficitur...</p>
+				            					</div>
+				            					<div class="author d-flex">
+				            						<img class="img img-fluid" src="/theme_wineshop/static/src/img/testimonial3.jpg" alt="image"/>
+				            						<div class="info">
+				            							<h6 class="text-white name">Jon Doe</h6>
+				            							<p class="text-primary">Manager</p>
+				            						</div>
+				            					</div>
+				            				</div>
+				            			</div>
+				            			<div class="col-lg-4 mb-5 mb-lg-0">
+				            				<div class="content-box">
+				            					<div class="content">
+				            						<div class="icon">
+				            							<span class="fa fa-quote-left text-primary"></span>
+				            						</div>
+				            						<p class="text-white-50">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem. Cras dignissim mi diam, sit amet efficitur magna porta efficitur...</p>
+				            					</div>
+				            					<div class="author d-flex">
+				            						<img class="img img-fluid" src="/theme_wineshop/static/src/img/testimonial1.jpg" alt="image"/>
+				            						<div class="info">
+				            							<h6 class="text-white name">Jon Doe</h6>
+				            							<p class="text-primary">Customer Care Executive</p>
+				            						</div>
+				            					</div>
+				            				</div>
+				            			</div>
+				            			<div class="col-lg-4">
+				            				<div class="content-box">
+				            					<div class="content">
+				            						<div class="icon">
+				            							<span class="fa fa-quote-left text-primary"></span>
+				            						</div>
+				            						<p class="text-white-50">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem. Cras dignissim mi diam, sit amet efficitur magna porta efficitur...</p>
+				            					</div>
+				            					<div class="author d-flex">
+				            						<img class="img img-fluid" src="/theme_wineshop/static/src/img/testimonial2.jpg" alt="image"/>
+				            						<div class="info">
+				            							<h6 class="text-white name">Jon Doe</h6>
+				            							<p class="text-primary">Designer</p>
+				            						</div>
+				            					</div>
+				            				</div>
+				            			</div>
+				            		</div>
+				              	</div>
+				            </div>
+			          	</div>
+			        </div>
+				</div>
+			</section>
+		</section>
+	</template>
+</odoo>

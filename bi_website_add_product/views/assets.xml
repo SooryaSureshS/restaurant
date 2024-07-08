@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="theme_wineshop_inherit_wine_assets" name="Theme WineShop Inherit wine Assets" inherit_id="website.assets_frontend">
+		<xpath expr="." position="inside">
+            <script type="text/javascript" src="/bi_website_add_product/static/src/js/bundle_product.js"/>
+            <script type="text/javascript" src="/bi_website_add_product/static/src/js/bundle_product_modal.js"/>
+            <script type="text/javascript" src="/bi_website_add_product/static/src/js/add_cart.js" />
+            <script type="text/javascript" src="/bi_website_add_product/static/src/js/lis.modal.js" />
+            <script type="text/javascript" src="/bi_website_add_product/static/src/js/cart_lines.js" />
+            <link rel="stylesheet" type="text/scss" href="/bi_website_add_product/static/src/css/model_css.css"/>
+            <link rel="stylesheet" type="text/scss" href="/bi_website_add_product/static/src/css/style.css"/>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<template id="wineshop_product_page" inherit_id="website_sale.product">
+		<xpath expr="//div[hasclass('js_sale')]" position="attributes">
+			<attribute name="class" add="wineshop_product_page pt152 pb152" separator=" "/>
+		</xpath>
+		<xpath expr="//div[hasclass('row')][1]" position="attributes">
+			<attribute name="class" add="d-none" separator=" "/>
+		</xpath>
+		<xpath expr="//div[hasclass('col-xl-8')]" position="attributes">
+			<attribute name="class">col-lg-6 mb-4 mb-lg-0</attribute>
+		</xpath>
+		<xpath expr="//div[hasclass('col-xl-4')]" position="attributes">
+			<attribute name="class">col-lg-6</attribute>
+		</xpath>
+		<xpath expr="//div[@id='product_details']//h1" position="before">
+			<t t-if="product.year">
+                <p class="subtitle text-primary" t-field="product.year" t-options='{"format": " yyyy"}'/>
+            </t>
+		</xpath>
+		<xpath expr="//div[@id='product_details']//h1" position="after">
+			<p t-field="product.description_sale" class="product-description"/>
+		</xpath>
+	</template>
+
+	<template id="wineshop_add_to_cart_btn" inherit_id="website_sale.product_quantity">
+		<xpath expr="//div[hasclass('input-group-append')]" position="after">
+			<a role="button" id="add_to_cart" class="btn btn-secondary btn-md ml-4 js_check_product a-submit-btn d-block d-sm-inline-block" href="#">Add to Cart</a>
+		</xpath>
+
+		<xpath expr="//div[hasclass('css_quantity')]" position="after">
+			<div class="wishlist-compare">
+            	<div class="wishlist d-inline-block">
+	            	<t t-if="is_view_active('website_sale_wishlist.add_to_wishlist')">
+						<t t-set="in_wish" t-value="product._is_in_wishlist()"/>
+			            <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+			            <button t-if="product_variant_id" type="button" role="button" class="btn btn-secondary o_add_wishlist" t-att-disabled='in_wish or None' title="Add to Wishlist" t-att-data-product-template-id="product.id" t-att-data-product-product-id="product_variant_id" data-action="o_wishlist">
+			            	<span class="fa fa-heart" role="img" aria-label="Add to wishlist"></span>
+			            </button>
+			        </t>
+			    </div>
+			    <div class="compare d-inline-block">
+			    	<t t-if="is_view_active('website_sale_comparison.add_to_compare')">
+						<t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+			            <button t-if="product_variant_id" type="button" role="button" class="d-none d-md-inline-block btn btn-secondary o_add_compare" title="Compare" aria-label="Compare" t-att-data-product-product-id="product_variant_id" data-action="o_comparelist">
+			            	<span class="fa fa-exchange"></span>
+			            </button>
+			        </t>
+			    </div>
+            </div>
+			<div class="product_info_list d-flex">
+				<p>
+					<span class="sku-title">SKU: </span>
+					<span class="sku-name">
+						<t t-if="product.sku_id">
+							<t t-esc="product.sku_id"/>
+						</t>
+						<t t-else="">
+							<span>N/A</span>
+						</t>
+					</span>
+				</p>
+				<t t-if="product.public_categ_ids">
+					<div class="wineshop_categ">
+						<p>
+							<span class="categ-title">Category: </span>
+							<t t-foreach="product.public_categ_ids" t-as="categs">
+								<a t-att-href="keep('/shop/category/%s' % slug(categs), category=0)">
+				            		<span class="categ-name">
+				            			<t t-esc="categs.name"/>
+				            		</span>
+				            	</a>
+			            		<span>, </span>
+			            	</t>
+						</p>
+					</div>
+				</t>
+				<t t-if="product.tag_ids">
+					<div class="wineshop_tags">
+						<p>
+							<span class="tag-title">Tags: </span>
+							<t t-foreach="product.tag_ids" t-as="tags">
+			            		<span class="tag-name">
+			            			<t t-esc="tags.name"/>
+			            		</span>
+			            		<span class="tag-name">, </span>
+			            	</t>
+			            </p>
+					</div>
+		        </t>
+			</div>
+		</xpath>
+	</template>
+
+	<template id="product_attributes_body_bizople" inherit_id="website_sale_comparison.product_attributes_body" priority="20" >
+		<xpath expr="//section[@id='product_full_spec']//div" position="replace" />
+		<xpath expr="//section[@id='product_full_spec']//h3" position="replace" />
+    </template>
+
+	<template id="products_tab_bizople" inherit_id="website_sale.product" name="Product Tab Bizople">
+        <xpath expr="//section[@id='product_detail']" position="after">
+                <t t-set="first" t-value="0"/>
+                <t t-set="review_enabled" t-value="is_view_active('website_sale.product_comment')"/>
+                <t t-set="specification_enabled" t-value="is_view_active('website_sale_comparison.product_attributes_body')"/>
+                <div class="col-lg-12 col-md-12 pt48 pb48 product_tabs">
+                    <div class="container">
+                        <div class="main-tab">
+                            <ul class="nav nav-tabs card-header-tabs" role="tablist" id="product_detail_tabs">
+                            	<t t-if="product.website_description or request.env.user._is_admin()">
+	                                <li class="nav-item" priority="1">
+	                                    <a class="nav-link product_description active show" id="nav-home-tab1" data-toggle="tab" href="#nav-home1" role="tab" aria-controls="nav-home1" aria-selected="true">
+	                                        Description
+	                                    </a>
+	                                </li>
+	                            </t>
+                                
+                                <t t-if="product.valid_product_template_attribute_line_ids._prepare_categories_for_display()">
+	                                <li class="nav-item" priority="1">
+	                                    <a class="nav-link" id="nav-home-tab2" data-toggle="tab" href="#nav-home2" role="tab" aria-controls="nav-home2" aria-selected="false">
+	                                        Specification
+	                                    </a>
+	                                </li>
+                                </t>
+                                
+                                <t t-if="review_enabled">
+	                                <li class="nav-item" priority="1">
+	                                    <a class="nav-link" id="nav-home-tab3" data-toggle="tab" href="#nav-home3" role="tab" aria-controls="nav-home3" aria-selected="false">
+	                                        Reviews
+	                                    </a>
+	                                </li>
+                                </t>
+                                
+                                <t t-foreach="product.tab_ids" t-as="tab">
+                                    <li class="nav-item">
+                                        <a class="nav-link o_default_snippet_text" t-att-id="'nav_link_%s_%s' % (product.id, tab.id)" data-toggle="tab" t-att-href="'#nav_tabs_body_%s_%s' % (product.id, tab.id)"  role="tab" t-att-aria-controls="'nav_link_%s_%s' % (product.id, tab.id)" aria-selected="false">
+                                            <t t-esc="tab.name"/>
+                                        </a>
+                                    </li>
+                                </t>
+                            </ul>
+                        </div>
+                        <div class="card-body tab-content product-tab mt32">
+                            <div class="tab-pane fade active show" id="nav-home1" role="tabpanel" aria-labelledby="nav-home-tab1">
+                                <div itemprop="description" t-field="product.website_description" class="oe_structure mt16" id="product_full_description" />
+                            </div>
+                            <t t-if="specification_enabled">
+                            	<div class="tab-pane fade" id="nav-home2" role="tabpanel" aria-labelledby="nav-home-tab2">
+                                <section class="container" id="product_full_spec">
+					                <t t-set="categories" t-value="product.valid_product_template_attribute_line_ids._prepare_categories_for_display()"/>
+					                <t t-if="categories">
+					                    <h3 class="text-center mb32 d-none">Specifications for <t t-esc="product.name"/></h3>
+					                    <div class="row">
+					                        <div class='col-lg-12' id='product_specifications'>
+					                            <table class='table table-striped table-sm table-hover'>
+					                                <t t-foreach="categories" t-as="category">
+					                                    <t t-if="len(categories) > 1">
+					                                        <tr class="clickable" data-toggle="collapse" t-att-data-target="'.o_ws_category_%d' % category.id">
+					                                            <th class="text-left" t-att-colspan="2">
+					                                                <span t-if="category" t-field="category.name"/>
+					                                                <span t-else="">Uncategorized</span>
+					                                            </th>
+					                                        </tr>
+					                                    </t>
+					                                    <tr t-foreach="categories[category].filtered(lambda l: len(l.value_ids) > 1)" t-as="ptal" t-att-class="'collapse show o_ws_category_%d' % category.id">
+					                                        <td><span t-field="ptal.attribute_id.name"/></td>
+					                                        <td>
+					                                            <t t-foreach="ptal.value_ids" t-as="pav">
+					                                                <span t-field="pav.name"/><t t-if="not pav_last"> or</t>
+					                                            </t>
+					                                        </td>
+					                                    </tr>
+					                                    <t t-set="single_value_attributes" t-value="categories[category]._prepare_single_value_for_display()"/>
+					                                    <tr t-foreach="single_value_attributes" t-as="attribute" t-att-class="'collapse show o_ws_category_%d' % category.id">
+					                                        <td><span t-field="attribute.name"/></td>
+					                                        <td>
+					                                            <t t-foreach="single_value_attributes[attribute]" t-as="ptal">
+					                                                <span t-field="ptal.product_template_value_ids._only_active().name"/><t t-if="not ptal_last">, </t>
+					                                            </t>
+					                                        </td>
+					                                    </tr>
+					                                </t>
+					                            </table>
+					                        </div>
+					                    </div>
+					                </t>
+					            </section>
+                            </div>
+                            </t>
+                            <t t-if="review_enabled">
+                            <div class="tab-pane fade" id="nav-home3" role="tabpanel" aria-labelledby="nav-home-tab3">
+                                <div class="o_shop_discussion_rating">
+                                    <section class="container mt16 mb16">
+                                        <hr/>
+                                        <div class="row">
+                                            <div class="col-lg-8 offset-lg-2">
+                                                <t t-call="portal.message_thread">
+                                                    <t t-set="object" t-value="product"/>
+                                                    <t t-set="display_rating" t-value="True"/>
+                                                </t>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                            </t>
+                            <t t-foreach="product.tab_ids" t-as="tab">
+                                <div t-att-id="'nav_tabs_body_%s_%s' % (product.id, tab.id)" class="tab-pane fade" role="tabpanel" t-att-aria-labelledby="'nav_link_%s_%s' % (product.id, tab.id)">
+                                    <section class="mt16 mb16">
+                                    	<div t-field="tab.content" class="oe_structure" />
+                                    </section>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+        </xpath>
+    </template>
+
+    <template id="avi_price_slider_layout" inherit_id="website_sale.products_attributes" name="Product Price Slider" active="False" customize_show="True" priority="40">
+        <xpath expr="//form[hasclass('js_attributes')]" position="after">
+            <div class="avi-price">
+                <div class="left-title">
+                    <h4 class='attrb_title'>Price</h4>
+                </div>
+                <div class="avi-price-slider">
+                    <form method="post" t-att-action="keep('/shop'+ ('/category/'+slug(category)) if category else '',search=0)">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <div id="priceslider"/>
+                        <input id="avi_website_currency" name="website_currency" t-att-value="website.pricelist_id.currency_id.symbol" type="hidden"/>
+                        <input id="m1" name="min1" t-att-value="min1" type="hidden"/>
+                        <input id="m2" name="max1" t-att-value="max1" type="hidden"/>
+                        <input id="ra1" name="range1" t-att-value="range1" type="hidden"/>
+                        <input id="ra2" name="range2" t-att-value="range2" type="hidden"/>
+                    </form>
+                </div>
+            </div>
+        </xpath>
+       
+    </template>
+
+    <template id="discussion_rating_bizople" inherit_id="website_sale.product_comment">
+        <xpath expr="//div[hasclass('o_shop_discussion_rating')]" position="replace">
+        </xpath>
+    </template>
+
+</odoo>

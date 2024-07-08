@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="assets_backend" name="notice_records_assts" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/notice_board/static/src/js/widget.js"></script>
+                <link rel="stylesheet" href="/notice_board/static/src/scss/widget.scss"/>
+            </xpath>
+        </template>
+
+        <template id="assets_frontend" inherit_id="website.assets_frontend">
+            <xpath expr="//script[last()]" position="after">
+                <script type="text/javascript" src="/notice_board/static/src/js/notice_snippet.js"></script>
+                <link rel="stylesheet" href="/notice_board/static/src/scss/notice_board.scss"/>
+            </xpath>
+        </template>
+
+        <template id="notice_item" name="Notice Item">
+            <t t-if="record">
+                <div class="mt16 notice-box">
+                    <div class="row notice-head">
+                        <div class="col-3">
+                            <t t-if="record.get('image')">
+                                <img t-attf-src="data:image/png;base64,{{record.get('image')}}" style="max-height: 100px;width: 100px;margin:5px;" t-att-alt="record.get('name')"/>
+                            </t>
+                        </div>
+                        <div class="col-8 notice-name">
+                            <span>
+                                <t t-esc="record.get('name')"/>
+                            </span>
+                        </div>
+                    </div>
+                    <hr style="margin-top:13px;margin-bottom:13px;padding:0px;"/>
+                    <div class="notice-info ml8">
+                        <div class="notice-date" t-if="record.get('event_date')">
+                            <strong>Date: </strong>
+                            <span>
+                                <t t-esc="record.get('event_date').strftime('%d/%b/%Y')"/>
+                            </span>
+                        </div>
+                        <t t-if="record.get('participation_link')">
+                            <div class="participation-link">
+                                <strong>Paticipation Link: </strong>
+                                <a t-att-href="record.get('participation_link')">
+                                    <t t-esc="record.get('participation_link')"/>
+                                </a>
+                            </div>
+                        </t>
+                        <t t-if="record.get('venue')">
+                            <div class="notice-venue">
+                                <strong>Venue: </strong>
+                                <span t-esc="record.get('venue')"/>
+                            </div>
+                        </t>
+                    </div>
+                    <hr style="margin-top:13px;margin-bottom:13px;padding:0px;"/>
+                    <div class="notice-comment ml8 mr8">
+                        <span t-esc="record.get('message')"/>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="notice_records" name="notices">
+            <t t-if="records">
+                <section class="notice_records">
+                    <div id="o_notice_board" class="carousel slide" data-js='notice_board.notice_records' data-interval="false" data-wrap="false">
+                        <ul class="carousel-indicators">
+                            <li data-target="#o_notice_board" data-slide-to="0" class="active"></li>
+                            <li data-target="#o_notice_board" data-slide-to="1"></li>
+                            <li data-target="#o_notice_board" data-slide-to="2"></li>
+                        </ul>
+                        <div class="notice_block pt16">NOTICE BOARD</div>
+                        <t t-set="notice_index" t-value="0"/>
+                        <t t-set="notice_groups" t-value="[list(records[i:i+notice_count]) for i in range(0,len(records))]"/>
+                        <div class="carousel-inner o_notice_item" style="overflow:hidden;">
+                            <t t-if="len(records) &lt;= notice_count">
+                                <div class="carousel-item active">
+                                    <div class="modal-body container notice_container">
+                                        <div class="row notice_item">
+                                            <t t-foreach='records' t-as="record">
+                                                <div class="col-12 col-md-6 col-lg-4">
+                                                    <t t-call="notice_board.notice_item"/>
+                                                </div>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                            <t t-else="1">
+                                <t t-foreach='notice_groups' t-as="n_group">
+                                    <t t-if="len(n_group)==notice_count">
+                                        <div t-att-class="'carousel-item active' if notice_index==0 else 'carousel-item'">
+                                            <div class="modal-body container notice_container">
+                                                <div class="row notice_item">
+                                                    <t t-foreach='n_group' t-as="record">
+                                                        <div class="col-12 col-md-6 col-lg-4">
+                                                            <t t-call="notice_board.notice_item"/>
+                                                        </div>
+                                                    </t>
+                                                </div>
+                                                <t t-set="notice_index" t-value="notice_index+1"/>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </t>
+                            </t>
+                            <a class="carousel-control-prev" href="#o_notice_board" data-slide="prev" t-if="len(records) > notice_count">
+                                <span class="carousel-control-prev-icon">
+                                    <img src="/notice_board/static/src/img/arrow-left.png" style="margin:  1px 2px 4px 0;"/>
+                                </span>
+                            </a>
+                            <a class="carousel-control-next" href="#o_notice_board" data-slide="next" t-if="len(records) > notice_count">
+                                <span class="carousel-control-next-icon">
+                                    <img src="/notice_board/static/src/img/arrow-right.png" style="margin: 1px 0 4px 1px;"/>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="noticeModal" role="dialog">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header notice_modal_head">
+                                    <button type="button" class="close mr8" data-dismiss="modal">
+                                        <img src="/notice_board/static/src/img/cross.png"/>
+                                    </button>
+                                </div>
+                                <div class="mb16" id="current_notice"/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </t>
+        </template>
+
+        <template id="notices" name="Notice">
+            <section class="s_notices mt32 mb32">
+                <div class="container-fluid">
+                    <div class="mx-auto" id="notice_carousel">
+                        <t t-call="notice_board.notice_records"/>
+                    </div>
+                </div>
+            </section>
+        </template>
+
+        <template id="notice_snippet" inherit_id="website.snippets">
+            <xpath expr="//div[@id='snippet_feature']//t[@t-snippet][last()]" position="after">
+                <t t-snippet="notice_board.notices" string="Notice Board" t-thumbnail="/notice_board/static/src/img/snippet.png"/>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

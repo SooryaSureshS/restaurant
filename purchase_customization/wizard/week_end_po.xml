@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="week_end_wizard_view" model="ir.ui.view">
+            <field name="name">week.end.wizard.form</field>
+            <field name="model">week.end.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Products">
+                    <field name="week_end_product_ids"/>
+                    <footer>
+                        <button string="Create PR" name="create_week_end_products" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="view_week_end_po_tree" model="ir.ui.view">
+            <field name="name">week.end.po.tree</field>
+            <field name="model">week.end.po</field>
+            <field name="arch" type="xml">
+                <tree string="Products" editable="bottom" create="false">
+                    <field name="product_tmpl_id" force_save="1" invisible="1" required="1"/>
+                    <field name="product_id" force_save="1" readonly="1"/>
+                    <field name="partner_id" force_save="1" required="1" context="{'res_partner_search_mode': 'supplier'}"/>
+                    <field name="extra_percentage" force_save="1"/>
+                    <field name="qty" force_save="1" invisible="1" required="1"/>
+                    <field name="purchase_qty" force_save="1" required="1"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_week_end_po_action" model="ir.actions.act_window">
+            <field name="name">week end po</field>
+            <field name="res_model">week.end.po</field>
+            <field name="view_id" ref="purchase_customization.view_week_end_po_tree"/>
+            <field name="help" type="html">
+              <p>
+                no record.
+              </p>
+            </field>
+        </record>
+
+        <record id="view_week_end_po_form" model="ir.ui.view">
+            <field name="name">week.end.po.form</field>
+            <field name="model">week.end.po</field>
+            <field name="arch" type="xml">
+                <form string="Create PR">
+                    <group>
+                        <group>
+                            <field name="product_tmpl_id" force_save="1" invisible="1" required="1"/>
+                            <field name="partner_id" force_save="1" required="1" context="{'res_partner_search_mode': 'supplier'}"/>
+                            <field name="extra_percentage" force_save="1"/>
+                            <field name="qty" force_save="1" invisible="1" required="1"/>
+                            <field name="purchase_qty" force_save="1" required="1"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="create_po_order" type="object" string="Create PR" class="btn btn-primary"/>
+                        <button string="Close" class="oe_highlight" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="week_end_wizard_action" model="ir.actions.act_window">
+			<field name="name">Create PR(All Products)</field>
+            <field name="res_model">week.end.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+		</record>
+
+		<menuitem id="week_end_wizard_stock_menu" name="Create PR(All Products)" parent="stock.menu_stock_inventory_control"
+            sequence="97" action="week_end_wizard_action"/>
+        <menuitem id="week_end_wizard_purchase_menu" name="Create PR(All Products)" parent="purchase.menu_purchase_products"
+            sequence="97" action="week_end_wizard_action"/>
+    </data>
+</odoo>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <!-- Success status -->
+    <t t-name="mask_cutomization.image_editor">
+<!--         <link rel="stylesheet" type="text/css" href="/mask_cutomization/static/src/image_editor/css/style.css"/>-->
+<!--        <link rel="stylesheet" type="text/css" href="/mask_cutomization/static/src/image_editor/css/style-example.css"/>-->
+<!--        <link rel="stylesheet" type="text/css"-->
+<!--              href="/mask_cutomization/static/src/image_editor/css/jquery.Jcrop.min.css"/>-->
+<!--        <link rel="stylesheet" type="text/css" href="/mask_cutomization/static/src/image_editor/messager/style.css"/>-->
+
+        <!-- Js files-->
+<!--        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>-->
+<!--        <script type="text/javascript"-->
+<!--                src="/mask_cutomization/static/src/image_editor/scripts/jquery.Jcrop.js"></script>-->
+<!--        <script type="text/javascript"-->
+<!--                src="/mask_cutomization/static/src/image_editor/scripts/jquery.SimpleCropper.js"></script>-->
+        <div id="image_editor_mask">
+                     <div id="carbon-block"></div>
+            <div id="mask_load">
+                        </div>
+            <p class="lead"></p>
+            <div class="cropme" style="width: 390px; height: 290px;    float: unset;margin:auto;"></div>
+            <div class="clear"></div>
+        </div>
+        <style>
+                    .save_button{
+                        background:    #15d798;
+                        border-radius: 11px;
+                        padding:       20px 45px;
+                        color:         #ffffff;
+                        display:       inline-block;
+                        font:          normal bold 26px/1 "Open Sans", sans-serif;
+                        text-align:    center;
+                    }
+                    .cancel_button{
+                        background:    #ff0000;
+                        border-radius: 11px;
+                        padding:       20px 45px;
+                        color:         #ffffff;
+                        display:       inline-block;
+                        font:          normal bold 26px/1 "Open Sans", sans-serif;
+                        text-align:    center;
+                    }
+                    .button_container{
+                        text-align: center;
+                        padding-top: 50px;
+                    }
+
+                </style>
+                 <script>
+                     console.log("infoofofof");
+                    $('.cropme').simpleCropper();
+
+                </script>
+
+    </t>
+
+
+</templates>

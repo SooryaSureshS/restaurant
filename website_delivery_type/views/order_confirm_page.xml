@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="order_confirm_inherit" name="Pickup Address" inherit_id="website_sale.confirmation" priority="100">
+        <xpath expr="//div[hasclass('oe_website_sale')]" position="replace">
+            <link rel="stylesheet" href="/website_delivery_type/static/src/confirmation_css/style.css"/>
+
+            <header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner"
+                    t-attf-style="background-image: url('/website/image/website/#{order.website_id.id}/confirm_image');"
+                    data-stellar-background-ratio="0.5">
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <div class="display-t js-fullheight">
+                                <div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
+                                    <h1 style="font-style:italic;">Thanks For <em>Your</em> Order
+                                    </h1>
+                                    <t t-if="order.website_delivery_type == 'curb'">
+                                        <span class="glow-on-hover">
+                                            <h2>Please turn on your hazard lights, so our staff can easily find you.
+                                            </h2>
+                                        </span>
+                                    </t>
+<!--                                    <t t-if="order.website_delivery_type != 'delivery'">-->
+<!--                                        <br/>-->
+<!--                                        <span class="glow-on-hover">-->
+<!--                                            <t t-if="order.website_delivery_type == 'pickup'">-->
+<!--                                                <h2>Keep an eye on your email inbox for notification on when to collect your order.-->
+<!--                                                </h2>-->
+<!--                                            </t>-->
+<!--                                            <t t-if="order.website_delivery_type == 'curb'">-->
+<!--                                                <h2>Keep an eye on your email inbox for order status.-->
+<!--                                                </h2>-->
+<!--                                            </t>-->
+<!--                                            <t t-if="order.website_delivery_type == 'dine_in'">-->
+<!--                                                <h2>Keep an eye on your email inbox for order status.-->
+<!--                                                </h2>-->
+<!--                                            </t>-->
+<!--                                        </span>-->
+<!--                                    </t>-->
+                                    <br/>
+                                     <t t-if="order.website_delivery_type == 'delivery'">
+                                        <span class="glow-on-hover">
+                                            <h4><b>Approx time your order will be deliverd</b></h4>
+                                            <br/>
+                                            <h5><b><t t-esc="order.pickup_date_string"/></b></h5>
+                                        </span>
+                                    </t>
+                                    <t t-if="order.website_delivery_type == 'pickup'">
+                                        <span class="glow-on-hover">
+                                            <h4><b>Approx time your order will be ready for collection</b></h4>
+                                            <br/>
+                                            <h5><b><t t-esc="order.pickup_date_string"/></b></h5>
+                                        </span>
+                                    </t>
+                                    <t t-if="order.website_delivery_type == 'curb'">
+                                        <span class="glow-on-hover">
+                                            <h4><b>Approx time your order will be delivered to your car</b></h4>
+                                            <br/>
+                                            <h5><b><t t-esc="order.pickup_date_string"/></b></h5>
+                                        </span>
+                                    </t>
+                                    <a t-att-href="order.get_urls_data()" class="myButton_status">View Order Status</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div id="restaurant-menu">
+
+
+                <div class="container" id="feedback_image">
+                    <br/>
+                    <br/>
+
+                    <div class="row choose">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center Text">
+                            <h3 class="title">
+                                <strong>How was your experience? Let us know your thoughts...</strong>
+                            </h3>
+                            <input type="hidden" id="feedback_order_id" t-att-value="order.id"/>
+                            <input type="hidden" id="feedback_face" value=""/>
+                        </div>
+                    </div>
+                    <div class="row left-imoge choose" style="display: list-item;text-align: center;">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-1 choice action_good text-center option_good">
+                            <img src="/website_delivery_type/static/images/smile.jpeg" class=""/>
+                            <div class="option">
+                                <strong>Good experience</strong>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-1 choice option_bad  action_bad text-center">
+                         <img src="/website_delivery_type/static/images/sad.jpeg" class=""/>
+                            <div class="option">
+                                <strong>Could be better</strong>
+                            </div>
+                        </div>
+
+                        <br/>
+                        <br/>
+                        <br/>
+                        <div style="height:auto;display:none;" id="tell_as_more" >
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center Text">
+                                    <h3 class="title">
+                                        <strong>Please Tell Us More</strong>
+                                    </h3>
+                                </div>
+                                <div class="col-md-12">
+                                    <textarea rows="5" cols="50" id="feedback_text_update" class="text_area_feedback_width"
+                                              style="font-size: 17px;background-color:#efeaea;"></textarea>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4"></div>
+                                <button  class="btn myButton_status col-sm-4" id="feedback_confirm_button">
+                                                    Send Feedback
+                                                </button>
+                                <div class="col-sm-4"></div>
+                            </div>
+                            <br></br>
+                            <br></br>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <br/>
+                <br/>
+                <br/>
+
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <t t-if="order.website_delivery_type == 'delivery'">
+                                <div class="col-lg-12 pt16 pb16 o_colored_level delivery_timing"
+                                     id="padding_paragraph_vehicle" data-name="Box" style="padding-left: 24%;">
+                                    <div class="s_features_grid_content" id="s_paragraph_vehicle">
+                                        <div style="width: 75%;padding-top: 10px;" id="flipper_timer_delivery" t-attf-data-id="#{order.id}"></div>
+                                    </div>
+                                </div>
+                            </t>
+
+                            <div class="menu-section">
+                                <h2 class="menu-section-title">
+                                    <strong>Summary</strong>
+                                </h2>
+<!--                                <div class="menu-item">-->
+<!--                                    <div class="menu-item-name">Order :</div>-->
+<!--                                    <div class="menu-item-price">-->
+<!--                                        <t t-esc="order.name"/>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+
+                                 <div class="col-lg-12 pt16 pb16 o_colored_level" id="padding_paragraph_vehicle" data-name="Box" style="padding-left: 0px;">
+                                        <div class=" rounded bg-secondary s_features_grid_icon" id="vehicle_type_id">Order :</div>
+                                        <div class="s_features_grid_content" id="s_paragraph_vehicle">
+                                            <p class="o_default_snippet_text" id="vehicle_type_id_p"><t t-esc="order.name"/></p>
+                                        </div>
+                                 </div>
+
+
+
+<!--                                <div class="menu-item">-->
+<!--                                    <div class="menu-item-name">Order Date:</div>-->
+<!--                                    <div class="menu-item-price">-->
+<!--&lt;!&ndash;                                        <t t-esc="order.date_order"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <span t-field="order.date_order" t-field-options='{"format": "MM/dd/yyyy"}'/>&ndash;&gt;-->
+<!--                                        <span t-esc="order.date_order.strftime('%d/%m/%Y %H:%M')"/>-->
+
+<!--                                    </div>-->
+<!--                                </div>-->
+
+                                <t t-if="order.website_delivery_type == 'delivery'">
+                                    <div class="col-lg-12 pt16 pb16 o_colored_level" id="padding_paragraph_vehicle" data-name="Box" style="padding-left: 0px;">
+                                        <div class=" rounded bg-secondary s_features_grid_icon" id="vehicle_type_id">Approx Delivery Time:</div>
+                                        <div class="s_features_grid_content" id="s_paragraph_vehicle">
+                                            <p class="o_default_snippet_text" id="vehicle_type_id_p"> <span t-esc="order.pickup_date_string"/></p>
+                                        </div>
+                                    </div>
+                                </t>
+
+
+                                <t t-if="order.website_delivery_type != 'delivery'">
+<!--                                    <div class="menu-item">-->
+<!--                                        <div class="menu-item-name">Pickup Time:</div>-->
+<!--                                        <div class="menu-item-price">-->
+<!--                                            <span t-esc="order.pickup_date_string"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+                                    <div class="col-lg-12 pt16 pb16 o_colored_level" id="padding_paragraph_vehicle" data-name="Box" style="padding-left: 0px;">
+                                        <div class=" rounded bg-secondary s_features_grid_icon" id="vehicle_type_id">Pickup Time:</div>
+                                        <div class="s_features_grid_content" id="s_paragraph_vehicle">
+                                            <p class="o_default_snippet_text" id="vehicle_type_id_p"> <span t-esc="order.pickup_date_string"/></p>
+                                        </div>
+                                    </div>
+                                </t>
+<!--                                <div class="menu-item">-->
+<!--                                    <div class="menu-item-name">Order Total:</div>-->
+<!--                                    <div class="menu-item-price">-->
+<!--                                        <strong t-field="order.amount_total"-->
+<!--                                                t-options="{'widget': 'monetary', 'display_currency': order.pricelist_id.currency_id}"/>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+                                <div class="col-lg-12 pt16 pb16 o_colored_level" id="padding_paragraph_vehicle" data-name="Box" style="padding-left: 0px;">
+                                        <div class=" rounded bg-secondary s_features_grid_icon" id="vehicle_type_id">Order Total:</div>
+                                        <div class="s_features_grid_content" id="s_paragraph_vehicle">
+                                            <p class="o_default_snippet_text" id="vehicle_type_id_p"> <strong t-field="order.amount_total"
+                                                t-options="{'widget': 'monetary', 'display_currency': order.pricelist_id.currency_id}"/>
+                                            </p>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="menu-section">
+                                <h2 class="menu-section-title">
+                                    <t t-if="order.website_delivery_type == 'pickup'">
+                                        <t t-if="order.pickup_date_string">
+                                            <strong>Pickup Address</strong>
+                                        </t>
+                                        <t t-else="">
+                                            <strong>Take Away</strong>
+                                        </t>
+                                    </t>
+                                    <t t-elif="order.website_delivery_type == 'curb'">
+                                        <strong>Kerbside Pickup Address</strong>
+                                    </t>
+                                    <t t-elif="order.website_delivery_type == 'dine_in'">
+                                        <strong>Dine In Address</strong>
+                                    </t>
+                                    <t t-elif="order.website_delivery_type == 'delivery'">
+                                        <strong>Delivery Address</strong>
+                                    </t>
+
+                                </h2>
+
+                                <div class="menu-item" style="text-align: center;">
+                                    <t t-if="order.partner_id">
+                                        <t t-esc="order.partner_id.street"/>
+                                    </t>
+                                </div>
+
+
+                                <div class="menu-item" style="text-align: center;">
+                                    <t t-if="order.partner_id">
+                                        <t t-esc="order.partner_id.street2"/>
+                                    </t>
+                                </div>
+                                <div class="menu-item" style="text-align: center;">
+                                    <t t-if="order.partner_id">
+                                        <t t-esc="order.partner_id.city"/>
+                                        <t t-esc="order.partner_id.state_id.name"/>
+                                    </t>
+                                </div>
+
+                                <div class="menu-item" style="text-align: center;">
+                                    <t t-if="order.partner_id">
+                                        <t t-esc="order.partner_id.country_id.name"/>
+                                        <t t-esc="order.partner_id.zip"/>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="menu-section">
+                                <h2 class="menu-section-title">
+                                    <strong>Payment Information</strong>
+                                </h2>
+<!--                                <div class="menu-item">-->
+<!--                                    <div class="menu-item-name">Payment Method :</div>-->
+<!--                                    <div class="menu-item-price">-->
+<!--                                        <t t-esc="order.get_portal_last_transaction().acquirer_id.name"/>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                -->
+                                <div class="col-lg-12 pt16 pb16 o_colored_level" id="padding_paragraph_vehicle" data-name="Box" style="padding-left: 0px;">
+                                        <div class=" rounded bg-secondary s_features_grid_icon" id="vehicle_type_id">Payment Method :</div>
+                                        <div class="s_features_grid_content" id="s_paragraph_vehicle">
+                                            <p class="o_default_snippet_text" id="vehicle_type_id_p"> <t t-esc="order.get_portal_last_transaction().acquirer_id.name"/>
+                                            </p>
+                                        </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <t t-if="order.website_delivery_type == 'curb'">
+                                <div class="menu-section">
+                                    <h2 class="menu-section-title">
+                                        <strong>Vehicle Information</strong>
+                                    </h2>
+                                    <div class="menu-section-title">
+                                        <a t-att-href="order.get_address_update_data()" class="myButton_status">Inform the restaurant of my location</a>
+                                    </div>
+                                    <div>
+                                        <h5 style="width: 100%;font-weight: bold;">These are the available parking options</h5>
+                                        <br/>
+                                        <t t-foreach="order.approximate_location_ids" t-as="i">
+                                              ➮ <span t-esc="i.location_name"/><br/><br/>
+                                        </t>
+                                    </div>
+                                    <div class="menu-item">
+                                        Your order will be delivered to your car.
+                                    </div>
+<!--                                    <div class="menu-item">-->
+<!--                                        <div class="menu-item-name">Vehicle Type :</div>-->
+<!--                                        <div class="menu-item-price">-->
+<!--                                            <t t-esc="order.vehicle_type.type_name"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+
+                                    <div class="col-lg-12 pt16 pb16 o_colored_level" id="padding_paragraph_vehicle" data-name="Box" style="padding-left: 0px;">
+                                        <div class=" rounded bg-secondary s_features_grid_icon" id="vehicle_type_id">Vehicle Type:</div>
+                                        <div class="s_features_grid_content" id="s_paragraph_vehicle">
+
+                                            <p class="o_default_snippet_text" id="vehicle_type_id_p"><t t-esc="order.vehicle_type.type_name"/></p>
+                                        </div>
+                                    </div>
+
+<!--                                    <div class="menu-item">-->
+<!--                                        <div class="menu-item-name">Vehicle Make :</div>-->
+<!--                                        <div class="menu-item-price">-->
+<!--                                            <t t-esc="order.vehicle_make.make_name"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+
+                                    <div class="col-lg-12 pt16 pb16 o_colored_level" id="padding_paragraph_vehicle" data-name="Box" style="padding-left: 0px;">
+                                        <div class=" rounded bg-secondary s_features_grid_icon" id="vehicle_type_id">Vehicle Make :</div>
+                                        <div class="s_features_grid_content" id="s_paragraph_vehicle">
+
+                                            <p class="o_default_snippet_text" id="vehicle_type_id_p"><t t-esc="order.vehicle_make.make_name"/></p>
+                                        </div>
+                                    </div>
+
+<!--                                    <div class="menu-item">-->
+<!--                                        <div class="menu-item-name">Vehicle Color :</div>-->
+<!--                                        <div class="menu-item-price">-->
+<!--                                            <t t-esc="order.vehicle_color"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+
+                                     <div class="col-lg-12 pt16 pb16 o_colored_level" id="padding_paragraph_vehicle" data-name="Box" style="padding-left: 0px;">
+                                        <div class=" rounded bg-secondary s_features_grid_icon" id="vehicle_type_id">Vehicle Color :</div>
+                                        <div class="s_features_grid_content" id="s_paragraph_vehicle">
+
+                                            <p class="o_default_snippet_text" id="vehicle_type_id_p"><t t-esc="order.vehicle_color"/></p>
+                                        </div>
+                                    </div>
+
+
+<!--                                    <div class="menu-item">-->
+<!--                                        <div class="menu-item-name">Licence Plate No :</div>-->
+<!--                                        <div class="menu-item-price">-->
+<!--                                            <t t-esc="order.license_plate_no"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+
+                                    <div class="col-lg-12 pt16 pb16 o_colored_level" id="padding_paragraph_vehicle" data-name="Box" style="padding-left: 0px;">
+                                        <div class=" rounded bg-secondary s_features_grid_icon" id="vehicle_type_id">Licence Plate No :</div>
+                                        <div class="s_features_grid_content" id="s_paragraph_vehicle">
+
+                                            <p class="o_default_snippet_text" id="vehicle_type_id_p"><t t-esc="order.license_plate_no"/></p>
+                                        </div>
+                                    </div>
+
+
+<!--                                    <div class="menu-item">-->
+<!--                                        <div class="menu-item-name">Vehicle Location :</div>-->
+<!--                                        <div class="menu-item-price">-->
+<!--                                            <t t-esc="order.approximate_location.location_name"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    -->
+<!--                                     <div class="col-lg-12 pt16 pb16 o_colored_level" id="padding_paragraph_vehicle" data-name="Box" style="padding-left: 0px;">-->
+<!--                                        <div class=" rounded bg-secondary s_features_grid_icon" id="vehicle_type_id">Vehicle Location :</div>-->
+<!--                                        <div class="s_features_grid_content" id="s_paragraph_vehicle">-->
+
+<!--                                            <p class="o_default_snippet_text" id="vehicle_type_id_p"> <t t-esc="order.approximate_location.location_name"/></p>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+
+
+<!--                                    <div class="menu-item">-->
+<!--                                        <div class="menu-item-name">Location Note :</div>-->
+<!--                                        <div class="menu-item-price">-->
+<!--                                            <t t-esc="order.location_notes"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+                                     <div class="col-lg-12 pt16 pb16 o_colored_level" id="padding_paragraph_vehicle" data-name="Box" style="padding-left: 0px;">
+                                        <div class=" rounded bg-secondary s_features_grid_icon" id="vehicle_type_id">Location Note :</div>
+                                        <div class="s_features_grid_content" id="s_paragraph_vehicle">
+
+                                            <p class="o_default_snippet_text" id="vehicle_type_id_p">  <t t-esc="order.location_notes"/></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-xl-12">
+                             <t t-set="invoices" t-value="[i for i in order.invoice_ids if i.state not in ['cancel']]"/>
+                                <div t-if="invoices" class="row">
+                                    <div class="col"/>
+                                    <div class="col"/>
+                                    <div class="col">
+                                        <ul class="list-group mb-4">
+                                            <t t-foreach="invoices" t-as="i">
+                                                <t t-set="report_url" t-value="i.get_portal_url(report_type='pdf', download=True)"/>
+                                                <div class="d-flex flex-wrap align-items-center justify-content-between">
+                                                    <div>
+                                                        <a t-att-href="report_url" class="btn btn-primary o_download_bt"
+                                                           style="text-decoration: none;background-color: #fc8000;buton-radius: 10px;border-radius: 5px;">
+                                                            Download Invoice
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                        </ul>
+                                    </div>
+                                    <br></br>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-xl-12">
+                            <table class="table table-striped table-sm" id="cart_products" t-if="order.order_line">
+                                <thead>
+                                    <tr class="header_title_tr" style="line-height: 3;background-color: #fc8000;">
+                                        <th class="border-top-0 td-img" style="color:white;text-align: center;">
+                                            Product
+                                        </th>
+                                        <th class="border-top-0"></th>
+                                        <th class="border-top-0 td-qty" style="color:white;">Quantity</th>
+                                        <th class="border-top-0 text-center td-price" style="color:white;">Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="order.order_line" t-as="line" id="mobile_table_new_confirm">
+                                        <t t-if="line.order_id.website_delivery_type!='delivery'">
+                                            <t t-if="line.product_id.type != 'service' and line.product_id.default_code != 'Delivery_007'">
+                                                <td class='' colspan="2" t-if="not line.product_id.product_tmpl_id"></td>
+                                                <td class='td-img text-center' t-if="line.product_id.product_tmpl_id">
+                                                    <span t-field="line.product_id.image_128"
+                                                          t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max'}"/>
+                                                </td>
+                                                <td class='td-product_name' t-if="line.product_id.product_tmpl_id">
+                                                    <div>
+                                                        <strong t-field="line.name_short"/>
+                                                    </div>
+                                                </td>
+                                                <td class='td-qty'>
+                                                    <div t-esc="line.product_uom_qty"/>
+                                                </td>
+                                                <td class="text-center td-price">
+                                                    <span t-field="line.price_reduce_taxexcl" style="white-space: nowrap;"
+                                                          t-options="{'widget': 'monetary', 'display_currency': order.currency_id}"
+                                                          groups="account.group_show_line_subtotals_tax_excluded"/>
+                                                    <span t-field="line.price_reduce_taxinc" style="white-space: nowrap;"
+                                                          t-options="{'widget': 'monetary', 'display_currency': order.currency_id}"
+                                                          groups="account.group_show_line_subtotals_tax_included"/>
+                                                </td>
+                                            </t>
+                                        </t>
+                                        <t t-else="">
+<!--                                            <t t-if="line.product_id.default_code == 'Delivery_007'">-->
+                                                <td class='' colspan="2" t-if="not line.product_id.product_tmpl_id"></td>
+                                                <td class='td-img text-center' t-if="line.product_id.product_tmpl_id">
+                                                    <span t-field="line.product_id.image_128"
+                                                          t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max'}"/>
+                                                </td>
+                                                <td class='td-product_name' t-if="line.product_id.product_tmpl_id">
+                                                    <div>
+                                                        <t t-if="line.product_id.default_code == 'Delivery_007'">
+                                                            <strong>Delivery Charges</strong>
+                                                        </t>
+                                                        <t t-else="">
+                                                             <strong t-field="line.name_short"/>
+                                                        </t>
+                                                    </div>
+                                                </td>
+                                                <td class='td-qty'>
+                                                    <div t-esc="line.product_uom_qty"/>
+                                                </td>
+                                                <td class="text-center td-price">
+                                                    <span t-field="line.price_reduce_taxexcl" style="white-space: nowrap;"
+                                                          t-options="{'widget': 'monetary', 'display_currency': order.currency_id}"
+                                                          groups="account.group_show_line_subtotals_tax_excluded"/>
+                                                    <span t-field="line.price_reduce_taxinc" style="white-space: nowrap;"
+                                                          t-options="{'widget': 'monetary', 'display_currency': order.currency_id}"
+                                                          groups="account.group_show_line_subtotals_tax_included"/>
+                                                </td>
+<!--                                            </t>-->
+                                        </t>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <div class="col-12">
+                            <div class="card js_cart_summary" t-if="order.order_line"
+                                 style="float: right;width: 32%;border:none;" id="cards_id_new">
+                                <div class="card-body">
+                                    <h4 class="d-none d-xl-block">Order Total</h4>
+                                    <hr class="d-none d-xl-block"/>
+                                    <div>
+                                        <div id="cart_total" t-att-class="extra_class or ''" t-if="order.order_line">
+                                            <table class="table">
+                                                <tr id="empty">
+                                                    <t t-if='not no_rowspan'>
+                                                        <td rowspan="10" class="border-0"/>
+                                                    </t>
+                                                    <td class="col-md-2 col-3 border-0"></td>
+                                                    <td class="col-md-2 col-3 border-0"></td>
+                                                </tr>
+                                                <tr id="order_total_untaxed">
+                                                    <td class="text-right border-0">Subtotal:</td>
+                                                    <td class="text-xl-right border-0">
+                                                        <span t-field="order.amount_untaxed" class="monetary_field"
+                                                              style="white-space: nowrap;"
+                                                              t-options="{'widget': 'monetary', 'display_currency': order.currency_id}"/>
+                                                    </td>
+                                                </tr>
+                                                <tr id="order_total_taxes">
+                                                    <td class="text-right border-0">Taxes:</td>
+                                                    <td class="text-xl-right border-0">
+                                                        <span t-field="order.amount_tax" class="monetary_field"
+                                                              style="white-space: nowrap;"
+                                                              t-options="{'widget': 'monetary', 'display_currency': order.currency_id}"/>
+                                                    </td>
+                                                </tr>
+                                                <tr id="order_total">
+                                                    <td class="text-right">
+                                                        <strong>Total:</strong>
+                                                    </td>
+                                                    <td class="text-xl-right">
+                                                        <strong t-field="order.amount_total" class="monetary_field"
+                                                                t-options='{"widget": "monetary", "display_currency": order.pricelist_id.currency_id}'/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </xpath>
+    </template>
+</odoo>

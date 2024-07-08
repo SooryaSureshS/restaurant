@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_delivery_shipany_service_locations" model="ir.ui.view">
+        <field name="name">ShipAny Service Locations</field>
+        <field name="model">shipany.service.locations</field>
+        <field name="arch" type="xml">
+            <form string="Service Locations">
+                <group>
+                    <field name="cour_name"/>
+                    <field name="cour_type"/>
+                </group>
+                <group>
+                    <field name="cour_uid"/>
+                    <field name="url"/>
+                    <field name="stock_picking_id" invisible="1"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_delivery_shipany_service_locations_tree" model="ir.ui.view">
+        <field name="name">ShipAny Service Locations.tree</field>
+        <field name="model">shipany.service.locations</field>
+        <field name="arch" type="xml">
+            <tree string="Service Locations">
+                <field name="cour_name"/>
+                <field name="cour_type"/>
+                <field name="cour_uid"/>
+                <field name="url"/>
+                <field name="stock_picking_id" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="act_delivery_shipany_service_locations" model="ir.actions.act_window">
+        <field name="name">Service Locations</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">shipany.service.locations</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="view_service_location"
+              name="Shipany Service Locations"
+              parent="stock.menu_delivery"
+              action="act_delivery_shipany_service_locations"
+              sequence="100"/>
+</odoo>

@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<odoo>
+	<record id="giftcard_product_template_form" model="ir.ui.view">
+		<field name="name">product.template.event.form.inherit</field>
+		<field name="model">product.template</field>
+		<field name="inherit_id" ref="product.product_template_form_view" />
+		<field name="arch" type="xml">
+			<xpath expr="//page[last()]" position="after">
+				<page name="gift" string="Gift Card" attrs="{'invisible':[('gift_ok','!=',True)]}">
+					<group> 
+						<group>
+							<field name="gift_card_type" />
+						</group>
+						<group col="4">
+							<label for="card_validity" />
+							<div>
+								<field name="card_validity" />&amp;nbsp;<field name="validity_type" nolabel="1" />
+							</div>
+						</group>
+					</group>
+					<group>
+						<group>
+							<field name="template_id" />
+						</group>
+					</group>
+				</page>
+			</xpath>
+			<xpath expr="//div[@name='options']" position="inside">
+				<div>
+					<field name="gift_ok"/>
+					<label for="gift_ok"/>
+				</div>
+			</xpath>
+		</field>
+	</record>
+
+	<record id="action_giftcard_approve_product" model="ir.actions.act_window">
+			<field name="name">Approve Products</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">product.template</field>
+			<field name="view_mode">kanban,tree,form</field>
+			<field name="binding_view_types">form</field>
+			<field name="view_id" ref="product.product_template_kanban_view"/>
+			<field name="domain">[('gift_ok','=',True)]</field>
+			<field name="context">{"default_gift_ok":True,}</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to define a new product.
+				</p><p>
+					You must define a product for everything you sell, whether it's a physical product, a consumable or a service you offer to  customers.
+				</p><p>
+					The product form contains information to simplify the sale process: price, notes in the quotation, accounting data, procurement methods, etc.
+				</p>
+			</field>
+		</record>
+
+	<menuitem action="action_giftcard_approve_product" 
+		parent="website_discount_voucher.menu_gift_coupon" name="Gift Cards" 
+		id="menu_pos_gift_card_act" sequence="100"/>
+
+
+
+	<record id="res_config_settings_view_form_marketplace" model="ir.ui.view">
+		<field name="name">res.config.settings.view.form.inherit.marketplace</field>
+		<field name="model">res.config.settings</field>
+		<field name="priority" eval="10"/>
+		<field name="inherit_id" ref="website_sale.res_config_settings_view_form" />
+		<field name="arch" type="xml">
+			<div id="sale_pricing_settings" position="after">  
+				<h2>Gift Card Message</h2>
+				<div class="row mt16 o_settings_container" id="global_commission_settings">  
+					<div class="col-12 col-lg-6 o_setting_box">
+						<div class="o_setting_left_pane">
+						</div>
+						<div class="o_setting_right_pane">
+							<div class="row">
+								<label for="ecard_message" class="col-md-4"/>
+								<field name="ecard_message"/>
+							</div>
+							
+						</div>
+					</div>
+					<div class="col-12 col-lg-6 o_setting_box">
+						<div class="o_setting_left_pane">
+						</div>
+						<div class="o_setting_right_pane">
+							
+							<div class="row">
+								<label for="pcard_message" class="col-md-4"/>
+								<field name="pcard_message"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</field>
+	</record>
+
+</odoo>
+
+

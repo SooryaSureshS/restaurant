@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="view_shipany_carrier_form" model="ir.ui.view">
+        <field name="name">shipany.carrier.form</field>
+        <field name="model">shipany.carrier</field>
+        <field name="arch" type="xml">
+            <form string="Shipany Carrier">
+                <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="carrier_uid"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_shipany_carrier_tree" model="ir.ui.view">
+        <field name="name">shipany.carrier.tree</field>
+        <field name="model">shipany.carrier</field>
+        <field name="arch" type="xml">
+            <tree string="Shipany Carrier">
+                <field name="name"/>
+                <field name="carrier_uid"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="act_shipany_carriers" model="ir.actions.act_window">
+            <field name="name">Shipany Carriers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">shipany.carrier</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new shipany carrier, the first step of a new sale!
+                </p>
+            </field>
+        </record>
+
+    <menuitem id="view_shipany_carrier"
+            name="Shipany Carrier"
+            parent="stock.menu_delivery"
+            action="act_shipany_carriers"
+            sequence="100"/>
+</odoo>

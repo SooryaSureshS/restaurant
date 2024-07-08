@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_tender_report" model="ir.actions.act_window">
+        <field name="name">Tender Report</field>
+        <field name="res_model">tender.report</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="report_wizard_order_type"/>
+        <field name="target">new</field>
+    </record>
+
+
+
+
+    <record id="report_tender_action" model="ir.actions.report">
+        <field name="name">Tender Report</field>
+        <field name="model">tender.report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">order_type_report.order_tender_report</field>
+        <field name="report_file">order_type_report.order_tender_report</field>
+<!--        <field name="binding_model_id" ref="model_stock_scrap"/>-->
+        <field name="binding_type">report</field>
+    </record>
+
+     <menuitem id="menu_scrap_tender"
+              name="Tender report"
+              action="action_tender_report" parent="store_sales_dashboard.menu_hrms_reporting" sequence="150"/>
+
+
+
+</odoo>

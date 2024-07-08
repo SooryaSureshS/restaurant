@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="pos_logo_view_pos_config_inherit">
+            <field name="name">pos.config.inherit</field>
+            <field name="model">pos.config</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="point_of_sale.pos_config_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//h2[@name='order']" position="inside">
+                   <group string="Pos Logo Configuration" col="4">
+                        <field name="pos_logo" widget="image"/>
+                        <field name="pos_receipt_logo" widget="image"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

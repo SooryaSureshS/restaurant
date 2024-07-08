@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name="email" position="attributes">
+                <attribute name="required">1</attribute>
+                <attribute name='placeholder'>E-mail</attribute>
+            </field>
+            <page name="internal_notes" position="after">
+                <page name="xero_information" string="Xero Inforamtion">
+                    <group>
+                        <group>
+                            <field name="xero_attention"/>
+                            <field name="xero_vat" string="Xero VAT"/>
+                        </group>
+                        <group>
+                            <field name="xero_concate_phone_number" string="Xero Phone No."/>
+                            <field name="xero_skype_name" string="Skype ID"/>
+                            <field name="xero_bank_id"/>
+                        </group>
+                    </group>
+                    <field name="xero_related_companies" invisible="1">
+                        <tree>
+                            <field name="company_id"/>
+                            <field name="xero_ref_id"/>
+                        </tree>
+                        <form>
+                            <group>
+                                <group>
+                                    <field name="company_id"/>
+                                </group>
+                                <group>
+                                    <field name="xero_ref_id"/>
+                                </group>
+                            </group>
+                        </form>
+                    </field>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="view_partner_category_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner.category.inherit</field>
+        <field name="model">res.partner.category</field>
+        <field name="inherit_id" ref="base.view_partner_category_form"/>
+        <field name="arch" type="xml">
+            <form string="Contact Tag">
+                <xpath expr="//group" position="after">
+                    <field name="partner_ids"/>
+                </xpath>
+            </form>
+        </field>
+    </record>
+    
+</odoo>

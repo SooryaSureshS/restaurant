@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <template id="configure_optional_products_inherits" name="Custom Optional Products"
+                  inherit_id="sale_product_configurator.configure_optional_products" priority="10">
+            <xpath expr="//table[hasclass('table-striped')]" position="replace">
+                <table class="table table-striped table-sm" id="tbl_product_check">
+                    <thead>
+                        <tr>
+                            <th class="td-img">Product</th>
+                            <th></th>
+                            <th class="text-center td-qty">Quantity</th>
+                            <th class="text-center td-price">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="js_product in_cart main_product">
+
+                            <t t-set="combination_info"
+                               t-value="product.product_tmpl_id._get_combination_info(combination, product.id, add_qty or 1, pricelist)"/>
+                            <t t-set="product_variant"
+                               t-value="product.env['product.product'].browse(combination_info['product_id'])"/>
+
+                            <input type="hidden" class="product_template_id" t-att-value="product.product_tmpl_id.id"/>
+                            <input type="hidden" class="product_id" t-att-value="product_variant.id"/>
+                            <td class='td-img'>
+                                <img t-if="product_variant"
+                                     t-att-src="'/web/image/product.product/%s/image_128' % product_variant.id"
+                                     alt="Product Image"/>
+                                <img t-else="" t-att-src="'/web/image/product.template/%s/image_128' % product.id"
+                                     alt="Product Image"/>
+                            </td>
+                            <td class='td-product_name'>
+                                <strong t-esc="combination_info['display_name']"/>
+                                <div class="text-muted small">
+                                    <div t-field="product.description_sale"/>
+                                    <div class="js_attributes"/>
+                                </div>
+                            </td>
+                            <td class="text-center td-qty">
+                                <div class="css_quantity input-group">
+                                    <div class="input-group-prepend">
+                                        <button t-attf-href="#"
+                                                class="btn btn-primary js_add_cart_json d-md-inline-block"
+                                                aria-label="Remove one" title="Remove one">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" class="js_quantity form-control quantity"  style="pointer-events: none;" data-min="1"
+                                           name="add_qty" t-att-value="add_qty or 1"/>
+                                    <div class="input-group-append">
+                                        <button t-attf-href="#"
+                                                class="btn btn-primary float_left js_add_cart_json d-md-inline-block"
+                                                aria-label="Add one" title="Add one">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center td-price" name="price">
+                                <ul class="d-none js_add_cart_variants"
+                                    t-att-data-attribute_exclusions="{'exclusions: []'}"></ul>
+                                <div class="d-none oe_unchanged_value_ids"
+                                     t-att-data-unchanged_value_ids="variant_values"></div>
+                                <div t-attf-class="text-danger oe_default_price oe_striked_price {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                                     t-esc="combination_info['list_price']"
+                                     t-options='{
+                                    "widget": "monetary",
+                                    "display_currency": (pricelist or product).currency_id
+                                }'
+                                />
+                                <span class="oe_price product_id" style="white-space: nowrap;"
+                                      t-att-data-product-id="product.id"
+                                      t-esc="combination_info['price']"
+                                      t-options='{
+                                    "widget": "monetary",
+                                    "display_currency": (pricelist or product).currency_id
+                                }'/>
+                                <span class="js_raw_price d-none" t-esc="product.price"/>
+                            </td>
+                        </tr>
+                        <tr class="o_total_row">
+                            <td colspan="4" class="text-right">
+                                <strong>Total:</strong>
+                                <span class="js_price_total font-weight-bold" style="white-space: nowrap;"
+                                      t-att-data-product-id="product.id"
+                                      t-esc="combination_info['price'] * (add_qty or 1)"
+                                      t-options='{
+                                    "widget": "monetary",
+                                    "display_currency": (pricelist or product).currency_id
+                                }'/>
+                            </td>
+                        </tr>
+                        <tr class="popup-qty-updation">
+                            <td colspan="4" class="popup_td_span">
+
+                            </td>
+
+                        </tr>
+                        <tr t-if="product.optional_product_ids" class="o_select_options">
+                            <td colspan="4">
+                                <h4>Available Options:</h4>
+                            </td>
+                        </tr>
+
+<!--                        optional product-->
+                        <t t-set="product_option_group"
+                           t-value="product.optional_product_ids.mapped('product_option_group')"/>
+
+                        <t t-foreach="product_option_group.sorted(key=lambda x: x.sequence)" t-as="product_option">
+
+                            <t t-call="sale_product_configurator.optional_product_items">
+                                <t t-set="parent_combination" t-value="combination"/>
+                            </t>
+                        </t>
+
+<!--                        accessory product-->
+                         <t t-set="product_option_group_accessory"
+                           t-value="product.alternative_product_ids.mapped('product_option_group')"/>
+                        <t t-foreach="product_option_group_accessory.sorted(key=lambda x: x.sequence)" t-as="product_option">
+
+                            <t t-call="website_product_options.accessory_product_ids">
+                                <t t-set="parent_combination" t-value="combination"/>
+                            </t>
+                        </t>
+
+<!--                        others-->
+
+                        <t t-call="website_product_options.option_cart_product_display">
+                            <t t-set="parent_combination" t-value="combination"/>
+                        </t>
+<!--                        <tr style="padding-right: 15px;" id="tr_add_order_input">-->
+<!--                            <td class='' colspan="5" style="border: none;">-->
+<!--                                <input id="product_note_id" type="text" placeholder="Notes" name="checkout_note"-->
+<!--                                       style="text-align: center;padding: 12px;font-size: 20px;width: 100% !important;border: 1px solid black;"/>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+
+                    </tbody>
+
+                </table>
+            </xpath>
+        </template>
+
+        <template id="optional_product_item_custom" name="Custom Optional Products"
+                  inherit_id="sale_product_configurator.optional_product_items" priority="10">
+            <xpath expr="//t[@t-foreach='product.optional_product_ids']" position="replace">
+
+                <tr style="margin-top:5%;" class="product_options_group" t-att-id="product_option.id">
+
+                    <th colspan="4" style="align:center;">
+                        <div t-att-id="product_option.id">
+                            <span t-esc="product_option.name"/>
+                        </div>
+
+                    </th>
+                </tr>
+                <t t-foreach="product.optional_product_ids.filtered(lambda r:r.product_option_group.id==product_option.id).sorted(key=lambda combination_info: combination_info['sequence'])" t-as="product">
+                    <t t-set="combination" t-value="product._get_first_possible_combination(parent_combination)"/>
+                    <t t-if="product._is_add_to_cart_possible(parent_combination)">
+                        <t t-set="combination_info"
+                           t-value="product._get_combination_info(combination, add_qty=add_qty or 1, pricelist=pricelist)"/>
+                        <t t-set="product_variant"
+                           t-value="product.env['product.product'].browse(combination_info['product_id'])"/>
+                        <t t-set="product_option_id" t-value="product_option.id"/>
+                        <tr t-att-class="'js_product %s' %(product_option_id)" t-att-id="product_option.id">
+                            <input type="hidden" class="product_template_id" t-att-value="product.id"/>
+                            <input type="hidden" class="product_id" t-attf-name="optional-product-#{product.id}"
+                                   t-att-value="product_variant.id"/>
+                            <input type="hidden" class="alternative_product"
+                                   t-att-value="product_variant.accessory_product"/>
+                            <td style="width:80%;">
+                                <div class="float-left checkbox-custom_product" style="margin-left:5%;">
+                                    <label>
+                                        <input type="checkbox" class="check_product" t-att-id="product_variant.id"/>
+                                        <b></b>&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    </label>
+                                </div>
+                                <span t-esc="combination_info['display_name']"/>
+
+                            </td>
+                            <td class="">
+                            </td>
+                            <td class="td-price text-right">
+                                <div t-attf-class="text-danger oe_default_price oe_optional oe_striked_price {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                                     t-esc="combination_info['list_price']"
+                                     t-options='{
+                            "widget": "monetary",
+                            "display_currency": (pricelist or product).currency_id}'/>
+                                <div class="oe_price" style="white-space: nowrap;"
+                                     t-esc="combination_info['price']"
+                                     t-options='{
+                            "widget": "monetary",
+                            "display_currency": (pricelist or product).currency_id}'/>
+                                <span class="js_raw_price d-none" t-esc="combination_info['price']"/>
+                                <p class="css_not_available_msg alert alert-warning">Option not available</p>
+                            </td>
+                        </tr>
+                    </t>
+                </t>
+            </xpath>
+        </template>
+
+        <template id="accessory_product_ids" name="Accessory  Products" priority="10">
+                <tr style="margin-top:5%;" class="product_options_group" t-att-id="product_option.id">
+
+                    <th colspan="4" style="align:center;">
+                        <div t-att-id="product_option.id">
+                            <span t-esc="product_option.name"/>
+                        </div>
+
+                    </th>
+                </tr>
+                <t t-foreach="product.alternative_product_ids.filtered(lambda r:r.product_option_group.id==product_option.id).sorted(key=lambda combination_info: combination_info['sequence'])" t-as="product">
+                    <t t-set="combination" t-value="product._get_first_possible_combination(parent_combination)"/>
+                    <t t-if="product._is_add_to_cart_possible(parent_combination)">
+                        <t t-set="combination_info"
+                           t-value="product._get_combination_info(combination, add_qty=add_qty or 1, pricelist=pricelist)"/>
+                        <t t-set="product_variant"
+                           t-value="product.env['product.product'].browse(combination_info['product_id'])"/>
+                        <t t-set="product_option_id" t-value="product_option.id"/>
+                        <tr t-att-class="'js_product %s' %(product_option_id)" t-att-id="product_option.id">
+                            <input type="hidden" class="product_template_id" t-att-value="product.id"/>
+                            <input type="hidden" class="product_id" t-attf-name="optional-product-#{product.id}"
+                                   t-att-value="product_variant.id"/>
+                            <input type="hidden" class="alternative_product"
+                                   t-att-value="product_variant.accessory_product"/>
+                            <td style="width:80%;">
+                                <div class="float-left checkbox-custom_product" style="margin-left:5%;">
+                                    <label>
+                                        <input type="checkbox" class="check_product" t-att-id="product_variant.id"/>
+                                        <b></b>&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    </label>
+                                </div>
+                                <span t-esc="combination_info['display_name']"/>
+
+                            </td>
+                            <td class="">
+                            </td>
+                            <td class="td-price text-right">
+                                <div t-attf-class="text-danger oe_default_price oe_optional oe_striked_price {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                                     t-esc="combination_info['list_price']"
+                                     t-options='{
+                            "widget": "monetary",
+                            "display_currency": (pricelist or product).currency_id}'/>
+                                <div class="oe_price" style="white-space: nowrap;"
+                                     t-esc="combination_info['price']"
+                                     t-options='{
+                            "widget": "monetary",
+                            "display_currency": (pricelist or product).currency_id}'/>
+                                <span class="js_raw_price d-none" t-esc="combination_info['price']"/>
+<!--                                <p class="css_not_available_msg alert alert-warning">Option not available</p>-->
+                            </td>
+                        </tr>
+                    </t>
+                </t>
+        </template>
+
+
+        <template id="option_cart_product_display">
+            <t t-set="product_option_group_not_set"
+               t-value="product.optional_product_ids.filtered(lambda r:r.product_option_group.id not in product_option_group.ids)"/>
+            <t t-if="product_option_group_not_set">
+                <t t-foreach="product_option_group_not_set" t-as="product">
+                    <t t-set="combination" t-value="product._get_first_possible_combination(parent_combination)"/>
+                    <t t-if="product._is_add_to_cart_possible(parent_combination)">
+
+                        <t t-set="combination_info"
+                           t-value="product._get_combination_info(combination, add_qty=add_qty or 1, pricelist=pricelist)"/>
+                        <t t-set="product_variant"
+                           t-value="product.env['product.product'].browse(combination_info['product_id'])"/>
+
+                        <tr class="js_product">
+                            <input type="hidden" class="product_template_id" t-att-value="product.id"/>
+                            <input type="hidden" class="product_id" t-attf-name="optional-product-#{product.id}"
+                                   t-att-value="product_variant.id"/>
+                            <input type="hidden" class="alternative_product"
+                                   t-att-value="product_variant.accessory_product"/>
+                            <td style="width:80%;">
+                                <div class="float-left checkbox-custom_product">
+                                    <label>
+                                        <input type="checkbox" class="check_product" t-att-id="product_variant.id"/>
+                                        <b></b>&amp;nbsp;&amp;nbsp;&amp;nbsp;
+
+                                    </label>
+                                </div>
+                                 <span  t-esc="combination_info['display_name']"/>
+                            </td>
+                            <td class="">
+                            </td>
+                            <td class="text-right td-price">
+                                <div t-attf-class="text-danger oe_default_price oe_optional oe_striked_price {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                                     t-esc="combination_info['list_price']"
+                                     t-options='{
+                        "widget": "monetary",
+                        "display_currency": (pricelist or product).currency_id
+                    }'/>
+                                <div class="oe_price"
+                                     t-esc="combination_info['price']"
+                                     t-options='{
+                        "widget": "monetary",
+                        "display_currency": (pricelist or product).currency_id
+                    }'/>
+                    <span class="js_raw_price d-none" t-esc="combination_info['price']"/>
+                            </td>
+                        </tr>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+
+        <template id="optional_product_item_short" name="Custom Optional Products"
+                  inherit_id="website_sale.cart_line_description_following_lines" priority="10">
+            <xpath expr="//div[@t-if='line.get_description_following_lines()']" position="replace">
+                <div t-if="line.get_description_following_lines()" t-attf-class="text-muted {{div_class}} small">
+                    <t t-foreach="line.get_description_following_lines()" t-as="name_line">
+                        <span>
+                            <t t-esc="name_line"/>
+                        </span>
+                        <br t-if="not name_line_last"/>
+                    </t>
+                </div>
+            </xpath>
+        </template>
+
+        <template id="optional_product_cart_custom" name="Custom Optional Product Cart"
+                  inherit_id="website_sale.cart_lines" priority="10">
+            <xpath expr="//table[@id='cart_products']" position="replace">
+                <table class="mb16 table table-striped table-sm js_cart_lines" id="cart_products"
+                       t-if="website_sale_order and website_sale_order.website_order_line">
+                    <thead>
+                        <tr>
+                            <th class="td-img">Product</th>
+                            <th></th>
+                            <th class="text-center td-qty">Quantity</th>
+                            <th class="text-center td-price">Price</th>
+                            <th class="text-center td-action"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="website_sale_order.website_order_line" t-as="line">
+                            <tr t-att-class="'optional_product info' if line.linked_line_id else None">
+                                <t t-if="line.bundle_child">
+                                    <td align="center" t-if="line.product_id.product_tmpl_id" class='td-img'>
+                                        <span t-field="line.product_id.image_128"
+                                              t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max'}"/>
+                                    </td>
+
+                                    <td t-if="line.product_id.product_tmpl_id" class='td-product_name'>
+                                        <div>
+                                            <t t-call="website_sale.cart_line_product_link">
+                                                <strong t-field="line.name_short"/>
+                                            </t>
+                                        </div>
+                                        <br/>
+                                    </td>
+                                    <td class="text-center td-qty">
+                                        <div class="css_quantity input-group mx-auto">
+                                            <div class="input-group-prepend" style="display:none;">
+                                                <a t-attf-href="#"
+                                                   class="btn btn-link js_add_cart_json d-none d-md-inline-block"
+                                                   aria-label="Remove one" title="Remove one">
+                                                    <i class="fa fa-minus"></i>
+                                                </a>
+                                            </div>
+                                            <input type="text" class="js_quantity form-control quantity"
+                                                   style="pointer-events: none;background: unset;background: unset;border: unset !important;"
+                                                   t-att-data-line-id="line.id"
+                                                   t-att-data-product-id="line.product_id.id"
+                                                   t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"/>
+                                            <div class="input-group-append" style="display:none;">
+                                                <a t-attf-href="#"
+                                                   class="btn btn-link float_left js_add_cart_json d-none d-md-inline-block"
+                                                   aria-label="Add one" title="Add one">
+                                                    <i class="fa fa-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center td-price" name="price">
+                                        <t t-set="combination"
+                                           t-value="line.product_id.product_template_attribute_value_ids + line.product_no_variant_attribute_value_ids"/>
+                                        <t t-set="combination_info"
+                                           t-value="line.product_id.product_tmpl_id._get_combination_info(combination)"/>
+
+                                        <t t-set="list_price_converted"
+                                           t-value="website.currency_id._convert(combination_info['list_price'], website_sale_order.currency_id, website_sale_order.company_id, date)"/>
+                                        <t groups="account.group_show_line_subtotals_tax_excluded"
+                                           t-if="(website_sale_order.pricelist_id.discount_policy == 'without_discount' and website_sale_order.currency_id.compare_amounts(list_price_converted, line.price_reduce_taxexcl) == 1) or website_sale_order.currency_id.compare_amounts(line.price_unit, line.price_reduce) == 1"
+                                           name="order_line_discount">
+                                            <del t-attf-class="#{'text-danger mr8'}" style="white-space: nowrap;"
+                                                 t-esc="list_price_converted"
+                                                 t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                                        </t>
+                                        <span t-field="line.price_reduce_taxexcl" style="white-space: nowrap;"
+                                              t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"
+                                              groups="account.group_show_line_subtotals_tax_excluded"/>
+                                        <t groups="account.group_show_line_subtotals_tax_included"
+                                           t-if="(website_sale_order.pricelist_id.discount_policy == 'without_discount' and website_sale_order.currency_id.compare_amounts(list_price_converted, line.price_reduce_taxinc) == 1) or website_sale_order.currency_id.compare_amounts(line.price_unit, line.price_reduce) == 1"
+                                           name="order_line_discount">
+                                            <del t-attf-class="#{'text-danger mr8'}" style="white-space: nowrap;"
+                                                 t-esc="list_price_converted"
+                                                 t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                                        </t>
+                                        <span t-field="line.price_reduce_taxinc" style="white-space: nowrap;"
+                                              t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"
+                                              groups="account.group_show_line_subtotals_tax_included"/>
+                                    </td>
+                                    <td></td>
+                                </t>
+                                <t t-elif="not line.product_id.is_optional_product">
+                                    <td colspan="2" t-if="not line.product_id.product_tmpl_id" class='td-img'></td>
+                                    <td align="center" t-if="line.product_id.product_tmpl_id" class='td-img'>
+                                        <span t-field="line.product_id.image_128"
+                                              t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max'}"/>
+                                    </td>
+                                    <td t-if="line.product_id.product_tmpl_id" class='td-product_name'>
+                                        <div>
+                                            <t t-call="website_sale.cart_line_product_link">
+                                                <strong t-field="line.name_short"/>
+                                            </t>
+                                            <t t-if="line.product_id.not_available_for_pickup">
+                                                <br/>
+                                                <br/>
+                                                <span style="color: #bd1e1e">Not eligible for pickup</span>
+                                            </t>
+                                        </div>
+                                        <br/>
+                                    </td>
+
+                                    <td class="text-center td-qty">
+                                        <div class="css_quantity input-group mx-auto">
+
+                                            <t t-if="line.loyalty_id">
+                                                          <input type="text" class="js_quantity form-control quantity" style="pointer-events: none;background: unset;background: unset;border: unset !important;"
+                                                   t-att-data-line-id="line.id"
+                                                   t-att-data-product-id="line.product_id.id"
+                                                   t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"/>
+                                            </t>
+                                            <t t-else="">
+                                                        <div class="input-group-prepend">
+                                                <a t-attf-href="#"
+                                                   class="btn btn-link js_add_cart_json d-none d-md-inline-block"
+                                                   aria-label="Remove one" title="Remove one">
+                                                    <i class="fa fa-minus"></i>
+                                                </a>
+                                            </div>
+                                                   <input type="text" class="js_quantity form-control quantity" style=""
+                                                   t-att-data-line-id="line.id"
+                                                   t-att-data-product-id="line.product_id.id"
+                                                   t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"/>
+                                            <div class="input-group-append">
+                                                <a t-attf-href="#"
+                                                   class="btn btn-link float_left js_add_cart_json d-none d-md-inline-block"
+                                                   aria-label="Add one" title="Add one">
+                                                    <i class="fa fa-plus"></i>
+                                                </a>
+                                            </div>
+                                            </t>
+
+                                        </div>
+                                    </td>
+                                    <td class="text-center td-price" name="price">
+                                        <t t-set="combination"
+                                           t-value="line.product_id.product_template_attribute_value_ids + line.product_no_variant_attribute_value_ids"/>
+                                        <t t-set="combination_info"
+                                           t-value="line.product_id.product_tmpl_id._get_combination_info(combination)"/>
+
+                                        <t t-set="list_price_converted"
+                                           t-value="website.currency_id._convert(combination_info['list_price'], website_sale_order.currency_id, website_sale_order.company_id, date)"/>
+                                        <t groups="account.group_show_line_subtotals_tax_excluded"
+                                           t-if="(website_sale_order.pricelist_id.discount_policy == 'without_discount' and website_sale_order.currency_id.compare_amounts(list_price_converted, line.price_reduce_taxexcl) == 1) or website_sale_order.currency_id.compare_amounts(line.price_unit, line.price_reduce) == 1"
+                                           name="order_line_discount">
+                                            <del t-attf-class="#{'text-danger mr8'}" style="white-space: nowrap;"
+                                                 t-esc="list_price_converted"
+                                                 t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                                        </t>
+                                        <span t-field="line.price_reduce_taxexcl" style="white-space: nowrap;"
+                                              t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"
+                                              groups="account.group_show_line_subtotals_tax_excluded"/>
+                                        <t groups="account.group_show_line_subtotals_tax_included"
+                                           t-if="(website_sale_order.pricelist_id.discount_policy == 'without_discount' and website_sale_order.currency_id.compare_amounts(list_price_converted, line.price_reduce_taxinc) == 1) or website_sale_order.currency_id.compare_amounts(line.price_unit, line.price_reduce) == 1"
+                                           name="order_line_discount">
+                                            <del t-attf-class="#{'text-danger mr8'}" style="white-space: nowrap;"
+                                                 t-esc="list_price_converted"
+                                                 t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                                        </t>
+                                        <span t-field="line.price_reduce_taxinc" style="white-space: nowrap;"
+                                              t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"
+                                              groups="account.group_show_line_subtotals_tax_included"/>
+                                    </td>
+                                    <td class="td-action">
+                                        <a href='#' aria-label="Remove from cart" title="Remove from cart"
+                                           class='js_delete_product no-decoration'>
+                                            <small>
+                                                <i class='fa fa-trash-o'></i>
+                                            </small>
+                                        </a>
+                                    </td>
+                                </t>
+                                <t t-else="line.product_id.is_optional_product">
+                                    <td></td>
+                                    <td t-if="line.product_id.product_tmpl_id" class='td-product_name'>
+                                        <div>
+                                            <t t-call="website_sale.cart_line_product_link">
+                                                <strong t-field="line.name_short"/>
+                                            </t>
+                                        </div>
+                                        <br/>
+                                    </td>
+                                    <td class="text-center td-qty">
+                                        <div class="css_quantity input-group mx-auto">
+                                            <div class="input-group-prepend" style="display:none;">
+                                                <a t-attf-href="#"
+                                                   class="btn btn-link js_add_cart_json d-none d-md-inline-block"
+                                                   aria-label="Remove one" title="Remove one">
+                                                    <i class="fa fa-minus"></i>
+                                                </a>
+                                            </div>
+                                            <input type="text" class="js_quantity form-control quantity"
+                                                   style="pointer-events: none;background: unset;background: unset;border: unset !important;"
+                                                   t-att-data-line-id="line.id"
+                                                   t-att-data-product-id="line.product_id.id"
+                                                   t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"/>
+                                            <div class="input-group-append" style="display:none;">
+                                                <a t-attf-href="#"
+                                                   class="btn btn-link float_left js_add_cart_json d-none d-md-inline-block"
+                                                   aria-label="Add one" title="Add one">
+                                                    <i class="fa fa-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center td-price" name="price">
+                                        <t t-set="combination"
+                                           t-value="line.product_id.product_template_attribute_value_ids + line.product_no_variant_attribute_value_ids"/>
+                                        <t t-set="combination_info"
+                                           t-value="line.product_id.product_tmpl_id._get_combination_info(combination)"/>
+
+                                        <t t-set="list_price_converted"
+                                           t-value="website.currency_id._convert(combination_info['list_price'], website_sale_order.currency_id, website_sale_order.company_id, date)"/>
+                                        <t groups="account.group_show_line_subtotals_tax_excluded"
+                                           t-if="(website_sale_order.pricelist_id.discount_policy == 'without_discount' and website_sale_order.currency_id.compare_amounts(list_price_converted, line.price_reduce_taxexcl) == 1) or website_sale_order.currency_id.compare_amounts(line.price_unit, line.price_reduce) == 1"
+                                           name="order_line_discount">
+                                            <del t-attf-class="#{'text-danger mr8'}" style="white-space: nowrap;"
+                                                 t-esc="list_price_converted"
+                                                 t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                                        </t>
+                                        <span t-field="line.price_reduce_taxexcl" style="white-space: nowrap;"
+                                              t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"
+                                              groups="account.group_show_line_subtotals_tax_excluded"/>
+                                        <t groups="account.group_show_line_subtotals_tax_included"
+                                           t-if="(website_sale_order.pricelist_id.discount_policy == 'without_discount' and website_sale_order.currency_id.compare_amounts(list_price_converted, line.price_reduce_taxinc) == 1) or website_sale_order.currency_id.compare_amounts(line.price_unit, line.price_reduce) == 1"
+                                           name="order_line_discount">
+                                            <del t-attf-class="#{'text-danger mr8'}" style="white-space: nowrap;"
+                                                 t-esc="list_price_converted"
+                                                 t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                                        </t>
+                                        <span t-field="line.price_reduce_taxinc" style="white-space: nowrap;"
+                                              t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"
+                                              groups="account.group_show_line_subtotals_tax_included"/>
+                                    </td>
+                                    <td></td>
+                                </t>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </xpath>
+        </template>
+
+		<record id="product_options_tree_view" model="ir.ui.view">
+	        <field name="name">options.group.tree</field>
+	        <field name="model">options.group</field>
+	        <field name="arch" type="xml">
+	            <tree string="Product Options" multi_edit="1" sample="1">
+	                <field name="sequence" widget="handle" readonly="1"/>
+	                <field name="name"/>
+	            </tree>
+	        </field>
+    	</record>
+
+		<record id="product_options_form_view" model="ir.ui.view">
+            <field name="name">options.group.form.view</field>
+            <field name="model">options.group</field>
+            <field name="arch" type="xml">
+                <form string="Product Options">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="max_count"/>
+                            <field name="min_count"/>
+                            <field name="icon"/>
+                            <field name="company_id"/>
+                         </group>
+                      </sheet>
+                 </form>
+             </field>
+        </record>
+
+
+        <record id="product_option_group_action" model="ir.actions.act_window">
+            <field name="name">Options Group</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">options.group</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="product_option_group_menu" name="Product Options Group" action="product_option_group_action"
+                  parent="website.menu_website_global_configuration"/>
+
+
+    </data>
+
+    <record id="update_product_template_via_serve_action" model="ir.actions.server">
+            <field name="name">Publish To Website</field>
+            <field name="model_id" ref="account.model_product_template"/>
+            <field name="binding_model_id" ref="account.model_product_template"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">action = records.make_product_and_optional_to_website()</field>
+    </record>
+
+    <record id="un_publish_product_template_via_serve_action" model="ir.actions.server">
+            <field name="name">Un Publish To Website</field>
+            <field name="model_id" ref="account.model_product_template"/>
+            <field name="binding_model_id" ref="account.model_product_template"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">action = records.unpublish_product_and_optional()</field>
+    </record>
+
+
+    <record id="product_template_view_form_optional_product_tree" model="ir.ui.view">
+        <field name="name">product.template.form.inherit.sale.optional.tree</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="sale_product_configurator.product_template_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='options']" position="replace">
+                <group string="Options" groups="product.group_product_variant">
+                    <field name="optional_product_ids"
+                           domain="[('id', '!=', active_id), '|', ('company_id', '=', company_id), ('company_id', '=', False)]"
+                           context="{'group_by': 'product_option_group'}">
+                        <tree default_order="sequence asc" editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="name"/>
+                            <field name="product_option_group"/>
+                        </tree>
+                    </field>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

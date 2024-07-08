@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="report_wizard_order_type" model="ir.ui.view">
+        <field name="name">Tender Report</field>
+        <field name="model">tender.report</field>
+        <field name="arch" type="xml">
+            <form string="Scrap Report">
+                <group>
+                    <group>
+                        <field name="from_date"/>
+                    </group>
+                    <group>
+                        <field name="to_date"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="print_report" string="Print" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <template id="external_layout_standard_order_type">
+        <div class="header">
+            <div style="float: left; width: 100%;font-size:5px;margin-top:15px;border-bottom: 3px solid black;">
+                <p style="margin:0px !important;font-size:16px;font-weight:bold">Order Type Report</p>
+                <p style="margin-top:15px !important;font-size:12px;">Report Period &#160; &#160; &#160; &#160;
+
+                    <t t-esc="start_date"></t>
+                    to
+                    <t t-esc="end_date"></t>
+                    <!--                    </t>-->
+                    <span style="float:right;">Printed:
+                        <t t-set="date" t-value="context_timestamp(datetime.datetime.now())"/>
+
+                        <span t-esc="date.strftime('%e %b %Y, %I:%M %p')"/>
+                        <br/>
+                        Page
+                        <span class="page"/>
+                        of
+                        <span class="topage"/>
+                    </span>
+                </p>
+                <br/>
+            </div>
+        </div>
+    </template>
+
+
+    <template id="order_tender_report">
+        <t t-call="web.html_container">
+            <t t-call="order_type_report.external_layout_standard_order_type"/>
+
+            <div class="page">
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
+                <!--                <t t-foreach="docs" t-as="doc">-->
+                <!--                <t t-set="sub_total" t-value="0"/>-->
+                <script>
+                    jQuery(document).ready(function() {
+                    var chartDiv = $("#barChart");
+                    var myChart = new Chart(chartDiv, {
+                    type: 'pie',
+                    data: {
+                    labels: ["Uber", "Menulog", "Deliveroo", "DoorDash"],
+                    datasets: [
+                    {
+                    data: [<t t-esc="round(data.get('uber').get('percentage'))"/>,<t
+                        t-esc="round(data.get('menulog').get('percentage'))"/>,<t
+                        t-esc="round(data.get('deliveroo').get('percentage'))"/>,<t
+                        t-esc="round(data.get('door_dash').get('percentage'))"/>],
+                    backgroundColor: [
+                    "#FF6384",
+                    "#4BC0C0",
+                    "#FFCE56",
+                    "#0000FF",
+                    ]
+                    }]
+                    },
+                    options: {
+                    title: {
+                    display: true,
+                    text: 'Tender Type'
+                    },
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    }
+                    });
+                    });
+                </script>
+                <div>
+                    <table style="border: 1px solid black;width:100%;border-collapse: collapse;text-align: center;">
+                        <thead>
+                            <tr>
+
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"></th>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">
+                                    Transaction count
+                                </th>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">Net
+                                    sales
+                                </th>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">%</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <span>Uber</span>
+                                </td>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="round(data.get('uber').get('count'))"/>
+                                </td>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="round(data.get('uber').get('amount'))"/>
+                                </td>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="round(data.get('uber').get('percentage'))"/>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <span>Menulog</span>
+                                </td>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="round(data.get('menulog').get('count'))"/>
+                                </td>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="round(data.get('menulog').get('amount'))"/>
+                                </td>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="round(data.get('menulog').get('percentage'))"/>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <span>Deliveroo</span>
+                                </td>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="round(data.get('deliveroo').get('count'))"/>
+                                </td>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="round(data.get('deliveroo').get('amount'))"/>
+                                </td>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="round(data.get('deliveroo').get('percentage'))"/>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <span>DoorDash</span>
+                                </td>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="round(data.get('door_dash').get('count'))"/>
+                                </td>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="round(data.get('door_dash').get('amount'))"/>
+                                </td>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="round(data.get('door_dash').get('percentage'))"/>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <span><b>Total</b></span>
+                                </td>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="round(data.get('uber').get('count'))+round(data.get('menulog').get('count'))+round(data.get('deliveroo').get('count'))+round(data.get('door_dash').get('count'))"/>
+                                </td>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="round(data.get('uber').get('amount'))+round(data.get('menulog').get('amount'))+round(data.get('deliveroo').get('amount'))+round(data.get('door_dash').get('amount'))"/>
+                                </td>
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                </td>
+
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="container">
+                        <br/>
+                        <br/>
+                        <br/>
+
+                        <canvas id="barChart" width="250" height="250"></canvas>
+                    </div>
+                </div>
+
+            </div>
+        </t>
+        <!--        </t>-->
+    </template>
+
+
+</odoo>

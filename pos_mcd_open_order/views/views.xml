@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_mcd_open_orders" model="ir.ui.view">
+        <field name="name">pos.order.inherited</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='notes']" position="after">
+               <page name="Mcd Open Orders" string="Mcd Status Change">
+                    <group>
+                        <field name="change_ids" colspan="4" nolabel="1">
+                            <tree string="Mcd Open">
+                                <field name="product_id"/>
+                                <field name="qty"/>
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+     <record id="restaurant_print_inherit_pos_mcd_open_order" model="ir.ui.view">
+        <field name="name">restaurant.printer</field>
+        <field name="model">restaurant.printer</field>
+        <field name="inherit_id" ref="pos_restaurant.view_restaurant_printer_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='printer_type']" position="after">
+                <field name="is_pass_printer"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

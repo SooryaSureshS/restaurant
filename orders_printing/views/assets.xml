@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <template id="assets_pos_mcd_open_orders" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/orders_printing/static/src/js/productScreen.js"></script>
+                <script type="text/javascript" src="/orders_printing/static/src/js/kitchenScreen.js"></script>
+            </xpath>
+        </template>
+</odoo>

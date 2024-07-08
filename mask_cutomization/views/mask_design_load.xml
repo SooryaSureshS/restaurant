@@ -1,0 +1,36 @@
+<odoo>
+    <data>
+        <template id="mask_design_load" name="Recommend">
+            <t t-call="website.layout">
+                <t t-set="additional_title">Mask design load</t>
+                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/mask_load.css"/>
+                <t t-set="no_footer" t-value="1"/>
+<!--                <t t-call="mask_cutomization.header_banner_xml"/>-->
+
+                <div id="mask_design_load">
+<!--                    sds-->
+                    <input type="hidden" id="product" t-att-value="product.product_tmpl_id.id"/>
+                    <input type="hidden" id="mask_color" t-att-value="mask_color"/>
+                    <input type="hidden" id="rop_color" t-att-value="rop_color"/>
+                    <input type="hidden" id="image" t-att-value="image"/>
+                    <input type="hidden" id="position" t-att-value="position"/>
+                    <input type="hidden" id="area" t-att-value="area"/>
+                    <input type="hidden" id="order" t-att-value="order"/>
+                    <input type="hidden" id="bg_image" t-att-value="bg_image"/>
+                    <t t-if="area == 'logo'">
+                         <select id="logo_selection">
+                            <option value="left_top">Logo left top</option>
+                            <option value="left_bottom">Logo left bottom</option>
+                            <option value="right_top">Logo right top</option>
+                            <option value="right_bottom">Logo right bottom</option>
+                        </select>
+                    </t>
+
+                    <div id="picture_container">
+
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

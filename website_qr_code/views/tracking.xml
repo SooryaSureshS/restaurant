@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="track_orders" name="Track Orders">
+            <t t-call="website.layout">
+
+                <br/>
+                <br/>
+                <div id="calculate_tarck_item_new" class="container">
+                    <br/>
+                    <div>
+                        <h4 style="color: #121c45;text-align:left;">
+                            <strong>Order Ref:<t t-esc="order['name']"/></strong>
+                        </h4>
+                    </div>
+                    <div class="row">
+                         <div id="bootstrap-toggle contact_success_waiting" class="toggle-panel accordionStyles tab-content mt-2 contact_success_waiting"
+                                     style="width: 100%;text-transform: none;animation: cssAnimation 0s ease-in 5s forwards;display:none;">
+                                   <div class="alert alert-warning alert-dismissible" style="    color: #ffffff; background-color: #656565;">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                            <h4><i class="icon fa fa-warning"></i>Your Order is Already delivered</h4>
+                                          </div>
+                                </div>
+
+
+                        <div id="bootstrap-toggle contact_success_waiting" class="toggle-panel accordionStyles tab-content mt-2 contact_success"
+                                     style="width: 100%;text-transform: none;animation: cssAnimation 0s ease-in 5s forwards;display:none;">
+                                   <div class="alert alert-warning alert-dismissible" style="    color: #ffffff; background-color: #656565;">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                            <h4><i class="icon fa fa-warning"></i>Sorry for the delay, we will contact you soon</h4>
+                                          </div>
+                                </div>
+                    </div>
+                     <div class="row">
+
+                        <div id="bootstrap-toggle contact_success_waiting" class="toggle-panel accordionStyles tab-content mt-2 contact_success_tech"
+                                     style="width: 100%;text-transform: none;animation: cssAnimation 0s ease-in 5s forwards;display:none;">
+                                    <div class="alert alert-warning alert-dismissible" style="    color: #ffffff; background-color: #656565;">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                            <h4><i class="icon fa fa-warning"></i>Sorry, we have some technical issue we will contact you soon </h4>
+                                          </div>
+                                </div>
+                    </div>
+                    <div class="row">
+
+                        <div id="flipper_timer" t-attf-data-id="#{order.id}"></div>
+
+                    <div class="col-12 col-xl-8">
+
+                       <table class="table table-striped table-sm" id="cart_products" t-if="order.order_line">
+                        <thead>
+                            <tr class="header_title_tr">
+                                <th class="border-top-0 td-img" style="color:white;text-align: center;">Product</th>
+                                <th class="border-top-0"></th>
+                                <th class="border-top-0 td-qty" style="color:white;">Quantity</th>
+                                <th class="border-top-0 text-center td-price" style="color:white;">Price</th>
+                                <th class="border-top-0 text-center td-price" style="color:white;">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+<!--                            <t t-set="flipper" t-value="0"/>-->
+
+                            <tr t-foreach="order.order_line" t-as="line">
+                                <t t-if="not line.is_delivery">
+                                        <td class='' colspan="2" t-if="not line.product_id.product_tmpl_id"></td>
+                                        <td class='td-img text-center' t-if="line.product_id.product_tmpl_id">
+                                            <span t-field="line.product_id.image_128" t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max'}" />
+                                        </td>
+                                        <td class='td-product_name' t-if="line.product_id.product_tmpl_id">
+                                            <div>
+                                                <strong t-field="line.name_short" />
+                                            </div>
+                                        </td>
+                                        <td class='td-qty'>
+                                            <div t-esc="line.product_uom_qty" />
+                                        </td>
+                                        <td class="text-center td-price">
+                                            <span t-field="line.price_reduce_taxexcl" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': order.currency_id}" groups="account.group_show_line_subtotals_tax_excluded" />
+                                            <span t-field="line.price_reduce_taxinc" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': order.currency_id}" groups="account.group_show_line_subtotals_tax_included" />
+                                        </td>
+                                        <td class="text-center td-price">
+                                              <t t-esc="line.order_line_state"/>
+                                        </td>
+                                </t>
+<!--                                <t t-set="flipper" t-value="flipper + 1"/>-->
+                            </tr>
+                        </tbody>
+                    </table>
+                         </div>
+                         <div class="col-12 col-xl-4">
+                            <div class="card js_cart_summary" t-if="order.order_line" >
+                                <div class="card-body">
+                                    <h4 class="d-none d-xl-block">Order Total</h4>
+                                    <hr class="d-none d-xl-block"/>
+                                    <div>
+                                          <div id="cart_total" t-att-class="extra_class or ''" t-if="order.order_line">
+                                    <table class="table">
+                                          <tr id="empty">
+                                              <t t-if='not no_rowspan'><td rowspan="10" class="border-0"/></t>
+                                              <td class="col-md-2 col-3 border-0"></td>
+                                              <td class="col-md-2 col-3 border-0" ></td>
+                                          </tr>
+                                          <tr id="order_total_untaxed">
+                                              <td class="text-right border-0">Subtotal:</td>
+                                              <td class="text-xl-right border-0" >
+                                                  <span t-field="order.amount_untaxed" class="monetary_field" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': order.currency_id}"/>
+                                              </td>
+                                          </tr>
+                                          <tr id="order_total_taxes">
+                                              <td class="text-right border-0">Taxes:</td>
+                                              <td class="text-xl-right border-0">
+                                                   <span t-field="order.amount_tax" class="monetary_field" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': order.currency_id}" />
+                                              </td>
+                                          </tr>
+                                          <tr id="order_total">
+                                              <td class="text-right"><strong>Total:</strong></td>
+                                              <td class="text-xl-right">
+                                                  <strong t-field="order.amount_total" class="monetary_field"
+                                                      t-options='{"widget": "monetary", "display_currency": order.pricelist_id.currency_id}'/>
+                                              </td>
+                                          </tr>
+                                    </table>
+                                </div>
+<!--                                        <t t-call="website_sale.total">-->
+<!--                                            <t t-set="no_rowspan" t-value="1"/>-->
+<!--                                        </t>-->
+<!--                                        <a role="button" t-if="website_sale_order and website_sale_order.website_order_line" class="btn btn-secondary float-right d-none d-xl-inline-block" href="/shop/checkout?express=1">-->
+<!--                                            <span>Process Checkout</span>-->
+<!--                                        </a>-->
+                                    </div>
+                                </div>
+                            </div>
+
+                      </div>
+                             </div>
+<!--                    <hr/>-->
+<!--                    <br/>-->
+
+
+
+<!--                        <br/>-->
+<!--                    <br/>-->
+<!--                    <br/>-->
+
+                </div>
+            </t>
+        </template>
+        <record id="tz_value_on_res_company" model="ir.ui.view">
+                <field name="name">res.company.inherited.new</field>
+                <field name="model">res.company</field>
+                <field name="inherit_id" ref="base.view_company_form"/>
+                <field name="arch" type="xml">
+                    <xpath expr="//field[@name='website']" position='after'>
+                        <field name="tz"/>
+                    </xpath>
+                </field>
+        </record>
+    </data>
+</odoo>

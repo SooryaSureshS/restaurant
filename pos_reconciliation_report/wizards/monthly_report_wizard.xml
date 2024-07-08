@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="amonthly_report_wizard">
+        <field name="name">POS report</field>
+        <field name="model">pos.monthly.report</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Monthly report">
+                <group>
+                    <group>
+                        <field name="user_id"/>
+                    </group>
+                    <group>
+                        <field name="offer_type"/>
+                    </group>
+                </group>
+                <group>
+                    <group>
+                        <field name="start_date"/>
+                    </group>
+                    <group>
+                        <field name="end_date"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="get_report" string="Get Report" type="object" class="oe_highlight"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <act_window id="action_monthly_pos_report_wizard"
+                name="POS Session Report"
+                res_model="pos.monthly.report"
+                view_mode="form"
+                target="new"/>
+
+    <menuitem action="action_monthly_pos_report_wizard"
+              id="menu_monthly_report_wizard"
+              parent="point_of_sale.menu_point_rep"
+              sequence="0"/>
+</odoo>

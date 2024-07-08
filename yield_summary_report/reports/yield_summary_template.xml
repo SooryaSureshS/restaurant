@@ -1,0 +1,118 @@
+<odoo>
+    <template id="yield_summary_report_template">
+        <t t-call="web.html_container">
+            <t t-call="yield_summary_report.external_layout"/>
+            <div class="page" style="padding-top:10px">
+                <t t-set="dollar_difference" t-value="0"/>
+                <t t-foreach="docs" t-as="doc">
+                    <table class="table"
+                           style="text-align:center;font-size:12px;font-family: Montserrat, 'sans-serif';padding-top:5px;margin-top:5px;width:100%;border-collapse:collapse">
+                        <thead style="display: table-header-group">
+                            <tr>
+                                <th>Item Description</th>
+                                <th>UOM</th>
+                                <th>Optimum
+                                    <br/>Yield
+                                </th>
+                                <th>Current
+                                    <br/>Yield
+                                </th>
+                                <th>Unit
+                                    <br/>Difference
+                                </th>
+                                <th>$
+                                    <br/>Difference
+                                </th>
+                                <th>% of Prod
+                                    <br/>Sales
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody style="display: table-row-group;padding-top:50px;margin-top:30px">
+                            <t t-set="positive" t-value='0'/>
+                            <t t-set="negative" t-value='0'/>
+                            <t t-set="recs" t-value="doc.get_product_details()"/>
+                            <t t-foreach="recs.keys()" t-as="key">
+                                <t t-foreach="recs[key]" t-as="p">
+                                    <tr>
+                                        <td style="text-align:left;border-bottom: 1px solid black;">
+                                            <t t-esc="p['name']"/>
+                                        </td>
+                                        <td style="border-bottom: 1px solid black;">
+                                            <t t-esc="p['uom']"/>
+                                        </td>
+                                        <td style="border-bottom: 1px solid black;">
+                                            <t t-esc="p['qty']"/>
+                                        </td>
+                                        <td style="border-bottom: 1px solid black;">
+                                            <t t-esc="p['total_unit']"/>
+                                        </td>
+                                        <t t-set="sold_qty" t-value="p['qty']"/>
+                                        <t t-set="actual_available_qty" t-value="p['virtual_available_start'] - sold_qty"/>
+                                        <t t-set="current_qty" t-value="p['total_unit']"/>
+                                        <t t-set="difference" t-value="current_qty -actual_available_qty "/>
+                                        <td style="border-bottom: 1px solid black;">
+                                            <t t-esc="difference"/>
+                                        </td>
+                                        <t t-set="unit_price" t-value="p['unit_price']"/>
+                                        <t t-set="sold_total" t-value="sold_qty * unit_price "/>
+                                        <t t-set="remaining_total" t-value="current_qty * unit_price"/>
+                                        <t t-set="total_qty" t-value="p['virtual_available_start'] * unit_price"/>
+                                        <t t-set="actual_available_qty_diff" t-value="total_qty - sold_total"/>
+                                        <t t-set="dollar_difference" t-value="remaining_total - actual_available_qty_diff"/>
+                                        <td style="border-bottom: 1px solid black;">
+                                            <t t-esc="round(dollar_difference,2)"
+                                               t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+                                        <td style="border-bottom: 1px solid black;">
+                                            <t t-esc='"{:.2f}".format(p["product_per"],2)'/>
+                                        </td>
+                                    </tr>
+                                    <t t-if="dollar_difference  &lt; 0">
+                                        <t t-set="negative" t-value='negative + dollar_difference'/>
+                                    </t>
+                                    <t t-if="dollar_difference &gt;= 0">
+                                        <t t-set="positive" t-value='positive + dollar_difference'/>
+                                    </t>
+                                </t>
+                            </t>
+                        </tbody>
+                    </table>
+                    <table style="float:right;text-align:right;border-collapse: collapse;font-size:12px;font-family: Montserrat, 'sans-serif';margin-top:15px">
+                        <tr>
+                            <td>Positive Variations :</td>
+                            <td>
+                                <span
+                                        class="o_default_snippet_text report-well"
+                                        style="padding-left:50px"/>
+                                <t t-esc="round(positive,2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Negative Variations :</td>
+                            <td>
+                                <span
+                                        class="o_default_snippet_text report-well"
+                                        style="padding-left:50px"/>
+                                <t t-esc="round(negative,2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+                        </tr>
+                        <t t-set="total" t-value='positive + negative'/>
+                        <tr>
+                            <td>Total Variation :</td>
+                            <td style="border-top:1px solid black;border-bottom:1px solid black">
+                                <span
+                                        class="o_default_snippet_text report-well"
+                                        style="padding-left:50px"/>
+                                <t t-esc="round(total,2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+                        </tr>
+                    </table>
+                </t>
+            </div>
+        </t>
+    </template>
+</odoo>

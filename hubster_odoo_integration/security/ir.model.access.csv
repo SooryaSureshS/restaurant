@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hubster_store,access.hubster.store,model_hubster_store,,1,1,1,1
+access_hubster_config,access.hubster.config,model_hubster_config,,1,1,1,1
+access_hubster_menu,access.hubster.menu,model_hubster_menu,,1,1,1,1
+access_hubster_hours,access.hubster.hours,model_hubster_hours,,1,1,1,1
+access_hubster_order,access.hubster.order,model_hubster_order,,1,1,1,1
+access_hubster_payloads,access.hubster.payloads,model_hubster_payloads,,1,1,1,1
+access_hubster_order_line,access.hubster.order.line,model_hubster_order_line,,1,1,1,1
+

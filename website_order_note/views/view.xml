@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="website_sale_line_note" inherit_id="website_sale.cart_lines">
+        <xpath expr="//th[hasclass('td-price')]" position="after">
+             <th class="text-center td-note">Note</th>
+        </xpath>
+         <xpath expr="//td[hasclass('td-price')]" position="after">
+              <td class="text-center td-price" id="order_line_note_update" name="price">
+                   <i class="fa fa-pencil-square-o order_line_note" style="color: #877049;font-size: 19px;" t-att-data_order_id="line.id"></i>
+              </td>
+        </xpath>
+
+    </template>
+</odoo>

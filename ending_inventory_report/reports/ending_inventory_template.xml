@@ -1,0 +1,112 @@
+<odoo>
+    <template id="ending_inventory_report_template">
+        <t t-call="web.html_container">
+            <t t-call="ending_inventory_report.external_layout_standard_custom" />
+            <div class="page">
+                <t t-foreach="docs" t-as="doc">
+                <t t-set="sub_total" t-value="0"/>
+                <div>
+                    <table class="table table-borderless"
+                           style="text-align:right;font-size:12px;font-family:\'Times New Roman\';color:black;
+                                   width:100%;border-collapse:collapse;border-spacing:20px;padding-top:5px;margin-top:5px;margin-bottom:30px">
+                        <style>
+                            th {
+                            padding-bottom:30px;}
+                            }
+                        </style>
+                        <thead style="display: table-header-group;">
+                            <tr style="padding-bottom:50px;margin-bottom:30px">
+
+                                <th style="width:20%;margin-top:0px;text-align:left;">Description</th>
+                                <th style="width:5%;;margin-top:0px;padding-left:10px">Carton</th>
+                                <th style="width:5%;;margin-top:0px;padding-left:10px">Sleeve</th>
+                                <th style="width:5%;;margin-top:0px;padding-left:10px">Unit</th>
+                                <th style="width:5%;;margin-top:0px;padding-left:10px">UOM</th>
+                                <th style="width:5%;;margin-top:0px;padding-left:10px">Total UOM Units</th>
+                                <th style="width:5%;;margin-top:0px;padding-left:10px">Unit Price</th>
+                                <th style="width:5%;;margin-top:0px;padding-left:10px">Total Value</th>
+                                <th style="width:5%;;margin-top:0px;padding-left:10px">% of Stock</th>
+                            </tr>
+                        </thead>
+                        <br/>
+                        <tbody style="display: table-row-group;padding-top:50px;margin-top:30px">
+                            <t t-set="recs" t-value="docs.get_product_details()"/>
+                            <t t-foreach="recs.keys()" t-as="key">
+                            <tr>
+                                <td colspan="13" style="text-align:left;font-weight:bold;border-bottom:1px solid black;">
+                                    <span t-esc="key"/>
+                                </td>
+                            </tr>
+                            <t t-foreach="recs[key]" t-as="p">
+                                <tr>
+                                    <td style="text-align:left">
+                                       <t t-esc="p['name']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="p['carton']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="p['sleeve']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="p['qty']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="p['uom']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="p['total_unit']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc='"{:.2f}".format(p["unit_price"])'/>
+                                    </td>
+
+                                    <t t-set="total" t-value="p['total_unit'] * p['unit_price']"/>
+                                    <td>
+                                        <t t-esc="total" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                    </td>
+
+                                    <td>
+                                        <t t-esc='"{:.4f}".format(p["stock_per"])'/><span>%</span>
+                                    </td>
+                                </tr>
+                            </t>
+                            <tr>
+                                <t t-set="total_stock" t-value="0"/>
+                                <t t-set="total_price" t-value="0"/>
+
+                                <t t-foreach="recs[key]" t-as="p">
+                                    <t t-set="stock_per" t-value="p['stock_per']"/>
+                                    <t t-set="total_stock" t-value="total_stock + stock_per"/>
+                                </t>
+                                <t t-foreach="recs[key]" t-as="p">
+                                    <t t-set="units" t-value="p['total_unit']"/>
+                                    <t t-set="price" t-value="p['unit_price']"/>
+                                    <t t-set="total_val" t-value="units * price"/>
+                                    <t t-set="total_price" t-value="total_price + total_val"/>
+                                </t>
+                                        <td style="padding-top:10px;text-align:right" colspan="2">Total for
+                                            <span t-esc="key"/>
+                                        </td>
+                                        <td style="padding-top:10px" colspan="5"> </td>
+                                        <td style="padding-top:10px;border-top:1px solid black;text-align:right;font-weight:bold;">
+                                            <t t-esc='"{:.2f}".format((total_price))'/>
+                                        </td>
+                                        <td style="padding-top:10px;border-top:1px solid black;text-align:right;font-weight:bold">
+                                            <t t-esc='"{:.2f}".format(total_stock)'/>%
+                                        </td>
+                            </tr>
+                                <t t-set="sub_total" t-value="sub_total +total_price "/>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="float:left;margin-left:450px">
+                    <p style="padding:10px">Grand Total <span style="border-top:1px solid black;border-bottom:2px solid black;margin-left:150px">
+                        <t t-esc='"{:.2f}".format(sub_total)'/></span></p>
+                </div>
+                </t>
+            </div>
+        </t>
+    </template>
+</odoo>

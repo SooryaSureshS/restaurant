@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2016 Eficent Business and IT Consulting Services S.L.
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <data noupdate="0">
+
+       <record model="ir.module.category" id="rfid_management">
+             <field name="name">Rfid Access</field>
+             <field name="description">User access level for frigatebird module</field>
+             <field name="sequence">20</field>
+        </record>
+       <record id="department_rfid_user" model="res.groups">
+            <field name="name">User</field>
+            <field name="category_id" ref="esp32_integration.rfid_management"/>
+       </record>
+        <record id="department_rfid_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="esp32_integration.rfid_management"/>
+            <field name="implied_ids" eval="[(4, ref('department_rfid_user'))]"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_our_wines_about" name="Our Wines About">
+		<section class="our-wines-awards pt152 pb152">
+				<div class="container">
+					<div class="title text-center">
+						<p class="subtitle text-primary">SINCE 2004</p>
+						<h1>Award-Winning Wines</h1>
+					</div>
+					<div class="row justify-content-center mb-5">
+						<div class="col-md-5 col-lg-4">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at mauris sapien. Etiam nec leo ac metus tempor facilisis. Morbi imperdiet erat hendrerit ante congue maximus. Mauris sed diam libero. </p>
+							<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+						</div>
+						<div class="col-md-5 col-lg-4">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at mauris sapien. Etiam nec leo ac metus tempor facilisis. Morbi imperdiet erat hendrerit ante congue maximus. Mauris sed diam libero. </p>
+							<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+						</div>
+					</div>
+					<div class="row justify-content-center mb-5">
+						<div class="col-md-5 col-lg-4 mb-4 mb-md-0">
+							<img class="img img-fluid" src="/theme_wineshop/static/src/img/wine-award1.jpg" alt="image"/>
+						</div>
+						<div class="col-md-5 col-lg-4">
+							<img class="img img-fluid" src="/theme_wineshop/static/src/img/wine-award2.jpg" alt="image"/>
+						</div>
+					</div>
+					<div class="row justify-content-center mb-5">
+						<div class="col-md-5 col-lg-4">
+							<h3>Our grapes</h3>
+							<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+						</div>
+						<div class="col-md-5 col-lg-4">
+							<h3>Our barrels</h3>
+							<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+						</div>
+					</div>
+					<div class="row justify-content-center mb-5">
+						<div class="col-md-5 col-lg-4 mb-4 mb-md-0">
+							<img class="img img-fluid" src="/theme_wineshop/static/src/img/wine-award3.jpg" alt="image"/>
+						</div>
+						<div class="col-md-5 col-lg-4">
+							<img class="img img-fluid" src="/theme_wineshop/static/src/img/wine-award4.jpg" alt="image"/>
+						</div>
+					</div>
+					<div class="row justify-content-center">
+						<div class="col-md-5 col-lg-4">
+							<h3>Our corks</h3>
+							<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+						</div>
+						<div class="col-md-5 col-lg-4">
+							<h3>Our aging method</h3>
+							<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+	</template>
+</odoo>

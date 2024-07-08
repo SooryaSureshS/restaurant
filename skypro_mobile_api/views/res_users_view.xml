@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_users_view_form" model="ir.ui.view">
+            <field name="name">res.users.form.inherit</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='login']" position="after">
+                    <div>
+                        <label for="user_otp" string="Verification OTP"/>
+                        <field name="user_otp"/>
+                    </div>
+                    <div>
+                         <label for="notification" string="Enable Notiication"/>
+                        <field name="notification"/>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="res_partner_view_form" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='parent_id']" position="before">
+                    <field name="first_name" placeholder="First Name"/>
+                    <field name="last_name" placeholder="Last Name"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

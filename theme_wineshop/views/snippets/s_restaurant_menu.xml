@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_restaurant_menu" name="Restaurant Menu">
+		<section class="wineshop-home-tasting">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6 p-0">
+							<div class="image">
+								<img class="img img-fluid" src="/theme_wineshop/static/src/img/restaurant-menu-1.jpg" alt="image"/>
+							</div>
+						</div>
+						<div class="col-lg-6 p-0">
+							<section class="content text-center h-100 bg-light">
+								<p class="subtitle text-primary">DONEC FAUCIBUS</p>
+								<h1>Menu</h1>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing. Cras vel iaculis urna. Cras bibendum ex id dolor facilisis, in tempor lacus dapibus.</p>
+								<div class="s_btn" data-name="Button">
+									<a href="#" class="btn flat btn-secondary btn-lg">read more</a>
+								</div>
+							</section>
+						</div>
+						<div class="col-lg-6 p-0 order">
+							<section class="content text-center h-100 bg-light">
+								<p class="subtitle text-primary">DONEC FAUCIBUS</p>
+								<h1>Our Chef</h1>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing. Cras vel iaculis urna. Cras bibendum ex id dolor facilisis, in tempor lacus dapibus.</p>
+								<div class="s_btn" data-name="Button">
+									<a href="#" class="btn flat btn-secondary btn-lg">read more</a>
+								</div>
+							</section>
+						</div>
+						<div class="col-lg-6 p-0">
+							<div class="image">
+								<img class="img img-fluid" src="/theme_wineshop/static/src/img/restaurant-menu-2.jpg" alt="image"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+	</template>
+</odoo>

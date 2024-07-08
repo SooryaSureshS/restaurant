@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="OrderRecallOrders" owl="1">
+        <span class="control-button orders_recall" style="flex-grow: unset;margin: 6px;">
+            <i class="fa fa-rotate-left"></i>
+            <span> </span>
+            <span>Recall</span>
+        </span>
+    </t>
+
+     <t t-name="Chrome" t-inherit="point_of_sale.Chrome" t-inherit-mode="extension" owl="1">
+         <xpath expr="//div[hasclass('status-buttons-portal')]" position="before">
+                <RecallOrders/>
+         </xpath>
+<!--        <xpath expr="//SyncNotification" position="after">-->
+<!--            <BalanceButton t-if="balanceButtonIsShown" />-->
+<!--        </xpath>-->
+    </t>
+
+
+        <t t-name="RecallOrderListScreens" owl="1">
+               <div class="ticket-screen screen">
+                <div class="screen-content">
+                    <div class="controls">
+                        <div class="buttons gift_card_header_buttons">
+                            <button class="discard" t-on-click="trigger('close-screen')">Back</button>
+                            <button class="discard" t-on-click="trigger('load-data')">Refresh</button>
+                        </div>
+                        <SearchBar config="searchBarConfig" placeholder="'Search Pos Reference Number ...'" />
+                    </div>
+                    <div class="orders">
+                        <div class="header-row">
+                            <div class="col start ">Order Ref</div>
+                            <div class="col start ">Name</div>
+                            <div class="col start">Partner</div>
+                            <div class="col start">Preparation Date</div>
+                            <div class="col end">Amount Total</div>
+                            <div class="col end">Amount Tax</div>
+                            <div class="col start"></div>
+<!--                            <div class="col start"></div>-->
+                        </div>
+
+                        <t t-foreach="filteredOrdersList" t-as="order" t-key="order.order_id">
+                            <div class="order-row pointer">
+                                <div class="col start">
+                                    <t t-esc="order.pos_reference"></t>
+                                </div>
+                                <div class="col start">
+                                    <t t-if="order.name">
+                                        <t t-esc='order.name'/>
+                                    </t>
+                                </div>
+                                <div class="col start">
+                                     <t t-if="order.customer_name">
+                                        <t t-esc="order.customer_name"></t>
+                                     </t>
+                                </div>
+                                <div class="col end" style="text-align: end;">
+                                    <t t-esc="order.preparation_date"></t>
+                                </div>
+                                 <div class="col end">
+                                    <t t-esc="env.pos.format_currency(order.amount_total)"></t>
+                                </div>
+                                 <div class="col end">
+                                    <t t-esc="env.pos.format_currency(order.amount_tax)"></t>
+                                </div>
+
+                                <div class="col start narrow">
+                                      <span id="edit_giftcard" title="Edit" t-att-data-id='order.id' style="cursor:pointer" t-on-click="PrintReceipt(order)">
+                                        <i class="fa fa-print" aria-hidden="true" style="font-size:25px;"></i>
+                                    </span>
+                                </div>
+                                <div class="col start narrow">
+                                      <span id="edit_giftcard" title="Edit" t-att-data-id='order.id' style="cursor:pointer" t-on-click="PreviewClick(order)">
+                                        <i class="fa fa fa-reorder" aria-hidden="true" style="font-size:25px;"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </t>
+
+
+
+                        <t t-foreach="filteredSaleOrdersList" t-as="order" t-key="order.order_id">
+                            <div class="order-row pointer">
+                                <div class="col start">
+                                    <t t-esc="order.pos_reference"></t>
+                                </div>
+                                <div class="col start">
+                                    <t t-if="order.name">
+                                        <t t-esc='order.name'/>
+                                    </t>
+                                </div>
+                                <div class="col start">
+                                     <t t-if="order.customer_name">
+                                        <t t-esc="order.customer_name"></t>
+                                     </t>
+                                </div>
+                                <div class="col end" style="text-align: end;">
+                                    <t t-esc="order.preparation_date"></t>
+                                </div>
+                                 <div class="col end">
+                                    <t t-esc="env.pos.format_currency(order.amount_total)"></t>
+                                </div>
+                                 <div class="col end">
+                                    <t t-esc="env.pos.format_currency(order.amount_tax)"></t>
+                                </div>
+
+                                <div class="col start narrow">
+                                      <span id="edit_giftcard" title="Edit" t-att-data-id='order.id' style="cursor:pointer" t-on-click="PrintReceipt(order)">
+                                        <i class="fa fa-print" aria-hidden="true" style="font-size:25px;"></i>
+                                    </span>
+                                </div>
+                                <div class="col start narrow">
+                                      <span id="edit_giftcard" title="Edit" t-att-data-id='order.id' style="cursor:pointer" t-on-click="PreviewClick(order)">
+                                        <i class="fa fa fa-reorder" aria-hidden="true" style="font-size:25px;"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </t>
+
+
+
+    <t t-name="RecallPopupsWidget" owl="1">
+        <div class="modal-dialog" role="dialog">
+            <div class="popup popup-selection product_return_pos" >
+                <p class="title">Product Lines</p>
+                <div class='selection scrollable-y touch-scrollable'>
+                    <table id="list" cellspacing="1px" cellpadding="10px" text-align="center"
+                           width="100%" style="border:1px;padding-left:1.16cm;">
+                        <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Qty</td>
+                                <td>Dis</td>
+                                <td>Status</td>
+                            </tr>
+                        </thead>
+                        <tbody id="props_return_popup">
+                            <t t-foreach="props.result" t-as="line" t-key="line.id">
+                                <tr >
+                                    <td>
+                                        <t t-esc="line['full_product_name']"></t>
+                                    </td>
+                                    <td>
+                                        <t t-esc="line['qty']"></t>
+                                    </td>
+                                    <td>
+                                        <t t-esc="line['discount']"></t>
+                                    </td>
+                                    <td>
+                                       <t t-esc="line['order_line_state']"></t>
+                                    </td>
+
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="footer">
+                    <div class="button cancel" t-on-click="cancel">
+                        Cancel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

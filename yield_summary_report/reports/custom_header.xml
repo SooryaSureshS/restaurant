@@ -1,0 +1,36 @@
+<odoo>
+    <template id="external_layout">
+        <div class="header">
+            <div style="float: left; width: 100%;font-size:5px;margin-top:15px;border-bottom: 3px solid black;">
+
+                <p style="margin:0px !important;font-size:16px;font-weight:bold">Item Yields Summary</p>
+
+                <p style="margin-top:15px !important;font-size:12px;">Report Period  Full<br/>
+                    Stat for
+                    Period -<br/>
+
+                    <t t-foreach="docs" t-as="doc">
+                        <t t-set="date" t-value="docs.get_date()"/>
+                        <span t-esc="date"/><br/>
+                                <t t-esc="docs.start_date.strftime('%d-%m-%Y')"></t>
+                                to
+                                <t t-esc="docs.end_date.strftime('%d-%m-%Y')"></t>
+
+                    </t>
+                    <span style="float:right;">Printed:
+                        <t t-set="date" t-value="context_timestamp(datetime.datetime.now())"/>
+
+                        <span t-esc="date.strftime('%e %b %Y, %I:%M %p')"/>
+                        <br/>
+                        Page
+                        <span class="page"/>
+                        of
+                        <span class="topage"/>
+                    </span>
+                </p>
+                <br/>
+            </div>
+        </div>
+
+    </template>
+</odoo>

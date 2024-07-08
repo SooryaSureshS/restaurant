@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="fpn_notification_tree" model="ir.ui.view">
+            <field name="name">fpn.notification.tree</field>
+            <field name="model">fpn.notification</field>
+            <field name="arch" type="xml">
+                <tree string="Notifications">
+                    <field name="name"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="fpn_notification_form" model="ir.ui.view">
+            <field name="name">fpn.notification.form</field>
+            <field name="model">fpn.notification</field>
+            <field name="arch" type="xml">
+                <form string="Notifications">
+                    <header>
+                       <button string="Send Notification" class="oe_highlight" type="object" name="send_notification" data-hotkey="q"/>
+                       <button string="Send Notification to all" class="oe_highlight" type="object" name="send_notification_all" data-hotkey="q"/>
+
+                        <field name="state" widget="statusbar" nolabel="1"/>
+                    </header>
+<!--                    <button name="send_notification"/>-->
+
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="message"/>
+                            <field name="title"/>
+                            <field name="link"/>
+                            <field name="cast_user" widget="many2many_tags" />
+                        </group>
+                    </sheet>
+                     <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+<!--                        <field name="activity_ids"/>-->
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="custom_mask_website_sequence_action" model="ir.actions.act_window">
+            <field name="name">FPN Notifications</field>
+            <field name="res_model">fpn.notification</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="custom_mask_website_sequence"
+                  action="custom_mask_website_sequence_action"
+                  parent="website_sale.menu_catalog"
+                  sequence="1"/>
+
+
+           <record id="res_config_settings_view_fpn_notification" model="ir.ui.view">
+            <field name="name">res.config.settings.view.mask.details</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="1"/>
+            <field name="inherit_id" ref="website.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@id='website_selection_settings']" position="after">
+                    <div>
+                        <h2>Fpn Configurations</h2>
+                        <span class="o_form_label" style="margin-left: 58px;">Fpn Details</span>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box"
+                                 title="Here You can set minimum picking time">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <div class="content-group">
+                                        <div class="row">
+                                            <label string="Api Key"
+                                                   class="o_light_label" style="width:100%;margin-left: 15px;" for="api_key"/>
+                                            <field name="api_key" style="margin-left: 15px;"/>
+                                            <br/>
+                                        </div>
+                                        <div class="row">
+                                            <label string="Auth Domain"
+                                                   class="o_light_label" style="width:100%;margin-left: 15px;" for="authDomain"/>
+                                            <field name="authDomain" style="margin-left: 15px;"/>
+                                            <br/>
+                                        </div>
+                                        <div class="row">
+                                            <label string="Project Id"
+                                                   class="o_light_label" style="width:100%;margin-left: 15px;" for="projectId"/>
+                                            <field name="projectId" style="margin-left: 15px;"/>
+                                            <br/>
+                                        </div> <div class="row">
+                                            <label string="Storage bucket"
+                                                   class="o_light_label" style="width:100%;margin-left: 15px;" for="storage_bucket"/>
+                                            <field name="storage_bucket" style="margin-left: 15px;"/>
+                                            <br/>
+                                        </div> <div class="row">
+                                            <label string="App id"
+                                                   class="o_light_label" style="width:100%;margin-left: 15px;" for="app_id"/>
+                                            <field name="app_id" style="margin-left: 15px;"/>
+                                            <br/>
+                                        </div>
+                                        <div class="row">
+                                            <label string="Message sender id"
+                                                   class="o_light_label" style="width:100%;margin-left: 15px;" for="messaging_senderId"/>
+                                            <field name="messaging_senderId" style="margin-left: 15px;"/>
+                                            <br/>
+                                        </div>
+                                        <div class="row">
+                                            <label string="server Token"
+                                                   class="o_light_label" style="width:100%;margin-left: 15px;" for="serverToken"/>
+                                            <field name="serverToken" style="margin-left: 15px;"/>
+                                            <br/>
+                                        </div>
+                                        <div class="row">
+                                            <label string="Enable"
+                                                   class="o_light_label" style="width:100%;margin-left: 15px;" for="enable"/>
+                                            <field name="enable" style="margin-left: 15px;"/>
+                                            <br/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

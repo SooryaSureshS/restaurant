@@ -1,0 +1,291 @@
+<odoo>
+    <data>
+
+        <template id="mask_designing" name="Recommend">
+            <t t-call="website.layout">
+                <t t-set="additional_title">Print Area Mask</t>
+                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/Shop_customize_mask-logo_page.css"/>
+
+                <t t-set="no_footer" t-value="1"/>
+                    <t t-call="mask_cutomization.header_banner_xml"/>
+                <div class="banner container" id="mask_designing_container">
+                    <link rel="stylesheet"
+                          href="/mask_cutomization/static/src/image_editor/css/jquery.sweet-modal.min.css"/>
+
+
+                    <p id="gui_back">&lt; Back</p>
+                    <input type="hidden" id="sale_order" t-att-value="sale_order.id"/>
+                    <input type="hidden" name="product" id="product_ids" t-att-value="product.id"/>
+                    <div id="process-bar">
+                        <img src="Customize Process.png" alt=""/>
+                    </div>
+                    <div class="inner-flex">
+                        <div class="left-flex">
+                            <div class="group_preview_container 3d_preview" style="display:none;width: unset;"/>
+                            <t t-if="area == 'full'">
+                                <img t-attf-src="data:image/png;base64,{{product.full_image}}" alt=""
+                                     class="image_preview" style="padding-left: 0%;padding-right: 0%;padding-top: 27%;"/>
+                            </t>
+                            <t t-if="area == 'logo'">
+                                <img t-attf-src="data:image/png;base64,{{product.logo_image}}" alt=""
+                                     class="image_preview" style="padding-left: 0%;padding-right: 0%;padding-top: 27%;"/>
+                            </t>
+                            <t t-if="area == 'blank'">
+                                <img t-attf-src="data:image/png;base64,{{product.blank_image}}" alt=""
+                                     class="image_preview" style="padding-left: 0%;padding-right: 0%;padding-top: 27%;"/>
+                            </t>
+<!--                            <p class="preview-instruction">Please click below buttons for preview</p>-->
+                            <div class="left-flex-images" style="display:none;">
+                                <div class="fold_buttons" style="    padding-top: 0px;">
+                                    <img class="fold_button  all_btn actived active_none" id="active_fold"
+                                         src="/mask_cutomization/static/src/image/image_preview/fold active.png"
+                                         alt="" />
+                                    <img class="fold_button  all_btn blocked"
+                                         src="/mask_cutomization/static/src/image/image_preview/fold notactive.png"
+                                         alt=""/>
+                                    <p>Fold</p>
+                                </div>
+                                <div class="fold_buttons" style="    padding-top: 0px;">
+                                    <img class="3d_button  all_btn actived active_none"
+                                         src="/mask_cutomization/static/src/image/image_preview/3D active.png" alt=""/>
+                                    <img class="3d_button  all_btn blocked"
+                                         src="/mask_cutomization/static/src/image/image_preview/3D notactive.png"
+                                         alt=""/>
+                                    <p>3D</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="right-flex">
+                             <div id="image_positions">
+                                <span id="left_crumb">
+                                    <img src="/mask_cutomization/static/src/image/image_package/breadcrumb_descriotion/left.png"/>
+                                </span>
+                                <span id="center_crumb">
+                                    <img src="/mask_cutomization/static/src/image/image_package/breadcrumb_carton/center1.png"/>
+                                </span>
+                                <span id="right_crumb">
+                                    <img src="/mask_cutomization/static/src/image/image_package/breadcrumb_descriotion/right.png"/>
+                                </span>
+                            </div>
+<!--                            <img src="Customize Process.png" alt="" style="width:87%;" id="right-flex-process"/>-->
+                            <br/>
+                            <p id="mask-header">
+                                <t t-esc="product.name"/>
+                            </p>
+                            <t t-if="area != 'blank'">
+                                <p><span>Upload your image</span></p>
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                                <div class="upload-div">
+                                    <input type="file" name="uploaded" id="upload_file_change" style="display: none;"/>
+                                    <button id="fetch_upload"><span>Upload</span></button>
+<!--                                    <t t-esc="session_product_obj.id"/>-->
+                                    <t t-if="session_product_obj.product_id">
+                                        <input type="hidden" id="buffer_product" t-att-value="session_product_obj.product_id.id"/>
+                                    </t>
+                                    <t t-else="">
+                                        <input type="hidden" id="buffer_product"/>
+                                    </t>
+
+                                    <img t-if="session_product_obj.buffer_image"
+                                         t-attf-src="data:image/png;base64,{{session_product_obj.buffer_image}}" alt=""
+                                         id="upload_image_view" t-att-date_image="sale_order.id"/>
+                                    <p id="upload_file_image_name">
+                                        <t t-if="session_product_obj.buffer_image_name"
+                                           t-esc="session_product_obj.buffer_image_name[-12:]"/>
+                                    </p>
+                                </div>
+                            </t>
+                            <t t-else="">
+                                <t t-if="session_product_obj.product_id">
+                                        <input type="hidden" id="buffer_product" t-att-value="session_product_obj.product_id.id"/>
+                                    </t>
+                                    <t t-else="">
+                                        <input type="hidden" id="buffer_product"/>
+                                    </t>
+                            </t>
+
+                            <br/>
+
+                            <input t-if="product.default_mask_attribute" type="hidden" id="default_mask"
+                                   t-att-value="product.default_mask_attribute.id"/>
+                            <input t-if="product.default_rope_attribute" type="hidden" id="default_color"
+                                   t-att-value="product.default_rope_attribute.id"/>
+                            <input t-if="product.default_nose_attribute" type="hidden" id="default_nose"
+                                   t-att-value="product.default_nose_attribute.id"/>
+                            <input t-if="product.default_fragrance_attribute" type="hidden" id="default_fragrance"
+                                   t-att-value="product.default_fragrance_attribute.id"/>
+
+                            <!--                            selected attribute-->
+                            <input type="hidden" id="selected_size" t-att-value="mask_size"/>
+                            <input type="hidden" id="selected_print_type" t-att-value="print_type"/>
+                            <input type="hidden" id="selected_cloth_color"
+                                   t-att-value="product.default_mask_attribute.id"/>
+                            <input type="hidden" id="selected_rope_color"
+                                   t-att-value="product.default_rope_attribute.id"/>
+                            <input type="hidden" id="selected_nose" t-att-value="product.default_nose_attribute.id"/>
+                            <input type="hidden" id="selected_fragrance"
+                                   t-att-value="product.default_fragrance_attribute.id"/>
+                            <!--                            selected attribute ends-->
+
+                            <t t-set="mask_area_css" t-value=""/>
+                            <t t-if="area == 'full'">
+                                <t t-set="mask_area_css" t-value="'display: none;'"/>
+                            </t>
+
+                            <t t-foreach="product.valid_product_template_attribute_line_ids" t-as="ptal">
+                                <t t-if="ptal.attribute_id.name == 'Cloth color'">
+                                    <p t-att-style="mask_area_css"><span>Mask color</span></p>
+
+                                    <div class="colors1" id="color_mask" t-att-style="mask_area_css">
+                                        <t t-foreach="ptal.product_template_value_ids._only_active()" t-as="ptav">
+                                            <span class="pellete_color_mask" style="width:40px;height:40px;"
+                                                  t-attf-style="background-color:#{ptav.html_color or ptav.product_attribute_value_id.name if not ptav.is_custom else ''}"
+                                                  t-att-data-value_id="ptav.id"></span>
+                                        </t>
+                                    </div>
+                                </t>
+                            </t>
+                            <t t-foreach="product.valid_product_template_attribute_line_ids" t-as="ptal">
+                                <t t-if="ptal.attribute_id.name == 'Earloop color'">
+                                    <p>Ear rope color</p>
+                                    <div class="colors1" style="display: inline-flex;" id="rope_color">
+                                        <t t-foreach="ptal.product_template_value_ids._only_active()" t-as="ptav">
+                                            <span class="pellete_color" style="width:40px;height:40px;"
+                                                  t-attf-style="background-color:#{ptav.html_color or ptav.product_attribute_value_id.name if not ptav.is_custom else ''}"
+                                                  t-att-data-value_id="ptav.id"></span>
+                                        </t>
+                                    </div>
+                                </t>
+                            </t>
+
+                            <hr/>
+                            <p><span>Nosepads</span></p>
+                            <div class="right-second-flex">
+                                <t t-foreach="product.valid_product_template_attribute_line_ids" t-as="ptal">
+                                    <t t-if="ptal.attribute_id.name == 'Nose sponge'">
+                                        <img t-attf-src="data:image/png;base64,{{product.nose_pad_image}}"
+                                             alt="nosepad img" style="width: 132px;height: 132px;"/>
+                                        <div class="nose_button_container" id="nose_attribute">
+                                            <t t-foreach="ptal.product_template_value_ids._only_active()" t-as="ptav">
+                                                <t t-if="ptav.price_extra">
+                                                    <input type="hidden" class="nose_pad_price_extra" t-att-value="ptav.price_extra"/>
+                                                </t>
+                                                <button class="nose_pad_button" t-att-data-value_id="ptav.id" t-att-data-value="ptav.product_attribute_value_id.code">
+                                                    <t t-if="ptav.product_attribute_value_id.code == 'Y'">
+                                                        Yes(<t t-esc="website.currency_id.symbol"/><t t-esc="ptav.price_extra"/>/pc)
+                                                    </t>
+                                                    <t t-else="">
+                                                        No
+                                                    </t>
+                                                </button>
+                                            </t>
+                                        </div>
+                                    </t>
+                                </t>
+                            </div>
+                            <p class="fragrance_bread" style="display:none;"><span>Fragrance Bead</span></p>
+                            <div class="right-second-flex" style="display:none;">
+                                <t t-foreach="product.valid_product_template_attribute_line_ids" t-as="ptal">
+                                    <t t-if="ptal.attribute_id.name == 'Fragrance bead'">
+                                        <img class="image_fragrance"
+                                             src="/mask_cutomization/static/src/image/Group 3231 (1).png"
+                                             alt="nosepad img"/>
+                                        <div class="fragrance_button_container" id="fragrance_attribute">
+                                            <t t-foreach="ptal.product_template_value_ids._only_active()" t-as="ptav">
+                                                <button class="fragrance_button" t-att-data-value_id="ptav.id">
+                                                    <t t-esc="ptav.name"/>
+                                                </button>
+                                            </t>
+                                        </div>
+                                    </t>
+                                </t>
+
+                            </div>
+                            <!--                            </t>-->
+
+                            <!-- increment decrement button -->
+                            <p style="margin-top:16px;"><span>Quantity</span></p>
+                            <div style="display:flex;">
+                                <div class="decrement-increment-btn">
+                                    <input type="hidden" t-att-value="product.minimum_order_quantity"
+                                           id="prod_min_qty"/>
+                                    <input type="hidden" t-att-value="product.minimum_quantity_step"
+                                           id="prod_qty_step"/>
+                                    <p class="minus quantity_minus" style="flex:20 ;cursor: pointer;">-</p>
+                                    <p class="num" style="flex:30 ;" t-att-value="int(product.minimum_order_quantity)">
+                                        <input type="text" id="qty_order"
+                                               t-att-value="int(product.minimum_order_quantity)"/>
+                                    </p>
+                                    <p class="plus quantity_plus" style="flex:20 ;cursor: pointer;">+</p>
+                                    <p style="flex:30 ;"><span>pcs</span></p>
+                                </div>
+                                <div class="qnty-content">
+                                    <p style="float:right ;">
+                                        <span>
+                                            <t t-esc="website.currency_id.symbol"/>
+                                            <span id="amount_total"/>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div>
+                                <form action="/submit/product/session/cart" method="post" enctype="multipart/form-data" id="form_action_product_details">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <input type="hidden" name="product_varients" id="product_varients" value="None"
+                                           required="True"/>
+                                    <input type="hidden" name="session_product_id" id="session_product_id"
+                                           t-att-value="session_product_id" required="True"/>
+                                    <input type="hidden" name="product_qty" id="product_qty" value="1"/>
+                                    <input type="hidden" name="product" id="product_id" t-att-value="product.id"/>
+                                    <input type="hidden" class="is_nosepad" name="is_nosepad"/>
+                                    <input type="hidden" class="nose_pad_price" name="nose_pad_price" value="0.0"/>
+                                    <div id="submit_form">Next</div>
+                                    <button id="preview-btn" type="submit" style="display:none;"><span>Next</span></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <style>
+
+                    #image_positions{
+                                   width: 427px;
+                        position: relative;
+                        height: 115px;
+                    }
+
+                    #left_crumb{
+                            position: absolute;
+                        z-index: 1;
+                            cursor: pointer;
+                    }
+                    #left_crumb img{
+                                width: 128px;
+                    }
+                    #line_crumb{
+                            position: absolute;
+                        left: 10%;
+                        z-index: 0;
+                        top: 45px;
+                    }
+                    #center_crumb {
+                         position: absolute;
+
+                              left: 23%;
+                                  cursor: pointer;
+                    }
+
+                    #right_crumb {
+                         position: absolute;
+                        z-index: 1;
+                        right: 0;
+                            cursor: pointer;
+                    }
+                </style>
+                <t t-call="mask_cutomization.skypro_footer"/>
+            </t>
+        </template>
+    </data>
+</odoo>

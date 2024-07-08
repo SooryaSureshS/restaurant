@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data>
+		<record id="delivery_location_suburb_res_comapny" model="ir.ui.view">
+			<field name="name">website.delivery.location.suburb.res.company</field>
+			<field name="model">res.company</field>
+			<field name="inherit_id" ref="base.view_company_form"/>
+			<field name="arch" type="xml">
+<!--				 <xpath expr="//field[@name='email']" position="after">-->
+<!--					<field name="latitude"/>-->
+<!--					<field name="longitude"/>-->
+<!--				</xpath>-->
+				<xpath expr="//field[@name='website']" position="after">
+					<field name="location_picker"/>
+					<field name="check_delivery_distance"/>
+				</xpath>
+				<xpath expr="//page[1]" position="after">
+  					<page name="Suburb" string="Delivery Suburb">
+						<group>
+							<field name="suburb_location_ids" colspan="4" nolabel="1">
+								<tree string="Locations" editable="top">
+									<field name="location_name"/>
+<!--									<field name="zip_code"/>-->
+								</tree>
+							</field>
+						</group>
+					</page>
+				</xpath>
+			</field>
+		</record>
+    </data>
+</odoo>

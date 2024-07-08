@@ -1,0 +1,68 @@
+@media only screen and (min-width: 600px) {
+  .add_to_cart_large_scree_hide{
+        display: none;
+  }
+}
+.add_to_cart_unhide{
+    display: block !important;
+    text-align: center;
+    display: flex !important;
+    margin: auto !important;
+}
+.js_product .td-product_name {
+    min-width: 128px !important;
+}
+
+@media only screen and (max-width: 350px) {
+    .js_add_minus_bundle{
+        display:none;
+    }
+    .js_add_plus_bundle{
+        display:none;
+    }
+
+    .cart_popup_btn {
+        text-align: center;
+    }
+    .checkout_cart_bundle{
+        margin-top: 10px;
+    }
+    .close_choice{
+        width: 35px !important;
+    }
+    .open_choice{
+        width: 35px !important;
+    }
+}
+
+.wineshop_product_page #product_details .wishlist-compare{
+    margin-bottom: 0px !important;
+}
+
+.wishlist-compare{
+    display: none;
+}
+.wishlist-compare-custom{
+    display: block !important;
+}
+
+.wineshop_product_page #product_details .wishlist-compare .wishlist .o_add_wishlist{
+    height: 51px;
+    width: 51px;
+}
+
+#add_to_cart_bundle_detail{
+    padding: 16px 45px;
+    margin-left: unset !important;
+    border-radius: 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    color: #fff;
+}
+
+#add_to_cart_bundle_detail:hover {
+    background-color: #b0976d;
+    border-color: #b0976d;
+}

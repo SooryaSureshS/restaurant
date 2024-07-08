@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="LeftPanelWidget" owl="1">
+        <span t-att-id="hasTable" style="display:none;">
+        </span>
+        <span class="order-button floor-button" id="hide_div_collapse" style="z-index: 9;right: 390px;min-width: unset; background: #875a7b;opacity: .5; padding-top: 3px;" t-on-click="backToFloorScreen">
+            <span id="fa_left_collapse">
+                <i class="fa fa-angle-double-left"></i>
+            </span>
+             <span id="fa_right_collapse" style="display:none;">
+                <i class="fa fa-angle-double-right"></i>
+            </span>
+        </span>
+    </t>
+
+    <t t-name="Chrome" t-inherit="point_of_sale.Chrome" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('search-bar-portal')]" position="before">
+                <LeftPanelWidget/>
+         </xpath>
+    </t>
+
+
+    <t t-name="AddQtyPopup" owl="1">
+       <div role="dialog" class="modal-dialog">
+            <Draggable>
+                <div class="popup popup-confirm">
+                    <header class="title drag-handle">
+                        <t t-esc="props.title" />
+                    </header>
+                    <main class="body">
+                        <div class="body_containers" style="    position: relative;
+                                width: 359px;
+                                margin: auto;
+                                height: 53px;">
+                             <div class="button " t-on-click="prepend_qty()" style="    position: absolute;
+                                left: 0px;
+                                top: 0;">
+                                <i class="fa fa-minus"></i>
+                            </div>
+                            <input id="quantity_add" type="text" t-att-value="props.qty" style="    position: absolute;
+                                width: 133px;
+                                text-align: center;
+                                left: 113px;
+                                top: 8px;"/>
+                            <div class="button" t-on-click="append_qty()" style="position: absolute;
+                                right: -11px;
+                                top: 0px;">
+                                <i class="fa fa-plus"></i>
+                            </div>
+                        </div>
+                    </main>
+                    <footer class="footer">
+                        <div class="button confirm" t-on-click="confirm_addqty" style="padding-top: 0px;">
+                            <t t-esc="props.confirmText" />
+                        </div>
+                        <div class="button cancel" t-on-click="cancel">
+                            <t t-esc="props.cancelText" />
+                        </div>
+                        <div class="button confirm" t-on-click="confirm_remove" style="padding-top: 0px;">
+                            Remove Product
+                        </div>
+
+                        <div class="button confirm" t-on-click="add_discount_custom" style="padding-top: 0px;">
+                            Disc
+                        </div> 
+
+                    </footer>
+                </div>
+            </Draggable>
+        </div>
+    </t>
+
+    <t t-name="OptionalProductsPopup" t-inherit="pos_optional_products.OptionalProductsPopup" t-inherit-mode="extension" owl="1">
+<!--          <xpath expr="//input[@id='parent_qty']" position="replace">-->
+<!--                    <div class="qty_container" style="position: relative;width: 74px;bottom: 21px;">-->
+<!--                         <div class="button " t-on-click="prepend_qty()" style="position: absolute;width: 35px;">-->
+<!--                            <i class="fa fa-minus"></i>-->
+<!--                        </div>-->
+<!--                        <input id="parent_qty" style="text-align: center;width: 50%;margin-bottom: 7px;margin-top: 7px;    position: absolute;width: 45px !important;" type="text" value="1"></input>-->
+<!--                        <div class="button" t-on-click="append_qty()" style="    position: absolute;    width: 35px;right: -55px;">-->
+<!--                            <i class="fa fa-plus"></i>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--          </xpath>-->
+           <xpath expr="//t[@t-if='ClickProduct']" position="replace">
+                 <t t-if="ClickProduct">
+                    <br/>
+                    <input style="display:none;" id="parent_product" t-att-value="ClickProduct['id']"></input>
+                     <table>
+                              <tr style="">
+                                <td style="float: left;padding-left: 10px;width: 225px;text-align: left;margin: auto;">
+                                    <t t-esc="ClickProduct['name']"></t>
+                                </td>
+                                <td style="float: left;padding-left: 5px;width: 100px;text-align: left;">
+                                    <t t-esc="Math.round(ClickProduct['list_price']*100)/100"></t> $
+                                </td>
+                                <td style="width: 150px;">
+                                     <div class="qty_container" style="position: relative;width: 74px;height: 41px;">
+                                         <div class="button " t-on-click="prepend_qty()" style="position: absolute;width: 35px;">
+                                            <i class="fa fa-minus"></i>
+                                        </div>
+                                        <input id="parent_qty" style="text-align: center;width: 50%;margin-bottom: 7px;margin-top: 9px;    position: absolute;width: 45px !important;" type="text" value="1"></input>
+                                        <div class="button" t-on-click="append_qty()" style="    position: absolute;    width: 35px;right: -55px;">
+                                            <i class="fa fa-plus"></i>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                     </table>
+                     <br></br>
+<!--                    <tr style="">-->
+<!--                        <td style="float: left;padding-left: 10px;width: 50%;text-align: left;">-->
+<!--                            <t t-esc="ClickProduct['name']"></t>-->
+<!--                        </td>-->
+<!--                        <td style="float: left;padding-left: 5px;width: 25%;text-align: left;">-->
+<!--                            <t t-esc="Math.round(ClickProduct['list_price']*100)/100"></t> $-->
+<!--                        </td>-->
+<!--                        <td style="width: 25%;">-->
+<!--&lt;!&ndash;                            <input id="parent_qty" style="text-align: center;width: 50%;margin-bottom: 7px;margin-top: 7px;" type="text" value="1"></input>&ndash;&gt;-->
+<!--                               <div class="qty_container" style="position: relative;width: 74px;bottom: 21px;">-->
+<!--                                 <div class="button " t-on-click="prepend_qty()" style="position: absolute;width: 35px;">-->
+<!--                                    <i class="fa fa-minus"></i>-->
+<!--                                </div>-->
+<!--                                <input id="parent_qty" style="text-align: center;width: 50%;margin-bottom: 7px;margin-top: 7px;    position: absolute;width: 45px !important;" type="text" value="1"></input>-->
+<!--                                <div class="button" t-on-click="append_qty()" style="    position: absolute;    width: 35px;right: -55px;">-->
+<!--                                    <i class="fa fa-plus"></i>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+                </t>
+<!--                    <div class="qty_container" style="position: relative;width: 74px;bottom: 21px;">-->
+<!--                         <div class="button " t-on-click="prepend_qty()" style="position: absolute;width: 35px;">-->
+<!--                            <i class="fa fa-minus"></i>-->
+<!--                        </div>-->
+<!--                        <input id="parent_qty" style="text-align: center;width: 50%;margin-bottom: 7px;margin-top: 7px;    position: absolute;width: 45px !important;" type="text" value="1"></input>-->
+<!--                        <div class="button" t-on-click="append_qty()" style="    position: absolute;    width: 35px;right: -55px;">-->
+<!--                            <i class="fa fa-plus"></i>-->
+<!--                        </div>-->
+<!--                    </div>-->
+          </xpath>
+    </t>
+
+
+    <t t-name="KitchenOrderButton" t-inherit="kitchen_order.KitchenOrderButton" t-inherit-mode="extension" owl="1">
+        <xpath expr="//span[hasclass('kitchen_order')]" position="replace">
+               <span class="control-button kitchen_order" style="flex-grow: unset;margin: 6px;">
+                    <span>KVS</span>
+                </span>
+        </xpath>
+    </t>
+
+
+     <t t-name="Chrome" t-inherit="point_of_sale.Chrome" t-inherit-mode="extension" owl="1">
+         <xpath expr="//div[hasclass('status-buttons-portal')]" position="before">
+                <KitchenOrderButton/>
+         </xpath>
+    </t>
+
+    <t t-name="ProductReturnButton" t-inherit="pos_return_pos.ProductReturnButton" t-inherit-mode="extension" owl="1">
+        <xpath expr="//span[hasclass('Product_return__order')]" position="replace">
+               <span class="control-button Product_return__order" style="flex-grow: unset;margin: 6px;">
+                    <span>Refund</span>
+                </span>
+        </xpath>
+    </t>
+    <t t-name="Chrome" t-inherit="point_of_sale.Chrome" t-inherit-mode="extension" owl="1">
+         <xpath expr="//div[hasclass('status-buttons-portal')]" position="before">
+                <ReturnButtons/>
+         </xpath>
+    </t>
+
+    <t t-name="SetCustomerWidgets" owl="1">
+        <button class="button set-customer decentered" t-att-class="{'decentered': isLongName}" t-on-click="trigger('click-customer')" style="width: 170px;
+                font-size: 15px;
+                color: #616161;
+                height: 37px;
+                margin-top: 5px;position: relative; padding-left: 29px;">
+                <t t-if="!env.isMobile">
+                    <i class="fa fa-user" role="img" aria-label="Customer" title="Customer" style="position: absolute;left: 15px;font-size: 20px;"/>
+                </t>
+                <t t-if="client">
+                    <t t-esc="client.name" />
+                </t>
+                <t t-else="">
+                    Customer
+                </t>
+        </button>
+    </t>
+
+    <t t-name="Chrome" t-inherit="point_of_sale.Chrome" t-inherit-mode="extension" owl="1">
+         <xpath expr="//div[hasclass('status-buttons-portal')]" position="before">
+                <SetCustomersWidgets/>
+         </xpath>
+    </t>
+
+    <t t-name="ActionpadWidget" t-inherit="point_of_sale.ActionpadWidget" t-inherit-mode="extension" owl="1">
+         <xpath expr="//button[hasclass('set-customer')]" position="replace">
+<!--                <button class="button set-customer" t-att-class="{'decentered': isLongName}"-->
+<!--                    t-on-click="trigger('click-customer')">-->
+<!--                    <t t-if="!env.isMobile"><i class="fa fa-user" role="img" aria-label="Customer" title="Customer" /></t>-->
+<!--                    <t t-if="client">-->
+<!--                        <t t-esc="client.name" />-->
+<!--                    </t>-->
+<!--                    <t t-else="">-->
+<!--                        Customer-->
+<!--                    </t>-->
+<!--                </button>-->
+         </xpath>
+        <xpath expr="//button[hasclass('pay')]" position="replace">
+            <button class="button pay" t-on-click="trigger('click-pay')" style="    width: 100%;    height: 54px;    position: unset;">
+<!--                <div class="pay-circle">-->
+<!--                    <i class="fa fa-chevron-right" role="img" aria-label="Pay" title="Pay" />-->
+<!--                </div>-->
+                Payment
+            </button>
+<!--              <button class="button"-->
+<!--                    t-on-click="trigger('click-discount')" style="min-width: 60px;    position: unset;">Disc</button>-->
+        </xpath>
+
+    </t>
+
+<!--     <t t-name="NumpadWidget" t-inherit="point_of_sale.NumpadWidget" t-inherit-mode="extension" owl="1">-->
+<!--          <xpath expr="//div[hasclass('numpad')]" position="replace">-->
+<!--               <div class="numpad" style="min-width: unset;width: auto;margin-right: 0px;">-->
+<!--                    <button class="mode-button" t-att-class="{-->
+<!--                        'selected-mode': props.activeMode === 'discount',-->
+<!--                        'disabled-mode': !hasManualDiscount-->
+<!--                    }"-->
+<!--                    t-att-disabled="!hasManualDiscount"-->
+<!--                    t-on-click="changeMode('discount')" style="min-width: 60px;">Disc</button>-->
+<!--               </div>-->
+<!--          </xpath>-->
+<!--     </t>-->
+
+    <t t-name="TableGuestsButton" t-inherit="pos_restaurant.TableGuestsButton" t-inherit-mode="extension" owl="1">
+         <xpath expr="//div[hasclass('control-button')]" position="replace">
+              <div class="control-button" style="display:none;">
+                    <span class="control-button-number">
+                        <t t-esc="nGuests" />
+                    </span>
+                    <span> </span>
+                    <span>Guests</span>
+                </div>
+         </xpath>
+    </t>
+    <t t-name="ProductScreen" t-inherit="point_of_sale.ProductScreen" t-inherit-mode="extension" owl="1">
+         <xpath expr="//div[hasclass('screen-full-width')]" position="replace">
+                  <div class="screen-full-width">
+                <div class="leftpane" t-if="!env.isMobile || mobile_pane === 'left'">
+                    <t t-if="state.cashControl">
+                        <CashBoxOpening cashControl="state"/>
+                    </t>
+                    <t t-else="">
+                        <OrderWidget/>
+                            <div class="pads">
+                            <div class="control-buttons">
+                                <t t-foreach="controlButtons" t-as="cb" t-key="cb.name">
+                                    <t t-if="cb.name != 'RewardButton'">
+                                        <t t-component="cb.component" t-key="cb.name" />
+                                    </t>
+
+
+                                </t>
+                            </div>
+                                <div class="subpads">
+                                <ActionpadWidget client="client"/>
+                                <NumpadWidget activeMode="state.numpadMode" />
+                                    <RewardButton/>
+                                    <GiftCardButton/>
+                            </div>
+                        </div>
+                            <t t-if="env.isMobile">
+                            <MobileOrderWidget pane="mobile_pane" t-on-switchpane="switchPane"/>
+                        </t>
+                    </t>
+                </div>
+                <div class="rightpane" t-if="!env.isMobile || mobile_pane === 'right'">
+                    <ProductsWidget t-if="!state.cashControl"/>
+                    <t t-if="env.isMobile">
+                        <MobileOrderWidget pane="mobile_pane" t-on-switchpane="switchPane"/>
+                    </t>
+                </div>
+            </div>
+         </xpath>
+    </t>
+
+<!--    <t t-name="RewardButton" t-inherit="pos_loyalty_program.RewardButton" t-inherit-mode="extension" owl="1">-->
+<!--         <xpath expr="//span[hasclass('control-button')]" position="replace">-->
+<!--         </xpath>-->
+<!--    </t>-->
+
+<!--ProductsWidgetControlPanel-->
+    <t t-name="FilterSearchByProduct" owl="1">
+       <div class="filters" style="    position: relative;display: flex;">
+               <select name="cars" class="detail needsclick" id="product_filters_informations"  t-on-change="clearSearch1" style="height: 36px;margin:6px;background-color: #e2e2e2;color: #808596;font-family: system-ui;font-size: 15px;">
+                      <option value="Filter">All Products</option>
+                      <option value="gf">Gluten Free (GF)</option>
+                      <option value="v">Vegan (V)</option>
+                      <option value="veg">Vegetarian (VEG)</option>
+                </select>
+           <t t-esc="FiltersAvailable" />
+           <select name="cars" class="detail needsclick" id="availableOptions" t-on-change="availableOptions" style="height: 36px;margin:6px;background-color: #e2e2e2;color: #808596;font-family: system-ui;font-size: 15px;">
+                      <option value="available_option">Available Options</option>
+                      <option value="kvs">KVS</option>
+                      <option value="refund">Refund</option>
+                      <option value="recall">Recall</option>
+                     <t t-if="!env.pos.config.is_table_management">
+                        <option value="open_orders">Open Orders</option>
+                     </t>
+                </select>
+            </div>
+
+    </t>
+
+
+    <t t-name="Chrome" t-inherit="point_of_sale.Chrome" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('search-bar-portal')]" position="replace">
+            <div class="search-bar-portal" />
+            <FilterSearchByProduct/>
+
+        </xpath>
+    </t>
+
+<!--    ProductsWidgetControlPanel-->
+    <t t-name="CategorySimpleButton" t-inherit="point_of_sale.CategorySimpleButton" t-inherit-mode="extension" owl="1">
+        <xpath expr="//span[hasclass('category-simple-button')]" position="replace">
+            <t t-if="!props.category.hide_in_categories">
+                <t t-if="props.category.color">
+                      <span class="category-simple-button"
+                          t-on-click="trigger('switch-category', props.category.id)" t-attf-style="background-color: {{ props.category.color }};color:white;max-width: fit-content;">
+                        <t t-esc="props.category.name" />
+                    </span>
+                </t>
+                <t t-else="">
+                      <span class="category-simple-button"
+                          t-on-click="trigger('switch-category', props.category.id)" style="max-width: fit-content;">
+                        <t t-esc="props.category.name" />
+                    </span>
+                </t>
+            </t>
+        </xpath>
+    </t>
+
+    <t t-name="CategoryBreadcrumb" t-inherit="point_of_sale.CategoryBreadcrumb" t-inherit-mode="extension" owl="1">
+        <xpath expr="//span[hasclass('breadcrumb')]" position="replace">
+             <span class="breadcrumb">
+                    <img src="/point_of_sale/static/src/img/bc-arrow-big.png" class="breadcrumb-arrow"
+                         alt="Slash" />
+                    <t t-if="!props.category.hide_in_categories">
+                        <t t-if="props.category.color">
+                            <t t-if="props.category.id == env.pos.get('selectedCategoryId')">
+                                <span class="breadcrumb-button"
+                                t-on-click="trigger('switch-category', props.category.id)" t-attf-style="background-color: {{ props.category.color }};color:white;border: 3px solid #ffffff;">
+                                    <t t-esc="props.category.name"></t>
+                                </span>
+                            </t>
+                            <t t-else="">
+                                <span class="breadcrumb-button"
+                                t-on-click="trigger('switch-category', props.category.id)" t-attf-style="background-color: {{ props.category.color }};color:white;">
+                                    <t t-esc="props.category.name"></t>
+                                </span>
+                            </t>
+                        </t>
+                        <t t-else="">
+                             <t t-if="props.category.id == env.pos.get('selectedCategoryId')">
+                                 <span class="breadcrumb-button"
+                                    t-on-click="trigger('switch-category', props.category.id)" style="border: 3px solid #ffffff;">
+                                        <t t-esc="props.category.name"></t>
+                                    </span>
+                             </t>
+                            <t t-else="">
+                                <span class="breadcrumb-button"
+                                    t-on-click="trigger('switch-category', props.category.id)">
+                                        <t t-esc="props.category.name"></t>
+                                    </span>
+                            </t>
+
+                        </t>
+                    </t>
+                </span>
+
+        </xpath>
+    </t>
+
+    <t t-name="ParentCategorySearchByProduct" owl="1">
+         <span class="breadcrumb-button">
+         </span>
+    </t>
+
+    <t t-name="ProductsWidgetControlPanel" t-inherit="point_of_sale.ProductsWidgetControlPanel" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('rightpane-header')]" position="replace">
+                <t t-if="clearOptionalProduct"/>
+               <div class="rightpane-header" t-att-class="{
+                        'green-border-bottom': !env.pos.config.iface_display_categ_images,
+                        'grey-border-bottom': env.pos.config.iface_display_categ_images,
+                    }">
+                    <t t-if="env.pos.db.parent_category and !env.pos.config.iface_display_categ_images and !env.isMobile">
+                        <div class="breadcrumbs">
+                         <t t-foreach="env.pos.db.parent_category" t-as="category" t-key="category.id">
+                            <t t-if="!category.hide_in_categories">
+                                <t t-if="category.color">
+                                     <span class="category-simple-button"
+                                          t-on-click="trigger('switch-category', category.id)" t-attf-style="background-color: {{ category.color }};color:white; display: inline-flex;height: 35px;float:left;">
+                                        <t t-esc="category.name"></t>
+                                    </span>
+                                </t>
+                                 <t t-else="">
+                                      <span class="category-simple-button"
+                                          t-on-click="trigger('switch-category', category.id)" t-attf-style="display: inline-flex;height: 35px;float:left;">
+                                        <t t-esc="category.name"></t>
+                                    </span>
+                                 </t>
+                            </t>
+                        </t>
+                        </div>
+                    </t>
+             </div>
+            <div class="rightpane-header" t-att-class="{
+                'green-border-bottom': !env.pos.config.iface_display_categ_images,
+                'grey-border-bottom': env.pos.config.iface_display_categ_images,
+            }">
+                <!-- Breadcrumbs -->
+                <div class="breadcrumbs">
+                    <HomeCategoryBreadcrumb subcategories="props.subcategories" currentCat="props.breadcrumbs[props.breadcrumbs.length - 1]"/>
+                    <t t-if="!env.isMobile">
+                        <t t-foreach="props.breadcrumbs" t-as="category" t-key="category.id">
+                            <CategoryBreadcrumb category="category" />
+                        </t>
+                    </t>
+                </div>
+                <!-- Subcategories -->
+                <t t-if="props.subcategories.length > 0 and !env.pos.config.iface_display_categ_images and !env.isMobile">
+                    <t t-foreach="props.subcategories" t-as="category" t-key="category.id">
+                        <CategorySimpleButton category="category" />
+                    </t>
+                </t>
+                <br/>
+
+            </div>
+
+
+        </xpath>
+    </t>
+
+
+</templates>

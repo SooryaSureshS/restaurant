@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_change_product_tax" model="ir.actions.act_window">
+        <field name="name">Change Product Tax</field>
+        <field name="res_model">change.tax</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="change_product_tax_menu"
+              name="Change Product Tax"
+              parent="sale.product_menu_catalog"
+              action="action_change_product_tax"
+              sequence="11"/>
+</odoo>

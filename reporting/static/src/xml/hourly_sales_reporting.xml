@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="HSRDashboard">
+        <div class="oh_dashboards">
+            <div class="container-fluid o_hr_dashboard">
+            </div>
+        </div>
+    </t>
+    <t t-name="HourlySalesReport">
+        <div class="store-sales" style="margin-top:10px;">
+            <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+                <div class="row" style="margin:0px;">
+                    <div class="col-md-12" id="col-graph">
+                        <div class="card" style="background: #5b8cee6e;">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <b>
+                                        <h3 class="custom-h3">Hourly Sales</h3>
+                                    </b>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <t t-if="widget['start_date_val']">
+                                            <label>Start Date</label>
+                                            <input type="date" t-att-value="widget['start_date_val']"
+                                                   id="select_start_date"
+                                                   name="select_start_date"
+                                                   class="date_change_dashboard"/>
+                                            <label style="margin-left:40px;">End Date</label>
+                                            <input type="date" t-att-value="widget['end_date_val']" id="select_end_date"
+                                                   name="select_end_date"
+                                                   class="date_change_dashboard"/>
+                                        </t>
+                                        <t t-else="">
+                                            <label>Start Date</label>
+                                            <input type="date" id="select_start_date" name="select_start_date"
+                                                   class="date_change_dashboard"/>
+                                            <label style="margin-left:40px;">End Date</label>
+                                            <input type="date" id="select_end_date" name="select_end_date"
+                                                   class="date_change_dashboard"/>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body mt-3">
+                                <div class="row">
+                                    <table style="border: 1px solid black;width:90%;border-collapse: collapse;text-align: center;margin-left: 5%;">
+                                        <thead>
+                                            <tr>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">Week</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">Total Sales</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">Status</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">
+                                                Transactions
+                                                </th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">
+                                                Avg. Total Sale
+                                                </th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">
+                                                Avg. Per Person
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                                    This Week
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                                    <t t-esc="widget['totals']['currency_symbol']"/><t t-esc="widget['totals']['t_sale']"/>
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse;" rowspan="2">
+                                                    <t t-if="widget['totals']['variance']==2">
+                                                        <p><i class="fa fa-arrow-up"></i></p>
+                                                    </t>
+                                                    <t t-if="widget['totals']['variance']==1">
+                                                        <p><i class="fa fa-arrow-down"></i></p>
+                                                    </t>
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                                    <t t-esc="widget['totals']['t_trans']"/>
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                                    <t t-esc="widget['totals']['currency_symbol']"/><t t-esc="widget['totals']['t_avg']"/>
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                                    <t t-esc="widget['totals']['currency_symbol']"/><t t-esc="widget['totals']['t_avg_per_person']"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                                    Last Week
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                                    <t t-esc="widget['totals']['currency_symbol']"/><t t-esc="widget['totals']['l_sale']"/>
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                                    <t t-esc="widget['totals']['l_trans']"/>
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                                    <t t-esc="widget['totals']['currency_symbol']"/><t t-esc="widget['totals']['l_avg']"/>
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                                    <t t-esc="widget['totals']['currency_symbol']"/><t t-esc="widget['totals']['l_avg_per_person']"/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="card-body mt-3">
+                                <div class="row">
+                                    <table style="border: 0px solid black;width:100%;border-collapse: collapse;text-align: center;height:250px;">
+                                        <thead>
+                                            <tr>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"></th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="2">Monday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="2">Tuesday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="2">Wednesday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="2">Thursday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="2">Friday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="2">Saturday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="2">Sunday</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                                    <span></span>
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                    Sales
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                    Transactions
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                    Sales
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                    Transactions
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                    Sales
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                    Transactions
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                    Sales
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                    Transactions
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                    Sales
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                    Transactions
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                    Sales
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                    Transactions
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                    Sales
+                                                </td>
+                                                <td style="border: 1px solid black;border-collapse: collapse; word-break: break-all;">
+                                                    Transactions
+                                                </td>
+                                            </tr>
+                                            <t t-foreach="widget['objs']" t-as="inter">
+                                                <tr>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;width: 10%;">
+                                                        <span><t t-esc="inter"/></span>
+                                                    </td>
+                                                    <t t-foreach="widget['objs'][inter]" t-as="day">
+                                                        <td style="border: 1px solid black;border-collapse: collapse;">
+                                                            <t t-esc="widget['totals']['currency_symbol']"/><t t-esc="Math.round(widget['objs'][inter][day]['sale'] * 100) / 100"/>
+                                                        </td>
+                                                        <td style="border: 1px solid black;border-collapse: collapse;">
+                                                            <t t-esc="Math.round(widget['objs'][inter][day]['trans'] * 100) / 100"/>
+                                                        </td>
+                                                    </t>
+                                                </tr>
+                                            </t>
+
+                                            <tr>
+                                                <td style="font-weight:bold;border: 1px solid black;font-size: 12px;border-collapse: collapse;width: 10%;">
+                                                    <span>Total sales</span>
+                                                </td>
+                                                <t t-foreach="widget['total']" t-as="total">
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="widget['totals']['currency_symbol']"/><t t-esc="Math.round(widget['total'][total]['sale'] * 100) / 100"/>
+                                                    </td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="Math.round(widget['total'][total]['trans'] * 100) / 100"/>
+                                                    </td>
+                                                </t>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

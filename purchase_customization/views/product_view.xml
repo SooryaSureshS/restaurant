@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="purchase_customization_product_template_form">
+            <field name="name">project.purchase.customization.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button name="create_week_end_po" class="oe_highlight" string="Create PR" type="object"
+                            attrs="{'invisible':[('type','=','service')]}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

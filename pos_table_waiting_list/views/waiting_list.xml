@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="table_waiting_configuration">
+            <field name="name">table.waiting.line</field>
+            <field name="model">table.waiting.line</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="customer"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                    <field name="no_of_people"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="reservation_lines_form_view" model="ir.ui.view">
+            <field name="name">Waiting List</field>
+            <field name="model">table.waiting.line</field>
+            <field name="arch" type="xml">
+                <form string="Waiting List">
+                    <header>
+                        <field name="status" widget="statusbar" statusbar_visible="waiting,confirmed"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="customer"/>
+                                <field name="phone"/>
+                            </group>
+                            <group>
+                                <field name="email"/>
+                                <field name="no_of_people"/>
+                                <field name="create_date"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_waiting_list_view" model="ir.actions.act_window">
+            <field name="name">Waiting List</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">table.waiting.line</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+
+        <menuitem
+                id="menu_waiting_list"
+                action="action_waiting_list_view"
+                name="Waiting List" parent="pos_booking.menu_reservation" sequence="6"/>
+
+    </data>
+</odoo>

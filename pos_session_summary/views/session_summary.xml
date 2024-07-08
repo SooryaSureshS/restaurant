@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="pos_session_summary_tree" model="ir.ui.view">
+        <field name="name">session.summary.tree</field>
+        <field name="model">pos.session.summary</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="session"/>
+                <field name="session_user"/>
+                <field name="pos_config"/>
+                <field name="opening_date"/>
+                <field name="closing_date"/>
+                <field name="orders_count"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="pos_session_summary_form" model="ir.ui.view">
+        <field name="name">session.summary.form</field>
+        <field name="model">pos.session.summary</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle Type">
+                <sheet>
+                    <h1>
+                        <field name="session" readonly="1"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="session_user"/>
+                            <field name="opening_date"/>
+                            <field name="closing_date"/>
+                        </group>
+                        <group>
+                            <field name="pos_config"/>
+                            <field name="journal_entries"/>
+                            <field name="starting_balance"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="counted_cash"/>
+                            <field name="counted_eftpos"/>
+                            <field name="counted_total"/>
+                        </group>
+                        <group>
+                            <field name="total_cash"/>
+                            <field name="total_eftpos"/>
+                            <field name="total_expected"/>
+                            <field name="total_tips"/>
+                        </group>
+                        <group>
+                            <field name="cash_variance"/>
+                            <field name="eftpos_variance"/>
+                            <field name="total_variance"/>
+                        </group>
+                        <group>
+                            <field name="redeem_card_amount"/>
+                            <field name="discount_amount"/>
+                            <field name="loyalty_points_used"/>
+                        </group>
+                        <group>
+                            <field name="payments_and_opening_balance" string="Opening Balance + Payment"/>
+                        </group>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_pos_session_summary" model="ir.actions.act_window">
+        <field name="name">Closed Session Summary</field>
+        <field name="res_model">pos.session.summary</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="pos_session_summary_tree"/>
+        <field name="help" type="html">
+            <p>
+                Closed Session Summary
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_pos_session_summary"
+              name="Session Summary"
+              action="action_pos_session_summary"
+              parent="point_of_sale.menu_point_root"
+              sequence="4"/>
+
+</odoo>

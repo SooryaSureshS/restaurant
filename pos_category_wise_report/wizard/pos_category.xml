@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="pos_category_report_wizard" model="ir.ui.view">
+        <field name="name">Pos Category Report</field>
+        <field name="model">pos.category.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Scrap Report">
+                <group>
+                    <group>
+                        <field name="from_date"/>
+                    </group>
+                    <group>
+                        <field name="to_date"/>
+                    </group>
+                    <group>
+                        <field name="net_sales"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="print_report" string="Print" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <template id="external_layout_standard_custom_pos_category">
+        <div class="header">
+            <div style="float: left; width: 100%;font-size:5px;margin-top:15px;border-bottom: 3px solid black;">
+                <p style="margin:0px !important;font-size:16px;font-weight:bold">Pos Category Report</p>
+                <p style="margin-top:15px !important;font-size:12px;">Report Period &#160; &#160; &#160; &#160;
+
+                    <t t-esc="start_date"></t>
+                    to
+                    <t t-esc="end_date"></t>
+                    <br/>
+                     Net sale percentages for selected<t t-if="net_sales=='day'">Day</t>
+                    <t t-if="net_sales=='week'">Week</t>
+                    <t t-if="net_sales=='month'">Month</t>
+                    <t t-if="net_sales=='year'">Year</t>
+                    <!--                    </t>-->
+                    <span style="float:right;">Printed:
+                        <t t-set="date" t-value="context_timestamp(datetime.datetime.now())"/>
+
+                        <span t-esc="date.strftime('%e %b %Y, %I:%M %p')"/>
+                        <br/>
+                        Page
+                        <span class="page"/>
+                        of
+                        <span class="topage"/>
+                    </span>
+                </p>
+                <br/>
+            </div>
+        </div>
+    </template>
+
+
+    <template id="pos_category_report">
+        <t t-call="web.html_container">
+            <t t-call="pos_category_wise_report.external_layout_standard_custom_pos_category"/>
+
+            <div class="page">
+                <div>
+                    <table style="border: 1px solid black;width:100%;border-collapse: collapse;text-align: center;">
+                        <thead>
+                            <tr>
+
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">Category</th>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">Gross sales</th>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">Net sales</th>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">Projected net sales</th>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">% Comparing net sales and projected net sales</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="data" t-as="line">
+
+                                <tr>
+                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                        <t t-esc="line['cat_name']"/>
+                                    </td>
+                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                        <t t-esc="line['gross_sale']"/>
+                                    </td>
+                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                        <t t-esc="line['net_sale']" />
+                                    </td>
+                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                        <t t-esc="line['pro_net_sale']" />
+                                    </td>
+                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                        <t t-esc="line['percentage']" />%
+                                    </td>
+
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </t>
+        <!--        </t>-->
+    </template>
+
+
+</odoo>

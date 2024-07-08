@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="product_template_form_view_inhetir_paper" model="ir.ui.view">
+            <field name="name">product.product.form.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='categ_id']" position="after">
+                    <field name="paper_size_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_pos_session_form_inherit" model="ir.ui.view">
+            <field name="name">pos.session.form.inherit</field>
+            <field name="model">pos.session</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="inside">
+
+                    <button name="action_paper_view" type="object" class="oe_stat_button" icon="fa-bars">
+                        <field name="paper_count" widget="statinfo" string="Paper Cost"/>
+                    </button>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

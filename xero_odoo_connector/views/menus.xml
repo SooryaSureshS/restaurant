@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="0">
+    <menuitem id="menu_xero_odoo_connector_main_menu" name="Xero Configuration" parent="account.menu_finance_configuration" sequence="1" groups="account.group_account_invoice"/>
+    <menuitem name="Xero Configuration" id="menu_sub_xero_odoo_connector" parent="menu_xero_odoo_connector_main_menu" action="action_xero_odoo_connector" sequence="5"/>
+    <menuitem id="menu_sub_xero_odoo_error_log" name="Error Logs" parent="menu_xero_odoo_connector_main_menu" action="action_error_log" sequence="10"/>
+</odoo>

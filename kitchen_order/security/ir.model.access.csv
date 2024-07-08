@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_pos_rel,access.pos.rel,model_pos_rel,,1,1,1,1
+access_pos_preparation,access.pos.preparation,model_pos_preparation,,1,1,1,1
+access_message_kitchen,access.message.kitchen,model_message_kitchen,,1,1,1,1
+access_recall_order,recall.order,model_recall_order,,1,1,1,1
+access_receipt_kitchen_sale,receipt.kitchen.sale,model_receipt_kitchen_sale,,1,1,1,1
+access_receipt_kitchen_pos,receipt.kitchen.pos,model_receipt_kitchen_pos,,1,1,1,1
+access_sale_kitchen_fried_line,sale_kitchen_fried_line,model_sale_kitchen_fried_line,,1,1,1,1
+access_pos_kitchen_fried_line,pos_kitchen_fried_line,model_pos_kitchen_fried_line,,1,1,1,1
+

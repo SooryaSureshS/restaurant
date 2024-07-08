@@ -1,0 +1,218 @@
+<odoo>
+    <record model="report.paperformat" id="paperformat_monthly_pos_report">
+        <field name="name">paperformat.attendance.recap.report</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="page_width">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">30</field>
+        <field name="margin_right">5</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">20</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <report id="invoice_recap_report"
+            model="account.monthly.report"
+            string="POS Summary Report"
+            report_type="qweb-pdf"
+            name="pos_reconciliation_report.monthly_recap_report_view"
+            menu="False"/>
+
+    <template id="monthly_recap_report_view1">
+
+        <t t-call="web.external_layout">
+
+            <div class="page" style="">
+                <h3 class="text-center">POS Session Report</h3>
+                <h4 class="text-center">
+                    <strong>From</strong>:
+                    <t t-esc="date_start"/>
+                    <strong>To</strong>:
+                    <t t-esc="date_end"/>
+                </h4>
+                <h4><strong>POS User</strong>:
+                    <t t-if="user_name">
+                        <t t-esc="user_name"/>
+                    </t>
+                    <t t-else="">All Users</t>
+                </h4>
+
+                <table class="table table-condensed table-bordered" style="width: 100%;">
+                    <thead>
+                        <t t-if="not user_name">
+                            <th>User</th>
+                        </t>
+                        <th>Session</th>
+                        <th>POS</th>
+                        <th>Opening Date</th>
+                        <th>Closing Date</th>
+                        <th>Opening balance</th>
+                        <th>Counted Amount</th>
+                        <th>Expected Amount</th>
+                        <th>Variance Amount</th>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="summary" t-as="inv">
+                            <tr>
+                                <t t-if="not user_name">
+                                    <td>
+                                        <span t-esc="inv.session_user.name"/>
+                                    </td>
+                                </t>
+                                <td>
+                                    <span t-esc="inv.session.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="inv.pos_config.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="inv.opening_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="inv.closing_date"/>
+                                </td>
+                                <td>
+                                    <span t-esc="round(inv.starting_balance, 2)"/>
+                                </td>
+                                <td>
+                                    <span t-esc="round(inv.counted_total, 2)"/>
+                                </td>
+                                <td>
+                                    <span t-esc="round(inv.total_expected, 2)"/>
+                                </td>
+                                <td>
+                                    <span t-esc="round(inv.total_variance, 2)"/>
+                                </td>
+
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+                <t t-if="offers_length > 0">
+                    <br/>
+                    <table class="table table-condensed table-bordered" style="width: 100%;">
+                        <tr><h3><strong>Offers Applied</strong></h3></tr>
+                        <thead>
+                            <t t-if="not user_name">
+                                <th>User</th>
+                            </t>
+                            <th>Offer</th>
+                            <th>Order</th>
+                            <th>price</th>
+                            <th>session</th>
+                            <th>pos</th>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="offers" t-as="offer">
+                                <tr>
+                                    <t t-if="not user_name">
+                                        <td>
+                                            <span t-esc="offer['user']"/>
+                                        </td>
+                                    </t>
+                                    <td>
+                                        <span t-esc="offer['name']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="offer['order']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="offer['price']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="offer['session']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="offer['pos']"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+
+                </t>
+                <div class="clearfix" name="so_total_summary" style="float: right;  border-top: 15px">
+                    <div id="total" class="row" name="total" style="display:grid;">
+                        <div t-attf-class="col-md-6 ml-auto" style="float:left;">
+                            <table class="table table-sm" style="float: right;  border-top: 15px;">
+                                <tr class="border-black o_subtotal">
+                                    <td name="td_amount_untaxed_label">
+                                        <strong>Total Discount</strong>
+                                    </td>
+                                    <td name="td_amount_untaxed" class="text-right">
+                                        <span t-esc="total_discount"/>
+                                    </td>
+                                </tr>
+                                <tr class="border-black o_subtotal">
+                                    <td name="td_amount_untaxed_label">
+                                        <strong>Total Loyalty Claimed</strong>
+                                    </td>
+                                    <td name="td_amount_untaxed" class="text-right">
+                                        <span t-esc="total_loyalty"/>
+                                    </td>
+                                </tr>
+                                 <tr class="border-black o_subtotal">
+                                    <td name="td_amount_untaxed_label">
+                                        <strong>Total Tips</strong>
+                                    </td>
+                                    <td name="td_amount_untaxed" class="text-right">
+                                        <span t-esc="total_tips"/>
+                                    </td>
+                                </tr>
+                                <tr class="border-black o_subtotal">
+                                    <td name="td_amount_untaxed_label">
+                                        <strong>Total Voucher</strong>
+                                    </td>
+                                    <td name="td_amount_untaxed" class="text-right">
+                                        <span t-esc="total_voucher"/>
+                                    </td>
+                                </tr>
+                                <tr></tr>
+<!--                            </table>-->
+<!--                        </div>-->
+<!--                        <div t-attf-class="col-md-6 ml-auto">-->
+<!--                            <table class="table table-sm" style="float: right;  border-top: 15px">-->
+                                <tr class="border-black o_subtotal">
+                                    <td name="td_amount_untaxed_label">
+                                        <strong>Total Counted</strong>
+                                    </td>
+                                    <td name="td_amount_untaxed" class="text-right">
+                                        <span t-esc="counted_total"/>
+                                    </td>
+                                </tr>
+                                <tr class="border-black o_subtotal">
+                                    <td name="td_amount_untaxed_label">
+                                        <strong>Total Expected</strong>
+                                    </td>
+                                    <td name="td_amount_untaxed" class="text-right">
+                                        <span t-esc="total_expected"/>
+                                    </td>
+                                </tr>
+                                <tr class="border-black o_total">
+                                    <td name="td_amount_total_label">
+                                        <strong>Total Variance</strong>
+                                    </td>
+                                    <td name="td_amount_total" class="text-right">
+                                        <span t-esc="total_variance"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="monthly_recap_report_view">
+        <t t-call="web.html_container">
+            <t t-call="pos_reconciliation_report.monthly_recap_report_view1"/>
+        </t>
+    </template>
+
+</odoo>

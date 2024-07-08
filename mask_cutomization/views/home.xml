@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="homepage_template" inherit_id="website.homepage">
+        <xpath expr="//div[@id='wrap']" position="inside">
+            <link rel="stylesheet" href="/mask_cutomization/static/src/scss/home.css"/>
+
+            <t t-set="no_footer" t-value="1"/>
+            <t t-call="mask_cutomization.home_banner_image"/>
+            <t t-set="custom_masks" t-value="request.env['custom.mask.website.sequence'].sudo().search([],order='sequence')"/>
+            <div class="container" id="home_container">
+                <t t-set="count" t-value="2"/>
+                <t t-if="custom_masks" t-foreach="custom_masks" t-as="custom_mask">
+                    <t t-set="custom_mask" t-value="custom_mask.product_id"/>
+                    <t t-if="int(count)%2==0">
+                        <t t-set="mainClass" t-value="'first_container'"/>
+                        <t t-set="subClass" t-value="'mask_first'"/>
+                    </t>
+                    <t t-else="">
+                        <t t-set="mainClass" t-value="'second_container'"/>
+                        <t t-set="subClass" t-value="'mask_first1'"/>
+                    </t>
+                    <t t-set="count" t-value="int(count)+1"/>
+                    <div t-att-class="mainClass" id="home_page_container">
+                        <div t-att-class="subClass">
+                            <div class="image_description">
+                                <div class="image_flex mobile_click" t-att-value="custom_mask.id" t-att-data-value="custom_mask.id">
+                                     <div class="overlay" id="overlay" t-att-value="custom_mask.id" t-att-data-value="custom_mask.id">
+                                        <img class="overlay_image" src="/mask_cutomization/static/src/image/eye_image.png" t-att-value="custom_mask.id" t-att-data-value="custom_mask.id"/>
+                                    </div>
+                                    <div class="image_container">
+                                        <img class="" t-attf-src="data:image/png;base64,{{custom_mask.image_1920}}"/>
+                                    </div>
+                                    <div class="product_description">
+                                         <div class="mask_head">
+                                          <span><t t-if="custom_mask.name" t-esc="custom_mask.name"/> </span>
+                                      </div>
+                                      <div class="mask_description">
+                                          <span>
+                                              <t t-set="product_product" t-value="request.env['product.product'].search([('product_tmpl_id','=',int(custom_mask.id))],limit=1)"/>
+                                              <t t-set="product_price" t-value="custom_mask.list_price * 1000"/>
+                                              <span>HK$</span><t t-esc="product_price"/>/ 1000pcs
+    <!--                                          <t t-if="kf94.description_offer_qty" t-esc="kf94.description_offer_qty"/>-->
+                                          </span>
+                                      </div>
+                                       <div class="mask_description">
+                                          <span><t t-if="custom_mask.description_offer_qty" t-esc="custom_mask.description_offer_box"/></span>
+                                      </div>
+                                    </div>
+                                </div>
+
+                               <button class="order_button" t-att-value="custom_mask.id">Order</button>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+
+                 <div style="margin-bottom: 172px;">
+                </div>
+
+            </div>
+            <t t-call="mask_cutomization.skypro_footer"/>
+        </xpath>
+    </template>
+</odoo>

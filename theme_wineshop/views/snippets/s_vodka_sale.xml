@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_vodka_sale" name="Vodka sale">
+		<section class="vodka-homepage-sale pt32 pb32">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6 mb-4 mb-md-0">
+							<section class="parallax bg-image bg-white-50" style="background-image: url('/theme_wineshop/static/src/img/sale3.jpg');">
+								<div class="content text-center">
+									<h3>Get upto 15% Off on your First Order</h3>
+									<p>Aenean accumsan urna lectus</p>
+									<div class="s_btn" data-name="Button">
+										<a href="#" class="btn btn-outline-secondary btn-sm">SHOP Now</a>
+									</div>
+								</div>
+							</section>
+						</div>
+						<div class="col-md-6">
+							<section class="parallax bg-image bg-white-50" style="background-image: url('/theme_wineshop/static/src/img/sale4.jpg');">
+								<div class="content text-center">
+									<h3>Find Your Favourite Smirnoff</h3>
+									<p>Aenean accumsan urna lectus</p>
+									<div class="s_btn" data-name="Button">
+										<a href="#" class="btn btn-outline-secondary btn-sm">SHOP Now</a>
+									</div>
+								</div>
+							</section>
+						</div>
+					</div>
+				</div>
+			</section>
+	</template>
+</odoo>

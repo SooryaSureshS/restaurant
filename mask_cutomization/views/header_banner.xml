@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+
+        <template id="header_banner_xml" name="Print Area Mask">
+<!--                <t t-set="additional_title">Print Area Mask</t>-->
+                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/header_mask.css"/>
+                <div class="banner_container">
+                    <div class="container_skypro1">
+                        <img class="container_mask_image" src="/mask_cutomization/static/src/image/Page T.png"/>
+                    </div>
+                      <span class="mask_image_banner">
+<!--                            <img src="/mask_cutomization/static/src/image/Group 3419.png"/>-->
+                        </span>
+                </div>
+        </template>
+           <template id="header_banner_xml1" name="Print Area Mask">
+<!--                <t t-set="additional_title">Print Area Mask</t>-->
+                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/header_mask.css"/>
+                <div class="banner_container">
+                    <div class="container_skypro1">
+                        <img class="container_mask_image"/>
+                    </div>
+                      <span class="mask_image_banner">
+<!--                            <img src="/mask_cutomization/static/src/image/Group 3419.png"/>-->
+                        </span>
+                </div>
+        </template>
+    </data>
+</odoo>

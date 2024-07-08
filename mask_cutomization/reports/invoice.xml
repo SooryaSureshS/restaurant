@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_invoice_document">
+        <style>
+            .setFont{font-size:14px; font-weight:bold;}
+            .spanLine{line-height: 27px; display: block;}
+            .t1td1{text-align:left;}
+            .t1td{min-width:50%;}
+            .plpr100{padding-top:20px; padding-left:100px; padding-right:100px;}
+            .addressP{width:80%; margin-left:12px}
+            .oltd{border:1px solid white;}
+            .oltr{background:#4BB1F0; color:white;}
+            .oltrbody{background:#F2F2F2;}
+            .tcbody{padding: 10px 91px 10px 91px; font-size:14px;}
+        </style>
+        <div class="container plpr100" style="padding-top:30px;">
+            <div class="row">
+                <div class="col-6">
+                    <img t-att-src="'data:image/png;base64,%s' % to_text(order.company_id.logo)"/>
+                    <span style="color:#717171; font-size:18px; font-weight: 700;"><t t-esc="order.company_id.name"/></span>
+                </div>
+                <div class="col-6" style="text-align:right;">
+                    <span style="color:#717171; font-size:20px; font-weight: 700; padding-top: 4px; display: block;">收據 RECEIPT</span>
+                </div>
+            </div>
+        </div>
+        <div class="container plpr100" style="padding-top:20px;">
+            <div class="row">
+                <div class="col-6">
+                    <p class="addressP">
+                        <span class="setFont spanLine"><t t-esc="order.company_id.name"/></span>
+                        <span class="setFont spanLine">
+                            <t t-esc="order.company_id.street"/>
+                            <t t-if="order.company_id.street2">, <t t-esc="order.company_id.street2"/></t>
+                            <t t-if="order.company_id.city">, <t t-esc="order.company_id.city"/></t>
+                            <t t-if="order.company_id.country_id">, <t t-esc="order.company_id.country_id.name"/></t>
+                        </span>
+                        <span class="setFont spanLine">電話 Phone: <t t-esc="order.company_id.phone"/></span>
+                        <span class="setFont spanLine">電郵 Email: <t t-esc="order.company_id.email"/></span>
+                        <span class="setFont spanLine">網站 Website: <t t-esc="order.company_id.website"/></span>
+                    </p>
+                </div>
+                <div class="col-6">
+                    <table style="width:100%; text-align:right; margin-right:12px;">
+                        <tr>
+                            <td class="t1td1"><span class="setFont">日期 Date:</span></td>
+                            <td class="t1td"><span class="setFont"><t t-esc="order.date_order.strftime('%d-%m-%Y')"/></span></td>
+                        </tr>
+                        <tr>
+                            <td class="t1td1"><span class="setFont">帳戶號碼 Customer ID:</span></td>
+                            <td class="t1td"><span class="setFont">xxxxxxxxxxxxxxxxx</span></td>
+                        </tr>
+                        <tr>
+                            <td class="t1td1"><span class="setFont">發票號碼 Invoice No.:</span></td>
+                            <td class="t1td"><span class="setFont"><t t-esc="order.name"/></span></td>
+                        </tr>
+                        <tr>
+                            <td class="t1td1"><span class="setFont">付款方式 Payment Method</span></td>
+                            <td class="t1td"><span class="setFont">信用卡 VISA</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="container plpr100" style="padding-top:20px;">
+            <div style="width:100%; background:#4BB1F0; color:white; padding:5px 12px 5px 12px;">
+                <span class="setFont">送貨地址 Delivery Information</span>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <p t-if="order.partner_shipping_id" class="addressP" style="margin-top:20px;">
+                        <span class="setFont spanLine">
+                            <t t-esc="order.partner_shipping_id.street"/>
+                            <t t-if="order.partner_shipping_id.street2">, <t t-esc="order.partner_shipping_id.street2"/></t>
+                            <t t-if="order.partner_shipping_id.city">, <t t-esc="order.partner_shipping_id.city"/></t>
+                            <t t-if="order.partner_shipping_id.country_id">, <t t-esc="order.partner_shipping_id.country_id.name"/></t>
+                        </span>
+                        <span class="setFont spanLine">聯絡人 Contact Person: <t t-esc="order.partner_shipping_id.name"/></span>
+                        <span class="setFont spanLine">電話 Phone: <t t-esc="order.partner_shipping_id.phone"/></span>
+                        <span class="setFont spanLine">電郵 Email: <t t-esc="order.partner_shipping_id.email"/></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="container plpr100" style="padding-top:20px;">
+            <table class="table">
+                <tr class="oltr">
+                    <td class="oltd">
+                        <span class="setFont spanLine">項目</span>
+                        <span class="setFont spanLine">Item</span>
+                    </td>
+                    <td class="oltd" style="width:400px;">
+                        <span class="setFont spanLine">貨品描述</span>
+                        <span class="setFont spanLine">Description</span>
+                    </td>
+                    <td class="oltd">
+                        <span class="setFont spanLine">單價</span>
+                        <span class="setFont spanLine">Unit Price</span>
+                        <span class="setFont spanLine">(HKD)</span>
+                    </td>
+                    <td class="oltd">
+                        <span class="setFont spanLine">數量</span>
+                        <span class="setFont spanLine">Quantity</span>
+                    </td>
+                    <td class="oltd">
+                        <span class="setFont spanLine">折扣</span>
+                        <span class="setFont spanLine">Discount</span>
+                    </td>
+                    <td class="oltd">
+                        <span class="setFont spanLine">金額</span>
+                        <span class="setFont spanLine">Amount</span>
+                        <span class="setFont spanLine">(HKD)</span>
+                    </td>
+                </tr>
+                <t t-set="count" t-value="1"/>
+                <t t-set="total" t-value="0"/>
+                <t t-foreach="order.order_line" t-as="line">
+                    <tr class="oltrbody">
+                        <td class="oltd">
+                            <span class="setFont spanLine"><t t-esc="count"/></span>
+                            <t t-set="count" t-value="count+1"/>
+                        </td>
+                        <td class="oltd">
+                            <span class="setFont spanLine"><t t-esc="line.name"/></span>
+                        </td>
+                        <td class="oltd">
+                            <span class="setFont spanLine"><t t-esc="line.price_unit"/></span>
+                        </td>
+                        <td class="oltd">
+                            <span class="setFont spanLine"><t t-esc="line.product_uom_qty"/></span>
+                        </td>
+                        <td class="oltd">
+                            <span class="setFont spanLine">N/A</span>
+                        </td>
+                        <td class="oltd">
+                            <span class="setFont spanLine"><t t-esc="line.price_subtotal"/></span>
+                            <t t-set="total" t-value="total+line.price_subtotal"/>
+                        </td>
+                    </tr>
+                </t>
+                <tr class="oltrbody">
+                    <td colspan="5" style="text-align:right;"><span class="setFont spanLine">合計 Total Amount:</span></td>
+                    <td><span class="setFont spanLine"><t t-esc="total"/></span></td>
+                </tr>
+            </table>
+        </div>
+        <div style="text-align:center;"><span style="color:#717171; font-size:20px; font-weight: 700; display: block;">多謝惠顧</span></div>
+        <div style="text-align:center;"><span style="color:#717171; font-size:20px; font-weight: 700; display: block;">Thank you for your order</span></div>
+        <p style="page-break-after:always;"> </p>
+        <div style="text-align:center;"><span style="color:#717171; font-size:20px; font-weight: 700; display: block;">服務條款</span></div>
+        <div class="container tcbody">
+            <ul>
+                <li>網上平台或APP訂單一經確認，恕不可取消。</li>
+                <li>退款／退換服務不適用。</li>
+                <li>網上服務不提供製作下列之檔案，包括但不限於：</li>
+                <ul>
+                    <li>任何威脅性的、猥褻的、色情的或褻瀆性的資料，或者任何根據相關法律可能導致任何民事或 刑事責任的資料；</li>
+                    <li>任何可能侵犯私隱、名譽或版權的資料，而未經這權利所有者，以及資料上所展示的人（或在 適用情況下，他們的父母或合法監護人）的同意；</li>
+                    <li>來自匿名或錯誤地址的任何資料。</li>
+                </ul>
+                <li>推廣優惠不可同時享用。</li>
+                <li>網站或APP展示產品和服務的收費幣值皆為港幣。</li>
+                <li>其他更詳細的服務條款，請參閱：https://www.hkmaskmall.com</li>
+            </ul>
+        </div>
+        <div style="text-align:center;"><span style="color:#717171; font-size:20px; font-weight: 700; display: block;">Terms &amp; Conditions</span></div>
+        <div class="container tcbody">
+            <ul>
+                <li>Orders of Website or APP once confirmed by customer cannot be cancelled. </li>
+                <li>Refund / Return are not applicable to ALL transactions.</li>
+                <li>Customer may NOT place any of the following material or obtain any such material using the Service:</li>
+                <ul>
+                    <li>Any threatening, obscene, pornographic or profane material or any other material that could give rise to any civil or criminal liability under applicable law; </li>
+                    <li>Any material that could infringe rights of privacy, publicity or copyrights without the permission of the owner of these rights and the persons (or their parents or legal guardians, where applicable) who are shown in the material;</li>
+                    <li>Any material sent from an anonymous or false address.</li>
+                </ul>
+                <li>Offer cannot be used in conjunction with other promotional offers, discount and cash coupons</li>
+                <li>The charges for products and services displayed on the Website or APP are in Hong Kong dollars.</li>
+                <li>For other more detailed terms of service, please refer to: https://www.hkmaskmall.com </li>
+            </ul>
+        </div>
+    </template>
+    <template id="report_invoice">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="order">
+                <t t-call="mask_cutomization.report_invoice_document"/>
+            </t>
+        </t>
+    </template>
+    <data>
+        <record id="paperformat_invoice" model="report.paperformat">
+            <field name="name">Custom Paperformat for Invoice</field>
+            <field name="default" eval="False"/>
+            <field name="disable_shrinking" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">8</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="dpi">96</field>
+        </record>
+        <record id="action_report_invoice" model="ir.actions.report">
+            <field name="name">Invoice</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">mask_cutomization.report_invoice</field>
+            <field name="report_file">mask_cutomization.report_invoice</field>
+            <field name="binding_model_id" ref="model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="paperformat_invoice"/>
+        </record>
+    </data>
+</odoo>

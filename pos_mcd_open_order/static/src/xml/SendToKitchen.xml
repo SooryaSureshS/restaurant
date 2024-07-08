@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="SendtoKitchenPopup" owl="1">
+        <div role="dialog" class="modal-dialog" id="sendtokitchen">
+            <div class="popup popup-selection product_return_pos">
+                <header class="title drag-handle">
+<!--                        <t t-esc="props.title" />-->
+                </header>
+                <main class="body">
+                    <t t-esc="props.body" />
+                </main>
+                <footer class="footer">
+<!--                   <div class="button confirm" t-on-click="confirm_send()">-->
+                   <div class="button confirm" t-on-click="cancel">
+                        OK
+                   </div>
+                </footer>
+            </div>
+        </div>
+    </t>
+</templates>

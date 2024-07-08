@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="our_wines_homepage" model="ir.ui.view">
+		<field name="name">Our Wines</field>
+		<field name="type">qweb</field>
+		<field name="key">website.our_wines_homepage</field>
+		<field name="arch" type="xml">
+			<t name="Our Wines" t-name="our_wines_homepage">
+				<t t-call="website.layout">
+					<div class="oe_structure oe_empty" id="wrap">
+						<div class="oe_structure"/>
+						<!-- banner start -->
+						<section class="our-wines-banner-image">
+							<div class="image">
+								<img class="img img-fluid" src="/theme_wineshop/static/src/img/our-wines-banner.jpg" alt="image"/>
+							</div>
+						</section>
+						<!-- banner end -->
+						<div class="oe_structure"/>
+						<!-- title start -->
+						<section class="our-wines-title pt152 pb152">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="content">
+											<p class="subtitle text-primary">WINESHOP</p>
+											<h1 class="text-black">OUR WINES</h1>
+											<p class="text-black">In tempor, mauris nec viverra molestie, lorem diam dignissim ex, quis lobortis dui turpis ut enim. Aenean dui nulla, placerat in massa eget, lacinia accumsan nunc. Curabitur et mauris dolor.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- title end -->
+						<div class="oe_structure"/>
+						<!-- counter start -->
+						<section class="wineshop-home-counter pt152 pb152">
+							<div class="container-fluid">
+								<div class="row align-items-center">
+									<div class="col-md-7 col-lg-8 pl-0 pr-0 pr-md-5">
+										<div class="left-content">
+											<div class="image mb-5 mr-5 mr-md-0">
+												<img class="img img-fluid" src="/theme_wineshop/static/src/img/red-bottle.png" alt="image"/>
+											</div>
+											<div class="row text-center m-0">
+												<div class="col-md-4">
+													<div class="counter-box">
+														<h1 class="counter">3</h1>
+														<p class="text-primary">VARIETALS</p>
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="counter-box">
+														<h1 class="counter">149</h1>
+														<p class="text-primary">WINE PRODUCED</p>
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="counter-box">
+														<h1 class="counter">41</h1>
+														<p class="text-primary">AWARDS WON</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-5 col-lg-4 p-0 mt-4 mt-md-0">
+										<section class="right-content bg-white">
+											<p class="subtitle text-primary">DONEC FAUCIBUS</p>
+											<h3>Red Wines</h3>
+											<ul>
+												<li>Proin Tempor</li>
+												<li>Curabitur</li>
+												<li>Interdum Nibh</li>
+											</ul>
+											<div class="s_btn" data-name="Button">
+												<a href="#" class="btn flat btn-secondary btn-lg">Shop now</a>
+											</div>
+										</section>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- counter end -->
+						<div class="oe_structure"/>
+						<!-- counter start -->
+						<section class="wineshop-home-counter counter-2 pb152">
+							<div class="container-fluid">
+								<div class="row align-items-center">
+									<div class="col-md-5 col-lg-4 p-0 mb-4 mb-md-0">
+										<section class="right-content bg-white">
+											<p class="subtitle text-primary">DONEC FAUCIBUS</p>
+											<h3>White Wines</h3>
+											<ul>
+												<li>Proin Tempor</li>
+												<li>Curabitur</li>
+												<li>Interdum Nibh</li>
+											</ul>
+											<div class="s_btn" data-name="Button">
+												<a href="#" class="btn flat btn-secondary btn-lg">Shop now</a>
+											</div>
+										</section>
+									</div>
+									<div class="col-md-7 col-lg-8 pl-0 pl-md-5 pr-0">
+										<div class="left-content">
+											<div class="image mb-5 ml-5 ml-md-0 text-right">
+												<img class="img img-fluid" src="/theme_wineshop/static/src/img/white-bottle.png" alt="image"/>
+											</div>
+											<div class="row text-center m-0">
+												<div class="col-md-4">
+													<div class="counter-box">
+														<h1 class="counter">3</h1>
+														<p class="text-primary">VARIETALS</p>
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="counter-box">
+														<h1 class="counter">149</h1>
+														<p class="text-primary">WINE PRODUCED</p>
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="counter-box">
+														<h1 class="counter">41</h1>
+														<p class="text-primary">AWARDS WON</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- counter end -->
+						<div class="oe_structure"/>
+						<!-- award start -->
+						<section class="our-wines-awards pt152 pb152">
+							<div class="container">
+								<div class="title text-center">
+									<p class="subtitle text-primary">SINCE 2004</p>
+									<h1>Award-Winning Wines</h1>
+								</div>
+								<div class="row justify-content-center mb-5">
+									<div class="col-md-5 col-lg-4">
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at mauris sapien. Etiam nec leo ac metus tempor facilisis. Morbi imperdiet erat hendrerit ante congue maximus. Mauris sed diam libero. </p>
+										<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+									</div>
+									<div class="col-md-5 col-lg-4">
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at mauris sapien. Etiam nec leo ac metus tempor facilisis. Morbi imperdiet erat hendrerit ante congue maximus. Mauris sed diam libero. </p>
+										<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+									</div>
+								</div>
+								<div class="row justify-content-center mb-5">
+									<div class="col-md-5 col-lg-4 mb-4 mb-md-0">
+										<img class="img img-fluid" src="/theme_wineshop/static/src/img/wine-award1.jpg" alt="image"/>
+									</div>
+									<div class="col-md-5 col-lg-4">
+										<img class="img img-fluid" src="/theme_wineshop/static/src/img/wine-award2.jpg" alt="image"/>
+									</div>
+								</div>
+								<div class="row justify-content-center mb-5">
+									<div class="col-md-5 col-lg-4">
+										<h3>Our grapes</h3>
+										<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+									</div>
+									<div class="col-md-5 col-lg-4">
+										<h3>Our barrels</h3>
+										<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+									</div>
+								</div>
+								<div class="row justify-content-center mb-5">
+									<div class="col-md-5 col-lg-4 mb-4 mb-md-0">
+										<img class="img img-fluid" src="/theme_wineshop/static/src/img/wine-award3.jpg" alt="image"/>
+									</div>
+									<div class="col-md-5 col-lg-4">
+										<img class="img img-fluid" src="/theme_wineshop/static/src/img/wine-award4.jpg" alt="image"/>
+									</div>
+								</div>
+								<div class="row justify-content-center">
+									<div class="col-md-5 col-lg-4">
+										<h3>Our corks</h3>
+										<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+									</div>
+									<div class="col-md-5 col-lg-4">
+										<h3>Our aging method</h3>
+										<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- award end -->
+						<div class="oe_structure"/>
+						<!-- cellar start -->
+						<section class="our-wines-cellar pt152 pb152" style="background-image: url('/theme_wineshop/static/src/img/our-cellar-background.jpg');">
+							<div class="container">
+								<div class="content text-center w-100 w-md-75 mx-auto">
+									<h3 class="text-white">Our Cellar</h3>
+									<p class="text-white">Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+									<div class="s_btn" data-name="Button">
+										<a href="/" class="btn flat btn-primary btn-lg text-white">View Wines</a>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- cellar end -->
+					</div>
+				</t>
+			</t>
+		</field>
+	</record>
+
+	<record id="our_wines_homepage_menu" model="website.page">
+		<field name="website_published">True</field>
+		<field name="url">/our-wines</field>
+		<field name="view_id" ref="our_wines_homepage" />
+	</record>
+</odoo>

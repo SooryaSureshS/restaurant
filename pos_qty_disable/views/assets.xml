@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="assets_qty_disable" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/pos_qty_disable/static/src/js/ProductScreens.js"/>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_estate_gallary" name="Estate gallary">
+		<section class="estate-image-carousel">
+				<div id="estate-carousel" class="estate-gallery-slider carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="7000">
+		          	<div class="carousel-inner" role="listbox">
+		            	<div class="carousel-item active ls-slide">
+		            		<img class="img img-fluid" src="/theme_wineshop/static/src/img/estate-gallery-1.jpg" alt="image"/>
+		            	</div>
+		            	<div class="carousel-item ls-slide">
+		            		<img class="img img-fluid" src="/theme_wineshop/static/src/img/estate-gallery-2.jpg" alt="image"/>
+			            </div>
+			            <div class="carousel-item ls-slide">
+		            		<img class="img img-fluid" src="/theme_wineshop/static/src/img/estate-gallery-3.jpg" alt="image"/>
+			            </div>
+			            <div class="carousel-item ls-slide">
+		            		<img class="img img-fluid" src="/theme_wineshop/static/src/img/estate-gallery-4.jpg" alt="image"/>
+			            </div>
+			            <div class="slider-control">
+		              		<a class="left carousel-control-prev text-white font-14" data-target="#estate-carousel" role="button" data-slide="prev">
+			                	<span class="fa fa-angle-left"/>
+			               	 	<b class="sr-only font-normal o_default_snippet_text">Previous</b>
+			              	</a>
+			              	<a class="right carousel-control-next text-white font-14" data-target="#estate-carousel" role="button" data-slide="next">
+			                	<span class="fa fa-angle-right"/>
+			                	<b class="sr-only font-normal o_default_snippet_text">Next</b>
+			              	</a>
+			            </div>
+		          	</div>
+		        </div>
+			</section>
+	</template>
+</odoo>

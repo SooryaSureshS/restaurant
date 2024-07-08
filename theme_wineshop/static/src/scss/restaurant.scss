@@ -1,0 +1,170 @@
+.restaurant-reservation{
+	.content{
+		.icon{
+			.fa{
+				line-height: 60px;
+				font-size: 30px;
+			}
+			width: 60px;
+			height: 60px;
+			border-radius: 50%;
+			margin-bottom: 35px;
+		}
+		p.subtitle{
+			text-transform: uppercase;
+		    letter-spacing: 2px;
+		    font-weight: 700;
+		    line-height: 20px;
+		    font-size: 14px;
+		    margin: 0px;
+		}
+		h1{
+			font-size: 41px;
+	        margin-top: 10px;
+	        margin-bottom: 80px;
+		}
+		p{
+			font-size: 16px;
+		    line-height: 1.916;
+		    margin-bottom: 35px;
+		}
+		a.btn{
+			text-transform: uppercase;
+		    letter-spacing: 2px;
+		    font-size: 12px;
+		    font-weight: bold;
+		    padding: 16px 60px;
+		    @media (max-width: 767.98px) {
+		    	padding: 16px 28px;
+		    }
+		}
+		padding: 105px;
+	}
+	@media (min-width: 992px) and (max-width: 1199.98px) {
+		.content{
+			padding: 55px;
+		}
+	}
+	@media (max-width: 767.98px) {
+		.content{
+			padding: 55px;
+		}
+		padding: 45px 0 !important
+	}
+}
+
+.restaurant-about{
+	.content{
+		p.subtitle{
+			text-transform: uppercase;
+		    letter-spacing: 2px;
+		    font-weight: 700;
+		    line-height: 20px;
+		    font-size: 14px;
+		    margin: 0px;
+		}
+		h1{
+			font-size: 41px;
+	        margin-top: 10px;
+	        margin-bottom: 50px;
+		}
+		p{
+			font-size: 16px;
+		    line-height: 1.916;
+		    margin-bottom: 15px;
+		}
+	}
+	@media (max-width: 767.98px) {
+		padding: 45px 0 !important
+	}
+}
+
+.restaurant-hours{
+	.content{
+		p.subtitle{
+			text-transform: uppercase;
+		    letter-spacing: 2px;
+		    font-weight: 700;
+		    line-height: 20px;
+		    font-size: 14px;
+		    margin: 0px;
+		}
+		h1{
+			font-size: 41px;
+	        margin-top: 10px;
+	        margin-bottom: 50px;
+		}
+		.list{
+			p{
+				margin:0;
+			}
+			.left{
+				display: inline-block;
+			    padding-right: 60px;
+			    text-transform: uppercase;
+			    min-width: 200px;
+			    margin-right: 60px;
+			    line-height: 30px;
+			    font-size: 12px;
+    			font-weight: bold;
+			    position: relative;
+			    &:after{
+		    	    content: '';
+				    position: absolute;
+				    width: 30px;
+				    height: 1px;
+				    background-color: theme-color('primary');
+				    right: -15px;
+				    top: 15px;
+			    }
+			}
+			.right{
+				line-height: 30px;
+			    font-size: 14px;
+			}
+		}
+	}
+	@media (max-width: 991.98px) {
+		padding: 90px 0 !important
+	}
+	@media (max-width: 767.98px) {
+		padding: 45px 0 !important
+	}
+}
+
+.restaurant-contact{
+	.content{
+		h1{
+			font-size: 36px;
+	        margin-bottom: 40px;
+		}
+		p{
+			font-size: 16px;
+		    line-height: 1.916;
+		    margin-bottom: 35px;
+		}
+		a.btn{
+			text-transform: uppercase;
+		    letter-spacing: 2px;
+		    font-size: 12px;
+		    font-weight: bold;
+		    padding: 16px 60px;
+		    @media (max-width: 767.98px) {
+		    	padding: 16px 28px;
+		    }
+		}
+	    background-color: rgba(0,0,0,0.3);
+		padding: 90px;
+	}
+	@media (max-width: 991.98px) {
+		padding: 90px 0 !important
+	}
+	@media (max-width: 767.98px) {
+		.content{
+			padding: 30px;
+		}
+		padding: 45px 0 !important
+	}
+	background-size: cover;
+	background-position: center;
+}

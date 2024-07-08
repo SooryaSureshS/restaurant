@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_wine_single_product" name="Wine Single Product">
+		<section class="wineshop-home-single-product pt152 pb152 bg-light">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="image">
+							<img class="img img-fluid" src="/theme_wineshop/static/src/img/single-product.png" alt="image"/>
+						</div>
+					</div>
+					<div class="col-lg-6 col-xl-5">
+						<div class="content">
+							<h6>2017</h6>
+							<p class="subtitle text-primary">Donec faucibus</p>
+							<h3>Lorem ipsum dolor sit amet</h3>
+							<p>Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem. Nulla ultricies dictum neque.</p>
+							<div class="s_btn" data-name="Button">
+								<a href="#" class="btn flat btn-primary btn-lg mr-4">Discover</a>
+								<a href="#" class="btn flat btn-secondary btn-lg">View all</a>
+							</div>
+							<p class="contact-text">Contact to our customer care executive at:</p>
+							<p class="contact text-primary">+1 (650) 691-3277</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</template>
+</odoo>

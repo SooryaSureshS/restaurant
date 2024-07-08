@@ -1,0 +1,131 @@
+<odoo>
+    <data>
+        <template id="mask_image_editor" name="Image Editor">
+            <t t-call="website.layout">
+                <t t-set="additional_title">Mask load</t>
+                <link rel="stylesheet" type="text/css" href="/mask_cutomization/static/src/image_editor/css/style.css"/>
+                <link rel="stylesheet" type="text/css"
+                      href="/mask_cutomization/static/src/image_editor/css/style-example.css"/>
+                <link rel="stylesheet" type="text/css"
+                      href="/mask_cutomization/static/src/image_editor/css/jquery.Jcrop.min.css"/>
+                <link rel="stylesheet" type="text/css"
+                      href="/mask_cutomization/static/src/image_editor/messager/style.css"/>
+
+                <!-- Js files-->
+                <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+                <script type="text/javascript"
+                        src="/mask_cutomization/static/src/image_editor/scripts/jquery.Jcrop.js"></script>
+                <script type="text/javascript"
+                        src="/mask_cutomization/static/src/image_editor/scripts/jquery.SimpleCropper.js"></script>
+                <t t-set="no_footer" t-value="1"/>
+<!--                                <t t-call="mask_cutomization.header_banner_xml"/>-->
+                <input type="hidden" id="product_id" t-att-value="product.id"/>
+                <input type="hidden" id="sale_order_id" t-att-value="order.id"/>
+                <input type="hidden" id="area" t-att-value="order.mask_area"/>
+                <input type="hidden" id="session_product_id" t-att-value="session_product_id"/>
+                <!--                <input type="hidden" id="product_id" t-att-value="product.id"/>-->
+                <div id="image_editor_mask" style="display:none;">
+                    <div id="carbon-block"></div>
+                    <div id="mask_load">
+                    </div>
+                    <!--                          <p class="lead"></p>-->
+                    <!--                          <t t-if="order.mask_area == 'logo'">-->
+                    <!--                                 <t t-set="space_td" t-value="'width:'+str(product.logo_crop_width)+'px;''height:'+str(product.logo_crop_height)+'px;''float: unset;margin:auto;'"/>-->
+                    <!--                          </t>-->
+                    <!--                          <t t-if="order.mask_area == 'full'">-->
+                    <!--                                 <t t-set="space_td" t-value="'width:'+str(product.full_crop_width)+'px;''height:'+str(product.full_crop_height)+'px;''float: unset;margin:auto;'"/>-->
+                    <!--                          </t>-->
+                    <!--                            <t t-if="order.mask_area == 'blank'">-->
+                    <!--                                 <t t-set="space_td" t-value="'width:'+str(product.full_crop_width)+'px;''height:'+str(product.full_crop_height)+'px;''float: unset;margin:auto;'"/>-->
+                    <!--                          </t>-->
+                    <!--                            <div class="cropme" t-att-style="space_td"></div>-->
+                    <!--&lt;!&ndash;                            <div class="cropme" style="width: 390px; height: 290px;    float: unset;margin:auto;" t-att-style="space_td"></div>&ndash;&gt;-->
+
+                    <!--                          <div class="clear"></div>-->
+
+                    <div id="canvas_div">
+                        <canvas id="canvas">
+                        </canvas>
+                        <img id="scream" width="390" height="290" alt="The Scream"/>
+                        <div id="scale_window">
+                            <div class="plus">
+                                <span>
+                                    <i class="fa fa-plus" aria-hidden="false"></i>
+                                </span>
+                            </div>
+                            <div class="minus">
+                                <span>
+                                    <i class="fa fa-minus" aria-hidden="false"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="layout">
+                        <div id="control">
+                            <label for="scaleRange">Scale
+                                <input id="scaleRange" type="range" disabled="disabled" min="0.1" max="2" step="0.1"
+                                       value="1"/>
+                            </label>
+                            <label for="rotateRange">Rotate
+                                <input id="rotateRange" type="range" disabled="disabled" min="-360" max="360" step="1"
+                                       value="0"/>
+                            </label>
+                            <!--                          <button id="createButton" type="button">Create Table</button>-->
+                        </div>
+                        <p class="edit_instruction">Click the image to start adjusting your image</p>
+                        <div class="button_container">
+                            <button class="save_button">
+                                Save
+                            </button>
+                            <button class="cancel_button sweet-modal-close-link">
+                                Cancel
+                            </button>
+                            <div class="save_reminder">
+                                If you would like to save the image, please click on the save button
+                                <br></br>
+                                Print area size is approximately <span id="image_width"></span>cm x <span
+                                    id="image_height"></span>cm
+                            </div>
+                        </div>
+                        <div id="content">
+                            <canvas id="canvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <style>
+                    .save_button{
+                    background: #15d798;
+                    border-radius: 11px;
+                    padding: 20px 45px;
+                    color: #ffffff;
+                    display: inline-block;
+                    font: normal bold 26px/1 "Open Sans", sans-serif;
+                    text-align: center;
+                    }
+                    .cancel_button{
+                    background: #ff0000;
+                    border-radius: 11px;
+                    padding: 20px 45px;
+                    color: #ffffff;
+                    display: inline-block;
+                    font: normal bold 26px/1 "Open Sans", sans-serif;
+                    text-align: center;
+                    }
+                    .edit_instruction{
+                    text-align: center;
+                    padding-top: 20px;
+                    }
+                    .button_container{
+                    text-align: center;
+                    padding-top: 20px;
+                    }
+
+                </style>
+                <script>
+                    <!--                    $('.cropme').simpleCropper();-->
+                </script>
+
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="organize_employee_print_badge" model="ir.actions.report">
+        <field name="name">Organize Badge</field>
+        <field name="model">organize.slot</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">organize_email_template.organize_report_template</field>
+        <field name="report_file">organize_email_template.organize_report_template</field>
+        <field name="print_report_name">'Organize Slots - %s' % (object.name).replace('/', '')</field>
+    </record>
+
+
+    <template id="organize_report_template">
+        <!--        <t t-call="web.basic_layout">-->
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="header_class" style=" margin: auto;text-align:center;">
+                        <h1>WEEKLY SHIFTS</h1>
+                    </div>
+                    <br></br>
+                    <table
+                            style="width:100%;border: 1px solid black;width:100%;border-collapse: collapse;text-align: center;">
+                        <tr>
+                            <td style="border: 1px solid black;border-collapse: collapse;" rowspan="2">
+                                <strong>
+                                    <center>Schedule</center>
+                                </strong>
+                            </td>
+                            <td style="border: 1px solid black;border-collapse: collapse;" colspan="7">
+                                <strong>
+                                    <t t-esc="dates['start_date']" style="text-align:center"/>
+                                </strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <t t-foreach="dates_list" t-as="day">
+                                <td style="border: 1px solid black;border-collapse: collapse;">
+                                    <t t-esc="day"/>
+                                </td>
+                            </t>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                Open Shifts
+                            </td>
+                            <td style="border: 1px solid black;border-collapse: collapse;"/>
+                            <td style="border: 1px solid black;border-collapse: collapse;"/>
+                            <td style="border: 1px solid black;border-collapse: collapse;"/>
+                            <td style="border: 1px solid black;border-collapse: collapse;"/>
+                            <td style="border: 1px solid black;border-collapse: collapse;"/>
+                            <td style="border: 1px solid black;border-collapse: collapse;"/>
+                            <td style="border: 1px solid black;border-collapse: collapse;"/>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid black;border-collapse: collapse;"/>
+                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                <t t-if="c1[0]=='0'">
+                                    <div style="background-color: grey;">Role</div>
+                                </t>
+                                <t t-else="">
+                                     <div style="background-color: white;color:white"> null</div>
+                                </t>
+                            </td>
+                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                <t t-if="c1[1]=='0'">
+                                    <div style="background-color: grey;">Role</div>
+                                </t>
+                                <t t-else="">
+                                     <div style="background-color: white;color:white"> null</div>
+                                </t>
+                            </td>
+                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                <t t-if="c1[2]=='0'">
+                                    <div style="background-color: grey;">Role</div>
+                                </t>
+                                <t t-else="">
+                                     <div style="background-color: white;color:white"> null</div>
+                                </t>
+                            </td>
+                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                <t t-if="c1[3]=='0'">
+                                    <div style="background-color: grey;">Role</div>
+                                </t>
+                                <t t-else="">
+                                     <div style="background-color: white;color:white"> null</div>
+                                </t>
+                            </td>
+                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                <t t-if="c1[4]=='0'">
+                                    <div style="background-color: grey;">Role</div>
+                                </t>
+                                <t t-else="">
+                                     <div style="background-color: white;color:white"> null</div>
+                                </t>
+                            </td>
+                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                <t t-if="c1[5]=='0'">
+                                    <div style="background-color: grey;">Role</div>
+                                </t>
+                                <t t-else="">
+                                     <div style="background-color: white;color:white"> null</div>
+                                </t>
+                            </td>
+                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                <t t-if="c1[6]=='0'">
+                                    <div style="background-color: grey;">Role</div>
+                                </t>
+                                <t t-else="">
+                                     <div style="background-color: white;color:white"> null</div>
+                                </t>
+                            </td>
+                            <td style="border: 1px solid black;border-collapse: collapse;">
+                                <t t-if="c1[7]=='0'">
+                                    <div style="background-color: grey;">Role</div>
+                                </t>
+                                <t t-else="">
+                                     <div style="background-color: white;color:white"> null</div>
+                                </t>
+                            </td>
+
+                        </tr>
+
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,53 @@
+<odoo>
+    <template id="report_template_custom">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                <div  style="font-size:20px;padding:20px">
+                    <h4 align="center">
+                        <strong>Attendance Report</strong><br/>
+                        <t t-set="date" t-value="context_timestamp(datetime.datetime.now())"/>
+                        <span t-esc="date.strftime('%d-%m-%Y')"/>
+                    </h4>
+                </div>
+                <table class="table"
+                       style="width:100%">
+                    <tr style="padding-bottom:50px;margin-bottom:30px">
+
+                        <th style="width:20%;margin-top:0px;text-align:left;">Employee</th>
+                        <th style="width:5%;;margin-top:0px;padding-left:10px">Check In</th>
+                        <th style="width:5%;;margin-top:0px;padding-left:10px">Check Out</th>
+                        <th style="width:5%;;margin-top:0px;padding-left:10px">Worked Hours</th>
+                        <th style="width:5%;;margin-top:0px;padding-left:10px">Employee/Base rate</th>
+                        <th style="width:5%;;margin-top:0px;padding-left:10px">Cost</th>
+                        <th style="width:5%;;margin-top:0px;padding-left:10px">Shift Cost</th>
+                    </tr>
+                    <t t-foreach="docs" t-as="doc">
+                    <tr>
+                        <td><span t-esc="doc.employee_id.name"/></td>
+                        <td><span t-esc="doc.check_in"/></td>
+                        <td><span t-esc="doc.check_out"/></td>
+                        <td><span t-esc="'{:.2f}'.format(doc.worked_hours)"/></td>
+                        <td><span t-esc="'{:.2f}'.format(doc.base_pay)"/></td>
+                        <td><span t-field="doc.employee_id.currency_id.symbol"/><span t-esc="'{:.2f}'.format(doc.work_cost)"/></td>
+                        <td><span t-field="doc.employee_id.currency_id.symbol"/><span t-esc="'{:.2f}'.format(doc.worked_hours*doc.base_pay)"/></td>
+                    </tr>
+                    </t>
+                </table>
+                    <div style="text-align:right">
+                    <strong>
+                        <span>Total Worked Hours :</span>
+                        <t t-esc="'{:.2f}'.format(sum(docs.mapped('worked_hours')))"/>
+                    </strong>
+                    </div>
+                    <div style="text-align:right">
+                    <strong>
+                        <span>Total Shift Cost :</span>
+                        <span t-field="docs.employee_id.currency_id.symbol"/><t t-esc="'{:.2f}'.format(shift)"/>
+                    </strong>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,199 @@
+/* Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) */
+/* See LICENSE file for full copyright and licensing details. */
+/* License URL : <https://store.webkul.com/license.html/> */
+
+#o_notice_board{
+    height: 447px;
+    width:100%;
+    background: #F8F8F8;
+}
+.notice-box {
+    background: #FFFFFF;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.15);
+    border-radius: 2px;
+    padding: 8px;
+    height: 350px;
+    cursor: pointer;
+}
+
+.notice-image{
+    height:50px;
+    width:50px;
+}
+.notice-date {
+    font-family: OpenSans-Semibold;
+    font-size: 14px;
+    color: #252525;
+    line-height: 19px;
+}
+.notice-head {
+    justify-content: center;
+    align-items: center;
+}
+#current_notice{
+    margin-top:0px;
+    justify-content: center;
+}
+
+.notice-info {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #55636D;
+    padding-left: 5px;
+    font-weight: 600;
+    height:60px;
+}
+
+.notice-comment {
+    font-family: OpenSans;
+    font-size: 14px;
+    color: #484848;
+    max-height: 108px;
+    overflow-y: auto;
+}
+.carousel-indicators .active {
+    opacity: 0;
+}
+
+.carousel-indicators li {
+    opacity: 0;
+}
+
+.notice_container{
+    max-width:95%;
+    padding-top: 0px;
+}
+
+.notice_block{
+    font-family: Montserrat-Bold;
+    font-size: 23px;
+    color: #333333;
+    text-align: center;
+}
+
+.notice-timeline {
+    font-family: Montserrat-SemiBold;
+    font-size: 16px;
+    color: #FFFFFF;
+    text-align: center;
+    background: #910FFB;;
+}
+
+.notice-name {
+    font-family: OpenSans-Bold;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333333;
+    text-align: left;
+    margin-left:20px;
+}
+
+.notice-job{
+    font-family: OpenSans-Semibold;
+    font-size: 14px;
+    color: #555555;
+}
+
+.notice-dept{
+    font-family: OpenSans-Semibold;
+    font-size: 14px;
+    color: #333333;
+}
+
+.participation-link, .notice-venue {
+    font-family: OpenSans-Semibold;
+    font-size: 14px;
+    color: #333333;
+    line-height: 19px;
+    padding-right:10px;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    a{
+        color:blue;
+    }
+}
+
+.notice_modal_head{
+    height: 40px;
+    border-bottom: 0px;
+    min-height: 25px;
+    padding: 7px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+.close:hover, .close:focus {
+    opacity: 1 !important;
+}
+.modal-header .close {
+    margin-top: -5px;
+}
+.close {
+    opacity: 1 !important;
+}
+.carousel-control-prev,{
+    width:24px;
+    margin-left: 10px;
+}
+
+.carousel-control-next{
+    width:24px;
+    margin-right: 10px;
+}
+.carousel-control-prev-icon{
+    width: 24px;
+    height: 24px;
+    color: #ffffff;
+    background-image: linear-gradient(-90deg, #2D3CD6 0%, #6429CA 100%);
+    border-radius:50%;
+}
+
+.carousel-control-next-icon{
+    width: 24px;
+    height: 24px;
+    color: #ffffff;
+    background-image: linear-gradient(-90deg, #2D3CD6 0%, #6429CA 100%);
+    border-radius:50%;
+}
+
+/* medium - display 2  */
+	@media (min-width: 768px) {
+	  .carousel-inner .carousel-item-right.active,
+	  .carousel-inner .carousel-item-next {
+	      transform: translateX(50%);
+	  }
+	  .carousel-inner .carousel-item-left.active,
+	  .carousel-inner .carousel-item-prev {
+	      transform: translateX(-50%);
+	  }
+	}
+	/* large - display 3 */
+	@media (min-width: 992px) {
+	  .carousel-inner .carousel-item-right.active,
+	  .carousel-inner .carousel-item-next {
+	      transform: translateX(33%);
+	  }
+	  .carousel-inner .carousel-item-left.active,
+	  .carousel-inner .carousel-item-prev {
+	      transform: translateX(-33%);
+	  }
+	}
+
+	@media (max-width: 768px) {
+	  .carousel-inner .carousel-item>div {
+	      display: none;
+	  }
+	  .carousel-inner .carousel-item>div:first-child {
+	      display: block;
+	  }
+	}
+	.carousel-inner .carousel-item.active,
+	.carousel-inner .carousel-item-next,
+	.carousel-inner .carousel-item-prev {
+	  display: flex;
+	}
+	.carousel-inner .carousel-item-right,
+	.carousel-inner .carousel-item-left {
+	  transform: translateX(0);
+}

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+   <record id="organize_slot_report_view_pivot" model="ir.ui.view">
+       <field name="name">organize.slot.report.pivot</field>
+       <field name="model">organize.slot</field>
+       <field name="arch" type="xml">
+           <pivot string="Scheduling Analysis" sample="1">
+               <field name="start_datetime" interval="month" type="row"/>
+               <field name="employee_id" type="col"/>
+               <field name="allocated_hours" type="measure"/>
+           </pivot>
+       </field>
+   </record>
+
+   <record id="organize_slot_report_view_graph" model="ir.ui.view">
+       <field name="name">organize.slot.report.graph</field>
+       <field name="model">organize.slot</field>
+       <field name="arch" type="xml">
+           <graph string="Scheduling Analysis" type="bar" sample="1">
+               <field name="start_datetime" type="row"/>
+               <field name="allocated_hours" type="measure"/>
+           </graph>
+       </field>
+   </record>
+
+   <record id="organize_slot_report_view_form_in_gantt" model="ir.ui.view">
+       <field name="name">organize.slot.report.form.gantt</field>
+       <field name="model">organize.slot</field>
+       <field name="inherit_id" ref="organize_view_form_in_gantt"/>
+       <field name="mode">primary</field>
+       <field name="arch" type="xml">
+           <xpath expr="//footer" position="replace">
+               <footer>
+                   <button string="Discard" special="cancel" class="btn-secondary" close="1" fullscreen="True" groups="organize.group_organize_manager"/>
+               </footer>
+           </xpath>
+       </field>
+   </record>
+
+   <record id="organize_slot_report_view_gantt" model="ir.ui.view">
+       <field name="name">organize.slot.report.gantt</field>
+       <field name="model">organize.slot</field>
+       <field name="inherit_id" ref="organize_view_gantt"/>
+       <field name="mode">primary</field>
+       <field name="arch" type="xml">
+           <xpath expr="//gantt" position="attributes">
+               <attribute name="create">0</attribute>
+               <attribute name="edit">0</attribute>
+               <attribute name="form_view_id">%(organize_slot_report_view_form_in_gantt)d</attribute>
+           </xpath>
+       </field>
+   </record>
+
+   <record id="organize_report_action_analysis" model="ir.actions.act_window">
+       <field name="name">Scheduling Analysis</field>
+       <field name="res_model">organize.slot</field>
+       <field name="view_mode">pivot,graph,gantt,list</field>
+   </record>
+
+   <record id="organize_slot_report_action_view_pivot" model="ir.actions.act_window.view">
+       <field name="sequence" eval="1"/>
+       <field name="view_mode">pivot</field>
+       <field name="view_id" ref="organize_slot_report_view_pivot"/>
+       <field name="act_window_id" ref="organize_report_action_analysis"/>
+   </record>
+   <record id="organize_slot_report_action_view_graph" model="ir.actions.act_window.view">
+       <field name="sequence" eval="2"/>
+       <field name="view_mode">graph</field>
+       <field name="view_id" ref="organize_slot_report_view_graph"/>
+       <field name="act_window_id" ref="organize_report_action_analysis"/>
+   </record>
+   <record id="organize_slot_report_action_view_gantt" model="ir.actions.act_window.view">
+       <field name="sequence" eval="3"/>
+       <field name="view_mode">gantt</field>
+       <field name="view_id" ref="organize_slot_report_view_gantt"/>
+       <field name="act_window_id" ref="organize_report_action_analysis"/>
+   </record>
+
+   <record id="organize_filter_by_employee" model="ir.filters">
+       <field name="name">Hours per Employee</field>
+       <field name="model_id">organize.slot</field>
+       <field name="user_id" eval="False"/>
+       <field name="is_default" eval="True"/>
+       <field name="context">{
+           'pivot_measures': ['allocated_hours'],
+           'pivot_column_groupby': ['start_datetime:month'],
+           'pivot_row_groupby': ['employee_id'],
+           'graph_measures': ['allocated_hours'],
+           'graph_column_groupby': ['start_datetime:month'],
+           'graph_row_groupby': ['employee_id']
+       }</field>
+       <field name="action_id" ref="organize_report_action_analysis"/>
+   </record>
+
+   <menuitem
+       id="organize_menu_reporting"
+       name="Reporting"
+       parent="organize_menu_root"
+       sequence="40"
+       groups="organize.group_organize_manager"/>
+
+   <menuitem
+       id="organize_menu_organize_analysis"
+       name="Scheduling Analysis"
+       action="organize_report_action_analysis"
+       sequence="10" parent="organize_menu_reporting"
+       groups="organize.group_organize_manager"/>
+
+    <menuitem
+       id="menu_timesheet_report"
+       name="Employee Scheduling And Productivity Report"
+       action="employee_shift_approval.action_timesheet_summary"
+       sequence="20" parent="organize_menu_reporting"/>
+
+</odoo>
+
+

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="raw_material_product_template_inherited" model="ir.ui.view">
+            <field name="name">product.template.raw</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/div/div/div[3]" position="after">
+                    <div>
+                        <field name="is_raw_material"/>
+                        <label for="is_raw_material"/>
+                    </div>
+                    <div attrs="{'invisible': [('type','!=', 'product')]}">
+		                <field name="stock_update_type_daily"/>
+		                <label for="stock_update_type_daily"/>
+		                <field name="stock_update_type_week"/>
+		                <label for="stock_update_type_week"/>
+		                <field name="stock_update_type_monthly"/>
+		                <label for="stock_update_type_monthly"/>
+                        <!--field name="stock_update_type" widget="radio" options="{'horizontal': true}"
+                               attrs="{'invisible': [('is_raw_material','=', False)]}"/-->
+                    </div>
+<!--                    <div attrs="{'invisible': [('is_raw_material','=', False)]}">-->
+<!--                        <label for="theoretical_carton" />-->
+<!--                        <field name="theoretical_carton" />-->
+<!--                    </div>-->
+<!--                    <div attrs="{'invisible': [('is_raw_material','=', False)]}">-->
+<!--                        <label for="theoretical_sleeve" />-->
+<!--                        <field name="theoretical_sleeve" />-->
+<!--                    </div>-->
+                    <!--div attrs="{'invisible': [('is_raw_material','=', False)]}">
+                        <label for="rel_inventory_adjust_date" />
+                        <field name="inventory_adjust_date" invisible="1"/>
+                        <field name="rel_inventory_adjust_date" />
+                    </div-->
+                </xpath>
+                <xpath expr="//field[@name='standard_price']" position="attributes">
+                        <attribute name="attrs">{'readonly': [('is_raw_material', '=', False)]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='property_stock_inventory']" position="after">
+                    <field name="inventory_location_id" attrs="{'invisible': [('is_raw_material','=', False)]}"/>
+                </xpath>
+
+                <xpath expr="//notebook" position="inside">
+                    <page string="Recipe">
+                        <field name="raw_material_ids">
+                            <tree editable="bottom" string="Recipe List">
+                                <field name="product_id" />
+                                <field name="default_code"/>
+                                <field name="uom_id"/>
+                                <field name="product_qty"/>
+                                <field name="unit_price"/>
+                                <field name="recipe_cost" readonly="1"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

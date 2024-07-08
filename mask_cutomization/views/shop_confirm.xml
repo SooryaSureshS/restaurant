@@ -1,0 +1,22 @@
+<odoo>
+    <data>
+           <template id="shop_payment" inherit_id="website_sale.confirmation" name="Payment Inherit">
+            <xpath expr="//div[@id='wrap']" position="replace">
+                <t t-set="additional_title">Shop - Confirmed</t>
+                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/shop_confirm.css"/>
+                <t t-set="no_footer" t-value="1"/>
+                <t t-call="mask_cutomization.header_banner_xml"/>
+                    <div class="content-banner-success container" id="confirm_page_skypro">
+                <div class="order-success">
+                    <p>Order Success</p>
+                    <img src="/mask_cutomization/static/src/image/bag.png" alt="bag"/>
+                    <p>Thank you for order!</p>
+                    <p id="small">Keep track of order status in your profile <br/> or please check your email updates</p><br/>
+                    <button id="go_home">Go To Homepage</button><br/>
+                </div>
+                    </div>
+            </xpath>
+
+           </template>
+    </data>
+</odoo>

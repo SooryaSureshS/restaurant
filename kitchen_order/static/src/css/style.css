@@ -1,0 +1,286 @@
+.box.box-primary {
+    border-top-color: #3c8dbc;
+}
+.box {
+    position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+    border-top: 3px solid #d2d6de;
+    margin-bottom: 20px;
+    width: 260px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    height: 450px;
+}
+.box-uhc {
+    position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+    border-top: 3px solid #d2d6de;
+    margin-bottom: 20px;
+    width: 260px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    height:400px;
+}
+.box-header.with-border {
+    border-bottom: 1px solid #f4f4f4;
+}
+.box-header {
+    display: block;
+    padding: 10px;
+    position: relative;
+        background-color: #151515;
+    color: #ffffff;
+    height: 85px;
+}
+.box-header-uhc {
+    display: block;
+    padding: 10px;
+    position: relative;
+        background-color: #151515;
+    color: #ffffff;
+    height: 40px;
+}
+
+.box-header .box-title {
+    display: inline-block;
+    font-size: 21px;
+    margin: 0;
+    line-height: 1;
+}
+.box-header>.box-tools {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+.box-body {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding: 10px;
+            overflow: auto;
+    height: 270px;
+}
+.box-body-fried {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding: 10px;
+            overflow: auto;
+    height: 240px;
+}
+.box-footer {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-top: 1px solid #f4f4f4;
+    padding: 10px;
+    background-color: #fff;
+    height: 22px;
+}
+.products-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.product-list-in-box>.item {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 0;
+    border-bottom: 1px solid #f4f4f4;
+        padding: 10px 0;
+    background: #fff;
+}
+.products-list .product-img {
+    float: left;
+}
+.label-warning{
+    background-color: #121a73 !important;
+}
+.label-info{
+    background-color: #00c0ef !important;
+}
+.label-danger {
+    background-color: #dd4b39 !important;
+}
+.label-success {
+    background-color: #00a65a !important;
+}
+.label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+.products-list .product-title {
+    font-weight: 600;
+    color: #3b6379;
+    text-transform: capitalize;
+}
+.products-list .product-description {
+    display: block;
+    color: #999;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.table_order_kanban{
+    padding:20px;
+}
+.btn-group_new {
+    position: relative !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+}
+   .btn-info_new {
+       background-color: #d23030 !important;
+    border-color: #d23030 !important;
+    color: white !important;
+}
+.product-info{
+     background-color: #ffffff;
+}
+.product-info_padding{
+     padding-left:20px;
+}
+.product-info_padding .product-title{
+     color:#c33c3c !important;
+}
+.update_time{
+      cursor: pointer;
+}
+.box-footer .btn_group{
+    text-align: center !important;
+}
+#qty_kitchenscree {
+   color: #ff0000 !important;
+   padding-right: 3px;
+}
+.flip-clock-divider.seconds .flip-clock-label {
+    right: -50px;
+}
+.flip-clock-divider.minutes .flip-clock-label {
+    right: -50px;
+}
+
+.kerb_side_delivery{
+    color: #2d3e48 !important;
+}
+
+
+
+.kitchen_ticket_delivery{
+    border: 3px solid #453be8;
+}
+.kitchen_ticket_pickup{
+    border: 3px solid #cb18c6;
+}
+.kitchen_ticket_kerb_pickup{
+   border: 3px solid #18b3bb;
+}
+.kitchen_ticket_dine_in{
+  border: 3px solid #439c0b;
+}
+.kitchen_ticket_pos_order{
+  border: 3px solid #ee0909;
+}
+
+
+
+@media only screen and (min-width: 768px) {
+    .box{
+              min-height: 688px;
+    min-width: 360px;
+    font-size: 18px;
+    line-height:15px;
+    }
+     .col-1 {width: 8.33%;}
+      .col-2 {width: 16.66%;}
+      .col-3 {width: 25%;}
+      .col-4 {width: 33.33%;}
+      .col-5 {width: 41.66%;}
+      .col-6 {width: 50%;}
+      .col-7 {width: 58.33%;}
+      .col-8 {width: 66.66%;}
+      .col-9 {width: 75%;}
+      .col-10 {width: 83.33%;}
+      .col-11 {width: 91.66%;}
+      .col-12 {width: 100%;}
+
+      .box-header{
+        text-align: center;
+      }
+
+      .table_order_kanban {
+            padding-left: 35px;
+        }
+        .box-body {
+            height: 500px;
+        }
+        .all-order-list-contents{
+                width: 1714px;
+            overflow-y: hidden;
+        }
+        .pos-order-list{
+             width: 1714px;
+            overflow-y: hidden;
+        }
+        .sale-order-list{
+             width: 1714px;
+            overflow-y: hidden;
+        }
+        all-order-list-contents::-webkit-scrollbar {
+            width: 12px;
+        }
+        pos-order-list::-webkit-scrollbar {
+            width: 12px;
+        }
+         sale-order-list::-webkit-scrollbar {
+            width: 12px;
+        }
+
+}
+@media only screen and (max-width: 768px) {
+    #kitchen-screen-new-data .screen-content{
+            max-width: 90% !important;
+    }
+    .all-order-list-contents{
+            width: 310px;
+        overflow-y: auto;
+    }
+     .pos-order-list{
+        width: 310px;
+        overflow-y: auto;
+     }
+      .sale-order-list{
+         width: 310px;
+        overflow-y: auto;
+      }
+}
+
+.qty_kithchen_note_span{
+    line-height: 20px;
+    color: #ec2c2c;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/*
+.qty_kithchen_note_span #textarea_note{
+    width: 93%;
+    border: 1px solid #df6e44;
+    font-size: 22px;
+    font-weight: 500;
+    color: #fb3507;
+    margin-top: 10px;
+    font-family: system-ui;
+}
+*/

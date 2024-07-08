@@ -1,0 +1,86 @@
+
+.contactbanner{
+  background: url("/mask_cutomization/static/src/image/BG.png") no-repeat;
+  background-size: cover;
+  /* height: 60%;
+  width: 65%; */
+  margin: auto;
+  padding: 4%;
+  font-family: 'Montserrat';
+  text-align: justify;
+
+}
+.container_mask_image{
+     content:url("/mask_cutomization/static/src/image/contact_us.png");
+}
+.contactmaincontent{
+    display: flex;
+    color: white;
+}
+.content{
+    flex: 30%;
+
+}
+.content-p{
+    font-weight: 600;
+}
+.cont-detail{
+    display: flex;
+    flex-direction: row;
+}
+.cont-img img{
+    width: 20px;
+}
+.cont-content{
+    font-size: 14px;
+    padding-left: 10px;
+    line-height: 1;
+    font-weight: 600;
+        margin-top: 3px;
+}
+#address{
+    line-height: 1.5;
+}
+.form{
+    flex: 70%;
+    padding-left: 15%;
+    padding-top: 20px;
+}
+.form p{
+    font-weight: 600;
+}
+.form label{
+    font-size: 12px;
+    font-weight: 600;
+}
+.form input{
+    width: 100%;
+    margin-bottom: 20px;
+    height: 50px;
+    border-radius: 8px;
+    border: none;
+    margin-top: 5px;
+}
+.button{
+    border: none;
+    width: 100%;
+    border-radius: 8px;
+    height: 50px;
+    background-color: #626063;
+    color: white;
+    margin-top: 18%;
+    font-weight: 600;
+}
+::placeholder{
+    padding-left: 10px;
+    color: #6E6E70;
+}
+@media only screen and (max-width:950px){
+
+    .contactmaincontent{
+     flex-direction: column;
+}
+.form{
+    padding-left: 0px;
+}
+}

@@ -1,0 +1,122 @@
+.left_pane_css{
+   flex-grow: unset !important;
+}
+.product-screen .leftpane .pads .Product_return__order{
+    display: none;
+}
+.product-screen .leftpane .pads .kitchen_order{
+     display: none;
+}
+.product-screen .leftpane .pads .control-buttons .giftcardbutton{
+    display: none;
+}
+.product-screen .leftpane .pads .subpads .control-button{
+height: 46px;
+    margin-top: 9px;
+    padding-top: 5px;
+}
+.product-screen .leftpane .pads .subpads .giftcardbutton{
+      margin-right: 16px;
+}
+
+.product-screen .leftpane .pads .subpads .numpad{
+    display: none;
+}
+.product-screen .leftpane .pads .subpads .actionpad{
+        display: flex;
+}
+.product-screen .screen-full-width .rightpane .products-widget .leftpane{
+    max-width: 100% !important;
+}
+
+.product-screen .screen-full-width .rightpane .products-widget .leftpane .size_class_loop:nth-child(1){
+        margin-top: 45px;
+}
+/*
+::selection {
+  background-color: cyan;
+}
+.product-screen .leftpane .pads .subpads .numpad{
+    display: none;
+}
+.product-screen .leftpane .pads .subpads .numpad .mode-button:nth-child(2){
+    display: block !important;
+}
+*/
+
+.pos .leftpane .pads .subpads {
+    display: flow-root;
+    flex-direction: row;
+}
+.product-screen .leftpane .pads .subpads .actionpad {
+    display: flex;
+        margin-right: 15px;
+}
+
+.product-screen .leftpane .pads .subpads .control-button {
+        margin-top: 0px;
+    padding-top: 0px;
+}
+.pos .product-screen .screen-full-width .leftpane{
+    max-width: 360px;
+}
+.pos .product-screen .screen-full-width .leftpane .product-list-container .product-list .product{
+        width: 110px;
+    height: 110px;
+}
+
+.pos .product-screen .screen-full-width .leftpane .product-list-container .product-list .product .product-img {
+        width: 110px;
+}
+.accordion_container {
+  width: 500px;
+}
+
+.accordion_head {
+  background-color: skyblue;
+  color: white;
+  cursor: pointer;
+  font-family: arial;
+  font-size: 14px;
+  margin: 0 0 1px 0;
+  padding: 7px 11px;
+  font-weight: bold;
+}
+
+.pos .pos-topheader .floor-button{
+        max-width: 126px;
+}
+.pos .pos-topheader  .search-bar-portal input{
+        max-width: 67px;
+        font-size: 12px;
+}
+.pos .pos-topheader  #product_filters_informations{
+        font-size: 15px !important;
+    max-width: 126px !important;
+}
+.pos .pos-topheader .pos-rightheader .kitchen_order{
+    display:none !important;
+}
+.pos .pos-topheader .pos-rightheader .Product_return__order{
+    display:none !important;
+}
+.pos .pos-topheader .pos-rightheader .orders_recall{
+    display:none !important;
+}
+.pos .leftpane .subpads .actionpad .pay {
+           width: 815px !important;
+    height: 54px;
+    position: unset;
+    background-color: #5f8db6;
+    color: white;
+}
+.pos .leftpane .subpads .actionpad{
+       margin-bottom: 5px;
+}
+.pos .screen-full-width .leftpane .subpads{
+    display: block !important;
+}
+.pos .product-screen .products-widget .leftpane{
+           height: auto !important;
+    overflow: auto !important;
+}

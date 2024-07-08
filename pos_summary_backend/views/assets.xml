@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_pos_summary_report_backend" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/pos_summary_backend/static/src/js/closeSummaryInherit.js"></script>
+<!--            <script type="text/javascript" src="/pos_session_summary/static/src/js/SummaryButton.js"></script>-->
+<!--            <link rel="stylesheet" type="text/css" href="/pos_session_summary/static/src/css/pos.css"/>-->
+        </xpath>
+    </template>
+</odoo>
+
+

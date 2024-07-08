@@ -1,0 +1,70 @@
+<odoo>
+    <data>
+        <record id="res_config_settings_view_mask" model="ir.ui.view">
+            <field name="name">res.config.settings.view.mask.details</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="1"/>
+            <field name="inherit_id" ref="website.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@id='website_selection_settings']" position="after">
+                    <div>
+                        <h2>Mask Configurations</h2>
+                        <span class="o_form_label" style="margin-left: 58px;">Mask Details</span>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box"
+                                 title="Here You can set minimum picking time">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <div class="content-group">
+                                        <div class="row">
+                                            <label string="Based on This Configuration End time Will Calculate" for="nose_product"
+                                                   class="o_light_label" style="width:100%;margin-left: 15px;"/>
+                                            <field name="nose_product" style="margin-left: 15px;"/>
+                                            <br/>
+                                        </div>
+                                        <div class="row">
+                                            <label string="Website Mask price list" for="website_price_list"
+                                                   class="o_light_label" style="width:100%;margin-left: 15px;"/>
+                                            <field name="website_price_list" style="margin-left: 15px;"/>
+                                            <br/>
+                                        </div>
+<!--                                        <div class="row">-->
+<!--                                            <label string="Based on This Configuration Nose pad object identify" for="nose_pad_material_name"-->
+<!--                                                   class="o_light_label" style="width:100%;margin-left: 15px;"/>-->
+<!--                                            <field name="nose_pad_material_name" style="margin-left: 15px;"/>-->
+<!--                                            <br/>-->
+<!--                                        </div>-->
+<!--                                        <div class="row">-->
+<!--                                            <label string="Based on This Configuration ear rope object identify" for="ear_rope_material_name"-->
+<!--                                                   class="o_light_label" style="width:100%;margin-left: 15px;"/>-->
+<!--                                            <field name="ear_rope_material_name" style="margin-left: 15px;"/>-->
+<!--                                            <br/>-->
+<!--                                        </div>-->
+<!--                                        <div class="row">-->
+<!--                                            <label string="Based on This Configuration logo material object idetify" for="logo_material_name"-->
+<!--                                                   class="o_light_label" style="width:100%;margin-left: 15px;"/>-->
+<!--                                            <field name="logo_material_name" style="margin-left: 15px;"/>-->
+<!--                                            <br/>-->
+<!--                                        </div>-->
+<!--                                        <div class="row">-->
+<!--                                            <label string="Based on This Configuration logo material object idetify" for="jaw_pad"-->
+<!--                                                   class="o_light_label" style="width:100%;margin-left: 15px;"/>-->
+<!--                                            <field name="jaw_pad" style="margin-left: 15px;"/>-->
+<!--                                            <br/>-->
+<!--                                        </div>-->
+<!--                                        <div class="row">-->
+<!--                                            <label string="Enable Material Inspection" for="root_inspection"-->
+<!--                                                   class="o_light_label" style="width:100%;margin-left: 15px;"/>-->
+<!--                                            <field name="root_inspection" style="margin-left: 15px;"/>-->
+<!--                                            <br/>-->
+<!--                                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

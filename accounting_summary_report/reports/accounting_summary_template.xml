@@ -1,0 +1,423 @@
+<odoo>
+    <template id="accounting_summary_template">
+        <t t-call="web.html_container">
+            <t t-call="accounting_summary_report.external_layout_standard_custom"/>
+            <div class="page">
+                <div>
+                    <t t-set="totals_food" t-value="0"/>
+                    <t t-set="totals_open_stock" t-value="0"/>
+                    <t t-set="totals_end_stock" t-value="0"/>
+
+                    <table class="table table-borderless"
+                           style="text-align:right;font-size:12px;font-family:\'Times New Roman\';color:black;
+                                   border-spacing:10px;padding-top:5px;margin-right:250px;">
+                        <style>
+                            th {
+                            padding-bottom:30px;}
+                            }
+                        </style>
+                        <tr style="padding-bottom:50px;margin-bottom:30px">
+
+                            <th style="width:20%">Closing Stock on Hand</th>
+                            <th style="width:40%">Item Group</th>
+                            <th style="width:40%">Stock Value</th>
+                        </tr>
+                        <br/>
+                        <t t-set="recs" t-value="docs.get_product_details()"/>
+                        <t t-set="stock_subtotal" t-value="0"/>
+                        <t t-foreach="recs.keys()" t-as="key">
+                            <tr>
+                                <td> </td>
+                                <td style="text-align:right">
+                                    <span t-esc="key"/>
+                                </td>
+                                <t t-set="stock_total" t-value="0"/>
+                                <t t-foreach="recs[key]" t-as="p">
+                                    <t t-set="stock_total" t-value="stock_total + p['stock']"/>
+                                </t>
+                                <td style="text-align:right">
+                                    <t t-esc="round(stock_total,2)"
+                                       t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </td>
+                            </tr>
+                            <t t-set="stock_subtotal" t-value="stock_subtotal +stock_total "/>
+                        </t>
+                        <tr>
+                            <td> </td>
+                            <td style="text-align:right">
+                                <p>Total Closing Stock on Hand</p>
+                            </td>
+                            <td style="text-align:right;border-top:1px solid black;border-bottom:2px solid black">
+                                <t t-esc="round(stock_subtotal,2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <div style="border-bottom:1px solid black"/>
+                    <table class="table table-borderless"
+                           style="text-align:right;font-size:12px;font-family:\'Times New Roman\';color:black;
+                                   border-spacing:10px;margin-right:250px;">
+                        <style>
+                            th {
+                            padding-bottom:30px;}
+                            }
+                        </style>
+                        <tr style="visibility:collapse">
+                            <th style="width:20%">Closing Stock on Hand</th>
+                            <th style="width:40%"> </th>
+                            <th style="width:40%"> </th>
+                        </tr>
+                        <tr style="padding-bottom:50px;margin-bottom:30px">
+                            <t t-set="test" t-value="docs.get_scrap_details()"/>
+                            <td style="text-align:right;font-weight:bold">Waste</td>
+                            <td style="text-align:right">
+                                <p>Finished Waste</p>
+                            </td>
+
+                            <td style="text-align:right">
+                                <t t-esc="round(test['finished_waste'],2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+                        </tr>
+                        <tr style="padding-bottom:50px;margin-bottom:30px">
+                            <td style="text-align:right"> </td>
+                            <td style="text-align:right">
+                                <p>Raw Waste</p>
+                            </td>
+
+                            <td style="text-align:right">
+                                <t t-esc="round(test['raw_waste'],2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+                        </tr>
+                        <t t-set="total_cost" t-value="test['finished_waste'] +test['raw_waste'] "/>
+                        <tr style="padding-bottom:50px;margin-bottom:30px">
+                            <td style="text-align:right"> </td>
+                            <td style="text-align:right">
+                                <p>Total Food Cost</p>
+                            </td>
+                            <td style="text-align:right">
+                                <p style="margin-top:1px solid black">
+                                    <t t-esc="round(total_cost,2)"
+                                       t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr style="padding-bottom:50px;margin-bottom:30px">
+                            <t t-set="test" t-value="docs.get_scrap_details()"/>
+                            <td style="text-align:right;font-weight:bold"> </td>
+                            <td style="text-align:right">
+                                <p>Finished Waste</p>
+                            </td>
+                            <td style="text-align:right">
+                                <t t-esc="round(test['paper_finished'],2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+
+                            </td>
+                        </tr>
+                        <tr style="padding-bottom:50px;margin-bottom:30px">
+                            <td style="text-align:right"> </td>
+                            <td style="text-align:right">
+                                <p>Raw Waste</p>
+                            </td>
+                            <td style="text-align:right">
+                                <t t-esc="round(test['paper_raw'],2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+                        </tr>
+
+                        <t t-set="paper_cost" t-value="test['paper_finished'] +test['paper_raw'] "/>
+                        <tr style="padding-bottom:50px;margin-bottom:30px">
+                            <td style="text-align:right"> </td>
+                            <td style="text-align:right">
+                                <p>Total Paper Cost</p>
+                            </td>
+                            <td style="text-align:right">
+                                <p style="margin-top:1px solid black">
+                                    <t t-esc="round(paper_cost,2)"
+                                       t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> </td>
+                            <t t-set="waste_cost" t-value="total_cost +paper_cost "/>
+                            <td style="text-align:right;">
+                                <p style="font-weight:bold">Total Waste Cost</p>
+                            </td>
+                            <td style="text-align:right;border-top:1px solid black;border-bottom:2px solid black">
+                                <p style="margin-top:1px solid black">
+                                    <t t-esc="round(waste_cost,2)"
+                                       t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </p>
+                            </td>
+                        </tr>
+
+                        <tr style="padding-bottom:50px;margin-bottom:30px">
+                            <td style="text-align:right;font-weight:bold">Promo</td>
+                            <t t-set="promo" t-value="docs.promotion_details()"/>
+                            <td style="text-align:right">
+                                <p>Food Cost</p>
+                            </td>
+                            <td style="text-align:right">
+                                <t t-esc="round(promo['total_reward_food'], 2)" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+
+                            </td>
+                        </tr>
+                        <tr style="padding-bottom:50px;margin-bottom:30px">
+                            <td style="text-align:right"> </td>
+                            <td style="text-align:right">
+                                <p>Paper Cost</p>
+
+                            </td>
+                            <td style="text-align:right">
+
+                                <t t-esc="round(promo['total_reward_paper'], 2)" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td style="text-align:right;">
+                                <p>Total Cost</p>
+                            </td>
+                            <t t-set="total_promo_cost" t-value="promo['total_reward_food']+promo['total_reward_paper']"/>
+                            <td style="text-align:right;border-top:1px solid black;border-bottom:2px solid black">
+
+                                <t t-esc="round(total_promo_cost, 2)" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+                        </tr>
+                        <t t-set="discount" t-value="docs.get_discount_details()"/>
+                        <tr style="padding-bottom:50px;margin-bottom:30px">
+                            <td style="text-align:right;font-weight:bold">Discount</td>
+                            <td style="text-align:right">
+                                <p>Food Cost</p>
+
+                            </td>
+                            <td style="text-align:right">
+                                <t t-esc="round(discount['total_discount_food'],2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+                        </tr>
+                        <tr style="padding-bottom:50px;margin-bottom:30px">
+                            <td style="text-align:right"> </td>
+                            <td style="text-align:right">
+                                <p>Paper Cost</p>
+                            </td>
+                            <td style="text-align:right">
+                                <t t-esc="round(discount['total_discount_paper'],2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> </td>
+                            <td style="text-align:right;">
+                                <p>Total Cost</p>
+                            </td>
+                            <t t-set="discount_total_cost"
+                               t-value="discount['total_discount_food'] + discount['total_discount_paper']"/>
+                            <td style="text-align:right;border-top:1px solid black;border-bottom:2px solid black">
+                                <t t-esc="round(discount_total_cost,2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+                        </tr>
+<!--                        <tr style="padding-bottom:50px;margin-bottom:30px">-->
+<!--                            <td style="text-align:right;font-weight:bold">Crew Meals</td>-->
+<!--                            <td style="text-align:right">-->
+<!--                                <p>Paper Cost</p>-->
+<!--                            </td>-->
+<!--                            <t t-set="dis_amount" t-value="docs.discount_details()"/>-->
+<!--                            <td style="text-align:right">-->
+<!--                                <t t-esc="round(dis_amount,2)"-->
+<!--                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>-->
+
+<!--                            </td>-->
+<!--                        </tr>-->
+
+                    </table>
+                    <div style="border-bottom:1px solid black"/>
+                    <table class="table table-borderless"
+                           style="text-align:right;font-size:12px;font-family:\'Times New Roman\';color:black;
+                                   border-spacing:10px;padding-top:5px;;margin-right:250px;">
+                        <style>
+                            th {
+                            padding-bottom:30px;}
+                            }
+                        </style>
+                        <tr style="padding-bottom:50px;margin-bottom:30px">
+                            <th style="width:20%">Food and Paper Cost Details</th>
+                            <th style="width:40%"> </th>
+                            <th style="width:20%">Food</th>
+                            <th style="width:20%">Paper</th>
+                        </tr>
+                        <br/>
+                        <t t-set="purchase" t-value="docs.get_cost_details()"/>
+                        <t t-set="stocks" t-value="docs.get_stock_details()"/>
+                        <tr>
+                            <t t-set="totals_open_stock" t-value="stocks['food_openstock']"/>
+                            <td> </td>
+                            <td style="text-align:right">
+                                <p>Starting Inventory</p>
+
+                            </td>
+                            <td style="text-align:right">
+                                <t t-esc="round(stocks['food_openstock'],2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+                            <td style="text-align:right">
+                                <t t-esc="round(stocks['paper_openstock'],2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> </td>
+                            <td style="text-align:right">
+                                <p>Purchases</p>
+
+                            </td>
+                            <td style="text-align:right;">
+                                <t t-esc="round(purchase['food_purchase_total'],2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+                            <td style="text-align:right;">
+                                <t t-esc="round(purchase['paper_purchase_total'],2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <t t-set="promo" t-value="docs.promotion_details()"/>
+                            <td> </td>
+                            <td style="text-align:right">
+                                <p>Completed Promo Total</p>
+
+                            </td>
+                            <td style="text-align:right;">
+                                <t t-esc="round(promo['total_reward_food'], 2)" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+
+                            </td>
+                            <td style="text-align:right;">
+                                <t t-esc="round(promo['total_reward_paper'], 2)" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+
+
+                            </td>
+
+
+                        </tr>
+                        <tr>
+                            <td> </td>
+                            <td style="text-align:right">
+                                <p>Raw waste Total</p>
+
+                            </td>
+                            <td style="text-align:right;">
+                                <t t-esc="round(test['raw_waste'],2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+
+                            </td>
+                            <td style="text-align:right;">
+                                <t t-esc="round(test['paper_raw'],2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+
+                            </td>
+
+
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td style="text-align:right">
+                                <p>Finished waste Total</p>
+
+                            </td>
+                            <t t-set="test" t-value="docs.get_scrap_details()"/>
+                            <td style="text-align:right;">
+                                <t t-esc="round(test['finished_waste'],2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+                            <td style="text-align:right;">
+                                <t t-esc="round(test['paper_finished'],2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+
+
+                        </tr>
+                        <tr>
+                            <td> </td>
+                            <td style="text-align:right">
+                                <p>Ending Inventory</p>
+
+                            </td>
+                            <t t-set="totals_end_stock" t-value="stocks['food_endstock']"/>
+                            <td style="text-align:righ">
+                                <t t-esc="round(stocks['food_endstock'],2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+                            <td style="text-align:right">
+                                <t t-esc="round(stocks['paper_endstock'],2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <t t-set="test" t-value="docs.get_scrap_details()"/>
+                            <t t-set="purchase" t-value="docs.get_cost_details()"/>
+                            <t t-set="totals_food"
+                               t-value="stocks['food_openstock']+stocks['food_endstock']+test['raw_waste']+test['finished_waste']+purchase['food_purchase_total']"/>
+
+                            <t t-set="totals_paper"
+                               t-value="stocks['paper_openstock']+purchase['paper_purchase_total']+test['paper_raw']+test['paper_finished']+stocks['paper_endstock']"/>
+                            <td> </td>
+                            <td style="text-align:right">
+                                <p> </p>
+                            </td>
+                            <td style="text-align:right;border-top:1px solid black">
+                                <t t-esc="round(totals_food,2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+
+                            </td>
+                            <td style="text-align:right;border-top:1px solid black">
+                                <t t-esc="round(totals_paper,2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+                        </tr>
+                        <t t-set="recs" t-value="docs.net_sale()"/>
+                        <t t-set="discount" t-value="docs.get_discount_details()"/>
+                        <t t-set="discount_total_cost"
+                           t-value="discount['total_discount_food'] + discount['total_discount_paper']"/>
+                        <tr>
+                            <td style="text-align:left">Product Net Sales</td>
+                            <td style="text-align:left">
+                                <t t-esc="round(recs,2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+                            <t t-set="food_total" t-value="totals_food /recs"/>
+                            <t t-set="food_total_per" t-value="food_total*100"/>
+                            <t t-set="paper_total" t-value="totals_paper /recs"/>
+                            <t t-set="paper_total_per" t-value="paper_total*100"/>
+                            <td style="text-align:right">
+                                <t t-esc="round(food_total_per,2)"/>
+                            </td>
+                            <td style="text-align:right">
+                                <t t-esc="round(paper_total_per,2)"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <table class="table table-borderless" style="font-size:12px;font-family:\'Times New Roman\';color:black;width:100%">
+                    <tr>
+                        <t t-set="turnover" t-value="totals_food / ((totals_open_stock + totals_end_stock )/2)"/>
+                        <td style="width:20%">Inventory Turnover =</td>
+                        <td style="text-align:center;border-bottom:1px solid black;width:50%">Food Cost $</td>
+                        <td>=</td>
+                        <td>
+                            <t t-esc="round(turnover,2)"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                        <td>((Food Starting Inventory $) + (Food Ending Inventory $)) / 2</td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                </table>
+            </div>
+        </t>
+    </template>
+</odoo>

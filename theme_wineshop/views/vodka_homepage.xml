@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="vodka_homepage" model="ir.ui.view">
+		<field name="name">Vodka Homepage</field>
+		<field name="type">qweb</field>
+		<field name="key">website.vodka_homepage</field>
+		<field name="arch" type="xml">
+			<t name="Vodka Homepage" t-name="vodka_homepage">
+				<t t-call="website.layout">
+					<div class="oe_structure oe_empty" id="wrap">
+						<div class="oe_structure"/>
+						<!-- banner start -->
+						<section class="vodka-homepage-banner s_cover parallax s_parallax_is_fixed s_parallax_no_overflow_hidden" data-scroll-background-ratio="1" data-name="Cover" style="background-image: none;">
+							<span class="s_parallax_bg oe_img_bg oe_custom_bg" style="background-image: url('/theme_wineshop/static/src/img/vodka-bg.jpg'); background-position: 50% 0;"></span>
+							<div class="container">
+								<div class="content text-center">
+									<p class="subtitle text-white">Proin Tempor Massa Vitae</p>
+									<h1 class="text-white">In Each Bottle</h1>
+									<p class="w-100 w-md-75 w-lg-50 mx-auto text-white">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem. Cras dignissim mi diam, sit amet efficitur magna porta efficitur.</p>
+									<a href="#" class="read-link text-white">Read more</a>
+								</div>
+							</div>
+						</section>
+						<!-- banner end -->
+						
+						<div class="oe_structure"/>
+						<!-- sale-image start -->
+						<section class="vodka-homepage-sale pt32 pb32">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-6 mb-4 mb-md-0">
+										<section class="parallax bg-image bg-white-50" style="background-image: url('/theme_wineshop/static/src/img/sale3.jpg');">
+											<div class="content text-center">
+												<h3>Get upto 15% Off on your First Order</h3>
+												<p>Aenean accumsan urna lectus</p>
+												<div class="s_btn" data-name="Button">
+													<a href="#" class="btn btn-outline-secondary btn-sm">SHOP Now</a>
+												</div>
+											</div>
+										</section>
+									</div>
+									<div class="col-md-6">
+										<section class="parallax bg-image bg-white-50" style="background-image: url('/theme_wineshop/static/src/img/sale4.jpg');">
+											<div class="content text-center">
+												<h3>Find Your Favourite Smirnoff</h3>
+												<p>Aenean accumsan urna lectus</p>
+												<div class="s_btn" data-name="Button">
+													<a href="#" class="btn btn-outline-secondary btn-sm">SHOP Now</a>
+												</div>
+											</div>
+										</section>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- sale-image end -->
+						<div class="oe_structure"/>
+						<!-- family start -->
+						<section class="vodka-homepage-family pt144 pb144" style="background-image: url('/theme_wineshop/static/src/img/family-bg.jpg');">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-7 col-lg-6 col-xl-5">
+										<div class="content">
+											<h1 class="text-white">Proin Tempor Massa Vitae</h1>
+											<p class="text-white">Pellentesque faucibus lacus eu facilisis aliquet. Nulla nec ipsum convallis, maximus purus ut, blandit turpis.</p>
+											<p class="text-white">Fusce nisi lorem, eleifend quis metus in, vestibulum semper elit. Sed nunc est, faucibus mattis eros in, consectetur eleifend lorem. Nam nec nulla a sapien auctor aliquam. Aenean accumsan urna lectus.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- family end -->
+						<div class="oe_structure"/>
+						<!-- service-row start -->
+						<section class="vodka-homepage-service pt48 pb48">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-4 mb-4 mb-md-0">
+										<div class="service-box text-center">
+											<div class="icon">
+												<span class="fa fa-bullhorn text-primary"></span>
+											</div>
+											<h6 class="text-black">Quality</h6>
+											<p class="text-black">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem.</p>
+										</div>
+									</div>
+									<div class="col-md-4 mb-4 mb-md-0">
+										<div class="service-box text-center">
+											<div class="icon">
+												<span class="fa fa-clock-o text-primary"></span>
+											</div>
+											<h6 class="text-black">Fast Delivery</h6>
+											<p class="text-black">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem.</p>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="service-box text-center">
+											<div class="icon">
+												<span class="fa fa-credit-card text-primary"></span>
+											</div>
+											<h6 class="text-black">Best Price</h6>
+											<p class="text-black">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- service-row end -->
+						<div class="oe_structure"/>
+						<!-- parallax start -->
+						<section class="vodka-homepage-parallax pt104 pb104 s_cover parallax s_parallax_is_fixed s_parallax_no_overflow_hidden" data-scroll-background-ratio="1" data-name="Cover" style="background-image: none;">
+							<span class="s_parallax_bg oe_img_bg oe_custom_bg" style="background-image: url('/theme_wineshop/static/src/img/parallax-bg.jpg'); background-position: 50% 0;"></span>
+							<div class="container">
+								<div class="content text-center">
+									<h1 class="text-o-color-3">Alcoholic Sale!</h1>
+									<p class="text-black">Get Up to 70% OFF on Vodka</p>
+									<div class="s_btn" data-name="Button">
+										<a href="#" class="btn btn-o-color-3 btn-sm">SHOP Now</a>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- parallax end -->
+						<div class="oe_structure"/>
+						<!-- newletter start -->
+						<section class="wineshop-home-newsletter pt152 pb152">
+							<div class="container">
+								<div class="content text-center">
+									<p class="subtitle text-primary">BE CONNECTED</p>
+									<h1>Join Our Newsletter</h1>
+								</div>
+								<div class="input-group js_subscribe" data-list-id="1">
+							        <input type="email" name="email" class="js_subscribe_email form-control bg-white" placeholder="your email..."/>
+							        <span class="input-group-append">
+							            <button role="button" class="btn btn-primary js_subscribe_btn">Sign up</button>
+							            <button role="button" class="btn btn-success js_subscribed_btn d-none" disabled="disabled">Thanks</button>
+							        </span>
+							    </div>
+							</div>
+						</section>
+						<!-- newletter end -->
+					</div>
+				</t>
+			</t>
+		</field>
+	</record>
+
+	<record id="vodka_homepage_menu" model="website.page">
+		<field name="website_published">True</field>
+		<field name="url">/vodka-homepage</field>
+		<field name="view_id" ref="vodka_homepage" />
+	</record>
+</odoo>

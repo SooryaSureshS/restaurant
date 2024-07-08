@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="pos_pizza_or_pasta" model="ir.ui.view">
+        <field name="name">pos.category.type.inherit</field>
+        <field name="model">pos.category</field>
+        <field name="inherit_id" ref="point_of_sale.product_pos_category_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='parent_id']" position="after">
+                <field name="pizza_or_pasta"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="pizza_pasta_report_wizard" model="ir.ui.view">
+        <field name="name">Pizza Pasta Reporting</field>
+        <field name="model">pizza.pasta.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Pizza &amp; Pasta Reporting Report">
+                <group>
+                    <group>
+                        <field name="from_date"/>
+                    </group>
+                    <group>
+                        <field name="to_date"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="print_report" string="Print" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <template id="external_layout_standard_custom_pizza_pasta_report">
+        <div class="header">
+            <div style="float: left; width: 100%;font-size:5px;margin-top:15px;border-bottom: 3px solid black;">
+                <p style="margin:0px !important;font-size:16px;font-weight:bold">Pizza &amp; Pasta Reporting</p>
+                <p style="margin-top:15px !important;font-size:12px;">Report Period &#160; &#160; &#160; &#160;
+
+                    <t t-esc="start_date"></t>
+                    to
+                    <t t-esc="end_date"></t>
+                    <br/>
+                    <span style="float:right;">Printed:
+                        <t t-set="date" t-value="context_timestamp(datetime.datetime.now())"/>
+
+                        <span t-esc="date.strftime('%e %b %Y, %I:%M %p')"/>
+                        <br/>
+                        Page
+                        <span class="page"/>
+                        of
+                        <span class="topage"/>
+                    </span>
+                </p>
+                <br/>
+            </div>
+        </div>
+    </template>
+
+
+    <template id="pizza_pasta_template">
+        <t t-call="web.html_container">
+            <t t-call="pizza_pasta_reporting.external_layout_standard_custom_pizza_pasta_report"/>
+
+            <div class="page">
+                <div>
+                    <table style="border: 1px solid black;width:100%;border-collapse: collapse;text-align: center;">
+                        <thead>
+                            <tr>
+
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">Interval</th>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">Total Main Meal</th>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">Pizza Count</th>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">Pizza %</th>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">Pasta Count</th>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;">Pasta %</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="data" t-as="line">
+
+                                <tr>
+                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                        <t t-esc="line['interval']"/>
+                                    </td>
+                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                        <t t-esc="line['total_count']"/>
+                                    </td>
+                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                        <t t-esc="line['pizza_count']"/>
+                                    </td>
+                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                        <t t-esc="line['pizza_percentage']" />
+                                    </td>
+                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                        <t t-esc="line['pasta_count']" />
+                                    </td>
+                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                        <t t-esc="line['pasta_percentage']" />
+                                    </td>
+
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </t>
+        <!--        </t>-->
+    </template>
+
+
+</odoo>

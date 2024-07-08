@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="survey_contact.list">
+      <field name="name">survey_contact list</field>
+      <field name="model">survey_contact.survey_contact</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="survey_contact.action_window">
+      <field name="name">survey_contact window</field>
+      <field name="res_model">survey_contact.survey_contact</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="survey_contact.action_server">
+      <field name="name">survey_contact server</field>
+      <field name="model_id" ref="model_survey_contact_survey_contact"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="survey_contact" id="survey_contact.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="survey_contact.menu_1" parent="survey_contact.menu_root"/>
+    <menuitem name="Menu 2" id="survey_contact.menu_2" parent="survey_contact.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="survey_contact.menu_1_list" parent="survey_contact.menu_1"
+              action="survey_contact.action_window"/>
+    <menuitem name="Server to list" id="survey_contact" parent="survey_contact.menu_2"
+              action="survey_contact.action_server"/>
+-->
+  </data>
+</odoo>

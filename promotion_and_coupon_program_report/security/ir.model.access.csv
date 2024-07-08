@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_promotion_coupon_report_manager,promotion.coupon.report.manager,model_promotion_coupon_report,stock.group_stock_manager,1,1,1,1
+access_promotion_coupon_report_user,promotion.coupon.report.user,model_promotion_coupon_report,base.group_user,1,0,0,0

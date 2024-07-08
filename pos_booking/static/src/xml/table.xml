@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="TableBookingLayout" owl="1">
+        <div class="ticket-screen screen">
+            <div class="screen-content">
+                <div class="booking_container" style="">
+                     <div class="leftpannel" style="">
+                            <div class="table_name" style="font-size: 25px;font-weight: 900;">
+                               <t t-esc="table_info['name']"/>
+                            </div>
+                            <div class="seat_no">
+                              <t t-esc="table_info['seats']"/> Seats
+                            </div>
+                        <div class="button_container">
+                            <div class="row">
+                             <div class="new_booking" id="new_table_booking" style="" t-on-click="new_booking_rev" t-att-data-table="table_info['id']">
+                                 <span class="new_booking_button">
+                                     New Booking
+                                 </span>
+                             </div>
+                         </div>
+                         <br></br>
+                         <br></br>
+                         <br></br>
+                         <div class="container_table_selection">
+                             <div class="select_table"  t-on-click="select_table_rev">
+                                 <span class="select_table_block">
+                                     Select Table
+                                 </span>
+                             </div>
+                             <div class="edit_table_view"  t-on-click="edit_table_rev">
+                                 <span class="edit_table_layout">
+                                     Edit Table
+                                 </span>
+                             </div>
+                         </div>
+                        </div>
+
+
+                        </div>
+                        <div class="rightPannel">
+                            <div class="future_booking">
+                                <div class="title" style="font-size: 25px;font-weight: 900;">
+                                    Future booking
+<!--                                       <span class="button">-->
+<!--                                        <i class="fa fa-plus" role="img" aria-label="Add button" title="Add button"></i>-->
+<!--                                    </span>-->
+                                </div>
+                                <t t-foreach="future_booking" t-as="booking">
+                                    <div class="booking_info" t-on-click="trigger('edit_future_booking', booking['id'])" t-att-data-booking_id="booking['id']">
+                                        <div class="booking_time">
+                                           Booking Ref:  <t t-esc="booking['name']"/>
+                                        </div>
+                                        <div class="booking_time">
+                                            Time:  <t t-esc="booking['date_reserved']"/>
+                                        </div>
+                                        <div class="Name">
+                                            Name: <t t-esc="booking['partner_name']"/>
+                                        </div>
+                                        <div class="party_size">
+                                            Party Size : <t t-esc="booking['no_of_people']"/>
+                                        </div>
+                                        <div class="notes">
+                                            Notes: <t t-esc="booking['special_request']"/>
+                                        </div>
+                                    </div>
+                                </t>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </t>
+
+
+        <t t-name="FloorScreen" t-inherit="pos_restaurant.FloorScreen" t-inherit-mode="extension" owl="1">
+            <xpath expr="//div[hasclass('floor-map')]" position="replace">
+               <div class="floor-map" t-on-click="trigger('deselect-table')" t-ref="floor-map-ref">
+                                    <div class="left_container">
+                                        <SetContainerLeft t-if="!isFloorEmpty"/>
+                                    </div>
+                                    <style>
+                                        @media only screen and (max-width: 600px) {
+                                            /* For phones: */
+                                            .zoom50 {zoom: 32%;}
+                                            .left_container {zoom: 20%;}
+                                        }
+                                        @media only screen and (min-width: 600px) {
+                                            /* For tablets: */
+                                            .zoom50 {zoom: 40%;}
+                                            .left_container {zoom: 40%;}
+                                        }
+                                        @media only screen and (min-width: 768px) {
+                                            /* For desktop: */
+                                            .zoom50 {zoom: 68%}
+                                            .left_container {zoom: 70%;}
+                                        }
+                                        @media only screen and (min-width: 992px) {
+                                            /* For Large: */
+                                            .zoom50 {zoom: 68%}
+                                            .left_container {zoom: 70%;}
+                                        }
+                                        @media only screen and (min-width: 1200px) {
+                                            /* For Xtra Large: */
+                                            .zoom50 {zoom: 68%}
+                                            .left_container {zoom: 70%;}
+                                        }
+                                    </style>
+                                    <div t-if="isFloorEmpty" class="empty-floor">
+                                        <span>This floor has no tables yet, use the </span>
+                                        <i class="fa fa-plus" role="img" aria-label="Add button" title="Add button"></i>
+                                        <span> button in the editing toolbar to create new tables.</span>
+                                    </div>
+                                    <div t-else="" class="tables zoom50" style="float: left;">
+                                        <t t-foreach="activeTables" t-as="table" t-key="table.id">
+                                            <TableWidget t-if="table.id !== state.selectedTableId" table="table"/>
+                                            <EditableTable t-else="" table="table"/>
+                                        </t>
+                                    </div>
+
+                                    <span t-if="env.pos.user.role == 'manager'" class="edit-button editing"
+                                          t-att-class="{ active: state.isEditMode }" t-on-click.stop="toggleEditMode">
+                                        <i class="fa fa-pencil" role="img" aria-label="Edit" title="Edit"></i>
+                                         <div t-if="activeTablesEditMode" >
+                                         </div>
+                                    </span>
+
+                                    <EditBar t-if="state.isEditMode" selectedTable="selectedTable"/>
+                                </div>
+            </xpath>
+        </t>
+
+
+    <t t-name="TableWidget" t-inherit="pos_restaurant.TableWidget" t-inherit-mode="extension" owl="1">
+            <xpath expr="//div[hasclass('table')]" position="replace">
+<!--              <t t-set="style_delivery_header" t-value="'background-color:'red"/>-->
+
+            <div t-if="!props.isSelected" class="table" t-on-click.stop="trigger('select-table', props.table)" t-att-id="props.table.id">
+                <t t-esc="reservationCheck"/>
+                <span class="table-cover" t-att-class="{ full: fill >= 1 }" id="table_cover_id"></span>
+                <span t-att-class="orderCountClass" t-att-hidden="orderCount === 0">
+                    <t t-esc="orderCount" />
+                </span>
+                <span class="label">
+                    <t t-esc="props.table.name" />
+                </span>
+                <span class="table-seats">
+                    <t t-esc="props.table.seats" />
+                </span>
+                  <input type="hidden" id="counter_timer_div_reservation" />
+                  <div id="counter_timer_div" >
+
+                </div>
+                <div id="merge_qr_code_functionality">
+
+                </div>
+            </div>
+            </xpath>
+    </t>
+
+   <t t-name="EditTablePopup" owl="1">
+        <div role="dialog" class="modal-dialog">
+            <div class="popup popup-textinput">
+                <header class="title">
+                    <t t-esc="props.title" />
+                </header>
+                <div class="div">
+                    <p>
+                        <t t-esc="props.body" />
+                    </p>
+                    <div style="display: flex;padding: 3px;"><span style="margin:auto;">Table Name:</span>
+                        <span style="margin:auto;">
+                            <input type="text" t-model="state.inputValue" t-ref="input" />
+                        </span>
+                    </div>
+                    <div style="display: flex;"><span style="margin:auto;">No of Seats</span>
+                        <span style="margin:auto;">
+                            <input type="number" t-model="seat.seatValue" t-ref="seatRef" />
+                        </span>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="button confirm" t-on-click="confirm">
+                        <t t-esc="props.confirmText" />
+                    </div>
+                    <div class="button cancel" t-on-click="cancel">
+                        <t t-esc="props.cancelText" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+
+
+</templates>

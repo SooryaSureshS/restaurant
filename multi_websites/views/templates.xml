@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Not required now, Remove me -->
+
+    <!-- <template id="layout_logo_show" inherit_id="website.layout" name="Multi Website Layout" priority="1000">
+        <xpath expr="//header//a[hasclass('navbar-brand')]" position="replace">
+            <a href="/" class="navbar-brand logo">
+                <span t-field="website.logo" t-options="{'widget': 'image'}" t-att-alt="'Logo of %s' % website.name" t-att-title="website.name"/>
+            </a>
+        </xpath>
+    </template> -->
+
+</odoo>

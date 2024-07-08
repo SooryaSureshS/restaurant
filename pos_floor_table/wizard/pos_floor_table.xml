@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="floor_pos_view_form" model="ir.ui.view">
+        <field name="name">pos.floor.table.form</field>
+        <field name="model">pos.floor.table</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                       <field name="pos_config_ids" required="1"/>
+                    </group>
+                </sheet>
+                <footer>
+                   <button name="set_floor_pos" type="object" string="Send" class='btn-primary'/>
+                   <button name="discard" string="Cancel" class='btn-secondary' special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

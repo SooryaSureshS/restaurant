@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <template id="assets_recall_order" inherit_id="point_of_sale.assets">
+          <xpath expr="." position="inside">
+              <script type="text/javascript" src="/recall_orders/static/src/js/recall.js"></script>
+              <script type="text/javascript" src="/recall_orders/static/src/js/ordersTable.js"></script>
+              <script type="text/javascript" src="/recall_orders/static/src/js/orderPopup.js"></script>
+              <script type="text/javascript" src="/recall_orders/static/src/js/receipt.js"></script>
+<!--              <script type="text/javascript" src="/pos_return_pos/static/src/js/OrderPopup.js"></script>-->
+<!--              <script type="text/javascript" src="/pos_return/static/src/js/pos_return_popup.js"></script>-->
+<!--              <link rel="stylesheet" type="text/css" href="/pos_return/static/src/css/pos.css"/>-->
+          </xpath>
+        </template>
+
+</odoo>

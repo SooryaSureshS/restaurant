@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_wine_visit" name="Wine visit">
+		<section class="wineshop-home-visit pt152 pb152" style="background-image: url('/theme_wineshop/static/src/img/visit-us-back.jpg');">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-6">
+						<div class="content text-center">
+							<p class="subtitle text-primary">DONEC FAUCIBUS</p>
+							<h1>Nascetur Ridiculus Mus</h1>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac vehicula diam. Sed efficitur ullamcorper risus at imperdiet.</p>
+							<div class="s_btn" data-name="Button">
+								<a href="/our-wines" class="btn flat btn-primary btn-lg mr-4">Our Wines</a>
+								<a href="/shop" class="btn flat btn-secondary btn-lg">Shop Now</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</template>
+</odoo>

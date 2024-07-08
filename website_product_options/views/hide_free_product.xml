@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <t t-extend="website_sale.products_table">
+         <t t-jquery="div.o_top_margin" t-operation="replace">
+               <div class="row">
+                <div class="col-lg-12 col-12">
+                    <h4>Best Sellers</h4>
+                    <table class="table table-responsive table-hover">
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Sold</th>
+                        </tr>
+                        <tr class="o_product_template" t-foreach="widget.dashboards_data.sales.best_sellers" t-as="product" t-att-data-product-id="product.id">
+                            <t t-if="product.name!='Free delivery charges'">
+
+                            <td><t t-esc="product.name"/></td>
+                            <td><t t-esc="product.qty"/></td>
+                            <td><t t-esc="widget.render_monetary_field(product.sales, widget.data.currency)"/></td>
+                            </t>
+                        </tr>
+                    </table>
+                </div>
+
+                 <div class="col-lg-6 col-12 o_dashboard_utms">
+                <div>
+                    <h4 class="float-left">REVENUE BY</h4>
+                    <t t-call="website_sale.LinkTrackersDropDown"/>
+                </div>
+                <div class="o_utm_no_data_img">
+                    <img src="website_sale/static/src/img/website_sale_chart_demo.png" alt="There isn't any UTM tag detected in orders" class="utm_chart_image image-responsive mt8"/>
+                </div>
+                <div class="o_utm_data_graph"/>
+            </div>
+
+            </div>
+
+
+         </t>
+    </t>
+</odoo>

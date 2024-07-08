@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <template id="assets_pos_mcd_bill_orders" inherit_id="point_of_sale.assets">
+          <xpath expr="." position="inside">
+              <script type="text/javascript" src="/pos_mcd_bill/static/src/js/bill.js"></script>
+              <script type="text/javascript" src="/pos_mcd_bill/static/src/js/button.js"></script>
+              <script type="text/javascript" src="/pos_mcd_bill/static/src/js/receipt.js"></script>
+<!--              <script type="text/javascript" src="/pos_mcd_open_order/static/src/js/receiptSendToKitchen.js"></script>-->
+<!--              <script type="text/javascript" src="/pos_mcd_open_order/static/src/js/models.js"></script>-->
+          </xpath>
+        </template>
+</odoo>

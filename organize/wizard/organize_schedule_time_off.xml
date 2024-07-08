@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="organize_schedule_time_off_form" model="ir.ui.view">
+        <field name="name">organize.schedule.time.off.form</field>
+        <field name="model">organize.schedule.time.off</field>
+        <field name="arch" type="xml">
+            <form>
+
+                <sheet>
+                    <t t-set="data" t-value="context_timestamp(datetime.datetime.now())"/>
+                    <p>The employee has requested this time off</p>
+                    <p>Would you like to continue?</p>
+                </sheet>
+                <footer>
+                    <button name="action_yes" type="object" string="Yes" class='btn-secondary'/>
+                    <button name="action_discard" type="object" string="No" class='btn-secondary'/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="organize_schedule_time_off_action" model="ir.actions.act_window">
+        <field name="name">Organize Schedule Time off</field>
+        <field name="res_model">organize.schedule.time.off</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>
+
+
+
+
+
+        <!--<record id="social_media_insight_form" model="ir.ui.view">-->
+        <!--        <field name="name">social.media.insight.form</field>-->
+        <!--        <field name="model">social.media.dashboard</field>-->
+        <!--        <field name="arch" type="xml">-->
+        <!--            <form create="0">-->
+        <!--                <script type="text/javascript" src="/social_media_dashboard/static/src/js/dash.js"/>-->
+        <!--&lt;!&ndash;&ndash;&gt;-->
+        <!--                <div class="sm_dash_tab">-->
+        <!--                    <h1 class="dash_name"><field name="dash_name"/></h1>-->
+        <!--                    <div class="tab mt-2">-->
+        <!--                        <span>-->
+        <!--                            <i class="fa-tower-observation"/>-->
+        <!--                            <button class="tablinks" id="defaultOpen">Overview</button>-->
+        <!--                        </span>-->
+        <!--                        <button class="tablinks">Result</button>-->
+        <!--                        <button class="tablinks">Content</button>-->
+        <!--                        <button class="tablinks">Audience</button>-->
+        <!--                        <button class="tablinks">Feedback</button>-->
+        <!--                    </div>-->
+        <!--&lt;!&ndash;&ndash;&gt;-->
+        <!--                    <div id="Overview" class="tabcontent">-->
+        <!--&lt;!&ndash;&ndash;&gt;-->
+        <!--                        <canvas id="myChart" class="line_chart mt-2" width="100%" height="25vw"></canvas>-->
+        <!--                        <button class="see_result mt-2"><i class="fa fa-file-text-o fa_report_dash mr-4"/>See Results Report</button>-->
+        <!--                        <div class="line_chart mt-3 row" width="100%" height="25vw">-->
+        <!--                                <div class="col mt-2">-->
+        <!--                                    <field name="dash_posts" widget="one2many"/>-->
+        <!--                                </div>-->
+        <!--                        </div>-->
+        <!--                         <div class="line_chart mt-3 row">-->
+        <!--                           <canvas id="Audience_chart" class="line_chart mt-2" width="100%" height="25vw"></canvas>-->
+        <!--                         </div>-->
+        <!--                        <button class="see_result mt-2"><i class="fa fa-file-text-o fa_report_dash mr-4"/>See Results Report</button>-->
+        <!--&lt;!&ndash;&ndash;&gt;-->
+        <!--                    </div>-->
+        <!--&lt;!&ndash;&ndash;&gt;-->
+        <!--                    <div id="Result" class="tabcontent">-->
+        <!--                        <h3>Result</h3>-->
+        <!--                    </div>-->
+        <!--                    <div id="Content" class="tabcontent">-->
+        <!--                        <h3>Content</h3>-->
+        <!--                    </div>-->
+        <!--                    <div id="Audience" class="tabcontent">-->
+        <!--                        <h3>Audience</h3>-->
+        <!--                    </div>-->
+        <!--                    <div id="Feedback" class="tabcontent">-->
+        <!--                        <h3>Feedback</h3>-->
+        <!--                    </div>-->
+        <!--&lt;!&ndash;&ndash;&gt;-->
+        <!--                    <script>-->
+        <!--&lt;!&ndash;&ndash;&gt;-->
+        <!--                    </script>-->
+        <!--                </div>-->
+        <!--            </form>-->
+        <!--        </field>-->
+        <!--    </record>-->
+
+

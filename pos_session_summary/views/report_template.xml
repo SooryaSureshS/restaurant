@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_pos_session_summary_pos">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div style="border-left: 7px solid red;" class="page">
+                            <h3 class="text-center">POS Session wew</h3>
+                            <h4><strong>POS User</strong>:
+                                <t t-if="user_name">
+                                    <t t-esc="o.user_name"/>
+                                </t>
+                                <div>
+                                    <div class="col-md-4">
+                                        <label>Session</label>:
+                                        <t t-if="o.session.name">
+                                            <t t-esc="o.session.name"/>
+                                        </t>
+                                    </div>
+                                    <div class="col-md-4"></div>
+                                    <div class="col-md-4">
+                                        <label>POS</label>:
+                                        <t t-if="o.session.name">
+                                            <t t-esc="o.pos_config.name"/>
+                                        </t>
+                                    </div>
+                                </div>
+
+                            </h4>
+
+                            <table class="table table-condensed table-bordered" style="width: 100%">
+                                <thead>
+                                    <t t-if="not user_name">
+                                        <th>User</th>
+                                    </t>
+                                    <th>Session</th>
+                                    <th>POS</th>
+                                    <th>Opening Date</th>
+                                    <th>Closing Date</th>
+                                    <th>Opening balance</th>
+                                    <th>Counted Amount</th>
+                                    <th>Expected Amount</th>
+                                    <th>Variance Amount</th>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="summary" t-as="inv">
+                                        <tr>
+                                            <t t-if="not user_name">
+                                                <td>
+                                                    <span t-esc="inv.session_user.name"/>
+                                                </td>
+                                            </t>
+                                            <td>
+                                                <span t-esc="inv.session.name"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="inv.pos_config.name"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="inv.opening_date"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="inv.closing_date"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="inv.starting_balance"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="inv.counted_total"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="inv.total_expected"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="inv.total_variance"/>
+                                            </td>
+
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

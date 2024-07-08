@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="notice_board.Notices">
+        <li>
+            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Notices" href="#">
+                <i class="fa fa-bars"/>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right widget_menu" role="menu" style="overflow:hidden;top:100% !important;">
+                <li class="notice_dropdown"/>
+            </ul>
+        </li>
+    </t>
+
+    <t t-name="notice_board.NoticeRecords">
+        <t t-if="_.isEmpty(records)">
+            <li class="text-center">
+                <span>No Record Found.</span>
+            </li>
+        </t>
+        <t t-if="!_.isEmpty(records)">
+            <li class="text-center">
+                <div class="notice_header">
+                    NOTICE BOARD
+                </div>
+            </li>
+            <div class="notice_recs">
+                <t t-foreach="records" t-as="record">
+                    <div t-att-data-model_name="record.name" class="notice_div">
+                        <div style="cursor:pointer">
+                            <div class="notice_date" t-if="record.event_date">
+                                Held On: <t t-esc="record.event_date"/>
+                            </div>
+                            <div class="notice_name" t-if="record.name">
+                                <t t-esc="record.name"/>
+                            </div>
+                        </div>
+                        <hr/>
+                    </div>
+                </t>
+            </div>
+        </t>
+    </t>
+</templates>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_attribute_pricelist_wizard" model="ir.ui.view">
+        <field name="name">Product Attribute based Pricelist</field>
+        <field name="model">product.attribute.pricelist.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Create pricelist based on attributes">
+                <group>
+                    <field name="pt_id"/>
+                    <field name="ptav_ids" domain="[('product_tmpl_id', '=', pt_id)]"/>
+                    <field name="quantity"/>
+                    <field name="price"/>
+                </group>
+                <footer>
+                    <button name="select" type="object" string="Select" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+<!--    <record id="act_delivery_shipany_carrier_type" model="ir.actions.act_window">-->
+<!--        <field name="name">Select a carrier</field>-->
+<!--        <field name="type">ir.actions.act_window</field>-->
+<!--        <field name="res_model">delivery.carrier.shipany</field>-->
+<!--        <field name="view_mode">form</field>-->
+<!--        <field name="target">new</field>-->
+<!--    </record>-->
+</odoo>

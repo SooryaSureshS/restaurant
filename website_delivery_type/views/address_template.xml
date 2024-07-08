@@ -1,0 +1,956 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--LOGGED OUT USER/PUBLIC USER-->
+        <template id="address_custom_pickup" name="Pickup Address" inherit_id="website_sale.address" priority="200">
+            <xpath expr="//div[hasclass('oe_cart')]" position="replace">
+                <div class="col-12 col-xl order-xl-1 oe_cart">
+                    <div class="delivery_type">
+                        <h3>Delivery Method</h3>
+                        <label>Please select a delivery method.</label>
+
+                         <t t-if="website.user_id == user_id">
+                                   <p  style="text-align: center;" >
+                                    <a href="/web/login" class="btn btn-lg btn-primary mb-6 rounded-circle"
+                                       data-original-title="" title="" >Sign In</a>
+                                </p>
+                         </t>
+                        <div id="curb_enabled">
+                            <div class="tab">
+                                <button id="pro_pickup" style="border:1px solid #866f6a;background-color:#0c06063b;"
+                                        class="tablinks">Pickup
+                                </button>
+                                <button id="curb_side_pickup"
+                                        style="border:1px solid #866f6a;background-color:#0c06063b;"
+                                        class="tablinks">Kerbside Pickup
+                                </button>
+                                <button id="pro_delivery" style="border:1px solid #866f6a;background-color:#0c06063b;"
+                                        class="tablinks">Delivery
+                                </button>
+
+                            </div>
+
+                        </div>
+                        <div id="curb_disabled" style="display:none;">
+                            <div class="tab">
+
+                                <button id="pro_pickup_dis"
+                                        style="width:100% !important;border:1px solid #866f6a;background-color:#0c06063b;"
+                                        class="tablinks">Pickup
+                                </button>
+                                <button id="pro_delivery_dis"
+                                        style="width:50% !important;border:1px solid #866f6a;background-color:#0c06063b;"
+                                        class="tablinks">Delivery
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <br/>
+
+                    <input style="display:none;" id="order_id" t-att-value="website_sale_order.id" type="text"
+                           name="name"/>
+                    <input style="display:none;" id="order_name" t-att-value="website_sale_order.name" type="text"
+                           name="name"/>
+
+                    <div id="pickup" class="col-lg-12" style="display:none">
+                        <div class="col-lg-12">
+                            <h4>Pickup From</h4>
+                            <br/>
+                            <h4>4 Wongabel St, Kenmore, 4069</h4>
+                            <br/>
+                            <label>Pickup Time</label>
+                            <div class="date_field">
+                                <input id="pickup_date" type="text" value="Today"></input>
+                                <!--                                <input id="pickup_time" class="timepicker" type="time"/>-->
+                                <select id="pickup_time"></select>
+                                <label id="invalid_time"
+                                       style="display:none;color:red;margin-top: 8%;position: absolute;margin-left: 50%;">
+                                    Enter a valid time
+                                </label>
+                                <label id="less_time"
+                                       style="display:none;color:red;margin-top: 8%;position: absolute;margin-left: 48%;font-size: 14px;">
+                                    Minimum Cooking time is
+                                    <label id="min_hr"></label>
+                                    <span>hour</span>
+                                    <label id="min_time"></label>
+                                    <span>minutes.</span>
+                                </label>
+                            </div>
+                            <br/>
+                            <div class="">
+                                <input id="partner_name" type="text" placeholder="Enter Your Name"/>
+                                <label id="invalid_name" style="display:none;color:red">Enter a valid name</label>
+                                <br/>
+                                <br/>
+                                <input id="partner_phone" type="tel" placeholder="Enter Phone Number"/>
+                                <label id="invalid_phone" style="display:none;color:red">Invalid Phone number
+                                </label>
+                                <br/>
+                                <br/>
+                                <input id="partner_email" type="email" placeholder="Enter Your Email id"/>
+                                <label id="invalid_email" style="display:none;color:red">Invalid Email Id</label>
+                            </div>
+                            <br/>
+                            <div id="invalid_time_range" style="">
+                                <div class="alert alert-danger">
+                                    <strong>Warning!</strong>
+                                     Sorry the restaurant is available for pickup orders from:
+                                    <span id="open_day" style="color:#4b0000"/> at
+                                    <span id="opening_time" style="color:#4b0000"/>
+                                </div>
+                            </div>
+                            <div id="invalid_products" style="">
+                                <div class="alert alert-danger">
+                                    <strong>Warning!</strong>
+                                    Some of the products in the cart are only eligible for Dine In. Please remove it and
+                                    try again
+                                </div>
+                            </div>
+
+                            <div id="invalid_picking_time" style="">
+                                <div class="alert alert-danger">
+                                    <span id="invalid_pick">
+
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div id="continue_div">
+                                <button id="continue_button" style="" class="tablinks">Continue</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="curb_order" class="col-lg-12" style="display:none">
+                        <div class="col-lg-12">
+                            <h4>Deliver To My Parked Car</h4>
+                            <br/>
+                            <h4>4 Wongabel St, Kenmore, 4069</h4>
+                            <br/>
+                            <label>Pickup Time</label>
+                            <div class="date_field">
+                                <input id="pickup_date_curb" type="text" value="Today"></input>
+                                <!--                                <input id="pickup_time_curb" class="timepicker" type="time"/>-->
+                                <select id="pickup_time_curb"></select>
+
+                                <label id="invalid_time_curb"
+                                       style="display:none;color:red;margin-top: 8%;position: absolute;margin-left: 50%;">
+                                    Enter a valid time
+                                </label>
+                                <label id="less_time_curb"
+                                       style="display:none;color:red;margin-top: 8%;position: absolute;margin-left: 48%;font-size: 14px;">
+                                    Minimum Cooking time is
+                                    <label id="min_hr_curb"></label>
+                                    <span>hour</span>
+                                    <label id="min_time_curb"></label>
+                                    <span>minutes.</span>
+                                </label>
+                            </div>
+                            <br/>
+                            <div class="">
+                                <input id="partner_name_curb" type="text" placeholder="Enter Your Name"/>
+                                <label id="invalid_name_curb" style="display:none;color:red">Enter a valid
+                                    name
+                                </label>
+                                <br/>
+                                <br/>
+                                <input id="partner_phone_curb" type="tel" placeholder="Enter Phone Number"/>
+                                <label id="invalid_phone_curb" style="display:none;color:red">Invalid Phone
+                                    number
+                                </label>
+                                <br/>
+                                <br/>
+                                <input id="partner_email_curb" type="email"
+                                       placeholder="Enter Your Email id"/>
+                                <label id="invalid_email_curb" style="display:none;color:red">Invalid Email
+                                    Id
+                                </label>
+                            </div>
+                            <br/>
+                            <div id="vehicle_details">
+                                <div style="display: flex;">
+                                    <select style="margin-right: 15px;" class="curb_select" name="vehicle_type_ids"
+                                            id="vehicle_type_ids">
+                                    </select>
+                                    <select class="curb_select" name="vehicle_make_ids" id="vehicle_make_ids">
+                                    </select>
+                                </div>
+                                <br/>
+                                <div style="display: flex;">
+                                    <input id="v_colour" type="text" placeholder="Vehicle Color"/>
+                                    <input id="license_plate_no" type="text"
+                                           placeholder="License Plate Number"/>
+                                </div>
+                                <div style="display: flex;">
+                                    <label id="invalid_vehicle_color_curb" style="display:none;color:red">Enter a valid color
+                                    </label>
+                                    <label class="vehicle_details_padding"></label>
+                                    <label id="invalid_license_plate_no_curb" style="display:none;color:red">Enter the license no</label>
+                                </div>
+                                <br/>
+                                <div>
+<!--                                    <select class="curb_select_loc" name="vehicle_location_ids"-->
+<!--                                            id="vehicle_location_ids">-->
+<!--                                    </select>-->
+<!--                                    <br/>-->
+<!--                                    <br/>-->
+
+                                    <textarea rows="6" name="location_note" id="location_note"
+                                              placeholder="Location Note..." class="form-control"/>
+
+                                    <h3 style="width: 100%;"><center>Please let us know when you arrive</center></h3>
+                                    <br/>
+                                    <br/>
+
+                                    <div>
+                                        <h4 style="width: 100%;">These are the available parking options</h4><br/>
+                                        <t t-foreach="website_sale_order.approximate_location_ids" t-as="i">
+                                            ➮ <span t-esc="i.location_name"/><br/><br/>
+                                        </t>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <br/>
+                            <div id="invalid_time_range_curb" style="">
+                                <div class="alert alert-danger">
+                                    <strong>Warning!</strong>
+                                    Sorry the restaurant is available for kerbside orders from:
+                                    <span id="open_day_curb" style="color:#4b0000"/> at
+                                    <span id="opening_time_curb" style="color:#4b0000"/>
+                                </div>
+                            </div>
+                            <div id="invalid_products_curb" style="">
+                                <div class="alert alert-danger">
+                                    <strong>Warning!</strong>
+                                    Some of the products in the cart are only eligible for Dine In. Please remove it and
+                                    try again
+                                </div>
+                            </div>
+
+                            <div id="invalid_picking_time_curb" style="">
+                                <div class="alert alert-danger">
+                                    <span id="invalid_pick_curb">
+
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div id="continue_div_curb">
+                                <button id="continue_button_curb" style="" class="tablinks">Continue
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="valid_time_delivery_mode">
+                        <div class="alert alert-danger">
+                            <span id="open_time"></span>
+                        </div>
+                    </div>
+
+                    <div style="display:none;" id="custom_your_address">
+
+                          <div class="float-left checkbox-custom_product">
+                            <label id="is_a_future_order">
+                                <input type="checkbox"  class="check_product check_product_delivery"/><span style="font-size: 24px;">Is a future order</span>&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                <b></b>
+                            </label>
+                            </div>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <div class="date_field" style="display:none;" id="pickup_time_delivery">
+
+                              <input id="pickup_date_delivery" type="text" value="Today"></input>
+                                <!--                                <input id="pickup_time" class="timepicker" type="time"/>-->
+                                <select id="pickup_time_delivery_selection" style="margin-left: 9px;"></select>
+
+
+                              <br/>
+                              <br/>
+                          </div>
+
+                         <t t-if="website_sale_order.company_id.location_picker">
+                            <t t-if="mode == ('new', 'billing')">
+                                <h2 class="o_page_header mt8">Select your address on the map
+                                    <small>or</small>
+                                    <a role="button" href='/web/login?redirect=/shop/checkout' class='btn btn-primary'
+                                       style="margin-top: -11px">Log In
+                                    </a>
+                                </h2>
+                            </t>
+                            <t t-if="mode == ('edit', 'billing')">
+                                <h2 class="o_page_header mt8">Select your address on the map</h2>
+                            </t>
+                            <t t-if="mode[1] == 'shipping'">
+                                <h2 class="o_page_header mt8">Select your address on the map</h2>
+                            </t>
+                         </t>
+                        <t t-else="">
+                            <t t-if="mode == ('new', 'billing')">
+                                <h2 class="o_page_header mt8">Enter your address below
+<!--                                    <small>or</small>-->
+<!--                                    <a role="button" href='/web/login?redirect=/shop/checkout' class='btn btn-primary'-->
+<!--                                       style="margin-top: -11px">Log In-->
+<!--                                    </a>-->
+                                </h2>
+                            </t>
+                        </t>
+                        <t t-if="partner_id == website_sale_order.partner_shipping_id.id == website_sale_order.partner_invoice_id.id">
+                            <div style="display:none;" class="alert alert-warning" role="alert" t-if="not only_services">
+                                <h4 class="alert-heading">Be aware!</h4>
+                                <p groups="sale.group_delivery_invoice_address">
+                                    You are editing your <b>billing and delivery</b> addresses at the same time!
+                                    <br/>
+                                    If you want to modify your delivery address, create a <a href='/shop/address'>new
+                                    address</a>.
+                                </p>
+                            </div>
+                        </t>
+                        <t t-if="error" t-foreach="error.get('error_message', [])" t-as="err">
+                            <h5 class="text-danger" t-esc="err"/>
+                        </t>
+                        <t t-set="website_sale_order" t-value="website.sale_get_order()" />
+                        <form action="/shop/address" method="post" class="checkout_autoformat" id="address_page_form">
+                            <div class="form-row">
+                                <head>
+                                    <style type="text/css">
+                                        #map{ width:680px; height: 300px; }
+                                    </style>
+                                    <script type="text/javascript"
+                                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCP8gcIkivceoSrgmYTq0_XxTHd6l5rNFM&amp;callback=initMap&amp;libraries=&amp;v=weekly"></script>
+                                </head>
+
+                                <body>
+
+                                    <t t-if="website_sale_order.company_id.location_picker">
+                                        <div id="map" style="width:680px; height: 300px;"></div>
+                                    </t>
+                                    <t t-else="">
+                                        <div id="map" style="width:680px; height: 300px;display:none;"></div>
+                                    </t>
+<!--                                    <input type="text" name="user_lat" id="user_lat" readonly="yes"/>-->
+<!--                                    <input type="text" name="user_long" id="user_long" readonly="yes"/>-->
+                                    <input type="text" name="user_lat" id="user_lat"
+                                           t-attf-class="form-control"
+                                           value="-27.50888" style="display:none;"/>
+                                    <input type="text" name="user_long" id="user_long"
+                                           t-attf-class="form-control"
+                                           value="152.94746" style="display:none;"/>
+
+                                    <script type="text/javascript"
+                                            src="/website_delivery_type/static/src/js/location_picker.js"></script>
+                                </body>
+
+                                <div t-attf-class="form-group #{error.get('name') and 'o_has_error' or ''} col-lg-12 div_name">
+                                    <label class="col-form-label" for="name">Name</label>
+                                    <input type="text" name="name"
+                                           t-attf-class="form-control #{error.get('name') and 'is-invalid' or ''}"
+                                           t-att-value="'name' in checkout and checkout['name']"/>
+                                </div>
+                                <div class="w-100"/>
+                                <t t-if="mode[1] == 'billing'">
+                                    <div t-attf-class="form-group #{error.get('email') and 'o_has_error' or ''} col-lg-6"
+                                         id="div_email">
+                                        <label class="col-form-label" for="email">Email</label>
+                                        <input type="email" name="email"
+                                               t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}"
+                                               t-att-value="'email' in checkout and checkout['email']"/>
+                                    </div>
+                                </t>
+                                <div t-attf-class="form-group #{error.get('phone') and 'o_has_error' or ''} col-lg-6"
+                                     id="div_phone">
+                                    <label class="col-form-label" for="phone">Phone</label>
+                                    <input type="tel" name="phone"
+                                           t-attf-class="form-control #{error.get('phone') and 'is-invalid' or ''}"
+                                           t-att-value="'phone' in checkout and checkout['phone']"/>
+                                </div>
+                                <div class="w-100"/>
+                                <div t-attf-class="form-group #{error.get('street') and 'o_has_error' or ''} col-lg-12 div_street">
+                                    <label class="col-form-label" for="street">Street
+                                        <span class="d-none d-md-inline">and Number</span>
+                                    </label>
+                                    <input type="text" name="street" id="street1"
+                                           t-attf-class="form-control #{error.get('street') and 'is-invalid' or ''}"
+                                           t-att-value="'street' in checkout and checkout['street']"/>
+                                </div>
+                                <div t-attf-class="form-group #{error.get('street2') and 'o_has_error' or ''} col-lg-12 div_street2">
+                                    <label class="col-form-label label-optional" for="street2">Street 2</label>
+                                    <input type="text" name="street2" id="street2"
+                                           t-attf-class="form-control #{error.get('street2') and 'is-invalid' or ''}"
+                                           t-att-value="'street2' in checkout and checkout['street2']"/>
+                                </div>
+                                <div class="w-100"/>
+                                <t t-set='zip_city'
+                                   t-value='country and [x for x in country.get_address_fields() if x in ["zip", "city"]] or ["city", "zip"]'/>
+                                <t t-if="'zip' in zip_city and zip_city.index('zip') &lt; zip_city.index('city')">
+                                    <div t-attf-class="form-group #{error.get('zip') and 'o_has_error' or ''} col-md-4 div_zip">
+                                        <label class="col-form-label label-optional" for="zip">Zip Code</label>
+                                        <input type="text" name="zip" id="zip"
+                                               t-attf-class="form-control #{error.get('zip') and 'is-invalid' or ''}"
+                                               t-att-value="'zip' in checkout and checkout['zip']"/>
+                                    </div>
+                                </t>
+                                <div t-attf-class="form-group #{error.get('city') and 'o_has_error' or ''} col-md-8 div_city">
+                                    <label class="col-form-label" for="city">Suburb</label>
+                                    <t t-set="website_sale_order" t-value="website.sale_get_order()" />
+                                     <select class="detail needsclick room_textArea_selection" style="font-size: 15px;color: #555252;
+                                              height: 48px;width: 90%;-webkit-scrollbar: scroll;overflow: visible;background: white;border: none;" name="city" id="city">
+                                        <t t-foreach="website_sale_order.company_id.suburb_location_ids" t-as="sub">
+                                                <option ><t t-esc='sub.location_name'/></option>
+                                        </t>
+                                     </select>
+                                    <input style="display:none;" id="order_id_country_name" t-att-value="website_sale_order.company_id.country_id.name" type="text"/>
+                                    <input style="display:none;" id="order_id_state" t-att-value="website_sale_order.company_id.state_id.name" type="text"/>
+                                    <input style="display:none;" id="order_company_id" t-att-value="website_sale_order.company_id.id" type="text"/>
+<!--                                    <input type="text" name="city" id="city"-->
+<!--                                           t-attf-class="form-control #{error.get('city') and 'is-invalid' or ''}"-->
+<!--                                           t-att-value="'city' in checkout and checkout['city']"/>-->
+                                </div>
+                                <t t-if="'zip' in zip_city and zip_city.index('zip') &gt; zip_city.index('city')">
+                                    <div t-attf-class="form-group #{error.get('zip') and 'o_has_error' or ''} col-md-4 div_zip">
+                                        <label class="col-form-label label-optional" for="zip">Zip Code</label>
+                                        <input type="text" name="zip" id="zip"
+                                               t-attf-class="form-control #{error.get('zip') and 'is-invalid' or ''}"
+                                               t-att-value="'zip' in checkout and checkout['zip']"/>
+                                    </div>
+                                </t>
+                                <div class="w-100"/>
+                                <div style="display:none !important;pointer-events: none !important;" t-attf-class="form-group #{error.get('country_id') and 'o_has_error' or ''} col-lg-6 div_country" id="country">
+                                    <label style="display:none;" class="col-form-label" for="country_id">Country</label>
+                                    <select style="display:none;" id="country_id" name="country_id"
+                                            t-attf-class="form-control #{error.get('country_id') and 'is-invalid' or ''}"
+                                            t-att-mode="mode[1]">
+                                        <option value="">Country...</option>
+                                        <t t-foreach="countries" t-as="c">
+                                            <option t-att-value="c.id"
+                                                    t-att-selected="c.id == 13">
+                                                <t t-esc="c.name"/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
+                                <div style="display:none !important;pointer-events: none !important;" t-attf-class="form-group #{error.get('state_id') and 'o_has_error' or ''} col-lg-6 div_state"
+                                     t-att-style="(not country or not country.state_ids) and 'display: none'" id="state">
+                                    <label style="display:none;" class="col-form-label" for="state_id">State / Province</label>
+                                    <select name="state_id" style="pointer-events: none !important;display:none;"
+                                            t-attf-class="form-control #{error.get('state_id') and 'is-invalid' or ''}"
+                                            data-init="1">
+                                        <option value="">State / Province...</option>
+                                        <t t-foreach="country_states" t-as="s">
+                                            <option t-att-value="s.id"
+                                                    t-att-selected="s.id == 4">
+                                                <t t-esc="s.name"/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
+                                <div class="w-100"/>
+                                <t t-if="mode == ('new', 'billing') and not only_services">
+                                    <div class="col-lg-12">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" id='shipping_use_same' class="mr8"
+                                                       name='use_same' value="1" checked='checked'/>Deliver to the same
+                                                address
+                                                <span class='ship_to_other text-muted' style="display: none">&amp;nbsp;(
+                                                    <i>Your Delivery address will be requested later)</i>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
+
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <input type="hidden" name="submitted" value="1"/>
+                            <input type="hidden" name="partner_id" t-att-value="partner_id or '0'"/>
+                            <input type="hidden" name="callback" t-att-value="callback"/>
+                            <!-- Example -->
+                            <input type="hidden" name="field_required" t-att-value="'phone,name'"/>
+
+                            <div class="d-flex justify-content-between">
+                                <a role="button"
+                                   t-att-href="mode == ('new', 'billing') and '/shop/cart' or '/shop/checkout'"
+                                   class="btn btn-secondary mb32">
+                                    <i class="fa fa-chevron-left"/>
+                                    <span>Back</span>
+                                </a>
+                                <t t-if="website_sale_order.company_id.check_delivery_distance">
+                                    <span id="check_distance" style="float: right;
+                                        color: white;
+                                        background: #b0976d;
+                                        padding: 14px;
+                                        height: 41px;
+                                        width: 77px;display:block;cursor: pointer;">Next
+                                         <i class="fa fa-chevron-right"/>
+                                    </span>
+                                    <a role="button" href=""
+                                       class="save-delivery-time btn btn-primary mb32 a-submit a-submit-disable a-submit-loading" style="display:none;">
+                                        <span>Next</span>
+                                        <i class="fa fa-chevron-right"/>
+                                    </a>
+                                </t>
+                                <t t-else="">
+                                    <span id="check_distance_night" style="float: right;
+                                        color: white;
+                                        background: #b0976d;
+                                        padding: 14px;
+                                        height: 41px;
+                                        width: 77px;cursor: pointer;">Next
+                                         <i class="fa fa-chevron-right"/>
+                                    </span>
+                                    <a role="button" href=""
+                                       class="save-delivery-time btn btn-primary mb32 a-submit a-submit-disable a-submit-loading" style="display:none;">
+                                        <span>Next</span>
+                                        <i class="fa fa-chevron-right"/>
+                                    </a>
+                                </t>
+
+<!--
+                                    <a id="address_confirm" role="button" href="/shop/confirm_order"
+                                       class="btn btn-primary mb32">
+                                        <span>Confirm</span>
+                                        <i class="fa fa-chevron-right"/>
+                                    </a>
+-->
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+
+        <!--LOGGED IN USER-->
+        <template id="address_custom" name="Custom Address" inherit_id="website_sale.checkout" priority="200">
+            <xpath expr="//div[hasclass('oe_website_sale')]" position="replace">
+                <div class="container oe_website_sale py-2">
+                    <t t-set="same_shipping"
+                       t-value="bool(order.partner_shipping_id==order.partner_id or only_services)"/>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <t t-call="website_sale.wizard_checkout">
+                                <t t-set="step" t-value="20"/>
+                            </t>
+                        </div>
+                        <div class="col-12 col-xl-auto order-xl-2 d-none d-xl-block">
+                            <t t-call="website_sale.cart_summary">
+                                <t t-set="redirect" t-valuef="/shop/checkout"/>
+                            </t>
+                        </div>
+
+
+                        <div class="col-12 col-xl order-xl-1 oe_cart">
+                            <div class="row">
+                                <div class="delivery_type">
+                                    <h3>Delivery Method</h3>
+                                    <label>Please select a delivery method</label>
+                                    <div id="curb_enabled">
+                                        <div class="tab">
+                                            <button id="pro_pickup"
+                                                    style="border:1px solid #866f6a;background-color:#0c06063b;"
+                                                    class="tablinks">Pickup
+                                            </button>
+                                            <button id="curb_side_pickup"
+                                                    style="border:1px solid #866f6a;background-color:#0c06063b;"
+                                                    class="tablinks">Kerbside Pickup
+                                            </button>
+                                             <button id="pro_delivery"
+                                                    style="border:1px solid #866f6a;background-color:#0c06063b;"
+                                                    class="tablinks">Delivery
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+                                    <div id="curb_disabled">
+                                        <div class="tab">
+                                            <button id="pro_pickup_dis"
+                                                    style="width:100% !important;border:1px solid #866f6a;background-color:#0c06063b;"
+                                                    class="tablinks">Pickup
+                                            </button>
+                                            <button id="pro_delivery_dis"
+                                                    style="width:50% !important;border:1px solid #866f6a;background-color:#0c06063b;"
+                                                    class="tablinks">Delivery
+                                            </button>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <br/>
+                                <input style="display:none;" id="order_id" t-att-value="order.id" type="text"
+                                       name="name"/>
+                                <input style="display:none;" id="order_name" t-att-value="order.name" type="text"
+                                       name="name"/>
+
+                                <div id="pickup" class="col-lg-12" style="display:none">
+                                    <div class="col-lg-12">
+                                        <h4>Pickup From</h4>
+                                        <br/>
+                                        <h4>4 Wongabel St, Kenmore, 4069</h4>
+                                        <br/>
+                                        <label>Pickup Time</label>
+                                        <div class="date_field">
+                                            <input id="pickup_date" type="text" value="Today"></input>
+                                            <!--                                            <input id="pickup_time" class="timepicker" type="time"/>-->
+                                            <select id="pickup_time"></select>
+                                            <label id="invalid_time"
+                                                   style="display:none;color:red;margin-top: 8%;position: absolute;margin-left: 50%;">
+                                                Enter a valid time
+                                            </label>
+                                            <label id="less_time"
+                                                   style="display:none;color:red;margin-top: 8%;position: absolute;margin-left: 48%;font-size: 14px;">
+                                                Minimum Cooking time is
+                                                <label id="min_hr"></label>
+                                                <span>hour</span>
+                                                <label id="min_time"></label>
+                                                <span>minutes.</span>
+                                            </label>
+                                        </div>
+                                        <br/>
+                                        <div class="">
+                                            <input id="partner_name" type="text" placeholder="Enter Your Name"/>
+                                            <label id="invalid_name" style="display:none;color:red">Enter a valid name
+                                            </label>
+                                            <br/>
+                                            <br/>
+                                            <input id="partner_phone" type="tel" placeholder="Enter Phone Number"/>
+                                            <label id="invalid_phone" style="display:none;color:red">Invalid Phone
+                                                number
+                                            </label>
+                                            <br/>
+                                            <br/>
+                                            <input id="partner_email" type="email" placeholder="Enter Your Email id"/>
+                                            <label id="invalid_email" style="display:none;color:red">Invalid Email Id
+                                            </label>
+                                        </div>
+                                        <br/>
+                                        <div id="invalid_time_range" style="">
+                                            <div class="alert alert-danger">
+                                                <strong>Warning!</strong>
+                                                Sorry the restaurant is available for pickup orders from:
+                                                <span id="open_day" style="color:#4b0000"/> at
+                                                <span id="opening_time" style="color:#4b0000"/>
+                                            </div>
+                                        </div>
+                                        <div id="invalid_products" style="">
+                                            <div class="alert alert-danger">
+                                                <strong>Warning!</strong>
+                                                Some of the products in the cart are only eligible for Dine In. Please
+                                                remove it and try again
+                                            </div>
+                                        </div>
+                                        <div id="invalid_picking_time" style="">
+                                            <div class="alert alert-danger">
+                                                <span id="invalid_pick">
+
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div id="continue_div">
+                                            <button id="continue_button" style="" class="tablinks">Continue</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="curb_order" class="col-lg-12" style="display:none">
+                                    <div class="col-lg-12">
+                                        <h4>Deliver To My Parked Car</h4>
+                                        <br/>
+                                        <h4>4 Wongabel St, Kenmore, 4069</h4>
+                                        <br/>
+                                        <label>Pickup Time</label>
+                                        <div class="date_field">
+                                            <input id="pickup_date_curb" type="text" value="Today"></input>
+                                            <!--                                            <input id="pickup_time_curb" class="timepicker" type="time"/>-->
+                                            <select id="pickup_time_curb"></select>
+
+                                            <label id="invalid_time_curb"
+                                                   style="display:none;color:red;margin-top: 8%;position: absolute;margin-left: 50%;">
+                                                Enter a valid time
+                                            </label>
+                                            <label id="less_time_curb"
+                                                   style="display:none;color:red;margin-top: 8%;position: absolute;margin-left: 48%;font-size: 14px;">
+                                                Minimum Cooking time is:
+                                                <label id="min_hr_curb"></label>
+                                                <span>hour</span>
+                                                <label id="min_time_curb"></label>
+                                                <span>minutes.</span>
+                                            </label>
+                                        </div>
+                                        <br/>
+                                        <div class="">
+                                            <input id="partner_name_curb" type="text" placeholder="Enter Your Name"/>
+                                            <label id="invalid_name_curb" style="display:none;color:red">Enter a valid
+                                                name
+                                            </label>
+                                            <br/>
+                                            <br/>
+                                            <input id="partner_phone_curb" type="tel" placeholder="Enter Phone Number"/>
+                                            <label id="invalid_phone_curb" style="display:none;color:red">Invalid Phone
+                                                number
+                                            </label>
+                                            <br/>
+                                            <br/>
+                                            <input id="partner_email_curb" type="email"
+                                                   placeholder="Enter Your Email id"/>
+                                            <label id="invalid_email_curb" style="display:none;color:red">Invalid Email
+                                                Id
+                                            </label>
+                                        </div>
+                                        <br/>
+                                        <div id="vehicle_details">
+                                            <div style="display: flex;">
+                                                <select style="margin-right: 15px;" class="curb_select"
+                                                        name="vehicle_type_ids" id="vehicle_type_ids">
+                                                </select>
+                                                <select class="curb_select" name="vehicle_make_ids"
+                                                        id="vehicle_make_ids">
+                                                </select>
+                                            </div>
+                                            <br/>
+                                            <div style="display: flex;">
+                                                <input id="v_colour" type="text" placeholder="Vehicle Color"/>
+                                                <input id="license_plate_no" type="text"
+                                                       placeholder="License Plate Number"/>
+                                            </div>
+                                            <div style="display: flex;">
+                                                <label id="invalid_vehicle_color_curb" style="display:none;color:red">Enter a valid color
+                                                </label>
+                                                <label class="vehicle_details_padding"></label>
+                                                <label id="invalid_license_plate_no_curb" style="display:none;color:red">Enter the license no</label>
+                                            </div>
+
+                                            <br/>
+                                            <div>
+<!--                                                <select class="curb_select_loc" name="vehicle_location_ids"-->
+<!--                                                        id="vehicle_location_ids">-->
+<!--                                                </select>-->
+<!--                                                <br/>-->
+<!--                                                <br/>-->
+                                                <textarea rows="6" name="location_note" id="location_note"
+                                                          placeholder="Location Note..." class="form-control"/>
+
+                                                <h3 style="width: 100%;"><center>Please let us know when you arrive</center></h3>
+                                                <br/>
+                                                <br/>
+
+                                                <div>
+                                                    <h4 style="width: 100%;">These are the available parking options</h4><br/>
+                                                        <t t-foreach="order.approximate_location_ids" t-as="i">
+                                                            ➮ <span t-esc="i.location_name"/><br/><br/>
+                                                        </t>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <div id="invalid_time_range_curb" style="">
+                                            <div class="alert alert-danger">
+                                                <strong>Warning!</strong>
+                                                 Sorry the restaurant is available for kerbside orders from:
+                                                <span id="open_day_curb" style="color:#4b0000"/> at
+                                                <span id="opening_time_curb" style="color:#4b0000"/>
+                                            </div>
+                                        </div>
+                                        <div id="invalid_products_curb" style="">
+                                            <div class="alert alert-danger">
+                                                <strong>Warning!</strong>
+                                                Some of the products in the cart are only eligible for Dine In. Please
+                                                remove it and try again
+                                            </div>
+                                        </div>
+
+                                        <div id="invalid_picking_time_curb" style="">
+                                            <div class="alert alert-danger">
+                                                <span id="invalid_pick_curb">
+
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div id="continue_div_curb">
+                                            <button id="continue_button_curb" style="" class="tablinks">Continue
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="order_delivery" style="display:none;">
+                                    <div style="display:none;" class="col-lg-12">
+                                        <h3 class="o_page_header mt8">Billing Address</h3>
+                                    </div>
+
+                                    <div style="display:none;" class="col-lg-6 one_kanban">
+                                        <t t-call="website_sale.address_kanban">
+                                            <t t-set='contact' t-value="order.partner_id"/>
+                                            <t t-set='selected' t-value="1"/>
+                                            <t t-set='readonly' t-value="1"/>
+                                        </t>
+                                    </div>
+
+                                    <t t-if="not only_services" groups="sale.group_delivery_invoice_address">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <h3 class="o_page_header mt16 mb4">Delivery Address</h3>
+                                            </div>
+                                        </div>
+                                        <t t-if="not order.valid_address">
+                                            <div id="invalid_location" class="alert alert-danger ">
+                                                <strong>Warning!</strong>
+                                                No delivery to the selected location. Please update your location.
+                                            </div>
+                                        </t>
+                                        <div id="valid_time_delivery_mode">
+                                            <div class="alert alert-danger">
+                                                <span id="open_time"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row all_shipping">
+                                            <div class="col-lg-12">
+                                                <div class="row mt8">
+                                                    <div class="col-md-12 col-lg-12 one_kanban">
+                                                        <form action="/shop/address" method="post" class=''>
+                                                            <input type="hidden" name="csrf_token"
+                                                                   t-att-value="request.csrf_token()"/>
+                                                            <a role="button" href="#"
+                                                               class='a-submit btn btn-secondary mb16 btn-block'>
+                                                                <i class="fa fa-plus-square"/>
+                                                                <span>Add an address</span>
+                                                            </a>
+                                                        </form>
+                                                    </div>
+                                                    <t t-foreach="shippings" t-as="ship">
+                                                        <div class="col-md-12 col-lg-6 one_kanban">
+                                                            <t t-call="website_sale.address_kanban">
+                                                                <t t-set="actual_partner" t-value="order.partner_id"/>
+                                                                <t t-set='contact' t-value="ship"/>
+                                                                <t t-set='selected'
+                                                                   t-value="order.partner_shipping_id==ship"/>
+                                                                <t t-set='readonly' t-value="bool(len(shippings)==1)"/>
+                                                                <t t-set='edit_billing'
+                                                                   t-value="bool(ship==order.partner_id)"/>
+                                                            </t>
+                                                        </div>
+                                                    </t>
+                                                    <input style="display:none;" class="form-control" id="delivery_type"
+                                                           type="text" name="delivery_type"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                            <div id="checkout_footer" style="display: none;">
+                                <div class="d-flex justify-content-between mt-3">
+                                    <a role="button" href="/shop/cart" class="btn btn-secondary mb32">
+                                        <i class="fa fa-chevron-left"/>
+                                        <span>Return to Cart</span>
+                                    </a>
+                                    <a id="address_confirm" role="button" href="/shop/confirm_order"
+                                       class="btn btn-primary mb32">
+                                        <span>Confirm</span>
+                                        <i class="fa fa-chevron-right"/>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </xpath>
+        </template>
+
+        <template id="cart_delivery_cost" name="Picking Delivery Costs"
+                  inherit_id="website_sale_delivery.cart_delivery">
+            <xpath expr="//tr[@id='order_delivery']" position="replace">
+                <t t-if="website_sale_order.website_delivery_type == 'delivery'">
+                    <tr id="order_delivery" t-if="website_sale_order and website_sale_order.carrier_id">
+                        <td class="text-right border-0 text-muted"
+                            title="Delivery will be updated after choosing a new delivery method">Delivery:
+                        </td>
+                        <td class="text-xl-right border-0 text-muted">
+                            <span t-field="website_sale_order.amount_delivery" class="monetary_field"
+                                  style="white-space: nowrap;" t-options='{
+                              "widget": "monetary",
+                              "display_currency": website_sale_order.currency_id,
+                          }'/>
+                        </td>
+                    </tr>
+                </t>
+            </xpath>
+        </template>
+        <template id="shipping_methods" name="Shipping Method"
+                  inherit_id="website_sale.payment">
+            <xpath expr="//div[@id='shipping_and_billing']" position="replace">
+                <div class="card-body" id="shipping_and_billing">
+                    <t t-if="order.website_delivery_type == 'delivery'">
+                        <a class='center no-decoration' href='/shop/checkout' style="font-size:25px;">
+                            <i class="fa fa-edit"/>
+                            Select Delivery or Pickup Method
+                        </a>
+                        <t t-set="same_shipping"
+                           t-value="bool(order.partner_shipping_id==order.partner_id or only_services)"/>
+                        <div>
+                            <b>Billing<t t-if="same_shipping and not only_services">&amp; Delivering</t>:
+                            </b>
+                            <span t-esc='order.partner_id'
+                                  t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"
+                                  class="address-inline"/>
+                        </div>
+                        <div t-if="not same_shipping and not only_services"
+                             groups="sale.group_delivery_invoice_address">
+                            <b>Delivery:</b>
+                            <span t-esc='order.partner_shipping_id'
+                                  t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"
+                                  class="address-inline"/>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <a class='center no-decoration' href='/shop/checkout' style="font-size:25px;">
+                            <i class="fa fa-edit"/>
+                            Select Delivery or Pickup Method
+                        </a>
+                        <div>
+                            <b>Earliest Pickup Time
+                            </b>
+                            <span t-esc='order.pickup_date'
+                                  class="address-inline"/>
+                        </div>
+
+                    </t>
+                </div>
+            </xpath>
+            <xpath expr="//div[@id='shipping_and_billing']" position="inside">
+                <t t-if="order.website_delivery_type == 'delivery'">
+                    <t t-set="delivery_nb" t-value="deliveries and len(deliveries)"/>
+                    <div t-if="delivery_nb == 1" id="delivery_carrier" class="mt4">
+                        <b>Delivery Method:</b>
+                        <t t-foreach="deliveries" t-as="delivery">
+                            <t t-call="website_sale_delivery.payment_delivery_methods"/>
+                        </t>
+                    </div>
+                </t>
+            </xpath>
+
+        </template>
+
+        <!--Edit Button Visible For Public User-->
+        <template id="address_kanban_mod" name="Address Kanban Modification"
+                  inherit_id="website_sale.address_kanban">
+            <xpath expr="//div/div/a[hasclass('js_edit_address')]" position="replace">
+<!--            <xpath expr="//a[@class='js_edit_address']" position="replace">-->
+                <a style="display:block;" href="#" class="btn btn-link float-right p-0 js_edit_address no-decoration" role="button" title="Edit this address" aria-label="Edit this address"><i class='fa fa-edit'/></a>
+            </xpath>
+        </template>
+        <function model="ir.model.fields" name="formbuilder_whitelist">
+            <value>res.partner</value>
+            <value eval="[
+               'user_lat','user_long'
+            ]"/>
+        </function>
+
+    </data>
+</odoo>

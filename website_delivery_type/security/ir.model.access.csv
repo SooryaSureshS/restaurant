@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_vehicle_type,access_vehicle_type,model_vehicle_type,base.group_user,1,1,1,1
+access_vehicle_make,access_vehicle_make,model_vehicle_make,base.group_user,1,1,1,1
+access_vehicle_location,access_vehicle_location,model_vehicle_location,base.group_user,1,1,1,1
+access_feedback_report_wizard,access_feedback_report_wizard,model_feedback_report_wizard,base.group_user,1,1,1,1
+access_suburb_location,access_suburb_location,model_suburb_location,base.group_user,1,1,1,1

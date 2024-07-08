@@ -1,0 +1,340 @@
+.sub_container_skypro{
+    max-width:1302px;
+
+    margin: auto;
+    background: #4187a0 url("/mask_cutomization/static/src/image/BG.png") no-repeat center;
+
+}
+.container_print_area{
+        margin-top: 203px;
+        display: flex;
+}
+.picture_container{
+    width: 570px;
+    height: 570px;
+    background: #E6E6EE;
+    margin-left: 65px;
+    position: relative;
+}
+.mask_image_span{
+    position: absolute;
+    transform: translateY(-50%) !important;
+    left: 8%;
+    top: 50%;
+}
+.product_descriptions{
+        margin-left: 56px;
+            margin-top: 15px;
+}
+.product_name{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 16px;
+
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+    padding-top: 24px;
+}
+.upload_your_image{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    /* or 133% */
+
+    display: flex;
+    align-items: center;
+
+    /* #FFFFFF */
+
+    color: #FFFFFF;
+        padding-top: 24px;
+}
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    background: #626063;
+    border-radius: 1.47883px;
+    width: fit-content;
+}
+.image_thumbnail{
+        width: 50px;
+    height: 50px;
+    margin-left: 23px;
+}
+.ear_rope_band_color_container{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+}
+.ear_rope_color_pallet{
+margin-top: 13px;
+display:flex;
+}
+
+.pellete_color{
+        width: 41px;
+    height: 41px;
+    background: black;
+        margin-right: 13px;
+        cursor: pointer;
+
+}
+.pellete_active{
+        border: 4px solid white;
+}
+.nose_pad{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+}
+.nose_pad_image{
+    display:flex;
+}
+.nose_pad_yes_button{
+background: #626063;
+    border: 5.4344px solid #626063;
+    border-radius: 5.4344px;
+    color: #FFFFFF;
+    height: 50.27px;
+    width: 221.45px;
+    padding: 5px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 16px;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    padding-top: 10px;
+    margin-top: 20px;
+}
+.nose_pad_no_button{
+    background: #FFFFFF;
+    border: 5.4344px solid #626063;
+    border-radius: 5.4344px;
+    color: #626063;
+    height: 50.27px;
+    width: 221.45px;
+    padding: 5px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 16px;
+    align-items: center;
+    text-align: center;
+    padding-top: 10px;
+    margin-top: 20px;
+}
+.quantity_text{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+}
+.quantity_checker{
+    width: 218.98px;
+    height: 49.74px;
+    background: #FFFFFF;
+    border: 1.3586px solid #6E6E70;
+    border-radius: 10.8688px;
+    margin-top: 14px;
+        position: relative;
+}
+.quantity_minus{
+        position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.quantity_plus{
+        position: absolute;
+    top: 10px;
+    left: 103px;
+}
+.unit_of_measure{
+        position: absolute;
+    right: 11px;
+    top: 10px;
+}
+.quantity_text1{
+        position: absolute;
+    left: 33px;
+    top: 10px;
+}
+
+.quantity_div{
+    display: flex;
+        position: relative;
+
+}
+.amount_container{
+   position: absolute;
+    right: 0;
+    top: 21px;
+            font-family: 'Montserrat';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 17px;
+align-items: center;
+text-align: right;
+color: #FFFFFF;
+}
+.preview_button{
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 15px;
+line-height: 20px;
+/* or 133% */
+
+display: flex;
+align-items: center;
+text-align: center;
+
+/* Primary 03 */
+
+color: #FFFFFF;
+background: #626063;
+border-radius: 5.4344px;
+width:463.28px;
+height:50.27px;
+margin-top:97px;
+justify-content: center;
+margin-bottom:149px;
+border: none;
+}
+.preview_button1{
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 15px;
+line-height: 20px;
+/* or 133% */
+
+display: flex;
+align-items: center;
+text-align: center;
+
+/* Primary 03 */
+
+color: #FFFFFF;
+background: #626063;
+border-radius: 5.4344px;
+width:463.28px;
+height:50.27px;
+margin-top:34px;
+justify-content: center;
+margin-bottom:149px;
+border: none;
+}
+.preview_controllers{
+
+    text-align: center;
+    width: 570px;
+    margin-left: 65px;
+        margin-top: 74px;
+}
+.preview_span{
+    padding:10px;
+    cursor: pointer;
+}
+.view_none{
+    display: none;
+}
+#qty_order{
+    width: 65px;
+    text-align: center;
+    border: none;
+}
+.nose_pad_active{
+    border: 1px solid gold;
+}
+@media only screen and (max-width: 768px) {
+
+.container_skypro1 {
+    width:100%;
+}
+
+.container_mask_image {
+            width: 100vw;
+}
+.container_print_area {
+    margin-top: 10% !important;
+    display: block;
+        width: 100%;
+}
+.sub_container_skypro {
+    width: 100%;
+    }
+    .picture_container {
+    width: 100%;
+        margin-left: inherit;
+    }
+       .picture_container canvas{
+    width: 100% !important;
+    }
+    .preview_controllers {
+        text-align: center;
+        width: 100%;
+        margin-left: inherit;
+        margin-top: 74px;
+    }
+    .product_descriptions {
+    width: 100%;
+    margin-left: inherit;
+    text-align: center;
+}
+.product_descriptions img{
+    width:100vw;
+}
+.preview_button1 {
+    width: 100%;
+    }
+    .upload_your_image {
+            display: block;
+    }
+    .product_name {
+    display: block;
+    }
+}
+
+.conatiner_sky {
+    max-width: 1302px !important;
+}

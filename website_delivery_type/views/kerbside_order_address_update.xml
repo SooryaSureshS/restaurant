@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="kerbside_order_address_update" name="Update Address">
+            <t t-call="website.layout">
+                <br/>
+                <br/>
+                <t t-if="order == 'delivered'">
+                    <div id="order_address_update" class="container">
+                        <div class="row">
+                            <h2>Order <strong><t t-esc="order_name"/></strong> Already Delivered</h2>
+                        </div>
+                    </div>
+                </t>
+                <t t-elif="order == 'not_found'">
+                    <div id="order_address_update" class="container">
+                        <div class="row">
+                            <h2>Could'nt Find The Order <strong><t t-esc="order_name"/></strong></h2>
+                        </div>
+                    </div>
+                </t>
+                <t t-else="">
+                    <div id="order_address_update_new" class="container">
+                        <div class="row">
+                            <h2>Update Your Location Details Here</h2>
+                        </div>
+                        <br/>
+                        <div>
+                            <h4 style="color: #121c45;text-align:left;">
+                                <strong>Order Ref:
+                                    <t t-esc="order['name']"/>
+                                </strong>
+                            </h4>
+                        </div>
+                        <input style="display:none;" id="order_id" t-att-value="order['id']" type="text"
+                        name="name"/>
+                        <div class="row">
+                            <div id="curb_order" class="col-lg-12">
+                                <div class="col-lg-12">
+                                    <br/>
+                                    <div id="vehicle_details">
+<!--
+                                        <div style="display: flex;">
+                                            <select style="margin-right: 15px;" class="curb_select"
+                                                    name="vehicle_type_ids" id="vehicle_type_ids">
+                                            </select>
+                                            <select class="curb_select" name="vehicle_make_ids"
+                                                    id="vehicle_make_ids">
+                                            </select>
+                                        </div>
+-->
+<!--                                        <br/>-->
+<!--
+                                        <div style="display: flex;">
+                                            <input id="v_colour" type="text" placeholder="Vehicle Color"/>
+                                            <input id="license_plate_no" type="text"
+                                                   placeholder="License Plate Number"/>
+                                        </div>
+-->
+<!--
+                                        <div style="display: flex;">
+                                            <label id="invalid_vehicle_color_curb" style="display:none;color:red">Enter a valid color
+                                            </label>
+                                            <label class="address_editing_vehicle_details_padding"></label>
+                                            <label id="invalid_license_plate_no_curb" style="display:none;color:red">Enter the license no</label>
+                                        </div>
+-->
+                                        <br/>
+                                        <div>
+                                            <select class="curb_select_loc" name="vehicle_location_ids"
+                                                    id="vehicle_location_ids">
+                                            </select>
+                                            <br/>
+                                            <br/>
+                                            <textarea rows="6" name="location_note" id="location_note"
+                                                      placeholder="Location Note..." class="form-control"/>
+
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div id="update_div_curb_address_update">
+                                        <button id="update_button_curb_address_update" style="" class="tablinks">Inform the restaurant of my location
+                                        </button>
+                                    </div>
+                                    <br/>
+                                    <div id="update_div_curb_address_update">
+                                        <a t-att-href="order.get_order_summary()" style="text-decoration: underline;" class="myButton_status">Click Here To Check Order Summary</a>                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

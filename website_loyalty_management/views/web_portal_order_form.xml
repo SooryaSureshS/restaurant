@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="website_repeat_sale_order_in_form_loyalty"
+              inherit_id="sale.sale_order_portal_content">
+        <xpath expr="//section[@id='details']" position="before">
+            <div t-if="sale_order.wk_website_loyalty_points and sale_order.wk_loyalty_state=='done'">
+                        <strong class="d-block mb-1">Loyalty Points</strong>
+<!--                        <ul class="list-group mb-4">-->
+                            <div class="d-flex flex-wrap align-items-center">
+                                You got&amp;nbsp;<span t-esc="round(sale_order.wk_website_loyalty_points)" style="font-weight: bold;"/>&amp;nbsp; points from this order.
+                            </div>
+
+<!--                        </ul>-->
+                    </div>
+
+        </xpath>
+    </template>
+</odoo>

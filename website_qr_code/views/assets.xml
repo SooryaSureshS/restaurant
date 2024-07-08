@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="website_qr_code_assets" name="Website qrcode wine Assets" inherit_id="website.assets_frontend">
+		<xpath expr="." position="inside">
+            <script type="text/javascript" src="/website_qr_code/static/src/js/website_qr.js" />
+            <link rel="stylesheet" type="text/css" href="/website_qr_code/static/src/css/style.css"/>
+            <script type="text/javascript" src="/website_qr_code/static/src/js/jquery.grumble.min.js"/>
+<!--            <link rel="stylesheet" type="text/css" href="/website_qr_code/static/src/lib/grumble.min.css"/>-->
+            <link rel="stylesheet" type="text/css" href="/website_qr_code/static/src/css/timeline.css"/>
+
+            <script type="text/javascript" src="/website_qr_code/static/src/lib_timline/jquery-albe-timeline.min.js" />
+            <link rel="stylesheet" type="text/css" href="/website_qr_code/static/src/lib_timline/style-albe-timeline.css"/>
+            <link rel="stylesheet" type="text/css" href="/website_qr_code/static/src/lib_timline/animation.css"/>
+
+
+
+             <script type="text/javascript" src="/website_qr_code/static/src/js/track_item.js" />
+
+
+             <script type="text/javascript" src="/website_qr_code/static/src/lib2/flipclock.js" />
+            <link rel="stylesheet" type="text/css" href="/website_qr_code/static/src/lib2/flipclock.css"/>
+
+
+
+        </xpath>
+    </template>
+</odoo>

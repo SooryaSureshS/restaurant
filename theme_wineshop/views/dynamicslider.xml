@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="view_product_tempalte_brand_form" model="ir.ui.view">
+			<field name="name">product.template.form</field>
+			<field name="model">product.template</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="product.product_template_only_form_view" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='categ_id']" position="after">
+					<field name="brand_id" />
+				</xpath>
+			</field>
+	</record>
+	<record id="bizcommon_dynamic_blog_slider_form_view" model="ir.ui.view">
+		<field name="name">dynamic.blog.slider.form.view</field>
+		<field name="model">biz.blog.slider</field>
+		<field name="arch" type="xml">
+			<form string="Blog Post Slider">
+				<sheet>
+					<group>
+						<field name="name" />
+						<field name="blog_subtitle" />
+						<field name="active" invisible='1' />
+						<field name="no_of_objects" invisible='1' />
+						<field name="auto_slide" />
+						<field attrs="{'invisible': [('auto_slide', '=', False)]}"
+							name="sliding_speed" />
+						<field name="blog_post_ids" widget="many2many_tags" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="bizcommon_dynamic_blog_slider_list_view"
+		model="ir.ui.view">
+		<field name="name">dynamic.blog.slider.list.view</field>
+		<field name="model">biz.blog.slider</field>
+		<field name="arch" type="xml">
+			<tree string="Blog Post Slider">
+				<field name="name" />
+			</tree>
+		</field>
+	</record>
+	<record id="bizcommon_dynamic_blog_slider_action"
+		model="ir.actions.act_window">
+		<field name="name">Blog Slider</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">biz.blog.slider</field>
+		<field name="view_mode">tree,form</field>
+		<field eval="False" name="view_id" />
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Create a new Blog Slider
+			</p>
+		</field>
+	</record>
+
+	<!-- Category Slider Form View -->
+	<record id="cat_slider_form_view" model="ir.ui.view">
+		<field name="name">category.slider.form.view</field>
+		<field name="model">biz.category.slider</field>
+		<field name="arch" type="xml">
+			<form string="Category Slider">
+				<sheet>
+					<group>
+						<field name="name" />
+						<field name="active" invisible='1'/>
+						<field name="category_ids" widget="many2many_tags" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<!-- Category Slider List View -->
+	<record id="cat_slider_list_view" model="ir.ui.view">
+		<field name="name">category.slider.list.view</field>
+		<field name="model">biz.category.slider</field>
+		<field name="arch" type="xml">
+			<tree string="Category Slider">
+				<field name="name" />
+			</tree>
+		</field>
+	</record>
+	<!-- Category Slider Action -->
+	<record id="cat_slider_action" model="ir.actions.act_window">
+		<field name="name">Category Slider</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">biz.category.slider</field>
+		<field name="view_mode">tree,form</field>
+		<field eval="False" name="view_id" />
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Create a new Category Slider
+			</p>
+		</field>
+	</record>
+
+	<record id="prod_slider_form_view" model="ir.ui.view">
+		<field name="name">product.slider.form.view</field>
+		<field name="model">biz.product.slider</field>
+		<field name="arch" type="xml">
+			<form string="Products Slider">
+				<sheet>
+					<group>
+						<field name="name" />
+						<field name="active" invisible='1'/>
+						<field name="no_of_objects" />
+						<field name="auto_slide" />
+						<field attrs="{'invisible': [('auto_slide', '=', False)]}"
+							name="sliding_speed" />
+						<field name="product_ids" widget="many2many_tags" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="prod_slider_list_view" model="ir.ui.view">
+		<field name="name">product.slider.list.view</field>
+		<field name="model">biz.product.slider</field>
+		<field name="arch" type="xml">
+			<tree string="Products Slider">
+				<field name="name" />
+				<field name="no_of_objects" />
+			</tree>
+		</field>
+	</record>
+	<record id="prod_slider_action" model="ir.actions.act_window">
+		<field name="name">Products Slider</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">biz.product.slider</field>
+		<field name="view_mode">tree,form</field>
+		<field eval="False" name="view_id" />
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Create a new Product Slider
+			</p>
+		</field>
+	</record>
+
+	<record id="multi_slider_form_view" model="ir.ui.view">
+		<field name="name">multi.slider.form.view</field>
+		<field name="model">multi.tab.product.slider</field>
+		<field name="arch" type="xml">
+			<form string="Multi Product Slider Configration">
+				<sheet>
+					<group>
+						<field name="name" />
+						<field name="active" invisible='1'/>
+						<field name="auto_slide" />
+						<field name="sliding_speed"
+						attrs="{'invisible': [('auto_slide', '=', False)]}" />
+					</group>
+					
+					<group string="Add Tab and Products">
+						<field name="no_of_tabs" />
+						<field name="tab_label_1"
+							attrs="{'invisible': [('no_of_tabs', '=', False)]}" />
+						<field name="tab_one_product_ids"
+							attrs="{'invisible': [('no_of_tabs', '=', False)]}"
+							widget='many2many_tags' />
+						<field name="tab_label_2"
+							attrs="{'invisible': [('no_of_tabs', '=', False)]}" />
+						<field name="tab_two_product_ids"
+							attrs="{'invisible': [('no_of_tabs', '=', False)]}"
+							widget='many2many_tags' />
+
+						<field name="tab_label_3"
+							attrs="{'invisible': ['|', ('no_of_tabs', '=', False),
+                                                          ('no_of_tabs', 'not in', ('3', '4', '5'))],
+                                       'required': [('no_of_tabs', 'in', ('3', '4', '5'))]}" />
+						<field name="tab_three_product_ids"
+							attrs="{'invisible': ['|', ('no_of_tabs', '=', False),
+                                                       ('no_of_tabs', 'not in', ('3', '4', '5'))],
+                                    'required': [('no_of_tabs', 'in', ('3', '4', '5'))]}"
+							widget='many2many_tags' />
+
+						<field name="tab_label_4"
+							attrs="{'invisible': ['|', ('no_of_tabs', '=', False),
+                                                          ('no_of_tabs', 'not in', ('4', '5'))],
+                                       'required': [('no_of_tabs', 'in', ('4', '5'))]}" />
+						<field name="tab_four_product_ids"
+							attrs="{'invisible': ['|', ('no_of_tabs', '=', False),
+                                                       ('no_of_tabs', 'not in', ('4', '5'))],
+                                    'required': [('no_of_tabs', 'in', ('4', '5'))]}"
+							widget='many2many_tags' />
+
+						<field name="tab_label_5"
+							attrs="{'invisible': ['|', ('no_of_tabs', '=', False),
+                                                          ('no_of_tabs', '!=', '5')],
+                                       'required': [('no_of_tabs', '=', '5')]}" />
+						<field name="tab_five_product_ids"
+							attrs="{'invisible': ['|', ('no_of_tabs', '=', False),
+                                                       ('no_of_tabs', '!=', '5')],
+                                    'required': [('no_of_tabs', '=', '5')]}"
+							widget='many2many_tags' />
+
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="multi_slider_list_view" model="ir.ui.view">
+		<field name="name">multi.slider.list.view</field>
+		<field name="model">multi.tab.product.slider</field>
+		<field name="arch" type="xml">
+			<tree string="Dynamic Slider">
+				<field name="name" />
+				<field name="active" invisible='1'/>
+				<field name="no_of_tabs" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="multi_slider_action" model="ir.actions.act_window">
+		<field name="name">Multi Tab Product Slider</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">multi.tab.product.slider</field>
+		<field name="view_mode">tree,form</field>
+		<field name="view_id" eval="False" />
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Create a new Multi Tab Product Slider
+			</p>
+		</field>
+	</record>
+	
+	
+	<menuitem id="theme_wineshop_customization_menu"
+              name="Bizople Theme Configuration"
+              groups="base.group_system"
+              action="sale.product_template_action"
+              parent="website.menu_website_configuration"
+              sequence="100"/>
+	<menuitem id="multi_slider_menu"
+		name="Multi Tab Product Slider"
+		action="multi_slider_action"
+		parent="theme_wineshop_customization_menu"
+		sequence="20" />
+	<menuitem action="prod_slider_action" id="prod_slider_menu"
+		name="Product Slider"
+		parent="theme_wineshop_customization_menu"
+		sequence="10" />
+	<menuitem action="cat_slider_action" id="cat_slider_menu"
+		name="Category Slider"
+		parent="theme_wineshop_customization_menu"
+		sequence="30" />
+	<menuitem action="bizcommon_dynamic_blog_slider_action"
+		id="bizcommon_dynamic_blog_slider_menu"
+		name="Blog Slider"
+		parent="theme_wineshop_customization_menu"
+		sequence="40" />
+</odoo>

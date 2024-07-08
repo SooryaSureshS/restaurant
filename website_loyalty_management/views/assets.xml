@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="website_loyalty_management_coded_assets" name="Website Reward" inherit_id="website.assets_frontend">
+		<xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/css" href="/website_loyalty_management/static/src/css/reward.css"/>
+            <script type="text/javascript" src="/website_loyalty_management/static/src/js/website_loyalty_management.js"></script>
+            <script type="text/javascript" src="/website_loyalty_management/static/src/js/website_loyality_modal.js"></script>
+
+        </xpath>
+    </template>
+</odoo>

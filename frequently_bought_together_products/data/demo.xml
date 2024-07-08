@@ -1,0 +1,22 @@
+<odoo>
+<!-- Copyright (c) 2018-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+	<data noupdate="1">
+
+        <function model="ir.default" name="set"
+        eval="('frequently.bought.products.conf', 'fbtp_header', 'FREQUENTLY BOUGHT TOGETHER PRODUCT')"/>
+        <function model="ir.default" name="set"
+        eval="('frequently.bought.products.conf', 'description', 'Add all these products frequently with the selected with this product. You can also select the products to be added on your choice. Also select the variant of your choice to be purchased. These are the products that most of the users are buying frequently.')"/>
+        <function model="ir.default" name="set"
+        eval="('frequently.bought.products.conf', 'cart_button_text', 'ADD SELECTED TO CART')"/>
+
+        <record id="product.product_product_8" model="product.product">
+            <field name="name">iMac (Frequently Bought Demo Added)</field>
+            <field name="wk_frequently_bought_products" eval="[(6,0,[ref('product.product_product_11_product_template'),ref('product.product_product_4_product_template'),ref('product.product_product_11')])]"/>
+        </record>
+
+    </data>
+
+
+
+</odoo>

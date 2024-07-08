@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_whisky_sale" name="Whisky Sale">
+		<section class="whisky-homepage-sale">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-6 p-0">
+							<div class="image">
+								<a href="#">
+									<img class="img img-fluid" src="/theme_wineshop/static/src/img/sale1.jpg" alt="image"/>
+								</a>
+							</div>
+						</div>
+						<div class="col-md-6 p-0">
+							<div class="image">
+								<a href="#">
+									<img class="img img-fluid" src="/theme_wineshop/static/src/img/sale2.jpg" alt="image"/>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+	</template>
+</odoo>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <template id="assets_pos_mcd_open_orders" inherit_id="point_of_sale.assets">
+          <xpath expr="." position="inside">
+              <script type="text/javascript" src="/pos_mcd_open_order/static/src/js/posOpenOrders.js"></script>
+              <script type="text/javascript" src="/pos_mcd_open_order/static/src/js/receiptSendToKitchen.js"></script>
+              <script type="text/javascript" src="/pos_mcd_open_order/static/src/js/models.js"></script>
+              <script type="text/javascript" src="/pos_mcd_open_order/static/src/js/multiprint.js"></script>
+              <script type="text/javascript" src="/pos_mcd_open_order/static/src/js/addQty.js"></script>
+              <script type="text/javascript" src="/pos_mcd_open_order/static/src/js/productScreen.js"></script>
+              <script type="text/javascript" src="/pos_mcd_open_order/static/src/js/SendToKitchen.js"></script>
+<!--              <script type="text/javascript" src="/pos_open_orders/static/src/js/models.js"></script>-->
+<!--              <script type="text/javascript" src="/pos_open_orders/static/src/js/openWidget.js"></script>-->
+<!--              <script type="text/javascript" src="/pos_open_orders/static/src/js/PaymentScreenInherit.js"></script>-->
+<!--              <script type="text/javascript" src="/pos_open_orders/static/src/js/sendTokitchen.js"></script>-->
+<!--              <link rel="stylesheet" type="text/css" href="/pos_return/static/src/css/pos.css"/>-->
+<!--              <link rel="stylesheet" type="text/css" href="/pos_open_orders/static/src/css/style.css"/>-->
+          </xpath>
+        </template>
+</odoo>

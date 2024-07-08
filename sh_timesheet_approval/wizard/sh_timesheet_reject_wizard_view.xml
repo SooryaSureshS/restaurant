@@ -1,0 +1,36 @@
+<?xml version ="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="sh_timesheet_reject_wizard_form_view" model="ir.ui.view">
+        <field name="name">sh.timesheet.reject.wizard.form.view</field>
+        <field name="model">sh.timesheet.reject.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Timesheet Reject">
+                <group>
+                    <group>
+                        <field name="name" />
+                    </group>
+                </group>
+                <footer>
+                    <button string="Reject" name="action_reject" type="object" class="btn-primary" />
+                    or
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="sh_action_timesheet_reject" model="ir.actions.act_window">
+        <field name="name">Timesheet Reject</field>
+        <field name="res_model">sh.timesheet.reject.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="sh_timesheet_reject_wizard_form_view" />
+    </record>
+    <record id="sh_mass_reject_action" model="ir.actions.act_window">
+        <field name="name">Reject Timesheet</field>
+        <field name="res_model">sh.timesheet.reject.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="groups_id" eval="[(4, ref('hr_timesheet.group_hr_timesheet_approver'))]"/>
+        <field name="binding_model_id" ref="model_account_analytic_line" />
+        <field name="binding_view_types">list</field>
+    </record>
+</odoo>

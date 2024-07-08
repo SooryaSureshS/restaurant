@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="purchase_filter_wizard_action_form" model="ir.ui.view">
+        <field name="name">purchase.filter.wizard.form</field>
+        <field name="model">purchase.filter.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet class="o_row">
+                    <div class=" row mb-5">
+                        <div class="col-3 d-inline">
+                            <field name="product_specific_filter" string="Product Specific Filter" widget="boolean_button"/>
+                        <span class="ml-3">Product Specific Filter</span>
+                        </div>
+                        <div class="col-3 d-inline">
+                            <field name="purchased_on_bool" string="purchased on" widget="boolean_button" options="{'product_specific_filter': False}"/>
+                        <span class="ml-3">Purchased On</span>
+                        </div>
+                        <div class="col-3">
+
+                        </div>
+                    </div>
+                    <group attrs="{'invisible': [('product_specific_filter', '==', False)]}">
+                        <field name="product_name" string="Product Name"/>
+                    </group>
+                    <group attrs="{'invisible': [('product_specific_filter', '==', False)]}">
+                        <group>
+                            <field name="date_from" string="start date"/>
+                        </group>
+                        <group>
+                            <field name="date_to" string="end date"/>
+                        </group>
+                    </group>
+                    <group attrs="{'invisible': [('purchased_on_bool', '==', False)]}">
+                        <field name="purchased_on" string="Purchased on"/>
+                    </group>
+                </sheet>
+
+                <footer>
+                    <button name="action_apply" type="object" string="Apply" class='btn-primary apply_purchase_filter'/>
+                    <button name="discard" string="Discard" class='btn-secondary' special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

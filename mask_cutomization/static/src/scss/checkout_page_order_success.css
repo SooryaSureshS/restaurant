@@ -1,0 +1,57 @@
+.content-banner-success{
+    background: url('BG (1).png');
+    background-size: cover;
+ 
+font-family: 'Montserrat';
+line-height: 2;
+color: white;
+text-align: center;
+padding-top: 7%;
+padding-bottom: 7%;
+/* height: 80vh; */
+/* padding-bottom: 20%; */
+/* display: flex; */
+}
+
+.order-success p{
+    font-size: 28px;
+    font-weight: 700;
+}
+#small{
+    font-size: 15px;
+    font-weight: 500;
+}
+.order-success button{
+    color: white;
+    background-color: #626063;
+    height: 68px;
+    width: -webkit-fill-available;
+    border-radius: 11.4286px;
+    border: none;
+}
+.order-success  a{
+    color: white;
+    background-color: #626063;
+    height: 68px;
+    width: -webkit-fill-available;
+    border-radius: 11.4286px;
+    border: none;
+    display: block;
+    padding: 18px;
+    margin: auto;
+        text-decoration: unset;
+}
+@media screen and (min-width: 777px) {
+    .order-success button{
+        width: 500px;
+    }
+     .order-success a{
+        width: 500px;
+    }
+    #small{
+        font-size: 20px;
+    }
+    .order-success p{
+        font-size: 40px;
+    }
+}

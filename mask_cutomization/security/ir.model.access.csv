@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_line,product.line,model_product_line,,1,1,1,1
+access_custom_mask_website_sequence.py,custom_mask_website_sequence,model_custom_mask_website_sequence,,1,1,1,1

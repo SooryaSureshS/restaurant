@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="return_message_success" name="Return Message Success">
+
+<!--        <head>-->
+<!--                <script>-->
+<!--                    function onload_img() {-->
+<!--                        setTimeout('print_img()',1000);-->
+<!--                    }-->
+<!--                    function print_img() {-->
+<!--                        console.log("pppppppppppppppppppppppppppppppppppp")-->
+<!--                        window.history.go(-2);-->
+<!--                    }-->
+<!--                </script>-->
+<!--            </head>-->
+<!--            <body onload='onload_img()'>-->
+<!--            </body>-->
+        <style>
+            .message_container{
+            width:250px;
+            height:250px;
+            margin:auto auto;
+            border-radius:20px;
+            text-align:center;
+            background-image: linear-gradient(#f0ebeb, white);
+            margin:0px auto;
+            }
+            .message_text{
+            color:green;
+            font-size:9px;
+            position:relative;
+            margin-top:200px;
+            }
+            .message_text_head{
+            position:relative;
+            top:100px;
+            }
+        </style>
+        <div class="message_container">
+            <div class="message_text">
+                <h2 class="message_text_head">Success !!</h2>
+            </div>
+        </div>
+    </template>
+</odoo>

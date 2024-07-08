@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="product_gift_message" inherit_id="website_sale.product">
+		<xpath expr="//div[@id='product_details']/h1" position="after">
+			<t t-if="product.gift_ok == True">
+				<div t-if="product.gift_card_type == 'ecard'" class="form-group alert alert-info" role="alert" >
+					<t t-esc="website.ecard_message"/>
+				</div>
+				<div t-if="product.gift_card_type == 'pcard'" class="form-group alert alert-info" role="alert" >
+					<t t-esc="website.pcard_message"/>
+				</div>
+			</t>
+		</xpath>
+	</template>
+</odoo>

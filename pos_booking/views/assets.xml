@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- vim:fdn=3:-->
+<odoo>
+    <data>
+
+        <template id="pos_table_booking_assets" name="pod-table-booking index" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/pos_booking/static/src/js/PaymentScreen.js"></script>
+                <script type="text/javascript" src="/pos_booking/static/src/js/booking.js"></script>
+                <script type="text/javascript" src="/pos_booking/static/src/js/TablePopupConfirm.js"></script>
+                <script type="text/javascript" src="/pos_booking/static/src/js/Newbooking.js"></script>
+                <script type="text/javascript" src="/pos_booking/static/src/js/TableBookingInfo.js"></script>
+                <script type="text/javascript" src="/pos_booking/static/src/js/TableBookingLayout.js"></script>
+                <script type="text/javascript" src="/pos_booking/static/src/js/FloorEditMode.js"></script>
+                <script type="text/javascript" src="/pos_booking/static/src/js/availableTable.js"></script>
+                <script type="text/javascript" src="/pos_booking/static/src/js/TableEditingBooking.js"></script>
+                <script type="text/javascript" src="/pos_booking/static/src/js/models.js"></script>
+                <script type="text/javascript" src="/pos_booking/static/src/js/tableFutureEditing.js"></script>
+                <script type="text/javascript" src="/pos_booking/static/src/lib/timer.jquery.js"></script>
+                <script type="text/javascript" src="/pos_booking/static/src/js/edittablePopup.js"></script>
+
+<!--                <script type="text/javascript" src="/pos_booking/static/src/lib/bootstrap-datetimepicker.js"></script>-->
+<!--                  <script type="text/javascript" src="/pos_gift_card/static/src/js/GiftCardButton.js"></script>-->
+<!--                  <script type="text/javascript" src="/pos_gift_card/static/src/js/gift_card_popup.js"></script>-->
+<!--                  <script type="text/javascript" src="/pos_gift_card/static/src/js/redeem.js"></script>-->
+<!--                  <script type="text/javascript" src="/pos_gift_card/static/src/js/redeem_popup.js"></script>-->
+
+<!--                <script type="text/javascript" src="/pos_gift_card/static/lib/JsBarcode.all.min.js"></script>-->
+<!--                <script type="text/javascript" src="/pos_gift_card/static/lib/jquery.simplePagination.js"></script>-->
+
+<!--&lt;!&ndash;                <link rel="stylesheet" type="text/css" href="/l10_no_pos_gift_card/static/src/css/pos.css"/>&ndash;&gt;-->
+<!--                <link rel="stylesheet" type="text/css" href="/pos_gift_card/static/src/css/gift.css"/>-->
+<!--                <link rel="stylesheet" href="/pos_gift_card/static/src/css/datepicker.css" id="pos-stylesheet" />-->
+                <link rel="stylesheet" href="/pos_booking/static/src/css/pos.css" id="pos-stylesheet" />
+<!--                <link rel="stylesheet" href="/pos_booking/static/src/lib/bootstrap-datetimepicker-build.css" id="pos-stylesheet" />-->
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

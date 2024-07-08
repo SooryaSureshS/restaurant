@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="organize_report_wizard" model="ir.ui.view">
+        <field name="name">Organize Reporting</field>
+        <field name="model">organize.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Organize Report">
+                <group>
+                    <group>
+                        <field name="from_date" options='{"related_start_date": "start_datetime"}'/>
+                    </group>
+                    <group>
+                        <field name="to_date" />
+                    </group>
+                </group>
+                <footer>
+                    <button name="print_report" string="Print" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <template id="external_layout_standard_custom_organize_report">
+        <div class="header">
+            <div style="float: left; width: 100%;font-size:5px;margin-top:15px;border-bottom: 3px solid black;">
+                <p style="margin:0px !important;font-size:16px;font-weight:bold">Organize Reporting</p>
+                <p style="margin-top:15px !important;font-size:12px;">Report Period &#160; &#160; &#160; &#160;
+
+                    <t t-esc="start_date"></t>
+                    to
+                    <t t-esc="end_date"></t>
+                    <br/>
+                    <span style="float:right;">Printed:
+                        <t t-set="date" t-value="context_timestamp(datetime.datetime.now())"/>
+
+                        <span t-esc="date.strftime('%e %b %Y, %I:%M %p')"/>
+                        <br/>
+                        Page
+                        <span class="page"/>
+                        of
+                        <span class="topage"/>
+                    </span>
+                </p>
+                <br/>
+            </div>
+        </div>
+    </template>
+
+    <template id="organize_template">
+        <t t-call="web.html_container">
+            <t t-call="organize.external_layout_standard_custom_organize_report"/>
+
+            <div class="page">
+                <div>
+                    <table style="border: 1px solid black;width:100%;border-collapse: collapse;text-align: center;">
+                        <thead>
+                            <tr>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse; padding: 2px;"
+                                    colspan="7" >
+                                    Organize Reporting
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;  padding: 2px;">Start
+                                    Date
+                                </th>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;  padding: 2px;">End
+                                    Date
+                                </th>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;  padding: 2px;">
+                                    Employee
+                                </th>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;  padding: 2px;">Role
+                                </th>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;  padding: 2px;">
+                                    Allocated Time
+                                </th>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;  padding: 2px;">
+                                    Allocated Hours
+                                </th>
+                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;  padding: 2px;">
+                                    Repeating
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="data" t-as="dat">
+                                <tr>
+                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                        <t t-esc="dat['start_datetime']"/>
+                                    </td>
+                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                        <t t-esc="dat['end_datetime']"/>
+                                    </td>
+                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                        <t t-esc="dat['emp']"/>
+                                    </td>
+                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                        <t t-esc="dat['role']"/>
+                                    </td>
+                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                        <t t-esc="dat['allocated_per']"/>
+                                    </td>
+                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                        <t t-esc="dat['allocated_hou']"/>
+                                    </td>
+                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                        <t t-esc="dat['repeat']"/>
+                                    </td>
+                                </tr>
+                            </t>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

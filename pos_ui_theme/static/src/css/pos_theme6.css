@@ -1,0 +1,261 @@
+/*  ********* The black loading screen ********* */
+.pos .loader{
+    background-color: #eb6971;
+    color: #731115;
+}
+.pos .loader-feedback .progressbar > .progress{
+    background: #d09235;
+}
+.pos .order {
+    background-color:#eb6971;
+}
+.pos .order .orderline .product-name{
+    color:#731115;
+}
+.pos .order .orderline .price{
+    color:#731115;
+}
+.pos .order .summary .total {
+    color:#731115;
+}
+.pos .order-scroller{
+    background-color: #eb6971;
+}
+.pos .leftpane .pads {
+    border-top: solid 3px #b5b5b7;
+}
+/* top header */
+.pos .pos-topheader {
+    background:#350608;
+}
+/* price tag */
+.pos .product .price-tag {
+    background:#350608;
+}
+.pos .order .orderline .info-list {
+    color:white;
+}
+.pos .order .orderline .info-list em {
+    color:white;
+}
+/* the search box */
+.pos .searchbox input {
+    border: 1px solid #eb6971;
+    background-color: #731115;
+    color: white;
+}
+.pos .product .product-name {
+    padding-left:4px;
+}
+.pos .subwindow .subwindow-container{
+    background-color:#731115;
+}
+.pos .product {
+    width: 130px;
+    border-radius: 3px 22px;
+    border-color:#731115;
+}
+
+.pos .order-button.selected {
+    background: #731115;
+    color: white;	
+}
+.pos .order-button.selected .order-sequence {
+    background:#eb6971;
+}
+.pos .screen .content-cell .content-container{
+    background-color:#eb6971;
+}
+.pos .category-simple-button{
+    background: #731115;
+}
+.pos .categories {
+    position: relative;
+    border-bottom: solid 3px #b5b5b7;
+}
+.pos button, .pos a.button {
+    background: #eb6971;
+    color: #731115;
+}
+.pos .actionpad .button .fa-user {
+    color: #731115;
+}
+/* set custmer from actionpad button */
+.pos .control-button.highlight,
+.pos .button.highlight {
+    background: #b5b5b7 !important;
+    border: solid 1px #b5b5b7 !important; 
+    color: white !important;
+}
+.pos .clientlist-screen .client-name {
+    color:#eb6971;
+}
+.pos .clientlist-screen .client-detail{
+    color:#eb6971;
+}
+.pos .clientlist-screen .client-detail > .label{
+    color:#eb6971;
+}
+.pos .clientlist-screen .client-list tr.highlight {
+    transition: all 150ms linear;
+    background: #eb6971 !important;
+    color: white;
+}
+.pos .clientlist-screen .client-list th,
+.pos .clientlist-screen .client-list td {
+    padding: 0px 8px;
+    color:#731115;
+}
+.pos .clientlist-screen .client-details{
+    border-bottom: solid 5px #731115;
+}
+.pos .clientlist-screen .edit-buttons .button {
+    color:#eb6971;
+}
+.pos .rightpane-header {
+    background: #eb6971;
+}
+.pos .breadcrumb-button {
+    color: #731115;
+}
+.pos .order .order-empty {
+    color: #731115;
+}
+.pos .actionpad .button.pay .pay-circle {
+    background: #731115;
+}
+.pos .actionpad .button {
+    color: #731115;
+}
+.pos .numpad button {
+    color: #eb6971;
+    background: #731115;
+}
+.pos .mode-button.selected-mode {
+    color: white;
+    background:  #eb6971;
+    border-color: transparent;
+}
+.pos .category-list {
+    color:#eb6971;
+    background: #eb6971;
+}
+.pos .category-button {
+    width: 130px;
+    border-radius: 3px 22px;
+    border-color:#731115;
+}
+.pos .pos-branding .username{
+    color:white;
+}
+.pos .pos-rightheader .header-button{
+    color: white;
+}
+.pos .pos-rightheader > * {
+    border-right: 1px solid white;
+}
+/* payment screen */
+.screen .screen-content {
+    background-color: #eb6971;
+}
+.paymentmethods .button {
+    background: white;
+    border: solid 1px #731115;
+    color:#731115;
+}
+.screen .top-content{
+    border-bottom: dashed 1px #731115;
+    
+}
+.screen .top-content > h1{
+    color:#731115;
+}
+.screen .left-content{
+    border-right: dashed 1px #731115;
+}
+.pos .paymentlines-container {
+    border-bottom: dashed 1px #731115;
+}
+.splitbill-screen .order-info {
+    border-bottom: dashed 1px #731115;
+}
+.pos .paymentlines .label > * {
+    color:#731115;
+}
+.pos .paymentline.selected {
+    background: #731115;
+}
+.pos .paymentline.selected .edit {
+    background: white;
+    box-shadow: 0px 0px 0px 3px #731115;
+    color: #731115;
+}
+.payment-screen .payment-buttons .button {
+    background: white;
+    border: solid 1px #731115;
+    color:#731115;
+}
+.pos .paymentline .col-change.highlight {
+    background: #731115;
+}
+.payment-screen .paymentlines-empty .total {
+    color: #731115;
+}
+.payment-screen .paymentlines-empty .message {
+    color:#731115;
+}
+.screen .centered-content{
+    border-right: dashed 1px #731115;
+    border-left: dashed 1px #731115;
+}
+/* The receipt screen */
+.pos .receipt-screen .centered-content .button {
+    background: #731115;
+    border: solid 1px #eb6971;
+    color:#eb6971;
+}
+.pos .receipt-screen .centered-content .button .fa{
+    color:#eb6971;
+
+}
+.pos .pos-sale-ticket {
+    border: solid 1px #731115;
+    color:black;
+}
+/* hidden class control buttons*/
+.pos .control-button {
+    background:#eb6971;
+    color:#731115;
+}
+/* global discount*/
+/*.pos .popup.popup-number {
+    background: #252839; 
+}*/
+.pos .popup-number .title,
+.pos .popup-textinput .title
+{
+    color:#eb6971;
+}
+.pos .popup input:focus,
+.pos .popup-input.active {
+    box-shadow: 0px 0px 0px 3px #eb6971;
+}
+.pos .popup-numpad .input-button,
+.pos .popup-numpad .mode-button {
+    border: solid 1px #731115;
+    background: white;
+    color:#eb6971;
+}
+.pos .footer.centered .button {
+    color:#eb6971;
+}
+.pos .popup .footer{
+    background: #731115;
+}
+.pos .popup .title {
+    background: #731115;
+}
+.receipt-screen .default-view .actions .send-email button.send.highlight {
+    color: white;
+    background-color: #731115;
+}

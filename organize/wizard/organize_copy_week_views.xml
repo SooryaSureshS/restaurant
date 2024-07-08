@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="organize_copy_week_form" model="ir.ui.view">
+        <field name="name">organize.copy.week.form</field>
+        <field name="model">organize.copy.week</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <label for="start_datetime">Period</label>
+                            <div class="o_row">
+                                <field name="start_datetime" widget="daterange"
+                                       options='{"related_end_date": "end_datetime"}'/>
+                                <i class="fa fa-long-arrow-right mx-2" aria-label="Arrow icon" title="Arrow"/>
+                                <field name="end_datetime" widget="daterange"
+                                       options='{"related_start_date": "start_datetime"}'/>
+                            </div>
+                        </group>
+                        <group>
+
+                            <tree create="1" edit="1" delete="1" editable="bottom">
+                                <field name="slot_ids"/>
+                            </tree>
+                        </group>
+                        <group>
+                            <label for="start_datetime1">Select the week to copy</label>
+                            <div class="o_row">
+                                <field name="start_datetime1"/>
+                            </div>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_send" type="object" string="Copy" class='btn-primary'/>
+                    <button name="discard" string="Discard" class='btn-secondary' special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="organize_week_copy_action" model="ir.actions.act_window">
+        <field name="name">Copy Previous Week</field>
+        <field name="res_model">organize.copy.week</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>
+
+

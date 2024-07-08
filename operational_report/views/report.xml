@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+
+		<record id="operational_xlsx_report" model="ir.actions.report">
+            <field name="name">Hash integrity result PDF</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">operational_report.report_operational_xlsx</field>
+            <field name="report_file">operational_report.report_operational_xlsx</field>
+        </record>
+
+        <record id="graph_operational_xlsx_report" model="ir.actions.report">
+            <field name="name">Graph Hash integrity result PDF</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">operational_report.graph_report_operational_xlsx</field>
+            <field name="report_file">operational_report.graph_report_operational_xlsx</field>
+        </record>
+
+        <record id="operational_report_wizard_form" model="ir.ui.view">
+            <field name="name">Operational Report</field>
+            <field name="model">operational.report.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Operational Report">
+                    <group>
+                        <group>
+                            <field name="from_date"/>
+                        </group>
+                        <group>
+                            <field name="to_date"/>
+                            <field name="file_name" invisible="1" />
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="print_report" string="Print" type="object" class="btn-primary"/>
+                        <button name="print_graph_report" string="Print Graph" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                        <field name="report_summary_file" readonly="1" filename="file_name" class="oe_highlight"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+		
+        <record id="action_operational_report_new" model="ir.actions.act_window">
+            <field name="name">Operational Report</field>
+            <field name="res_model">operational.report.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="operational_report_wizard_form"/>
+            <field name="target">new</field>
+		</record>
+		
+		<menuitem id="menu_report_operational_wizard_new"
+			name="Operational Report"
+			action="action_operational_report_new"
+			parent="website_sale.menu_reporting"
+			sequence="2" />
+	</data>
+</odoo>

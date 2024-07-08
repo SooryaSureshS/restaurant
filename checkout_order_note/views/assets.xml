@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="theme_wineshop_check_out_sassets" name="Theme WineShop check_out Inherit Assetss" inherit_id="website.assets_frontend">
+		<xpath expr="." position="inside">
+            <script type="text/javascript" src="/checkout_order_note/static/src/js/check_out.js" />
+            <link rel="stylesheet" type="text/css" href="/checkout_order_note/static/src/css/style.css"/>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    <template id="booking_template" name="Table Booking">
+            <t t-call="website.layout">
+                <div class="container" id="booking_table" >
+                    <div class="reservation_container" style="display:none;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="reservation_table_title">Reservation You Table</span>
+                        </div>
+                    </div>
+                    <div class="container_model" style="margin-top: 25px;">
+                        <div class="container_form" >
+                            <div class="row">
+                                <div class="headding_find_table">
+                                    Find a table
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="border-bottom_hr"></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-3" style="float: left;">
+                                        <select name="" onclick="return false;" id="select_person">
+                                            <option value="1">1 people </option>
+                                            <option value="2">2 people</option>
+                                            <option value="3">3 people</option>
+                                            <option value="4">4 people</option>
+                                            <option value="5">5 people</option>
+                                            <option value="6">6 people</option>
+                                            <option value="7">7 people</option>
+                                            <option value="8">8 people</option>
+                                            <option value="9">9 people</option>
+                                            <option value="10">10 people</option>
+                                            <option value="11">11 people</option>
+                                            <option value="12">12 people</option>
+                                            <option value="13">13 people</option>
+                                            <option value="14">14 people</option>
+                                            <option value="15">15 people</option>
+                                            <option value="16">16 people</option>
+                                            <option value="17">17 people</option>
+                                            <option value="18">18 people</option>
+                                            <option value="19">19 people</option>
+                                            <option value="20">20 people</option>
+                                     </select>
+                                    </div>
+                                    <div class="col-md-3" style="float: left;">
+                                        <input type="date" data-date-inline-picker="true" id="booking_date" style="height: 42px;border: solid 1px #e8e8e8;width: 125px;font-size: small;"/>
+                                    </div>
+                                     <div class="col-md-3" style="float: left;">
+                                           <select name="" onclick="return false;" id="select_time">
+                                          </select>
+                                     </div>
+                                     <div class="col-md-3" style="float: left;">
+                                         <button class="find_table">Find a table</button>
+                                     </div>
+                                </div>
+                            </div>
+                            <div class="row" style=" margin-top: 25px;font-family: system-ui;">
+                                <div class="col-md-12">
+                                </div>
+                            </div>
+                              <div class="row">
+                                <div class="border-bottom_hr"></div>
+                            </div>
+                            <div class="row">
+                                <div class="table_available">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

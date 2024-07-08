@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_sales_report_details_wizard" model="ir.ui.view">
+            <field name="name">sales.report.wizard.form</field>
+            <field name="model">sales.report.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Sales Report">
+                    <group>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                    </group>
+                    <footer>
+                        <button name="generate_report_pdf" string="Print" type="object" class="btn-primary"/>
+                        <button name="generate_report_xlsx" string="Print Excel" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+</odoo>

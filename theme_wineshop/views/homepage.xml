@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="wineshop_homepage" model="ir.ui.view">
+		<field name="name">Wineshop Homepage</field>
+		<field name="type">qweb</field>
+		<field name="key">website.wineshop_homepage</field>
+		<field name="arch" type="xml">
+			<t name="Wineshop Homepage" t-name="wineshop_homepage">
+				<t t-call="website.layout">
+					<div class="oe_structure oe_empty" id="wrap">
+						<div class="oe_structure"/>
+						<!-- banner start -->
+						<section class="wineshop-home-banner pt112 pb112" style="background-image: url('/theme_wineshop/static/src/img/banner-bg.jpg');">
+							<div class="container">
+								<div class="row align-items-center">
+									<div class="col-md-5 mb-5 mb-md-0 o_anim_fade_in_left o_animate">
+										<div class="content text-center text-md-left">
+											<p class="text-primary">Introducing WineShop Wines</p>
+											<h2 class="text-white">Refreshment</h2>
+											<h1 class="text-white">inside box</h1>
+										</div>
+									</div>
+									<div class="col-md-7">
+										<img class="img img-fluid o_animate o_anim_fade_in_right" src="/theme_wineshop/static/src/img/banner-bottle.png" alt="image"/>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- banner end -->
+						<div class="oe_structure"/>
+						<!-- message start -->
+						<section class="wineshop-home-message pt64 pb64">
+							<div class="container-fluid">
+								<div class="row align-items-xl-center">
+									<div class="col-lg-6">
+										<div class="image">
+											<img class="img img-fluid" src="/theme_wineshop/static/src/img/winemaker.jpg" alt="image"/>
+										</div>
+									</div>
+									<div class="col-lg-5">
+										<div class="content mt-5 mt-xl-0">
+											<p class="subtitle text-primary">Integer varius laoreet</p>
+											<h3 class="text-black">Lorem ipsum dolor sit amet</h3>
+											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet elit leo.</p>
+											<p>Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- message end -->
+						<div class="oe_structure"/>
+						<!-- single product start -->
+						<section class="wineshop-home-single-product pt152 pb152 bg-light">
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="image">
+											<img class="img img-fluid" src="/theme_wineshop/static/src/img/single-product.png" alt="image"/>
+										</div>
+									</div>
+									<div class="col-lg-6 col-xl-5">
+										<div class="content">
+											<h6>2017</h6>
+											<p class="subtitle text-primary">Donec faucibus</p>
+											<h3>Lorem ipsum dolor sit amet</h3>
+											<p>Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem. Nulla ultricies dictum neque.</p>
+											<div class="s_btn" data-name="Button">
+												<a href="#" class="btn flat btn-primary btn-lg mr-4">Discover</a>
+												<a href="#" class="btn flat btn-secondary btn-lg">View all</a>
+											</div>
+											<p class="contact-text">Contact to our customer care executive at:</p>
+											<p class="contact text-primary">+1 (650) 691-3277</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- single product end -->
+						<div class="oe_structure"/>
+						<!-- current-release start -->
+						<section class="wineshop-home-current-release pt152 pb152">
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-6 p-0">
+										<section class="content text-center h-100" style="background-image: url('/theme_wineshop/static/src/img/current-release.png');">
+											<div class="image">
+												<img class="img img-fluid" src="/theme_wineshop/static/src/img/grape-icn.png" alt="image"/>
+											</div>
+											<p class="subtitle">Donec faucibus</p>
+											<h1 class="text-white">Proin tempor massa vitae tellus luctus, vel porta est eleifend.</h1>
+										</section>
+									</div>
+									<div class="col-lg-6 p-0">
+										<div class="image">
+											<img class="img img-fluid" src="/theme_wineshop/static/src/img/current-release.jpg" alt="image"/>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- current-release end -->
+						<div class="oe_structure"/>
+						<!-- counter start -->
+						<section class="wineshop-home-counter pt152 pb152">
+							<div class="container-fluid">
+								<div class="row align-items-center">
+									<div class="col-md-7 col-lg-8 pl-0 pr-0 pr-md-5">
+										<div class="left-content">
+											<div class="image mb-5 mr-5 mr-md-0">
+												<img class="img img-fluid" src="/theme_wineshop/static/src/img/red-bottle.png" alt="image"/>
+											</div>
+											<div class="row text-center m-0">
+												<div class="col-md-4">
+													<div class="counter-box">
+														<h1 class="counter">3</h1>
+														<p class="text-primary">VARIETALS</p>
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="counter-box">
+														<h1 class="counter">149</h1>
+														<p class="text-primary">WINE PRODUCED</p>
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="counter-box">
+														<h1 class="counter">41</h1>
+														<p class="text-primary">AWARDS WON</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-5 col-lg-4 p-0 mt-4 mt-md-0">
+										<section class="right-content bg-white">
+											<p class="subtitle text-primary">DONEC FAUCIBUS</p>
+											<h3>Red Wines</h3>
+											<ul>
+												<li>Proin Tempor</li>
+												<li>Curabitur</li>
+												<li>Interdum Nibh</li>
+											</ul>
+											<div class="s_btn" data-name="Button">
+												<a href="#" class="btn flat btn-secondary btn-lg">Shop now</a>
+											</div>
+										</section>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- counter end -->
+						<div class="oe_structure"/>
+						<!-- counter start -->
+						<section class="wineshop-home-counter counter-2 pb152">
+							<div class="container-fluid">
+								<div class="row align-items-center">
+									<div class="col-md-5 col-lg-4 p-0 mb-4 mb-md-0">
+										<section class="right-content bg-white">
+											<p class="subtitle text-primary">DONEC FAUCIBUS</p>
+											<h3>White Wines</h3>
+											<ul>
+												<li>Proin Tempor</li>
+												<li>Curabitur</li>
+												<li>Interdum Nibh</li>
+											</ul>
+											<div class="s_btn" data-name="Button">
+												<a href="#" class="btn flat btn-secondary btn-lg">Shop now</a>
+											</div>
+										</section>
+									</div>
+									<div class="col-md-7 col-lg-8 pl-0 pl-md-5 pr-0">
+										<div class="left-content">
+											<div class="image mb-5 ml-5 ml-md-0 text-right">
+												<img class="img img-fluid" src="/theme_wineshop/static/src/img/white-bottle.png" alt="image"/>
+											</div>
+											<div class="row text-center m-0">
+												<div class="col-md-4">
+													<div class="counter-box">
+														<h1 class="counter">3</h1>
+														<p class="text-primary">VARIETALS</p>
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="counter-box">
+														<h1 class="counter">149</h1>
+														<p class="text-primary">WINE PRODUCED</p>
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="counter-box">
+														<h1 class="counter">41</h1>
+														<p class="text-primary">AWARDS WON</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- counter end -->
+						<div class="oe_structure"/>
+						<!-- tasting start -->
+						<section class="wineshop-home-tasting pt152 pb152">
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-6 p-0">
+										<div class="image">
+											<img class="img img-fluid" src="/theme_wineshop/static/src/img/current-release.jpg" alt="image"/>
+										</div>
+									</div>
+									<div class="col-lg-6 p-0">
+										<section class="content text-center h-100 bg-light">
+											<p class="subtitle text-primary">DONEC FAUCIBUS</p>
+											<h1>Proin &amp; Tempor</h1>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at mauris sapien. Etiam nec leo ac metus tempor facilisis.</p>
+											<div class="s_btn" data-name="Button">
+												<a href="#" class="btn flat btn-secondary btn-lg">read more</a>
+											</div>
+										</section>
+									</div>
+									<div class="col-lg-6 p-0 order">
+										<section class="content text-center h-100 bg-light">
+											<p class="subtitle text-primary">DONEC FAUCIBUS</p>
+											<h1>Proin &amp; Tempor</h1>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at mauris sapien. Etiam nec leo ac metus tempor facilisis.</p>
+											<div class="s_btn" data-name="Button">
+												<a href="#" class="btn flat btn-secondary btn-lg">read more</a>
+											</div>
+										</section>
+									</div>
+									<div class="col-lg-6 p-0">
+										<div class="image">
+											<img class="img img-fluid" src="/theme_wineshop/static/src/img/weddings-private-events.jpg" alt="image"/>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- tasting end -->
+						<div class="oe_structure"/>
+						<!-- instagram start -->
+						<section class="wineshop-home-instagram pt152 pb152 bg-light">
+							<div class="container">
+								<div class="row m-0">
+									<div class="col-lg-4 p-0 mb-4 mb-md-0">
+										<section class="followers bg-secondary text-center h-100">
+											<h3 class="text-white">Instagram</h3>
+											<h1 class="text-white">20K</h1>
+											<p class="subtitle text-primary">INSTAGRAM FOLLOWERS</p>
+											<div class="s_btn" data-name="Button">
+												<a href="#" class="btn flat btn-primary btn-lg">Follow us</a>
+											</div>
+										</section>
+									</div>
+									<div class="col-lg-8 p-0">
+										<div class="row m-0">
+											<div class="col-md-4 p-0">
+												<section class="insta-image" style="background-image: url('/theme_wineshop/static/src/img/insta1.jpg');">
+													<a href="#" class="d-block h-100 op-0"/>
+												</section>
+											</div>
+											<div class="col-md-4 p-0">
+												<section class="insta-image" style="background-image: url('/theme_wineshop/static/src/img/insta2.jpg');">
+													<a href="#" class="d-block h-100 op-0"/>
+												</section>
+											</div>
+											<div class="col-md-4 p-0">
+												<section class="insta-image" style="background-image: url('/theme_wineshop/static/src/img/insta3.jpg');">
+													<a href="#" class="d-block h-100 op-0"/>
+												</section>
+											</div>
+											<div class="col-md-4 p-0">
+												<section class="insta-image" style="background-image: url('/theme_wineshop/static/src/img/insta4.jpg');">
+													<a href="#" class="d-block h-100 op-0"/>
+												</section>
+											</div>
+											<div class="col-md-4 p-0">
+												<section class="insta-image" style="background-image: url('/theme_wineshop/static/src/img/insta5.jpg');">
+													<a href="#" class="d-block h-100 op-0"/>
+												</section>
+											</div>
+											<div class="col-md-4 p-0">
+												<section class="insta-image" style="background-image: url('/theme_wineshop/static/src/img/insta6.jpg');">
+													<a href="#" class="d-block h-100 op-0"/>
+												</section>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- instagram end -->
+						<div class="oe_structure"/>
+						<!-- visit start -->
+						<section class="wineshop-home-visit pt152 pb152" style="background-image: url('/theme_wineshop/static/src/img/visit-us-back.jpg');">
+							<div class="container">
+								<div class="row justify-content-center">
+									<div class="col-lg-6">
+										<div class="content text-center">
+											<p class="subtitle text-primary">DONEC FAUCIBUS</p>
+											<h1>Nascetur Ridiculus Mus</h1>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac vehicula diam. Sed efficitur ullamcorper risus at imperdiet.</p>
+											<div class="s_btn" data-name="Button">
+												<a href="/our-wines" class="btn flat btn-primary btn-lg mr-4">Our Wines</a>
+												<a href="/shop" class="btn flat btn-secondary btn-lg">Shop Now</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- visit end -->
+						<div class="oe_structure"/>
+						<!-- newletter start -->
+						<section class="wineshop-home-newsletter pt152 pb152">
+							<div class="container">
+								<div class="content text-center">
+									<p class="subtitle text-primary">BE CONNECTED</p>
+									<h1>Join Our Newsletter</h1>
+								</div>
+								<div class="input-group js_subscribe" data-list-id="1">
+							        <input type="email" name="email" class="js_subscribe_email form-control bg-white" placeholder="your email..."/>
+							        <span class="input-group-append">
+							            <button role="button" class="btn btn-primary js_subscribe_btn">Sign up</button>
+							            <button role="button" class="btn btn-success js_subscribed_btn d-none" disabled="disabled">Thanks</button>
+							        </span>
+							    </div>
+							</div>
+						</section>
+						<!-- newletter end -->
+					</div>
+				</t>
+			</t>
+		</field>
+	</record>
+
+	<record id="wineshop_homepage_menu" model="website.page">
+		<field name="website_published">True</field>
+		<field name="url">/home</field>
+		<field name="view_id" ref="wineshop_homepage" />
+	</record>
+</odoo>

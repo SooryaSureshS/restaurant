@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="whatsapp_group_form" model="ir.ui.view">
+        <field name="name">whatsapp.group.form</field>
+        <field name="model">whatsapp.group</field>
+        <field name="arch" type="xml">
+            <form string="Whatsapp Group" create="false" editable="false">
+                <header>
+                    <button type="action"
+                            name="%(pragmatic_odoo_whatsapp_marketing.send_whatsapp_msg_marketing_form_action)d"
+                            class="fa fa-whatsapp"
+                            string="Send Messages"
+                    />
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="group_id" readonly="1"/>
+                        <field name="whatsapp_contact" widget="many2many_tags" readonly="1"/>
+                        <field name="active"/>
+                    </group>
+                    <notebook>
+                        <page name="whatsapp_group_msg" string="Whatsapp Messages">
+                            <field name="whatsapp_msg_whatsapp_group_ids" widget="one2many" mode="tree">
+                                <tree create="false" editable="false">
+                                    <field name="message_body"/>
+                                    <field name ="senderName" string="Sender"/>
+                                    <field name ="time"/>
+                                    <field name ="state" string="Status"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="whatsapp_group_tree" model="ir.ui.view">
+        <field name="name">whatsapp.group.tree</field>
+        <field name="model">whatsapp.group</field>
+        <field name="arch" type="xml">
+            <tree string="Whatsapp Group">
+                <field name="name"/>
+                <field name="group_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_whatsapp_group">
+        <field name="name">Whatsapp Group</field>
+        <field name="view_mode">tree,form</field>
+        <field name="res_model">whatsapp.group</field>
+    </record>
+
+    <record id="whatsapp_group_target_form_marketing" model="ir.ui.view">
+        <field name="name">whatsapp.group.target.form</field>
+        <field name="model">whatsapp.group.list.action</field>
+        <field name="arch" type="xml">
+            <form string="Send a WhatsApp Message">
+                <sheet>
+                    <group>
+                        <field name="group_ids" widget="many2many_tags"/>
+                        <field name="message" style="height='400px';"/>
+                    </group>
+                    <group col="4">
+                        <field name="attachment_ids" widget="many2many_binary" string="Attach a file" nolabel="1" colspan="2"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <group>
+                        <span>
+                            <button string="Send" type="object" class="oe_highlight" name="action_whatsapp_group_list"/>
+                            <button string="Cancel" class="oe_link" special="cancel" />
+                        </span>
+                    </group>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="action_send_msg_whatsapp_group_target" model="ir.actions.act_window">
+        <field name="name">Send whatsapp message</field>
+        <field name="res_model">whatsapp.group.list.action</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_whatsapp_group"/>
+    </record>
+
+    <menuitem id="menu_whatsarepp_group"
+              action="action_whatsapp_group"
+              name="Whatsapp Group" sequence="4"
+              parent="menu_whatsapp"/>
+</odoo>

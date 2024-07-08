@@ -1,0 +1,547 @@
+.shop-page-banner{
+	.content{
+		p.subtitle{
+		    margin: 0;
+		    font-size: 14px;
+		    text-transform: uppercase;
+		    letter-spacing: 2px;
+		    font-weight: bold;
+	        line-height: 1.916;
+		}
+		h1{
+			font-size: 48px;
+			margin-top: 0;
+			margin-bottom: 80px;
+		    text-transform: uppercase;
+		}
+		p{
+		    font-size: 16px;
+    		color: rgba(255,255,255,0.3);
+    		line-height: 1.916;
+		}
+	}
+}
+
+.wine_shop{
+	.wineshop_pager{
+    	margin-bottom: 15px;
+	    border: 1px solid #e5e5e5;
+	    padding: 10px 20px;
+	    box-shadow: 1px 1px 0 0 #e5e5e5;
+	    -webkit-box-shadow: 1px 1px 0 0 #e5e5e5;
+	    .o_wsale_apply_grid,.o_wsale_apply_list{
+	    	font-size: 20px;
+	    	color:#333 !important;
+	    }
+	    .o_wsale_apply_grid.active{
+	    	color:theme-color('primary') !important;
+	    }
+	    .o_wsale_apply_list.active{
+	    	color:theme-color('primary') !important;
+	    }
+	    .dropdown-toggle{
+	    	background-color:#fdfdfd !important;
+	    	border-radius: 0;
+	    	border: 1px solid #e1e1e1;
+	    	font-size: 0.875rem;
+	    }
+	    .dropdown-toggle::after {
+    	    margin-left: 0 !important;
+	    }
+	    .dropdown-menu{
+	    	font-size: 0.875rem;
+	    }
+	    .sortby-label{
+	    	margin-right: 8px;
+    		font-size: 15px;
+	    }
+	    .public-price-list{
+	    	margin-right: 8px;
+    		font-size: 15px;
+	    }
+	}
+
+	.aviat_bottom_pager{
+		.pagination{
+			a.page-link{
+				border-radius: 0 !important;
+			}
+		}
+	}
+	#products_grid_before{
+		#wsale_products_categories_collapse{
+			li{
+				border-bottom: 1px solid #e4e4e4;
+			}
+			a.nav-link{
+				padding: 10px 15px;
+			    margin: 0;
+			    font-size: 12px;
+			    text-transform: uppercase;
+			    letter-spacing: 2px;
+			    line-height: 1.916;
+			    background-color: transparent;
+			    color: #000000;
+			    border-radius: 0 !important;
+			    padding: 10px 15px;
+			}
+			li.active{
+				border-color: theme-color('primary');
+			}
+			a.nav-link.active{
+				font-weight: bold;
+				color: theme-color('primary');
+			}
+			ul.nav-hierarchy{
+				li:last-child{
+					border-bottom: 0 !important;
+				}
+			}
+			margin-bottom: 15px;
+		}
+
+
+		.js_attributes > ul > li > ul > li {
+			input[type="checkbox"]{
+				position: absolute;
+				opacity: 0.001;
+			    cursor: pointer;
+			    z-index: 9999;
+			    display: none !important;
+			}
+			input[type="checkbox"] + span:before{
+				content: "\f096";
+				font-family: "FontAwesome";
+				speak: none;
+				font-style: normal;
+				font-weight: normal;
+				font-variant: normal;
+				text-transform: none;
+				line-height: 1;
+				-webkit-font-smoothing:antialiased;
+				width: 1em;
+				display: inline-block;
+				margin-right: 5px;
+			}
+			input[type="checkbox"]:checked + span:before{
+				content: "\f14a";
+				color: theme-color('primary') !important;
+				animation: effect 250ms ease-in;
+			}
+
+			input[type="checkbox"]:disabled + span{
+				color: #aaa;
+			}
+
+			input[type="checkbox"]:disabled + span:before{
+				content: "\f0c8";
+				color: #ccc;
+			}
+
+		}
+
+		.brand-filter{
+			.nav-link.active{
+				background-color: transparent;
+			}
+		}
+
+		#wsale_products_attributes_collapse{
+			.js_attributes{
+				li > div > strong {
+				    font-size: 18px;
+				    margin-bottom: 5px;
+				    display: block;
+				    margin-top: 15px;
+				}
+				li.nav-item > ul {
+					li.nav-item > label.nav-link, a.nav-link{
+						input{
+							vertical-align: middle;
+						}
+						padding: 10px 15px;
+					    margin: 0 !important;
+					    font-size: 12px;
+					    text-transform: uppercase;
+					    letter-spacing: 2px;
+					    line-height: 1.916;
+					    color: #000000;
+					    border-bottom: 1px solid #e4e4e4;
+					    border-radius: 0 !important;
+					}
+					li.nav-item > label.nav-link.active{
+						span{
+							font-weight: bold !important;
+						}
+						background-color: transparent;
+						font-weight: bold;
+						color: theme-color('primary');
+					    border-color: theme-color('primary');
+					}
+					margin-left: 0;
+				}
+				.css_attribute_color.active {
+				    border: 3px ridge theme-color('primary');
+				}
+				.css_attribute_color {
+			        margin-right: 5px;
+				}
+			}
+		}
+		height: 100%;
+	    padding: 15px;
+	    border: 1px solid #e8e8e8;
+	}
+	.o_wsale_product_grid_wrapper{
+	    height: 580px;
+	}
+	.o_wsale_product_information{
+		display: none;
+	}
+	.oe_product_cart{
+	    border: 0;
+    	border-radius: 0;
+    	box-shadow: none;
+	    top: 0 !important;
+	    left: 0 !important;
+	    bottom: 0 !important;
+	    right: 0 !important;
+	    margin: 7.5px;
+        overflow: hidden;
+	}
+	.oe_product_image{
+		img{
+		    padding: 55px;
+		}
+		@media (max-width: 767.98px) {
+			img{
+				padding: 0;
+				padding-top: 15px;
+			}
+		}
+		@media (min-width: 768px) and (max-width: 1199.98px) {
+			img{
+				padding: 0;
+				padding-top: 15px;
+			}
+		}
+		padding: 0 !important;
+		background-color: #f2f2f2 !important;
+	    border-radius: 0;
+	}
+	.wineshop_product_info{
+		.content{
+			p.subtitle{
+			    font-size: 14px;
+			    text-transform: uppercase;
+			    letter-spacing: 2px;
+			    font-weight: bold;
+			    margin: 0;
+			    line-height: 1.916;
+			}
+			h3{
+				a{
+					color: #fff !important;
+					text-decoration: none;
+				}
+			    font-size: 30px;
+			    line-height: normal;
+			    margin: 0 0 10px 0;
+			    padding: 0 50px;
+			    color: #fff !important;
+			}
+			p.prod-description{
+			    margin-bottom: 40px;
+			    padding: 0 50px;
+			    font-size: 16px;
+			}
+			.wineshop_product_price{
+				color: #b0976d;
+			    width: 100%;
+			    font-size: 36px;
+			    font-family: "Playfair Display";
+			    margin-bottom: 40px;
+			    line-height: 1.916;
+		        margin-top: 40px;
+			}
+			.cart-btn{
+				.btn{
+				    padding: 18px 25px;
+				    border-radius: 0;
+				    font-size: 12px;
+				    text-transform: uppercase;
+				    letter-spacing: 2px;
+				    font-weight: bold;
+				    color: #fff;
+				    box-shadow: none;
+				    line-height: normal;
+				}
+			}
+			position: absolute;
+		    width: 100%;
+		    top: 50%;
+		    transform: translateY(-50%);
+		}
+		.wishlist-compare{
+			.wishlist{
+				.o_add_wishlist{
+					position: absolute;
+				    left: 0;
+				    top: 0;
+				    background-color: transparent;
+				    color: #b0976d;
+				    border-color: #b0976d;
+				    border-radius: 0;
+				}
+			}
+			.compare{
+				.o_add_compare{
+				    position: absolute;
+				    right: 0;
+				    top: 0;
+				    background-color: transparent;
+				    color: #b0976d;
+				    border-color: #b0976d;
+				    border-radius: 0;
+				}
+			}
+		}
+	    position: absolute;
+	    width: 100%;
+	    top: 0;
+	    height: 100%;
+	    background-color: rgba(theme-color('secondary'), 0.85);
+        -webkit-transition: -webkit-transform 0.35s;
+	    transition: transform 0.35s;
+	    -webkit-transform: translate3d(0,100%,0);
+	    transform: translate3d(0,100%,0);
+	}
+
+	.oe_product_cart:hover{
+		.wineshop_product_info{
+		    -webkit-transform: translate3d(0,0,0);
+    		transform: translate3d(0,0,0);
+		}
+	}
+
+	.list-btns{
+		display: none !important;
+	}
+
+	@media (max-width: 1199.98px) {
+		.wineshop_product_info{
+			display: none; 
+		}
+		.o_wsale_product_information{
+			p.subtitle{
+			    font-size: 14px;
+			    text-transform: uppercase;
+			    letter-spacing: 2px;
+			    font-weight: bold;
+			    margin: 0;
+			    line-height: 1.916;
+			}
+			h6{
+				a{
+					color: #000 !important;
+					text-decoration: none;
+				}
+			    font-size: 20px;
+			    line-height: normal;
+		        margin: 0 0 5px 0;
+			    color: #000 !important;
+			}
+			.product_price{
+				.btn{
+				    border-radius: 0;
+    				margin-left: 5px;
+				}
+			    font-size: 20px;
+			    font-family: "Playfair Display";
+			    margin-bottom: 5px;
+			    line-height: 1.916;
+			}
+			display: block;
+		    background-color: #f2f2f2 !important;
+		}
+		.oe_product_cart:hover .o_wsale_product_information {
+		    background-color: #f2f2f2 !important;
+		}
+		.o_wsale_product_btn, .oe_subdescription{
+			display: none;
+		}
+		.mbl-btns{
+			.btn{
+			    position: absolute;
+    			top: 0;
+    			border-radius: 0;
+			}
+			.o_add_wishlist{
+				left: 0;
+			}
+			.o_add_compare{
+				right: 0;
+			}
+		}
+	}
+	@media (min-width: 768px) and (max-width: 1199.98px) {
+		.o_wsale_product_grid_wrapper{
+	    	height: 450px;
+		}
+
+	}
+
+	/* :::::::::::::::::::::::::::::::::::::::::::::: list view :::::::::::::::::::::::::::::::::::::::: */
+
+	.o_wsale_layout_list{
+		.o_wsale_product_grid_wrapper {
+		    height: 235px;
+		}
+		.oe_product_image img {
+		    padding: 10px;
+		}
+
+		.wineshop_product_info, .oe_subdescription, .o_wsale_product_btn{
+			display: none !important;
+		}
+
+		.oe_product_cart{
+		    border: 1px solid #e5e5e5;
+	        margin-left: 0;
+    		margin-right: 0;
+		}
+
+		.product_price .cart-button{
+			display: none !important;
+		}
+
+		.o_wsale_product_information_text{
+			h6{
+				a{
+					text-decoration: none !important;
+				}
+			    font-size: 25px;
+			}
+			p{
+				font-size: 16px;
+			}
+			.product_price{
+				font-size: 20px;
+			}
+			padding: 1.5rem !important;
+		}
+		.list-btns{
+			.btn{
+				border-radius: 0;
+			    margin-right: 5px;
+    			box-shadow: none !important;
+			}
+			display: block !important;
+		}
+		@media (min-width: 768px) and (max-width: 1199.98px) {
+			.o_wsale_product_grid_wrapper, .oe_product_cart {
+			    height: 280px;
+			}
+			.mbl-btns{
+				display: none !important;
+			}
+
+			.o_wsale_product_information{
+				background-color: transparent !important;
+			}
+
+			.oe_product_image img {
+			    padding: 0;
+			}
+		}
+
+		@media (max-width: 767.98px) {
+			.o_wsale_product_grid_wrapper {
+			    height: 580px;
+			}
+
+			.product_price .cart-button{
+				display: inline-block !important;
+			}
+
+			.list-btns{
+				display: none !important;
+			}
+
+			.o_wsale_product_information_text{
+				h6{
+					a{
+						text-decoration: none !important;
+					}
+				    font-size: 20px;
+				}
+				p{
+					font-size: 14px;
+				}
+				padding: 0.5rem !important;
+			}
+
+			.oe_product_image img {
+			    padding: 0;
+			    padding-top: 15px;
+			}
+		}
+	}
+
+}
+
+.o_product_feature_panel.d-md-block{
+	display: block !important;
+}
+
+
+.avi-price {
+	h4.attrb_title {
+	    font-size: 18px;
+	    margin-bottom: 15px;
+	    display: block;
+	    margin-top: 15px;
+	    font-weight: bold;
+	}
+	margin-top: 16px;
+	.avi-price-slider {
+		.irs-slider {
+		    top: 24px !important;
+		    width: 20px !important;
+		    height: 20px !important;
+		    background: white;
+		    border: 5px solid black;
+		    box-shadow: none !important;
+		    
+		    &:hover{
+		    	background: theme-color('primary') !important;
+		    }
+		}
+		.irs-bar {
+	    	height: 4px !important;
+		    background: black !important;
+		    border: none !important;
+	    }
+	   
+	   .irs-line {
+	    height: 0px !important;
+	    top: 33px;
+	    background: none !important;
+	    border: none !important;
+	    border-radius: 0px;
+	    -moz-border-radius: 0px;
+		}	
+		
+		.irs-from, .irs-to, .irs-single {
+			background: black !important;
+			color: #fff !important;
+			font-size: 11px !important;
+		}
+		padding: 0 5px !important;
+	}
+}
+
+
+.btn.btn-secondary, .btn.btn-primary {
+	border-radius: 0;
+}

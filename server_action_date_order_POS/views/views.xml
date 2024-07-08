@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="ir_actions_server_pos_date_order_update" model="ir.actions.server">
+        <field name="name">Date Order Change POS</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_pos_order"/>
+        <field name="state">code</field>
+        <field name="code">
+            if records:
+                action = records.action_change_date_POS()
+        </field>
+        <field name="binding_model_id" ref="point_of_sale.model_pos_order"/>
+        <field name="binding_view_types">list,form</field>
+    </record>
+
+     <record id="change_pos_date_order" model="ir.ui.view">
+            <field name="name">Change Order Date</field>
+            <field name="model">dateorder.report.pos</field>
+            <field name="arch" type="xml">
+                <form string="Order Date">
+                    <group>
+                        <group>
+                            <field name="date_orders_trans"/>
+                        </group>
+<!--                        <group>-->
+<!--                            <field name="to_date"/>-->
+<!--                            <field name="file_name" invisible="1" />-->
+<!--                        </group>-->
+                    </group>
+                    <footer>
+                        <button name="print_report_date" string="Print" type="object" class="btn-primary"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    <record id="action_operational_report_new_date_order" model="ir.actions.act_window">
+            <field name="name">Date Orders </field>
+            <field name="res_model">dateorder.report.pos</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="change_pos_date_order"/>
+            <field name="target">new</field>
+		</record>
+
+</odoo>

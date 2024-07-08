@@ -1,0 +1,551 @@
+<odoo>
+    <template id="quality_cost_report_template">
+        <t t-call="web.html_container">
+            <div class="header">
+
+                <div style="float:right;font-size:12px">
+                    <br/>
+                    Page
+                    <span class="page"/>
+                    of
+                    <span class="topage"/>
+                </div>
+            </div>
+            <div class="page" style="padding-top:10px">
+                <div>
+
+                    <div style="float: left; width: 100%;font-size:5px;margin-top:15px">
+
+                        <p style="margin:0px !important;font-size:16px;font-weight:bold">Quality Cost Report</p>
+
+                        <p style="margin-top:15px !important;font-size:12px;">Report Period &#160; &#160; &#160;
+                            &#160; Full
+                            Stat for
+                            Period -
+                            <t t-foreach="docs" t-as="doc">
+                                <t t-set="date" t-value="docs.get_date()"/>
+                                <span t-esc="date"/><br/>
+                                        <t t-esc="docs.start_date.strftime('%d-%m-%Y')"></t>
+                                        to
+                                        <t t-esc="docs.end_date.strftime('%d-%m-%Y')"></t>
+
+
+                            </t>
+                            <span style="float:right;">Printed:
+                                <t t-set="date" t-value="context_timestamp(datetime.datetime.now())"/>
+
+                                <span t-esc="date.strftime('%e %b %Y, %I:%M %p')"/>
+                            </span>
+                        </p>
+                        <br/>
+                    </div>
+                </div>
+                <t t-set="food_total_cost" t-value="0"/>
+                <t t-set="paper_total_cost" t-value="0"/>
+                <t t-set="p_mix_total" t-value="0"/>
+                <t t-set="retail_price" t-value="0"/>
+                <t t-set="zero_food_total_cost" t-value="0"/>
+                <t t-set="zero_paper_total_cost" t-value="0"/>
+                <t t-set="zero_p_mix_total" t-value="0"/>
+                <t t-set="food_sub_total" t-value="0"/>
+                <t t-set="paper_sub_total" t-value="0"/>
+                <t t-set="food_sold" t-value="0"/>
+                <t t-set="paper_sold" t-value="0"/>
+                <t t-set="zero_food_sold" t-value="0"/>
+                <t t-set="zero_paper_sold" t-value="0"/>
+                <t t-set="sold_food_sub_total" t-value="0"/>
+                <t t-set="sold_paper_sub_total" t-value="0"/>
+                <t t-set="food_difference" t-value="0"/>
+                <t t-set="paper_difference" t-value="0"/>
+                <t t-set="total_price_diff_food" t-value="0"/>
+                <t t-set="total_price_diff_paper" t-value="0"/>
+
+
+
+                <table class="table"
+                       style="text-align:center;font-size:12px;font-family: Montserrat,
+                       'sans-serif';padding-top:5px;margin-top:5px;width:100%;border-collapse:collapse">
+                    <thead style="display: table-header-group;">
+                        <tr style="border-bottom: 3px solid black;">
+                            <th>Item#</th>
+                            <th style="text-align:left">Description</th>
+                            <th>Item Price
+                                <br/>effective Date
+                            </th>
+                            <th>Food Cost
+                                <br/>effective<br/>Date
+                            </th>
+                            <th>Selling
+                                <br/>Price<br/>$.cc
+                            </th>
+                            <th>Food<br/>Cost
+                                <br/>price
+                            </th>
+                            <th>Food
+                                <br/>Cost %
+                            </th>
+                            <th>Paper
+                                <br/>Cost<br/>Price
+                            </th>
+                            <th>Paper
+                                <br/>Cost %
+                            </th>
+                            <th>Units
+                                <br/>Made
+                            </th>
+                            <th>Waste</th>
+                            <th>Food
+                                <br/>Cost Of<br/>Product
+                            </th>
+                            <th>Paper
+                                <br/>Cost Of<br/>Product
+                            </th>
+                            <th>PMix
+                                <br/>% Of<br/>Sales
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody style="display: table-row-group;">
+                        <t t-set="recs" t-value="docs.get_product_details()"/>
+
+                        <t t-foreach="recs.keys()" t-as="key">
+
+
+                            <t t-foreach="recs[key]" t-as="p">
+                                <tr>
+                                    <td style="width:5px;text-align:right">
+                                    </td>
+                                    <td style="text-align:left">
+                                        <t t-esc="p['name']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="p['item_date']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="p['effective_date']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="round(p['unit_price'],2)"
+                                           t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="round(p['food_cost'],2)"
+                                           t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc='"{:.2f}".format(p["food_cost_percentage"])'/>%
+                                    </td>
+                                    <td>
+                                        <t t-esc="round(p['paper_cost'],2)"
+                                           t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc='"{:.2f}".format(p["paper_cost_per"])'/>%
+
+                                    </td>
+                                    <td>
+                                        <t t-esc="p['made']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="p['waste']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="round(p['food_cost_product'],2)"
+                                            t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="round(p['paper_cost_product'],2)"
+                                           t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+
+                                    </td>
+                                    <t t-set="prod_sold_price" t-value="p['unit_price'] *p['sold_qty']"/>
+                                    <t t-set="p_mix" t-value="prod_sold_price /p['retail']"/>
+
+                                    <td>
+                                        <t t-esc='"{:.2f}".format(p_mix)'/>%
+
+                                    </td>
+                                </tr>
+                                <t t-set="food_total_cost" t-value="food_total_cost + p['food_cost_product']"/>
+                                <t t-set="paper_total_cost" t-value="paper_total_cost +p['paper_cost_product']"/>
+                                <t t-set="p_mix_total" t-value="p_mix_total + p_mix"/>
+                                <t t-set="retail_price" t-value="p['retail']"/>
+                                <t t-set="food_sold" t-value="food_sold + p['sold_cost_food']"/>
+                                <t t-set="paper_sold" t-value="paper_sold +p['sold_cost_paper']"/>
+                                <t t-set="food_difference" t-value="p['food_difference']"/>
+                                <t t-set="paper_difference" t-value="p['paper_difference']"/>
+                                <t t-set="total_price_diff_food" t-value="p['total_price_diff_food']"/>
+                                <t t-set="total_price_diff_paper" t-value="p['total_price_diff_paper']"/>
+
+                            </t>
+                        </t>
+
+
+                        <tr>
+                            <td colspan="6"> </td>
+                            <td colspan="5" style="border-top:1px solid black"> </td>
+                            <td style="border-top:1px solid black"><t t-esc="round(food_total_cost,2)"
+                                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                            <td style="border-top:1px solid black"><t t-esc="round(paper_total_cost,2)"
+                                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                            <td style="border-top:1px solid black"><t t-esc='"{:.2f}".format(p_mix_total)'/>%</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="14" style="border-top:1px solid black"> </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="font-weight:bold;text-align:left">Items with $0.00 selling price</td>
+                            <td colspan="12"> </td>
+                        </tr>
+
+                        <t t-set="recs" t-value="docs.zero_selling_price()"/>
+
+                        <t t-foreach="recs.keys()" t-as="key">
+
+                            <t t-foreach="recs[key]" t-as="p">
+                                <tr>
+                                    <td style="width:5px;text-align:right">
+                                    </td>
+                                    <td style="text-align:left">
+                                        <t t-esc="p['name']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="p['item_date']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="p['effective_date']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="round(p['unit_price'],2)"
+                                           t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="round(p['food_cost'],2)"
+                                           t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc='"{:.2f}".format(p["food_cost_percentage"])'/>%
+                                    </td>
+                                    <td>
+                                        <t t-esc="round(p['paper_cost'],2)"
+                                           t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc='"{:.2f}".format(p["paper_cost_per"])'/>%
+
+                                    </td>
+                                    <td>
+                                        <t t-esc="p['made']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="p['waste']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="p['food_cost_product']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="round(p['paper_cost_product'],2)"
+                                           t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+
+                                    </td>
+
+                                    <t t-set="zero_p_mix" t-value="0"/>
+
+                                    <td>
+                                        <t t-esc='"{:.2f}".format(zero_p_mix)'/>%
+
+                                    </td>
+                                </tr>
+                                <t t-set="zero_food_total_cost" t-value="zero_food_total_cost + p['food_cost_product']"/>
+                                <t t-set="zero_paper_total_cost" t-value="zero_paper_total_cost +p['paper_cost_product']"/>
+                                <t t-set="zero_p_mix_total" t-value="zero_p_mix_total + zero_p_mix"/>
+                                <t t-set="zero_food_sold" t-value="zero_food_sold + p['sold_cost_food']"/>
+                                <t t-set="zero_paper_sold" t-value="zero_paper_sold +p['sold_cost_paper']"/>
+                            </t>
+                        </t>
+
+                        <tr>
+                            <td colspan="2" style="font-weight:bold;text-align:left">Items with $0.00 selling price</td>
+                            <td colspan="4"> </td>
+                            <td colspan="5" style="border-top:1px solid black"> </td>
+                            <td style="border-top:1px solid black"><t t-esc="round(zero_food_total_cost,2)"
+                                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                            <td style="border-top:1px solid black"><t t-esc="round(zero_paper_total_cost,2)"
+                                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                            <td style="border-top:1px solid black"><t t-esc='"{:.2f}".format(zero_p_mix_total)'/>%</td>
+                        </tr>
+                        <tr>
+                            <td colspan="14" style="border-top:1px solid black"> </td>
+                        </tr>
+                        <t t-set="food_sub_total" t-value="food_total_cost + zero_food_total_cost"/>
+                        <t t-set="paper_sub_total" t-value="paper_total_cost +zero_paper_total_cost"/>
+                        <t t-set="p_mix_sub_total" t-value="p_mix_total +zero_p_mix_total"/>
+                        <t t-set="sold_food_sub_total" t-value="food_sold +zero_food_sold"/>
+                        <t t-set="sold_paper_sub_total" t-value="paper_sold +zero_paper_sold"/>
+
+
+                        <tr>
+                            <td colspan="11"> </td>
+                            <td><t t-esc="round(food_sub_total,2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                            <td><t t-esc="round(paper_sub_total,2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                            <td><t t-esc='"{:.2f}".format(p_mix_sub_total)'/>%</td>
+                        </tr>
+                    </tbody>
+
+
+                </table>
+
+                <table class="table"
+                       style="text-align:center;font-size:12px;font-family: Montserrat,
+                       'sans-serif';padding-top:5px;margin-top:5px;width:100%;border-collapse:separate">
+                    <tr>
+                        <td colspan="5" style="width:30%"> </td>
+                        <th colspan="4"> </th>
+                        <th colspan="2"> </th>
+                        <th>Food</th>
+                        <th>Paper</th>
+                        <th> </th>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="width:30%"> </td>
+                        <td colspan="4" style="font-weight:bold">Projected Cost of Product Made</td>
+                        <td colspan="2"> </td>
+                        <td><t t-esc="round(food_sub_total,2)"
+                               t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        <td><t t-esc="round(paper_sub_total,2)"
+                               t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        <td> </td>
+                    </tr>
+
+                    <tr>
+                        <t t-set="dis" t-value="docs.discount_details()"/>
+                        <td colspan="5" style="width:30%"></td>
+                        <td colspan="2" style="font-weight:bold"></td>
+                        <td colspan="2" style="font-weight:bold">- Cost of Reg. Promo</td>
+                        <td colspan="2"></td>
+                        <td><t t-esc="round(dis['total_dis_food'],2)"
+                               t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        <td><t t-esc="round(dis['total_dis_paper'],2)"
+                               t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <t t-set="waste" t-value="docs.complete_waste_details()"/>
+                        <td colspan="5" style="width:30%"> </td>
+                        <td colspan="2" style="font-weight:bold"> </td>
+                        <td colspan="2" style="font-weight:bold">- Cost of Completed Waste</td>
+
+                        <td colspan="2"> </td>
+                        <td><t t-esc="round(waste['total_scrap_food'],2)"
+                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        <td><t t-esc="round(waste['total_scrap_paper'],2)"
+                               t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <t t-set="sundry" t-value="docs.sundry_details()"/>
+                        <td colspan="5" style="width:30%"></td>
+                        <td colspan="2" style="font-weight:bold"></td>
+                        <td colspan="2" style="font-weight:bold;border-bottom:1px solid black">+ Cost of *Sundry Items</td>
+                        <td colspan="2" style="border-bottom:1px solid black"></td>
+                        <td style="border-bottom:1px solid black"><t t-esc="round(sundry['total_used_food'],2)"
+                                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        <td style="border-bottom:1px solid black"><t t-esc="round(sundry['total_used_paper'],2)"
+                                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        <td style="border-bottom:1px solid black"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="width:30%"></td>
+                        <td colspan="4" style="font-weight:bold">Projected Cost of Product Sold</td>
+                        <td colspan="2"></td>
+
+                        <td><t t-esc="round(sold_food_sub_total,2)"
+                               t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        <td><t t-esc="round(sold_paper_sub_total,2)"
+                               t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <t t-set="per_prod_sold_food" t-value="sold_food_sub_total / retail_price"/>
+                        <t t-set="per_prod_sold_paper" t-value="sold_paper_sub_total / retail_price"/>
+
+                        <td colspan="5" style="width:30%"> </td>
+                        <td colspan="2" style="font-weight:bold"> </td>
+                        <td colspan="2" style="font-weight:bold">QCR % of Product Sold</td>
+                        <td colspan="2"> </td>
+                        <td><t t-esc='round(per_prod_sold_food ,2)'/>%</td>
+                        <td><t t-esc='round(per_prod_sold_paper ,2)'/>%</td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+
+
+                        <td colspan="5" style="width:30%"> </td>
+                        <td colspan="2" style="font-weight:bold"> </td>
+                        <td colspan="2" style="font-weight:bold">- Stat Variance %</td>
+                        <td colspan="2"> </td>
+                        <td><t t-esc='"{:.2f}".format(food_difference)'/>%</td>
+                        <td><t t-esc='"{:.2f}".format(paper_difference)'/>%</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <t t-set="food_total_value" t-value="per_prod_sold_food  +food_difference"/>
+                        <t t-set="paper_total_value" t-value="per_prod_sold_paper + paper_difference"/>
+
+                        <td colspan="5" style="width:30%"></td>
+                        <td colspan="4" style="font-weight:bold">= Projected P&amp;L Cost %</td>
+                        <td colspan="2"></td>
+                        <td style="border-top:1px solid black"><t t-esc='"{:.2f}".format(food_total_value)'/>%</td>
+                        <td style="border-top:1px solid black;border-bottom:1px solid black"><t t-esc='"{:.2f}".format(paper_total_value)'/>%</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="width:30%"> </td>
+                        <td colspan="7" style="font-weight:bold">Food and Paper Cost based on the Periods Product Sales
+                            of
+                        </td>
+                        <td colpsan="2"> <t t-esc="round(retail_price,2)"
+                                                t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                    </tr>
+                </table>
+
+                <div>
+
+                    <t t-set="food_cost_sale" t-value="(zero_food_total_cost/retail_price)*100 "/>
+
+
+                    <p style="font-weight:bold;margin-left:240px">Menu items with $0 selling price have a total food
+                        Cost of
+                        <t t-esc="round(zero_food_total_cost,2)"
+                           t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                        or
+                        <t t-esc='"{:.2f}".format(food_cost_sale)'/>% of Sales
+                    </p>
+                </div>
+
+                <div>
+                    <p style="font-size:10px;margin-left:100px">* Sundry items are items that were used during the month
+                        but were not
+                        assigned to a recipe and therefore are not included in the qcr calculation. The Items might
+                        include meat seasoning, salt, napkins and cup trays.
+                    </p>
+                </div>
+
+                <table style="border-collapse:collapse;font-size:12px;width:80%;text-align:center;border-spacing: 15px;padding:20px">
+                    <tr>
+                        <td></td>
+                        <td style="border-right:1px solid black">Retail Value $</td>
+                        <td>Retail % Food</td>
+                        <td>Food Cost $</td>
+                        <td style="border-right:1px solid black">Product Sales %</td>
+                        <td>Retail % Paper</td>
+                        <td>Paper Cost $</td>
+                        <td style="border-right:1px solid black">Product Sales %</td>
+                    </tr>
+                    <tr>
+                        <t t-set="o" t-value="docs.get_retail_details()"/>
+                        <t t-set="retail_food_per" t-value="(o['food_sale'] /o['retail_price'])*100"/>
+                        <t t-set="retail_paper_per" t-value="(o['paper_sale'] /o['retail_price'])*100"/>
+
+                        <t t-set="food_percentage" t-value="(o['food_sale']/retail_price)*100"/>
+                        <t t-set="paper_percentage" t-value="(o['paper_sale'] /retail_price)*100"/>
+
+                        <td>Actual Product Sales less discounted meals</td>
+                        <td style="border-right:1px solid black"><t t-esc="round(o['retail_price'],2)"
+                                                                    t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        <td><t t-esc='"{:.2f}".format(retail_food_per)'/>%</td>
+                        <td><t t-esc="round(o['food_sale'],2)"
+                               t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        <td style="border-right:1px solid black"><t t-esc='"{:.2f}".format(food_percentage)'/>%</td>
+                        <td><t t-esc='"{:.2f}".format(retail_paper_per)'/>%</td>
+                        <td><t t-esc="round(o['paper_sale'],2)"
+                               t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        <td style="border-right:1px solid black"><t t-esc='"{:.2f}".format(paper_percentage)'/>%</td>
+                    </tr>
+
+                    <tr>
+                        <t t-set="discount" t-value="docs.get_discount_meal()"/>
+                        <t t-if="discount['dis_retail_price'] !=0">
+                        <t t-set="dis_food_per_retail" t-value="(discount['dis_food_sale'] /discount['dis_retail_price'])*100"/>
+                        <t t-set="dis_paper_per_retail" t-value="(discount['dis_paper_sale'] /discount['dis_retail_price'])*100"/>
+                        </t>
+                        <t t-else="">
+                            <t t-set="dis_food_per_retail" t-value="0"/>
+                            <t t-set="dis_paper_per_retail" t-value="0"/>
+                        </t>
+                        <t t-set="dis_food_per" t-value="(discount['dis_food_sale'] /retail_price)*100"/>
+                        <t t-set="dis_paper_per" t-value="(discount['dis_paper_sale'] /retail_price)*100"/>
+
+                        <td>+ Discount Meals</td>
+                        <td style="border-right:1px solid black"><t t-esc="round(discount['dis_retail_price'],2)"
+                                                                    t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        <td><t t-esc='"{:.2f}".format(dis_food_per_retail)'/>%</td>
+                        <td><t t-esc="round(discount['dis_food_sale'],2)"
+                               t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        <td style="border-right:1px solid black"><t t-esc='"{:.2f}".format(dis_food_per)'/>%</td>
+                        <td><t t-esc='"{:.2f}".format(dis_paper_per_retail)'/>%</td>
+                        <td><t t-esc="round(discount['dis_paper_sale'],2)"
+                               t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        <td style="border-right:1px solid black"><t t-esc='"{:.2f}".format(dis_paper_per)'/>%</td>
+                    </tr>
+
+                    <tr>
+                        <t t-set="optimum_food_cost" t-value="o['food_sale'] + discount['dis_food_sale']"/>
+                        <t t-set="optimum_paper_cost" t-value="o['paper_sale'] + discount['dis_paper_sale']"/>
+                        <t t-set="optimum_food_per" t-value="(food_percentage + dis_food_per)"/>
+                        <t t-set="optimum_paper_per" t-value="(paper_percentage + dis_paper_per)"/>
+                        <td style="border-top:1px solid black">= Optimum Cost</td>
+                        <td style="border-right:1px solid black"> </td>
+                        <td></td>
+                        <td style="border-top:1px solid black"><t t-esc="round(optimum_food_cost,2)"
+                                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        <td style="border-right:1px solid black"><t t-esc='"{:.2f}".format(optimum_food_per)'/>%</td>
+                        <td> </td>
+                        <td style="border-top:1px solid black"><t t-esc="round(optimum_paper_cost,2)"
+                                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        <td style="border-right:1px solid black"><t t-esc='"{:.2f}".format(optimum_paper_per)'/>%</td>
+                    </tr>
+                    <tr>
+
+
+                        <td style="border-bottom:1px solid black">- Stock Variation</td>
+                        <td style="border-right:1px solid black"> </td>
+                        <td> </td>
+                        <td style="border-bottom:1px solid black"><t t-esc="round(total_price_diff_food,2)"
+                                                                     t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        <td style="border-right:1px solid black"><t t-esc='"{:.2f}".format(food_difference)'/>%</td>
+                        <td> </td>
+                        <td style="border-bottom:1px solid black"><t t-esc="round(total_price_diff_paper,2)"
+                                                                     t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        <td style="border-right:1px solid black"><t t-esc='"{:.2f}".format(paper_difference)'/>%</td>
+                    </tr>
+                    <t t-set="projected_cost_food_total" t-value="optimum_food_cost+ total_price_diff_food"/>
+                    <t t-set="projected_cost_paper_total" t-value="optimum_paper_cost + total_price_diff_paper"/>
+                    <t t-set="projected_cost_per_food_total" t-value="optimum_food_per + food_difference"/>
+                    <t t-set="projected_cost_per_paper_total" t-value="optimum_paper_per + paper_difference"/>
+                    <tr>
+                        <td style="border-bottom:1px solid black">= Projected P&amp;L Cost</td>
+                        <td style="border-right:1px solid black"> </td>
+                        <td> </td>
+                        <td style="border-bottom:1px solid black"><t t-esc="round(projected_cost_food_total,2)"
+                                                                     t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        <td style="border-right:1px solid black"><t t-esc='"{:.2f}".format(projected_cost_per_food_total)'/>%</td>
+                        <td> </td>
+                        <td style="border-bottom:1px solid black"><t t-esc="round(projected_cost_paper_total,2)"
+                                                                     t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        <td style="border-right:1px solid black"><t t-esc='"{:.2f}".format(projected_cost_per_paper_total)'/>%</td>
+                    </tr>
+                </table>
+                <br/>
+                <div style="border:1px solid black"/>
+                <p style="font-size:10 px">No Problems found with Product mix</p>
+            </div>
+        </t>
+    </template>
+</odoo>

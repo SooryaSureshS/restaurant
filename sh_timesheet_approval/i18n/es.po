@@ -1,0 +1,456 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sh_timesheet_approval
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.1alpha1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-30 13:46+0000\n"
+"PO-Revision-Date: 2020-09-30 13:46+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sh_timesheet_approval
+#: model:mail.template,subject:sh_timesheet_approval.sh_approve_timesheet_template
+msgid "${object.company_id.name} Approved Timesheet"
+msgstr "${object.company_id.name} aprobado parte de horas"
+
+#. module: sh_timesheet_approval
+#: model:mail.template,subject:sh_timesheet_approval.sh_reject_timesheet_template
+msgid "${object.company_id.name} Rejected Timesheet"
+msgstr "${object.company_id.name} rechazado parte de horas"
+
+#. module: sh_timesheet_approval
+#: model:mail.template,body_html:sh_timesheet_approval.sh_approve_timesheet_template
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"\t\t\t    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"\t\t\t    \tHello ${object.create_uid.partner_id.name},\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\tYour Timesheet is Approved.\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\tURL : <a href=\"${object.base_url}\">View Timesheet</a>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<b>Your Timesheet Information</b>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<table border=\"1\" style=\"font-family: arial, sans-serif;border-collapse: collapse;width: 100%;\">\n"
+"\t\t\t\t\t\t<tr>\n"
+"\t\t\t\t\t\t\t<th style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\"><b>Date</b></th>\n"
+"\t\t\t\t\t\t\t<th style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\"><b>Description</b></th>\n"
+"\t\t\t\t\t\t\t<th style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\"><b>Project</b></th>\n"
+"\t\t\t\t\t\t\t<th style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\"><b>Task</b></th>\n"
+"\t\t\t\t\t\t\t<th style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\"><b>Duration</b></th>\n"
+"\t\t\t\t\t\t</tr>\n"
+"\t\t\t\t\t\t<tr>\n"
+"\t\t\t\t\t\t\t<td style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\">${object.date}</td>\n"
+"\t\t\t\t\t\t\t<td style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\">${object.name}</td>\n"
+"\t\t\t\t\t\t\t<td style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\">${object.project_id.name}</td>\n"
+"\t\t\t\t\t\t\t<td style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\">${object.task_id.name}</td>\n"
+"\t\t\t\t\t\t\t<td style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\">${object.unit_amount}</td>\n"
+"\t\t\t\t\t\t</tr>\n"
+"\t\t\t\t\t</table>\n"
+"\t\t\t    </p>\n"
+"\t\t\t</div>\n"
+"            "
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"\t\t\t    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"\t\t\t    \tHello ${object.create_uid.partner_id.name},\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\tYour Timesheet is Approved.\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\tURL : <a href=\"${object.base_url}\">View Timesheet</a>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<b>Your Timesheet Information</b>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<table border=\"1\" style=\"font-family: arial, sans-serif;border-collapse: collapse;width: 100%;\">\n"
+"\t\t\t\t\t\t<tr>\n"
+"\t\t\t\t\t\t\t<th style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\"><b>Date</b></th>\n"
+"\t\t\t\t\t\t\t<th style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\"><b>Description</b></th>\n"
+"\t\t\t\t\t\t\t<th style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\"><b>Project</b></th>\n"
+"\t\t\t\t\t\t\t<th style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\"><b>Task</b></th>\n"
+"\t\t\t\t\t\t\t<th style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\"><b>Duration</b></th>\n"
+"\t\t\t\t\t\t</tr>\n"
+"\t\t\t\t\t\t<tr>\n"
+"\t\t\t\t\t\t\t<td style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\">${object.date}</td>\n"
+"\t\t\t\t\t\t\t<td style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\">${object.name}</td>\n"
+"\t\t\t\t\t\t\t<td style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\">${object.project_id.name}</td>\n"
+"\t\t\t\t\t\t\t<td style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\">${object.task_id.name}</td>\n"
+"\t\t\t\t\t\t\t<td style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\">${object.unit_amount}</td>\n"
+"\t\t\t\t\t\t</tr>\n"
+"\t\t\t\t\t</table>\n"
+"\t\t\t    </p>\n"
+"\t\t\t</div>\n"
+"            "
+
+#. module: sh_timesheet_approval
+#: model:mail.template,body_html:sh_timesheet_approval.sh_reject_timesheet_template
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"\t\t\t    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"\t\t\t    \tHello ${object.create_uid.partner_id.name},\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\tYour Timesheet is Rejected.\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\tReject Reason : ${object.sh_reject_reason}\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\tURL : <a href=\"${object.base_url}\">View Timesheet</a>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<b>Your Timesheet Information</b>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<table border=\"1\" style=\"font-family: arial, sans-serif;border-collapse: collapse;width: 100%;\">\n"
+"\t\t\t\t\t\t<tr>\n"
+"\t\t\t\t\t\t\t<th style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\"><b>Date</b></th>\n"
+"\t\t\t\t\t\t\t<th style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\"><b>Description</b></th>\n"
+"\t\t\t\t\t\t\t<th style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\"><b>Project</b></th>\n"
+"\t\t\t\t\t\t\t<th style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\"><b>Task</b></th>\n"
+"\t\t\t\t\t\t\t<th style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\"><b>Duration</b></th>\n"
+"\t\t\t\t\t\t</tr>\n"
+"\t\t\t\t\t\t<tr>\n"
+"\t\t\t\t\t\t\t<td style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\">${object.date}</td>\n"
+"\t\t\t\t\t\t\t<td style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\">${object.name}</td>\n"
+"\t\t\t\t\t\t\t<td style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\">${object.project_id.name}</td>\n"
+"\t\t\t\t\t\t\t<td style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\">${object.task_id.name}</td>\n"
+"\t\t\t\t\t\t\t<td style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\">${object.unit_amount}</td>\n"
+"\t\t\t\t\t\t</tr>\n"
+"\t\t\t\t\t</table>\n"
+"\t\t\t    </p>\n"
+"\t\t\t</div>\n"
+"            "
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"\t\t\t    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"\t\t\t    \tHello ${object.create_uid.partner_id.name},\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\tYour Timesheet is Rejected.\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\tReject Reason : ${object.sh_reject_reason}\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\tURL : <a href=\"${object.base_url}\">View Timesheet</a>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<b>Your Timesheet Information</b>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t<table border=\"1\" style=\"font-family: arial, sans-serif;border-collapse: collapse;width: 100%;\">\n"
+"\t\t\t\t\t\t<tr>\n"
+"\t\t\t\t\t\t\t<th style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\"><b>Date</b></th>\n"
+"\t\t\t\t\t\t\t<th style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\"><b>Description</b></th>\n"
+"\t\t\t\t\t\t\t<th style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\"><b>Project</b></th>\n"
+"\t\t\t\t\t\t\t<th style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\"><b>Task</b></th>\n"
+"\t\t\t\t\t\t\t<th style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\"><b>Duration</b></th>\n"
+"\t\t\t\t\t\t</tr>\n"
+"\t\t\t\t\t\t<tr>\n"
+"\t\t\t\t\t\t\t<td style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\">${object.date}</td>\n"
+"\t\t\t\t\t\t\t<td style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\">${object.name}</td>\n"
+"\t\t\t\t\t\t\t<td style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\">${object.project_id.name}</td>\n"
+"\t\t\t\t\t\t\t<td style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\">${object.task_id.name}</td>\n"
+"\t\t\t\t\t\t\t<td style=\"border: 1px solid #dddddd;text-align: left;padding: 8px;\">${object.unit_amount}</td>\n"
+"\t\t\t\t\t\t</tr>\n"
+"\t\t\t\t\t</table>\n"
+"\t\t\t    </p>\n"
+"\t\t\t</div>\n"
+"            "
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__message_needaction
+msgid "Action Needed"
+msgstr "Accion necesaria"
+
+#. module: sh_timesheet_approval
+#: model:ir.model,name:sh_timesheet_approval.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "analítica Línea"
+
+#. module: sh_timesheet_approval
+#: model_terms:ir.ui.view,arch_db:sh_timesheet_approval.sh_timesheet_form_view
+#: model_terms:ir.ui.view,arch_db:sh_timesheet_approval.sh_timesheet_tree_view
+msgid "Approve"
+msgstr "Aprobar"
+
+#. module: sh_timesheet_approval
+#: model:ir.actions.server,name:sh_timesheet_approval.sh_mass_approved_action
+msgid "Approve Timesheet"
+msgstr "aprobar partes de horas"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields.selection,name:sh_timesheet_approval.selection__account_analytic_line__state__approved
+msgid "Approved"
+msgstr "Aprobado"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__sh_approved_by
+msgid "Approved By"
+msgstr "Aprobado por"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__sh_approved_date
+msgid "Approved Date"
+msgstr "aprobado Fecha"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__message_attachment_count
+msgid "Attachment Count"
+msgstr "cuenta de enlaces"
+
+#. module: sh_timesheet_approval
+#: model_terms:ir.ui.view,arch_db:sh_timesheet_approval.sh_timesheet_reject_wizard_form_view
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_sh_timesheet_reject_wizard__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_sh_timesheet_reject_wizard__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__display_name
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_sh_timesheet_reject_wizard__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields.selection,name:sh_timesheet_approval.selection__account_analytic_line__state__draft
+msgid "Draft"
+msgstr "Sequía"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__message_follower_ids
+msgid "Followers"
+msgstr "seguidores"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Seguidores (Canales)"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (Partners)"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__id
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_sh_timesheet_reject_wizard__id
+msgid "ID"
+msgstr "CARNÉ DE IDENTIDAD"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,help:sh_timesheet_approval.field_account_analytic_line__message_needaction
+#: model:ir.model.fields,help:sh_timesheet_approval.field_account_analytic_line__message_unread
+msgid "If checked, new messages require your attention."
+msgstr "Si se selecciona, los mensajes nuevos requieren su atención."
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,help:sh_timesheet_approval.field_account_analytic_line__message_has_error
+#: model:ir.model.fields,help:sh_timesheet_approval.field_account_analytic_line__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si está marcada, algunos mensajes tienen un error de entrega."
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__message_is_follower
+msgid "Is Follower"
+msgstr "es decir Seguidor"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line____last_update
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_sh_timesheet_reject_wizard____last_update
+msgid "Last Modified on"
+msgstr "Modificada por última vez"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_sh_timesheet_reject_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización realizada por"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_sh_timesheet_reject_wizard__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualización en"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Adjunto principal"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__message_has_error
+msgid "Message Delivery error"
+msgstr "Entrega de mensajes de error"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__message_ids
+msgid "Messages"
+msgstr "mensajes"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de acciones"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__message_has_error_counter
+msgid "Number of errors"
+msgstr "Número de errores"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,help:sh_timesheet_approval.field_account_analytic_line__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Número de mensajes que requiere una acción"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,help:sh_timesheet_approval.field_account_analytic_line__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensajes con error de entrega"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,help:sh_timesheet_approval.field_account_analytic_line__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Número de mensajes no leídos"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__unit_amount
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_sh_timesheet_reject_wizard__name
+msgid "Reason"
+msgstr "Razón"
+
+#. module: sh_timesheet_approval
+#: model_terms:ir.ui.view,arch_db:sh_timesheet_approval.sh_timesheet_form_view
+#: model_terms:ir.ui.view,arch_db:sh_timesheet_approval.sh_timesheet_reject_wizard_form_view
+#: model_terms:ir.ui.view,arch_db:sh_timesheet_approval.sh_timesheet_tree_view
+msgid "Reject"
+msgstr "Rechazar"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__sh_reject_reason
+msgid "Reject Reason"
+msgstr "rechazar Razón"
+
+#. module: sh_timesheet_approval
+#: model:ir.actions.act_window,name:sh_timesheet_approval.sh_mass_reject_action
+msgid "Reject Timesheet"
+msgstr "rechazar parte de horas"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields.selection,name:sh_timesheet_approval.selection__account_analytic_line__state__rejected
+msgid "Rejected"
+msgstr "Rechazado"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__sh_rejected_by
+msgid "Rejected By"
+msgstr "Rechazado por"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__sh_rejected_date
+msgid "Rejected Date"
+msgstr "rechazado Fecha"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "error de entrega de SMS"
+
+#. module: sh_timesheet_approval
+#: model_terms:ir.ui.view,arch_db:sh_timesheet_approval.sh_timesheet_form_view
+#: model_terms:ir.ui.view,arch_db:sh_timesheet_approval.sh_timesheet_tree_view
+msgid "Set To Draft"
+msgstr "Configurada en Borrador"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__state
+msgid "State"
+msgstr "Estado"
+
+#. module: sh_timesheet_approval
+#: model_terms:ir.ui.view,arch_db:sh_timesheet_approval.sh_timesheet_form_view
+msgid "Submit to Manager"
+msgstr "Presentar al Administrador"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields.selection,name:sh_timesheet_approval.selection__account_analytic_line__state__submitted
+msgid "Submitted"
+msgstr "Presentada"
+
+#. module: sh_timesheet_approval
+#: model_terms:ir.ui.view,arch_db:sh_timesheet_approval.sh_timesheet_tree_view
+msgid "Timesheet Activities"
+msgstr "Actividades parte de horas"
+
+#. module: sh_timesheet_approval
+#: model:ir.actions.act_window,name:sh_timesheet_approval.sh_action_timesheet_reject
+#: model:ir.model,name:sh_timesheet_approval.model_sh_timesheet_reject_wizard
+#: model_terms:ir.ui.view,arch_db:sh_timesheet_approval.sh_timesheet_reject_wizard_form_view
+msgid "Timesheet Reject"
+msgstr "rechazo de parte de horas"
+
+#. module: sh_timesheet_approval
+#: model:ir.actions.act_window,name:sh_timesheet_approval.sh_to_approve_timesheet_action
+#: model:ir.ui.menu,name:sh_timesheet_approval.sh_to_approve_timesheet_menu
+msgid "To Approve Timesheets"
+msgstr "Aprobar partes de horas"
+
+#. module: sh_timesheet_approval
+#: model_terms:ir.ui.view,arch_db:sh_timesheet_approval.sh_timesheet_tree_view
+msgid "Total"
+msgstr "Total"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__base_url
+msgid "URL"
+msgstr "URL"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__message_unread
+msgid "Unread Messages"
+msgstr "Los mensajes no leídos"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Los mensajes no leídos Contador"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,field_description:sh_timesheet_approval.field_account_analytic_line__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes Sitio Web"
+
+#. module: sh_timesheet_approval
+#: model:ir.model.fields,help:sh_timesheet_approval.field_account_analytic_line__website_message_ids
+msgid "Website communication history"
+msgstr "historia de la comunicación Sitio Web"
+
+#. module: sh_timesheet_approval
+#: model_terms:ir.ui.view,arch_db:sh_timesheet_approval.sh_timesheet_reject_wizard_form_view
+msgid "or"
+msgstr "o"

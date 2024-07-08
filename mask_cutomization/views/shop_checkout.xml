@@ -1,0 +1,357 @@
+<odoo>
+    <data>
+        <template id="shop_checkout" inherit_id="website_sale.checkout" name="Checkout Inherit">
+            <xpath expr="//div[@id='wrap']" position="replace">
+                <!--        <xpath expr="//div[hasclass('oe_website_sale')]" position="replace">-->
+                <!--            <t t-call="website.layout">-->
+                <t t-set="additional_title">Shop Checkout</t>
+                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/checkout_page.css"/>
+                <t t-set="no_footer" t-value="1"/>
+                <t t-call="mask_cutomization.header_banner_xml"/>
+                <!--                <div class="content-banner container" id="shop_checkout_container" style="position: relative;">-->
+                <div class="banner container oe_website_sale" id="shop_checkout_container" style="position: relative;">
+
+<!--                         <t t-set="deliveries" t-value="website_sale_order._get_delivery_methods().sudo()"/>-->
+
+<!--                            <div t-if="deliveries" id="delivery_carrier">-->
+<!--                                <p>Delivery method</p>-->
+<!--                                <t t-set="delivery_nb" t-value="len(deliveries)"/>-->
+<!--&lt;!&ndash;                                <h3 t-if="delivery_nb &gt; 1" class="mb24">Choose a delivery method</h3>&ndash;&gt;-->
+<!--                                <div t-if="delivery_nb &gt; 1" id="delivery_method" style="margin-bottom: 20px;">-->
+<!--                                    <ul class="list-group">-->
+<!--                                    <t t-foreach="deliveries" t-as="delivery">-->
+<!--&lt;!&ndash;                                        <input class="width-unset" type="radio" id="SF-Express" name="fav_language" value="SF-Express"/>&ndash;&gt;-->
+<!--                                        <div class="o_delivery_carrier_select">-->
+<!--                                            <input t-att-value="delivery.id" t-att-id="'delivery_%i' % delivery.id" type="radio" name="delivery_type" t-att-checked="website_sale_order.carrier_id and website_sale_order.carrier_id.id == delivery.id and 'checked' or False" t-att-class="'d-none' if delivery_nb == 1 else ''" />-->
+<!--                                            <label t-field="delivery.name"/>-->
+<!--    &lt;!&ndash;                                        <label>SF - EXPRESS</label>&ndash;&gt;-->
+<!--                                            <t t-if="delivery.delivery_type == 'fixed'">-->
+<!--                                              <span t-if="delivery.fixed_price > 0.0" t-att-class="badge_class" style="background: #00a507;border-radius: 14px;padding: 5px;">-->
+<!--                                                <t t-esc="delivery.rate_shipment(website_sale_order)['price'] if delivery.free_over else delivery.fixed_price"-->
+<!--                                                   t-options='{"widget": "monetary",-->
+<!--                                                               "from_currency": website_sale_order.currency_id if delivery.free_over else delivery.product_id.company_id.currency_id or website_sale_order.company_id.currency_id,-->
+<!--                                                               "display_currency": website_sale_order.currency_id}'/>-->
+<!--                                              </span>-->
+<!--                                              <span t-else="" t-att-class="badge_class" style="background: #00a507;border-radius: 14px;padding: 5px;">Free</span>-->
+<!--                                            </t>-->
+<!--                                            <t t-else="">-->
+<!--                                                <span t-attf-class="#{badge_class} o_wsale_delivery_badge_price">Select to compute delivery rate</span>-->
+<!--                                            </t>-->
+<!--                                            <t t-if="delivery.website_description">-->
+<!--                                                        <div t-field="delivery.website_description" class="text-muted mt8"/>-->
+<!--                                                    </t>-->
+<!--                                        </div>-->
+<!--&lt;!&ndash;                                        <br/>&ndash;&gt;-->
+<!--                                    </t>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                  <form action="/shop/address" method="post" class=''>
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                            <a role="button" href="#" class='a-submit btn mb-2 btn-block'
+                               style="background-color:#999999; color: #FFFFFF; width: 273px;padding: 10px; margin-left: 15px; border-radius:0px !important; font-size: 20px; font-family: 'Montserrat';">
+                                <i class="fa fa-plus-square"/>
+                                <span>Add an address</span>
+                            </a>
+                  </form>
+                    <div class="billing_Container">
+                        <t t-set='contact_info' t-value="order.partner_id"/>
+                        <t t-if="contact_info">
+                            <div class="billing_header">
+                                <p style="font-weight:700;">Billing Details</p>
+                            </div>
+                            <div class="billing_details">
+                                <div class="col-md-6 content_left_header" style="float: left;">ADDRESS LINE</div>
+                                <div class="col-md-6 content_right_header" style="float: left;">:
+                                    <t t-if="contact_info.street" t-esc="contact_info.street"/>
+                                    <t t-if="contact_info.street2" t-esc="contact_info.street2"/>
+                                </div>
+                            </div>
+                            <div class="billing_details">
+                                <div class="col-md-6 content_left_header" style="float: left;">CITY</div>
+                                <div class="col-md-6 content_right_header" style="float: left;">:
+                                    <t t-if="contact_info.city" t-esc="contact_info.city"/>
+                                </div>
+                            </div>
+                            <div class="billing_details">
+                                <div class="col-md-6 content_left_header" style="float: left;">COUNTRY</div>
+                                <div class="col-md-6 content_right_header" style="float: left;">:
+                                    <t t-if="contact_info.country_id" t-esc="contact_info.country_id.name"/>
+                                </div>
+                            </div>
+                            <div class="billing_details">
+                                <div class="col-md-6 content_left_header" style="float: left;">CONTACT PERSON</div>
+                                <div class="col-md-6 content_right_header" style="float: left;">:
+                                    <t t-if="contact_info.name" t-esc="contact_info.name"/>
+                                </div>
+                            </div>
+                            <div class="billing_details">
+                                <div class="col-md-6 content_left_header" style="float: left;">PHONE NUMBER</div>
+                                <div class="col-md-6 content_right_header" style="float: left;">:
+                                    <t t-if="contact_info.phone_code">+<t t-esc="contact_info.phone_code"/></t>
+                                    <t t-if="contact_info.phone" t-esc="contact_info.phone"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6 content_left_header" style="float: left;">
+                                <div id="billing_address">Edit billing address</div>
+                                <div class="one_kanban" style="display: none;" id="billing_info">
+                                    <t t-call="mask_cutomization.address_kanban1">
+                                        <t t-set='contact' t-value="order.partner_id"/>
+                                        <t t-set='selected' t-value="1"/>
+                                        <t t-set='readonly' t-value="1"/>
+                                        <t t-set='allow_edit' t-value="1"/>
+
+                                    </t>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6 content_left_header" style="float: left;"></div>
+
+                        </t>
+                    </div>
+                    <br/>
+                    <br/>
+                    <div class="billing_Container">
+                        <t t-set='shipping_info' t-value=""/>
+                        <t t-foreach="shippings" t-as="ship">
+
+                            <t t-set='shipping_info1' t-value="order.partner_shipping_id==ship"/>
+                            <t t-if="shipping_info1">
+                                <t t-set='shipping_info' t-value="ship"/>
+                            </t>
+                        </t>
+
+                        <t t-if="shipping_info">
+                            <div class="billing_header">
+                                <p style="font-weight:700;">Shipping Details</p>
+                            </div>
+                            <div class="billing_details">
+                                <div class="col-md-6 content_left_header" style="float: left;">ADDRESS LINE</div>
+                                <div class="col-md-6 content_right_header" style="float: left;">:
+                                    <t t-if="contact_info.street" t-esc="shipping_info.street"/>
+                                    <t t-if="contact_info.street2" t-esc="shipping_info.street2"/>
+                                </div>
+                            </div>
+                            <div class="billing_details">
+                                <div class="col-md-6 content_left_header" style="float: left;">CITY</div>
+                                <div class="col-md-6 content_right_header" style="float: left;">:
+                                    <t t-if="contact_info.city" t-esc="shipping_info.city"/>
+                                </div>
+                            </div>
+                            <div class="billing_details">
+                                <div class="col-md-6 content_left_header" style="float: left;">COUNTRY</div>
+                                <div class="col-md-6 content_right_header" style="float: left;">:
+                                    <t t-if="contact_info.country_id" t-esc="shipping_info.country_id.name"/>
+                                </div>
+                            </div>
+                            <div class="billing_details">
+                                <div class="col-md-6 content_left_header" style="float: left;">CONTACT PERSON</div>
+                                <div class="col-md-6 content_right_header" style="float: left;">:
+                                    <t t-if="contact_info.name" t-esc="shipping_info.name"/>
+                                </div>
+                            </div>
+                            <div class="billing_details">
+                                <div class="col-md-6 content_left_header" style="float: left;">PHONE NUMBER</div>
+                                <div class="col-md-6 content_right_header" style="float: left;">:
+                                    <t t-if="contact_info.phone_code">+<t t-esc="shipping_info.phone_code"/></t>
+                                    <t t-if="contact_info.phone" t-esc="shipping_info.phone"/>
+                                </div>
+                            </div>
+<!--                            <form action="/shop/address" method="post" class=''>-->
+<!--                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />-->
+<!--                                <a role="button" href="#" class='a-submit btn mb-2 btn-block'-->
+<!--                                   style="background-color:#999999; color: #FFFFFF; width: 273px;padding: 10px; margin-left: 15px; border-radius:0px !important; font-size: 20px; font-family: 'Montserrat';">-->
+<!--                                    <i class="fa fa-plus-square"/>-->
+<!--                                    <span>Add an address</span>-->
+<!--                                </a>-->
+<!--                            </form>-->
+                            <div class="col-md-6 content_left_header" style="float: left;">
+                                <div id="shipping_address">Edit delivery address</div>
+                                <div id="shipping_info" style="display:none;">
+                                    <t t-foreach="shippings" t-as="ship">
+                                        <div class="one_kanban mb-2">
+                                            <t t-call="mask_cutomization.address_kanban2">
+                                                <t t-set='contact' t-value="ship"/>
+                                                <t t-set='selected' t-value="order.partner_shipping_id==ship"/>
+                                                <t t-set='readonly' t-value="bool(len(shippings)==1)"/>
+                                                <t t-set='edit_billing' t-value="bool(ship==order.partner_id)"/>
+                                                <t t-set="allow_edit"
+                                                   t-value="1"/>
+                                            </t>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+
+                        </t>
+                    </div>
+
+
+                    <a role="button" href="/shop/confirm_order" class="btn btn-primary mb32" id="next_checkout">
+                        <span>Confirm</span>
+                    </a>
+
+
+                    <!--                            <p>DELIVERY ADDRESS</p>-->
+
+                    <!--                            <form action="" method="post" >-->
+
+                    <!--                            <label>COUNTRY</label>-->
+                    <!--                            <br/>-->
+                    <!--                            <select>-->
+                    <!--                                <option value="volvo">select country</option>-->
+                    <!--                                <option value="saab">select country</option>-->
+
+                    <!--                            </select>-->
+                    <!--                            <br/>-->
+                    <!--                            &lt;!&ndash; STATE &ndash;&gt;-->
+                    <!--                            <label>STATE</label>-->
+                    <!--                            <br/>-->
+                    <!--                            <select>-->
+                    <!--                                <option value="volvo">select state</option>-->
+                    <!--                                <option value="saab">select state</option>-->
+                    <!--                            </select>-->
+                    <!--                            <br/>-->
+
+                    <!--                            &lt;!&ndash; address &ndash;&gt;-->
+                    <!--                            <label>ADDRESS LINE</label>-->
+                    <!--                            <br/>-->
+                    <!--                            <input type="text"-->
+                    <!--                                   name="address"-->
+                    <!--                                   placeholder="Please enter your address line"-->
+                    <!--                            />-->
+                    <!--                            <br/>-->
+
+                    <!--                            &lt;!&ndash; zip &ndash;&gt;-->
+                    <!--                            <label>ZIP CODE</label>-->
+                    <!--                            <br/>-->
+                    <!--                            <input type="text"-->
+                    <!--                                   name="zip"-->
+                    <!--                                   placeholder="xxxxxx"-->
+                    <!--                            />-->
+                    <!--                            <br/>-->
+
+                    <!--                            <p style="font-size:20px;font-weight: unset;">-->
+                    <!--                                <input class="width-unset" type="checkbox"/>-->
+                    <!--                                Save delivery address-->
+                    <!--                            </p>-->
+
+
+                    <!--                            &lt;!&ndash; contact information &ndash;&gt;-->
+                    <!--                            &lt;!&ndash; Company name &ndash;&gt;-->
+                    <!--                            <label>COMPANY NAME</label>-->
+                    <!--                            <br/>-->
+                    <!--                            <input type="text"-->
+                    <!--                                   name="company_name"-->
+                    <!--                                   placeholder="Ocean limited"-->
+                    <!--                            />-->
+                    <!--                            <br/>-->
+
+                    <!--                            &lt;!&ndash; CONTACT PERSON &ndash;&gt;-->
+                    <!--                            <label>CONTACT PERSON</label>-->
+                    <!--                            <br/>-->
+                    <!--                            <input type="text"-->
+                    <!--                                   name="contact_name"-->
+                    <!--                                   placeholder="John Chan"-->
+                    <!--                            />-->
+                    <!--                            <br/>-->
+                    <!--                            &lt;!&ndash; PHONE NUMBER &ndash;&gt;-->
+                    <!--                            <label>PHONE NUMBER</label>-->
+                    <!--                            <br/>-->
+                    <!--                            <input type="number"-->
+                    <!--                                   name="contact_name"-->
+                    <!--                                   placeholder="9123 9123"-->
+                    <!--                            />-->
+                    <!--                            <br/>-->
+                    <!--                            <button>Next</button>-->
+
+
+                    <!--                        </form>-->
+
+                </div>
+                <!--                <div id="wrap">-->
+                <!--                    <div class="container oe_website_sale py-2">-->
+                <!--                        <t t-set="same_shipping"-->
+                <!--                           t-value="bool(order.partner_shipping_id==order.partner_id or only_services)"/>-->
+                <!--                        <div class="row">-->
+                <!--                            <div class="col-12">-->
+                <!--                                <t t-call="website_sale.wizard_checkout">-->
+                <!--                                    <t t-set="step" t-value="20"/>-->
+                <!--                                </t>-->
+                <!--                            </div>-->
+                <!--                            <div class="col-12 col-xl-auto order-xl-2 d-none d-xl-block">-->
+                <!--                                <t t-call="website_sale.cart_summary">-->
+                <!--                                    <t t-set="redirect" t-valuef="/shop/checkout"/>-->
+                <!--                                </t>-->
+                <!--                            </div>-->
+                <!--                            <div class="col-12 col-xl order-xl-1 oe_cart">-->
+                <!--                                <div class="row">-->
+                <!--                                    <div class="col-lg-12">-->
+                <!--                                        <h3 class="o_page_header mt8">Billing Address</h3>-->
+                <!--                                    </div>-->
+                <!--                                    <div class="col-lg-6 one_kanban">-->
+                <!--                                        <t t-call="website_sale.address_kanban">-->
+                <!--                                            <t t-set='contact' t-value="order.partner_id"/>-->
+                <!--                                            <t t-set='selected' t-value="1"/>-->
+                <!--                                            <t t-set='readonly' t-value="1"/>-->
+                <!--                                            <t t-set='allow_edit' t-value="1"/>-->
+                <!--                                        </t>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                                <t t-if="not only_services" groups="sale.group_delivery_invoice_address">-->
+                <!--                                    <div class="row">-->
+                <!--                                        <div class="col-lg-12">-->
+                <!--                                            <h3 class="o_page_header mt16 mb4">Shipping Address</h3>-->
+                <!--                                        </div>-->
+                <!--                                    </div>-->
+                <!--                                    <div class="row all_shipping">-->
+                <!--                                        <div class="col-lg-12">-->
+                <!--                                            <div class="row mt8">-->
+                <!--                                                <div class="col-md-12 col-lg-12 one_kanban">-->
+                <!--                                                    <form action="/shop/address" method="post" class=''>-->
+                <!--                                                        <input type="hidden" name="csrf_token"-->
+                <!--                                                               t-att-value="request.csrf_token()"/>-->
+                <!--                                                        <a role="button" href="#"-->
+                <!--                                                           class='a-submit btn btn-secondary mb-2 btn-block'>-->
+                <!--                                                            <i class="fa fa-plus-square"/>-->
+                <!--                                                            <span>Add an address</span>-->
+                <!--                                                        </a>-->
+                <!--                                                    </form>-->
+                <!--                                                </div>-->
+                <!--                                                <t t-foreach="shippings" t-as="ship">-->
+                <!--                                                    <div class="col-md-12 col-lg-6 one_kanban mb-2">-->
+                <!--                                                        <t t-call="website_sale.address_kanban">-->
+                <!--                                                            <t t-set='contact' t-value="ship"/>-->
+                <!--                                                            <t t-set='selected'-->
+                <!--                                                               t-value="order.partner_shipping_id==ship"/>-->
+                <!--                                                            <t t-set='readonly' t-value="bool(len(shippings)==1)"/>-->
+                <!--                                                            <t t-set='edit_billing'-->
+                <!--                                                               t-value="bool(ship==order.partner_id)"/>-->
+                <!--                                                            <t t-set="allow_edit"-->
+                <!--                                                               t-value="not order.partner_id or (ship.id in order.partner_id.child_ids.ids)"/>-->
+                <!--                                                        </t>-->
+                <!--                                                    </div>-->
+                <!--                                                </t>-->
+                <!--                                            </div>-->
+                <!--                                        </div>-->
+                <!--                                    </div>-->
+                <!--                                </t>-->
+                <!--                                <div class="d-flex justify-content-between mt-3">-->
+                <!--                                    <a role="button" href="/shop/cart" class="btn btn-secondary mb32">-->
+                <!--                                        <i class="fa fa-chevron-left"/>-->
+                <!--                                        <span>Return to Cart</span>-->
+                <!--                                    </a>-->
+                <!--                                    <a role="button" href="/shop/confirm_order" class="btn btn-primary mb32">-->
+                <!--                                        <span>Confirm</span>-->
+                <!--                                        <i class="fa fa-chevron-right"/>-->
+                <!--                                    </a>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <t t-call="mask_cutomization.skypro_footer"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

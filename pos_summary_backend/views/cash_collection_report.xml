@@ -1,0 +1,47 @@
+<odoo>
+
+        <record model="ir.ui.view" id="cash_collect_report_wizard">
+        <field name="name">Cash collection</field>
+        <field name="model">safe.count.report.login</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Cash collection report login">
+                <group>
+                    <group>
+                        <field name="user_id"/>
+                    </group>
+                </group>
+                <group>
+                    <group>
+                        <field name="login_pin" password="True"/>
+                    </group>
+                </group>
+                <group>
+                    <group>
+                        <field name="start_date"/>
+                    </group>
+                    <group>
+                        <field name="end_date"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="get_cash_collection_report" string="Get Report" type="object" class="oe_highlight"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <act_window id="action_cash_collection_reporting"
+                name="Cash Collection Reporting"
+                res_model="safe.count.report.login"
+                view_mode="form"
+                view_id="pos_summary_backend.cash_collect_report_wizard"
+                target="new"/>
+
+     <menuitem action="pos_summary_backend.action_cash_collection_reporting"
+              id="menu_cah_collection_reporting"
+              parent="point_of_sale.menu_point_rep"
+              sequence="20"/>
+</odoo>

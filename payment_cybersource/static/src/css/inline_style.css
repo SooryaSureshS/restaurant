@@ -1,0 +1,87 @@
+label{
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 20px;
+/* identical to box height, or 100% */
+
+letter-spacing: 1.42857px;
+text-transform: uppercase;
+
+/* #FFFFFF */
+
+color: #FFFFFF;
+}
+
+.content-banner-left #cc_holder_name {
+align-items: flex-start;
+padding: 22.8571px 0px 22.8571px 22.8571px;
+gap: 14.29px;
+       width: 393px;
+height: 68.71px;
+
+/* #FFFFFF */
+
+background: #FFFFFF;
+border-radius: 11.4286px;
+    margin-top: 10px;
+
+}
+.content-banner-left #cc_number {
+align-items: flex-start;
+padding: 22.8571px 0px 22.8571px 22.8571px;
+gap: 14.29px;
+
+    width: 393px;
+height: 68.71px;
+
+/* #FFFFFF */
+
+background: #FFFFFF;
+border-radius: 11.4286px;
+    margin-top: 10px;
+
+}
+.content-banner-left #recaptcha {
+align-items: flex-start;
+padding: 22.8571px 0px 22.8571px 22.8571px;
+gap: 14.29px;
+      width: 393px;
+height: 68.71px;
+
+/* #FFFFFF */
+
+background: #FFFFFF;
+border-radius: 11.4286px;
+    margin-top: 10px;
+
+}
+.content-banner-left #cc_expiry {
+align-items: flex-start;
+padding: 22.8571px 0px 22.8571px 22.8571px;
+gap: 14.29px;
+       width: 393px;
+height: 68.71px;
+
+/* #FFFFFF */
+
+background: #FFFFFF;
+border-radius: 11.4286px;
+    margin-top: 10px;
+
+}
+.content-banner-left #cc_cvc {
+align-items: flex-start;
+padding: 22.8571px 0px 22.8571px 22.8571px;
+gap: 14.29px;
+    width: 393px;
+height: 68.71px;
+
+/* #FFFFFF */
+
+background: #FFFFFF;
+border-radius: 11.4286px;
+    margin-top: 10px;
+
+}

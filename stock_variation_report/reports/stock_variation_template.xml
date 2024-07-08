@@ -1,0 +1,222 @@
+<odoo>
+    <template id="report_template">
+        <t t-call="web.html_container">
+            <t t-call="stock_variation_report.external_layout_standard_custom"/>
+            <div class="page">
+                <t t-set="dollar_difference" t-value="0"/>
+                <t t-foreach="docs" t-as="doc">
+                    <div>
+                        <table class="table table-borderless"
+                               style="text-align:right;font-size:12px;font-family:\'Times New Roman\';color:black;
+                                   width:100%;border-collapse:collapse;border-spacing:20px;padding-top:5px;margin-top:5px">
+                            <style>
+                                th {
+                                padding-bottom:30px;}
+                                }
+                            </style>
+                            <thead style="display: table-header-group;">
+                                <tr style="padding-bottom:50px;margin-bottom:30px">
+
+                                    <th style="width:20%;margin-top:0px;text-align:left;">Item</th>
+                                    <th style="width:5%;;margin-top:0px;padding-left:10px">Open Stock</th>
+                                    <th style="width:5%;;margin-top:0px;padding-left:10px">StockIn</th>
+                                    <th style="width:5%;;margin-top:0px;padding-left:10px">Transfers</th>
+                                    <th style="width:5%;;margin-top:0px;padding-left:10px">Raw Waste</th>
+                                    <th style="width:5%;;margin-top:0px;padding-left:10px">Credits</th>
+                                    <th style="width:5%;;margin-top:0px;padding-left:10px">End Stock</th>
+                                    <th style="width:5%;;margin-top:0px;padding-left:10px">Usage</th>
+                                    <th style="width:5%;;margin-top:0px;padding-left:10px">Proj. Usage</th>
+                                    <th style="width:5%;;margin-top:0px;padding-left:10px">Variance</th>
+                                    <th style="width:5%;;margin-top:0px;padding-left:10px">% Diff</th>
+                                    <th style="width:5%;;margin-top:0px;padding-left:10px">$ Diff</th>
+                                    <th style="width:5%;;margin-top:0px;padding-left:10px">Usage Cost Value</th>
+                                </tr>
+                            </thead>
+                            <br/>
+                            <tbody style="display: table-row-group;padding-top:50px;margin-top:30px">
+                                <t t-set="subtotal_neg" t-value='0'/>
+                                <t t-set="subtotal_pos" t-value='0'/>
+                                <t t-set="subtotal_per_neg" t-value='0'/>
+                                <t t-set="subtotal_per_pos" t-value='0'/>
+                                <t t-set="recs" t-value="docs.get_product_details()"/>
+                                <t t-foreach="recs.keys()" t-as="key">
+                                    <tr>
+                                        <td colspan="13" style="text-align:left;font-weight:bold;">
+                                            <span t-esc="key"/> &#160;<span>Supplies</span>
+                                        </td>
+                                    </tr>
+                                    <t t-set="positive" t-value='0'/>
+                                    <t t-set="positive_count" t-value='0'/>
+                                    <t t-set="positive_per" t-value='0'/>
+                                    <t t-set="negative_per" t-value='0'/>
+                                    <t t-set="negative" t-value='0'/>
+                                    <t t-set="negative_count" t-value='0'/>
+
+                                    <t t-foreach="recs[key]" t-as="p">
+                                        <tr>
+                                            <td style="text-align:left">
+                                                <t t-esc="p['name']"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="p['open_stock']"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="p['stock_in']"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="p['transfers']"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="p['raw_waste']"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="p['credit']"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="p['end_stock']"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="p['qty']"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="p['proj_usage']"/>
+                                            </td>
+                                            <t t-set="variance" t-value="p['proj_usage'] - p['qty']"/>
+                                            <td>
+
+                                                <t t-esc='"{:.2f}".format(variance)'/>
+                                            </td>
+                                            <td>
+
+                                                <t t-esc='"{:.2f}".format(p["perc_diff"])'/>
+                                            </td>
+                                            <t t-set="unit_price" t-value="p['unit_price']"/>
+                                            <t t-set="sold_qty" t-value="p['qty']"/>
+                                        <t t-set="sold_total" t-value="sold_qty * unit_price"/>
+                                            <t t-set="current_qty" t-value="p['end_stock']"/>
+                                        <t t-set="remaining_total" t-value="current_qty * unit_price"/>
+                                        <t t-set="total_qty" t-value="p['virtual_available_start'] * unit_price"/>
+                                        <t t-set="actual_available_qty_diff" t-value="total_qty - sold_total"/>
+                                        <t t-set="dollar_difference" t-value="remaining_total - actual_available_qty_diff"/>
+                                        <td>
+                                            <t t-esc="round(dollar_difference,2)"
+                                               t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+                                            <t t-set="usage_price" t-value="p['qty'] * p['unit_price']"/>
+                                            <td>
+                                                <t t-esc="round(usage_price,2)"
+                                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </td>
+                                        </tr>
+                                        <t t-if="dollar_difference  &lt; 0">
+                                            <t t-set="negative_count" t-value='negative_count + 1'/>
+                                            <t t-set="negative" t-value='negative + dollar_difference'/>
+                                            <t t-set="negative_per" t-value='negative / negative_count'/>
+                                        </t>
+                                        <t t-if="dollar_difference  &gt;= 0">
+                                            <t t-set="positive_count" t-value='positive_count + 1'/>
+                                            <t t-set="positive" t-value='positive + dollar_difference'/>
+                                            <t t-set="positive_per" t-value='positive / positive_count'/>
+                                        </t>
+                                    </t>
+                                    <tr>
+                                        <tr>
+                                            <td style="text-align:left;padding-top:10px">
+                                                <span t-esc="key"/>
+                                                Supplies
+                                            </td>
+                                            <td style="padding-top:10px">Totals</td>
+                                            <td style="padding-top:10px" colspan="6"></td>
+                                            <td style="padding-top:10px" colspan="2">Positive Variations</td>
+                                            <td style="padding-top:10px" colspan="2">
+                                                <t t-esc="round(positive,2)"
+                                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </td>
+                                            <td style="padding-top:10px"><t t-esc='"{:.2f}".format(positive_per)'/>%
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td colspan="6"></td>
+                                            <td colspan="2">Negative Variations</td>
+                                            <td colspan="2">
+                                                <t t-esc="round(negative,2)"
+                                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </td>
+                                            <td><t t-esc='"{:.2f}".format(negative_per)'/>%
+                                            </td>
+                                        </tr>
+                                        <t t-set="total" t-value='positive + negative'/>
+                                        <t t-set="total_per" t-value='positive_per + negative_per'/>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td colspan="6"></td>
+                                            <td colspan="2">Group Total Variation</td>
+                                            <td colspan="2" style="border-top:1px solid black">
+                                                <t t-esc="round(total,2)"
+                                                   t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </td>
+                                            <td><t t-esc='"{:.2f}".format(total_per)'/>%
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="13" style="border-top:1px solid black"></td>
+                                        </tr>
+                                        <t t-set="subtotal_neg" t-value='subtotal_neg + negative'/>
+                                        <t t-set="subtotal_pos" t-value='subtotal_pos + positive'/>
+                                        <t t-set="subtotal_per_neg" t-value='subtotal_per_neg+negative_per'/>
+                                        <t t-set="subtotal_per_pos" t-value='subtotal_per_pos+positive_per'/>
+                                    </tr>
+
+                                </t>
+                                <tr>
+                                    <td colspan="3" style="font-weight:bold">Grand Totals for all Item Groups</td>
+                                    <td colspan="5"></td>
+                                    <td colspan="2">Positive Variations</td>
+                                    <td colspan="2">
+                                        <t t-esc="round(subtotal_pos,2)"
+                                           t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                    </td>
+                                    <td><t t-esc='"{:.2f}".format(subtotal_per_pos)'/>%
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td colspan="6"></td>
+                                    <td colspan="2">Negative Variations</td>
+                                    <td colspan="2">
+                                        <t t-esc="round(subtotal_neg,2)"
+                                           t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                    </td>
+                                    <td><t t-esc='"{:.2f}".format(subtotal_per_neg)'/>%
+                                    </td>
+                                </tr>
+                                <t t-set="subtotal" t-value='subtotal_pos + subtotal_neg'/>
+                                <t t-set="subtotal_per" t-value='subtotal_per_pos + subtotal_per_neg'/>
+
+                                <tr>
+                                    <td> </td>
+                                    <td> </td>
+                                    <td colspan="6"> </td>
+                                    <td colspan="2">Total Variation</td>
+                                    <td colspan="2" style="border-top:1px solid black">
+                                        <t t-esc="round(subtotal,2)"
+                                           t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                    </td>
+                                    <td><t t-esc='"{:.2f}".format(subtotal_per)'/>%
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="13" style="border-top:1px solid black"> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </div>
+        </t>
+    </template>
+</odoo>

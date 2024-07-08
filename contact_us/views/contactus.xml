@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+        <template id="custom_contact_us_inherit" name="Contact Us Page" inherit_id="contact_us_email.custom_contact_us" priority="100">
+            <xpath expr="//form" position="replace">
+                <t t-set="website_sale_order" t-value="website.get_restaurant_demo()" />
+
+                <address itemscope="itemscope" itemtype="http://schema.org/Organization">
+        <!-- TODO widget contact must add itemprop attributes -->
+        <div t-field="res_company.partner_id" t-options='{
+                "widget": "contact",
+                "fields": ["name", "address", "phone", "mobile", "email"]}'/>
+
+    </address>
+
+
+                <table style="border: 0px solid ;width:100%;border-collapse: separate;border-spacing: 0 1em;font-weight: bold;">
+                    <tr>
+                        <td style="text-align: left;">Opening Hours</td>
+                        <td style="text-align: left;">Closing Hours</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">Monday <t t-esc="website_sale_order['monday_opening_time']"/></td>
+                        <td style="text-align: left;">Monday <t t-esc="website_sale_order['monday_closing_time']"/></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">Tuesday <t t-esc="website_sale_order['tuesday_opening_time']"/></td>
+                        <td style="text-align: left;">Tuesday <t t-esc="website_sale_order['tuesday_closing_time']"/></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">Wednesday <t t-esc="website_sale_order['wednesday_opening_time']"/></td>
+                        <td style="text-align: left;">Wednesday <t t-esc="website_sale_order['wednesday_closing_time']"/></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">Thursday <t t-esc="website_sale_order['thursday_opening_time']"/></td>
+                        <td style="text-align: left;">Thursday <t t-esc="website_sale_order['thursday_closing_time']"/></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">Friday <t t-esc="website_sale_order['friday_opening_time']"/></td>
+                        <td style="text-align: left;">Friday <t t-esc="website_sale_order['friday_closing_time']"/></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">Saturday <t t-esc="website_sale_order['saturday_opening_time']"/></td>
+                        <td style="text-align: left;">Saturday <t t-esc="website_sale_order['saturday_closing_time']"/></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">Sunday <t t-esc="website_sale_order['sunday_opening_time']"/></td>
+                        <td style="text-align: left;">Sunday <t t-esc="website_sale_order['sunday_closing_time']"/></td>
+                    </tr>
+                </table>
+
+            </xpath>
+
+     </template>
+
+    <template id="contactus_form_inherit" name="Contact Form inherit" inherit_id="website.contactus" customize_show="True">
+        <xpath expr="//div[hasclass('col-lg-4')]" position="replace">
+
+
+        </xpath>
+    </template>
+
+</odoo>

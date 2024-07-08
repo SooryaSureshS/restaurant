@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="hr_employee_view_form_payrate_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.view.form.payrate</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Employment Details">
+                    <group string="Work Details">
+                        <div class="o_row">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <label for="deputy_acesses"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <field name="deputy_acesses"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="works_at"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <field name="works_at"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="hired_on"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <field name="hired_on"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="training"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <field name="training"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </group>
+                    <group string="Pay Details">
+                        <div class="o_row">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <label for="employment_type"/>
+                                    </td>
+                                    <td>
+                                        <label for="payroll_id"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <field name="employment_type"/>
+                                    </td>
+                                    <td>
+                                        <field name="payroll_id"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="default_pay_rate"/>
+                                    </td>
+                                    <td>
+                                        <label for="base_pay_rate"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <field name="default_pay_rate"/>
+                                    </td>
+                                    <td>
+                                        <field name="base_pay_rate"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+    <record id="view_employee_tree_inherit_pay" model="ir.ui.view">
+        <field name="name">hr.employee.tree.pay</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="deputy_acesses"/>
+                <field name="pay_rates"/>
+
+
+            </xpath>
+        </field>
+    </record>
+</odoo>

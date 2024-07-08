@@ -1,0 +1,141 @@
+<odoo>
+    <data>
+        <template id="carton_packaging" name="mask packaging">
+            <t t-call="website.layout">
+                <t t-set="additional_title">Carton Packaging</t>
+                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/carton.css"/>
+                <t t-set="no_footer" t-value="1"/>
+                                <t t-call="mask_cutomization.header_banner_xml"/>
+
+                <div class="banner banner-padding container" id="carton_packagings">
+                    <p id="gui_back" style="cursor: pointer;"><span>&lt; Back</span></p>
+                    <div id="process-bar">
+                        <!--                            <img src="/mask_cutomization/static/src/image/image_package/Customize Process (1).png" alt=""/>-->
+                    </div>
+                    <div class="inner-flex">
+                        <div class="left-flex relative-class">
+                            <img t-attf-src="data:image/png;base64,{{product.carton_image}}" alt=""
+                                 id="imag-padding-2"/>
+<!--                            sdsds<t t-esc="line.carton_packaging_image"/> sdsds-->
+                            <t t-if="line.carton_packaging_image">
+                                <t t-set="mask_area_css1" t-value="'border_none'"/>
+                            </t>
+                            <t t-else="">
+                                <t t-set="mask_area_css1" t-value="'border_block'"/>
+                            </t>
+                            <div class="applied_image" id="print-2" t-att-class="mask_area_css1">
+                                <!--                                <div class="applied_image" id="print-2" t-attf-style="background-image:url('/web/image?model=sale.order.line&amp;id=#{line.id}&amp;field=carton_packaging_image')">-->
+                                <!--                                    <img src="/mask_cutomization/static/src/image/image_package/Rectangle.png" id="print-2"/>-->
+                            </div>
+<!--                            <div id="print-color" t-attf-style="background-color:{{line._get_product_colour_code()}}"></div>-->
+                                <div id="print-color-name" class="trn"><t t-esc="line._get_product_colour()"/></div>
+                                <div id="print-exp"><t t-esc="line._get_carton_details()['exp']"/></div>
+                                <div id="print-nt_wt"><t t-esc="line._get_carton_details()['nt_wt']"/></div>
+                                <div id="print-gr_wt"><t t-esc="line._get_carton_details()['gr_wt']"/></div>
+                                <div id="print-qty"><t t-esc="line._get_carton_details()['qty']"/></div>
+
+                            <!-- <img src="Frame.png" id="print-2"> -->
+                        </div>
+                        <div class="right-flex">
+                            <div id="image_positions">
+                                <span id="left_crumb">
+                                    <img src="/mask_cutomization/static/src/image/image_package/breadcrumb_carton/left1.png"/>
+                                </span>
+                                <span id="center_crumb">
+                                    <img src="/mask_cutomization/static/src/image/image_package/breadcrumb_carton/center1.png"/>
+                                </span>
+                                <span id="right_crumb">
+                                    <img src="/mask_cutomization/static/src/image/image_package/breadcrumb_carton/right1.png"/>
+                                </span>
+                            </div>
+                            <!--                                <img src="/mask_cutomization/static/src/image/image_package/Customize Process (1).png" alt="" style="width:87%;" id="right-flex-process" /><br/>-->
+                            <p id="mask-header">
+                                <t t-esc="product.name"/>
+                            </p>
+                            <!--  -->
+                            <p class="preview_block"><span>Upload your image</span>
+                                <t t-set="image_size_carton_default" t-value="line._image_size_default_carton_calculate()"/>
+                                <span><t t-esc="image_size_carton_default['width']"/>mm</span><span> x </span><span><t t-esc="image_size_carton_default['height']"/>mm</span>
+                            </p>
+                            <p class="preview_div" id="image_size_check">
+                                <t t-if="line.carton_packaging_image">
+                                    <t t-set="image_size" t-value="line._image_size_carton_calculate()"/>
+                                    <t t-if="image_size">
+                                        <span>Image size:</span>
+                                        <span><t t-esc="image_size['width']"/>mm
+                                        </span>
+                                        <span>x</span>
+                                        <span><t t-esc="image_size['height']"/>mm
+                                        </span>
+                                        <br/>
+                                    </t>
+                                </t>
+<!--                                <span>Color:-->
+<!--                                    <span class="trn"><t t-esc="line._get_product_colour()"/></span>-->
+<!--                                </span>-->
+                            </p>
+                            <p>
+                                <span>Color:
+                                    <span class="trn"><t t-esc="line._get_product_colour()"/></span>
+                                </span>
+                            </p>
+
+                            <div class="upload-div preview_block">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <div class="upload-div">
+                                    <input type="file" name="uploaded" id="upload_file_change" style="display: none;"/>
+                                    <input type="hidden" name="line" id="sale_order_line" t-att-value="line.id"/>
+                                    <button class="upload" id="fetch_upload"><span>Upload</span></button>
+                                    <!--                                            <img t-if="line.packaging_image" t-attf-src="data:image/png;base64,{{line.packaging_image}}" alt="" id="upload_image_view"/>-->
+                                    <!--                                            <p><t t-if="line.upload_file_name" t-esc="line.upload_file_name"/></p>-->
+                                    <button class="design" id="design_none"><span>No design</span></button>
+                                </div>
+                                <input type="submit" name="submit" value="Submit" id="submit_form_action"
+                                       style="display:none;"/>
+                            </div>
+                            <br/>
+                            <div class="upload-div preview_block" id="file_uploaded_image">
+                                <t t-if="line.carton_packaging_image">
+                                    <input type="hidden" id="package_image" t-att-value="line.carton_packaging_image"/>
+                                </t>
+                                <img t-if="line.carton_packaging_image"
+                                     t-attf-src="data:image/png;base64,{{line.carton_packaging_image}}" alt=""
+                                     id="upload_image_view" style="flex: unset;"/>
+                                <p>
+                                    <t t-if="line.carton_upload_file_name" t-esc="line.carton_upload_file_name[-12:]"/>
+                                </p>
+                            </div>
+                            <!--  -->
+                            <div class="preview_none_div">
+                                <!--                                <p>Preview mode</p>-->
+                                <form action="/submit/carton" method="post">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <input type="hidden" name="sale_order_line" id="lines_id" t-att-value="line.id"/>
+                                    <input type="hidden" name="product_info" id="product_info" t-att-value="product.id"/>
+                                    <input type="hidden" name="product_info" t-att-value="line.carton_packaging_image"/>
+
+                                    <button id="preview-next" type="submit"><span>Next</span></button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <style>
+                    #print-2{
+                        height: 60px;
+                        width: 160px;
+                    }
+                    .border_block{
+                            border: 1px solid #5e5c5b;
+                    }
+                    .border_none{
+                            border: none !important;
+                    }
+                </style>
+                <t t-call="mask_cutomization.skypro_footer"/>
+            </t>
+        </template>
+    </data>
+</odoo>

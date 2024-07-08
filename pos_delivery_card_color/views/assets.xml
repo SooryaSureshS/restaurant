@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- vim:fdn=3:-->
+<odoo>
+    <data>
+
+        <template id="pos_kitchen_screen_changes" name="pos_kitchen screen index" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+<!--                <script type="text/javascript" src="/pos_delivery_card_color/static/src/js/kvs_design.js"></script>-->
+                <script type="text/javascript" src="/pos_delivery_card_color/static/src/js/jquery.skroller.js"></script>
+                <link rel="stylesheet" href="/pos_delivery_card_color/static/src/css/style.css" id="pos-stylesheet" />
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

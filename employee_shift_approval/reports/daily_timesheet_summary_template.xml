@@ -1,0 +1,53 @@
+<odoo>
+    <template id="report_template">
+        <t t-call="web.html_container">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <div  style="font-size:20px;padding:20px">
+                    <h4 align="center">
+                        <strong>Employee Timesheet Summary</strong><br/>
+                        <t t-set="date" t-value="context_timestamp(datetime.datetime.now())"/>
+                        <span t-esc="date.strftime('%d-%m-%Y')"/>
+                    </h4>
+
+                </div>
+                <table class="table"
+                       style="width:100%">
+                    <tr style="padding-bottom:50px;margin-bottom:30px">
+
+                        <th style="width:20%;margin-top:0px;text-align:left;">Employee</th>
+                        <th style="width:5%;;margin-top:0px;padding-left:10px">Scheduled Hours</th>
+                        <th style="width:5%;;margin-top:0px;padding-left:10px">Timesheet hours</th>
+                        <th style="width:5%;;margin-top:0px;padding-left:10px">Hour Variance</th>
+                        <th style="width:5%;;margin-top:0px;padding-left:10px">Scheduled Cost</th>
+                        <th style="width:5%;;margin-top:0px;padding-left:10px">Timesheet Wages</th>
+                        <th style="width:5%;;margin-top:0px;padding-left:10px">Cost Variance</th>
+                    </tr>
+                    <t t-foreach="docs" t-as="doc">
+                    <tr>
+                        <td><span t-esc="doc.employee_id.name"/></td>
+                        <td><span t-esc="'{:.2f}'.format(doc.scheduled_hours)"/></td>
+                        <td><span t-esc="'{:.2f}'.format(doc.timesheet_hours)"/></td>
+                        <td><span t-esc="'{:.2f}'.format(doc.hour_variance)"/></td>
+                        <td><span t-esc="'{:.2f}'.format(doc.scheduled_cost)"/></td>
+                        <td><span t-esc="'{:.2f}'.format(doc.timesheet_wages)"/></td>
+                        <td><span t-esc="'{:.2f}'.format(doc.cost_variance)"/></td>
+                    </tr>
+
+                    </t>
+
+                </table>
+                <div style="float:right">
+                    <strong>
+                        <span>Total Labour Cost :</span>
+                        <t t-esc="round(sum(docs.mapped('timesheet_wages')),2)"
+                           t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                    </strong>
+                </div>
+
+            </div>
+
+        </t>
+        </t>
+    </template>
+</odoo>

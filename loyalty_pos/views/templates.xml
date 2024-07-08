@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+
+        <div style="padding:10px;overflow:hidden;" class="wk_redeem_popup">
+            <header class="title">
+                <i style="font-size:25px;float:right;margin-top:-5px;cursor:pointer" aria-hidden="true"
+                   class="fa fa-times cancel"></i>
+            </header>
+
+            <div style="height:156px">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align:left">
+                                <h3 style="font-size:16px;margin-left:11px">Customer Name</h3>
+                            </td>
+                            <td>
+                                <h3 style="color:#37644e;">Azure Interior</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left">
+                                <h3 style="font-size:16px;margin-left:11px">Total Earned Points</h3>
+                            </td>
+                            <td>
+                                <h3 style="color:#37644e;">4</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left">
+                                <h3 style="font-size:16px;margin-left:11px">Total Discount</h3>
+                            </td>
+                            <td>
+                                <h3 style="color:#37644e;">$ 4.00</h3>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <footer>
+                <button class="button wk_redeem_now">REDEEM NOW</button>
+            </footer>
+        </div>
+    </data>
+</odoo>

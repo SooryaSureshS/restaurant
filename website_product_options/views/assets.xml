@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="assets_frontend_Web_Orders_website_product_options" name="Ecommerce product" inherit_id="web.assets_frontend">
+                <xpath expr="." position="inside">
+                    <script type="text/javascript" src="/website_product_options/static/js/product_configurator.js"></script>
+                    <link rel="stylesheet" type="text/css" href="/website_product_options/static/css/check_box_style.css"/>
+
+                     <script type="text/javascript" src="/website_product_options/static/js/top-alertjs.js"></script>
+                     <link rel="stylesheet" type="text/css" href="/website_product_options/static/css/top-alertjs.css"/>
+                </xpath>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+
+    <t t-name="OpenWidgetButton" owl="1">
+        <span class="order-button" style="background: #098906;    font-size: 20px;min-width: 85px;" t-on-click="FloorPlane_back">
+            <span>
+                <i class="fa fa-home">Home</i>
+            </span>
+        </span>
+    </t>
+    <t t-name="Chrome" t-inherit="point_of_sale.Chrome" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('search-bar-portal')]" position="before">
+                <OpenWidgetButton/>
+         </xpath>
+    </t>
+
+
+     <t t-name="SetContainerLeft" owl="1">
+         <div class="pos_buttons_class" style="    float: left;">
+<!--                <div class="pos_button" t-on-click="selectPosButton()">-->
+<!--                    <span class="button" >-->
+<!--                        POS-->
+<!--                    </span>-->
+<!--                </div>-->
+                 <div class="pos_order_button" t-on-click="selectPosOrderButton()">
+                    <span class="button">
+                        ORDERS
+                    </span>
+                </div>
+
+         </div>
+
+    </t>
+
+
+    <t t-name="FloorScreen" t-inherit="pos_restaurant.FloorScreen" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('floor-screen')]" position="replace">
+            <div class="container">
+<!--                <div class="left_container">-->
+<!--                    <SetContainerLeft/>-->
+<!--                    <leftPanelContainer/>-->
+<!--                    <leftPanelContainer/>-->
+<!--                    <div class="pos_button">-->
+<!--                        <span class="button">-->
+<!--                            POS-->
+<!--                        </span>-->
+<!--                    </div>-->
+<!--                    <br/>-->
+<!--                    <br/>-->
+<!--                     <div class="pos_order_button">-->
+<!--                        <span class="button">-->
+<!--                            ORDERS-->
+<!--                        </span>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <div class="right_container">
+                     <div class="floor-screen screen">
+                            <div class="screen-content-flexbox">
+                                <t t-if="env.pos.floors.length > 1">
+                                    <div class="floor-selector">
+                                        <t t-foreach="env.pos.floors" t-as="floor" t-key="floor.id">
+                                            <span class="button button-floor"
+                                                  t-att-class="{ active: floor.id === state.selectedFloorId }"
+                                                  t-on-click="selectFloor(floor)">
+                                                <t t-esc="floor.name"/>
+                                            </span>
+                                        </t>
+                                    </div>
+                                </t>
+                                <div class="floor-map" t-on-click="trigger('deselect-table')" t-ref="floor-map-ref">
+                                    <div class="left_container">
+                                        <SetContainerLeft t-if="!isFloorEmpty"/>
+                                    </div>
+                                    <div t-if="isFloorEmpty" class="empty-floor">
+                                        <span>This floor has no tables yet, use the </span>
+                                        <i class="fa fa-plus" role="img" aria-label="Add button" title="Add button"></i>
+                                        <span> button in the editing toolbar to create new tables.</span>
+                                    </div>
+                                    <div t-else="" class="tables" style="    float: left;">
+                                        <t t-foreach="activeTables" t-as="table" t-key="table.id">
+                                            <TableWidget t-if="table.id !== state.selectedTableId" table="table"/>
+                                            <EditableTable t-else="" table="table"/>
+                                        </t>
+                                    </div>
+                                    <span t-if="env.pos.user.role == 'manager'" class="edit-button editing"
+                                          t-att-class="{ active: state.isEditMode }" t-on-click.stop="toggleEditMode">
+                                        <i class="fa fa-pencil" role="img" aria-label="Edit" title="Edit"></i>
+                                    </span>
+                                    <EditBar t-if="state.isEditMode" selectedTable="selectedTable"/>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+         </xpath>
+    </t>
+
+
+    <t t-name="OpenOrderScreen" owl="1">
+           <div class="ticket-screen screen">
+            <div class="screen-content">
+                <div class="controls">
+                    <div class="buttons gift_card_header_buttons">
+                        <t t-if="env.pos.config.is_table_management">
+                            <button class="discard" id="open_order_back_button_restaurant" t-on-click="trigger('close-screen')">Back</button>
+                        </t>
+                        <t t-else="">
+                            <button class="discard" id="open_order_back_button_no_restaurant" t-on-click="trigger('close-screen-product')">Back</button>
+                        </t>
+
+
+<!--                        <button class="discard" t-on-click="trigger('sale_return-screen')">Sale orders</button>-->
+<!--                        <button class="discard" t-on-click="trigger('fetch_new-screen')">Sync New orders</button>-->
+                    </div>
+                    <SearchBar config="searchBarConfig" placeholder="'Search Tickets...'" />
+                </div>
+                <div class="orders" style="    display: block;">
+<!--                    <div class="header-row">-->
+<!--                        <div class="col start ">Order Ref</div>-->
+<!--                        <div class="col start ">Return Ref</div>-->
+<!--                        <div class="col start">Partner</div>-->
+<!--                        <div class="col start">Date</div>-->
+<!--                    </div>-->
+
+                    <t t-foreach="filteredOrdersList" t-as="order" t-key="order.id">
+                             <div class="card_container" style="float:left;" t-on-click="selectPosOrder(order.id)">
+                                <div class="order_ref">
+                                    <t t-esc="order.pos_reference"/>
+                                </div>
+                                <div class="client_name">
+                                    <t t-if="order.partner_id">
+                                        <t t-esc="order.partner_id[1]"/>
+                                    </t>
+                                </div>
+                                <div class="client_name">
+                                    <t t-if="order.delivery_type">
+                                        <t t-esc="order.delivery_type"/>
+                                    </t>
+                                </div>
+                            </div>
+                    </t>
+                </div>
+            </div>
+        </div>
+
+    </t>
+
+
+
+<!--    <t t-name="PointsCounter" owl="1">-->
+<!--        <t t-if="order and (get_points_won() != 0 or get_points_spent() != 0)">-->
+<!--            <div class='loyalty-points'>-->
+<!--                <div class='loyalty-points-title'>-->
+<!--                    Points-->
+<!--                </div>-->
+<!--                <t t-if='get_points_won()'>-->
+<!--                    <div class="loyalty-points-won">-->
+<!--                        <span class='value'>+<t t-esc='get_points_won()'/></span>-->
+<!--                    </div>-->
+<!--                </t>-->
+<!--                <t t-if='get_points_spent()'>-->
+<!--                    <div class="loyalty-points-spent">-->
+<!--                        <span class='value'>-<t t-esc='get_points_spent()'/></span>-->
+<!--                    </div>-->
+<!--                </t>-->
+<!--                <div class='loyalty-points-total'>-->
+<!--                    <span class='value'><t t-esc='get_points_total()' /></span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </t>-->
+<!--        <t t-else="">-->
+<!--            <div></div>-->
+<!--        </t>-->
+<!--    </t>-->
+
+
+<!--   <t t-name="OrderSummary" t-inherit="point_of_sale.OrderSummary" t-inherit-mode="extension" owl="1">-->
+<!--        <xpath expr="//div[hasclass('summary')]//div[hasclass('line')]" position="before">-->
+<!--            <PointsCounter t-if="env.pos.loyalty" />-->
+<!--        </xpath>-->
+<!--    </t>-->
+<!--  div[hasclass       </ition="after">t>--><!--         <t t-name="PaymentScreeninherited" t-inherit="point_of_sale.PaymentScreen" t-inherit-mode="extension" owl="1">-->
+
+
+       <!--  <t t-name="PaymentScreen1" t-inherit="point_of_sale.PaymentScreen" t-inherit-mode="extension" owl="1">
+             <xpath expr="//('delivery-buttons')]" pos
+                 <span if="pos_order_type" style="display:none;">
+                     sssss<t t-esc="pos_order_type"/>
+                 </span>
+                  <input type="button" value="phone" t-on-click="Phone()" class="custom-select phone"/>
+             </xpath>
+         </t>-->
+</templates>

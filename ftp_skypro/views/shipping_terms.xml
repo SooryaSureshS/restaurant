@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_shipping_delivery_terms_form" model="ir.ui.view">
+        <field name="name">shipping.delivery.terms.form</field>
+        <field name="model">shipping.delivery.terms</field>
+        <field name="arch" type="xml">
+            <form string="Carrier">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_title" name="title">
+                        <label for="name" string="Shipping Terms"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. Express"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group name="delivery_details">
+                            <field name="active" invisible="1"/>
+                            <field name="code"/>
+                            <field name="english_explanation"/>
+                            <field name="chinese_explanation"/>
+                            <field name="product_id" context="{'default_detailed_type': 'service', 'default_sale_ok': False, 'default_purchase_ok': False, 'default_invoice_policy': 'order'}" />
+                            <label for="margin" string="Margin on Rate"/>
+                            <div>
+                                <field name="margin" class="oe_inline"/>%
+                            </div>
+                            <field name="amount"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_shipping_terms_action_001">
+        <field name="name">Shipping Terms</field>
+        <field name="res_model">shipping.delivery.terms</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem action="action_shipping_terms_action_001" id="menu_action_shipping_terms_form_001" parent="stock.menu_delivery" sequence="1"/>
+    <menuitem action="action_shipping_terms_action_001" id="sale_menu_action_shipping_terms_form_001" parent="sale.menu_sales_config" sequence="4"/>
+
+    <record id="vpicktree_view_tree_inherit_001" model="ir.ui.view">
+        <field name="name">stock.picking.delivery.tree.inherit.delivery</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="delivery.vpicktree_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='carrier_id']" position="after">
+                <field name="shipping_term_id" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_move_line_tree_detailed_delivery_001" model="ir.ui.view">
+        <field name="name">stock.move.line.tree.detailed</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="delivery.view_move_line_tree_detailed_delivery"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='picking_partner_id']" position="after">
+                <field name="carrier_id" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_picking_withcarrier_out_form_inherit_001" model="ir.ui.view">
+        <field name="name">delivery.stock.picking_withcarrier.form.view</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="delivery.view_picking_withcarrier_out_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='carrier_id']" position="before">
+                    <field name="shipping_term_id" attrs="{'readonly': [('state', 'in', ('done', 'cancel'))]}" options="{'no_create': True, 'no_open': True}"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+</odoo>

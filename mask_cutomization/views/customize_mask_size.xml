@@ -1,0 +1,63 @@
+<odoo>
+    <data>
+
+        <template id="select_mask_size" name="Recommend">
+            <t t-call="website.layout">
+                <t t-set="additional_title">Select You Mask</t>
+                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/customize_mask.css"/>
+                <t t-set="no_footer" t-value="1"/>
+                <t t-call="mask_cutomization.header_banner_xml1"/>
+
+<!--                <div class="banner_container" >-->
+<!--                    <div class="container_skypro1">-->
+<!--                        <img class="container_mask_image" src="/mask_cutomization/static/src/image/Page T.png"/>-->
+<!--                    </div>-->
+<!--&lt;!&ndash;                      <span class="mask_image_banner">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <img src="/mask_cutomization/static/src/image/Group 3419.png"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </span>&ndash;&gt;-->
+<!--                </div>-->
+                <div class="sub_container_skypro container" id="select_your_mask">
+                    <div class="row">
+                        <div class="col-md-12" >
+                            <div class="sky_pro_header_text margin_t_80">
+                                <span>Please select your size</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                         <div class="bread_crumb_skypro">
+                            <span>&lt; <span>Back</span></span>
+                        </div>
+                    </div>
+
+                    <div class="row margin_t_80">
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <div class="adult_container">
+                                    <div class="adult_image">
+                                        <img src="/mask_cutomization/static/src/image/Group 3493.png"/>
+                                    </div>
+                                <div class="row">
+                                     <button class="adult_button" t-att-data-value="product.id" href="/print/area/mask/adult">Adult</button>
+                                </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="child_container">
+                                    <div class="child_image">
+                                        <img src="/mask_cutomization/static/src/image/face.png"/>
+                                    </div>
+                                    <div class="row">
+                                     <button class="child_button" t-att-data-value="product.id" href="/print/area/mask/child">Child</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <t t-call="mask_cutomization.skypro_footer"/>
+            </t>
+        </template>
+    </data>
+</odoo>

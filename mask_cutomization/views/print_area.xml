@@ -1,0 +1,83 @@
+<odoo>
+    <data>
+
+        <template id="print_area_mask" name="Print Area Mask">
+            <t t-call="website.layout">
+                <t t-set="additional_title">Print Area Mask</t>
+                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/print_area.css"/>
+                  <t t-set="no_footer" t-value="1"/>
+                <t t-call="mask_cutomization.header_banner_xml"/>
+<!--                <div class="banner_container">-->
+<!--                    <div class="container_skypro1">-->
+<!--                        <img class="container_mask_image" src="/mask_cutomization/static/src/image/Page T.png"/>-->
+<!--                    </div>-->
+<!--                      <span class="mask_image_banner">-->
+<!--&lt;!&ndash;                            <img src="/mask_cutomization/static/src/image/Group 3419.png"/>&ndash;&gt;-->
+<!--                        </span>-->
+<!--                </div>-->
+                <div class="sub_container_skypro container" id="print_area_mask">
+                    <div class="row">
+                        <div class="col-md-12" >
+                            <div class="sky_pro_header_text margin_t_80">
+                                Please select your print area
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row back_button" >
+                         <div class="bread_crumb_skypro">
+                            <span>&lt; Back</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="container_print_area">
+                                <div class="logo_container1 sub_container_width">
+                                    <div class="adult_image11">
+<!--                                        <img class="mask_image" src="/mask_cutomization/static/src/image/Logomask.png"/>-->
+                                        <t t-if="product.blank_image">
+                                            <img class="mask_image" style="width:100%" t-attf-src="data:image/png;base64, {{product.logo_image.decode('utf-8') if product.logo_image else product.logo_image}}"/>
+                                        </t>
+                                        <t t-else="">
+                                            <img class="mask_image" src="/mask_cutomization/static/src/image/Logomask.png"/>
+                                        </t>
+                                    </div>
+                                <div class="row">
+                                     <button class="adult_button" id="logo" t-att-data-size="size" t-att-data-product="product.id" href="/mask/designing/logo">Logo</button>
+                                </div>
+                                </div>
+
+                                <div class="full_container sub_container_width">
+                                    <div class="child_image11">
+<!--                                        <img class="mask_image" src="/mask_cutomization/static/src/image/Fullmask.png"/>-->
+                                        <t t-if="product.blank_image">
+                                            <img class="mask_image" style="width:100%" t-attf-src="data:image/png;base64, {{product.full_image.decode('utf-8') if product.full_image else product.full_image}}"/>
+                                        </t>
+                                        <t t-else="">
+                                            <img class="mask_image" src="/mask_cutomization/static/src/image/Fullmask.png"/>
+                                        </t>
+                                    </div>
+                                    <div class="row">
+                                     <button class="child_button" id="full" t-att-data-size="size" t-att-data-product="product.id" href="/mask/designing/full">Full</button>
+                                </div>
+                                </div>
+                                <div class="blank_container sub_container_width">
+                                    <div class="child_image11">
+                                        <t t-if="product.blank_image">
+                                            <img class="mask_image" style="width:100%" t-attf-src="data:image/png;base64, {{product.blank_image.decode('utf-8') if product.blank_image else product.blank_image}}"/>
+                                        </t>
+                                        <t t-else="">
+                                            <img class="mask_image" src="/mask_cutomization/static/src/image/Group 3232.png"/>
+                                        </t>
+                                    </div>
+                                    <div class="row">
+                                     <button class="child_button" id="blank" t-att-data-size="size" t-att-data-product="product.id" href="/mask/designing/blank">Blank</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <t t-call="mask_cutomization.skypro_footer"/>
+            </t>
+        </template>
+    </data>
+</odoo>

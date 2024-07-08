@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="crm_phone_call_new_inherit2222" model="ir.ui.view">
+        <field name="name">survey.contact.inherit</field>
+        <field name="model">survey.invite</field>
+        <field name="inherit_id" ref="survey.survey_invite_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='survey_start_url']" position="after">
+                <field name="mailing_model_id" widget="selection"/>
+
+<!--                <label for="contact_list_ids" string="Select mailing lists:" class="oe_edit_only"/>-->
+                <field name="contact_list_ids" widget="many2many_tags"
+                       placeholder="Select mailing lists..." class="oe_inline"
+                       attrs="{'invisible': [('mailing_model_name', '!=', 'mailing.list')]}"/>
+
+
+                <field name="mailing_model_name" invisible="1"/>
+                <field name="mailing_model_real" invisible="1"/>
+                <field name="mailing_domain" widget="domain" options="{'model': 'mailing_model_real'}"
+                       attrs="{'invisible': [('mailing_model_id', '=', False)]}"/>
+
+
+            </xpath>
+            <xpath expr="//field[@name='partner_ids']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="email_template_partner_inherit" model="mail.template">
+        <field name="name">Contact Mass Mail</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="partner_to">${object.id}</field>
+        <field name="auto_delete" eval="True"/>
+        <field name="lang">${object.lang}</field>
+    </record>
+    <record id="mail.action_partner_mass_mail" model="ir.actions.act_window">
+        <field name="context" eval="{
+                'default_composition_mode': 'mass_mail',
+                'default_partner_to': '${object.id or \'\'}',
+                'default_use_template': True,
+                'default_template_id': ref('email_template_partner_inherit'),
+            }"/>
+    </record>
+
+</odoo>

@@ -1,0 +1,20 @@
+<odoo>
+    <data noupdate="0">
+
+        <record model="ir.module.category" id="safe_count_security_groups">
+            <field name="name">Safe Count Rights</field>
+        </record>
+
+        <record id="safe_count_user" model="res.groups">
+            <field name="name">User</field>
+            <field name="category_id" ref="safe_count.safe_count_security_groups"/>
+        </record>
+
+        <record id="safe_count_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="safe_count.safe_count_security_groups"/>
+            <field name="implied_ids" eval="[(6,0,[ref('safe_count.safe_count_user')])]"/>
+        </record>
+
+    </data>
+</odoo>

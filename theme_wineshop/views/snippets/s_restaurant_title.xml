@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_restaurant_title" name="Restaurant Title">
+		<section class="our-wines-title pt152 pb152">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8 col-lg-6">
+							<div class="content">
+								<p class="subtitle text-primary">THE RESTAURANT AT WINESHOP</p>
+								<h1 class="text-black">RESTAURANT</h1>
+								<p class="text-black">Cras dignissim mi diam, sit amet efficitur magna porta efficitur. Nulla ultricies dictum neque. Pellentesque faucibus lacus eu facilisis aliquet.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+	</template>
+</odoo>

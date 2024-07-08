@@ -1,0 +1,380 @@
+.left-imoge::marker {
+  color: white;
+}
+.choice {
+		background: white;
+		padding: 15px;
+		margin: 20px 10px 0px;
+		border-radius: 10px;
+		border: 1px solid #d6d6d6;
+		display: inline-block;
+		cursor: pointer;
+		cursor: hand;
+		min-width: 150px;
+		color: black;
+		text-align: center;
+		width: auto;
+	}
+
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+/*  background-color: #f1f1f1;*/
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 2px;
+  transition: 0.3s;
+  font-size: 17px;
+  height: 70px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+.delivery_type{
+    width:100% !important;
+    margin-bottom: 40px;
+}
+#pro_delivery{
+    width: 33.3333333333% !important;
+}
+#pro_pickup{
+    width: 33.3333333333% !important;
+    border: 1px solid black;
+}
+#curb_side_pickup{
+    width: 33.3333333333% !important;
+    border: 1px solid black;
+}
+
+.date_field{
+    display: flex;
+    padding:5px;
+}
+#pickup, #curb_order{
+    width:100% !important;
+    margin-bottom: 40px;
+}
+#pickup_date,#pickup_date_curb{
+    text-align: center;
+    padding: 12px;
+    font-size: 20px;
+    margin-right: 15px;
+    width: 50% !important;
+    border: 1px solid black;
+}
+#pickup_time, #pickup_time_curb,#pickup_date_delivery,#pickup_time_delivery_selection{
+    text-align: center;
+    padding: 12px;
+    font-size: 20px;
+    width: 50% !important;
+    border: 1px solid black;
+}
+
+#continue_div, #continue_div_curb{
+    width:100% !important;
+    margin-bottom: 40px;
+}
+#continue_button,#continue_button_curb{
+    text-align: center;
+    padding: 12px;
+    font-size: 20px;
+    width: 100% !important;
+    border: 1px solid #dd2904;
+    background:#dd2904;
+    color:white
+
+}
+.hide_div{
+    display: none !important;
+}
+
+#partner_name, #partner_phone, #partner_email, #partner_name_curb, #partner_phone_curb, #partner_email_curb{
+    text-align: center;
+    padding: 12px;
+    font-size: 20px;
+    width: 100% !important;
+    border: 1px solid black;
+
+}
+
+#v_type{
+    text-align: center;
+    padding: 12px;
+    font-size: 20px;
+    width: 50% !important;
+    border: 1px solid black;
+}
+#v_colour{
+    text-align: center;
+    padding: 12px;
+    font-size: 20px;
+    margin-right: 15px;
+    width: 50% !important;
+    border: 1px solid black;
+}
+#license_plate_no{
+    text-align: center;
+    padding: 12px;
+    font-size: 20px;
+    width: 50% !important;
+    border: 1px solid black;
+}
+#curb_pickup{
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+#curb_pickup_label{
+  padding-left: 10px;
+  font-size: 22px;
+}
+
+@media only screen and (max-width: 600px) {
+    #less_time,#less_time_curb{
+        margin-top: 17% !important;
+        position: absolute;
+        margin-left: 7%!important;
+    }
+}
+
+.js_sale .shop-page-banner{
+    display: none !important;
+}
+
+.js_sale .wine_shop {
+    padding-top: 0px !important;
+}
+
+#curb_disabled{
+    display: none;
+}
+#curb_enabled{
+    display: none;
+}
+
+.ui-timepicker-wrapper ui-timepicker-positioned-top{
+    background-color: red;
+}
+.ui-timepicker-wrapper{
+
+}
+
+/*.oe_optional_products_modal .table-striped > tbody:nth-child(2) {
+    display: inline-flex !important;
+}*/
+.oe_optional_products_modal .table-striped > tbody:nth-child(1) {
+    display: inline-flex !important;
+}
+
+.curb_select{
+    width: 50%;
+    height: 50px;
+    font-size:20px;
+    border: 1px solid;
+}
+
+.curb_select_loc{
+    width: 100%;
+    height: 50px;
+    font-size:20px;
+    background: #dddddd;
+    border: 1px solid;
+}
+
+/*Track Order - Confirmation Page*/
+.thanks_msg #track_click:hover{
+    color: #163114 !important;
+}
+/*
+    font-size: 23px !important;
+    padding-left: 5px !important;
+*/
+
+
+
+
+#vehicle_type_id{
+       background-color: white !important;
+    font-size: 18px;
+    color: black;
+    line-height: normal;
+}
+#vehicle_type_id_p{
+ font-size: 18px;
+            margin-top: 0px;
+            line-height: 1.5
+}
+#s_paragraph_vehicle{
+    text-align: right;
+        overflow: auto;
+}
+#padding_paragraph_vehicle{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.vehicle_details_padding{
+    padding-left: 36%;
+}
+.address_editing_vehicle_details_padding{
+    padding-left: 40.3%;
+}
+#order_address_update{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    padding-left: 20%;
+}
+
+@media only screen and (max-width: 600px) {
+    .vehicle_details_padding{
+        padding-left: 15%;
+    }
+    #order_address_update{
+        padding-top: 100px;
+        padding-bottom: 100px;
+        padding-left: 12%;
+    }
+}
+
+#update_button_curb_address_update{
+    text-align: center;
+    padding: 12px;
+    font-size: 20px;
+    width: 100% !important;
+    border: 1px solid #dd2904;
+    background:#dd2904;
+    color:white
+
+}
+
+/*Location Picker*/
+
+#map {
+  height: 100%;
+}
+
+/* Optional: Makes the sample page fill the window. */
+.map_view {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+a[href^="http://maps.google.com/maps"],
+a[href^="https://maps.google.com/maps"],
+a[href^="https://www.google.com/maps"] {
+    display: none !important;
+}
+.gm-bundled-control .gmnoprint {
+    display: block;
+}
+/*
+.gmnoprint:not(.gm-bundled-control) {
+    display: none;
+}*/
+.gm-svpc{
+    display: none !important;
+}
+.gm-fullscreen-control{
+    display: none !important;
+}
+
+div .gmnoprint{
+    display: none !important !important;
+}
+
+@media only screen and (min-width: 600px) {
+		.text_area_feedback_width
+		{
+			width: 100%;
+		}
+	}
+	/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .text_area_feedback_width
+    {
+        width: 100%;
+    }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .text_area_feedback_width
+    {
+        width: auto;
+    }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 1200px) {
+    .text_area_feedback_width
+    {
+        width: auto;
+    }
+
+}
+@media only screen and (width: 411px) {
+    .text_area_feedback_width
+    {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .text_area_feedback_width
+    {
+        width: 100%;
+}
+}
+
+@media only screen and (width: 375px) {
+    .text_area_feedback_width
+    {
+        width: 100%;
+    }
+}
+
+@media only screen and (width: 414px) {
+    .text_area_feedback_width
+    {
+        width: 100%;
+    }
+}
+
+@media only screen and (width: 540px) {
+    .text_area_feedback_width
+    {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 300px){
+		.text_area_feedback_width
+		{
+			width: 100%;
+		}
+}
+

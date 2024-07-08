@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="pos_config_view_form_inherit_recall_orders" model="ir.ui.view">
+            <field name="name">pos.config.form.inherit.recall.orders</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+            <field name="arch" type="xml">
+                  <div id="iface_invoicing" position="before">
+                <div class="col-12 col-lg-6 o_setting_box" id="recall_orders">
+                    <div class="o_setting_left_pane">
+                        <field name="recall_orders"/>
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="recall_orders"/>
+                        <span class="fa fa-lg fa-cutlery" title="For bars and restaurants" role="img" aria-label="For bars and restaurants"/>
+                        <div class="text-muted">
+                            Allow to recall orders
+                        </div>
+                    </div>
+                </div>
+<!--                <div class="col-12 col-lg-6 o_setting_box"-->
+<!--                     id="iface_splitbill"-->
+<!--                     attrs="{'invisible': [('module_pos_restaurant', '=', False)]}">-->
+<!--                    <div class="o_setting_left_pane">-->
+<!--                        <field name="iface_splitbill"/>-->
+<!--                    </div>-->
+<!--                    <div class="o_setting_right_pane">-->
+<!--                        <label for="iface_splitbill"/>-->
+<!--                        <span class="fa fa-lg fa-cutlery" title="For bars and restaurants" role="img" aria-label="For bars and restaurants"/>-->
+<!--                        <div class="text-muted">-->
+<!--                            Split total or order lines-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+
+            </field>
+        </record>
+    </data>
+</odoo>

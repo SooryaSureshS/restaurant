@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="pos_session_form_inherit" model="ir.ui.view">
+        <field name="name">pos.session.inherit</field>
+        <field name="model">pos.session</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/header/button[@id='validate_opened']" position="replace">
+                <button id="validate_opened" name="action_pos_session_closing_control" type="object" string="Close Sessiondddddddd &amp; Post Entries" invisible="1"
+                        class="oe_highlight"/>
+
+            </xpath>
+            <xpath expr="//form/header/button[@id='end_session_opened']" position="replace">
+                <button id="end_session_opened" name="action_pos_session_closing_control" type="object" string="End of Session"
+                        invisible="1"
+                        class="oe_highlight"/>
+            </xpath>
+            <xpath expr="//form/header/button[@name='action_pos_session_validate']" position="replace">
+                <button id="validate_closing_control" name="action_pos_session_validate" type="object" string="Close Session &amp; Post Entrieddddddddds" invisible="1"
+                        class="oe_highlight"/>
+            </xpath>
+
+
+
+        </field>
+    </record>
+    <record id="view_pos_session_form_inherit" model="ir.ui.view">
+    <field name="name">pos.session.form.inherit</field>
+    <field name="model">pos.session</field>
+    <field name="inherit_id" ref="pos_summary_backend.view_pos_config_view_pos_session_form"/>
+    <field name="arch" type="xml">
+    <xpath expr="//button[@id='validate_pos_session_closing_control']" position="replace">
+        <button id="validate_pos_session_closing_control" name="validate_pos_session_closing_control" type="object" string="POS Closing Control"
+                attrs='{"invisible": [("state", "in", ["closed"])]}'   class="oe_highlight"/>
+    </xpath>
+    </field>
+    </record>
+</odoo>

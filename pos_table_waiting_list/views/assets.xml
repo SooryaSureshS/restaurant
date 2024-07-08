@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="pos_wait_list_assets" name="Website table booking wine Assets" inherit_id="point_of_sale.assets">
+		<xpath expr="." position="inside">
+            <script type="text/javascript" src="/pos_table_waiting_list/static/src/js/AddToWaitList.js" />
+            <script type="text/javascript" src="/pos_table_waiting_list/static/src/js/WaitList.js" />
+            <script type="text/javascript" src="/pos_table_waiting_list/static/src/js/addToWaiListButton.js" />
+            <script type="text/javascript" src="/pos_table_waiting_list/static/src/js/EditWaitListPopup.js" />
+            <link rel="stylesheet" type="text/scss" href="/pos_table_waiting_list/static/src/css/style.css"/>
+        </xpath>
+    </template>
+</odoo>

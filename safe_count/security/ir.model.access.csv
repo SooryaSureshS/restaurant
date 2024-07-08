@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_safe_count_login,access_safe_count_login,model_safe_count_login,base.group_user,1,1,1,1
+access_safe_count_manager,access_safe_count_manager,model_safe_count,safe_count.safe_count_manager,1,1,1,1
+access_safe_count_user,access_safe_count_user,model_safe_count,safe_count.safe_count_user,1,0,0,0
+access_safe_count_report_login,access_safe_count_report_login,model_safe_count_report_login,base.group_user,1,1,1,1

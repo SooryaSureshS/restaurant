@@ -1,0 +1,135 @@
+.estate-image-carousel{
+	.img{
+		width: 100%;
+	}
+	.carousel-control-prev, .carousel-control-next{
+		.fa{
+			font-size: 20px;
+		    width: 40px;
+		    height: 40px;
+		    background-color: rgba(0, 0, 0, 0.25);
+		    color: white;
+		    opacity: 1 !important;
+		    line-height: 40px;
+		    border-radius: 50%;
+		    cursor: pointer;
+		    -webkit-transition: all ease-in-out 0.3s;
+		    -moz-transition: all ease-in-out 0.3s;
+		    -ms-transition: all ease-in-out 0.3s;
+		    -o-transition: all ease-in-out 0.3s;
+		    transition: all ease-in-out 0.3s;
+		    &:hover{
+		    	background-color: rgba(0, 0, 0, 1);
+		    }
+		}
+		@media (min-width: 768px) and (max-width: 1199.98px) {
+			width: 7%;
+		}
+		@media (max-width: 767.98px) {
+		    width: 15%;
+		}
+		opacity: 1;
+		width: 4%;
+	}
+}
+
+.estate-story{
+	.title{
+		p.subtitle{
+		    text-transform: uppercase;
+		    letter-spacing: 2px;
+		    font-weight: 700;
+		    line-height: 20px;
+		    font-size: 14px;
+		    margin: 0px;
+	    }
+	    h1{
+		    font-size: 41px;
+		    margin-bottom: 55px;
+	        margin-top: 10px
+		}
+	}
+	.content{
+		p{
+			font-size: 16px;
+	    	margin-bottom: 15px;
+		    line-height: 1.916;
+		}
+		.list{
+			p{
+				margin:0;
+			}
+			.left{
+				display: inline-block;
+			    padding-right: 60px;
+			    text-transform: uppercase;
+			    min-width: 200px;
+			    margin-right: 60px;
+			    line-height: 30px;
+			    font-size: 12px;
+    			font-weight: bold;
+			    position: relative;
+			    &:after{
+		    	    content: '';
+				    position: absolute;
+				    width: 30px;
+				    height: 1px;
+				    background-color: theme-color('primary');
+				    right: -15px;
+				    top: 15px;
+			    }
+			}
+			.right{
+				line-height: 30px;
+			    font-size: 14px;
+			}
+		    margin-top: 50px;
+		}
+	}
+}
+
+
+.estate-info{
+	.info-box{
+		.fa{
+			font-size: 32px;
+		}
+		h3{
+		    font-size: 34px;
+	        font-weight: 400;
+	        margin-bottom: 15px;
+	        margin-top: 40px;
+		}
+		p{
+			font-size: 16px;
+	    	margin: 0;
+		    line-height: 1.916;
+		}
+		padding: 55px;
+	}
+	background-size: cover;
+	background-position: center;
+}
+
+.estate-location{
+	.title{
+		p.subtitle{
+		    text-transform: uppercase;
+		    letter-spacing: 2px;
+		    font-weight: 700;
+		    line-height: 20px;
+		    font-size: 14px;
+		    margin: 0px;
+	    }
+	    h1{
+		    font-size: 41px;
+	        margin-top: 10px
+		}
+	}
+	.content{
+		p{
+			font-size: 16px;
+		    line-height: 1.916;
+		}
+	}
+}

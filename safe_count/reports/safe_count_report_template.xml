@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+     <template id="report_safe_count_template">
+        <t t-call="web.html_container">
+        <t t-call="web.external_layout">
+
+            <div class="page" style="">
+                <h3 class="text-center">Safe Count Report</h3>
+                <h4 class="text-center">
+                    <strong>From</strong>:
+                    <span t-esc="docs.start_date" t-options='{"widget": "date"}'/>
+                    <strong>To</strong>:
+                    <span t-esc="docs.end_date" t-options='{"widget": "date"}'/>
+                </h4>
+                <br/>
+                <h4>
+                    <t t-if="not docs.get_all_safe_count_report">
+                        <strong>Manager</strong>:
+                        <t t-esc="docs.user_id.name"/>
+                    </t>
+                </h4>
+
+                <table class="table table-condensed table-bordered" style="width: 100%;">
+                    <thead>
+                        <t t-if="docs.get_all_safe_count_report">
+                            <th>Manager</th>
+                        </t>
+                        <th style="padding-left:40px;padding-right:40px;">Date</th>
+                        <th>$100</th>
+                        <th>$50</th>
+                        <th>$20</th>
+                        <th>$10</th>
+                        <th>$50</th>
+                        <th>$2</th>
+                        <th>$1</th>
+                        <th>50c</th>
+                        <th>20c</th>
+                        <th>10c</th>
+                        <th>5c</th>
+                        <th>Safe Amount</th>
+                        <th>Petty Cash</th>
+
+                    </thead>
+                    <tbody>
+                        <t t-foreach="docs.get_safe_details(docs)" t-as="record">
+                            <tr>
+                            <t t-if="docs.get_all_safe_count_report">
+                                <td><t t-esc="record[0]" /> </td>
+                            </t>
+                            <td style="padding:8px;"><t t-esc="record[13]"/></td>
+                            <td ><t t-esc="record[1]"/> </td>
+                            <td><t t-esc="record[2]"/> </td>
+                            <td><t t-esc="record[3]"/> </td>
+                            <td><t t-esc="record[4]"/> </td>
+                            <td><t t-esc="record[5]"/> </td>
+                            <td><t t-esc="record[6]"/> </td>
+                            <td><t t-esc="record[7]"/> </td>
+                            <td><t t-esc="record[8]"/> </td>
+                            <td><t t-esc="record[9]"/> </td>
+                            <td><t t-esc="record[10]"/> </td>
+                            <td><t t-esc="record[11]"/> </td>
+                            <td><t t-esc="record[12]"/> </td>
+                            <td><t t-esc="record[14]"/> </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+
+        </t>
+    </template>
+
+
+</odoo>

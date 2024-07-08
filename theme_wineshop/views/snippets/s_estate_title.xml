@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_estate_title" name="Estate Title">
+		<section class="our-wines-title pt152 pb152">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="content">
+								<p class="subtitle text-primary">WINESHOP</p>
+								<h1 class="text-black">VINEYARD</h1>
+								<p class="text-black">Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst. Mauris sed diam libero.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+	</template>
+</odoo>

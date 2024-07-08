@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_tax_form_inherit" model="ir.ui.view">
+        <field name="name">account.tax.form.inherit</field>
+        <field name="model">account.tax</field>
+        <field name="inherit_id" ref="account.view_tax_form"/>
+        <field name="arch" type="xml">
+            <field name="tax_group_id" position="after">
+                <field name="xero_type_tax_use"/>
+            </field>
+            <xpath expr="//notebook" position="inside">
+                <page name="xero_information" string="Xero Tax Handler Configuration">
+                    <group string="Xero Tax Handler">
+                        <field name="xero_tax_handler_ids" nolabel="1">
+                            <tree string="Xero Tax Handler">
+                                <field name="name" required="1"/>
+                                <field name="rate" required="1"/>
+                            </tree>
+                            <form string="Xero Tax Handler">
+                                <group>
+                                    <group>
+                                        <field name="name" required="1"/>
+                                    </group>
+                                    <group>
+                                        <field name="rate" required="1"/> 
+                                    </group>
+                                </group>
+                            </form>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_form_inherit" model="ir.ui.view">
+        <field name="name">account.account.form.inherit</field>
+        <field name="model">account.account</field>
+        <field name="inherit_id" ref="account.view_account_form"/>
+        <field name="arch" type="xml">
+            <field name="deprecated" position="after">
+                <field name="xero_user_type" class="oe_inline" required="1" string="Xero Account User Type" invisible="1"/>
+                <field name="linked_xero_account_id" class="oe_inline" invisible="1"/>
+                <field name="is_xero_stock_manage"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_partner_bank_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner.bank.form.inherit</field>
+        <field name="model">res.partner.bank</field>
+        <field name="inherit_id" ref="base.view_partner_bank_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='acc_number']" position="replace">
+                <field name="acc_number" placeholder="Account number format must be 000000-0000000000"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_journal_form_inherit" model="ir.ui.view">
+        <field name="name">account.journal.form.inherit</field>
+        <field name="model">account.journal</field>
+        <field name="inherit_id" ref="account.view_account_journal_form"/>
+        <field name="arch" type="xml">
+            <field name="currency_id" position="after">
+                <field name="xero_linked_payment_account_id" domain="[('company_id', '=', company_id), ('linked_xero_account_id', '!=', False)]"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

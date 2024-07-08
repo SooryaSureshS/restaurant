@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- Copyright (c) 2018-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+  <data>
+
+<template id="bought_products_assets_frontend" inherit_id="website.assets_frontend" name="Also Bought">
+        <xpath expr="." position="inside">
+
+        <script type="text/javascript" src="/frequently_bought_together_products/static/src/js/owl-carousel/owl.carousel.min.js"></script>
+        <link rel="stylesheet" href="/frequently_bought_together_products/static/src/js/owl-carousel/owl.carousel.css"/>
+        <link rel="stylesheet" href="/frequently_bought_together_products/static/src/js/owl-carousel/owl.theme.css"/>
+        <script type="text/javascript" src="/frequently_bought_together_products/static/src/js/slider_js.js"></script>
+        <script type="text/javascript" src="/frequently_bought_together_products/static/src/js/frequently_bought.js"></script>
+
+        <link rel='stylesheet' href='/frequently_bought_together_products/static/src/scss/bought_products.scss'/>
+
+    </xpath>
+  </template>
+
+
+    <template id="frequently_bought_products">
+    <div class="item">
+        <div class="text-muted plus">+</div>
+        <div  class="fbp-item">
+            <input  type="checkbox" name="fbp_product" class="fbp_product" checked="true" t-att-style="'visibility:hidden;' if product.id == temp_id.id and website.product_check_default == False else 'visibility:inherit;'"/>
+            <a t-attf-href="/shop/product/#{ slug(temp_id) }">
+                <img t-att-src="website.image_url(temp_id, 'image_1024')" t-att-alt="temp_id.name"/>
+            </a>
+            <div class="pd-name">
+                <strong>
+                    <a t-attf-href="/shop/product/#{slug(temp_id)}">
+                        <t t-esc="temp_id.name"/>
+                    </a>
+                </strong>
+            </div>
+            <t t-set="combination_info" t-value="temp_id._get_combination_info()"/>
+            <div class="price">
+                <b>
+                    <t t-if="request.website.get_current_website().currency_id._convert(((temp_id.lst_price) - combination_info['price']), request.env['website'].get_current_website().pricelist_id.currency_id, request.env.user.company_id, datetime.date.today()) &gt; 0.01  and website.get_current_pricelist().discount_policy=='without_discount'">
+                        <del class="text-danger mr8 wk_default_price" style="white-space: nowrap;" t-esc="self.env['website'].get_current_website().currency_id._convert(combination_info['list_price'], request.env['website'].get_current_website().pricelist_id.currency_id, self.env.user.company_id, datetime.date.today())" t-options="{'widget': 'monetary', 'display_currency': website.get_current_pricelist().currency_id, 'from_currency': website.currency_id}" />
+                    </t>
+                    <span class="wk_price" t-esc="combination_info['price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                    <span itemprop="price" style="display:none;" t-esc="combination_info['price']" />
+                    <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name" />
+                </b>
+            </div>
+            <div class="attributes">
+                <select name="fbp_variant_id" class="form-control fbp_variant_id" t-att-style="'visibility:hidden;' if len(temp_id.product_variant_ids) &lt; 2 else 'visibility:inherit;'">
+
+                    <t t-foreach="temp_id.product_variant_ids or []" t-as="var_id">
+                        <t t-esc="var_id.get_variant_attribute_string()"/>
+
+                        <option t-att-value="var_id.id" t-attf-default_price="#{request.website.get_current_website().currency_id._convert(combination_info['list_price'], request.env['website'].get_current_website().pricelist_id.currency_id, request.env.user.company_id, datetime.date.today())}" t-att-website_price="request.website.get_current_website().currency_id._convert(combination_info['price'], request.env['website'].get_current_website().pricelist_id.currency_id, request.env.user.company_id, datetime.date.today())">
+                            <t t-esc="var_id.get_variant_attribute_string()"/>
+                        </option>
+
+                    </t>
+                </select>
+            </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="product_inherited" inherit_id="website_sale.product" name="Frequently Bought Together" customize_show="True" active="True">
+        <xpath expr="//section[@id='product_detail']" position="after">
+            <div t-if="product.wk_frequently_bought_products" class="container fbp-container hidden-sm hidden-xs">
+                <div class="row">
+                    <center class="col-12" style="padding-top:5px;"><h3 ><t t-esc="website.fbtp_header"/></h3></center>
+                    <div class="col-md-8 col-lg-8 col-sm-12">
+                        <div id="frequently-bought-products">
+                            <t t-set="temp_id" t-value="product"/>
+                            <t t-call="frequently_bought_together_products.frequently_bought_products"/>
+                            <t t-foreach="product.wk_frequently_bought_products.sorted(key= lambda r: r.sequence)" t-as="temp_id">
+                                <t t-call="frequently_bought_together_products.frequently_bought_products"/>
+                            </t>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-sm-12">
+                        <t t-set="fbp_price" t-value="product.get_fbp_total_price()"/>
+                        <b>
+                            <div class="fbp_total_price">Total Price:
+                                <t t-if="fbp_price['def_price'] > fbp_price['web_price']">
+                                    <del class="text-danger mr8 total-default-price" style="white-space: nowrap;" t-esc="fbp_price['def_price']" t-options="{'widget': 'monetary', 'display_currency': website.get_current_pricelist().currency_id, 'from_currency': website.currency_id}" />
+                                </t>
+                                <span class="fbp-total-price" t-esc="fbp_price['web_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                            </div>
+                        </b>
+                        <div class="fbp-add_to_cart btn btn-primary">
+                           <t t-esc="website.cart_button_text"/>
+                        </div>
+                        <div class="desc text-muted" t-if="website.description">
+                           <t t-esc="website.description"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+  </data>
+ </odoo>

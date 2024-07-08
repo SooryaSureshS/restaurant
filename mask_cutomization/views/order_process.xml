@@ -1,0 +1,120 @@
+<odoo>
+    <data>
+        <template id="order_process_page" name="Order Process">
+            <t t-call="website.layout">
+                <t t-set="additional_title">Order Process</t>
+                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/orderprocess.css"/>
+                <t t-set="no_footer" t-value="1"/>
+                <t t-call="mask_cutomization.header_banner_xml"/>
+                    <div class="container">
+                        <div class="orderprocessbanner">
+                            <div class="maindiv">
+
+                                <!-- stepper -->
+
+                                <div class="dotted-spaced left">
+                                    <div class="line"></div>
+                                    <div class="circle1">
+                                        <div class="innercircle">
+                                            <div class="smallcircle"></div>
+                                        </div>
+                                    </div>
+                                    <div class="circle2">
+                                        <div class="innercircle">
+                                            <div class="smallcircle"></div>
+                                        </div>
+                                    </div>
+                                    <div class="circle3">
+                                        <div class="innercircle">
+                                            <div class="smallcircle"></div>
+                                        </div>
+                                    </div>
+                                    <div class="circle4">
+                                        <div class="innercircle">
+                                            <div class="smallcircle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- subcontent -->
+
+                                <div class="subcontent">
+
+                                    <!-- selection division -->
+
+                                    <div class="selection-div">
+                                        <div class="content">
+                                            <div class="number">
+                                                <p>01</p>
+                                            </div>
+                                            <div class="text">
+                                                <p>Select your product, size and
+                                                    <br/>
+                                                    print area of the mask
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="img">
+                                            <img src="/mask_cutomization/static/src/image/account/masks.png" class="img-fluid" width="50%"/>
+                                        </div>
+                                    </div>
+
+                                    <!-- selection division -->
+
+                                    <div class="selection-div">
+                                        <div class="content">
+                                            <div class="number">
+                                                <p class="number">02</p>
+                                            </div>
+                                            <div class="text">
+                                                <p>Design your mask, packaging
+                                                    <br/>
+                                                    box and carton
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="img">
+                                            <img src="/mask_cutomization/static/src/image/account/Group 3497.png" class="img-fluid" width="80%"/>
+                                        </div>
+                                    </div>
+
+                                    <!-- selection division -->
+
+                                    <div class="selection-div">
+                                        <div class="content">
+                                            <div class="number">
+                                                <p class="number">03</p>
+                                            </div>
+                                            <div class="text" id="textcontent">
+                                                <p>Confirm Order and checkout</p>
+                                            </div>
+                                        </div>
+                                        <div class="img">
+                                            <img src="/mask_cutomization/static/src/image/account/Group 3499.png" class="img-fluid" width="60%"/>
+                                        </div>
+                                    </div>
+
+                                    <!-- selection division -->
+
+                                    <div class="selection-div">
+                                        <div class="content">
+                                            <div class="number">
+                                                <p class="number">04</p>
+                                            </div>
+                                            <div class="text" id="textcontent">
+                                                <p>Delivery</p>
+                                            </div>
+                                        </div>
+                                        <div class="img">
+                                            <img src="/mask_cutomization/static/src/image/account/local_shipping.png" class="img-fluid" width="50%"/>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </t>
+        </template>
+    </data>
+</odoo>

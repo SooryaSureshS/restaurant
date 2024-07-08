@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="uber_config_from" model="ir.ui.view">
+        <field name="name">uber.config</field>
+        <field name="model">uber.config</field>
+        <field name="arch" type="xml">
+            <form string="Uber Configuration" create="0">
+                <sheet>
+                    <group>
+                        <field name="client_id"/>
+                        <field name="client_secret"/>
+                        <field name="pos_session" options="{'no_create': True}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_uber_configuration" model="ir.actions.act_window">
+        <field name="name">Uber Config</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">uber.config</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <data noupdate="1">
+        <record id="uber_record" model="uber.config">
+            <field name="name">Uber Config</field>
+
+        </record>
+    </data>
+
+    <menuitem id="uber_configuration" action="action_uber_configuration" name="Uber Configuration"
+              parent="point_of_sale.menu_point_config_product"/>
+
+</odoo>

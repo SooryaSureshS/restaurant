@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="safe_count_login_view">
+        <field name="name">Safe Count Login</field>
+        <field name="model">safe.count.login</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Safe Count Login">
+                <group>
+                    <group>
+                        <field name="user_id"/>
+                    </group>
+                </group>
+
+                <group>
+                    <group>
+                        <field name="login_pin" password="True"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="open_safe_count_view" string="Login" type="object" class="oe_highlight"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="safe_count_form">
+        <field name="name">safe.count.form</field>
+        <field name="model">safe.count</field>
+        <field name="arch" type="xml">
+            <form string="Safe Count">
+                <field name="make_readonly" invisible="1"/>
+                <group>
+                    <group><field name="date" attrs="{'readonly': [('make_readonly','=', True)]}"/> </group>
+                    <group><field name="manager_name"/> </group>
+                    <group> </group>
+                    <group><field name="safe_amount" readonly="1" force_save="1"/> </group>
+                </group>
+                <div style="padding-left:10px;" >
+                    <tr><td><td width="5%"><group><field name="hundred_dollar" attrs="{'readonly': [('make_readonly','=', True)]}"/> </group></td><td width="5%"><group><field name="total_hundred_dollar" force_save="1"/> </group></td></td></tr>
+                    <tr><td><td width="5%"><group><field name="fifty_dollar" attrs="{'readonly': [('make_readonly','=', True)]}"/> </group></td><td width="5%"><group><field name="total_fifty_dollar" force_save="1"/> </group></td></td></tr>
+                    <tr><td><td width="5%"><group><field name="twenty_dollar" attrs="{'readonly': [('make_readonly','=', True)]}"/> </group></td><td width="5%"><group><field name="total_twenty_dollar" force_save="1"/> </group></td></td></tr>
+                    <tr><td><td width="5%"><group><field name="ten_dollar" attrs="{'readonly': [('make_readonly','=', True)]}"/> </group></td><td width="5%"><group><field name="total_ten_dollar" force_save="1"/> </group></td></td></tr>
+                    <tr><td><td width="5%"><group><field name="five_dollar" attrs="{'readonly': [('make_readonly','=', True)]}"/> </group></td><td width="5%"><group><field name="total_five_dollar" force_save="1"/> </group></td></td></tr>
+                    <tr><td><td width="5%"><group><field name="two_dollar" attrs="{'readonly': [('make_readonly','=', True)]}"/> </group></td><td width="5%"><group><field name="total_two_dollar" force_save="1"/> </group></td></td></tr>
+                    <tr><td><td width="5%"><group><field name="one_dollar" attrs="{'readonly': [('make_readonly','=', True)]}"/> </group></td><td width="5%"><group><field name="total_one_dollar" force_save="1"/> </group></td></td></tr>
+                    <tr><td><td width="5%"><group><field name="fifty_cent" attrs="{'readonly': [('make_readonly','=', True)]}"/> </group></td><td width="5%"><group><field name="total_fifty_cent" force_save="1"/> </group></td></td></tr>
+                    <tr><td><td width="5%"><group><field name="twenty_cent" attrs="{'readonly': [('make_readonly','=', True)]}"/> </group></td><td width="5%"><group><field name="total_twenty_cent" force_save="1"/> </group></td></td></tr>
+                    <tr><td><td width="5%"><group><field name="ten_cent" attrs="{'readonly': [('make_readonly','=', True)]}"/> </group></td><td width="5%"><group><field name="total_ten_cent" force_save="1"/> </group></td></td></tr>
+                    <tr><td><td width="5%"><group><field name="five_cent" attrs="{'readonly': [('make_readonly','=', True)]}"/> </group></td><td width="5%"><group><field name="total_five_cent" force_save="1"/> </group></td></td></tr>
+                    <tr><td><td width="5%"><group> </group></td><td width="5%"><group><field name="safe_amount" readonly="1" force_save="1"/> </group></td></td></tr>
+                    <tr><td><td width="5%"><group> </group></td><td width="5%"><group><field name="expected_safe_amount"/> </group></td></td></tr>
+                    <tr><td><td width="5%"><group> </group></td><td width="5%"><group><field name="variance" force_save="1"/> </group></td></td></tr>
+                    <tr><td><td width="5%"><group> </group></td><td width="5%"><group><field name="petty_cash" force_save="1"/> </group></td></td></tr>
+
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="safe_count_view_tree" model="ir.ui.view">
+        <field name="name">safe.count.view.tree</field>
+        <field name="model">safe.count</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date"/>
+                <field name="manager_name"/>
+                <field name="safe_amount"/>
+            </tree>
+        </field>
+    </record>
+
+        <record id="safe_count_form_action" model="ir.actions.act_window">
+            <field name="name">Safe Count</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">safe.count</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="safe_count.safe_count_view_tree"/>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                No Safe Counts till Now, Let's create one!
+              </p>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="safe_count_login_wizard">
+        <field name="name">Safe Count Login Report</field>
+        <field name="model">safe.count.report.login</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Safe Count Report Login">
+                <group>
+                    <group>
+                        <field name="user_id" attrs="{'invisible' : [('get_all_safe_count_report', '!=', False)]}"/>
+                    </group>
+                </group>
+                <group>
+                    <field name="get_all_safe_count_report"/>
+                </group>
+
+                <group>
+                    <group>
+                        <field name="login_pin" attrs="{'invisible' : [('get_all_safe_count_report', '!=', False)]}" password="True"/>
+                    </group>
+                </group>
+                <group>
+                    <group>
+                        <field name="start_date"/>
+                    </group>
+                    <group>
+                        <field name="end_date"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="get_safe_count_report" string="Get Report" type="object" class="oe_highlight"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="res_users_inherit_safe_count_view" model="ir.ui.view">
+        <field name="name">res.users.inherit.view</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='access_rights']" position="after">
+                <page string="Safe Count">
+                    <group>
+                        <field name="safe_screen_user" widget="selection"/>
+                        <field name="safe_login_pin" password="True"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+     <record id="safe_count_pdf" model="ir.actions.report">
+            <field name="name">Safe Count Report</field>
+            <field name="model">safe.count</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">safe_count.safe_count_report_template</field>
+            <field name="report_file">safe_count.safe_count_report_template</field>
+            <field name="print_report_name">'Safe Count'</field>
+            <field name="binding_model_id" ref="model_safe_count"/>
+        </record>
+
+    <record id="safe_count_form_inherit" model="ir.ui.view">
+        <field name="name">safe.count</field>
+        <field name="model">safe.count</field>
+        <field name="inherit_id" ref="safe_count.safe_count_form"/>
+        <field name="arch" type="xml">
+            <form position="attributes">
+                <attribute name="duplicate">0</attribute>
+            </form>
+        </field>
+    </record>
+
+    <report id="safe_count_report_record"
+            model="safe.count.report.login"
+            string="Safe Count Report"
+            report_type="qweb-pdf"
+            name="safe_count.report_safe_count_template"
+            menu="False"/>
+
+
+    <act_window id="action_safe_count_reporting"
+                name="Safe Count Reporting"
+                res_model="safe.count.report.login"
+                view_mode="form"
+                view_id="safe_count.safe_count_login_wizard"
+                target="new"/>
+
+    <menuitem action="safe_count.action_safe_count_reporting"
+              id="menu_safe_count_reporting"
+              parent="point_of_sale.menu_point_rep"
+              groups="safe_count.safe_count_manager,safe_count.safe_count_user"
+              sequence="20"/>
+
+    <act_window id="action_safe_count_login"
+                name="Safe Count"
+                res_model="safe.count.login"
+                view_mode="form"
+                target="new"/>
+
+    <menuitem action="action_safe_count_login"
+              id="safe_count_menu"
+              parent="point_of_sale.menu_point_rep"
+              groups="safe_count.safe_count_manager"
+              sequence="0"/>
+
+</odoo>

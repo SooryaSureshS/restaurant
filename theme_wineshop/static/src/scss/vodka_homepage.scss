@@ -1,0 +1,208 @@
+.vodka-homepage-banner{
+	.s_parallax_bg{
+		background-position: center;
+	}
+	.content{
+		p.subtitle{
+			letter-spacing: 2px;
+		    font-weight: 700;
+		    line-height: 20px;
+		    font-size: 16px;
+		    margin: 0px;
+		}
+		h1{
+		    font-size: 55px;
+		    margin-top: 30px;
+		    margin-bottom: 30px;
+		    letter-spacing: .075em;
+		}
+		p{
+			font-size: 16px;
+		    margin-bottom: 30px;
+		    line-height: 1.916;
+		}
+		a.read-link{
+		    font-size: 14px;
+		    line-height: 1.9;
+		    font-weight: 600;
+		    letter-spacing: 0.05em;
+		    text-transform: uppercase;
+		    background-color: transparent !important;
+		    border: 0 !important;
+		    transition: all .25s ease;
+		    box-shadow: none;
+		    padding: 0;
+		    position: relative;
+		    text-decoration: none;
+		    &:after{
+		    	display: block;
+			    content: '';
+			    position: absolute;
+			    left: 50%;
+			    height: 0;
+			    width: 100%;
+			    border-top: 2px solid #ffffff;
+			    transition: transform .2s ease;
+		        transform: translateX(-50%);
+    			
+		    }
+		    &:hover{
+		    	letter-spacing: 0.3em;
+		    	color: #ffffff !important;
+		    }
+		}
+	}
+	@media (max-width: 991.98px) {
+		.content{
+			h1{
+				font-size: 40px;
+			}
+		}
+		padding: 90px 0 !important;
+	}
+    padding: 263px 0;
+}
+
+
+.vodka-homepage-service{
+	.service-box{
+		.fa{
+		    font-size: 20px;
+		}
+		h6{
+			font-size: 18px;
+    		margin: 10px 0;
+		}
+		p{
+			font-size: 12px;
+		}
+	}
+}
+
+.vodka-homepage-sale{
+	.bg-image{
+		background-size: cover;
+		background-position: center
+	}
+	.content{
+		h3{
+			font-size: 36px;
+		    line-height: 1.1em;
+		    margin-bottom: 24px;
+		    font-weight: 600;
+		}
+		p{
+			font-size: 16px;
+		    letter-spacing: .5px;
+		    font-weight: 700;
+		    line-height: 1.2em;
+		    margin-bottom: 27px;
+		}
+		a.btn{
+		    letter-spacing: .4px;
+		    font-size: 10px;
+		    line-height: 12px;
+		    text-transform: uppercase;
+		    font-weight: 700;
+		    padding: 10px 13px 9px;
+		    border-radius: 0;
+		    box-shadow: none;
+		}
+    	padding: 100px;
+    	padding-bottom: 74px;
+	}
+	@media (max-width: 991.98px) {
+		.content{
+			h3{
+				font-size: 25px;
+			}
+			p{
+				font-size: 14px;
+			}
+	    	padding: 45px;
+	    	padding-bottom: 40px;
+		}
+	}
+	@media (min-width: 992px) and (max-width: 1199.98px) {
+		.content{
+	    	padding: 45px;
+	    	padding-bottom: 40px;
+		}
+	}
+}
+
+.vodka-homepage-family{
+	.content{
+		h1{
+		    letter-spacing: .075em;
+		    line-height: 1.31;
+		    font-size: 55px;
+	    	margin-bottom: 30px;
+		    font-weight: 600;
+		}
+		p{
+			font-size: 15px;
+		    line-height: 1.6;
+		    letter-spacing: .05em;
+		    margin-bottom: 30px;
+		}
+	}
+	@media (max-width: 767.98px) {
+		.content{
+			h1{
+			    line-height: 1.2;
+			    font-size: 30px;
+			}
+			p{
+				font-size: 14px;
+			}
+		}
+		padding: 45px 0 !important;
+	}
+    background-size: cover;
+    background-position: bottom;
+}
+
+.vodka-homepage-parallax{
+	.s_parallax_bg{
+	    background-position: bottom !important;
+	}
+	.content{
+		h1{
+		    font-size: 60px;
+		    margin-bottom: 25px;
+		    font-weight: 700;
+    		line-height: 1.2em;
+		}
+		p{
+	    	font-size: 46px;
+		    margin-bottom: 16px;
+		    line-height: 1.2;
+		    font-weight: 300;
+		}
+		a.btn{
+		    letter-spacing: .4px;
+		    font-size: 10px;
+		    line-height: 12px;
+		    text-transform: uppercase;
+		    font-weight: 700;
+		    padding: 10px 13px 9px;
+		    border-radius: 0;
+		    box-shadow: none;
+		    &:hover{
+		    	background-color: theme-color('secondary');
+		    	border-color: theme-color('secondary');
+		    }
+		}
+	}
+	@media (max-width: 991.98px) {
+		.content{
+			h1{
+				font-size: 40px;
+			}
+			p{
+				font-size: 30px;
+			}
+		}
+	}
+}

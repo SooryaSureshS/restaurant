@@ -1,0 +1,8 @@
+# -*- coding: utf-8 -*-
+# Part of Odoo Module Developed by Bizople Solutions Pvt. Ltd.
+# See LICENSE file for full copyright and licensing details.
+
+from . import ir_ui_view
+from . import product
+from . import dynamicslider
+from . import website

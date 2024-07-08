@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record model="notice.board" id="notice_board_1">
+            <field name="name">Badminton Singles Championship 2020</field>
+            <field name="start_date" eval="str(DateTime.today()+relativedelta(days=-4))[:10]"/>
+            <field name="end_date" eval="str(DateTime.today()+relativedelta(days=2))[:10]"/>
+            <field name="message">The company is going to organize Badminton Singles Championship. Anyone interested can give their name by filling the form provided in participation link. All the rounds of the Championship( League / Semifinal / Final) will be done on the same day. Those who have already submitted their name kindly ignore it. Tournament related rules and regulation will be explained on the same day before the matches.  There will be Gift for all the Tournament Games winners and 1st runner up.</field>
+            <field name="venue">India</field>
+            <field name="participation_link">http://Badminton-forms/DSFdgsd4543</field>
+            <field name="image" type="base64" file="notice_board/static/src/img/badminton.png"/>
+        </record>
+
+        <record model="notice.board" id="notice_board_2">
+            <field name="name">Cricket Championship</field>
+            <field name="start_date" eval="str(DateTime.today()+relativedelta(days=-2))[:10]"/>
+            <field name="end_date" eval="str(DateTime.today()+relativedelta(days=1))[:10]"/>
+            <field name="message">Cricket Championship is going to be organized by the company. Interested people can give their name before event date. All the rounds of the Championship( League / Semifinal / Final) will be done on the same day. Those who have already submitted their name kindly ignore it. Tournament related rules and regulation will be explained on the same day before the matches.  There will be Gift for all the Tournament Games winners and 1st runner up.</field>
+            <field name="venue">New York</field>
+            <field name="image" type="base64" file="notice_board/static/src/img/cricket.png"/>
+        </record>
+
+        <record model="notice.board" id="notice_board_3">
+            <field name="name">Foosball Championship</field>
+            <field name="start_date" eval="str(DateTime.today()+relativedelta(days=4))[:10]"/>
+            <field name="event_date" eval="str(DateTime.today()+relativedelta(days=6))[:10]"/>
+            <field name="end_date" eval="str(DateTime.today()+relativedelta(days=6))[:10]"/>
+            <field name="message">The company is going to organize Foosball Championship. Anyone interested can give their name by filling the form provided in participation link. Those who have already submitted their name kindly ignore it. Tournament related rules and regulation will be explained on the same day before the matches. There will be Gift for all the Games winners.</field>
+            <field name="venue">China</field>
+            <field name="participation_link">http://Basketball-forms/JGddgsd4597</field>
+            <field name="image" type="base64" file="notice_board/static/src/img/foosball.png"/>
+        </record>
+
+        <record model="notice.board" id="notice_board_4">
+            <field name="name">Tennis Championship</field>
+            <field name="start_date" eval="str(DateTime.today()+relativedelta(days=-7))[:10]"/>
+            <field name="end_date" eval="str(DateTime.today()+relativedelta(days=-2))[:10]"/>
+            <field name="event_date" eval="str(DateTime.today()+relativedelta(days=-2))[:10]"/>
+            <field name="message">Tennis Championship is going to be organized by the company. Interested people can give their name before event date. Those who have already submitted their name kindly ignore it. Tournament related rules and regulation will be explained on the same day before the matches. There will be Gift for all the Championship winners and 1st runner up.</field>
+            <field name="venue">New York</field>
+            <field name="image" type="base64" file="notice_board/static/src/img/table-tennis.png"/>
+        </record>
+
+        <record model="notice.board" id="notice_board_5">
+            <field name="name">Chess Championship</field>
+            <field name="start_date" eval="str(DateTime.today()+relativedelta(days=-2))[:10]"/>
+            <field name="end_date" eval="str(DateTime.today()+relativedelta(days=4))[:10]"/>
+            <field name="message">The company is going to organize Chess Championship. Anyone interested can give their name by filling the form provided in participation link. Those who have already submitted their name kindly ignore it. Tournament related rules and regulation will be explained on the same day before the matches. There will be Gift for all the Games winners.</field>
+            <field name="venue">Tokyo</field>
+            <field name="participation_link">http://Chess-forms/PGFdgsd3443</field>
+            <field name="image" type="base64" file="notice_board/static/src/img/chess.png"/>
+        </record>
+
+        <record model="notice.board" id="notice_board_6">
+            <field name="name">Football Championship</field>
+            <field name="start_date" eval="str(DateTime.today()+relativedelta(days=-2))[:10]"/>
+            <field name="end_date" eval="str(DateTime.today()+relativedelta(days=4))[:10]"/>
+            <field name="message">The company is going to organize Football Championship. Anyone interested can give their name by filling the form provided in participation link. Those who have already submitted their name kindly ignore it. Tournament related rules and regulation will be explained on the same day before the matches. There will be Gift for all the Games winners.</field>
+            <field name="venue">Nepal</field>
+            <field name="participation_link">http://Football-forms/PGFdgsd3443</field>
+            <field name="image" type="base64" file="notice_board/static/src/img/football.png"/>
+        </record>
+    </data>
+</odoo>

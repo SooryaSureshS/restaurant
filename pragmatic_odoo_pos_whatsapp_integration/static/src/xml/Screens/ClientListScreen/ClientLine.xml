@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="pragmatic_odoo_pos_whatsapp_integration.ClientLine" t-inherit="point_of_sale.ClientLine" t-inherit-mode="extension" owl="1">
+        <xpath expr="//tr[@t-att-data-id='props.partner.id']" position="inside">
+            <td t-if="env.pos.config.iface_whatsapp_msg">
+                <button class="send-whatsapp-msg-btn" t-on-click.stop="trigger('click-whatsapp', {client: props.partner})">
+                    <i class="fa fa-whatsapp whatsapp-icon"/>
+                </button>
+            </td>
+        </xpath>
+    </t>
+
+</templates>

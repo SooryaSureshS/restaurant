@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_returns_order" inherit_id="point_of_sale.assets">
+      <xpath expr="." position="inside">
+          <script type="text/javascript" src="/pos_reservation_data/static/src/js/reservationButton.js"></script>
+          <script type="text/javascript" src="/pos_reservation_data/static/src/js/reservationList.js"></script>
+      </xpath>
+    </template>
+
+</odoo>

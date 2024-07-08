@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+         <record id="product_product_website_counters" model="product.counters">
+            <field name="name">Drinks</field>
+            <field name="description"></field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="stock_update_product_template_tree_view" model="ir.ui.view">
+        <field name="name">product.template.tree</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <tree decoration-danger="carton_variance &gt; 0 or sleeve_variance &gt; 0" editable="top" create="false"
+                  string="Stock Order Form" sample="1">
+                <field name="name"/>
+                <field name="inventory_location_id" domain="[('usage', '!=', 'view')]"/>
+                <field name="new_quantity" readonly="False"/>
+                <field name="carton"/>
+                <field name="sleeve"/>
+                <field name="uom_id"/>
+                <field name="list_price"/>
+                <field name="carton_variance" readonly="1" force_save="1"/>
+                <field name="sleeve_variance" readonly="1" force_save="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_stock_update_filter" model="ir.ui.view">
+        <field name="name">product.template.search.inherit</field>
+        <field name="model">product.template</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='categ_id']" position="after">
+                <filter name="inventory_location_id" string="Location" domain="[]"
+                        context="{'group_by':'inventory_location_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_stock_quant_tree_all_view"
+            model="ir.actions.act_window">
+        <field name="name">Stock Update</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_id" ref="stock_update_product_template_tree_view"/>
+        <field name="view_mode">tree</field>
+        <field name="search_view_id" ref="view_stock_update_filter"/>
+        <field name="domain">[('type','=', 'product')]</field>
+        <field name="context">{'search_default_inventory_location_id': 1}</field>
+    </record>
+
+    <record id="action_stock_quant_tree_daily_view"
+            model="ir.actions.act_window">
+        <field name="name">Stock Update</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_id" ref="stock_update_product_template_tree_view"/>
+        <field name="view_mode">tree</field>
+        <field name="search_view_id" ref="view_stock_update_filter"/>
+        <field name="context">{'search_default_inventory_location_id': 1}</field>
+        <field name="domain">[('type','=', 'product'), ('stock_update_type_daily', '=', True)]</field>
+    </record>
+
+    <record id="action_stock_quant_tree_weekly_view"
+            model="ir.actions.act_window">
+        <field name="name">Stock Update</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_id" ref="stock_update_product_template_tree_view"/>
+        <field name="view_mode">tree</field>
+        <field name="search_view_id" ref="view_stock_update_filter"/>
+        <field name="context">{'search_default_inventory_location_id': 1}</field>
+        <field name="domain">[('type','=', 'product'), ('stock_update_type_week', '=', True)]</field>
+    </record>
+
+    <record id="action_stock_quant_tree_monthly_view"
+            model="ir.actions.act_window">
+        <field name="name">Stock Update</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_id" ref="stock_update_product_template_tree_view"/>
+        <field name="view_mode">tree</field>
+        <field name="search_view_id" ref="view_stock_update_filter"/>
+        <field name="context">{'search_default_inventory_location_id': 1}</field>
+        <field name="domain">[('type','=', 'product'), ('stock_update_type_monthly', '=', True)]</field>
+    </record>
+
+    <menuitem id="action_stock_update_tree" name="Stock Update" parent="stock.menu_stock_root"
+              sequence="10"/>
+
+    <menuitem id="action_stock_update_tree_all" name="All"
+              action="raw_material_stock_update.action_stock_quant_tree_all_view"
+              parent="raw_material_stock_update.action_stock_update_tree"
+              sequence="1"/>
+
+    <menuitem id="action_stock_update_tree_daily" name="Daily"
+              action="raw_material_stock_update.action_stock_quant_tree_daily_view"
+              parent="raw_material_stock_update.action_stock_update_tree"
+              sequence="2"/>
+
+    <menuitem id="action_stock_update_tree_weekly" name="Weekly"
+              action="raw_material_stock_update.action_stock_quant_tree_weekly_view"
+              parent="raw_material_stock_update.action_stock_update_tree"
+              sequence="3"/>
+
+    <menuitem id="action_stock_update_tree_monthly" name="Monthly"
+              action="raw_material_stock_update.action_stock_quant_tree_monthly_view"
+              parent="raw_material_stock_update.action_stock_update_tree"
+              sequence="4"/>
+
+</odoo>

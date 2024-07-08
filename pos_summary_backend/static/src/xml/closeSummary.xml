@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="SummaryButtonInherited" owl="1">
+<!--        <t t-if="env.pos.user.kitchen_screen_user === 'cook'">-->
+            <span class="control-button summary_button"
+            style="background: #875a7b;color: #fdfdfd;flex-grow: unset;margin: 0px;border: none;"
+            t-on-click="onClicked">
+                <i class="fa fa-check"></i>
+                <span> </span>
+                <span>Close</span>
+            </span>
+
+<!--        </t>-->
+<!--        <t t-if="env.pos.user.kitchen_screen_user === 'manager'">-->
+<!--            <span class="control-button summary_button"-->
+<!--            style="background: #875a7b;color: #fdfdfd;flex-grow: unset;margin: 0px;border: none;"-->
+<!--            t-on-click="onClick">-->
+<!--                <i class="fa fa-check"></i>-->
+<!--                <span> </span>-->
+<!--                <span>Close</span>-->
+<!--            </span>-->
+
+<!--        </t>-->
+<!--        <t t-else="">-->
+<!--            <span class="control-button summary_button"-->
+<!--                  style="background: #875a7b;color: #fdfdfd;flex-grow: unset;margin: 0px;border: none;"-->
+<!--                  t-on-click="onClick">-->
+<!--                <i class="fa fa-check"></i>-->
+<!--                <span> </span>-->
+<!--                <span>Close</span>-->
+<!--            </span>-->
+<!--        </t>-->
+    </t>
+</templates>

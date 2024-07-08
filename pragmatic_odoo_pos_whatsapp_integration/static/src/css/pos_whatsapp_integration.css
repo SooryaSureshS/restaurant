@@ -1,0 +1,96 @@
+.whatsapp-icon{
+    color: #21b384;
+}
+.text-muted {
+    color: #adb5bd !important;
+}
+.whatsapp-box{
+	position: relative;
+    font-size: 16px;
+}
+.whatsapp-template-box{
+	margin-top: 10px;
+	line-height: 24px;
+}
+.whatsapp-template-box > span.label{
+	font-weight: bold;
+    display: inline-block;
+    /*width: 75px;*/
+    float: left;
+    margin-right: 8px;
+}
+.whatsapp-template-box > input.mobile-number{
+	padding: 4px;
+    border-radius: 3px;
+    border: solid 1px #cecbcb;
+    margin-bottom: 4px;
+    background: white;
+    font-family: "Lato","Lucida Grande", Helvetica, Verdana, Arial;
+    color: #555555;
+    width: 100%;
+    min-height: 44px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+select.whatsapp-template{
+	padding: 4px;
+    border-radius: 3px;
+    border: solid 1px #cecbcb;
+    margin-bottom: 4px;
+    background: white;
+    font-family: "Lato","Lucida Grande", Helvetica, Verdana, Arial;
+    color: #555555;
+    width: 100%;
+    min-height: 44px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+.whatsapp-template-box > textarea.message-textarea{
+	padding: 4px;
+    border-radius: 3px;
+    border: solid 1px #cecbcb;
+    margin-bottom: 4px;
+    background: white;
+    font-family: "Lato","Lucida Grande", Helvetica, Verdana, Arial;
+    color: #555555;
+    width: 100%;
+    min-height: 100px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.text-note {
+    font-size: 11px;
+    font-family: "Lato","Lucida Grande", Helvetica, Verdana, Arial;
+    color: #adb5bd;
+    float: right;
+}
+
+#searchInput {
+  box-sizing: border-box;
+  background-image: url('../img/searchicon.png');
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+#searchInput:focus {outline: 3px solid #ddd;}
+
+.search-box {
+  background-color: #f6f6f6;
+  line-height: 50px;
+  width: 100%;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.chat-icon img{
+    width:50px;
+    height:auto;
+    border-radius: 50%;
+    padding-right: 10px;
+}

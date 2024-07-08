@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="website_blog.opt_blog_sidebar_show" model="ir.ui.view">
+		<field name="active" eval="True"/>
+	</record>
+
+	<record id="website_sale.products_categories" model="ir.ui.view">
+		<field name="active" eval="True"/>
+	</record>
+
+	<record id="website_sale.products_add_to_cart" model="ir.ui.view">
+		<field name="active" eval="True"/>
+	</record>
+
+
+
+
+	<record id="website_blog.opt_blog_post_archive_display" model="ir.ui.view">
+		<field name="active" eval="False"/>
+	</record>
+
+	<record id="website_blog.opt_blog_cover_post" model="ir.ui.view">
+		<field name="active" eval="False"/>
+	</record>
+
+	<record id="website_sale.add_grid_or_list_option" model="ir.ui.view">
+		<field name="active" eval="False"/>
+		<field name="customize_show" eval="False"/>
+	</record>
+
+	<record id="website_sale.sort" model="ir.ui.view">
+		<field name="active" eval="False"/>
+		<field name="customize_show" eval="False"/>
+	</record>
+
+</odoo>

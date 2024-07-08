@@ -1,0 +1,144 @@
+<odoo>
+    <template id="scheduling_productivity_report_extend">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div style="font-size:20px;padding:20px">
+                        <h4 align="center">
+                            <strong>Employee Scheduling and Productivity Report</strong>
+                        </h4>
+                    </div>
+                    <table class="table"
+                           style="width:100%">
+
+                        <tr>
+                            <td style="border-bottom:0px;padding-bottom:0px"></td>
+                            <t t-foreach="recs.keys()" t-as="key">
+                                <t t-foreach="recs[key]" t-as="p">
+                                    <td style="border-bottom:0px;padding-bottom:0px">
+                                        <span t-esc="p['date']"/>
+                                    </td>
+                                </t>
+                            </t>
+                        </tr>
+                        <tr>
+                            <td style="border-top:0px"></td>
+                            <t t-foreach="recs.keys()" t-as="key">
+                                <t t-foreach="recs[key]" t-as="p">
+                                    <td style="border-top:0px">
+                                        <span t-esc="p['day']"/>
+                                    </td>
+                                </t>
+                            </t>
+
+                        </tr>
+                        <tr>
+                            <th>Sales NET</th>
+                            <t t-foreach="recs.keys()" t-as="key">
+                                <t t-foreach="recs[key]" t-as="p">
+                                    <td>
+                                        <t t-esc="p['sales_net']"
+                                           t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                    </td>
+                                </t>
+                            </t>
+                        </tr>
+                        <tr>
+                            <th>Labour $</th>
+                            <t t-foreach="recs.keys()" t-as="key">
+                                <t t-foreach="recs[key]" t-as="p">
+                                    <td>
+                                        <t t-esc="round(p['labour_dollar'],2)"
+                                           t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                    </td>
+                                </t>
+                            </t>
+                        </tr>
+                        <tr>
+                            <th>Labour %</th>
+                            <t t-foreach="recs.keys()" t-as="key">
+                                <t t-foreach="recs[key]" t-as="p">
+                                    <td>
+                                        <t t-esc="p['labour_per']"/>
+                                        <span>%</span>
+                                    </td>
+                                </t>
+                            </t>
+                        </tr>
+                        <tr>
+                            <th>Scheduled Hours</th>
+                            <t t-foreach="recs.keys()" t-as="key">
+                                <t t-foreach="recs[key]" t-as="p">
+                                    <td>
+                                        <t t-esc="round(p['scheduled_hour'],2)"/>
+                                    </td>
+                                </t>
+                            </t>
+                        </tr>
+                        <tr>
+                            <th>Timesheet Hours</th>
+                            <t t-foreach="recs.keys()" t-as="key">
+                                <t t-foreach="recs[key]" t-as="p">
+                                    <td>
+                                        <t t-esc="round(p['timesheet_hour'],2)"/>
+                                    </td>
+                                </t>
+                            </t>
+                        </tr>
+                        <tr>
+                            <th>SPMH</th>
+                            <t t-foreach="recs.keys()" t-as="key">
+                                <t t-foreach="recs[key]" t-as="p">
+                                    <td>
+                                        <t t-esc="p['spmh']"
+                                           t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                    </td>
+                                </t>
+                            </t>
+                        </tr>
+                        <tr>
+                            <th>AHR</th>
+                            <t t-foreach="recs.keys()" t-as="key">
+                                <t t-foreach="recs[key]" t-as="p">
+                                    <td>
+                                        <t t-esc="p['ahr']"
+                                           t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                    </td>
+                                </t>
+                            </t>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+    </template>
+
+    <template id="scheduling_productivity_report">
+        <t t-call="web.html_container">
+            <t t-set="rec_data" t-value="docs._get_report_values()"/>
+            <t t-if="len(rec_data) == 0">
+        		<t t-call="web.external_layout">
+		            <div class="page">
+		                <div style="font-size:20px;padding:20px">
+		                    <h4 align="center">
+		                        <strong>Employee Scheduling and Productivity Report</strong>
+		                    </h4>
+		                </div>
+		                <br/>
+		                <div style="font-size:20px;padding:20px">
+		                    <h5 align="center">
+		                        <strong>There is no published timesheet record on selected date range</strong>
+		                    </h5>
+		                </div>
+		            </div>
+		            
+                </t>
+            </t>
+            <t t-else="">
+		        <t t-foreach="rec_data" t-as="rec">
+		            <t t-call="employee_shift_approval.scheduling_productivity_report_extend">
+		                <t t-set="recs" t-value="rec"/>
+		            </t>
+		        </t>
+            </t>
+        </t>
+    </template>
+</odoo>

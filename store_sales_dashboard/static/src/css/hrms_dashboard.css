@@ -1,0 +1,33 @@
+.header_date{
+    text-align: center;
+    margin-top: 5%;
+    font-size: 20px;
+}
+.main-section{
+    padding-bottom: 5%;
+    background: #dde4e1;
+    border: 2px solid;
+}
+.restaurant_name{
+    font-size: 20px;
+    border: 2px solid;
+    padding: 5px;
+}
+.stores{
+    margin-top: 10px;
+}
+.order-type{
+   margin-top: 70px;
+
+}
+.dashboard_header{
+    font-size: 50px;
+    -webkit-text-stroke: medium;
+}
+
+@media only screen and (max-width: 600px) {
+    .respTable{
+        width: 320px;
+        overflow: auto;
+    }
+}

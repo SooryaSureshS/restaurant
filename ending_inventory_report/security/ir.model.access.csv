@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ending_inventory_report_manager,ending.inventory.report.manager,model_ending_inventory_report,stock.group_stock_manager,1,1,1,1
+access_ending_inventory_report_user,ending.inventory.report.user,model_ending_inventory_report,base.group_user,1,0,0,0
+
+access_product_category_types_manager,product.category.types.manager,model_product_category_types,stock.group_stock_manager,1,1,1,1
+access_product_category_types_user,product.category.types.user,model_product_category_types,base.group_user,1,0,0,0

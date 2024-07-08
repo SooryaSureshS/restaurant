@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="published_scheduling" model="ir.actions.act_window">
+        <field name="name">Published Scheduling</field>
+        <field name="res_model">organize.slot</field>
+        <field name="view_mode">calendar,gantt,tree,form,kanban</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+           (0, 0, {'view_mode': 'gantt'}),
+           (0, 0, {'view_mode': 'calendar', 'view_id': ref('organize.organize_view_my_calendar')}),
+           (0, 0, {'view_mode': 'tree'}),
+           (0, 0, {'view_mode': 'form'})]"/>
+        <field name="domain">[('is_published','=', True)]</field>
+    </record>
+    <menuitem
+      id="published_scheduling"
+      name="Published Scheduling"
+      action="published_scheduling"
+      parent="organize.organize_menu_root"/>
+<!--      groups="employee_access.group_employee"-->
+
+
+</odoo>

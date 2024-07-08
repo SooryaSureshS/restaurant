@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_pos_category_report" model="ir.actions.act_window">
+        <field name="name">Pos Category Report</field>
+        <field name="res_model">pos.category.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="pos_category_report_wizard"/>
+
+
+    </record>
+
+
+    <record id="pos_category_report_action" model="ir.actions.report">
+        <field name="name">Pos Category Report</field>
+        <field name="model">pos.category.report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">pos_category_wise_report.pos_category_report</field>
+        <field name="report_file">pos_category_wise_report.pos_category_report</field>
+<!--        <field name="binding_model_id" ref="model_stock_scrap"/>-->
+        <field name="binding_type">report</field>
+    </record>
+
+     <menuitem id="pos_category_report_menu" name="Pos Category Report" action="action_pos_category_report" parent="stock.menu_warehouse_report" sequence="150"/>
+
+
+
+</odoo>

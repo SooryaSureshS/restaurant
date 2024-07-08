@@ -1,0 +1,40 @@
+/* Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) */
+/* See LICENSE file for full copyright and licensing details. */
+/* License URL : <https://store.webkul.com/license.html/> */
+
+.widget_menu{
+    width: 280px;
+}
+
+.notice_header{
+    font-weight: bold;
+    color: #000000;
+    font-size: 16px;
+    border-bottom: 1px solid #ced4da;
+    padding-bottom: 5px;
+}
+.notice_recs{
+    max-height:360px;
+    overflow-y:auto;
+    overflow-x:hidden;
+    padding-top:10px;
+    &:hover {
+                color: #555555;
+            }
+}
+.notice_div{
+    height: auto;
+    padding:0 20px 0 20px;
+}
+.notice_date{
+    font-family: OpenSans;
+    font-size: 12px;
+    color: #555555;
+    line-height: 22px;
+}
+.notice_name{
+    font-family: Montserrat-Bold;
+    font-size: 15px;
+    color: #333333;
+    font-weight: bold;
+}

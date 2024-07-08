@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_pos_gift_coupon_manager,pos.gift.coupon.manager,model_web_gift_coupon,website.group_website_designer,1,1,1,0
+access_pos_gift_coupon_user,pos.gift.coupon.user,model_web_gift_coupon,website.group_website_publisher,1,1,1,1
+access_pos_gift_coupon_portal,pos.gift.coupon.portal,model_web_gift_coupon,base.group_portal,1,1,0,0
+access_pos_gift_coupon_public,pos.gift.coupon.public,model_web_gift_coupon,base.group_public,1,1,0,0
+access_pos_gift_coupon_base_user,pos.gift.coupon.base.user,model_web_gift_coupon,base.group_user,1,1,0,0
+access_sale_order_public,sale.order.public.coupon,sale.model_sale_order,base.group_public,1,1,0,0

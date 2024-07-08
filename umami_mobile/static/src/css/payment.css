@@ -1,0 +1,133 @@
+/*Register*/
+
+.signup_head {
+text-align: center;
+margin:15px;
+}
+
+.payment_head {
+text-align: center;
+margin:15px;
+}
+
+.form-box {
+box-sizing: border-box;
+border: 1px solid #ccc;
+margin: auto;
+padding: 0px 150px 30px 150px;
+background: #f7f7f7;
+}
+
+.form-group {
+box-sizing: border-box;
+border: 1px solid #ccc;
+margin: auto;
+padding: 0px 150px 30px 150px;
+background: #f7f7f7;
+}
+
+.container2 {
+  width: 320px;
+  padding: 10px;
+  border: 5px solid gray;
+  margin: 0;
+}
+
+.button-signup {
+background-color: #9E3868;
+border: none;
+color: white;
+padding: 7px 15px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 15px;
+margin: 4px 2px;
+
+}
+
+.form-control:focus {
+border-color: #9E3868;
+box-shadow: 0 0 3px #9E3868;
+}
+
+.contact-button {
+text-align: right;
+}
+
+.form-control {
+box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.gender_signup {
+margin-top: 32px;
+}
+
+.selection {
+text-align: center;
+margin: 25px 0px;
+}
+
+.instit_signup,
+.personal_signup {
+border-color: #7d9183;
+background-color: #f7f7f7;
+}
+
+@media screen and (max-width: 1024px) {
+.form-box {
+padding: 10px 25px;
+}
+}
+
+
+.form-box {
+box-sizing: border-box;
+border: 1px solid #ccc;
+margin: auto;
+padding: 0px 150px 30px 150px;
+background: #f7f7f7;
+}
+
+
+
+.form-control:focus {
+border-color: #9E3868;
+box-shadow: 0 0 5px #9E3868;
+}
+
+.contact-head {
+padding-top: 45px;
+}
+
+.button {
+background-color: #9E3868;
+border: none;
+color: white;
+padding: 10px 45px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 20px;
+margin: 4px 2px;
+
+}
+
+.contact-button {
+text-align: right;
+}
+
+.form-control {
+box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+input:number:-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@media screen and (max-width: 1024px) {
+.form-box {
+padding: 10px 25px;
+}
+}

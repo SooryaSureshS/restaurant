@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rfid_container,rfid.container,model_rfid_container,department_rfid_user,1,1,1,1
+access_rfid_container_line,rfid.container.line,model_rfid_container_line,department_rfid_manager,1,1,1,1

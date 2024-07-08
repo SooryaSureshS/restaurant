@@ -1,0 +1,135 @@
+<odoo>
+    <data>
+
+        <template id="contact_us" name="Print Area Mask">
+            <t t-call="website.layout">
+                <t t-set="additional_title">Contact Us</t>
+                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/contact_us.css"/>
+                <t t-set="no_footer" t-value="1"/>
+                <t t-call="mask_cutomization.header_banner_xml"/>
+                <div class="container contactbanner s_website_form" >
+                    <div class="contactbanner">
+                        <div class="contactmaincontent">
+                            <div class="content">
+                                <p class="content-p">
+<!--                                    Get in touch-->
+                                    If you have any enquiries or comments for SkyPro Store, please contact our Customer Services.
+                                </p>
+<!--                                <div class="cont-detail">-->
+<!--                                    <div class="cont-img">-->
+<!--                                        <img src="/mask_cutomization/static/src/image/phone.png"/>-->
+<!--                                    </div>-->
+<!--                                    <div class="cont-content">-->
+<!--                                        <p>+852 27110882</p>-->
+<!--                                        <p>+852 94491389</p>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+                                <div class="cont-detail">
+                                    <div class="cont-img">
+                                        <img src="/mask_cutomization/static/src/image/phone.png"/>
+                                    </div>
+                                    <div class="cont-content">
+                                        <p>Customer Services Hotline: </p>
+                                        <p>(852) 2571 7818</p>
+                                        <p>(852) 2571 7828</p>
+                                    </div>
+                                </div>
+                                <div class="cont-detail">
+                                    <div class="cont-img">
+                                        <img src="/mask_cutomization/static/src/image/envelope.png"/>
+                                    </div>
+                                    <div class="cont-content">
+                                        <p>skypro@mail.com</p>
+                                    </div>
+                                </div>
+                                <div class="cont-detail">
+                                    <div class="cont-img">
+                                        <img src="/mask_cutomization/static/src/image/clock.png"/>
+                                    </div>
+                                    <div class="cont-content">
+                                        <p>Office Hour: </p>
+                                        <p>9:00am – 12:00 noon / 2:00pm – 5:00pm </p>
+                                        <p>Monday to Friday, except public holidays)</p>
+<!--                                        <p>Sun – day off</p>-->
+                                    </div>
+                                </div>
+                                <div class="cont-detail">
+                                    <div class="cont-img">
+                                        <img src="/mask_cutomization/static/src/image/pin.png"/>
+                                    </div>
+                                    <div class="cont-content" id="address">
+                                        <p>Address:</p>
+                                        <p>Unit 301, MARS Centre,
+                                            <br/>
+                                            2 Dai Wang St, Tai Po, NT<br/>
+                                        </p>
+                                    </div>
+                                </div>
+<!--                                <div class="cont-detail">-->
+<!--                                    <div class="cont-img">-->
+<!--                                        <img src="/mask_cutomization/static/src/image/user.png"/>-->
+<!--                                    </div>-->
+<!--                                    <div class="cont-content">-->
+<!--                                        <p>Mr. Lai</p>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+                            </div>
+                            <div class="form">
+                                <p>Do you have any questions? – Write to us</p>
+                                <form id="contactus_form" action="/website/form/" method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-model_name="mail.mail" data-success-mode="redirect" data-success-page="/contact_us/success" data-pre-fill="true">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <label for="">NAME*</label>
+                                <br/>
+                                <input type="text" name="name" placeholder="Please enter your first name" required=""/>
+                                <br/>
+                                <label for="">EMAIL*</label>
+                                <br/>
+                                <input type="text" name="email_from"  placeholder="Please enter your email address" required=""/>
+                                <br/>
+                                <label for="">MESSAGE*</label>
+                                <br/>
+                                <input type="text" name="subject" placeholder="Please enter your message" required=""/>
+                                <button type="submit" class="button s_website_form_send">Send Message</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <t t-call="mask_cutomization.skypro_footer"/>
+            </t>
+        </template>
+        <template id="contactus_success" name="Print Area Mask">
+            <t t-call="website.layout">
+                <t t-set="additional_title">Contact Us Success</t>
+                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/contact_us.css"/>
+                <t t-set="no_footer" t-value="1"/>
+                <t t-call="mask_cutomization.header_banner_xml"/>
+                <div class="container contactbanner s_website_form" >
+                    <div class="contactbanner">
+                        <div class="contactmaincontent" style="justify-content: center;">
+                            <section class="s_text_block pt40 pb40 o_colored_level " data-snippet="s_text_block">
+                            <div class="container s_allow_columns">
+                                <div class="row">
+                                    <div class="mr-lg-auto">
+                                        <span class="d-block fa fa-4x fa-thumbs-up mx-auto rounded-circle bg-primary"/><br/>
+                                        <h1 class="text-center">Thank You!</h1>
+                                        <div class="pb16 pt16 s_hr" data-snippet="s_hr" data-name="Separator">
+                                            <hr class="mx-auto border-top w-50 border-dark text-center"/>
+                                        </div>
+                                        <h5 class="text-center">
+                                            <span class="fa fa-check-circle"/>
+                                            <span>Your message has been sent <b>successfully</b></span>
+                                        </h5>
+                                        <p class="text-center">We will get back to you shortly.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        </div>
+                    </div>
+                </div>
+                <t t-call="mask_cutomization.skypro_footer"/>
+            </t>
+        </template>
+    </data>
+</odoo>

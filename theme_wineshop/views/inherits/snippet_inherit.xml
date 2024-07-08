@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="theme_wineshop_snippets" inherit_id="website.snippets">
+		<xpath expr="//div[@id='snippet_mega_menu']" position="after">
+			<div id="snippet_menu" class="o_panel">
+				<div class="o_panel_header">
+					<i class="fa fa-puzzle-piece" />
+					Full Page Snippets
+				</div>
+				<div class="o_panel_body">
+					<t t-snippet="theme_wineshop.s_homepage_wine" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_homepage_whisky" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_homepage_vodka" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_restaurant_page" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_estate_page" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_our_wines_page" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+				</div>
+
+				<div class="o_panel_header">
+					<i class="fa fa-puzzle-piece" />
+					Homepage Wine
+				</div>
+				<div class="o_panel_body">
+					<t t-snippet="theme_wineshop.s_wine_banner" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_wine_maker" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_wine_single_product" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_wine_current_release" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_wine_counter_left" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_wine_counter_right" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_wine_tasting" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_wine_instagram" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_wine_visit" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+				</div>
+
+				<div class="o_panel_header">
+					<i class="fa fa-puzzle-piece" />
+					Homepage Whisky
+				</div>
+				<div class="o_panel_body">
+					<t t-snippet="theme_wineshop.s_whisky_banner" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_whisky_brands" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_whisky_sale" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_whisky_service" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_whisky_testimonial" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+				</div>
+
+				<div class="o_panel_header">
+					<i class="fa fa-puzzle-piece" />
+					Homepage Vodka
+				</div>
+				<div class="o_panel_body">
+					<t t-snippet="theme_wineshop.s_vodka_banner" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_vodka_sale" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_vodka_maker" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_vodka_service" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_vodka_parallex" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+				</div>
+
+				<div class="o_panel_header">
+					<i class="fa fa-puzzle-piece" />
+					Restaurant Page
+				</div>
+				<div class="o_panel_body">
+					<t t-snippet="theme_wineshop.s_restaurant_banner" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_restaurant_title" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_restaurant_gallary" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_restaurant_reservation" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_restaurant_about" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_restaurant_menu" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_restaurant_time" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_restaurant_contact" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+				</div>
+
+				<div class="o_panel_header">
+					<i class="fa fa-puzzle-piece" />
+					Estate Page
+				</div>
+				<div class="o_panel_body">
+					<t t-snippet="theme_wineshop.s_estate_banner" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_estate_title" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_estate_gallary" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_estate_about" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_estate_info" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_estate_location" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_estate_tasting" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+				</div>
+
+				<div class="o_panel_header">
+					<i class="fa fa-puzzle-piece" />
+					Our Wines Page
+				</div>
+				<div class="o_panel_body">
+					<t t-snippet="theme_wineshop.s_our_wines_banner" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_our_wines_title" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_our_wines_counter_left" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_our_wines_counter_right" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_our_wines_about" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+
+					<t t-snippet="theme_wineshop.s_our_wines_cellar" t-thumbnail="/theme_wineshop/static/src/img/logo.png" />
+				</div>
+			</div>
+		</xpath>
+	</template>
+</odoo>

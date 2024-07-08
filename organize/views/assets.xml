@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <template id="assets_backend" name="organize_backend_assets" inherit_id="web.assets_backend">
+       <xpath expr="." position="inside">
+           <script type="text/javascript" src="/organize/static/src/js/organize_gant_row.js"/>
+           <script type="text/javascript" src="/organize/static/src/js/organize_gant_renderer.js"/>
+           <script type="text/javascript" src="/organize/static/src/js/organize_gant_view.js"/>
+           <script type="text/javascript" src="/organize/static/src/js/organize_gantt_controller.js"/>
+           <script type="text/javascript" src="/organize/static/src/js/organize_gantt_row.js"/>
+           <script type="text/javascript" src="/organize/static/src/js/organize_gantt_renderer.js"/>
+           <script type="text/javascript" src="/organize/static/src/js/organize_gantt_model.js"/>
+           <script type="text/javascript" src="/organize/static/src/js/organize_gantt_view.js"/>
+           <script type="text/javascript" src="/organize/static/src/js/organize_calendar.js"/>
+           <script type="text/javascript" src="/organize/static/src/js/view_form.js"/>
+           <script type="text/javascript" src="/organize/static/src/js/schedule_time_off.js"/>
+
+           <link rel="stylesheet" type="text/scss" href="/organize/static/src/scss/organize_gantt.scss"/>
+           <script type="text/javascript" src="/organize/static/src/js/tours/organize.js"/>
+       </xpath>
+   </template>
+
+   <template id="assets_frontend" name="organize Own Assets Frontend" inherit_id="web.assets_frontend">
+       <xpath expr="//link[last()]" position="after">
+           <link rel="stylesheet" type="text/scss" href="/organize/static/src/scss/organize_calendar_report.scss"/>
+           <link rel="stylesheet" type="text/scss" href="/web/static/src/scss/form_view.scss"/>
+           <script type="text/javascript" src="/organize/static/src/js/organize_calendar_front.js"/>
+       </xpath>
+   </template>
+</odoo>
+
+

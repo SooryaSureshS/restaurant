@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="paper_cost_tree_view" model="ir.ui.view">
+            <field name="name">paper.cost.tree.view</field>
+            <field name="model">paper.cost</field>
+            <field name="arch" type="xml">
+                <tree string="Paper Cost">
+                    <field name="session_id"/>
+                    <field name="product_id"/>
+                    <field name="qty"/>
+                    <field name="cost_price"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="paper_cost_form_view" model="ir.ui.view">
+            <field name="name">paper.cost.form.view</field>
+            <field name="model">paper.cost</field>
+            <field name="arch" type="xml">
+                <form string="Paper Cost">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="session_id"/>
+                                <field name="pos_order_ids" widget="many2many_tags"/>
+                                <field name="product_id"/>
+                            </group>
+                            <group>
+                                <field name="qty"/>
+                                <field name="cost_price"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="paper_cost_search_view" model="ir.ui.view">
+            <field name="name">paper.cost.search</field>
+            <field name="model">paper.cost</field>
+            <field name="arch" type="xml">
+                <search string="Paper Cost">
+                    <field name="product_id" string="Product"/>
+                    <field name="pos_order_ids"/>
+                    <separator/>
+                    <filter string="Quantity" name="qty" domain="[('qty', '>=', 0.0)]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Paper Type" name="paper" domain="[]" context="{'group_by': 'product_id'}"/>
+                        <filter name="Session" string="session" domain="[]" context="{'group_by': 'session_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_paper_cost" model="ir.actions.act_window">
+            <field name="name">Paper Cost</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">paper.cost</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_paper': 1}</field>
+            <field name="search_view_id" ref="paper_cost_search_view"/>
+        </record>
+
+
+        <menuitem id="menu_paper_cost"
+            name="Paper Cost"
+            parent="point_of_sale.menu_point_config_product"
+            action="action_paper_cost"
+            sequence="100"/>
+    </data>
+</odoo>

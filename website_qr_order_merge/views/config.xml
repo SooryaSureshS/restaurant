@@ -1,0 +1,66 @@
+<odoo>
+    <data>
+        <record id="res_config_settings_view_busy_banner" model="ir.ui.view">
+            <field name="name">res.config.settings.view.busy.banner</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="1"/>
+            <field name="inherit_id" ref="website.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@id='website_selection_settings']" position="after">
+                    <div class="banner" string="Banner">
+                        <h2>Enable Merge Qr Code</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box"
+                                 title="Here You can Enable Qr code Merge">
+
+                                <div class="o_setting_left_pane">
+                                    <field name="enable_qr_code_merge"/>
+                                </div>
+
+                                <div class="o_setting_right_pane">
+                                    <label for="enable_qr_code_merge" string="Enable Qr Code Merge"/>
+<!--                                    <div class="text-muted mb16">-->
+<!--                                        Enable Qr Code Merge-->
+<!--                                    </div>-->
+                                    <div class="content-group pos_iot_config"
+                                         attrs="{'invisible' : [('enable_qr_code_merge', '=', False)]}">
+                                        <div class="row">
+                                            <label string="Merge Time Out" for="qr_code_merge_time"
+                                                   class="col-lg-6 o_light_label"/>
+                                            <field name="qr_code_merge_time"
+                                                   style="width:50px;margin-left: 15px;"/>
+                                            <span style="padding-left: 10px;text-transform: capitalize;color: #929292;"> minutes</span>
+
+                                             <label string="KVS Display Time" for="kvs_display_time"
+                                                   class="col-lg-6 o_light_label"/>
+                                            <field name="kvs_display_time" widget="float_time"
+                                                   style="width:50px;margin-left: 15px;"/>
+                                            <span style="padding-left: 10px;text-transform: capitalize;color: #929292;"> HH:MM</span>
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="sale_order_line_qrcode_child_ids" model="ir.ui.view">
+            <field name="name">sale.order.child.ids.note</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_term_id']" position='after'>
+<!--                    <field name="child_ids" widget="many2many_tags"/>-->
+                    <field name="merge_order" />
+                    <field name="parent_id" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

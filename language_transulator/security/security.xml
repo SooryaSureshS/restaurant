@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2016 Eficent Business and IT Consulting Services S.L.
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <data noupdate="0">
+
+       <record model="ir.module.category" id="language_management">
+             <field name="name">Website language translation</field>
+             <field name="description">User access level for language module</field>
+             <field name="sequence">20</field>
+        </record>
+       <record id="department_lang_user" model="res.groups">
+            <field name="name">User</field>
+            <field name="category_id" ref="language_transulator.language_management"/>
+       </record>
+        <record id="department_rfid_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="language_transulator.language_management"/>
+            <field name="implied_ids" eval="[(4, ref('department_lang_user'))]"/>
+        </record>
+    </data>
+</odoo>

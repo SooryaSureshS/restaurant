@@ -1,0 +1,147 @@
+$primarycolor: #b0976d !default;
+$secondarycolor: #000000 !default;
+$primarygamma: #a8393c !default;
+$ptextcolor: #6a6c72 !default;
+$feature: #ff4272 !default;
+
+/* -------------------------- Main Colors ------------------------*/
+$o-theme-color-palettes: (
+    (
+        'o-color-1': $primarycolor,
+        'o-color-2': $secondarycolor,
+        'o-color-3': #a8393c,
+        'o-color-4': #333333,
+        'o-color-5': #bbbfc6,
+    ),
+);
+/* -------------------------- Text Colors ------------------------*/
+$o-base-color-combination: (
+
+    'bg': 'white',
+	'body': null, // Default to bootstrap
+    'menu': #F9F9F9,
+    'footer': #F9F9F9,
+    'text': #000000, // Default to bootstrap
+    'h1': null, // Default to text
+    'h2': null, // Default to h1
+    'h3': null, // Default to h2
+    'h4': null, // Default to h3
+    'h5': null, // Default to h4
+    'h6': null, // Default to h5
+
+);
+
+$o-color-combinations-presets: (
+    (
+        (
+            'bg': 'white',
+            'text': #000000,
+        ),
+        (
+            'bg': 'o-color-3',
+            'headings': 'o-color-1',
+        ),
+        (
+            'bg': 'o-color-2',
+            'btn-secondary': 'o-color-3',
+        ),
+        (
+            'bg': 'o-color-1',
+            'link': 'o-color-5',
+            'btn-primary': 'o-color-5',
+            'btn-secondary': 'o-color-3',
+        ),
+        (
+            'bg': 'o-color-5',
+            'headings': 'o-color-4',
+            'btn-secondary': 'o-color-3',
+        ),
+    ),
+) !default;
+$o-color-combinations-preset-number: 1;
+
+/* -------------------------- Color Pallets ------------------------*/
+
+$o-color-palettes: (
+    (
+        'o-color-1': $primarycolor,
+        'o-color-2': $secondarycolor,
+        'o-color-3': #a8393c,
+        'o-color-4': #333333,
+        'o-color-5': #bbbfc6,
+
+        'footer': 2,
+        'copyright': white,
+    ),
+    (
+        'o-color-1': $secondarycolor,
+        'o-color-2': $primarycolor,
+        'o-color-3': #a8393c,
+        'o-color-4': #333333,
+        'o-color-5': $feature,
+
+        'menu': 2,
+        'footer': 2,
+        'copyright': white,
+    ),
+) !default;
+$o-color-palette-number: 1 !default;
+
+/* -------------------------- State Colors ------------------------*/
+$success:       #00b115 !default;
+$info:          #ffaa50 !default;
+$warning:       #ff5050 !default;
+$danger:        #900000 !default;
+
+/* -------------------------- fonts -----------------------------*/
+
+$o-website-values-palettes: (
+    (
+        'headings-font': 'Playfair Display',
+        'navbar-font': 'Lato',
+        'buttons-font': 'Lato',
+    ),
+) !default;
+
+$o-theme-font-configs: (
+    'Lato': (
+        'family': ('Lato'),
+        'url': 'Lato:400,400i,700,700i',
+    ),
+    'Playfair Display': (
+        'family': ('Playfair Display'),
+        'url': 'Playfair Display:400,400i,700,700i',
+    ),
+    'Montserrat': (
+        'family': ('Montserrat', sans-serif),
+        'url': 'Montserrat:400,400i,700,700i',
+    ),
+    'Varela Round': (
+        'family': ('Varela Round', sans-serif),
+        'url': 'Varela Round:400,400i,700,700i',
+    ),
+    'Roboto': (
+        'family': ('Roboto', sans-serif),
+        'url': 'Roboto:300,300i,400,400i,700,700i',
+    ),
+    'Open Sans': (
+        'family': ('Open Sans', sans-serif),
+        'url': 'Open+Sans:300,300i,400,400i,700,700i',
+    ),
+    'Source Sans Pro': (
+        'family': ('Source Sans Pro', sans-serif),
+        'url': 'Source+Sans+Pro:300,300i,400,400i,700,700i',
+    ),
+    'Raleway': (
+        'family': ('Raleway', sans-serif),
+        'url': 'Raleway:300,300i,400,400i,700,700i',
+    ),
+    'Noto Serif': (
+        'family': ('Noto Serif', serif),
+        'url': 'Noto+Serif:300,300i,400,400i,700,700i',
+    ),
+    'Arvo': (
+        'family': ('Arvo', Times, serif),
+        'url': 'Arvo:300,300i,400,400i,700,700i',
+    ),
+) !default;

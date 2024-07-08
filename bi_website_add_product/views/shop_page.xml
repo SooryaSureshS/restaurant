@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<template id="add_wineshop_pager"
+		inherit_id="website_sale.products" name="Wineshop Top Panel"
+		customize_show="True" active="True" priority="10">
+		<xpath
+			expr="//div[hasclass('o_wsale_products_grid_table_wrapper')]"
+			position="before">
+			<div class="wineshop_pager d-flex align-items-center">
+
+				<t t-set="website_sale_pricelists"
+					t-value="website.get_pricelist_available(show_visible=True)" />
+				<div
+					t-attf-class="dropdown#{'' if website_sale_pricelists and len(website_sale_pricelists)&gt;1 else ' d-none'} #{_classes}">
+					<t t-set="curr_pl" t-value="website.get_current_pricelist()" />
+					<a role="button" href="#" class="dropdown-toggle btn btn-light"
+						data-toggle="dropdown">
+						<t t-esc="curr_pl and curr_pl.name or ' - '" />
+					</a>
+					<div class="dropdown-menu" role="menu">
+						<t t-foreach="website_sale_pricelists" t-as="pl">
+							<a role="menuitem"
+								t-att-href="'/shop/change_pricelist/%s' % pl.id"
+								class="dropdown-item">
+								<span class="switcher_pricelist" t-att-data-pl_id="pl.id"
+									t-esc="pl.name" />
+							</a>
+						</t>
+					</div>
+				</div>
+				<t t-set="name_asc_label">Name: A to Z</t>
+				<t t-set="name_desc_label">Name: Z to A</t>
+				<t t-set="website_sale_sortable"
+					t-value="[
+ 	                (name_asc_label, 'name asc'),
+ 	                (name_desc_label, 'name desc')
+ 	            ]" />
+				<t t-set="website_sale_sortable_current"
+					t-value="[sort for sort in website_sale_sortable if sort[1]==request.params.get('order', '')]" />
+
+			</div>
+		</xpath>
+		<xpath expr="//div[@id='products_grid']" position="inside">
+			<div
+				class="aviat_bottom_pager form-inline justify-content-center mt-3">
+				<t t-call="website.pager" />
+			</div>
+		</xpath>
+	</template>
+</data>

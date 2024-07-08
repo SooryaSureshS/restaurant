@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_wine_current_release" name="Wine Current Release">
+		<section class="wineshop-home-current-release pt152 pb152">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 p-0">
+						<section class="content text-center h-100" style="background-image: url('/theme_wineshop/static/src/img/current-release.png');">
+							<div class="image">
+								<img class="img img-fluid" src="/theme_wineshop/static/src/img/grape-icn.png" alt="image"/>
+							</div>
+							<p class="subtitle">Donec faucibus</p>
+							<h1 class="text-white">Proin tempor massa vitae tellus luctus, vel porta est eleifend.</h1>
+						</section>
+					</div>
+					<div class="col-lg-6 p-0">
+						<div class="image">
+							<img class="img img-fluid" src="/theme_wineshop/static/src/img/current-release.jpg" alt="image"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</template>
+</odoo>

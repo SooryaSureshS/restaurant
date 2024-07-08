@@ -1,0 +1,21 @@
+{
+    'name': 'Umami Mobile',
+    'summary': """Umami mobile api integration""",
+    'version': '1.0',
+    'description': """Umami mobile api integration""",
+    'depends': ['base','product','sale','website_sale','website','payment'],
+    'license': 'AGPL-3',
+    'data': [
+        'security/ir.model.access.csv',
+        'views/product.xml',
+        'views/sale.xml',
+        'views/res_partner.xml',
+        'views/templates.xml',
+        'views/return_message.xml',
+        'views/return_message_success.xml',
+        'views/custapp_config.xml',
+    ],
+    'installable': True,
+    'auto_install': False,
+    'application': True,
+}

@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <template id="mask_preview" name="Recommend">
+            <t t-call="website.layout">
+                <t t-set="additional_title">Print Area Mask</t>
+                 <link rel="stylesheet" href="/mask_cutomization/static/src/scss/Shop_customize_mask-logo_page.css"/>
+                <t t-set="no_footer" t-value="1"/>
+                <t t-call="mask_cutomization.header_banner_xml"/>
+
+                <t t-call="mask_cutomization.skypro_footer"/>
+            </t>
+        </template>
+    </data>
+</odoo>

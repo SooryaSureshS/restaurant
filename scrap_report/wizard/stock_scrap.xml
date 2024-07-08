@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="report_wizard_form_scrap" model="ir.ui.view">
+        <field name="name">Scrap Report</field>
+        <field name="model">scrap.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Scrap Report">
+                <group>
+                    <group>
+                        <field name="from_date"/>
+                    </group>
+                    <group>
+                        <field name="to_date"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="print_report" string="Print" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <template id="external_layout_standard_custom_scrap">
+        <div class="header">
+            <div style="float: left; width: 100%;font-size:5px;margin-top:15px;border-bottom: 3px solid black;">
+                <p style="margin:0px !important;font-size:16px;font-weight:bold">Scrap Report</p>
+                <p style="margin-top:15px !important;font-size:12px;">Report Period &#160; &#160; &#160; &#160;
+
+                    <t t-esc="start_date"></t>
+                    to
+                    <t t-esc="end_date"></t>
+                    <!--                    </t>-->
+                    <span style="float:right;">Printed:
+                        <t t-set="date" t-value="context_timestamp(datetime.datetime.now())"/>
+
+                        <span t-esc="date.strftime('%e %b %Y, %I:%M %p')"/>
+                        <br/>
+                        Page
+                        <span class="page"/>
+                        of
+                        <span class="topage"/>
+                    </span>
+                </p>
+                <br/>
+            </div>
+        </div>
+    </template>
+
+
+    <template id="report_scrap">
+        <t t-call="web.html_container">
+            <t t-call="scrap_report.external_layout_standard_custom_scrap"/>
+
+            <div class="page">
+                <!--                <t t-foreach="docs" t-as="doc">-->
+                <!--                <t t-set="sub_total" t-value="0"/>-->
+                <div>
+                    <table class="table table-borderless"
+                           style="text-align:right;font-size:12px;font-family:\'Times New Roman\';color:black;
+                                   width:100%;border-collapse:collapse;border-spacing:20px;padding-top:5px;margin-top:5px;margin-bottom:30px">
+                        <style>
+                            th {
+                            padding-bottom:30px;}
+                            }
+                        </style>
+                        <thead style="display: table-header-group;">
+                            <tr style="padding-bottom:50px;margin-bottom:30px">
+
+                                <th style="width:20%;margin-top:0px;text-align:left;">Product</th>
+                                <th style="width:5%;;margin-top:0px;padding-left:10px">Quantity</th>
+                                <th style="width:5%;;margin-top:0px;padding-left:10px">Unit</th>
+                                <th style="width:5%;;margin-top:0px;padding-left:7px">Date</th>
+<!--                                <th style="width:5%;;margin-top:0px;padding-left:10px">Source Location</th>-->
+<!--                                <th style="width:5%;;margin-top:0px;padding-left:10px">Scrap Location</th>-->
+
+                            </tr>
+                        </thead>
+                        <br/>
+                        <tbody style="display: table-row-group;padding-top:50px;margin-top:30px">
+                              <tr>
+                                <td colspan="13" style="text-align:left;font-weight:bold;border-bottom:1px solid black;">
+<!--                                    <span t-esc="key"/>-->
+                                </td>
+                            </tr>
+                            <t t-foreach="data" t-as="line">
+
+                                <tr>
+                                    <td style="text-align:left;">
+                                        <t t-esc="line.product_id.name"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="line.scrap_qty"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="line.product_uom_id.name" />
+                                    </td>
+                                    <td>
+                                        <t t-esc="line.date_done.strftime('%m-%d-%Y')" />
+                                    </td>
+<!--                                    <td>-->
+<!--                                        <t t-esc="line.location_id.name"/>-->
+<!--                                    </td>-->
+<!--                                    <td>-->
+<!--                                        <t t-esc="line.scrap_location_id.name"/>-->
+<!--                                    </td>-->
+
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </t>
+        <!--        </t>-->
+    </template>
+
+
+</odoo>

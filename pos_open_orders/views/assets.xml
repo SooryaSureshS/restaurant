@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <template id="assets_pos_opens_orders" inherit_id="point_of_sale.assets">
+          <xpath expr="." position="inside">
+              <script type="text/javascript" src="/pos_open_orders/static/src/js/leftContainerPanel.js"></script>
+              <script type="text/javascript" src="/pos_open_orders/static/src/js/openOrderScreen.js"></script>
+              <script type="text/javascript" src="/pos_open_orders/static/src/js/models.js"></script>
+              <script type="text/javascript" src="/pos_open_orders/static/src/js/openWidget.js"></script>
+              <script type="text/javascript" src="/pos_open_orders/static/src/js/PaymentScreenInherit.js"></script>
+              <script type="text/javascript" src="/pos_open_orders/static/src/js/sendTokitchen.js"></script>
+<!--              <link rel="stylesheet" type="text/css" href="/pos_return/static/src/css/pos.css"/>-->
+              <link rel="stylesheet" type="text/css" href="/pos_open_orders/static/src/css/style.css"/>
+          </xpath>
+        </template>
+</odoo>

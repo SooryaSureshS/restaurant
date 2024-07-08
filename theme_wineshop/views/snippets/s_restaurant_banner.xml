@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_restaurant_banner" name="Restaurant Banner">
+		<section class="our-wines-banner-image">
+				<div class="image">
+					<img class="img img-fluid" src="/theme_wineshop/static/src/img/restaurant-banner.jpg" alt="image"/>
+				</div>
+			</section>
+	</template>
+</odoo>

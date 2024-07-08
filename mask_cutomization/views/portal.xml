@@ -1,0 +1,1032 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="draft_order_template" name="My Portal skypro">
+        </template>
+        <template id="skypro_my_home" name="My Portal skypro">
+            <t t-call="website.layout">
+                <t t-call="mask_cutomization.header_banner_xml"/>
+                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/account_my_profile_page.css"/>
+                <link rel="stylesheet"
+                      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+                      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+                      crossorigin="anonymous" referrerpolicy="no-referrer"/>
+                <link href='https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800'
+                      rel='stylesheet' type='text/css'/>
+                <t t-set="no_footer" t-value="1"/>
+                <t t-set="my_details" t-value="True"/>
+                <div class="banner" id="skypro_portal">
+                    <div class="Accoount-left-banner">
+                        <p>
+                            <span>Account</span>
+                        </p>
+                        <p id="information_tab">Information
+                            <i class='fas fa-angle-right'></i>
+                        </p>
+                        <p id="my_orders_tab">My Orders
+                            <i class='fas fa-angle-right'></i>
+                        </p>
+                        <p id="my_order_process_tab">Order Process
+                            <i class='fas fa-angle-right'></i>
+                        </p>
+                        <p id="logout_info">Logout
+                            <i class='fas fa-angle-right'></i>
+                        </p>
+                        <p>
+                            <span>Setting</span>
+                        </p>
+                        <p id="language_div_info">Language
+                            <i class='fas fa-angle-right'></i>
+                        </p>
+                        <p id="fire_base_notification">Notification
+                            <i class='fas fa-angle-right'></i>
+                        </p>
+                        <p>
+                            <span>About Us</span>
+                        </p>
+                        <p id="contact_us_info">Contact Us
+                            <i class='fas fa-angle-right'></i>
+                        </p>
+                        <p id="payment_and_delivery_info">Payment And Delivery
+                            <i class='fas fa-angle-right'></i>
+                        </p>
+                        <p id="privacy_policy_info">Privacy Policy
+                            <i class='fas fa-angle-right'></i>
+                        </p>
+                    </div>
+                    <div class="Account-right-banner">
+                        <div id="error_message_display" style="display: none;">
+                            <div class="error">
+                                <span>Error</span>
+                            </div>
+                        </div>
+                        <div id="personal_information_widget" class="left_info_tab">
+                            <t t-set="request_id" t-value="request.env.user.id"/>
+                            <t t-if="request_id" t-set="user_info"
+                               t-value="request.env['res.users'].sudo().search([('id','=', request_id)], limit=1)"/>
+                            <p id="information-heading">Information</p>
+                            <P>PERSONAL INFO</P>
+                            <div id="edit-information" class="city" style="height: 691px;">
+                                <p>
+                                    <i class='fas fa-user'></i>
+                                    <t t-if="request_id" t-esc="user_info.partner_id.name"/>
+                                </p>
+                                <p>
+                                    <i class='fas fa-phone-volume'></i>
+                                    <t t-if="request_id" t-esc="user_info.partner_id.phone"/>
+                                </p>
+                                <p>
+                                    <i class='fas fa-envelope'></i>
+                                    <t t-if="request_id" t-esc="user_info.partner_id.email"/>
+                                </p>
+                                <p>
+                                    <i class='fas fa-home'></i>
+                                    <span t-if="request_id and user_info.partner_id.company_name" t-esc="user_info.partner_id.company_name"/>
+                                    <span t-elif="request_id and user_info.company_id" t-esc="user_info.company_id.name"/>
+                                </p>
+                                <p id="change_password">Change password</p>
+                                <p>BILLING ADDRESS</p>
+                                <input type="hidden" id="selected_billing_address" name="billing_address"/>
+                                <input type="hidden" id="selected_delivery_address" name="delivery_address"/>
+                                <div class="row">
+
+                                    <!--                                <div class="fa-pointer" style="    white-space: unset;display: grid;">-->
+                                    <p/>
+                                    <t t-foreach="user_info.partner_id.child_ids" t-as="delivery_add">
+                                        <t t-if="delivery_add.type=='invoice'">
+                                            <div class="delivery_kanban col-md-5 billing_address"
+                                                 t-att-data-value="delivery_add.id">
+                                                Name:
+                                                <t t-esc="delivery_add.name"/>
+                                                <br/>
+                                                Address:
+                                                <span t-esc="delivery_add.street"/>
+                                                <br/>
+                                                <span t-esc="delivery_add.street2"/>
+                                                <br/>
+                                                Phone:
+                                                <span t-esc="delivery_add.phone"/>
+                                                <br/>
+                                                Country:
+                                                <span t-esc="delivery_add.country_id.name"/>
+                                            </div>
+                                        </t>
+                                    </t>
+
+                                    <!--                                        <t t-esc="request.env['res.partner'].sudo().search([()])  user_info.partner_id.child_ids"/>-->
+                                    <!--                                        <span t-if=""-->
+                                    <!--                                        Shatin, Dep. 134, Piccadily Street 45/7<br/>445678-->
+                                    <!--                                    </p>-->
+                                    <!--                                </div>-->
+                                </div>
+                                <br/>
+                                <p>DELIVERY ADDRESS</p>
+                                <div class="row" style="   display: block;">
+                                    <!--                                <div class="fa-pointer" style="    white-space: unset;display: grid;">-->
+                                    <!--                                    <p style="position:relative;    width: 50px;">-->
+                                    <!--                                        <i class="	fas fa-map-marker-alt" style="position:absolute; top:10px;left:0px;"></i>-->
+                                    <!--                                    </p>-->
+                                    <!--                                    <p>-->
+                                    <t t-foreach="user_info.partner_id.child_ids" t-as="delivery_add">
+                                        <t t-if="delivery_add.type=='delivery'">
+                                            <div class="delivery_kanban col-md-5 delivery_address"
+                                                 t-att-data-value="delivery_add.id">
+                                                Name:
+                                                <t t-esc="delivery_add.name"/>
+                                                <br/>
+                                                Address:
+                                                <span t-esc="delivery_add.street"/>
+                                                <br/>
+                                                <span t-esc="delivery_add.street2"/>
+                                                <br/>
+                                                Phone:
+                                                <span t-esc="delivery_add.phone"/>
+                                                <br/>
+                                                Country:
+                                                <span t-esc="delivery_add.country_id.name"/>
+                                            </div>
+                                        </t>
+
+                                    </t>
+
+                                    <!--                                        <t t-esc="request.env['res.partner'].sudo().search([()])  user_info.partner_id.child_ids"/>-->
+                                    <!--                                        <span t-if=""-->
+                                    <!--                                        Shatin, Dep. 134, Piccadily Street 45/7<br/>445678-->
+                                    <!--                                    </p>-->
+                                    <!--                                </div>-->
+                                </div>
+                                <!--                                <button onclick="openCity('edit-information-form')">Edit info</button>-->
+                                <button id="edit_information" disabled="disabled">Edit info</button>
+
+                            </div>
+                        </div>
+
+                        <!--  -->
+                        <div id="my-orders" class="city left_info_tab" style="display:none">
+                            <p>content for myorders</p>
+                        </div>
+                        <!-- edit infromation form -->
+                        <input type="hidden" id="edit_partner_id" name="partner_id"/>
+                        <div id="edit-information-form" class="information-inputs city left_info_tab"
+                             style="display:none;">
+                            <form action="/edit/partner/info" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <input type="hidden" name="partner_id" t-att-value="request.session['edit_partner']"/>
+                                <t t-set="edit_id" t-value="request.session['edit_partner']"/>
+                                <t t-set="edit_partner"
+                                   t-value="request.env['res.partner'].sudo().search([('id','=',int(request.session['edit_partner']))], limit=1)"/>
+                                <t t-set="country_obj" t-value="request.env['res.country'].sudo().search([])"/>
+                                <t t-set="state_obj" t-value="request.env['res.country.state'].sudo().search([])"/>
+                                <label>FIRST NAME*</label>
+                                <br/>
+                                <input type="text"
+                                       name="name"
+                                       placeholder="Chan" id="edit_firstname" t-att-value="edit_partner.name"
+                                       class="edit_input_field"/>
+                                <br/>
+                                <!-- last name -->
+                                <label>LAST NAME*</label>
+                                <br/>
+                                <input type="text"
+                                       name="last_name"
+                                       placeholder="John" id="edit_lastname" t-att-value="edit_partner.last_name"
+                                       class="edit_input_field"/>
+                                <br/>
+                                <!-- phone number -->
+
+                                <label>PHONE NUMBER*</label>
+                                <br/>
+
+                                <div class="phone_number_container">
+                                    <select style="width:60%;" name="phone_code" id="edit_phone_code"
+                                            class="edit_input_field">
+                                        <!--                                        <option value="">Country Code...</option>-->
+                                        <t t-foreach="country_obj" t-as="c">
+                                            <option t-att-value="c.phone_code"
+                                                    t-att-selected="str(c.phone_code) == str(edit_partner.phone_code)">
+                                                <t t-esc="c.name"/>: +
+                                                <t t-esc="c.phone_code"/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                    <input type="tel"
+                                           name="phone"
+                                           placeholder="9123 9123" id="edit_phone" t-att-value="edit_partner.phone"
+                                           class="edit_input_field"/>
+                                </div>
+
+                                <br/>
+                                <!-- email -->
+                                <label>EMAIL*</label>
+                                <br/>
+                                <input type="email"
+                                       name="email"
+                                       placeholder="john_chan@mail.com" id="edit_email" t-att-value="edit_partner.email"
+                                       class="edit_input_field"/>
+                                <br/>
+                                <!-- Company name -->
+                                <label>COMPANY NAME</label>
+                                <br/>
+                                <input type="text"
+                                       name="company_name"
+                                       placeholder="Ocean limited" id="edit_company"
+                                       t-att-value="edit_partner.company_name" class="edit_input_field"
+                                />
+
+                                <!-- deliver Address -->
+                                <p>
+                                    <Datag>DELIVERY ADDRESS</Datag>
+                                </p>
+                                <!--                                <P class="check">ADDRESS 1-->
+                                <!--                                    <span id="checkbox-large-screen">-->
+                                <!--                                        <input type="checkbox"/>-->
+                                <!--                                        Save as default-->
+                                <!--                                        <button>-->
+                                <!--                                            <img src="trash.png" alt=""/>-->
+                                <!--                                        </button>-->
+                                <!--                                    </span>-->
+                                <!--                                </P>-->
+                                <p id="checkbox-small-screen">
+                                    <input type="checkbox"/>
+                                    Save as default
+                                    <button>
+                                        <img src="trash.png" alt=""/>
+                                    </button>
+                                </p>
+                                <!-- COUNTRY -->
+                                <label>COUNTRY</label>
+                                <br/>
+
+                                <select name="country_id" id="edit_country" class="edit_input_field">
+                                    <!--                                    <option value="">Country</option>-->
+                                    <t t-foreach="country_obj" t-as="country">
+                                        <option t-att-value="country.id"
+                                                t-att-selected="edit_partner.country_id.id == country.id">
+                                            <t t-esc="country.name"/>
+                                        </option>
+                                    </t>
+                                </select>
+                                <!-- <input type="select"
+                                name="country"
+                                 placeholder="select country"
+                                   > -->
+                                <br/>
+                                <!-- STATE -->
+                                <label>STATE</label>
+                                <br/>
+                                <select name="state_id" id="edit_state" class="edit_input_field">
+                                    <!--                                    <option value="">state</option>-->
+                                    <t t-foreach="state_obj" t-as="state">
+                                        <t t-if="int(state.country_id.id) == int(edit_partner.country_id.id)">
+                                            <option t-att-value="state.id"
+                                                    t-att-selected="edit_partner.state_id.id == state.id">
+                                                <t t-esc="state.name"/>
+                                            </option>
+                                        </t>
+
+                                    </t>
+                                </select>
+                                <br/>
+
+                                <!-- address -->
+                                <label>ADDRESS LINE</label>
+                                <br/>
+                                <input type="text"
+                                       name="street"
+                                       placeholder="Please enter your address line" id="edit_street"
+                                       t-att-value="str(edit_partner.street)" class="edit_input_field"
+                                />
+                                <input type="text"
+                                       name="street2"
+                                       placeholder="Please enter your address line" id="edit_street2"
+                                       t-att-value="str(edit_partner.street2)" class="edit_input_field"
+                                />
+                                <br/>
+
+                                <!-- zip -->
+                                <!--                                <label>ZIP CODE</label>-->
+                                <!--                                <br/>-->
+                                <!--                                <input type="text"-->
+                                <!--                                       name="zip"-->
+                                <!--                                       placeholder="xxxxxx"-->
+                                <!--                                />-->
+                                <br/>
+                                <!-- +add -->
+                                <input type="hidden" id="new_address" value="0" name="mode_type"/>
+                                <p id="add_new_address">+ Add New Address</p>
+
+                                <!-- butn -->
+                                <div id="edit_save_changes">Save Changes</div>
+                                <div id="edit_cancel_changes">Cancel</div>
+                                <button type="submit" style="display:none;">Save Changes</button>
+                                <br/>
+                                <button id="cancel-btn" style="display: none;" onclick="openCity('edit-information')">
+                                    Cancel
+                                </button>
+                            </form>
+
+                        </div>
+
+                        <div class="change_password left_info_tab" id="change_password_tab" style="display:none;">
+                            <p id="information-heading">Information</p>
+                            <p class="change_password_label">CHANGE PASSWORD</p>
+                            <p class="old_password_label">OLD PASSWORD</p>
+                            <input type="password"
+                                   name="old_password"
+                                   placeholder="Please enter your old password again" class="password_field"
+                                   id="old_pass"/>
+                            <br/>
+                            <p class="old_password_label">NEW PASSWORD</p>
+                            <input type="password"
+                                   name="new_password"
+                                   placeholder="Please enter your new password" class="password_field" id="new_pass"/>
+                            <br/>
+                            <p class="old_password_label">CONFIRM PASSWORD</p>
+                            <input type="password"
+                                   name="confirm_password"
+                                   placeholder="Please enter your new password again" class="password_field"
+                                   id="new_confirm"/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <div class="confirm_button_password" id="confirm_password_sk">
+                                Confirm
+                            </div>
+                            <div class="confirm_button_password cancel_button_password" id="cancel_password_sk">
+                                Cancel
+                            </div>
+                        </div>
+
+                        <!--                        my order-->
+                        <div class="my_orders left_info_tab" id="my_orders_div" style="display:none;">
+                            <p id="information-heading">My orders</p>
+                            <t t-set="uid" t-value="request.env.user.id"/>
+                            <t t-if="uid">
+                                <t t-set="user_ids"
+                                   t-value="request.env['res.users'].sudo().search([('id','=', int(uid))], limit=1)"/>
+                                <t t-set="draft_order"
+                                   t-value="request.env['sale.order'].sudo().search([('partner_id','=',int(user_ids.partner_id.id)),('state','=','draft')])"/>
+                                <t t-set="sale_draft_count"
+                                   t-value="request.env['sale.order'].sudo().search_count([('partner_id','=',int(user_ids.partner_id.id)),('state','=','draft')])"/>
+                                <p id="information-heading current_orders_info"
+                                   style="margin-top: 30px;font-size:13px ;font-weight: 600 ;border-bottom: none ;">
+                                    CURRENT
+                                    ORDERS(
+                                    <t t-esc="sale_draft_count"/>
+                                    )
+                                </p>
+
+                                <t t-foreach="draft_order" t-as="draft">
+                                    <div class="border_bottom">
+                                        <span></span>
+                                    </div>
+                                    <div class="my_order_list" t-att-data-value="draft.id">
+                                        <span class="order_reference">
+                                            #<t t-esc="draft.name"/>
+                                        </span>
+                                        <span class="order_date font_13">
+                                            <t t-esc="draft.write_date.strftime('%d %h %Y, %H:%M')"/>
+                                        </span>
+                                        <span class="draft_orders_list" style="cursor: pointer;position: absolute;right: 0;font-size: 24px;" t-att-data-value="draft.id">
+                                            <i class='fas fa-chevron-down down_arrow'></i>
+                                            <i class='fas fa-chevron-up up_arrow' style="display:none;"></i>
+                                        </span>
+                                    </div>
+                            <div class="sale_description_draft_subtab" style="display:none;" t-att-id="'drfat'+str(draft.id)">
+                                    <div class="border_bottom">
+                                        <span></span>
+                                    </div>
+
+                                    <t t-foreach="draft.order_line" t-as="line">
+                                        <div class="sale_order_details"
+                                             style="    display: flex;    padding-bottom: 20px;">
+                                            <div class="sale_order_image" style="width: 120px;margin-right: 14px;">
+                                                <t t-if="line.product_id.image_128">
+                                                    <img t-att-src="image_data_uri(line.product_id.image_128)"
+                                                         style="width: inherit; margin-top:18px;"/>
+                                                </t>
+                                            </div>
+                                            <div class="sale_order_description" style="width:80%;">
+                                                <div class="product_description"
+                                                     style="width: 50%;font-family: 'Montserrat';font-style: normal;font-weight: 600;font-size: 14px;padding-top: 13px;">
+                                                    <t t-esc="line.name"/>
+                                                </div>
+                                                <div class="product_qty"
+                                                     style="position:relative;font-family: 'Montserrat';font-style: normal;font-weight: 600;font-size: 14px;padding-top: 13px;position: relative;width: 80%;height: 30px;">
+                                                    <span style="position:absolute;left:0;font-weight: 500;">
+                                                        <t t-esc="line.product_uom_qty"/>
+                                                        pcs
+                                                    </span>
+                                                    <span t-field="line.price_subtotal"
+                                                          style="white-space: nowrap;position:absolute;right:0;"
+                                                          t-options="{'widget': 'monetary', 'display_currency': draft.currency_id}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="border_bottom">
+                                            <span></span>
+                                        </div>
+
+                                    </t>
+                                    <div class="sale_extra_info">
+                                        <div class="subtotal_div">
+                                            <div class="d_absolute d_left font_500sk font_13">
+                                                Subtotal
+                                            </div>
+                                            <div class="d_absolute d_right font_500sk font_13">
+                                                <t t-set="value_deliverys" t-value="0"/>
+                                                <t t-foreach="draft.order_line" t-as="line">
+                                                    <t t-if="line.is_delivery">
+                                                        <t t-set="value_deliverys" t-value="line.price_subtotal"/>
+                                                    </t>
+                                                </t>
+                                                <t t-set="value_delivery"
+                                                   t-value="draft.amount_total - value_deliverys"/>
+                                                <span t-esc="value_delivery"
+                                                      style="white-space: nowrap;position:absolute;right:0;"
+                                                      t-options="{'widget': 'monetary', 'display_currency': draft.currency_id}"/>
+                                            </div>
+                                        </div>
+                                        <div class="subtotal_div">
+                                            <div class="d_absolute d_left font_500sk font_13">
+                                                Delivery
+                                            </div>
+                                            <div class="d_absolute d_right font_500sk font_13">
+                                                <t t-foreach="draft.order_line" t-as="line">
+                                                    <t t-if="line.is_delivery">
+                                                        <span t-field="line.price_subtotal"
+                                                              style="white-space: nowrap;position:absolute;right:0;"
+                                                              t-options="{'widget': 'monetary', 'display_currency': draft.currency_id}"/>
+                                                    </t>
+                                                </t>
+
+                                            </div>
+                                        </div>
+                                        <div class="subtotal_div">
+                                            <div class="left_panel_sk">
+                                                Total
+                                            </div>
+                                            <div class="right_panel_sk">
+
+                                                <span t-field="draft.amount_total"
+                                                      style="white-space: nowrap;position:absolute;right:0;"
+                                                      t-options="{'widget': 'monetary', 'display_currency': draft.currency_id}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="delivery_method" style="margin-top: 15px;">
+                                        <span class="font_600sk font_12">DELIVERY METHOD</span>
+                                        <div>
+                                            <t t-foreach="draft.order_line" t-as="line">
+                                                <t t-if="line.is_delivery">
+                                                    <span class="font_500sk font_11">
+                                                        <t t-esc="line.product_id.name"/>
+                                                    </span>
+                                                </t>
+                                            </t>
+                                        </div>
+                                    </div>
+                                    <div class="delivery_method" style="margin-top: 15px;">
+                                        <span class="font_600sk font_12">DELIVERY ADDRESS</span>
+                                        <div>
+                                            <span class="font_500sk font_12">
+                                                <t t-esc="draft.partner_shipping_id.street"/>
+                                                <t t-if="draft.partner_shipping_id.street2">,
+                                                    <t t-esc="draft.partner_shipping_id.street2"/></t>
+                                                <t t-if="draft.partner_shipping_id.state_id">,
+                                                <br/>
+                                                    <t t-esc="draft.partner_shipping_id.state_id.name"/></t>
+                                                <t t-if="draft.partner_shipping_id.country_id">,
+                                                    <t t-esc="draft.partner_shipping_id.country_id.name"/></t>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="delivery_method" style="margin-top: 15px;">
+                                        <span class="font_600sk font_12">PAYMENT METHOD</span>
+                                        <div>
+                                            <span class="font_500sk font_11">
+                                                <!--                                                <t t-set="transaction" t-value="request.env['payment.transaction'].sudo().search([('reference','=',str(draft.name)])],limit=1)"/>-->
+                                                <t t-set="transaction"
+                                                   t-value="request.env['payment.transaction'].sudo().search([('reference','=',str(draft.name))],limit=1)"/>
+                                                <t t-if="transaction">
+                                                    <t t-esc="transaction.acquirer_id.name"/>
+                                                </t>
+                                                <t t-if="transaction">
+                                                    <t t-esc="transaction.create_date"/>
+                                                </t>
+                                            </span>
+                                        </div>
+                                        <div class="invoice_button" t-att-data-value="draft.id">
+                                            <span>invoice</span>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </t>
+
+                            </t>
+                            <t t-set="user_ids"
+                               t-value="request.env['res.users'].sudo().search([('id','=', int(uid))], limit=1)"/>
+                            <t t-set="sale_orders"
+                               t-value="request.env['sale.order'].sudo().search([('partner_id','=',int(user_ids.partner_id.id)),('state','=','sale')])"/>
+                            <t t-set="sale_orders_count"
+                               t-value="request.env['sale.order'].sudo().search_count([('partner_id','=',int(user_ids.partner_id.id)),('state','=','sale')])"/>
+                            <p id="information-heading completed_orders_info"
+                               style="margin-top: 30px;font-size: 13px ;font-weight: 600 ;border-bottom: none;">
+                                COMPLETED ORDERS(<t t-esc="sale_orders_count"/>)
+                            </p>
+                            <!--                            <div class="border_bottom">-->
+                            <!--                                <span></span>-->
+                            <!--                            </div>-->
+
+                            <t t-foreach="sale_orders" t-as="sale_order">
+                                <div class="border_bottom">
+                                    <span></span>
+                                </div>
+                                <div class="my_order_list">
+                                    <span class="order_reference">
+                                        #<t t-esc="sale_order.name"/>
+                                    </span>
+                                    <span class="order_date font_13">
+                                        <t t-esc="sale_order.write_date.strftime('%d %h %Y, %H:%M')"/>
+                                    </span>
+                                    <span class="sale_orders_list" style="cursor: pointer;position: absolute;right: 0;font-size: 24px;" t-att-data-value="sale_order.id">
+                                        <i class='fas fa-chevron-down down_arrow'></i>
+                                        <i class='fas fa-chevron-up up_arrow' style="display:none;"></i>
+                                    </span>
+
+                                </div>
+                             <div class="sale_description_sale_subtab" style="display:none;" t-att-id="'sale'+str(sale_order.id)">
+                                <div class="border_bottom">
+                                    <span></span>
+                                </div>
+
+                                <t t-foreach="sale_order.order_line" t-as="line">
+                                    <div class="sale_order_details" style="    display: flex;    padding-bottom: 20px;">
+                                        <div class="sale_order_image" style="width: 120px;margin-right: 14px;">
+                                            <t t-if="line.product_id.image_128">
+                                                <img t-att-src="image_data_uri(line.product_id.image_128)"
+                                                     style="width: inherit; margin-top:18px;"/>
+                                            </t>
+                                        </div>
+                                        <div class="sale_order_description" style="width:80%;">
+                                            <div class="product_description"
+                                                 style="width: 50%;font-family: 'Montserrat';font-style: normal;font-weight: 600;font-size: 14px;padding-top: 13px;">
+                                                <t t-esc="line.name"/>
+                                            </div>
+                                            <div class="product_qty"
+                                                 style="position:relative;font-family: 'Montserrat';font-style: normal;font-weight: 600;font-size: 14px;padding-top: 13px;position: relative;width: 80%;height: 30px;">
+                                                <span style="position:absolute;left:0;font-weight: 500;">
+                                                    <t t-esc="line.product_uom_qty"/>
+                                                    pcs
+                                                </span>
+                                                <span t-field="line.price_subtotal"
+                                                      style="white-space: nowrap;position:absolute;right:0;"
+                                                      t-options="{'widget': 'monetary', 'display_currency': sale_order.currency_id}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="border_bottom">
+                                        <span></span>
+                                    </div>
+                                </t>
+
+                                <div class="sale_extra_info">
+                                    <div class="subtotal_div">
+                                        <div class="d_absolute d_left font_500sk font_13">
+                                            Subtotal
+                                        </div>
+                                        <div class="d_absolute d_right font_500sk font_13">
+                                            <t t-set="value_deliverys" t-value="0"/>
+                                            <t t-foreach="sale_order.order_line" t-as="line">
+                                                <t t-if="line.is_delivery">
+                                                    <t t-set="value_deliverys" t-value="line.price_subtotal"/>
+                                                </t>
+                                            </t>
+                                            <t t-set="value_delivery"
+                                               t-value="sale_order.amount_total - value_deliverys"/>
+                                            <span t-esc="value_delivery"
+                                                  style="white-space: nowrap;position:absolute;right:0;"
+                                                  t-options="{'widget': 'monetary', 'display_currency': sale_order.currency_id}"/>
+                                        </div>
+                                    </div>
+                                    <div class="subtotal_div">
+                                        <div class="d_absolute d_left font_500sk font_13">
+                                            Delivery
+                                        </div>
+                                        <div class="d_absolute d_right font_500sk font_13">
+                                            <t t-foreach="sale_order.order_line" t-as="line">
+                                                <t t-if="line.is_delivery">
+                                                    <span t-field="line.price_subtotal"
+                                                          style="white-space: nowrap;position:absolute;right:0;"
+                                                          t-options="{'widget': 'monetary', 'display_currency': sale_order.currency_id}"/>
+                                                </t>
+                                            </t>
+
+                                        </div>
+                                    </div>
+                                    <div class="subtotal_div">
+                                        <div class="left_panel_sk">
+                                            Total
+                                        </div>
+                                        <div class="right_panel_sk">
+
+                                            <span t-field="sale_order.amount_total"
+                                                  style="white-space: nowrap;position:absolute;right:0;"
+                                                  t-options="{'widget': 'monetary', 'display_currency': sale_order.currency_id}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="delivery_method" style="margin-top: 15px;">
+                                    <span class="font_600sk font_12">DELIVERY METHOD</span>
+                                    <div>
+                                        <t t-foreach="sale_order.order_line" t-as="line">
+                                            <t t-if="line.is_delivery">
+                                                <span class="font_500sk font_11">
+                                                    <t t-esc="line.product_id.name"/>
+                                                </span>
+                                            </t>
+                                        </t>
+                                    </div>
+                                </div>
+                                <div class="delivery_method" style="margin-top: 15px;">
+                                    <span class="font_600sk font_12">DELIVERY ADDRESS</span>
+                                    <div>
+                                        <span class="font_500sk font_11">
+                                            <t t-esc="sale_order.partner_shipping_id.street"/>,
+                                            <t t-esc="sale_order.partner_shipping_id.street2"/>,
+                                            <br/>
+                                            <t t-esc="sale_order.partner_shipping_id.state_id.name"/>,
+                                            <t t-esc="sale_order.partner_shipping_id.country_id.name"/>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="delivery_method" style="margin-top: 15px;">
+                                    <span class="font_600sk font_12">PAYMENT METHOD</span>
+                                    <div>
+                                        <span class="font_500sk font_11">
+                                            <t t-set="transaction"
+                                               t-value="request.env['payment.transaction'].sudo().search([('sale_order_ids','in',[int(sale_order.id)])], limit=1)"/>
+                                            <t t-foreach="transaction" t-as="ts">
+                                                 <t t-if="ts">
+                                                    <span class="font_500sk font_13"><t t-esc="ts.acquirer_id.name"/></span>
+                                                </t>
+                                                <br/>
+                                                <t t-if="ts">
+                                                    <span class="font_500sk font_13" style="font-size: 11px;font-weight: 400;"> <t t-esc="ts.create_date.strftime('%d %h %Y, %H:%M')"/></span>
+                                                </t>
+                                            </t>
+
+                                        </span>
+                                    </div>
+                                    <div class="invoice_button" t-att-data-value="sale_order.id">
+                                        <span>invoice</span>
+                                    </div>
+                                </div>
+                                 </div>
+
+                            </t>
+                        </div>
+                    </div>
+
+
+                      <div id="overlay" style="display:none;">
+                            <div class="popupdiv" id="popup_alert_message" >
+                                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/cartpopup.css"/>
+                                <div class="card" >
+                                   <div class="change_lng">
+                                       <span>Change language</span>
+                                   </div>
+                                    <t t-set="active_langs" t-value="request.env.lang"/>
+                                    <t t-set="languages" t-value="request.website.language_get()"/>
+                                    <t t-foreach="languages" t-as="lg">
+                                        <t t-if="active_langs == lg[0]">
+                                            <div class="lang active_lang js_change_lang1" t-att-data-value="lg[1]" t-att-data-redirect="url_for(request.httprequest.path + '?' + keep_query(), lang_code=lg[0])"
+                                            ><t t-esc="lg[2]"/></div>
+                                        </t>
+                                        <t t-else="">
+                                            <div class="lang js_change_lang1" t-att-data-value="lg[1]" t-att-data-redirect="url_for(request.httprequest.path + '?' + keep_query(), lang_code=lg[0])"><t t-esc="lg[2]"/></div>
+                                        </t>
+
+                                    </t>
+                                    <button id="cbtn2" class="cancel_language">Cancel</button>
+                                </div>
+                            </div>
+                    </div>
+
+                     <div id="overlay_notification" style="display:none;">
+                            <div class="popupdiv" id="popup_alert_message" >
+                                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/cartpopup.css"/>
+                                <div class="card" >
+                                   <div class="change_lng">
+                                       <span>Receive push notification</span>
+                                   </div>
+                                     <t t-set="push_notification" t-value="request.env['ir.config_parameter'].sudo().get_param('firebase_push_notification.enable')"/>
+                                    <t t-set="uid" t-value="request.env.user.id"/>
+                                    <t t-if="uid">
+                                          <t t-set="uid_obj" t-value="request.env['res.users'].sudo().search([('id','=',int(uid))], limit=1)"/>
+                                        <t t-if="uid_obj">
+                                            <t t-if="uid_obj.enable_token">
+                                                 <div class="lang active_lang js_change_notification" value="on" style="height: 43px;">on</div>
+                                                    <div class="lang js_change_notification" value="off"
+                                                        style="height: 43px;">off</div>
+                                            </t>
+                                            <t t-else="">
+                                                <div class="lang  js_change_notification" value="on"
+                                            style="height: 43px;">on</div>
+                                        <div class="lang active_lang js_change_notification" value="off"
+                                            style="height: 43px;">off</div>
+                                            </t>
+                                        </t>
+                                    </t>
+                                    <t t-else="">
+                                        <div class="lang">
+                                            Please Login
+                                        </div>
+                                    </t>
+<!--                                    <t t-set="push_notification" t-value="request.env['ir.config_parameter'].sudo().get_param('firebase_push_notification.enable')"/>-->
+<!--                                    <t t-if="push_notification == 'True'">-->
+<!--                                        <div class="lang active_lang js_change_notification" value="on"-->
+<!--                                            style="height: 43px;">on</div>-->
+<!--                                        <div class="lang js_change_notification" value="off"-->
+<!--                                            style="height: 43px;">off</div>-->
+<!--                                    </t>-->
+<!--                                    <t t-else="">-->
+<!--                                         <div class="lang  js_change_notification" value="on"-->
+<!--                                            style="height: 43px;">on</div>-->
+<!--                                        <div class="lang active_lang js_change_notification" value="off"-->
+<!--                                            style="height: 43px;">off</div>-->
+<!--                                    </t>-->
+<!--                                    <button id="cbtn2" class="cancel_language">Cancel</button>-->
+                                </div>
+                            </div>
+                    </div>
+
+                    <style>
+                        #overlay_notification{
+                              position: fixed; /* Sit on top of the page content */
+                          display: none; /* Hidden by default */
+                          width: 100%; /* Full width (cover the whole page) */
+                          height: 100%; /* Full height (cover the whole page) */
+                          top: 0;
+                          left: 0;
+                          right: 0;
+                          bottom: 0;
+                          background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+                          z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+                          cursor: pointer; /* Add a pointer on hover */
+                        }
+                         .active_notify{
+                            background: #626063 !important;
+                            color: #FFFFFF !important;
+                        }
+                        .active_lang{
+                            background: #626063 !important;
+                            color: #FFFFFF !important;
+                        }
+                        .lang{
+                            background: #FFFFFF;
+                            border: 1.42857px solid #626063;
+                            border-radius: 11.4286px;
+                            width: 100%;
+                            height: 38px;
+                            font-family: 'Montserrat';
+                            font-style: normal;
+                            font-weight: 600;
+                            font-size: 13px;
+                            line-height: 23px;
+                            text-align: center;
+                            color: #626063;
+                            padding-top: 7px;
+                            margin-bottom: 10px;
+                        }
+                        .change_lng{
+                                font-family: 'Montserrat';
+                                font-style: normal;
+                                font-weight: 700;
+                                font-size: 17px;
+                                line-height: 34px;
+                                color: #6E6E70;
+                                text-align: center;
+                        }
+                        #cbtn2{
+                            font-family: 'Montserrat';
+                            font-style: normal;
+                            font-weight: 600;
+                            line-height: 23px;
+                            text-align: center;
+                            color: #626063;
+                            box-shadow: none;
+                            border: 1px solid;
+                            font-size: 13px;
+                            margin-top: 13px;
+                        }
+                        #overlay{
+                            display: block;
+                        }
+                        .card{
+                            width:300px;
+                        }
+                    </style>
+                </div>
+                <div class="banner" id="skypro_portal">
+                    <t t-call="mask_cutomization.skypro_footer"/>
+                </div>
+
+
+            </t>
+
+        </template>
+
+        <template id="skypro_my_home_no_login" name="My Portal skypro">
+            <t t-call="website.layout">
+                <t t-call="mask_cutomization.header_banner_xml"/>
+                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/account_my_profile_page.css"/>
+                <link rel="stylesheet"
+                      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+                      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+                      crossorigin="anonymous" referrerpolicy="no-referrer"/>
+                <link href='https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800'
+                      rel='stylesheet' type='text/css'/>
+                <t t-set="no_footer" t-value="1"/>
+                <t t-set="my_details" t-value="True"/>
+                <div class="banner" id="skypro_portal_no_login">
+                    <div class="Accoount-left-banner">
+                        <p>
+                            <span>Account</span>
+                        </p>
+                        <p id="register_login_tab">Register
+                            <i class='fas fa-angle-right'></i>
+                        </p>
+                        <p id="login_tab">Login
+                            <i class='fas fa-angle-right'></i>
+                        </p>
+                        <p>
+                            <span>Setting</span>
+                        </p>
+                        <p id="language_div_info">Language
+                            <i class='fas fa-angle-right'></i>
+                        </p>
+                        <p id="fire_base_notification">Notification
+                            <i class='fas fa-angle-right'></i>
+                        </p>
+                        <p>
+                            <span>About Us</span>
+                        </p>
+                        <p id="contact_us_info">Contact Us
+                            <i class='fas fa-angle-right'></i>
+                        </p>
+                        <p id="payment_and_delivery_info">Payment And Delivery
+                            <i class='fas fa-angle-right'></i>
+                        </p>
+                        <p id="privacy_policy_info">Privacy Policy
+                            <i class='fas fa-angle-right'></i>
+                        </p>
+                    </div>
+                    <div class="Account-right-banner">
+                         <div id="overlay" style="display:none;">
+                            <div class="popupdiv" id="popup_alert_message" >
+                                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/cartpopup.css"/>
+                                <div class="card" >
+                                   <div class="change_lng">
+                                       <span>Change language</span>
+                                   </div>
+                                    <t t-set="active_langs" t-value="request.env.lang"/>
+                                    <t t-set="languages" t-value="request.website.language_get()"/>
+                                    <t t-foreach="languages" t-as="lg">
+                                        <t t-if="active_langs == lg[0]">
+                                            <div class="lang active_lang js_change_lang1" t-att-data-value="lg[1]" t-att-data-redirect="url_for(request.httprequest.path + '?' + keep_query(), lang_code=lg[0])"
+                                            ><t t-esc="lg[2]"/></div>
+                                        </t>
+                                        <t t-else="">
+                                            <div class="lang js_change_lang1" t-att-data-value="lg[1]" t-att-data-redirect="url_for(request.httprequest.path + '?' + keep_query(), lang_code=lg[0])"><t t-esc="lg[2]"/></div>
+                                        </t>
+
+                                    </t>
+                                    <button id="cbtn2" class="cancel_language">Cancel</button>
+                                </div>
+                            </div>
+                    </div>
+                         <div id="overlay_notification" style="display:none;">
+                            <div class="popupdiv" id="popup_alert_message" >
+                                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/cartpopup.css"/>
+                                <div class="card" >
+                                   <div class="change_lng">
+                                       <span>Receive push notification</span>
+                                   </div>
+                                    <t t-set="push_notification" t-value="request.env['ir.config_parameter'].sudo().get_param('firebase_push_notification.enable')"/>
+                                    <t t-set="uid" t-value="request.env.user.id"/>
+                                    <t t-if="uid">
+                                          <t t-set="uid_obj" t-value="request.env['res.users'].sudo().search([('id','=',int(uid))], limit=1)"/>
+                                            <t t-if="uid_obj">
+
+                                            <t t-if="uid_obj.enable_token">
+                                                 <div class="lang active_lang js_change_notification" value="on" style="height: 43px;">on</div>
+                                                    <div class="lang js_change_notification" value="off"
+                                                        style="height: 43px;">off</div>
+                                            </t>
+                                            <t t-else="">
+                                                <div class="lang  js_change_notification" value="on"
+                                            style="height: 43px;">on</div>
+                                        <div class="lang active_lang js_change_notification" value="off"
+                                            style="height: 43px;">off</div>
+                                            </t>
+                                        </t>
+                                    </t>
+                                    <t t-else="">
+                                        <div class="lang">
+                                            Please Login
+                                        </div>
+                                    </t>
+<!--                                    <t t-if="push_notification == 'True'">-->
+<!--                                        <div class="lang active_lang js_change_notification" value="on"-->
+<!--                                            style="height: 43px;">on</div>-->
+<!--                                        <div class="lang js_change_notification" value="off"-->
+<!--                                            style="height: 43px;">off</div>-->
+<!--                                    </t>-->
+<!--                                    <t t-else="">-->
+<!--                                         <div class="lang  js_change_notification" value="on"-->
+<!--                                            style="height: 43px;">on</div>-->
+<!--                                        <div class="lang active_lang js_change_notification" value="off"-->
+<!--                                            style="height: 43px;">off</div>-->
+<!--                                    </t>-->
+<!--                                    <button id="cbtn2" class="cancel_language">Cancel</button>-->
+                                </div>
+                            </div>
+                    </div>
+
+                    <style>
+                        #overlay_notification{
+                              position: fixed; /* Sit on top of the page content */
+                          display: none; /* Hidden by default */
+                          width: 100%; /* Full width (cover the whole page) */
+                          height: 100%; /* Full height (cover the whole page) */
+                          top: 0;
+                          left: 0;
+                          right: 0;
+                          bottom: 0;
+                          background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+                          z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+                          cursor: pointer; /* Add a pointer on hover */
+                        }
+                         .active_notify{
+                            background: #626063 !important;
+                            color: #FFFFFF !important;
+                        }
+                        .active_lang{
+                            background: #626063 !important;
+                            color: #FFFFFF !important;
+                        }
+                        .active_lang{
+                            background: #626063 !important;
+                            color: #FFFFFF !important;
+                        }
+                        .lang{
+                            background: #FFFFFF;
+                            border: 1.42857px solid #626063;
+                            border-radius: 11.4286px;
+                            width: 100%;
+                            height: 38px;
+                            font-family: 'Montserrat';
+                            font-style: normal;
+                            font-weight: 600;
+                            font-size: 13px;
+                            line-height: 23px;
+                            text-align: center;
+                            color: #626063;
+                            padding-top: 7px;
+                            margin-bottom: 10px;
+                        }
+                        .change_lng{
+                                font-family: 'Montserrat';
+                                font-style: normal;
+                                font-weight: 700;
+                                font-size: 17px;
+                                line-height: 34px;
+                                color: #6E6E70;
+                                text-align: center;
+                        }
+                        #cbtn2{
+                            font-family: 'Montserrat';
+                            font-style: normal;
+                            font-weight: 600;
+                            line-height: 23px;
+                            text-align: center;
+                            color: #626063;
+                            box-shadow: none;
+                            border: 1px solid;
+                            font-size: 13px;
+                            margin-top: 13px;
+                        }
+                        #overlay{
+                            display: block;
+                        }
+                        .card{
+                            width:300px;
+                        }
+                    </style>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

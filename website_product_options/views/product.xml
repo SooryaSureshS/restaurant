@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="optional_product_template_inherited" model="ir.ui.view">
+            <field name="name">product.template.optional</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/div/div/div[2]" position="after">
+                    <div>
+                        <field name="is_optional_product"/>
+                        <label for="is_optional_product"/>
+                    </div>
+                    <div>
+                        <field name="accessory_product"/>
+                        <label for="accessory_product"/>
+                    </div>
+
+                    <div>
+                        <field name="is_bundle_product"/>
+                        <label for="is_bundle_product"/>
+                    </div>
+                </xpath>
+
+                <xpath expr="//group[@name='sale']" position="after">
+                    <label for="bundle_extra_price"/>
+                    <field name="bundle_extra_price"/>
+                    <group name="Bundle Products">
+                        <field name="bundle_product_ids"
+                               attrs="{'invisible' : [('is_bundle_product', '=', False)]}">
+                            <tree default_order="sequence asc" editable="bottom" delete="true">
+                                <field name="sequence" widget="handle"/>
+                                <field name="bundle_name"/>
+                                <field name="product_id" widget="many2many_tags"/>
+                                <field name="extra_amount"/>
+                                <field name="qty"/>
+                            </tree>
+                        </field>
+                    </group>
+                </xpath>
+
+                <xpath expr="//field[@name='type']" position="before">
+                    <field name="product_option_group" attrs="{'invisible' : [('is_optional_product', '=', False),('accessory_product', '=', False)]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_bundle_product_tree" model="ir.ui.view">
+            <field name="name">bundle.product.tree</field>
+            <field name="model">product.bundles</field>
+            <field name="arch" type="xml">
+                <tree default_order="sequence asc">
+                    <field name="sequence" widget="handle"/>
+                    <field name="bundle_name"/>
+                    <field name="product_id" widget="many2many_tags"/>
+                    <field name="qty"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_bundle_product_form" model="ir.ui.view">
+            <field name="name">bundle.product.form</field>
+            <field name="model">product.bundles</field>
+            <field name="arch" type="xml">
+                <form string="Bundle Product">
+                    <sheet>
+                        <!--                        <field name="sequence" widget="handle"/>-->
+                        <field name="bundle_name"/>
+                        <field name="product_id" widget="many2many_tags"/>
+                        <field name="qty"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_bundle_product" model="ir.actions.act_window">
+            <field name="name">Bundle Product</field>
+            <field name="res_model">product.bundles</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_bundle_product_tree"/>
+            <field name="help" type="html">
+                <p>
+                    Bundle Product
+                </p>
+            </field>
+        </record>
+        <menuitem id="menu_bundles_product"
+                  name="Bundle Product"
+                  action="action_bundle_product"
+                  parent="website.menu_website_global_configuration"
+                  sequence="6"/>
+
+    </data>
+</odoo>

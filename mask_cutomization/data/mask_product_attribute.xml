@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="print_type" model="product.attribute">
+            <field name="name">Print type</field>
+            <field name="display_type">radio</field>
+            <field name="create_variant">always</field>
+            <field name="visibility">visible</field>
+        </record>
+        <record id="nose_sponge" model="product.attribute">
+            <field name="name">Nose sponge</field>
+            <field name="display_type">radio</field>
+            <field name="create_variant">always</field>
+            <field name="visibility">visible</field>
+        </record>
+        <record id="cloth_color" model="product.attribute">
+            <field name="name">Cloth color</field>
+            <field name="display_type">color</field>
+            <field name="create_variant">always</field>
+            <field name="visibility">visible</field>
+        </record>
+        <record id="earloop_color" model="product.attribute">
+            <field name="name">Earloop color</field>
+            <field name="display_type">color</field>
+            <field name="create_variant">always</field>
+            <field name="visibility">visible</field>
+        </record>
+        <record id="mask_size" model="product.attribute">
+            <field name="name">Mask size</field>
+            <field name="display_type">radio</field>
+            <field name="create_variant">always</field>
+            <field name="visibility">visible</field>
+        </record>
+        <record id="fragrance" model="product.attribute">
+            <field name="name">Fragrance bead</field>
+            <field name="display_type">radio</field>
+            <field name="create_variant">always</field>
+            <field name="visibility">visible</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="cancel_pos_reservation" name="Confirmed Reservation">
+            <t t-call="website.layout">
+                <br/>
+                <t t-set="reservation_id" t-value="reservation.token_random"/>
+                <div class="container" style="text-align: center;font-size: 22px;margin-top: 10%;margin-bottom: 10%;">
+                    <p>Hi <t t-esc="reservation. customer"/> Your Table Reservation Confirmed </p>
+                </div>
+                <br/>
+            </t>
+        </template>
+
+        <template id="cancel_pos_failed" name="Cancel  Reservation  Success">
+            <t t-call="website.layout">
+                <br/>
+                <div class="container" style="text-align: center;font-size: 22px;margin-top: 10%;margin-bottom: 10%;">
+                    <p> Hi <t t-esc="reservation. customer"/> Your Reservation Is Cancelled</p>
+                </div>
+                <br/>
+            </t>
+        </template>
+        <template id="cancel_pos_invalid" name="Reservation  Invalid">
+            <t t-call="website.layout">
+                <br/>
+                <div class="container" style="text-align: center;font-size: 22px;margin-top: 10%;margin-bottom: 10%;">
+                    <p> Hi Your Reservation Is not valid</p>
+                </div>
+                <br/>
+            </t>
+        </template>
+    </data>
+</odoo>

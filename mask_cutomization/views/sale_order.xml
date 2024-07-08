@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="product_sale_orders_form_view_mps" model="ir.ui.view">
+            <field name="name">sale.order.kit.form.inherit.mps</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date_order']" position="after">
+                    <field name="mask_size"/>
+                    <field name="upload_your_image"/>
+                    <field name="mask_area"/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="before">
+                    <field name="mask_size"/>
+                    <field name="mask_area"/>
+                    <field name="upload_your_image"/>
+
+                </xpath>
+                <xpath expr="//notebook/page[@name='other_information']" position="after">
+                    <page string="Session product Lines" name="order_line_new">
+                        <field name="session_product_ids"
+                               widget="section_and_note_one2many"
+                               mode="tree">
+                            <tree string="Package Info Order Lines" editable="bottom">
+                                <field name="name"/>
+                                <field name="product_id"/>
+                                <field name="qty"/>
+                                <field name="buffer_image" widget="image" class="oe_avatar" options="{'size': [50, 50], 'preview_image':'avatar_128'}" />
+                                <field name="buffer_image_name"/>
+                                <field name="packaging_image" widget="image" class="oe_avatar" options="{'size': [50, 50], 'preview_image':'avatar_128'}"/>
+                                <field name="packaging_image_name" />
+<!--                                <field name="packaging_image_name" />-->
+                                <field name="product_packaging_id" />
+                            </tree>
+                        </field>
+                    </page>
+
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="product_product_enable_form_view_mps" model="ir.ui.view">
+            <field name="name">product.product.kit.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <!--                        <xpath expr="//field[@name='available_in_pos']" position="after">-->
+                <!--                            <group name="pos" string="Point of Sale" attrs="{'invisible': [('sale_ok','=',False)]}">-->
+                <!--                                <field name="is_mask_product"/>-->
+                <!--                                <field name="is_nose_pad"/>-->
+
+                <!--                        </xpath>-->
+                <!--                        <xpath expr="//field[@name='sale_ok']" position="after">-->
+                <!--                               <field name="enable_kit"/>-->
+                <!--                               <field name="original_price"/>-->
+                <!--                               <field name="is_mask_product"/>-->
+                <!--                       </xpath>-->
+                <xpath expr="//notebook/page[@name='general_information']" position="after">
+                    <!--&lt;!&ndash;                            <page string="Kit Personalization" name="rental" attrs="{'invisible': [('enable_kit','=',False)]}">&ndash;&gt;-->
+                    <page string="Mask Details" name="Mask_details">
+                        <group>
+                            <group string="Mask details" name="Info">
+                                <field name="is_mask_product"/>
+                                <field name="is_nose_pad"/>
+                                <field name="nose_pad_image"/>
+                                <field name="logo_image"/>
+                                <field name="full_image"/>
+                                <field name="blank_image"/>
+<!--                                <field name="gltf_file"/>-->
+<!--                                <field name="gltf_file_flat"/>-->
+                                <field name="default_mask_attribute"/>
+                                <field name="default_rope_attribute"/>
+                                <field name="default_fragrance_attribute"/>
+                                <field name="default_nose_attribute"/>
+                                <field name="carton_image"/>
+                                <field name="package_image"/>
+                                <field name="package_image_width"/>
+                                <field name="package_image_height"/>
+                                <field name="carton_image_width"/>
+                                <field name="carton_image_height"/>
+
+                            </group>
+                        </group>
+                        <group>
+<!--                            <field name="features" class="oe_account_terms mt-5 w-100" placeholder="features..."/>-->
+                            <field name="discription" class="oe_account_terms mt-5 w-100" placeholder="discription..."/>
+<!--                            <field name="additional_information" class="oe_account_terms mt-5 w-100"-->
+<!--                                   placeholder="additional information..."/>-->
+                            <field name="discription_chinese" class="oe_account_terms mt-5 w-100"
+                                   placeholder="Chinese information..."/>
+                        </group>
+                    </page>
+                </xpath>
+                   <xpath expr="//notebook/page[@name='Mask_details']" position="after">
+                    <!--&lt;!&ndash;                            <page string="Kit Personalization" name="rental" attrs="{'invisible': [('enable_kit','=',False)]}">&ndash;&gt;-->
+                    <page string="GLTF Mask Configuration" name="Gltf Mask Configuration">
+                        <group>
+                            <group string="Mask details" name="Info">
+                                <field name="gltf_file"/>
+                                <field name="gltf_file_flat"/>
+                                <field name="main_mask_material_name"/>
+                                <field name="nose_pad_material_name"/>
+                                <field name="ear_rope_material_name"/>
+                                <field name="parent_logo"/>
+                                <field name="logo_material_name"/>
+                                <field name="logo_material_name2"/>
+                                <field name="logo_material_name3"/>
+                                <field name="logo_material_name4"/>
+                                <field name="jaw_pad"/>
+                                <field name="main_mask_back"/>
+                                <field name="main_mask_front"/>
+                                <field name="gltf_background_image"/>
+                                <field name="logo_crop_width"/>
+                                <field name="logo_crop_height"/>
+                                <field name="full_crop_width"/>
+                                <field name="full_crop_height"/>
+
+                            </group>
+                            <group>
+                                <field name="mask_position_x"/>
+                                <field name="mask_position_y"/>
+                                <field name="mask_position_z"/>
+                                <field name="mask_rotation"/>
+                                <field name="root_inspection"/>
+                                <field name="pointed_light"/>
+                                <field name="ambient_light"/>
+                                <field name="background_color" widget="color"/>
+                                <field name="repeat_x" />
+                                <field name="repeat_y" />
+                                <field name="preview_full_area" />
+                                <field name="preview_logo_area" />
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="view_oauth_provider_form_ingerited" model="ir.ui.view">
+            <field name="name">auth.oauth.provider.form1</field>
+            <field name="model">auth.oauth.provider</field>
+            <field name="inherit_id" ref="auth_oauth.view_oauth_provider_form"/>
+            <field name="arch" type="xml">
+                <!--                        <xpath expr="//field[@name='available_in_pos']" position="after">-->
+                <!--                            <group name="pos" string="Point of Sale" attrs="{'invisible': [('sale_ok','=',False)]}">-->
+                <!--                                <field name="is_mask_product"/>-->
+                <!--                                <field name="is_nose_pad"/>-->
+
+                <!--                        </xpath>-->
+                <!--                        <xpath expr="//field[@name='sale_ok']" position="after">-->
+                <!--                               <field name="enable_kit"/>-->
+                <!--                               <field name="original_price"/>-->
+                <!--                               <field name="is_mask_product"/>-->
+                <!--                       </xpath>-->
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="logo"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!--            <record id="product.packaging.form.view.inherited" model="ir.ui.view">-->
+        <!--                    <field name="name">product.packaging.form1</field>-->
+        <!--                    <field name="model">product.packaging</field>-->
+        <!--                    <field name="inherit_id" ref="product.product_packaging_form_view"/>-->
+        <!--                    <field name="arch" type="xml">-->
+        <!--                        <xpath expr="//field[@name='barcode']" position="before">-->
+        <!--&lt;!&ndash;                        <xpath expr="//sheet//group[last()]" position="after">&ndash;&gt;-->
+
+        <!--                            <notebook>-->
+        <!--                                <page string="Packaging &amp; Carton" autofocus="autofocus">-->
+        <!--                                    <group>-->
+        <!--                                        <group name="group_left" >-->
+        <!--&lt;!&ndash;                                             <field name="logo"/>&ndash;&gt;-->
+        <!--                                        </group>-->
+        <!--                                        <group name="group_right" >-->
+
+        <!--                                        </group>-->
+        <!--                                    </group>-->
+        <!--                                </page>-->
+        <!--                            </notebook>-->
+        <!--                       </xpath>-->
+        <!--                    </field>-->
+        <!--            </record>-->
+        <record id="product_packaging_form_view_saless" model="ir.ui.view">
+            <field name="name">product.packaging.form.views.sale</field>
+            <field name="model">product.packaging</field>
+            <field name="inherit_id" ref="product.product_packaging_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[last()]" position="after">
+
+                    <notebook>
+                        <page string="Packaging &amp; Carton" autofocus="autofocus">
+                            <group>
+                                <group name="group_left">
+                                    <field name="package_image" widget="image"/>
+                                </group>
+                                <group name="group_right">
+                                    <field name="carton_image" widget="image"/>
+                                    <field name="carton_package"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

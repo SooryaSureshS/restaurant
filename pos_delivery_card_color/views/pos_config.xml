@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_config_view_form_inherit_pos_delivery_card_color" model="ir.ui.view">
+        <field name="name">pos.config.form.inherit.pos.delivery.card.color</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+             <xpath expr="//sheet" position="inside">
+             <h2 name="order" position="before">
+                 <h2 name="Kitchen" class="o_horizontal_separator">Delivery Type Card view Colors</h2>
+                  <div class="row mt16 o_settings_container" id="Delivery Type Color">
+                      <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="iface_delivery_type" />
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="iface_delivery_type" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Show Delivery Type Color
+                                </div>
+                            </div>
+                        </div>
+                  </div>
+                 <div class="row mt16 o_settings_container" id="Delivery Type Color">
+                      <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_take_away_font_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_take_away_font_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set Pos Take Away Font Color
+                                </div>
+                            </div>
+                        </div>
+                       <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_take_away_background_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_take_away_background_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set Pos Take Away Background Color
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_take_away_border_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_take_away_border_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set Pos Take Away Border Color
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_take_away_header_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_take_away_header_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set Pos Take Away Header Color
+                                </div>
+                            </div>
+                        </div>
+
+
+                         <div id="Font-Family" class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Set Font Family For Takeaway </span>
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Allows us to set Font afmily for ticket
+                                </div>
+                                <div class="content-group mt16 row" style="font-size: 11px;">
+                                    <label for="pos_take_away_font_family" string="Font Family" class="col-lg-3 o_light_label"/>
+                                    <field name="pos_take_away_font_family"/>
+                                </div>
+                            </div>
+                        </div>
+                  </div>
+
+
+
+                  <div class="row mt16 o_settings_container" id="Delivery Type Color">
+                      <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_dine_in_font_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_dine_in_font_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set Dine In Font Color
+                                </div>
+                            </div>
+                        </div>
+                       <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_dine_in_background_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_dine_in_background_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set Dine In Background Color
+                                </div>
+                            </div>
+                        </div>
+                     <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_dine_in_border_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_dine_in_border_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set Dine In Border Color
+                                </div>
+                            </div>
+                        </div>
+                       <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_dine_in_header_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_dine_in_header_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set Dine In Header Color
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                         <div id="Font-Family" class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Set Font Family For Dine In </span>
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Allows us to set Font family for ticket
+                                </div>
+                                <div class="content-group mt16 row" style="font-size: 11px;">
+                                    <label for="pos_dine_in_font_family" string="Font Family" class="col-lg-3 o_light_label"/>
+                                    <field name="pos_dine_in_font_family"/>
+                                </div>
+                            </div>
+                        </div>
+
+
+<!--                     -->
+<!--                      <div class="col-12 col-lg-6 o_setting_box">-->
+<!--                            <div class="o_setting_left_pane">-->
+<!--                                <field name="kerbside_font_color" widget="color"/>-->
+<!--                            </div>-->
+<!--                            <div class="o_setting_right_pane">-->
+<!--                                <label for="kerbside_font_color" />-->
+<!--                                <div class="text-muted" style="font-size: 11px;">-->
+<!--                                    Set Kerbside Font Color-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                      <div class="col-12 col-lg-6 o_setting_box">-->
+<!--                            <div class="o_setting_left_pane">-->
+<!--                                <field name="kerbside_background_color" widget="color"/>-->
+<!--                            </div>-->
+<!--                            <div class="o_setting_right_pane">-->
+<!--                                <label for="kerbside_background_color" />-->
+<!--                                <div class="text-muted" style="font-size: 11px;">-->
+<!--                                    Set Kerbside Background Color-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                       <div class="col-12 col-lg-6 o_setting_box">-->
+<!--                            <div class="o_setting_left_pane">-->
+<!--                                <field name="kerbside_border_color" widget="color"/>-->
+<!--                            </div>-->
+<!--                            <div class="o_setting_right_pane">-->
+<!--                                <label for="kerbside_border_color" />-->
+<!--                                <div class="text-muted" style="font-size: 11px;">-->
+<!--                                    Set Kerbside Border Color-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                  </div>
+                  <div class="row mt16 o_settings_container" id="Delivery Type Color">
+                      <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_delivery_font_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_delivery_font_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set Delivery Order Font Color
+                                </div>
+                            </div>
+                        </div>
+                      <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_delivery_background_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_delivery_background_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set Delivery Order Background Color
+                                </div>
+                            </div>
+                        </div>
+                      <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_delivery_border_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_delivery_border_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set Delivery Order Border Color
+                                </div>
+                            </div>
+                        </div>
+                      <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_delivery_header_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_delivery_header_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set Delivery Order Header Color
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                      <div id="Font-Family" class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Set Font Family For Delivery </span>
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Allows us to set Font family for ticket
+                                </div>
+                                <div class="content-group mt16 row" style="font-size: 11px;">
+                                    <label for="pos_delivery_font_family" string="Font Family" class="col-lg-3 o_light_label"/>
+                                    <field name="pos_delivery_font_family"/>
+                                </div>
+                            </div>
+                      </div>
+                     </div>
+
+
+
+
+
+                 <div class="row mt16 o_settings_container" id="Delivery Type Color">
+                     <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_phone_font_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_phone_font_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set Phone Order Border Color
+                                </div>
+                            </div>
+                        </div>
+
+                      <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_phone_background_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_phone_background_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set Phone Order Background Color
+                                </div>
+                            </div>
+                        </div>
+
+                       <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_phone_border_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_phone_border_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set Phone Order Border Color
+                                </div>
+                            </div>
+                        </div>
+
+                     <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_phone_header_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_phone_header_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set Phone Order Header Color
+                                </div>
+                            </div>
+                        </div>
+
+
+                         <div id="Font-Family" class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Set Font Family For Phone </span>
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Allows us to set Font family for ticket
+                                </div>
+                                <div class="content-group mt16 row" style="font-size: 11px;">
+                                    <label for="pos_phone_font_family" string="Font Family" class="col-lg-3 o_light_label"/>
+                                    <field name="pos_phone_font_family"/>
+                                </div>
+                            </div>
+                      </div>
+                 </div>
+
+
+                 <div class="row mt16 o_settings_container" id="Delivery Type Color">
+                     <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_kerbside_font_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_kerbside_font_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set kerbside Order Border Color
+                                </div>
+                            </div>
+                        </div>
+                     <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_kerbside_background_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_kerbside_background_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set kerbside Order Border Color
+                                </div>
+                            </div>
+                        </div>
+                      <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_kerbside_border_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_kerbside_border_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set kerbside Order Border Color
+                                </div>
+                            </div>
+                        </div>
+                      <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_kerbside_header_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_kerbside_header_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set kerbside Order Header Color
+                                </div>
+                            </div>
+                        </div>
+
+                     <div id="Font-Family" class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Set Font Family For kerbside </span>
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Allows us to set Font family for ticket
+                                </div>
+                                <div class="content-group mt16 row" style="font-size: 11px;">
+                                    <label for="pos_kerbside_font_family" string="Font Family" class="col-lg-3 o_light_label"/>
+                                    <field name="pos_kerbside_font_family"/>
+                                </div>
+                            </div>
+                      </div>
+
+
+                 </div>
+
+
+
+
+
+
+                 <div class="row mt16 o_settings_container" id="Delivery Type Color">
+                     <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_pickup_font_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_pickup_font_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set pickup Order Font Color
+                                </div>
+                            </div>
+                        </div>
+                     <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_pickup_background_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_pickup_background_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set Pickup Order Background Color
+                                </div>
+                            </div>
+                        </div>
+                      <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_pickup_border_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_pickup_border_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set Pickup Order Border Color
+                                </div>
+                            </div>
+                        </div>
+                      <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="pos_pickup_header_color" widget="color"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_pickup_header_color" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Set Pickup Order Header Color
+                                </div>
+                            </div>
+                        </div>
+
+                     <div id="Font-Family" class="col-12 col-lg-6 o_setting_box" attrs="{'invisible' : [('iface_delivery_type', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Set Font Family For Pickup </span>
+                                <div class="text-muted" style="font-size: 11px;">
+                                    Allows us to set Font family for ticket
+                                </div>
+                                <div class="content-group mt16 row" style="font-size: 11px;">
+                                    <label for="pos_pickup_font_family" string="Font Family" class="col-lg-3 o_light_label"/>
+                                    <field name="pos_pickup_font_family"/>
+                                </div>
+                            </div>
+                      </div>
+
+
+                 </div>
+
+             </h2>
+
+             </xpath>
+            <xpath expr="//sheet" position="inside">
+             <h2 name="order" position="before">
+                 <h2 name="Kitchen" class="o_horizontal_separator">KVS Card Resolution adjustment</h2>
+                  <div class="row mt16 o_settings_container" id="KVS Delivery adjustment">
+                      <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane" style="    width: max-content;">
+                                <field name="pos_kvs_size_adjustments" />
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="pos_kvs_size_adjustments" />
+                                <div class="text-muted" style="font-size: 11px;">
+                                   KVS card resolution In percentage
+                                </div>
+                            </div>
+                        </div>
+                  </div>
+             </h2>
+            </xpath>
+        </field>
+    </record>
+</odoo>

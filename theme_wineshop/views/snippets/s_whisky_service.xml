@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_whisky_service" name="Whisky Service">
+		<section class="whisky-homepage-service pt64 pb96 bg-secondary">
+				<div class="container">
+					<div class="title text-center mb-5">
+						<h3 class="text-white-50">Why Choose Us</h3>
+						<img class="img img-fluid" src="/theme_wineshop/static/src/img/down-lines.png" alt="image"/>
+					</div>
+					<div class="row">
+						<div class="col-md-4 mb-4 mb-md-0">
+							<div class="service-box">
+								<div class="icon">
+									<span class="fa fa-bullhorn text-white-50"></span>
+								</div>
+								<h6 class="text-primary">Quality</h6>
+								<p class="text-white-50">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem.</p>
+							</div>
+						</div>
+						<div class="col-md-4 mb-4 mb-md-0">
+							<div class="service-box">
+								<div class="icon">
+									<span class="fa fa-clock-o text-white-50"></span>
+								</div>
+								<h6 class="text-primary">Fast Delivery</h6>
+								<p class="text-white-50">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem.</p>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="service-box">
+								<div class="icon">
+									<span class="fa fa-credit-card text-white-50"></span>
+								</div>
+								<h6 class="text-primary">Best Price</h6>
+								<p class="text-white-50">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+	</template>
+</odoo>

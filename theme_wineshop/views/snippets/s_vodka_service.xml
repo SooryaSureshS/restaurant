@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_vodka_service" name="Vodka Service">
+		<section class="vodka-homepage-service pt48 pb48">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 mb-4 mb-md-0">
+							<div class="service-box text-center">
+								<div class="icon">
+									<span class="fa fa-bullhorn text-primary"></span>
+								</div>
+								<h6 class="text-black">Quality</h6>
+								<p class="text-black">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem.</p>
+							</div>
+						</div>
+						<div class="col-md-4 mb-4 mb-md-0">
+							<div class="service-box text-center">
+								<div class="icon">
+									<span class="fa fa-clock-o text-primary"></span>
+								</div>
+								<h6 class="text-black">Fast Delivery</h6>
+								<p class="text-black">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem.</p>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="service-box text-center">
+								<div class="icon">
+									<span class="fa fa-credit-card text-primary"></span>
+								</div>
+								<h6 class="text-black">Best Price</h6>
+								<p class="text-black">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+	</template>
+</odoo>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template_notification" xml:space="preserve">
+    <t t-name="website_order_note.popup_view">
+  <div class="lis-modal animated fadeIn cart_popup_attribute" id="lis-modal" >
+                <div class="lis-modal-popup modal-margin_top" style="    width: 420px; border: 0.5px solid #333333;">
+                <div class="lis-modal-content" style="width: 420px;">
+                       <div class="" id="cart_popup_attribute" style="height:auto;">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <textarea rows="5" cols="50" id="checkout_text_update" style="font-size: 17px;width: 100%;" t-att-value="info['checkout']"><t t-esc="info['checkout']"/></textarea>
+                                    </div>
+                                </div>
+
+                               <br></br>
+                               <br></br>
+
+                                <div class="container " id="cont_1">
+                                        <div class="cart_popup_btn ">
+                                            <button class="btn text-center round  popup_btn_1  mt-3 onit_note_confirm" t-att-data-order_id="info['id']">
+                                                Confirm
+                                            </button>
+                                            <button class="btn text-center round popup_btn_2 mt-3 onit_note_cancel">
+                                                Cancel
+                                            </button>
+                                        </div>
+                                </div>
+
+                            </div>
+                </div>
+		</div>
+		</div>
+    </t>
+</templates>

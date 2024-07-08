@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+
+<templates id="template" xml:space="preserve">
+
+         <t t-name="InheritedPaymentScreen" t-inherit="point_of_sale.PaymentScreen" t-inherit-mode="extension" owl="1">
+             <xpath expr="//input[@id='table_no']" position="replace">
+                  <input  type="text" id="table_no" t-att-value="table_names" placeholder="Choose a Table"  style="display:none;margin-left: 35px;text-align: center;width: 70%;height: 50px;    top: 1px;position: relative;"/>
+                              </xpath>
+                          </t>
+                 </templates>

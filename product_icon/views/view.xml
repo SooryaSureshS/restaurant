@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--    <record id="optional_product_template_inherited" model="ir.ui.view">-->
+<!--        <field name="name">product.template.name</field>-->
+<!--        <field name="model">product.template</field>-->
+<!--        <field name="inherit_id" ref="product.product_template_only_form_view"/>-->
+<!--        <field name="arch" type="xml">-->
+
+<!--           <xpath expr="//field[@name='name']" position="after">-->
+<!--               <span class="badge badge-pill" attrs="{'invisible': [('v','!=',True)]}" style="border-radius: 34px !important; padding: 6px 10px; text-align: center; background: red; color: white; font-size: 15px; margin-left: 5px; position: relative; top: -5px;">V</span>-->
+<!--               <span class="badge badge-pill" attrs="{'invisible': [('gf','!=',True)]}" style="border-radius: 34px !important; padding: 6px 10px; text-align: center; background: green; color: white; font-size: 15px; margin-left: 5px; position: relative; top: -5px;">G</span>-->
+<!--               <span class="badge badge-pill" attrs="{'invisible': [('veg','!=',True)]}" style="border-radius: 34px !important; padding: 6px 10px; text-align: center; background: yellow; color: white; font-size: 15px; margin-left: 5px; position: relative; top: -5px;">VEG</span>-->
+<!--           </xpath>-->
+
+<!--        </field>-->
+<!--    </record>-->
+
+</odoo>

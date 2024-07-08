@@ -1,0 +1,126 @@
+
+.orderprocessbanner{
+    background: url("/mask_cutomization/static/src/image/BG.png") no-repeat;
+    background-size: cover;
+  margin: auto;
+  padding: 8%;
+  font-family: 'Montserrat'; 
+  
+}
+.maindiv{
+  color: #6E6E70; 
+  display: flex;
+  max-width: 400px;
+  margin: auto;
+}
+.subcontent{
+    /* margin: auto; */
+    margin-left: 5px;
+   
+}
+/* .stepper{
+  border-right: 3px dashed white;
+  margin: 23% 0;
+  position: relative;  
+      
+} */
+.circle1{
+  width: 22px;
+  height: 22px;
+  border-radius: 50px;
+  position: absolute;
+  top: 0px;
+  left: -10px;
+  background-color: #B7B7B9;
+}
+.circle2{
+  width: 22px;
+  height: 22px;
+  border-radius: 50px;
+  position: absolute;
+  top: 29%;
+  left: 0;
+  left: -10px;
+  background-color: #B7B7B9;
+}
+.circle3{
+  width: 22px;
+  height: 22px;
+  border-radius: 50px;
+  position: absolute;
+  top: 62%;
+  left: 0;
+  left: -10px;
+  background-color: #B7B7B9;
+}
+.circle4{
+  width: 22px;
+  height: 22px;
+  border-radius: 50px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  left: -10px;
+  background-color: #B7B7B9;
+}
+.innercircle{
+  padding: 5%;
+  padding-top: 19%;
+}
+.smallcircle{
+  width: 14px;
+  height: 14px;
+  border-radius: 50px;
+  background-color: white;
+  margin: auto;
+}
+.selection-div{
+    background-color:#B7B7B9;
+    border-top-left-radius:11px;
+    border-bottom-left-radius: 11px;
+    margin-bottom: 7%;
+    padding: 3%;
+   
+}
+.img{
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.content{
+    display: flex ;
+}
+
+.number{
+    font-weight: bolder;
+    font-size: 25px;
+    padding: 3%;
+}
+.text{
+    font-weight: 700;
+    font-size: 15px;
+    padding-top: 12px;
+    padding-left: 3px;
+}
+#textcontent{
+  padding-top: 20px;
+}
+.left {
+  padding: 50px 10px;
+  position: relative;
+  margin: 27% 0;
+  /* stroke-linecap: round; */
+}
+
+
+.left.dotted-spaced {
+  background-image: radial-gradient(ellipse,rgb(247, 242, 242) 40%, rgba(20, 19, 19, 0) 0%);
+  background-position: left;
+  background-size: 5px 13px;
+  background-repeat: repeat-y;
+}
+  
+.container_mask_image{
+     content:url("/mask_cutomization/static/src/image/account/PageRectOrderProcess.png");
+}

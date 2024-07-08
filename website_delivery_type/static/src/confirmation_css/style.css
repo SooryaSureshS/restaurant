@@ -1,0 +1,106 @@
+#fh5co-header .display-tc h1, .fh5co-cover .display-tc h1 {
+    margin-bottom: 0px;
+    font-size: 63px;
+    font-weight: 700;
+
+}
+#fh5co-header .display-tc h1, #fh5co-header .display-tc h2, .fh5co-cover .display-tc h1, .fh5co-cover .display-tc h2 {
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+
+#fh5co-header {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+    height: 425px;
+}
+#fh5co-header .display-tc, .fh5co-cover .display-tc {
+
+    vertical-align: middle;
+    width: 100%;
+
+    padding-top: 10%;
+}
+
+.myButton_status {
+	background:linear-gradient(to bottom, #ff7700 5%, #e0815e 100%);
+	background-color:#ff7700;
+	border-radius:28px;
+	border:1px solid #f09800;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:14px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+	    margin-top: 34px;
+}
+.myButton_status:hover {
+	background:linear-gradient(to bottom, #e0815e 5%, #ff7700 100%);
+	background-color:#e0815e;
+}
+.myButton_status:active {
+	position:relative;
+	top:1px;
+}
+
+
+#restaurant-menu {
+    padding: 10px 0 60px 0;
+     font-family: 'Open Sans', serif;
+    -webkit-font-smoothing: antialiased !important;
+
+    background: white;
+}
+.section-title {
+    margin-bottom: 70px;
+}
+#restaurant-menu .menu-section {
+    margin: 0 20px 30px;
+}
+
+#restaurant-menu .menu-section-title {
+    font-size: 32px;
+    display: block;
+    font-weight: 400;
+    color: #444;
+    margin: 20px 0;
+    text-align: center;
+}
+#restaurant-menu .menu-item {
+        line-height: 2;
+    font-size: 18px;
+}
+#restaurant-menu .menu-item-name {
+    font-weight: 400;
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 10px;
+}
+#restaurant-menu .menu-item-price {
+    float: right;
+    font-weight: 400;
+    color: #555;
+    margin-top: -36px;
+}
+
+#restaurant-menu .menu-item-description {
+    font-size: 15px;
+    width: 85%;
+}
+@media only screen and (max-width: 600px) {
+ #cards_id_new{
+    width: auto !important;
+ }
+ #mobile_table_new_confirm{
+        line-height: 2!important;
+ }
+}
+
+

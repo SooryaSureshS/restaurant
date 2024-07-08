@@ -1,0 +1,31 @@
+<odoo>
+    <template id="external_layout_standard_custom">
+        <div class="header">
+            <div style="float: left; width: 100%;font-size:10px;margin-top:20px;border-bottom: 3px solid black;">
+
+                <p style="margin:0px !important;font-size:16px;font-weight:bold">Cash Collection Report</p>
+
+                <p style="margin-top:15px !important;font-size:12px;">Report Period &#160; &#160; &#160; &#160; From
+
+                    <t t-set="date" t-value="data"/>
+                    <span t-esc="date['start_date']"/> To
+                    <span t-esc="date['end_date']"/>
+
+
+                    <span style="float:right;">Printed:
+                        <t t-set="date" t-value="docs.get_date()"/>
+
+                        <span t-esc="date['date_today'].strftime('%e %b %Y, %I:%M %p')"/>
+                        <br/>
+                        Page
+                        <span class="page"/>
+                        of
+                        <span class="topage"/>
+                    </span>
+                </p>
+                <br/>
+            </div>
+        </div>
+
+    </template>
+</odoo>

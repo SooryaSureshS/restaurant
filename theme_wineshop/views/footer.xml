@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="website_multi_footer"
+		inherit_id="website.layout" name="WineShop Footer" active="True">
+		<xpath expr="//div[@id='footer']" position="replace">
+			<div id="footer" class="oe_structure oe_structure_solo" t-ignore="true" t-if="not no_footer">
+				<section id="wineshop_footer" class="wineshop_footer pt88 pb88">
+					<div class="container">
+						<div class="footer-title text-center">
+							<p class="subtitle text-primary">WINESHOP PROMISE</p>
+							<h1 class="text-white">We produce premium wines</h1>
+						</div>
+						<div class="row">
+							<div class="col-lg-4 mb-4 mb-lg-0">
+								<div class="footer-left">
+									<ul class="nav justify-content-center">
+										<li class="nav-item">
+											<a href="#" class="nav-link">FAQ</a>
+										</li>
+										<li class="nav-item">
+											<a href="#" class="nav-link">Terms</a>
+										</li>
+										<li class="nav-item">
+											<a href="#" class="nav-link">Privacy</a>
+										</li>
+										<li class="nav-item">
+											<a href="#" class="nav-link">Return</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-lg-4 mb-4 mb-lg-0">
+								<div class="footer-middle text-center">
+									<a class="link" t-att-href="website.social_facebook"
+										t-if="website.social_facebook" target="_blank">
+										<i class="fa fa-facebook" />
+									</a>
+									<a class="link" t-att-href="website.social_twitter"
+										t-if="website.social_twitter" target="_blank">
+										<i class="fa fa-twitter" />
+									</a>
+									<a class="link" t-att-href="website.social_linkedin"
+										t-if="website.social_linkedin" target="_blank">
+										<i class="fa fa-linkedin" />
+									</a>
+									<a class="link" t-att-href="website.social_youtube"
+										t-if="website.social_youtube" target="_blank">
+										<i class="fa fa-youtube-play" />
+									</a>
+									<a class="link" t-att-href="website.social_instagram"
+										t-if="website.social_instagram" target="_blank">
+										<i class="fa fa-instagram"></i>
+									</a>
+									<a class="link" t-att-href="website.social_github"
+										t-if="website.social_github" target="_blank">
+										<i class="fa fa-github"></i>
+									</a>
+								</div>
+							</div>
+							<div class="col-lg-4">
+								<div class="footer-right text-center">
+									<p class="m-0">
+										<span>© 2020 All rights reserved.</span>
+										<span t-field="res_company.name" />
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</xpath>
+	</template>
+</odoo>

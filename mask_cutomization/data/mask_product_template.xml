@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!--mask products-->
+        <record id="product_template_korean_mask" model="product.template">
+            <field name="name">Korean</field>
+            <field name="is_mask_product">True</field>
+            <field name="mask_type">korean_style</field>
+            <field name="sale_ok">True</field>
+            <field name="purchase_ok">True</field>
+            <field name="available_in_pos">False</field>
+            <field name="standard_price">0.00</field>
+            <field name="list_price">0.00</field>
+            <field name="weight">0.00</field>
+            <field name="type">product</field>
+            <field name="image_1920" type="base64" file="mask_cutomization/static/src/image/kf94.png"/>
+            <field name="public_categ_ids" eval="[(5, 0),(4, ref('mask_cutomization.mask_category'))]"/>
+            <field name="is_published">True</field>
+        </record>
+        <record id="product_template_surgical_mask" model="product.template">
+            <field name="name">Surgical</field>
+            <field name="is_mask_product">True</field>
+            <field name="mask_type">surgical</field>
+            <field name="sale_ok">True</field>
+            <field name="purchase_ok">True</field>
+            <field name="available_in_pos">False</field>
+            <field name="standard_price">0.00</field>
+            <field name="list_price">0.00</field>
+            <field name="weight">0.00</field>
+            <field name="type">product</field>
+            <field name="image_1920" type="base64" file="mask_cutomization/static/src/image/Mask_surgical.png"/>
+            <field name="public_categ_ids" eval="[(5, 0),(4, ref('mask_cutomization.mask_category'))]"/>
+            <field name="is_published">True</field>
+        </record>
+        <record id="product_template_foldable_mask" model="product.template">
+            <field name="name">Foldable</field>
+            <field name="is_mask_product">True</field>
+            <field name="mask_type">foldable</field>
+            <field name="sale_ok">True</field>
+            <field name="purchase_ok">True</field>
+            <field name="available_in_pos">False</field>
+            <field name="standard_price">0.00</field>
+            <field name="list_price">0.00</field>
+            <field name="weight">0.00</field>
+            <field name="type">product</field>
+            <field name="image_1920" type="base64" file="mask_cutomization/static/src/image/cooling_mask.png"/>
+            <field name="public_categ_ids" eval="[(5, 0),(4, ref('mask_cutomization.mask_category'))]"/>
+            <field name="is_published">True</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+      <t t-name="SummaryButton1" owl="1">
+            <span class="control-button summary_button"
+                  style="background: #875a7b;color: #fdfdfd;flex-grow: unset;margin: 0px;border: none;"
+                  t-on-click="onClick">
+                <i class="fa fa-check"></i>
+                <span> </span>
+                <span>Closed</span>
+            </span>
+          <div class="header-button lock-button" t-on-click="OfflineCache">
+               <span class="lock-button" style="color:white;">
+                    <i class="fa fa-cloud"
+                       role="img"></i>
+                </span>
+          </div>
+    </t>
+
+    <t t-name="ClearCache1" owl="1">
+        sdsdassasasasas
+        <div class="header-button lock-button" t-on-click="OfflineCache">
+<!--              <span class="lock-button">-->
+<!--                <i class="fa"-->
+<!--                   t-att-class="{ 'fa-unlock': state.isUnlockIcon, 'fa-lock': !state.isUnlockIcon }"-->
+<!--                   role="img" t-att-aria-label="state.title" t-att-title="state.title"></i> -->
+            <span class="lock-button">
+                <i class="fa fa-cloud"
+                   role="img" t-att-aria-label="state.title" t-att-title="state.title"></i>
+            </span>
+        </div>
+<!--        <div class="header-button lock-button" t-on-mouseover="onMouseOver(true)"-->
+<!--             t-on-click="showLoginScreen" t-on-mouseout="onMouseOver(false)">-->
+<!--            <span class="lock-button">-->
+<!--                <i class="fa"-->
+<!--                   t-att-class="{ 'fa-unlock': state.isUnlockIcon, 'fa-lock': !state.isUnlockIcon }"-->
+<!--                   role="img" t-att-aria-label="state.title" t-att-title="state.title"></i>-->
+<!--            </span>-->
+<!--        </div>-->
+    </t>
+
+
+</templates>

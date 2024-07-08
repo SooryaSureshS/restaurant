@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_wine_maker" name="Wine Maker">
+		<section class="wineshop-home-message pt64 pb64">
+			<div class="container-fluid">
+				<div class="row align-items-xl-center">
+					<div class="col-lg-6">
+						<div class="image">
+							<img class="img img-fluid" src="/theme_wineshop/static/src/img/winemaker.jpg" alt="image"/>
+						</div>
+					</div>
+					<div class="col-lg-5">
+						<div class="content mt-5 mt-xl-0">
+							<p class="subtitle text-primary">Integer varius laoreet</p>
+							<h3 class="text-black">Lorem ipsum dolor sit amet</h3>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet elit leo.</p>
+							<p>Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</template>
+</odoo>

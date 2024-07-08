@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="notice_kanban" model="ir.ui.view">
+        <field name="name">Notice kanban View</field>
+        <field name="model">notice.board</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="event_date"/>
+                <field name="participation_link"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="venue"/>
+                <field name="is_published"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                 <field name="image" widget="image" class="oe_avatar" options="{&quot;zoom&quot;: true, &quot;preview_image&quot;:&quot;image&quot;}"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <div class="row mb4">
+                                    <div class="col-6">
+                                        <strong><field name="name"/></strong>
+                                    </div>
+                                    <div class="col-6">
+                                        <span class="float-right">
+                                            <div t-if="record.is_published.raw_value">
+                                                <span class="badge badge-pill badge-success">Published</span>
+                                            </div>
+                                            <div t-if="!record.is_published.raw_value">
+                                                <span class="badge badge-pill badge-danger">Unpublished</span>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div t-if="record.event_date.raw_value">Event Date: <field name="event_date"/></div>
+                                <div t-if="record.venue.raw_value">Venue: <field name="venue"/></div>
+                                <div><field name="participation_link"/></div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="notice_form" model="ir.ui.view">
+        <field name="name">Notice form View</field>
+        <field name="model">notice.board</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button type="object" name="toggle_published" class="oe_stat_button" icon="fa-globe">
+                            <field name="is_published" widget="website_button" invisible='1'/>
+                            <span class="o_stat_text text-success" attrs="{'invisible': [('is_published', '=', False)]}"> Published </span>
+                            <span class="o_stat_text text-danger" attrs="{'invisible': [('is_published', '=', True)]}">Unpublished </span>
+                        </button>
+                    </div>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" text="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <label for="name" string="Title" class="oe_edit_only"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="event_date"/>
+                            <field name="participation_link"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </group>
+                        <group>
+                            <field name="venue"/>
+                            <field name="create_uid" attrs="{'invisible':[('create_uid','=',False)]}" widget="many2one_avatar_user"/>
+                            <field name="create_date" attrs="{'invisible':[('create_date','=',False)]}" widget="remaining_days"/>
+                        </group>
+                    </group>
+                    <separator string="Message"/>
+                    <field name="message"/>
+                </sheet>
+                <div class='oe_chatter'>
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name='message_ids' widget='mail_thread'/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="notice_tree" model="ir.ui.view">
+        <field name="name">Notice tree View</field>
+        <field name="model">notice.board</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" decoration-success="start_date &lt;= current_date and end_date &gt;= current_date" decoration-info="start_date &gt; current_date" decoration-danger="end_date &lt; current_date"/>
+                <field name="event_date" widget="remaining_days"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="venue"/>
+                <field name="create_uid" widget="many2one_avatar_user"/>
+                <field name="create_date" widget="remaining_days"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="notice_search" model="ir.ui.view">
+        <field name="name">Notice search View</field>
+        <field name="model">notice.board</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="venue"/>
+                <field name="create_uid"/>
+                <filter name="running" string="Running" domain="[('start_date', '&lt;=', current_date),('end_date', '&gt;=', current_date)]"/>
+                <filter name="expired" string="Expired" domain="[('end_date', '&lt;', current_date)]"/>
+                <filter name="active" string="Active" domain="[('active', '=', True)]"/>
+                <filter name="inactive" string="Inactive" domain="[('active', '=', False)]"/>
+                <group string="Group By Venue">
+                    <filter  name="group_by_venue" string="Venue" context="{'group_by' : 'venue'}"></filter>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="notice_action" model="ir.actions.act_window">
+        <field name="name">Notice Board</field>
+        <field name="res_model">notice.board</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{"search_default_running":1}</field>
+    </record>
+
+    <menuitem  id="notice_menu" name="Notice Board" parent="hr.menu_hr_root" action="notice_action" sequence="4" groups="hr.group_hr_user"/>
+</odoo>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_wine_instagram" name="Wine Instagram">
+		<section class="wineshop-home-instagram pt152 pb152 bg-light">
+			<div class="container">
+				<div class="row m-0">
+					<div class="col-lg-4 p-0 mb-4 mb-md-0">
+						<section class="followers bg-secondary text-center h-100">
+							<h3 class="text-white">Instagram</h3>
+							<h1 class="text-white">20K</h1>
+							<p class="subtitle text-primary">INSTAGRAM FOLLOWERS</p>
+							<div class="s_btn" data-name="Button">
+								<a href="#" class="btn flat btn-primary btn-lg">Follow us</a>
+							</div>
+						</section>
+					</div>
+					<div class="col-lg-8 p-0">
+						<div class="row m-0">
+							<div class="col-md-4 p-0">
+								<section class="insta-image" style="background-image: url('/theme_wineshop/static/src/img/insta1.jpg');">
+									<a href="#" class="d-block h-100 op-0"/>
+								</section>
+							</div>
+							<div class="col-md-4 p-0">
+								<section class="insta-image" style="background-image: url('/theme_wineshop/static/src/img/insta2.jpg');">
+									<a href="#" class="d-block h-100 op-0"/>
+								</section>
+							</div>
+							<div class="col-md-4 p-0">
+								<section class="insta-image" style="background-image: url('/theme_wineshop/static/src/img/insta3.jpg');">
+									<a href="#" class="d-block h-100 op-0"/>
+								</section>
+							</div>
+							<div class="col-md-4 p-0">
+								<section class="insta-image" style="background-image: url('/theme_wineshop/static/src/img/insta4.jpg');">
+									<a href="#" class="d-block h-100 op-0"/>
+								</section>
+							</div>
+							<div class="col-md-4 p-0">
+								<section class="insta-image" style="background-image: url('/theme_wineshop/static/src/img/insta5.jpg');">
+									<a href="#" class="d-block h-100 op-0"/>
+								</section>
+							</div>
+							<div class="col-md-4 p-0">
+								<section class="insta-image" style="background-image: url('/theme_wineshop/static/src/img/insta6.jpg');">
+									<a href="#" class="d-block h-100 op-0"/>
+								</section>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</template>
+</odoo>

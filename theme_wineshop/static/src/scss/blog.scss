@@ -1,0 +1,39 @@
+.blog-page-banner{
+	.content{
+		p.subtitle{
+		    text-transform: uppercase;
+		    letter-spacing: 2px;
+		    font-weight: 700;
+		    line-height: 20px;
+		    font-size: 14px;
+		    margin: 0px;
+	    }
+
+	    h1{
+		    font-size: 48px;
+		    margin-bottom: 0;
+		    text-transform: uppercase;
+	    }
+	    p{
+	    	a{
+	    		text-decoration: none !important;
+	    	}
+	    	font-size: 16px;
+		    margin-bottom: 0;
+		    line-height: 1.916;
+	    }
+	}
+}
+
+.o_wblog_post{
+	.o_blog_post_title{
+	    font-size: 26px;
+		text-transform: capitalize;
+	}
+}
+
+.website_blog .o_wblog_post_title #o_wblog_post_name {
+    font-family: "Odoo Unicode Support Noto", "Playfair Display";
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}

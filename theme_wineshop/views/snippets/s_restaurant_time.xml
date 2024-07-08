@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_restaurant_time" name="Restaurant Time">
+		<section class="restaurant-hours pt152 pb152">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6 mb-4 mb-md-0">
+							<div class="content">
+								<p class="subtitle text-primary">RESTAURANT</p>
+								<h1>Dinner Hours</h1>
+								<div class="list">
+									<p>
+										<span class="left">Sunday - Monday</span>
+										<span class="right">7:00pm -11:00pm</span>
+									</p>
+									<p>
+										<span class="left">Tuesday - Saturday</span>
+										<span class="right">7:00pm - 10:00pm</span>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="content">
+								<p class="subtitle text-primary">RESTAURANT</p>
+								<h1>Lunch Hours</h1>
+								<div class="list">
+									<p>
+										<span class="left">Monday - Saturday</span>
+										<span class="right">11:30am - 3:30pm</span>
+									</p>
+									<p>
+										<span class="left">Sunday Brunch</span>
+										<span class="right">10:30am - 3:30pm</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+	</template>
+</odoo>

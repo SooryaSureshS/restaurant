@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_restaurant_reservation" name="Restaurant Reservation">
+		<section class="restaurant-reservation pt152 pb72">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6 p-0">
+							<div class="content text-center bg-primary">
+								<div class="icon bg-white text-center mx-auto">
+									<span class="fa fa-phone text-primary"></span>
+								</div>
+								<p class="text-white subtitle">RESTAURANT</p>
+								<h1 class="text-white">Efficitur Magna Porta</h1>
+								<p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non libero consequat, sodales ipsum malesuada, ullamcorper nisi.</p>
+								<div class="s_btn" data-name="Button">
+									<a href="#" class="btn flat btn-secondary btn-lg text-white">call us now</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 p-0">
+							<div class="content text-center bg-secondary">
+								<div class="icon bg-white text-center mx-auto">
+									<span class="fa fa-cutlery text-secondary"></span>
+								</div>
+								<p class="text-white subtitle">RESTAURANT</p>
+								<h1 class="text-white">Efficitur Magna Porta</h1>
+								<p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non libero consequat, sodales ipsum malesuada, ullamcorper nisi.</p>
+								<div class="s_btn" data-name="Button">
+									<a href="#" class="btn flat btn-primary btn-lg text-white">call us now</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+	</template>
+</odoo>

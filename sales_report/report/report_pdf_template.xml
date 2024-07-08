@@ -1,0 +1,785 @@
+<odoo>
+    <template id="report_pos_pdf">
+        <t t-set="company" t-value="env.company"/>
+            <t t-call="web.html_container">
+                <t t-call="web.internal_layout">
+                <h2 style="text-align:center;">Sales Report</h2>
+                    <div class="card-body mt-3">
+                                <div class="row">
+                                        <table style="border: 0px solid black;width:100%;border-collapse: collapse;text-align: center;height:250px;">
+                                            <thead>
+                                            <tr>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"></th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="1">Monday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="1">Tuesday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="1">Wednesday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="1">Thursday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="1">Friday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="1">Saturday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="1">Sunday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="1">Week Total</th>
+                                            </tr>
+                                        </thead>
+                                            <tbody>
+                                                   <tr>
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 15%;">
+                                                       <span>Sales Gross</span>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="monday_sales_gross"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="tuesday_sales_gross"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="wednesday_sales_gross"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="thursday_sales_gross"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="friday_sales_gross"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="saturday_sales_gross"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="sunday_sales_gross"/></td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                           ₹<t t-esc="sales_gross_total"/></td>
+                                                   </td>
+                                                   </tr>
+                                                <tr>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;width: 15%;">
+                                                        <span>Sales NET</span>
+                                                        <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="monday_sales_net"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="tuesday_sales_net"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="wednesday_sales_net"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="thursday_sales_net"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="friday_sales_net"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="saturday_sales_net"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="sunday_sales_net"/></td>
+                                                        <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="total_sales_net"/></td>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;width: 15%;">
+                                                        <span>Transactions</span>
+                                                        <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="monday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="tuesday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="wednesday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="thursday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="friday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="saturday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="sunday_transactions"/></td>
+                                                        <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="total_transactions"/></td>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;width: 15%;">
+                                                        <span>SPMH</span>
+                                                        <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="monday_employees"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="tuesday_employees"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="wednesday_employees"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="thursday_employees"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="friday_employees"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="saturday_employees"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="sunday_employees"/></td>
+                                                        <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="total_spmh"/></td>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;width: 15%;">
+                                                        <span>Refund Amount</span>
+                                                        <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="monday_refund_amount"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="tuesday_refund_amount"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="wednesday_refund_amount"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="thursday_refund_amount"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="friday_refund_amount"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="saturday_refund_amount"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="sunday_refund_amount"/></td>
+                                                        <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="total_refund"/></td>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;width: 15%;">
+                                                        <span>Promo Amount</span>
+                                                        <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="sales_net"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="sales_net"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="sales_net"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="sales_net"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="sales_net"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="sales_net"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="sales_net"/></td>
+                                                        <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="sales_net"/></td>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;width: 15%;">
+                                                        <span>Employee Meals</span>
+                                                        <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="monday_employee_meals"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="tuesday_employee_meals"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="wednesday_employee_meals"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="thursday_employee_meals"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="friday_employee_meals"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="saturday_employee_meals"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="sunday_employee_meals"/></td>
+                                                        <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="total_employee_meals"/></td>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                    </div>
+                    <div class="card-body" style="margin-top:20mm;">
+                                <div class="row">
+                                        <table style="border: 1px solid black;width:100%;text-align: center;">
+                                            <thead>
+                                            <tr>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"></th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="1">Monday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="1">Tuesday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="1">Wednesday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="1">Thursday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="1">Friday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="1">Saturday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="1">Sunday</th>
+                                                <th style="font-weight:bold;border: 1px solid black;border-collapse: collapse;"
+                                                    colspan="1">Week Total</th>
+                                            </tr>
+                                        </thead>
+                                            <tbody style="background-color: #D6EEEE;">
+                                                   <tr>
+                                                   <th style="border: 1px solid black;border-collapse: collapse;width:20%;">
+                                                       <span>Cash</span>
+                                                   </th>
+                                                       <th style="background-color: white;">
+                                                       </th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;width:20%;">
+                                                       </th>
+                                                   </tr>
+                                                <tr style="background-color: #D6EEEE;">
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 20%;background-color: white;">
+                                                       <span style="padding-left:30mm">Sales</span>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="cash_monday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="cash_tuesday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="cash_wednesday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="cash_thursday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="cash_friday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="cash_saturday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="cash_sunday_sales"/></td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="total_cash_sales"/></td>
+                                                   </td>
+                                                </tr>
+                                                <tr style="background-color: #D6EEEE;">
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 20%;background-color: white;">
+                                                       <span style="padding-left:16mm">Transactions</span>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="cash_monday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="cash_tuesday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="cash_wednesday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="cash_thursday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="cash_friday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="cash_saturday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="cash_sunday_transactions"/></td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="total_cash_transactions"/></td>
+                                                   </td>
+                                                </tr>
+                                                <tr>
+                                                   <th style="border: 1px solid black;width:20%;background-color: #D6EEEE;">
+                                                       <span>Credit Card</span>
+                                                   </th>
+                                                    <th style="background-color: white;">
+                                                       </th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;width:20%;">
+                                                       </th>
+                                                   </tr>
+                                                <tr style="background-color: #D6EEEE;">
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 20%;background-color: white;">
+                                                       <span style="padding-left:30mm">Sales</span>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="credit_monday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="credit_tuesday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="credit_wednesday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="credit_thursday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="credit_friday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="credit_saturday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="credit_sunday_sales"/></td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="total_credit_sales"/></td>
+                                                   </td>
+                                                </tr>
+                                                <tr style="background-color: #D6EEEE;">
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 20%;background-color: white;">
+                                                       <span style="padding-left:16mm">Transactions</span>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="credit_monday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="credit_tuesday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="credit_wednesday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="credit_thursday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="credit_friday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="credit_saturday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="credit_sunday_transactions"/></td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="total_credit_transactions"/></td>
+                                                   </td>
+                                                </tr>
+                                                <tr>
+                                                   <th style="border: 1px solid black;border-collapse: collapse;width:20%;">
+                                                       <span>Debit Card</span>
+                                                   </th>
+                                                    <th style="background-color: white;">
+                                                       </th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;width:20%;">
+                                                       </th>
+                                                   </tr>
+                                                <tr style="background-color: #D6EEEE;">
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 20%;background-color: white;">
+                                                       <span style="padding-left:30mm">Sales</span>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="debit_monday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="debit_tuesday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="debit_wednesday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="debit_thursday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="debit_friday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="debit_saturday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="debit_sunday_sales"/></td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="total_debit_sales"/></td>
+                                                   </td>
+                                                </tr>
+                                                <tr style="background-color: #D6EEEE;">
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 20%;background-color: white;">
+                                                       <span style="padding-left:16mm">Transactions</span>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="debit_monday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="debit_tuesday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="debit_wednesday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="debit_thursday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="debit_friday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="debit_saturday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="debit_sunday_transactions"/></td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="total_debit_transactions"/></td>
+                                                   </td>
+                                                </tr>
+                                                <tr style="background-color: #D6EEEE;">
+                                                   <th style="border: 1px solid black;border-collapse: collapse;width:20%;">
+                                                       <span>UPI</span>
+                                                   </th>
+                                                    <th style="background-color: white;">
+                                                       </th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;width:20%;">
+                                                       </th>
+                                                   </tr>
+                                                <tr style="background-color: #D6EEEE;">
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 20%;background-color: white;">
+                                                       <span style="padding-left:30mm">Sales</span>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="upi_monday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="upi_tuesday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="upi_wednesday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="upi_thursday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="upi_friday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="upi_saturday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="upi_sunday_sales"/></td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="total_upi_sales"/></td>
+                                                   </td>
+                                                </tr>
+                                                <tr style="background-color: #D6EEEE;">
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 20%;background-color: white;">
+                                                       <span style="padding-left:16mm">Transactions</span>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="upi_monday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="upi_tuesday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="upi_wednesday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="upi_thursday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="upi_friday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="upi_saturday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="upi_sunday_transactions"/></td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="total_upi_transactions"/></td>
+                                                   </td>
+                                                </tr>
+                                                <tr style="background-color: #D6EEEE;">
+                                                   <th style="border: 1px solid black;border-collapse: collapse;width:20%;">
+                                                       <span>PayTM Wallet</span>
+                                                   </th>
+                                                    <th style="background-color: white;">
+                                                       </th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;width:20%;">
+                                                       </th>
+                                                   </tr>
+                                                <tr style="background-color: #D6EEEE;">
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 20%;background-color: white;">
+                                                       <span style="padding-left:30mm">Sales</span>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="paytm_monday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="paytm_tuesday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="paytm_wednesday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="paytm_thursday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="paytm_friday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="paytm_saturday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="paytm_sunday_sales"/></td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="total_paytm_sales"/></td>
+                                                   </td>
+                                                </tr>
+                                                <tr style="background-color: #D6EEEE;">
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 20%;background-color: white;">
+                                                       <span style="padding-left:16mm">Transactions</span>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="paytm_monday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="paytm_tuesday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="paytm_wednesday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="paytm_thursday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="paytm_friday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="paytm_saturday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="paytm_sunday_transactions"/></td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="total_paytm_transactions"/></td>
+                                                   </td>
+                                                </tr>
+                                                <tr style="background-color: #D6EEEE;">
+                                                   <th style="border: 1px solid black;border-collapse: collapse;width:20%;">
+                                                       <span>PhonePe Wallet</span>
+                                                   </th>
+                                                    <th style="background-color: white;">
+                                                       </th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;width:20%;">
+                                                       </th>
+                                                   </tr>
+                                                <tr style="background-color: #D6EEEE;">
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 20%;background-color: white;">
+                                                       <span style="padding-left:30mm">Sales</span>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="phone_monday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="phone_tuesday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="phone_wednesday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="phone_thursday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="phone_friday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="phone_saturday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="phone_sunday_sales"/></td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="total_phone_sales"/></td>
+                                                   </td>
+                                                </tr>
+                                                <tr style="background-color: #D6EEEE;">
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 20%;background-color: white;">
+                                                       <span style="padding-left:16mm">Transactions</span>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="phone_monday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="phone_tuesday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="phone_wednesday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="phone_thursday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="phone_friday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="phone_saturday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="phone_sunday_transactions"/></td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="total_phone_transactions"/></td>
+                                                   </td>
+                                                </tr>
+                                                <tr style="background-color: #D6EEEE;">
+                                                   <th style="border: 1px solid black;border-collapse: collapse;width:20%;">
+                                                       <span>Freecharge</span>
+                                                   </th>
+                                                    <th style="background-color: white;">
+                                                       </th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;width:20%;">
+                                                       </th>
+                                                   </tr>
+                                                <tr style="background-color: #D6EEEE;">
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 20%;background-color: white;">
+                                                       <span style="padding-left:30mm">Sales</span>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="free_monday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="free_tuesday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="free_wednesday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="free_thursday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="free_friday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="free_saturday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="free_sunday_sales"/></td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="total_free_sales"/></td>
+                                                   </td>
+                                                </tr>
+                                                <tr style="background-color: #D6EEEE;">
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 20%;background-color: white;">
+                                                       <span style="padding-left:16mm">Transactions</span>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="free_monday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="free_tuesday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="free_wednesday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="free_thursday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="free_friday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="free_saturday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="free_sunday_transactions"/></td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="total_free_transactions"/></td>
+                                                   </td>
+                                                </tr>
+                                                <tr>
+                                                   <th style="border: 1px solid black;border-collapse: collapse;width:20%;">
+                                                       <span>Sodexo Cards</span>
+                                                   </th>
+                                                    <th style="background-color: white;">
+                                                       </th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;width:20%;">
+                                                       </th>
+                                                   </tr>
+                                                <tr style="background-color: #D6EEEE;">
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 20%;background-color: white;">
+                                                       <span style="padding-left:30mm">Sales</span>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="sodexo_monday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="sodexo_tuesday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="sodexo_wednesday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="sodexo_thursday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="sodexo_friday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="sodexo_saturday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="sodexo_sunday_sales"/></td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="total_sodexo_sales"/></td>
+                                                   </td>
+                                                </tr>
+                                                <tr style="background-color: #D6EEEE;">
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 20%;background-color: white;">
+                                                       <span style="padding-left:16mm">Transactions</span>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="sodexo_monday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="sodexo_tuesday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="sodexo_wednesday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="sodexo_thursday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="sodexo_friday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="sodexo_saturday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="sodexo_sunday_transactions"/></td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="total_sodexo_transactions"/></td>
+                                                   </td>
+                                                </tr>
+                                                <tr>
+                                                   <th style="border: 1px solid black;border-collapse: collapse;width:20%;">
+                                                       <span>Samsung Pay</span>
+                                                   </th>
+                                                    <th style="background-color: white;">
+                                                       </th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;width:20%;">
+                                                       </th>
+                                                   </tr>
+                                                <tr style="background-color: #D6EEEE;">
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 20%;background-color: white;">
+                                                       <span style="padding-left:30mm">Sales</span>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="samsung_monday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="samsung_tuesday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="samsung_wednesday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="samsung_thursday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="samsung_friday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="samsung_saturday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="samsung_sunday_sales"/></td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="total_samsung_sales"/></td>
+                                                   </td>
+                                                </tr>
+                                                <tr style="background-color: #D6EEEE;">
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 20%;background-color: white;">
+                                                       <span style="padding-left:16mm">Transactions</span>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="samsung_monday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="samsung_tuesday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="samsung_wednesday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="samsung_thursday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="samsung_friday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="samsung_saturday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="samsung_sunday_transactions"/></td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="total_samsung_transactions"/></td>
+                                                   </td>
+                                                </tr>
+                                                <tr>
+                                                   <th style="border: 1px solid black;border-collapse: collapse;width:20%;">
+                                                       <span>Apple Pay</span>
+                                                   </th>
+                                                    <th style="background-color: white;">
+                                                       </th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;"></th>
+                                                       <th style="background-color: white;width:20%;">
+                                                       </th>
+                                                   </tr>
+                                                <tr style="background-color: #D6EEEE;">
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 20%;background-color: white;">
+                                                       <span style="padding-left:30mm">Sales</span>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="apple_monday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="apple_tuesday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="apple_wednesday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="apple_thursday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="apple_friday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="apple_saturday_sales"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="apple_sunday_sales"/></td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="total_apple_sales"/></td>
+                                                   </td>
+                                                </tr>
+                                                <tr style="background-color: #D6EEEE;">
+                                                   <td style="border: 1px solid black;border-collapse: collapse;width: 20%;background-color: white;">
+                                                       <span style="padding-left:16mm">Transactions</span>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="apple_monday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="apple_tuesday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="apple_wednesday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="apple_thursday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="apple_friday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="apple_saturday_transactions"/></td>
+                                                    <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        <t t-esc="apple_sunday_transactions"/></td>
+                                                       <td style="border: 1px solid black;border-collapse: collapse;">
+                                                        ₹<t t-esc="total_apple_transactions"/></td>
+                                                   </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                    </div>
+            </t>
+        </t>
+    </template>
+</odoo>

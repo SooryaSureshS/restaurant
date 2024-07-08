@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="OrderReceiptRemove" t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('pos-receipt-order-data1')]" position="replace">
+            <div>Date: <t t-esc="receipt.current_date"/></div>
+            <div>Order No: <t t-esc="receipt.name"/></div>
+            <div>Invoice No: <t t-esc="receipt.inv_name"/></div>
+            <t t-if="receipt.delivery_type">
+                <div>Order Type: <t t-esc="receipt.delivery_type"/></div>
+            </t>
+            <div>No. of people:
+                <t t-esc="env.table_people_number"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('pos-receipt-order-data')]" position="replace"/>
+    </t>
+</templates>

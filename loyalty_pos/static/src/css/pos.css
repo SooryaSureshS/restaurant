@@ -1,0 +1,54 @@
+.loyalty-points{
+    margin-left: 20px;
+    float: left;
+    padding: 10px;
+    max-width: 216px;
+    text-align: left;
+    color: #6EC89B;
+    background: rgba(110, 200, 155, 0.17);
+    border-radius: 3px;
+}
+.pos .order .summary .loyalty-points.negative{
+    color: #C86E6E;
+    background: rgba(200, 110, 110, 0.17);
+}
+.pos .order .summary .loyalty-points-total {
+    border-top: solid 2px;
+    text-align: center;
+    padding-top: 4px;
+    margin-top: 4px;
+}
+
+.loyalty .subtitle{
+    text-align: center;
+}
+
+.loyalty .title {
+    font-size: 20px;
+    text-align: center;
+}
+
+.redeem_popup {
+    font-family: sans-serif;
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    left: 33%;
+    top: 21%;
+    width: 450px;
+    border-radius: 3px;
+    box-shadow: 0px 4px 15.36px 0.64px rgb(0 0 0 / 10%), 0px 2px 6px 0px rgb(0 0 0 / 12%);
+    animation: jelly 0.5s ease-in-out;
+    z-index: 500;
+}
+
+.button.redeem_now {
+    background-color: #6ec89b;
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 10px 32px;
+    margin-top: 15px;
+    cursor: pointer;
+    margin-bottom: 8px;
+}

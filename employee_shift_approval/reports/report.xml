@@ -1,0 +1,44 @@
+<odoo>
+
+
+    <report id="report_timesheet_summary"
+            model="timesheet.approval"
+            string="Daily Timesheet Summary"
+            report_type="qweb-pdf"
+            name="employee_shift_approval.report_template"
+            menu="False" />
+
+    <record model="report.paperformat" id="paperformat_scheduling_report">
+        <field name="name">paperformat.scheduling_report</field>
+        <field name="format">A4</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">30</field>
+        <field name="margin_right">10</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">15</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">25</field>
+        <field name="dpi">90</field>
+    </record>
+    <report id="report_timesheet_summary_based_on_date"
+            model="timesheet.approval.report"
+            string="Employee Scheduling And Productivity Report"
+            report_type="qweb-pdf"
+            name="employee_shift_approval.scheduling_productivity_report"
+            paperformat="paperformat_scheduling_report"
+            menu="False" />
+
+
+<!--    <record id="report_timesheet_summary_based_on_date" model="ir.actions.report">-->
+<!--        <field name="name">Employee Scheduling And Productivity Report</field>-->
+<!--        <field name="model">timesheet.approval.report</field>-->
+<!--        <field name="report_type">qweb</field>-->
+<!--        <field name="report_name">employee_shift_approval.scheduling_productivity_report</field>-->
+<!--        <field name="report_file">employee_shift_approval.scheduling_productivity_report</field>-->
+<!--        <field name="binding_type">report</field>-->
+<!--    </record>-->
+
+
+
+</odoo>

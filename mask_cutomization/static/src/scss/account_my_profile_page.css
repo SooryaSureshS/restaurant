@@ -1,0 +1,421 @@
+.banner{
+    background: url('/mask_cutomization/static/src/image/BG.png');
+    background-size: cover;
+    width: 70%;
+    margin: auto;
+    /* height: 1000px; */
+    display: flex;
+    /* flex: 100%; */
+    font-family: 'Montserrat';
+    
+}
+.Accoount-left-banner{
+    color: white;
+    flex: 43%;
+    padding: 10% 5% 7% 10%;
+    font-weight: 700;
+    cursor: pointer;
+}
+.Account-right-banner{
+    flex: 57%;
+    color: white;
+    padding: 10% 5% 7% 2%;
+}
+.fa-angle-right{
+    float: right;
+}
+.Accoount-left-banner span{
+margin-left: -6%;
+font-weight: 500;
+
+}
+.Account-right-banner button{
+    width: -webkit-fill-available;
+    background: #626063;
+border-radius: 11.4286px;
+Height:50px;
+border: none;
+color: white;
+cursor: pointer;
+}
+.Account-right-banner i{
+padding-right: 2%;
+}
+.fa-pointer{
+   display:flex;
+   white-space: break-spaces;
+}
+#information-heading{
+    font-weight: 700;
+    border-bottom: solid;
+    width: fit-content;
+}
+.information-inputs input{
+width: -webkit-fill-available;
+    background: #e6e6ee;
+    border-radius: 8px;
+    height: 44px;
+    border: none;
+    padding-left: 3%;
+    margin-bottom: 3%;
+}
+.information-inputs select{
+    width: -webkit-fill-available;
+    background: #e6e6ee;
+    border-radius: 8px;
+    height: 44px;
+    border: none;
+    padding-left: 3%;
+    margin-bottom: 3%;
+}
+.information-inputs{
+    line-height: 2;
+}
+.check input{
+    width: 15px;
+    height: 15px;
+}
+.check button{
+    width: 50px;
+    float: right;
+    height: 47px;
+    background: white;
+    border-radius: 8px;
+    margin-top: -7px;
+}
+#cancel-btn{
+    color:#626063;
+    background-color: #e6e6ee;
+    margin-top: 15px;
+    cursor: pointer;
+}
+#checkbox-small-screen{
+    display: none;
+}
+
+@media screen and (max-width: 550px){
+.Accoount-left-banner{
+    font-size: 10px;
+    padding: 10% 5% 7% 6%;
+}
+.Account-right-banner{
+    font-size: 10px;
+}
+.Account-right-banner button{
+    height: 30px;
+}
+.banner{
+    width: 80%;
+}
+.information-inputs input,.information-inputs select{
+    height: 28px;
+    border-radius: 4px;
+    font-size: 10px;
+}
+#checkbox-small-screen img{
+    width: 12px!important;
+}
+#checkbox-small-screen button{
+    width: 23px!important;
+    border-radius: 5px !important;
+    height: 34px;
+}
+#checkbox-small-screen input {
+    width: 11px !important;
+    height: 11px !important;
+}
+}
+@media screen and (max-width: 950px){
+.check button{
+    width: 32px;
+    height: 34px;
+    margin-top: 0px;
+}
+#checkbox-large-screen{
+    display: none;
+}
+#checkbox-small-screen{
+    display: block;
+}
+#checkbox-small-screen input{
+    width: 15px;
+    height: 15px;
+}
+#checkbox-small-screen button{
+    width: 41px;
+    float: right;
+    height: 34px;
+    background: white;
+    border-radius: 8px;
+}
+#checkbox-small-screen img{
+    width: 15px;
+}
+}
+.user_image_fa{
+    width: 20px;
+    margin-right: 15px;
+}
+.phone_image_fa{
+    width: 20px;
+    margin-right: 15px;
+}
+.envelope_image_fa{
+  width: 20px;
+    margin-right: 15px;
+}
+.navigation a li {
+    font-weight: 600;
+}
+.delivery_kanban{
+    width: 100%;
+    min-height: 180px;
+    border: 1px solid;
+    float: left;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 15px;
+        cursor: pointer;
+            margin-left: 15px;
+}
+    .address_selected {
+        border: 4px solid;
+    }
+     .delivery_selected {
+        border: 4px solid;
+    }
+    .phone_number_container{
+        display: flex;
+    }
+    #edit_save_changes{
+        width: -webkit-fill-available;
+        background: #626063;
+        border-radius: 11.4286px;
+        Height: 50px;
+        border: none;
+        color: white;
+        text-align: center;
+        padding-top: 7px;
+    }
+    #edit_cancel_changes{
+         width: -webkit-fill-available;
+        background: #626063;
+        border-radius: 11.4286px;
+        Height: 50px;
+        border: none;
+        color: white;
+        text-align: center;
+        padding-top: 7px;
+            color: #626063;
+    background-color: #e6e6ee;
+    margin-top: 15px;
+    cursor: pointer;
+    }
+
+.container_mask_image{
+     content:url("/mask_cutomization/static/src/image/account/Page T.png");
+}
+#change_password {
+     cursor: pointer;
+         font-weight: 500;
+
+}
+.change_password_label{
+            font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+    letter-spacing: 1.42857px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-top: 30px;
+}
+.old_password_label{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-top: 25px;
+}
+
+.password_field{
+background: #FFFFFF;
+    border-radius: 11.4286px;
+        width: 100%;
+    height: 55px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    color: #6E6E70;
+    border: none;
+    padding-left: 25px;
+}
+.confirm_button_password{
+        background: #626063;
+    border-radius: 11.4286px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: capitalize;
+    color: #FFFFFF;
+    justify-content: center;
+    height: 50px;
+}
+.cancel_button_password{
+        margin-top: 14px;
+    background: #FFFFFF;
+    border-radius: 6.428599999999999px;
+    color: #626063;
+}
+#error_message_display{
+ height: 41px;
+    background: #ff0101;
+    border: 1px solid #7c7a7a;
+    border-radius: 12px;
+    text-align: center;
+    font-family: 'Montserrat';
+    font-size: 15px;
+    padding: 8px;
+    font-weight: 700;
+    position: absolute;
+    width: 395px;
+}
+.border_bottom{
+    width: 85%;
+    height: 10px;
+    border-bottom: 1px solid;
+}
+.my_order_list{
+    padding-top: 15px;
+    padding-bottom: 8px;
+        position: relative;
+    width: 85%;
+}
+.order_reference{
+    font-weight: 700;
+    padding-right: 25px;
+}
+.subtotal_div{
+    position: relative;
+    width: 85%;
+    height: 25px;
+    margin-top:20px;
+}
+.left_panel_sk{
+    position: absolute;
+    left:0;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+}
+.right_panel_sk{
+    position: absolute;
+    right:0;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+}
+.font_600sk{
+       font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+}
+.font_700sk{
+       font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+}
+.font_600sk{
+       font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+}
+.font_500sk{
+       font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+
+}
+.d_flex{
+    display: flex;
+}
+.d_relative{
+    position: relative;
+}
+.d_absolute{
+    position: absolute;
+}
+.d_right{
+    right: 0;
+}
+.d_left{
+    left: 0;
+}
+.font_11{
+    font-size:11px;
+}
+.font_12{
+    font-size:12px;
+}
+.font_13{
+    font-size:13px;
+}
+.font_14{
+    font-size:14px;
+}
+.font_15{
+    font-size:15px;
+}
+.font_16{
+    font-size:16px;
+}
+.invoice_button{
+background: #626063;
+    border-radius: 6.3226px;
+    width: 85%;
+    height: 35px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11.3993px;
+    line-height: 22px;
+    display: flex;
+    text-align: center;
+    text-transform: capitalize;
+    color: #FFFFFF;
+    justify-content: center;
+    padding-top: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+#popup_alert_message{
+        z-index: 99999;
+}
+#overlay{
+      position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}

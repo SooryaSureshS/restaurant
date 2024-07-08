@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="action_social_media_post" model="ir.actions.act_window">
+            <field name="name">Social Media Post</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">social.media.post</field>
+            <field name="view_mode">kanban,form</field>
+        </record>
+
+        <menuitem
+                id="social_media_post_menu"
+                name="Social Media Post"
+                parent="social_media_base.social_media_main_menu"
+                action="action_social_media_post"
+                sequence="30"/>
+
+        <record id="social_post_view_kanban" model="ir.ui.view">
+            <field name="name">social.media.post.view.kanban</field>
+            <field name="model">social.media.post</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="is_facebook"/>
+                    <field name="is_instagram"/>
+                    <field name="message"/>
+                    <field name="status"/>
+                    <field name="is_failed"/>
+                    <field name="failure_reason"/>
+                    <field name="has_post_errors"/>
+                    <field name="social_media_account_ids"/>
+                    <field name="has_active_accounts"/>
+                    <field name="image_ids"/>
+                    <field name="publish_method"/>
+                    <field name="scheduled_date"/>
+                    <field name="published_date"/>
+                    <!--                    <templates>-->
+                    <!--                        <t t-name="kanban-box">-->
+                    <!--                            <div t-attf-class="oe_kanban_global_click">-->
+                    <!--                                <div t-attf-class="o_social_stream_post_message_text overflow-hidden">-->
+                    <!--                                    <field name="message"  widget="text_emojis" />-->
+                    <!--                                </div>-->
+                    <!--                                <div class="o_kanban_image">-->
+                    <!--                                    <img t-att-src="kanban_image('social.media.post','image',record.id.raw_value)" alt="Image"/>-->
+                    <!--                                </div>-->
+                    <!--                                <hr class="mb4 mt4"/>-->
+                    <!--                                <div class="row o_kanban_record_subtitle">-->
+                    <!--                                    <div class="col-4 text-center"><field name="message"/></div>-->
+                    <!--                                    <div class="col-4 text-center"><field name="status"/></div>-->
+                    <!--                                    <div class="col-4 text-center">-->
+                    <!--                                        <field name="is_facebook" widget="boolean"/>-->
+                    <!--                                    </div>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                        </t>-->
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="row mb4">
+                                    <strong class="col-6">
+                                        <h4>POST</h4>
+                                    </strong>
+                                    <strong class="col-6 text-right">
+                                        <i class="fa fa-clock-o" aria-label="Date" role="img" title="Date"/><field name="published_date"/>
+                                    </strong>
+                                </div>
+                                    <div class="col-11 text-right">
+                                        <span t-if="record.status.raw_value.length == 5"  class="badge badge-muted">Draft</span>
+                                        <span t-if="record.status.raw_value.length == 9"  class="badge badge-info">Scheduled</span>
+                                        <span t-if="record.status.raw_value.length == 7"  class="badge badge-primary">Posting</span>
+                                        <span t-if="record.status.raw_value.length == 6"  class="badge badge-success">Posted</span>
+                                    </div>
+                                <hr/>
+                                    <div t-attf-class="o_social_stream_post_message_text overflow-hidden">
+                                        <p><strong> Caption</strong>
+                                        <field name="message"  widget="text_emojis" /></p>
+                                    </div>
+<!--                                <img src="record.image_html.value"/>-->
+<!--                                <img t-att-src="kanban_image('social.media.post', 'image_ids', record.id.raw_value)"/>-->
+<!--                                <div-->
+<!--                                    class="o_social_stream_post_image d-flex mx-n3 overflow-hidden"-->
+<!--                                    t-att-data-images="record.image_html.raw_value">-->
+<!--                                    <t t-set="image_urls_json" t-value="JSON.parse(record.image_html.raw_value || '[]')"/>-->
+<!--                                    <img class="o_social_stream_post_image_click" t-att-src="image_urls_json" alt="Post Image" />-->
+<!--                                </div>-->
+                                <hr/>
+                                    <div>
+                                        <p>Posted On:
+                                            <span t-esc="record.social_media_account_ids.raw_value.length"/> Social Media Accounts </p>
+                                    </div>
+<!--                                    <div class="col-2 text-right">-->
+<!--                                        <img t-att-src="kanban_image('res.partner', 'image_128', record.image_ids.raw_value)" class="oe_kanban_avatar o_image_24_cover"/>-->
+<!--                                    </div>-->
+                            </div>
+                        </t>
+                    </templates>
+                    <!--                    </templates>-->
+                </kanban>
+            </field>
+        </record>
+
+
+
+        <record id="social_post_view_form" model="ir.ui.view">
+            <field name="name">social.media.post.view.form</field>
+            <field name="model">social.media.post</field>
+            <field name="arch" type="xml">
+                <form string="Social Post" class="o_social_post_view_form">
+                    <header>
+                        <button name="publish" string="Publish" type="object" class="oe_highlight"
+                                attrs="{'invisible': ['|', ('status', '!=', 'draft'), ('publish_method', '=', 'scheduled')]}"/>
+                        <button name="publish" string="Publish Now" type="object"
+                                attrs="{'invisible': [('status', '!=', 'scheduled')]}"/>
+                        <button name="action_schedule" string="Schedule" type="object" class="oe_highlight"
+                                attrs="{'invisible': ['|', ('status', '!=', 'draft'), ('publish_method', '=', 'now')]}"/>
+                        <field name="status" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group string="Post" name="social_media_post_global" >
+                                <div>
+                                    <h4 class="text-muted"><strong>Select Media Type</strong></h4>
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td><field name="is_facebook" context="{'bool_media_type': 'facebook'}" attrs="{'readonly': [('status', 'in', ['posting', 'posted'])]}"/></td>
+                                                <td><p>Facebook</p></td>
+                                            </tr>
+                                            <tr>
+                                                <td><field name="is_instagram" context="{'bool_media_type': 'instagram'}" attrs="{'readonly': [('status', 'in', ['posting', 'posted'])]}"/></td>
+                                                <td><p>Instagram</p></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h4 class="text-muted"><strong>Select Accounts To Post</strong></h4>
+                                    <field name="social_media_account_ids" attrs="{'readonly': [('status', 'in', ['posting', 'posted'])]}" options="{'no_create': True}" string="Accounts To Post" widget="many2many_checkboxes"/>
+                                    <h4 class="text-muted"><strong>Text</strong></h4>
+                                    <field name="message" attrs="{'readonly': [('status', 'in', ['posting', 'posted'])]}" widget="text_emojis"/>
+                                    <h4 class="text-muted"><strong>Media</strong></h4>
+                                    <field name="image_ids" widget="many2many_binary" class="o_social_post_form_attachments"
+                                           attrs="{'readonly': [('status', 'in', ['posting', 'posted'])]}" />
+                                    <h4 class="text-muted" attrs="{'invisible': [('status', '!=', 'draft')]}"><strong>Publish Methods</strong></h4>
+                                    <field name="publish_method" widget="radio" attrs="{'invisible': [('status', '!=', 'draft')]}"/>
+                                    <h4 class="text-muted" attrs="{'invisible': ['|', ('publish_method', '=', 'now'), ('status', 'in', ['posting', 'posted'])], 'required': [('publish_method', '!=', 'now')]}" ><strong>Schedule Date</strong></h4>
+                                    <field name="scheduled_date" attrs="{'invisible': ['|', ('publish_method', '=', 'now'), ('status', 'in', ['posting', 'posted'])], 'required': [('publish_method', '!=', 'now')]}" />
+                                </div>
+                            </group>
+                            <group name="previews_placeholder" class="o_social_post_preview_group m-0">
+                                <div class="o_social_post_empty_preview o_view_nocontent bg-100"
+                                     attrs="{'invisible': [ ('message', '!=', False), ('message', '!=', '')]}">
+                                    <div class="o_nocontent_help">
+                                        <p class="o_view_nocontent_smiling_face">
+                                            Preview your post
+                                        </p>
+                                        <p>
+                                            Write a message to see the preview.
+                                        </p>
+                                    </div>
+                                </div>
+                            </group>
+                            <group colspan="2">
+                                <group>
+                                    <div>
+                                        <h3 class="text-muted"><strong>Post Details</strong></h3>
+                                    </div>
+                                </group> <field name="social_media_post_lines">
+                                <tree create="0" editable="0" readonly="1">
+                                    <field name="social_media_type"/>
+                                    <field name="account_name"/>
+                                    <field name="reason_for_failure"/>
+                                    <field name="status"/>
+                                    <button name="publish_post" string="Retry" type="object" class="oe_highlight"
+                                            attrs="{'invisible': [('status', '=', 'posted')]}"/>
+                                </tree>
+                            </field>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

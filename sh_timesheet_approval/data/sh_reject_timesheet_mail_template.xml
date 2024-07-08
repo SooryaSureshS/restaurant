@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="sh_reject_timesheet_template" model="mail.template">
+            <field name="name">Rejected: Send by email</field>
+            <field name="model_id" ref="hr_timesheet.model_account_analytic_line" />
+            <field name="email_from">${object.company_id.partner_id.email_formatted |safe}</field>
+            <field name="email_to">${object.create_uid.partner_id.email|safe}</field>
+            <field name="subject">${object.company_id.name} Rejected Timesheet</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Hello ${object.create_uid.partner_id.name},
+                        <br />
+                        <br />
+                        Your Timesheet is Rejected.
+                        <br />
+                        <br />
+                        Reject Reason : ${object.sh_reject_reason}
+                        <br />
+                        <br />
+                        URL : <a href="${object.base_url}">View Timesheet</a>
+                        <br />
+                        <br />
+                        <b>Your Timesheet Information</b>
+                        <br />
+                        <br />
+                        <table border="1" style="font-family: arial, sans-serif; border-collapse: collapse; width: 100%;">
+                            <tr>
+                                <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"><b>Date</b></th>
+                                <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"><b>Description</b></th>
+                                <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"><b>Project</b></th>
+                                <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"><b>Task</b></th>
+                                <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;"><b>Duration</b></th>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">${object.date}</td>
+                                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">${object.name}</td>
+                                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">${object.project_id.name}</td>
+                                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">${object.task_id.name}</td>
+                                <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">${object.unit_amount}</td>
+                            </tr>
+                        </table>
+                    </p>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

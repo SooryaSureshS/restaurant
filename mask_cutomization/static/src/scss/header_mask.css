@@ -1,0 +1,22 @@
+.banner_container{
+   background:black;
+   background: #4187a0 url("/mask_cutomization/static/src/image/Page Banner.png") no-repeat center;
+   width: 100%;
+   height:500px;
+       background-size: cover;
+       position: relative;
+
+}
+.container_skypro1{
+    max-width: 1302px;
+    height: 100%;
+    position: relative;
+    margin: auto;
+        z-index: 2;
+}
+.container_mask_image{
+        position: absolute;
+    right: 50%;
+    transform: translateX(50%) !important;
+    top: 3%;
+}

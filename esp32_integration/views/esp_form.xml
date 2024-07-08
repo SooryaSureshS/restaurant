@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+     <record model="ir.ui.view" id="hotel_laundry_form_view">
+            <field name="name">rfid.container.form</field>
+            <field name="model">rfid.container</field>
+            <field name="arch" type="xml">
+                <form string="Rfid Container">
+
+                    <header>
+                        <button name="check_connection" string="Check connection"  type="object"
+                                groups="esp32_integration.department_rfid_manager"/>
+<!--                        <button name="update_record" string="Update" states="confirmed" type="object"-->
+<!--                                groups="hotel_laundry.group_laundry_manager"/>-->
+<!--                        <button name="cancel_supplier" string="Cancel" states="edit,confirmed" type="object"-->
+<!--                                groups="hotel_laundry.group_laundry_manager"/>-->
+<!--                        <field name="state" widget="statusbar" statusbar_visible="draft,confirmed"/>-->
+                    </header>
+                    <sheet>
+                         <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group col="4" colspan="4">
+                                <field name="barcode"/>
+                                <field name="weight"/>
+                                <field name="ssid"/>
+                                <field name="password" />
+                                <field name="create_date" />
+                                <field name="write_date" />
+                                <field name="partner_id"/>
+                            </group>
+                        </group>
+                         <notebook colspan="4">
+                            <page string="Rfid Line">
+                                <field name="product_ids">
+                                    <tree editable="bottom">
+                                        <field name="rfid_id" invisible="1"/>
+                                        <field name="product_id"/>
+                                        <field name="rfid_code"/>
+                                        <field name="product_weight"/>
+                                        <field name="dynamic_ip"/>
+                                        <field name="status"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="rfid_container_tree_view">
+            <field name="name">rfid.container.tree</field>
+            <field name="model">rfid.container</field>
+            <field name="arch" type="xml">
+                <tree string="Hotel Laundry">
+                    <field name="name"/>
+                    <field name="barcode"/>
+                    <field name="weight"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="hotel_laundry_view">
+            <field name="name">Rfid Container</field>
+            <field name="res_model">rfid.container</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+        <menuitem id="rfid_service" name="Rfid Services" web_icon="esp32_integration,static/description/img.png"/>
+        <menuitem id="rfid_configuration" name="Rfid Configuration" parent="rfid_service" action="hotel_laundry_view"/>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_invoice_document_inherit_js_custom_module" inherit_id="account.report_invoice_document">
+
+        <xpath expr="//div/h2" position="before">
+            <center>
+                <span style="font-weight: 700;font-size: 50px;color: #4c4c4d;">
+                    TAX INVOICE
+                </span>
+            </center>
+        </xpath>
+        <xpath expr="//table/tbody//td[@name='account_invoice_line_name']" position="replace">
+
+             <td name="account_invoice_line_name">
+                 <t t-set="cache" t-value="[]"/>
+                 <t t-set="new_lines" t-value="line.name.split('\n')"/>
+                 <t t-foreach="new_lines" t-as="l_new">
+                    <t t-if="not cache.count(l_new)">
+                        <t t-set="cache" t-value="cache + [l_new]"/>
+                         <span t-esc="l_new"></span><br/>
+                    </t>
+                </t>
+
+             </td>
+        </xpath>
+
+
+        <xpath expr="//div/div[2]/div/div/table/t" position="replace">
+            <t t-set="current_subtotal" t-value="0"/>
+            <t t-foreach="o.amount_by_group" t-as="amount_by_group">
+                <t t-set="current_subtotal" t-value="current_subtotal + float(amount_by_group[3][1:])"/>
+            </t>
+            <td><strong>GST Included in Total</strong></td>
+<!--            <td class="text-right o_price_total">-->
+<!--                $ <span class="text-nowrap" t-esc="current_subtotal"/>-->
+<!--            </td>-->
+        </xpath>
+
+
+
+        <xpath expr="//table/thead//th[@name='th_taxes']" position="replace">
+
+        </xpath>
+
+        <xpath expr="//table/tbody/t[3]/tr/t/td[5]" position="replace">
+
+        </xpath>
+
+    </template>
+    <template id="external_layout_standard_custom" inherit_id="web.external_layout_standard">
+        <xpath expr="//div[@name='company_address']" position="inside">
+            <span>ABN 8845 782 6859</span>
+        </xpath>
+    </template>
+
+</odoo>

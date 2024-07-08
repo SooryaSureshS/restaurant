@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="ProductMcdButton" owl="1">
+        <span class="control-button ">
+            <i class="fa fa fa-plane"></i>
+            <span> </span>
+            <span>Send to kitchen</span>
+        </span>
+
+    </t>
+    <t t-name="SubmitOrderButton" t-inherit="pos_restaurant.SubmitOrderButton" t-inherit-mode="extension" owl="1">
+         <xpath expr="//span[hasclass('control-button')]" position="replace">
+            <span class="control-button" t-att-class="addedClasses" style="display:none">
+                <i class="fa fa-cutlery"></i>
+                <span> </span>
+                <span>Order</span>
+            </span>
+         </xpath>
+    </t>
+
+</templates>

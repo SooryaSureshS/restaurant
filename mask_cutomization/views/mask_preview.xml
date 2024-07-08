@@ -1,0 +1,119 @@
+<odoo>
+    <data>
+        <template id="mask_preview" name="Recommend">
+            <t t-call="website.layout">
+                <t t-set="additional_title">Print Area Mask</t>
+                 <link rel="stylesheet" href="/mask_cutomization/static/src/scss/Shop_customize_mask-logo_page.css"/>
+                <t t-set="no_footer" t-value="1"/>
+
+                <t t-call="mask_cutomization.header_banner_xml"/>
+
+                 <div class="banner container" id="MaskCustomizationPreview">
+                     <p id="gui_back"> &lt; Back </p>
+                        <div id="process-bar"><img src="/mask_cutomization/static/src/image/image_preview/Customize Process.png" alt=""/></div>
+                        <div class="inner-flex">
+                            <div class="left-flex">
+                                <input type="hidden" id="product" t-att-value="product.id"/>
+                                <input type="hidden" id="line" t-att-value="line"/>
+                                <input type="hidden" id="order" t-att-value="order"/>
+<!--                                <img src="Group 3232.png" alt=""/>-->
+                                <div class="group_preview_container">
+<!--                                        <iframe id="inlineFrameExample" title="Inline Frame Example" width="100%" height="100%" src="http://0.0.0.0:9002/mask/load"></iframe>-->
+                                </div>
+                                <div class="left-flex-images" >
+                                <div class="fold_buttons">
+                                    <img class="fold_button  all_btn actived" id="active_fold" src="/mask_cutomization/static/src/image/image_preview/fold active.png" alt="" style="display:none;"/>
+                                    <img class="fold_button  all_btn blocked" src="/mask_cutomization/static/src/image/image_preview/fold notactive.png" alt="" />
+                                    <p>Fold</p>
+                                </div>
+                                <div class="fold_buttons">
+                                    <img class="3d_button  all_btn actived" src="/mask_cutomization/static/src/image/image_preview/3D active.png" alt="" style="display:none;"/>
+                                    <img class="3d_button  all_btn blocked" src="/mask_cutomization/static/src/image/image_preview/3D notactive.png" alt="" />
+                                    <p>3D</p>
+                                </div>
+                                <div class="fold_buttons">
+                                    <img class="image_button  all_btn actived" src="/mask_cutomization/static/src/image/image_preview/image active.png" alt="" style="display:none;"/>
+                                    <img class="image_button  all_btn blocked" src="/mask_cutomization/static/src/image/image_preview/image notactive.png" alt="" />
+                                    <p>image</p>
+                                </div>
+                                </div>
+
+
+                            </div >
+                            <div class="right-flex">
+                                <img src="Customize Process.png" alt="" style="width:87%;" id="right-flex-process" /><br/>
+                                <p id="mask-header"><t t-if="product.name" t-esc="product.name"/></p>
+                               <br/><br/>
+                                <p >Preview mode</p>
+
+                            <div>
+                                <button id="preview-btn" class="product_packaging">Next</button>
+                            </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+<!--                <div class="sub_container_skypro" id="skypro_preview_container">-->
+
+<!--                    <div class="row margin_t_80">-->
+<!--                        <div class="container_print_area">-->
+<!--                            <div class="picture_base_container">-->
+<!--                                 <div class="row">-->
+<!--                                     <div class="bread_crumb_skypro" style="    margin-left: 80px;font-family: 'Montserrat';font-weight: 500;color: #E2D6D6;">-->
+<!--                                        <a href="/mask/designing" style="color: #E2D6D6;">&lt; Back</a>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                 <div class="picture_container" id="picture_container">-->
+<!--                                     <iframe id="inlineFrameExample" title="Inline Frame Example" width="100%" height="100%" src="http://0.0.0.0:9002/mask/load"></iframe>-->
+<!--&lt;!&ndash;                                    <img class="mask_image_span" src="/mask_cutomization/static/src/image/Fullmask (2).png"/>&ndash;&gt;-->
+
+<!--                                </div>-->
+<!--                                <div class="preview_controllers">-->
+<!--                                            <span class="preview_span">-->
+<!--                                                <img src="/mask_cutomization/static/src/image/Group 3452.png"/>-->
+<!--                                            </span>-->
+<!--                                            <span class="preview_span view_none">-->
+<!--                                                <img src="/mask_cutomization/static/src/image/fold_color.png"/>-->
+<!--                                            </span>-->
+<!--                                             <span class="preview_span view_none">-->
+<!--                                                <img src="/mask_cutomization/static/src/image/3d_no_color.png"/>-->
+<!--                                            </span>-->
+<!--                                            <span class="preview_span ">-->
+<!--                                                <img src="/mask_cutomization/static/src/image/3d_color.png"/>-->
+<!--                                            </span>-->
+<!--                                             <span class="preview_span ">-->
+<!--                                                <img src="/mask_cutomization/static/src/image/image_no_color.png"/>-->
+<!--                                            </span>-->
+<!--                                            <span class="preview_span view_none" >-->
+<!--                                                <img src="/mask_cutomization/static/src/image/image_color.png"/>-->
+<!--                                            </span>-->
+<!--                                     </div>-->
+<!--                            </div>-->
+
+
+
+<!--                            <div class="product_descriptions">-->
+<!--                                 <div class="status_bar">-->
+<!--                                    <img src="/mask_cutomization/static/src/image/Customize Process.png"/>-->
+<!--                                </div>-->
+<!--                                <div class="product_name">-->
+<!--                                    <span id="product_name"></span>-->
+<!--                                </div>-->
+<!--                                <div class="upload_your_image" style="margin-top: 48px;">-->
+<!--                                    <div>Preview mode</div><br></br>-->
+<!--                                </div>-->
+
+<!--                                <button class="preview_button1">Next</button>-->
+
+<!--                            </div>-->
+
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <t t-call="mask_cutomization.skypro_footer"/>
+            </t>
+        </template>
+    </data>
+</odoo>

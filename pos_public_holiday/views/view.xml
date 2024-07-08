@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_config_view_form_inherit_pos_public_holidays" model="ir.ui.view">
+        <field name="name">pos.config.form.inherit.pos.public_holidays</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+             <xpath expr="//sheet" position="inside">
+             <h2 name="order" position="before">
+                 <h2 name="Kitchen" class="o_horizontal_separator">Holiday Surcharge</h2>
+                 <div class="row mt16 o_settings_container" id="kitchen_screen">
+                     <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="iface_holiday"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="iface_holiday" string="Enable Holiday surcharge"/>
+                                <div class="text-muted mb16" style="font-size: 12px;font-weight: 100;">
+                                    Set public holiday surcharge
+                                </div>
+                                <div class="content-group pos_iot_config" attrs="{'invisible' : [('iface_holiday', '=', False)]}">
+                                    <div class="row mt16">
+                                        <label string="Select Surcharge Product" for="surcharge_product" class="col-lg-4 o_light_label"/>
+                                        <field name="surcharge_product" style="font-size: 13px;color: #7C7BAD;font-weight: 100;"/>
+                                    </div>
+                                    <div class="row mt16" attrs="{'invisible' : [('surcharge_product', '=', False)]}">
+                                        <label string="Select Start Date" for="start_date" class="col-lg-4 o_light_label"/>
+                                        <field name="start_date" style="font-size: 13px;color: #7C7BAD;font-weight: 100;"/>
+                                    </div>
+                                     <div class="row mt16" attrs="{'invisible' : [('surcharge_product', '=', False)]}">
+                                        <label string="Select End Date" for="end_date" class="col-lg-4 o_light_label"/>
+                                        <field name="end_date" style="font-size: 13px;color: #7C7BAD;font-weight: 100;"/>
+                                    </div>
+                                    <div class="row mt16" attrs="{'invisible' : [('surcharge_product', '=', False)]}">
+                                        <label string="Pricing Method" for="pricing_method" class="col-lg-4 o_light_label"/>
+                                        <field name="pricing_method" style="font-size: 13px;color: #7C7BAD;font-weight: 100;"/>
+                                    </div>
+                                    <div class="row mt16" attrs="{'invisible' : [('surcharge_product', '=', False)]}">
+                                        <label string="Amount/Percentage" for="amount" class="col-lg-4 o_light_label"/>
+                                        <field name="amount" style="font-size: 13px;color: #7C7BAD;font-weight: 100;"/>
+                                    </div>
+                                </div>
+                            </div>
+                     </div>
+                 </div>
+             </h2>
+             </xpath>
+        </field>
+    </record>
+</odoo>

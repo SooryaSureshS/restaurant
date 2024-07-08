@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="hr_employee_view_form_attendance_inherit" model="ir.ui.view">
+            <field name="name">hr.payslip.form.payrate</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll_community.view_hr_payslip_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Attendance Salary">
+                        <group>
+                            <field name="attendance_salary"/>
+                        </group>
+                    </page>
+                </notebook>
+
+            </field>
+        </record>
+    </data>
+
+</odoo>

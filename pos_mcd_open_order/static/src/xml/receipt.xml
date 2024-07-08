@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="ReceiptScreenOpenMcd" owl="1">
+        <div class="receipt-screen screen">
+            <div class="screen-content">
+                <div class="top-content">
+                    <div class="top-content-center"></div>
+                    <button style="height: 30px;margin-top: 14px" class="discard" t-on-click="trigger('close-screen')">
+                            <i class='fa fa-angle-double-left'></i>Back
+                    </button>
+                </div>
+                <div style="color: black;border: 1px solid #afabab;position: relative;background: #e2e2e2;margin-left: 41%;width: 18%;height: 20px;padding-top: 14px;padding-bottom: 12px;margin-top: 16px;text-align: center;font-size: 20px;"
+                     class="button print" t-on-click="trigger('printReceipt')">
+                    <i class="fa fa-print"></i>
+                    <span> </span>
+                    <span>Print</span>
+                </div>
+
+                <!--                <div class="default-view" style="display: unset;">-->
+                <div class="pos-receipt-container">
+                    <div class="pos-receipt"
+                         style="border:1px solid black !important;padding:10px !important;font-family: system-ui;">
+                        <t t-if="widget.env.pos.config.pos_logo">
+                            <img class="pos-receipt-logo"
+                                 t-att-src="'data:image/png;base64,'+widget.env.pos.config.pos_logo" alt="Logo"
+                                 width="100px" height="100px"/>
+                        </t>
+                        <t t-if="order['change_order']==true">
+                            <div class="pos-receipt-contact"
+                                 style="text-align:left;margin-top:30px; font-size:14px;font-weight:700;line-height: 22px;">
+                                <div><h2>Change Order</h2></div>
+                                <t t-foreach="order['change_list']" t-as="line">
+                                    <span style="    text-decoration: line-through;"> <t t-esc="line"/> </span>
+                                    <br></br>
+                                </t>
+                            </div>
+                        </t>
+
+                        <div class="pos-receipt-contact"
+                             style="text-align:left;margin-top:30px; font-size:14px;font-weight:700;line-height: 22px;">
+                            <div>Order No:<span><t t-esc="order['pos_reference']"/> </span>
+                            </div>
+                            <div>Order type: Dine In
+                                <span style="text-align:right;margin-right:0px !important;float:right !important;">
+                                    Table No:<t t-esc="order['table']"/>
+                                </span>
+                                <t t-set="preparation_time" t-value="ASAP"/>
+                                <t t-foreach="order['lines']" t-as="line"
+                                   t-key="line.id">
+                                    <t t-set="preparation_time"
+                                       t-value="line.preparation_time"/>
+                                </t>
+                                <t t-if="preparation_time>30">
+                                    ASAP
+                                </t>
+                                <t t-else="">
+                                    <t t-esc="preparation_time"/>
+                                    <t t-if="preparation_time!=ASAP">Min</t>
+                                </t>
+
+                            </div>
+                            <div>Received:<span><t t-esc="order['order_time']"/></span></div>
+                            <div>Name:<span><t t-if="order['customer']" ><t  t-if="order['customer'][1]" t-esc="order['customer'][1]"/> </t></span></div>
+                            <div>Phone:<span><t t-if="order['partner_contact']" t-esc="order['partner_contact']"/></span></div>
+                        </div>
+
+                        <div class="pos-receipt-contact"
+                             style="border-bottom:1px solid black;text-align:left;font-weight:700;border-top:2px solid black;min-height:20px;">
+                            <div>
+                                <span>Order note:<t t-if="order['delivery_note']"
+                                                    t-esc="order['delivery_note']"/> </span>
+                            </div>
+                        </div>
+                        <t t-foreach="order['all_category']" t-as="cat">
+                            <t t-set="cat_sel" t-value="0"/>
+                            <t t-set="draw_line" t-value="0"/>
+                            <t t-foreach="order['lines']" t-as="line" t-key="line.id">
+                                <t t-if="cat.id==line.pos_categ_id ">
+                                    <t t-if="cat_sel==0 &amp;&amp;!line.parent_line">
+                                        <span t-esc="cat.name"
+                                              style="text-decoration: underline;font-weight:700;"/>
+                                        <br></br>
+                                    </t>
+                                    <t t-if="!line.parent_line">
+                                        <span style="font-weight:700;">
+                                            <t t-esc="line.product_uom_qty"/>x
+                                            <t t-esc="line.full_product_name"/>
+                                            <t t-set="draw_line" t-value="1"/>
+                                        </span>
+                                        <br></br>
+                                    </t>
+                                    <t t-foreach="order['lines']" t-as="line2">
+                                        <t t-if="line2.parent_line==line.id">
+                                            <span style="margin-left:20px;"><t t-if="line2.icon" t-esc="line2.icon"/>
+                                                <t t-esc="line2.product_uom_qty"/>x
+                                                <t t-esc="line2.full_product_name"/>
+                                            </span>
+                                            <br></br>
+                                        </t>
+                                    </t>
+                                    <t t-if="!line.parent_line">
+                                        <t t-if="line.note">
+                                            Note:<t t-if="line.note" t-esc="line.note"/>
+                                            <br></br>
+                                        </t>
+                                    </t>
+                                    <t t-set="cat_sel" t-value="1"/>
+                                </t>
+                            </t>
+                            <!--                            <t t-if="draw_line==1">-->
+                            <!--                                <t t-if="order.config.docket_category_break">-->
+                            <!--                                    <div class="pos-receipt-contact"-->
+                            <!--                                         style="border-bottom:1px solid black;text-align:left;font-weight:700;"></div>-->
+                            <!--                                </t>-->
+                            <!--                            </t>-->
+                        </t>
+                        <div class="pos-receipt-contact">
+                            <div>
+                                <span>
+                                    Enjoy Your Meal!
+                                    <br></br>
+                                    <br></br>
+                                </span>
+                            </div>
+                            <div>
+                                <span>
+                                    Contact Us if any issues!
+                                </span>
+                            </div>
+                            <div>
+                                <span>
+                                    (<t t-esc="widget.env.pos.company.phone"/>)
+                                </span>
+                            </div>
+                            <div>
+                                <span>
+                                    (<t t-esc="widget.env.pos.company.email"/>)
+                                </span>
+                            </div>
+                            <div>
+                                <span>
+                                    (<t t-esc="widget.env.pos.company.website"/>)
+                                </span>
+                            </div>
+                            <br></br>
+                            <br></br>
+                            <div>Signup For Exclusive Members Only</div>
+                            <div>discounts and deals!</div>
+                        </div></div>
+                </div>
+            </div>
+        </div>
+    </t>
+    <t t-name="OrderReceiptMcd">
+<!--          <div class="pos-receipt-container">-->
+        <div class="pos-receipt"
+             style="border:1px solid black !important;padding:10px !important;font-family: system-ui;">
+            <t t-if="widget.env.pos.config.pos_logo">
+                <img class="pos-receipt-logo"
+                     t-att-src="'data:image/png;base64,'+widget.env.pos.config.pos_logo" alt="Logo"
+                     width="100px" height="100px"/>
+            </t>
+            <t t-if="order['change_order']==true">
+                <div class="pos-receipt-contact"
+                     style="text-align:left;margin-top:30px; font-size:14px;font-weight:700;line-height: 22px;">
+                    <div><h2>Change Order</h2></div>
+                    <t t-foreach="order['change_list']" t-as="line">
+                        <span style="    text-decoration: line-through;"> <t t-esc="line"/> </span>
+                        <br></br>
+                    </t>
+                </div>
+            </t>
+
+            <div class="pos-receipt-contact"
+                 style="text-align:left;margin-top:30px; font-size:14px;font-weight:700;line-height: 22px;">
+                <div>Order No:<span><t t-esc="order['pos_reference']"/> </span></div>
+                <div>Order type: Dine In
+                    <span style="text-align:right;margin-right:0px !important;float:right !important;">
+                        Table No:<t t-esc="order['table']"/>
+                    </span>
+                    <t t-set="preparation_time" t-value="ASAP"/>
+                    <t t-foreach="order['lines']" t-as="line"
+                       t-key="line.id">
+                        <t t-set="preparation_time"
+                           t-value="line.preparation_time"/>
+                    </t>
+                    <t t-if="preparation_time>30">
+                        ASAP
+                    </t>
+                    <t t-else="">
+                        <t t-esc="preparation_time"/>
+                        <t t-if="preparation_time!=ASAP">Min</t>
+                    </t>
+                </div>
+                <div>Received:<span><t t-esc="order['order_time']"/></span></div>
+                <div>Name:<span><t t-if="order['customer']" ><t  t-if="order['customer'][1]" t-esc="order['customer'][1]"/> </t></span></div>
+                <div>Phone:<span><t t-if="order['partner_contact']" t-esc="order['partner_contact']"/></span></div>
+            </div>
+            <div class="pos-receipt-contact"
+                 style="border-bottom:1px solid black;text-align:left;font-weight:700;border-top:2px solid black;min-height:20px;">
+                <div>
+                    <span>Order note:
+                        <t t-if="order['delivery_note']"
+                           t-esc="order['delivery_note']"/>
+                    </span>
+                </div>
+            </div>
+            <t t-foreach="order['all_category']" t-as="cat">
+                <t t-set="cat_sel" t-value="0"/>
+                <t t-set="draw_line" t-value="0"/>
+                <t t-foreach="order['lines']" t-as="line" t-key="line.id">
+                    <t t-if="cat.id==line.pos_categ_id ">
+                        <t t-if="cat_sel==0 &amp;&amp;!line.parent_line">
+                            <span t-esc="cat.name"
+                                  style="text-decoration: underline;font-weight:700;"/>
+                            <br></br>
+                        </t>
+                        <t t-if="!line.parent_line">
+                            <span style="font-weight:700;">
+                                <t t-esc="line.product_uom_qty"/>x
+                                <t t-esc="line.full_product_name"/>
+                                <t t-set="draw_line" t-value="1"/>
+                            </span>
+                            <br></br>
+                        </t>
+                        <t t-foreach="order['lines']" t-as="line2">
+                            <t t-if="line2.parent_line==line.id">
+                                <span style="margin-left:20px;"><t t-if="line2.icon" t-esc="line2.icon"/>
+                                    <t t-esc="line2.product_uom_qty"/>x
+                                    <t t-esc="line2.full_product_name"/>
+                                </span>
+                                <br></br>
+                            </t>
+                        </t>
+                        <t t-if="!line.parent_line">
+                            <t t-if="line.note">
+                                Note:<t t-if="line.note" t-esc="line.note"/>
+                                <br></br>
+                            </t>
+                        </t>
+                        <t t-set="cat_sel" t-value="1"/>
+                    </t>
+                </t>
+                <!--                <t t-if="draw_line==1">-->
+                <!--                    <t t-if="order.config.docket_category_break">-->
+                <!--                        <div class="pos-receipt-contact"-->
+                <!--                             style="border-bottom:1px solid black;text-align:left;font-weight:700;"></div>-->
+                <!--                    </t>-->
+                <!--                </t>-->
+            </t>
+            <div class="pos-receipt-contact">
+                <div>
+                    <span>
+                        Enjoy Your Meal!
+                        <br></br>
+                        <br></br>
+                    </span>
+                </div>
+                <div>
+                    <span>
+                        Contact Us if any issues!
+                    </span>
+                </div>
+                <div>
+                    <span>
+                        (<t t-esc="widget.env.pos.company.phone"/>)
+                    </span>
+                </div>
+                <div>
+                    <span>
+                        (<t t-esc="widget.env.pos.company.email"/>)
+                    </span>
+                </div>
+                <div>
+                    <span>
+                        (<t t-esc="widget.env.pos.company.website"/>)
+                    </span>
+                </div>
+                <br></br>
+                <br></br>
+                <div>Signup For Exclusive Members Only</div>
+                <div>discounts and deals!</div>
+            </div>
+        </div>
+
+        <!--                    </div>-->
+ </t>
+
+
+    <t t-name="OrderReceipt" t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension" owl="1">
+<!--       <xpath expr="//div[hasclass('pos-receipt-contact')]" position="before">-->
+        <!--            <img class="pos-receipt-logo" t-att-src="receipt.company.logo" alt="Logo"/>-->
+        <!--        </xpath>-->
+        <xpath expr="//div[hasclass('pos-receipt-contact')]" position="replace">
+             <div class="pos-receipt-contact" style="font-size: 100%;">
+                <t t-if="receipt.company.contact_address">
+                    <div><t t-esc="receipt.company.contact_address" /></div>
+                </t>
+                 <t t-if="receipt.company.phone">
+                    <div>Tel:<t t-esc="receipt.company.phone"/></div>
+                </t>
+                 <t t-if="receipt.company.vat">
+                    <div><t t-esc="receipt.company.vat_label"/>:
+                        <t t-esc="receipt.company.vat"/></div>
+                </t>
+                 <t t-if="receipt.company.email">
+                    <div><t t-esc="receipt.company.email" /></div>
+                </t>
+                 <t t-if="receipt.company.website">
+                    <div><t t-esc="receipt.company.website" /></div>
+                </t>
+                 <t t-if="receipt.header_html">
+                    <t t-raw="receipt.header_html"/>
+                </t>
+                 <t t-if="!receipt.header_html and receipt.header">
+                    <div><t t-esc="receipt.header" /></div>
+                </t>
+                 <t t-if="receipt.cashier">
+                    <div class="cashier">
+                        <div>--------------------------------</div>
+                        <!-- <div>Served by <t t-esc="receipt.cashier"/></div> -->
+                    </div>
+                </t>
+            </div>
+            <br/>
+            <br/>
+            <div class="pos-receipt-order-data1" style="font-size: 100%;text-align: left;">
+                <div>Order No: <t t-esc="receipt.name"/></div>
+                <t t-if="receipt.delivery_type">
+                    <div>Order Type: <t t-esc="receipt.delivery_type"/></div>
+                </t>
+
+                <!--div>Confirmation Time: <t t-esc="receipt.date.localestring"/></div-->
+            </div>
+
+            <div class="pos-receipt-order-data1" style="font-size: 100%;text-align: left;">
+                <t t-if="receipt.client">
+                    <div>Customer: <t t-esc="receipt.client.name"/></div>
+                    <t t-if="receipt.client.email">
+                        <div>Email: <t t-esc="receipt.client.email"/> </div>
+                    </t>
+                    <t t-if="receipt.client.phone">
+                        <div>Phone: <t t-esc="receipt.client.phone"/> </div>
+                    </t>
+                </t>
+             </div>
+        </xpath>
+        <xpath expr="//div[hasclass('pos-receipt-order-data')]" position="replace">
+             <div class="pos-receipt-order-data" style="font-size: 100%;">
+
+                 <!-- <div>Enjoy Your Meal!</div>
+                 <div>Contact Us if any issues!</div> -->
+                 <br/>
+                 <br/>
+                 <div>Signup For Exclusive Members Only</div>
+                 <div>discounts and deals!</div>
+                 <t t-if="receipt.company.website">
+                    <div><t t-esc="receipt.company.website" />/my/loyalty</div>
+                 </t>
+
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('orderlines')]" position="replace">
+               <div class="orderlines">
+                <t t-foreach="receipt.orderlines" t-as="line" t-key="line.id">
+                  <!--t t-if="!line.is_optional_product">
+                      <t t-if="line.pos_categ_id">
+                          <t t-if="line.pos_categ_id[1]">
+                              __________________________________________
+                              <div style="font-size: 100%; font-weight: 900;"><t t-esc="line.pos_categ_id[1]"/></div>
+                          </t>
+                      </t>
+                  </t-->
+                    <t t-if="isSimple(line)">
+                        <div>
+                            <t t-if="!line.is_optional_product">
+                                <t t-esc="line.product_name_wrapped[0]"/>
+                            </t>
+                            <t t-else="">
+                                <span style="margin-left:19px;"><t t-esc="line.product_name_wrapped[0]" /></span>
+                            </t>
+                            <!--                            <span t-esc="env.pos.format_currency_no_symbol(line.price_display)"-->
+                            <!--                                  class="price_display pos-receipt-right-align"/>-->
+                        </div>
+                        <WrappedProductNameLines line="line"/>
+                        <div class="pos-receipt-left-padding">
+                            <t t-esc="Math.round(line.quantity * Math.pow(10, env.pos.dp['Product Unit of Measure'])) / Math.pow(10, env.pos.dp['Product Unit of Measure'])"/>
+                            <!--                            <t t-esc="line.quantity"/>-->
+                            <t t-if="line.unit_name !== 'Units'" t-esc="line.unit_name"/>
+                            x
+                            <t t-esc="env.pos.format_currency_no_symbol(line.price_display_one)"/>
+                            <span class="price_display pos-receipt-right-align">
+                                <t t-esc="env.pos.format_currency_no_symbol(line.price_display)"/>
+                            </span>
+                        </div>
+                    </t>
+                    <t t-else="">
+                         <div t-esc="line.product_name_wrapped[0]"/>
+                        <WrappedProductNameLines line="line"/>
+                        <t t-if="line.display_discount_policy == 'without_discount' and line.price != line.price_lst">
+                            <div class="pos-receipt-left-padding">
+                                <t t-esc="env.pos.format_currency_no_symbol(line.price_lst)"/>
+                                ->
+                                <t t-esc="env.pos.format_currency_no_symbol(line.price)"/>
+                            </div>
+                        </t>
+                        <t t-elif="line.discount !== 0">
+                            <div class="pos-receipt-left-padding">
+                                <t t-if="env.pos.config.iface_tax_included === 'total'">
+                                    <t t-esc="env.pos.format_currency_no_symbol(line.price_with_tax_before_discount)"/>
+                                </t>
+                                <t t-else="">
+                                    <t t-esc="env.pos.format_currency_no_symbol(line.price)"/>
+                                </t>
+                            </div>
+                        </t>
+                        <t t-if="line.discount !== 0">
+                            <div class="pos-receipt-left-padding">
+                                Discount: <t t-esc="line.discount"/>%
+                            </div>
+                        </t>
+                        <div class="pos-receipt-left-padding">
+                            <t t-esc="Math.round(line.quantity * Math.pow(10, env.pos.dp['Product Unit of Measure'])) / Math.pow(10, env.pos.dp['Product Unit of Measure'])"/>
+                            <t t-if="line.unit_name !== 'Units'" t-esc="line.unit_name"/>
+                            x
+                            <t t-esc="env.pos.format_currency_no_symbol(line.price_display_one)"/>
+                            <span class="price_display pos-receipt-right-align">
+                                <t t-esc="env.pos.format_currency_no_symbol(line.price_display)"/>
+                            </span>
+                        </div>
+                    </t>
+                </t>
+            </div>
+         </xpath>
+
+    </t>
+
+
+
+</templates>

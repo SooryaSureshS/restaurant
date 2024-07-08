@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <odoo>
+        <template id="assets" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/loyalty_pos/static/src/css/pos.css"/>
+                <script type="text/javascript" src="/loyalty_pos/static/src/js/PosLoyalty.js"></script>
+                <script type="text/javascript" src="/loyalty_pos/static/src/js/models.js"></script>
+                <script type="text/javascript" src="/loyalty_pos/static/src/js/RewardButton.js"></script>
+                <script type="text/javascript" src="/loyalty_pos/static/src/js/PosloyaltyPopup.js"></script>
+                <script type="text/javascript" src="/loyalty_pos/static/src/js/PosloyaltyRule.js"></script>
+                <script type="text/javascript" src="/loyalty_pos/static/src/js/loyaltyClientScreen.js"></script>
+
+            </xpath>
+        </template>
+
+        <record id="pos_config_view_pos_loyalty" model="ir.ui.view">
+        <field name="name">pos.config</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+                <xpath expr="//h2[@name='order']" position="before">
+                    <group string="Pos Loyalty">
+                       <group>
+                        <field name="pos_loyalty" nolable="1"/>
+                        <field name="wk_loyalty_program_id" attrs="{'invisible': [('pos_loyalty', '=', False)],'required':[('pos_loyalty','==',True)]}"/>
+                    </group>
+
+                    </group>
+                </xpath>
+        </field>
+    </record>
+
+
+
+    </odoo>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_estate_location" name="Estate Location">
+		<section class="estate-location pt152 pb152">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 mb-4 mb-md-0">
+							<div class="title">
+								<p class="subtitle text-primary">WINESHOP VINEYARD</p>
+								<h1>Location</h1>
+							</div>
+						</div>
+						<div class="col-md-4 mb-4 mb-md-0">
+							<div class="image text-center">
+								<img class="img img-fluid" src="/theme_wineshop/static/src/img/estate-location.png" alt="image"/>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="content">
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at mauris sapien. Etiam nec leo ac metus tempor facilisis. Morbi imperdiet erat hendrerit ante congue maximus. Mauris sed diam libero. Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+	</template>
+</odoo>

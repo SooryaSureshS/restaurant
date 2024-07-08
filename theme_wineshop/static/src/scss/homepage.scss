@@ -1,0 +1,560 @@
+.wineshop-home-banner{
+	.content{
+		p{
+		    text-transform: uppercase;
+		    letter-spacing: 2px;
+		    font-weight: 700;
+		    line-height: 20px;
+		    font-size: 14px;
+		    margin: 0px;
+	    }
+
+	    h2{
+		    font-style: italic;
+		    line-height: 48px;
+		    font-size: 50px;
+		    margin: 15px 0;
+	    }
+	    h1{
+		    line-height: 90px;
+		    font-weight: 400;
+		    font-size: 95px;
+		    margin: 0px;
+	    }
+	}
+	@media (min-width: 992px) and (max-width: 1199.98px) {
+		.content{
+			p{
+				line-height: 18px;
+		    	font-size: 12px;
+			}
+			h2{
+				line-height: 42px;
+		    	font-size: 42px;
+			}
+			h1{
+				line-height: 79px;
+		    	font-size: 79px;
+			}
+		}
+	}
+	@media (min-width: 768px) and (max-width: 991.98px) {
+		.content{
+			p{
+				line-height: 15px;
+		    	font-size: 11px;
+			}
+			h2{
+				line-height: 32px;
+		    	font-size: 32px;
+			}
+			h1{
+				line-height: 60px;
+		    	font-size: 60px;
+			}
+		}
+	}
+	@media (max-width: 767.98px) {
+		.content{
+			p{
+				line-height: 13px;
+		    	font-size: 9px;
+			}
+			h2{
+				line-height: 32px;
+		    	font-size: 34px;
+			}
+			h1{
+				line-height: 60px;
+		    	font-size: 60px;
+			}
+		}
+	}
+	background-size: cover;
+    background-position: bottom;
+    overflow: hidden;
+}
+
+.wineshop-home-message{
+	.content{
+		p.subtitle{
+		    text-transform: uppercase;
+		    letter-spacing: 2px;
+		    font-weight: 700;
+		    line-height: 20px;
+		    font-size: 14px;
+		    margin: 0px;
+	    }
+
+	    h3{
+		    font-size: 41px;
+	        margin-bottom: 90px;
+	        margin-top: 10px;
+            text-transform: capitalize;
+	    }
+	    p{
+	    	font-size: 16px;
+	    	margin-bottom: 15px;
+    	    line-height: 1.916;
+	    }
+	    .autograph{
+    	    margin-top: 90px;
+	    }
+	}
+
+	@media (max-width: 991.98px) {
+		.content{
+			margin-bottom: 3rem !important;
+		}
+	}
+	@media (min-width: 768px) and (max-width: 1199.98px) {
+		.content{
+			h3{
+				margin-bottom: 60px;
+			}
+			.autograph{
+    	    	margin-top: 60px;
+	    	}
+		}
+	}
+	@media (max-width: 767.98px) {
+		.content{
+			h3{
+				margin-bottom: 60px;
+			}
+			.autograph{
+    	    	margin-top: 60px;
+	    	}
+		}
+	}
+}
+
+.wineshop-home-single-product{
+	.content{
+		h6{
+			font-size: 34px;
+			margin: 0;
+		}
+		p.subtitle{
+			text-transform: uppercase;
+		    letter-spacing: 2px;
+		    font-weight: 700;
+		    line-height: 20px;
+		    font-size: 14px;
+		    margin: 0px;
+	        margin-top: 10px !important;
+		}
+		h3{
+			font-size: 41px;
+	        margin-bottom: 90px;
+	        margin-top: 10px;
+            text-transform: capitalize;
+		}
+		p{
+			font-size: 16px;
+	    	margin-bottom: 75px;
+    	    line-height: 1.916;
+		}
+		a.btn{
+			text-transform: uppercase;
+		    letter-spacing: 2px;
+		    font-family: "Lato";
+		    font-size: 12px;
+		    font-weight: bold;
+		    padding: 16px 60px;
+		    color: #ffffff !important;
+		    @media (max-width: 767.98px) {
+		    	padding: 16px 28px;
+		    }
+		}
+
+		p.contact-text{
+			margin-bottom: 0px;
+			margin-top: 70px;
+
+		}
+
+		p.contact{
+			font-size: 16px;
+    	    line-height: 1.916;
+		}
+
+	}
+}
+
+.wineshop-home-current-release{
+	.content{
+		.image{
+		    margin-bottom: 35px;
+		}
+		p.subtitle {
+		    font-size: 14px;
+		    text-transform: uppercase;
+		    letter-spacing: 2px;
+		    font-weight: bold;
+		    margin: 0;
+		    color: #cebc9e;
+		}
+		h1{
+		    margin: 0;
+		    font-size: 41px;
+		    margin-top: 10px;
+		}
+		padding: 115px;
+	}
+
+	@media (max-width: 767.98px) {
+		.content{
+			padding: 75px 45px;
+		}
+		padding: 45px 0 !important;
+	}
+	@media (min-width: 992px) and (max-width: 1199.98px) {
+		.content{
+			padding: 100px;
+		}
+	}
+	@media (min-width: 768px) and (max-width: 991.98px) {
+		padding: 90px 0 !important;
+	}
+}
+
+.wineshop-home-counter{
+	.right-content{
+		p.subtitle{
+		    margin: 0;
+		    font-size: 14px;
+		    text-transform: uppercase;
+		    letter-spacing: 2px;
+		    font-weight: bold;
+		}
+		h3{
+		    font-size: 34px;
+		    margin-top: 10px;
+		    margin-bottom: 55px;
+		}
+		ul{
+			li{
+			    padding-left: 60px;
+			    padding-bottom: 3px;
+			    font-size: 16px;
+			    line-height: 1.916;
+			    &:before{
+			    	content: "";
+		    	    position: relative;
+				    height: 1px;
+				    width: 30px;
+				    background: #b0976d;
+				    display: block;
+				    top: 16px;
+				    left: -60px;
+			    }
+			}
+			margin: 0 0 55px 0;
+		    padding: 0;
+		    list-style: none;
+		}
+		a.btn{
+		    padding: 16px 47px;
+		    text-transform: uppercase;
+		    letter-spacing: 2px;
+		    font-size: 12px;
+		    font-weight: bold;
+		}
+	    padding: 125px;
+		background-repeat: no-repeat;
+	}
+
+	.left-content{
+		.counter-box{
+			h1{
+			    font-size: 60px;
+			    font-weight: bold;
+			    line-height: 1.916;
+			}
+			p{
+				margin: 0;
+			    font-size: 14px;
+			    font-weight: bold;
+			    letter-spacing: 2px;
+			    text-transform: uppercase;
+			}
+		}
+	}
+	@media (min-width: 992px) and (max-width: 1199.98px) {
+		.right-content{
+			padding: 68px;
+		}
+	}
+	@media (min-width: 768px) and (max-width: 991.98px) {
+		.right-content{
+			a.btn{
+		    	padding: 16px 50px;
+	    	}
+			padding: 68px;
+		}
+		padding: 90px 0 !important;
+	}
+	@media (max-width: 767.98px) {
+		.right-content{
+			a.btn{
+		    	padding: 16px 50px;
+	    	}
+			padding: 68px;
+		}
+		padding: 45px 0 !important;
+	}
+    background-color: #f1f1f1;
+}
+
+.wineshop-home-counter.counter-2{
+	@media (min-width: 768px) and (max-width: 991.98px) {
+		padding-top: 0 !important;
+	}
+	@media (max-width: 767.98px) {
+		padding-top: 0 !important;
+	}
+}
+
+.wineshop-home-tasting{
+	.content{
+		p.subtitle{
+		    text-transform: uppercase;
+		    letter-spacing: 2px;
+		    font-weight: 700;
+		    line-height: 20px;
+		    font-size: 14px;
+		    margin: 0px;
+	    }
+	    h1{
+		    font-size: 41px;
+		    margin-top: 10px;
+		    margin-bottom: 90px;
+		}
+		p{
+			font-size: 16px;
+	    	margin-bottom: 75px;
+    	    line-height: 1.916;
+		}
+		a.btn{
+			text-transform: uppercase;
+		    letter-spacing: 2px;
+		    font-size: 12px;
+		    font-weight: bold;
+		    padding: 16px 60px;
+		    color: #ffffff !important;
+		    @media (max-width: 767.98px) {
+		    	padding: 16px 28px;
+		    }
+		}
+		padding: 115px;
+	}
+	@media (max-width: 767.98px) {
+		.order{
+			order: 1;
+		}
+		.content{
+			h1{
+			    margin-bottom: 35px;
+			}
+			p{
+		    	margin-bottom: 40px;
+			}
+			padding: 75px 45px;
+		}
+		padding: 45px 0 !important;
+	}
+	@media (min-width: 992px) and (max-width: 1199.98px) {
+		.content{
+			h1{
+			    margin-bottom: 35px;
+			}
+			p{
+		    	margin-bottom: 40px;
+			}
+			padding: 100px;
+		}
+	}
+	@media (min-width: 768px) and (max-width: 991.98px) {
+		.order{
+			order: 1;
+		}
+		padding: 90px 0 !important;
+	}
+}
+
+.wineshop-home-instagram{
+	.followers{
+		h3{
+			margin-bottom: 5px;
+			font-size: 34px;
+		}
+		h1{
+			font-weight: bold;
+		    font-size: 72px;
+		    line-height: 72px;
+		    text-transform: uppercase;
+		    margin-bottom: 10px;
+		}
+		p{
+			font-size: 14px;
+		    text-transform: uppercase;
+		    letter-spacing: 2px;
+		    font-weight: bold;
+	        line-height: 72px;
+	        margin-bottom: 10px;
+		}
+		a.btn{
+		    padding: 18px 45px;
+		    font-size: 12px;
+		    text-transform: uppercase;
+		    letter-spacing: 2px;
+		    font-weight: bold;
+		    color: #ffffff !important;
+		    -webkit-transition: all ease-in-out 0.2s;
+		    -moz-transition: all ease-in-out 0.2s;
+		    -ms-transition: all ease-in-out 0.2s;
+		    -o-transition: all ease-in-out 0.2s;
+		    transition: all ease-in-out 0.2s;
+		    &:hover{
+		    	background-color: rgba(255,255,255,0.1) !important;
+		    }
+		}
+	    padding: 134px 30px;
+    	vertical-align: middle;
+	}
+	.insta-image{
+	    background-size: cover;
+	    background-position: center center;
+	    background-repeat: no-repeat;
+	    height: 266px !important;
+	}
+	@media (min-width: 768px) and (max-width: 991.98px) {
+		.followers{
+			padding: 90px 30px;
+		}
+		padding: 90px 0 !important;
+	}
+	@media (max-width: 767.98px) {
+		.followers{
+			padding: 90px 30px;
+		}
+		padding: 45px 0 !important;
+	}
+}
+
+.wineshop-home-visit{
+	.content{
+		p.subtitle{
+		    text-transform: uppercase;
+		    letter-spacing: 2px;
+		    font-weight: 700;
+		    line-height: 20px;
+		    font-size: 14px;
+		    margin: 0px;
+	    }
+	    h1{
+		    font-size: 41px;
+		    margin-top: 10px;
+		    margin-bottom: 55px;
+		}
+		p{
+			font-size: 16px;
+	    	margin-bottom: 90px;
+    	    line-height: 1.916;
+		}
+		a.btn{
+			text-transform: uppercase;
+		    letter-spacing: 2px;
+		    font-size: 12px;
+		    font-weight: bold;
+		    padding: 16px 60px;
+		    color: #ffffff !important;
+		    @media (max-width: 767.98px) {
+		    	padding: 16px 28px;
+		    }
+		}
+	}
+	@media (min-width: 768px) and (max-width: 991.98px) {
+		padding: 90px 0 !important;
+	}
+	@media (max-width: 767.98px) {
+		padding: 45px 0 !important;
+	}
+	background-size: cover;
+    background-position: center;
+}
+
+.wineshop-home-newsletter{
+	.content{
+		p.subtitle{
+		    text-transform: uppercase;
+		    letter-spacing: 2px;
+		    font-weight: 700;
+		    line-height: 20px;
+		    font-size: 14px;
+		    margin: 0px;
+	    }
+	    h1{
+		    font-size: 41px;
+		    margin-top: 10px;
+		    margin-bottom: 90px;
+		}
+	}
+
+	.input-group{
+		.btn.btn-primary.js_subscribe_btn, .btn.btn-success.js_subscribed_btn {
+		    padding: 18px 45px;
+		    border-radius: 0;
+		    font-size: 12px;
+		    text-transform: uppercase;
+		    letter-spacing: 2px;
+		    background: transparent;
+		    height: 82px;
+		    border: 1px solid #e9e9e9;
+		    border-left-color: #fff;
+		    color: theme-color('primary');
+		    font-weight: bold;
+		    box-shadow: none;
+		}
+
+		.input-group-append{
+			position: relative;
+			&:before{
+			    content: '';
+			    height: 50%;
+			    width: 1px;
+			    background: #e9e9e9;
+			    display: block;
+			    position: absolute;
+			    top: 25%;
+		        z-index: 5;
+			}
+		}
+
+		input.js_subscribe_email.form-control {
+		    box-shadow: none;
+		    padding: 13px 30px;
+		    font-size: 12px;
+		    line-height: normal;
+		    font-family: "Lato";
+		    text-transform: uppercase;
+		    letter-spacing: 2px;
+		    font-weight: bold;
+		    background: transparent;
+		    border: 1px solid #e9e9e9 !important;
+		    height: 82px !important;
+		    border-right: 0 !important;
+		}
+		max-width: 900px;
+	    margin-left: auto; 
+	    margin-right: auto;
+	}
+	@media (min-width: 768px) and (max-width: 991.98px) {
+		padding: 90px 0 !important;
+	}
+	@media (max-width: 767.98px) {
+		padding: 45px 0 !important;
+	}
+
+}

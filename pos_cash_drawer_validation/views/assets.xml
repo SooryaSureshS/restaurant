@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <template id="assets_pos_cash_drawer" inherit_id="point_of_sale.assets">
+          <xpath expr="." position="inside">
+              <script type="text/javascript" src="/pos_cash_drawer_validation/static/src/js/cash_drawer.js"></script>
+          </xpath>
+        </template>
+
+</odoo>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+         <record id="product_template_inherit_view_form_01" model="ir.ui.view">
+            <field name="name">product.template.form.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="mask_cutomization.product_product_enable_form_view_mps"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='is_nose_pad']" position="after">
+                        <field name="is_fragrance"/>
+                        <field name="mask_type"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="product_template_inherit_view_form" model="ir.ui.view">
+            <field name="name">product.template.form.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='description_sale']" position="after">
+                    <field name="features_sale"/>
+                    <field name="additional_info"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="product_packaging_form_view_inherit01" model="ir.ui.view">
+            <field name="name">product.packaging.form.view.inherit01</field>
+            <field name="model">product.packaging</field>
+            <field name="inherit_id" ref="product.product_packaging_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='barcode']" position="after">
+                    <field name="pack_image" widget="image" />
+                </xpath>
+            </field>
+        </record>
+        <record id="product_packaging_form_view2_inherit02" model="ir.ui.view">
+            <field name="name">product.packaging.form.view2.inherit02</field>
+            <field name="model">product.packaging</field>
+            <field name="inherit_id" ref="product.product_packaging_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='barcode']" position="after">
+                    <field name="pack_image" widget="image"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_cashcollection_document">
+        <t t-call="web.html_container">
+            <t t-call="pos_summary_backend.external_layout_standard_custom"/>
+            <div class="page">
+                <table class="table"
+                       style="text-align:center;font-size:12px;font-family: Montserrat, 'sans-serif';padding-top:5px;margin-top:5px;width:100%;border-collapse:collapse;border-bottom: 1px solid black;">
+                    <thead style="display: table-header-group">
+                        <tr>
+                            <th>Date entered</th>
+                            <th>Bag number</th>
+                            <th>Cash in bag</th>
+                        </tr>
+                    </thead>
+                    <tbody style="display: table-row-group;padding-top:100px;margin-top:50px">
+                        <t t-set="recs" t-value="docs"/>
+                        <t t-foreach="recs" t-as="p">
+                            <tr>
+                                <td style="border-bottom: 1px solid black;padding-top:10px">
+                                    <t t-esc="p.closing_date"/>
+                                </td>
+                                <td style="text-align:center;border-bottom: 1px solid black;padding-top:10px">
+                                    <t t-esc="p.insert_bag_number"/>
+                                </td>
+                                <td style="border-bottom: 1px solid black;padding-top:10px">
+                                    <t t-esc="round(p.total_payments_amount,2)"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_cashcollection">
+        <t t-call="web.html_container">
+            <t t-set="is_pro_forma" t-value="True"/>
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="pos_summary_backend.report_cashcollection_document"/>
+            </t>
+        </t>
+    </template>
+
+</odoo>

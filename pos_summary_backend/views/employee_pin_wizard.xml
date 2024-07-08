@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="wizard_Employee_pin_wizard" model="ir.ui.view">
+        <field name="name">Employee Pin</field>
+        <field name="model">pos.employee.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Change Product Qty">
+                <group>
+                    <group>
+                        <field name="pin" password="True"/>
+<!--                        <field name="session_user" readonly="1"/>-->
+<!--                        <field name="starting_balance" readonly="0"/>-->
+<!--                    </group>-->
+<!--                    <group>-->
+<!--                        <field name="opening_date" readonly="1"/>-->
+<!--                        <field name="orders_count" readonly="1"/>-->
+<!--                        <field name="total_payments_amount" readonly="1"/>-->
+<!--                    </group>-->
+<!--                    <group>-->
+<!--                        <field name="total_cash" readonly="1"/>-->
+<!--                        <field name="total_eftpos" readonly="1"/>-->
+<!--                        <field name="total_expected" readonly="1"/>-->
+                    </group>
+                </group>
+
+                <footer>
+                    <button name="check_pin" string="Confirm"
+                        colspan="1" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="wizard_session_summary_wizard_backend" model="ir.ui.view">
+        <field name="name">Session Summary</field>
+        <field name="model">pos.session.wizard</field>
+        <field name="arch" type="xml">
+             <form string="Change Product Qty">
+                 <group>
+
+                     <table style="width: 100%;">
+                         <thead>
+                             <th>TRANSACTION</th>
+                             <th>COUNTED</th>
+                             <th>EXPECTED</th>
+                             <th>FLOAT</th>
+                         </thead>
+                         <tbody>
+                             <tr>
+                                 <td> <field name="orders_count" readonly="1" nolabel="1"/></td>
+                                 <td> <field name="total_payments_amount" readonly="1" nolabel="1"/></td>
+                                 <td> <field name="total_expected" readonly="1" nolabel="1"/></td>
+                                 <td> <field name="starting_balance"  readonly="0" nolabel="1"/></td>
+                             </tr>
+                         </tbody>
+                     </table>
+                 </group>
+                 <group>
+                      <table style="width: 100%;">
+                         <thead>
+                             <th>Cash Up</th>
+                         </thead>
+                      </table>
+                 </group>
+
+
+
+                <group>
+                      <table style="width: 100%;">
+                         <thead>
+                             <th>Tender</th>
+                             <th>Counted</th>
+                             <th>Expected</th>
+                             <th>Variance</th>
+                         </thead>
+                          <tbody>
+                              <tr>
+                                  <td>Cash
+                                    <button class="btn btn-primary" name="action_count_cash" type="object" string="Count Cash"/>
+                                  </td>
+                                  <td><field name="counted_cash" readonly="1" nolabel="1"/></td>
+                                  <td><field name="total_expected_cash" readonly="1" nolabel="1"/></td>
+                                  <td><field name="cash_variance" readonly="1" nolabel="1"/></td>
+                              </tr>
+
+                          </tbody>
+                          <tbody attrs="{ 'invisible':[('hide','=',False)] }">
+                              <tr>
+                                    <td>2000 <field name="cash_unit" readonly="1" nolabel="1"/></td>
+                                    <td><field name="cash_2000_count" /></td>
+                                    <td>=</td>
+                                    <td><field name="cash_2000" /></td>
+                              </tr>
+                              <tr>
+                                    <td>500 <field name="cash_unit" readonly="1" nolabel="1"/></td>
+                                    <td><field name="cash_500_count" /></td>
+                                    <td>=</td>
+                                    <td><field name="cash_500" /></td>
+                              </tr>
+                              <tr>
+                                    <td>100 <field name="cash_unit" readonly="1" nolabel="1"/></td>
+                                    <td><field name="cash_100_count" /></td>
+                                    <td>=</td>
+                                    <td><field name="cash_100" /></td>
+                                </tr>
+                                <tr>
+                                    <td>50 <field name="cash_unit" readonly="1" nolabel="1"/></td>
+                                    <td><field name="cash_50_count" /></td>
+                                    <td>=</td>
+                                    <td><field name="cash_50" /></td>
+                                </tr>
+                                <tr>
+                                    <td>20 <field name="cash_unit" readonly="1" nolabel="1"/></td>
+                                    <td><field name="cash_20_count" /></td>
+                                    <td>=</td>
+                                    <td><field name="cash_20" /></td>
+                                </tr>
+                                <tr>
+                                    <td>10 <field name="cash_unit" readonly="1" nolabel="1"/></td>
+                                    <td><field name="cash_10_count" /></td>
+                                    <td>=</td>
+                                    <td><field name="cash_10" /></td>
+                                </tr>
+                                <tr>
+                                    <td>5 <field name="cash_unit" readonly="1" nolabel="1"/></td>
+                                    <td><field name="cash_5_count" /></td>
+                                    <td>=</td>
+                                    <td><field name="cash_5" /></td>
+                                </tr>
+                                <tr>
+                                    <td>2 <field name="cash_unit" readonly="1" nolabel="1"/></td>
+                                    <td><field name="cash_2_count" /></td>
+                                    <td>=</td>
+                                    <td><field name="cash_2" /></td>
+                                </tr>
+                                <tr>
+                                    <td>1 <field name="cash_unit" readonly="1" nolabel="1"/></td>
+                                    <td><field name="cash_1_count" /></td>
+                                    <td>=</td>
+                                    <td><field name="cash_1" /></td>
+                                </tr>
+                                <tr>
+                                    <td>50 <field name="cash_subunit" readonly="1" nolabel="1"/></td>
+                                    <td><field name="cash_50c_count" /></td>
+                                    <td>=</td>
+                                    <td><field name="cash_50c" /></td>
+                                </tr>
+                                <tr>
+                                    <td>20 <field name="cash_subunit" readonly="1" nolabel="1"/></td>
+                                    <td><field name="cash_20c_count" /></td>
+                                    <td>=</td>
+                                    <td><field name="cash_20c" /></td>
+                                </tr>
+                                <tr>
+                                    <td>10 <field name="cash_subunit" readonly="1" nolabel="1"/></td>
+                                    <td><field name="cash_10c_count" /></td>
+                                    <td>=</td>
+                                    <td><field name="cash_10c" /></td>
+                                </tr>
+                                <tr>
+                                    <td>5 <field name="cash_subunit" readonly="1" nolabel="1"/></td>
+                                    <td><field name="cash_5c_count" /></td>
+                                    <td>=</td>
+                                    <td><field name="cash_5c" /></td>
+                                </tr>
+                          </tbody>
+                          <tbody>
+                              <tr>
+                                  <td>Eftpos</td>
+                                  <td>  <field name="counted_eftpos" readonly="1"/></td>
+                                  <td>  <field name="total_expected_eftpos" readonly="1"/> </td>
+                                  <td> <field name="eftpos_variance" readonly="1"/> </td>
+                              </tr>
+                          </tbody>
+                          <tbody>
+                              <tr>
+                                  <td>Vouchers/Gift Cards</td>
+                                  <td>  </td>
+                                  <td> <field name="redeem_card_amount" readonly="1"/></td>
+                                  <td> - </td>
+                              </tr>
+                          </tbody>
+
+                          <tbody>
+                              <tr>
+                                  <td>Discount</td>
+                                  <td>  </td>
+                                  <td> <field name="discount_amount" readonly="1"/></td>
+                                  <td> - </td>
+                              </tr>
+                          </tbody>
+                          <tbody>
+                              <tr>
+                                  <td>Loyalty Points</td>
+                                  <td>  </td>
+                                  <td> <field name="loyalty_points_used" readonly="1"/></td>
+                                  <td> - </td>
+                              </tr>
+                          </tbody>
+                          <tbody>
+                              <tr>
+                                  <td>Tips</td>
+                                  <td>  </td>
+                                  <td> <field name="total_tips" readonly="1"/></td>
+                                  <td> - </td>
+                              </tr>
+                          </tbody>
+                            <tbody>
+                              <tr>
+                                  <td>Subtotal</td>
+                                  <td>  </td>
+                                  <td>  <field name="total_expected" readonly="1"/></td>
+                                  <td> - </td>
+                              </tr>
+                          </tbody>
+                          <tbody>
+                              <tr>
+                                  <td>Cashback</td>
+                                  <td>  </td>
+                                  <td> </td>
+                                  <td> - </td>
+                              </tr>
+                          </tbody>
+                          <tbody>
+                              <tr>
+                                  <td>Float</td>
+                                  <td>  </td>
+                                  <td>
+                                      <field name="float_amount" readonly="1"/>
+                                  </td>
+                                  <td> - </td>
+                              </tr>
+                          </tbody>
+
+
+                            <tbody>
+                              <tr>
+                                  <td>Petty cash pull out</td>
+                                  <td>  </td>
+                                  <td> <field name="petty_cash_pull_out" readonly="1" nolabel="1"/></td>
+                                  <td> - </td>
+                              </tr>
+                          </tbody>
+                        <tbody>
+                              <tr>
+                                  <td>Bank deposit</td>
+                                  <td>  Insert bag number <field name="insert_bag_number" readonly="0" /></td>
+                                  <td> <field name="bank_deposit_variance" readonly="1" nolabel="1"/></td>
+                                  <td> - </td>
+                              </tr>
+                          </tbody>
+
+                            <tbody>
+                              <tr>
+                                  <td>Total</td>
+                                  <td> </td>
+                                  <td> <field name="total_expected" readonly="1"/></td>
+                                  <td> - </td>
+                              </tr>
+                          </tbody>
+
+
+
+                      </table>
+                 </group>
+
+                <group>
+                    <group>
+                        <field name="hide" readonly="0" invisible="1"/>
+                        <field name="session" readonly="1"/>
+                        <field name="session_user" readonly="1"/>
+                         <field name="opening_date" readonly="1"/>
+                    </group>
+
+                    <group>
+                        <field name="total_cash" readonly="1"/>
+                        <field name="total_eftpos" readonly="1"/>
+                        <field name="total_expected" readonly="1"/>
+                    </group>
+                </group>
+
+<!--                <group>-->
+<!--                    <group>-->
+<!--                        <field name="payments_and_opening_balance" readonly="1"/>-->
+<!--                        <field name="closing_date" readonly="1"/>-->
+<!--                        <field name="pos_config" readonly="1"/>-->
+<!--                        <field name="journal_entries" readonly="1"/>-->
+<!--                         <field name="hide" readonly="0" invisible="1"/>-->
+<!--                    </group>-->
+<!--                </group>-->
+                <footer>
+                    <button name="create_session_data" string="Post And Close Session"
+                        colspan="1" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <!-- Success status -->
+    <t t-name="coupon_popup_xml">
+<!--        <!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Reset Password</title>-->
+    <link href="/payment_cybersource/static/src/css/resetpasswordpopup.css" rel="stylesheet" />
+<!--  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>-->
+<!--  <form t-att-action="'/shop/pricelist%s' % (redirect and '?r=' + redirect or '')"-->
+<!--            method="post" name="coupon_code">-->
+<!--            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />-->
+<!--            <div class="input-group w-100">-->
+<!--                <input name="promo" class="form-control" type="text" placeholder="code..." t-att-value="website_sale_order.pricelist_id.code or None"/>-->
+<!--                <div class="input-group-append">-->
+<!--                    <a href="#" role="button" class="btn btn-secondary a-submit">Apply</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </form>-->
+            <div class="popupdiv">
+            <div class="card">
+                <p class="coupon_title">Coupon</p>
+                <p class="coupon_sub_title">ENTER YOUR COUPON CODE</p>
+<!--                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" /><br/>-->
+<!--                <input name="promo" class="form-control" type="text" placeholder="code..." t-att-value="website_sale_order.pricelist_id.code or None"/>-->
+                <input type="text" name="promo" id="promo_field" placeholder="Coupon Code" style="padding:20px;"/>
+<!--                <p>The coupon does not exist.<br/> Please make sure you enter a correct coupon code.</p>-->
+
+                <button id="confirm_btn">Confirm</button>
+                <button id="confirm_cancel">Cancel</button>
+            </div>
+            </div>
+
+    </t>
+</templates>

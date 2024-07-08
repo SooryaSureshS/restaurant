@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <template id="assets_returns_order_pos_cook_logout" inherit_id="point_of_sale.assets">
+          <xpath expr="." position="inside">
+              <script type="text/javascript" src="/pos_cook_logout/static/src/js/OrderList.js"></script>
+          </xpath>
+        </template>
+
+</odoo>

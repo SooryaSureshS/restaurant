@@ -1,0 +1,124 @@
+.banner{
+    background: url('/mask_cutomization/static/src/image/BG.png');
+    background-size: cover;
+    /* width: 70%; */
+    /* margin: auto; */
+    /* height: 1000px; */
+    /* display: flex; */
+    /* flex: 100%; */
+    font-family: 'Montserrat';
+    line-height: 2;
+    color: white;
+    padding: 7%;
+}
+input,select,button{
+    width: -webkit-fill-available;
+    background: #e6e6ee;
+    border-radius: 8px;
+    height: 44px;
+    border: none;
+    padding-left: 3%;
+    margin-bottom: 3%;
+}
+.width-unset{
+    width: unset;
+    height: unset;
+}
+button{
+    color: white;
+   background: #626063;;
+}
+label{
+    font-size: 20px;
+}
+p{
+    font-weight: 600;
+    font-size: 25px; 
+}
+#billing_address{
+    background: #999999;
+    width: 273px;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 12px;
+}
+#shipping_address{
+    background: #999999;
+    width: 273px;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 12px;
+}
+#next_checkout{
+padding-top: 23px;
+    background: #626063;
+    border-radius: 11.4286px;
+    width: 100%;
+    border: none;
+    height: 68.57px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18.5714px;
+    line-height: 23px;
+}
+.container_mask_image{
+     content:url("/mask_cutomization/static/src/image/Page T (3).png");
+}
+.content_left_header{
+       font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 31px;
+    text-transform: capitalize;
+}
+.content_right_header{
+    font-family: 'Montserrat';
+font-style: normal;
+font-size: 18px;
+line-height: 31px;
+/* identical to box height, or 122% */
+
+text-transform: capitalize;
+}
+.billing_details{
+        padding-bottom: 10px;
+}
+.billing_Container{
+    display: grid;
+}
+
+
+.o_delivery_carrier_select input{
+background-color: #767272;
+    border: 2px solid #ffd7d7;
+    vertical-align: middle;
+    display: inline-block;
+    margin: 0 5px 0 0;
+    position: relative;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    height: 20px;
+    width: 20px;
+    -webkit-transition: background-color 0.1s ease, border-color 0.1s ease;
+}
+.o_delivery_carrier_select input:checked{
+     appearance: none;
+    -webkit-appearance: none;
+    border-radius: 50%;
+    background: #FF572233;
+    border: 3px solid #FFF;
+}
+.o_delivery_carrier_select input{
+cursor: pointer;
+}
+.o_delivery_carrier_select label{
+cursor: pointer;
+}
+

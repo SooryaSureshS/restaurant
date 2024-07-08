@@ -1,0 +1,24 @@
+<odoo>
+    <record model="report.paperformat" id="paperformat_promotion_and_coupon_report">
+        <field name="name">paperformat.promotion.coupon.report</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">30</field>
+        <field name="margin_right">10</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">15</field>
+        <field name="header_line" eval="True"/>
+        <field name="header_spacing">31</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <report id="report_promotion_and_coupon_program"
+            model="promotion.coupon.report"
+            string="Promotion Coupon Report"
+            report_type="qweb-pdf"
+            name="promotion_and_coupon_program_report.report_template"
+            paperformat="paperformat_promotion_and_coupon_report"
+            menu="False"/>
+</odoo>

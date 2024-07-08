@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <template id="assets_kitchen_order" inherit_id="point_of_sale.assets">
+          <xpath expr="." position="inside">
+          <script type="text/javascript" src="/kitchen_order/static/src/js/validate_kitchen_order.js"></script>
+
+<!--              <script type="text/javascript" src="/kitchen_order/static/src/printlib/print.js"></script>-->
+              <script type="text/javascript" src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+<!--              <link rel="stylesheet" type="text/css" href="/kitchen_order/static/src/printlib/ptint.css"/>-->
+              <link rel="stylesheet" type="text/css" href="https://printjs-4de6.kxcdn.com/print.min.css"/>
+
+
+              <script type="text/javascript" src="/kitchen_order/static/src/lib2/flipclock.js"></script>
+              <link rel="stylesheet" type="text/css" href="/kitchen_order/static/src/lib2/flipclock.css"/>
+
+<!--              <script type="text/javascript" src="/kitchen_order/static/src/lib/jquery.flipTimer.js"></script>-->
+<!--              <link rel="stylesheet" type="text/css" href="/kitchen_order/static/src/lib/flipTimer.css"/>-->
+
+              <script type="text/javascript" src="/kitchen_order/static/src/js/kitchecn_order.js"></script>
+<!--              <script type="text/javascript" src="/kitchen_order/static/src/js/send_to_kitchen.js"></script>-->
+              <script type="text/javascript" src="/kitchen_order/static/src/js/kitchenscreen_template.js"></script>
+              <script type="text/javascript" src="/kitchen_order/static/src/js/kitchecn_order_button.js"></script>
+              <script type="text/javascript" src="/kitchen_order/static/src/js/orderline.js"></script>
+              <script type="text/javascript" src="/kitchen_order/static/src/js/kitchen_screen_receipt.js"></script>
+              <script type="text/javascript" src="/kitchen_order/static/src/js/updatepopup.js"></script>
+              <script type="text/javascript" src="/kitchen_order/static/src/js/receipt.js"></script>
+
+
+              <script type="text/javascript" src="/kitchen_order/static/src/js/chrome.js"></script>
+              <script type="text/javascript" src="/kitchen_order/static/src/wav/articulate.js"></script>
+
+
+              <script type="text/javascript" src="/kitchen_order/static/src/popup/messsage.js"></script>
+              <script type="text/javascript" src="/kitchen_order/static/src/popup/popup.js"></script>
+
+
+              <script type="text/javascript" src="/kitchen_order/static/src/wav/annyang.min.js"></script>
+
+
+              <link rel="stylesheet" type="text/css" href="/kitchen_order/static/src/css/pos.css"/>
+              <link rel="stylesheet" type="text/css" href="/kitchen_order/static/src/css/style.css"/>
+              <link rel="stylesheet" type="text/css" href="/kitchen_order/static/src/css/top-alertjs.css"/>
+               <script type="text/javascript" src="/kitchen_order/static/src/js/top-alertjs.js"></script>
+               <script type="text/javascript" src="/kitchen_order/static/src/js/sequencepopup.js"></script>
+
+
+
+
+          </xpath>
+        </template>
+
+</odoo>

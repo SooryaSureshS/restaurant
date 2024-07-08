@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+
+<templates id="template" xml:space="preserve">
+         <t t-name="PaymentScreeninherited" t-inherit="point_of_sale.PaymentScreen" t-inherit-mode="extension" owl="1">
+		 <xpath expr="//div[hasclass('payment-buttons-container')]" position="before">
+<!--             <div class="payment-buttons">-->
+             <div style="display:flex;">
+<!--            <select id="select_order_type" name="select_order_type" class="custom-select" t-on-change="OnchangeSelection()">-->
+<!--            <option value='dine_in'>Dine In</option>-->
+<!--                 <option value='takeway'>Take Way</option>-->
+<!--            </select>-->
+
+            <input type="button" value="Dine In"  t-on-click="DineIn()" class="custom-select dine-in"/>
+            <input type="button" value="Takeway" t-on-click="TakeWay()" class="custom-select take-way"/>
+            <input type="button" value="Delivery" t-on-click="Delivery()" class="custom-select delivery"/>
+                          <span if="pos_order_type" style="display:none;">
+                     sssss<t t-esc="pos_order_type"/>
+                 </span>
+                  <input type="button" value="phone" t-on-click="Phone()" class="custom-select phone"/>
+
+<!--            <input  type="text" id="customer_name" placeholder="Customer Name"  style="margin-bottom: 34px;text-align: center;width: 200px;height: 50px;display:none;"/>-->
+             </div>
+             <div style="margin: 35px;" class="delivery-button">
+                 <input type="button" value="Woosh" t-on-click="custom_select_btn1()" class="custom-select-button custom_select_btn1"/>
+                 <input type="button" value="Uber Eats" t-on-click="custom_select_btn2()" class="custom-select-button custom_select_btn2"/>
+                 <input type="button" value="Door Dash" t-on-click="custom_select_btn3()" class="custom-select-button custom_select_btn3"/>
+                 <input type="button" value="Menulog" t-on-click="custom_select_btn4()" class="custom-select-button custom_select_btn4"/>
+                 <input type="button" value="Deliveroo" t-on-click="custom_select_btn5()" class="custom-select-button custom_select_btn5"/>
+
+
+             </div>
+             <div>
+                 <input  type="text" id="notes_delivery" t-att-value="notes" placeholder="Enter Notes"  style="display:none;margin-left: 35px;text-align: center;width: 70%;height: 50px;position: relative;top:-34px"/>
+
+
+                 <input  type="text" id="table_no" t-att-value="table_names" placeholder="Choose a Table"  style="display:none;margin-left: 35px;text-align: center;width: 70%;height: 50px;    top: 1px;position: relative;"/>
+<!--                 <input  type="hidden" id="order_type" t-att-value=""/>-->
+                 <input type="hidden" id="pos_order_type" name="redirect" t-att-value="nothing"/>
+                 <input type="hidden" id="pos_order_type_delivery" name="redirect" t-att-value="nothing"/>
+             </div>
+         </xpath>
+         <xpath expr="//div[hasclass('payment-buttons-container')]" position="after">
+             <input  type="text" id="pos_order_note_payment" t-att-value="order_notes" placeholder="Order Notes"  style="margin-left: 35px;text-align: center;width: 90%;height: 50px;position: relative;"/>
+         </xpath>
+
+    </t>
+</templates>

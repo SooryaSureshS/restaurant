@@ -1,0 +1,21 @@
+#cart_products #order_line_note_update .order_line_note:hover{
+    font-size:22px;
+}
+.onit_note_confirm:hover{
+    font-weight: 900;
+     color: white;
+}
+.onit_note_cancel:hover{
+     font-weight: 900;
+      color: white;
+}
+.onit_note_confirm{
+        background-color: #b0976d;
+    border-color: #b0976d;
+    color: white;
+}
+.onit_note_cancel{
+    background-color: #b0976d;
+    border-color: #b0976d;
+    color: white;
+}

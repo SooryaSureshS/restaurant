@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_estate_banner" name="Estate Banner">
+		<section class="our-wines-banner-image">
+				<div class="image">
+					<img class="img img-fluid" src="/theme_wineshop/static/src/img/estate-banner.jpg" alt="image"/>
+				</div>
+			</section>
+	</template>
+</odoo>

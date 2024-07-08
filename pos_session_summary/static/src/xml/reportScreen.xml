@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="Chrome" t-inherit="point_of_sale.Chrome" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('status-buttons')]/OrderManagementButton" position="before">
+            <SummaryButton/>
+        </xpath>
+    </t>
+
+    <t t-name="reportScreen" owl="1">
+        <div class="ticket-screen subwindow-container-fix screens"
+             style="background:#875a7b1c;overflow-y: scroll !important;margin-left: 10%;margin-right: 10%;">
+            <div class="screen-content" style="height: 80vh;margin:15px;">
+                <div class="controls" style="">
+                    <button class="discard" t-on-click="trigger('close-screen')">Back</button>
+                    <h1>Session Summary</h1>
+                    <div class="user_data" style="font-weight: 700;">
+                            <div class="col start">Opened By : <t t-esc="env.pos.session_data['user_name']"/>(
+                                <t t-esc="env.pos.session_data['pos_name']"/>
+                                )</div>
+                        <div class="col start">Opening Time : <t t-esc="env.pos.session_data['opening_date']"/></div>
+                        </div>
+                </div>
+
+                <div style="background:#d4d0d2;">
+                    <div class="transaction_data" style="border: 1px solid #afa8a8;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="text-align: center;width:10%;padding: 10px;">TRANSACTIONS</th>
+                                    <th style="text-align: center;width:10%;padding: 10px;">COUNTED</th>
+                                    <th style="text-align: center;width:10%;padding: 10px;">EXPECTED</th>
+                                    <th style="text-align: center;width:10%;padding: 10px;">FLOAT</th>
+                                    <th style="text-align: center;width:10%;padding: 10px;">VARIANCE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="font-size: 35px;font-weight: 700;text-align: center;width:25%;padding: 10px;">
+                                        <t t-if="env.pos.session_data['opening_date']">
+                                            <t t-esc="env.pos.session_data['orders_count']"/>
+                                        </t>
+                                        <t t-else="">-</t>
+                                    </td>
+                                    <td style="font-size: 35px;font-weight: 700;text-align: center;width:25%;padding: 10px;">
+                                        <span id="counted_top"></span>
+                                    </td>
+                                    <td style="font-size: 35px;font-weight: 700;text-align: center;width:25%;padding: 10px;">
+                                        <span id="expected_top">
+                                            <t t-esc="env.pos.session_data['total_expected']"/>
+                                        </span>
+                                    </td>
+                                    <td style="font-size: 35px;font-weight: 700;text-align: center;width:25%;padding: 10px;">
+                                        <input type="number" id="opening_balance"
+                                               style="padding: 10px;border: none;background: #efe7eb;height: 32px;border-radius: 5px;width: 50%;color: #555555;font-weight: 700;font-size: 35px;width: 70%;text-align: center;"
+                                               t-att-value="env.pos.session_data['starting_balance']"/>
+                                    </td>
+                                    <td style="font-size: 35px;font-weight: 700;text-align: center;width:25%;padding: 10px;color: #e02e2e;">
+                                        <span id="total_variance_top">
+                                            <t t-if="env.pos.session_data['total_variance']">
+                                                <t t-esc="env.pos.session_data['total_variance']"/>
+                                            </t>
+                                            <t t-else="">
+
+                                            </t>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br/>
+                <div style="background:#d4d0d2;">
+                    <div class="transaction_data" style="border: 1px solid #afa8a8;padding: 10px;">
+                        <h3>Cash Up</h3>
+                        <hr/>
+                        <table style="font-size: 22px;">
+                            <thead>
+                                <th style="text-align: left;width:31%;padding: 10px;">Tender</th>
+                                <th style="text-align: center;width:28%;padding: 10px;">Counted</th>
+                                <th style="text-align: center;width:28%;padding: 10px;">Expected</th>
+                                <th style="text-align: center;width:28%;padding: 10px;">Variance</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="font-weight: 700;text-align: left;left:25%;padding: 10px;">Cash</td>
+                                    <td style="font-weight: 700;text-align: center;left:25%;padding: 10px;">
+                                        <input type="number" id="input_cash"
+                                               style="border: none;background: #efe7eb;height: 32px;border-radius: 5px;font-size: 19px;"
+                                               value=""/>
+                                    </td>
+                                    <td style="font-weight: 700;text-align: center;left:25%;padding: 10px;">
+                                        <t t-if="env.pos.session_data['total_cash']">
+                                            <span id="cash_expected">
+                                                <t t-esc="env.pos.session_data['total_cash']"/>
+                                            </span>
+                                        </t>
+                                        <t t-else="">-</t>
+                                    </td>
+                                    <td style="font-weight: 700;text-align: center;left:25%;padding: 10px;color: #e02e2e;">
+                                        <span id="counted_variance">
+                                            <t t-esc="env.pos.session_data['variance_cash']"/>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 700;text-align: left;left:25%;padding: 10px;">Eftpos</td>
+                                    <td style="font-weight: 700;text-align: center;left:25%;padding: 10px;">
+                                        <input type="number" id="input_eftpos"
+                                               style="border: none;background: #efe7eb;height: 32px;border-radius: 5px;font-size: 19px;"
+                                               value=""/>
+                                    </td>
+                                    <td style="font-weight: 700;text-align: center;left:25%;padding: 10px;">
+                                        <t t-if="env.pos.session_data['total_efpos']">
+                                            <span id="eftpos_expected">
+                                                <t t-esc="env.pos.session_data['total_efpos']"/>
+                                            </span>
+                                        </t>
+                                        <t t-else="">-</t>
+                                    </td>
+                                    <td style="font-weight: 700;text-align: center;left:25%;padding: 10px;color: #e02e2e;">
+                                        <span id="eftpos_variance">
+                                            <t t-esc="env.pos.session_data['variance_eftpos']"/>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 700;text-align: left;width:25%;padding: 10px;">Vouchers</td>
+                                    <td style="font-weight: 700;text-align: center;width:25%;padding: 10px;">-</td>
+                                    <td style="font-weight: 700;text-align: center;width:25%;padding: 10px;">
+                                        <span id="total_redeen_amount">
+                                            <t t-esc="env.pos.session_data['total_redeem']"/>
+                                        </span>
+                                    </td>
+                                    <td style="font-weight: 700;text-align: center;width:25%;padding: 10px;">-</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 700;text-align: left;width:25%;padding: 10px;">Discount</td>
+                                    <td style="font-weight: 700;text-align: center;width:25%;padding: 10px;">-</td>
+                                    <td style="font-weight: 700;text-align: center;width:25%;padding: 10px;">
+                                        <span id="total_discount_amount">
+                                            <t t-esc="env.pos.session_data['total_discount']"/>
+                                        </span>
+                                    </td>
+                                    <td style="font-weight: 700;text-align: center;width:25%;padding: 10px;">-</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 700;text-align: left;width:25%;padding: 10px;">Loyalty Points</td>
+                                    <td style="font-weight: 700;text-align: center;width:25%;padding: 10px;">-</td>
+                                    <td style="font-weight: 700;text-align: center;width:25%;padding: 10px;">
+                                        <span id="total_loyalty_amount">
+                                            <t t-esc="env.pos.session_data['total_loyalty']"/>
+                                        </span>
+                                    </td>
+                                    <td style="font-weight: 700;text-align: center;width:25%;padding: 10px;">-</td>
+                                </tr>
+                                 <tr>
+                                    <td style="font-weight: 700;text-align: left;width:25%;padding: 10px;">Tips</td>
+                                    <td style="font-weight: 700;text-align: center;width:25%;padding: 10px;">-</td>
+                                    <td style="font-weight: 700;text-align: center;width:25%;padding: 10px;">
+                                        <span id="total_tips_amount">
+                                            <t t-esc="env.pos.session_data['total_tips']"/>
+                                        </span>
+                                    </td>
+                                    <td style="font-weight: 700;text-align: center;width:25%;padding: 10px;">-</td>
+                                </tr>
+                                <tr>
+                                    <hr/>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 700;text-align: left;width:31%;padding: 10px;">Subtotal</td>
+                                    <td style="font-weight: 700;text-align: center;width:31%;padding: 10px;">
+                                        <span id="subtotal_counted"></span>
+                                    </td>
+                                    <td style="font-weight: 700;text-align: center;width:31%;padding: 10px;">
+                                        <span id="subtotal_expected">
+                                            <t t-esc="env.pos.session_data['total_expected']"/>
+                                        </span>
+                                    </td>
+                                    <td style="font-weight: 700;text-align: center;width:25%;padding: 10px;color: #e02e2e;">
+                                        <span id="subtotal_variance"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 700;text-align: left;width:31%;padding: 10px;">Cashback</td>
+                                    <td style="font-weight: 700;text-align: center;width:31%;padding: 10px;">-</td>
+                                    <td style="font-weight: 700;text-align: center;width:31%;padding: 10px;">-</td>
+                                    <td style="font-weight: 700;text-align: center;width:25%;padding: 10px;">-</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 700;text-align: left;width:31%;padding: 10px;">Float</td>
+                                    <td style="font-weight: 700;text-align: center;width:31%;padding: 10px;">
+                                    </td>
+                                    <td style="font-weight: 700;text-align: center;width:31%;padding: 10px;">
+                                        <span id="subtotal_float_expected">
+                                            <t t-if="env.pos.session_data['starting_balance']">
+                                                <t t-esc="env.pos.session_data['starting_balance']"/>
+                                            </t>
+                                        </span>
+                                    </td>
+                                    <td style="font-weight: 700;text-align: center;width:25%;padding: 10px;">
+                                        <span id="subtotal_float_variance">
+                                            <t t-if="env.pos.session_data['starting_balance']">
+                                                <t t-esc="env.pos.session_data['starting_balance']"/>
+                                            </t>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr><hr/></tr>
+                                <tr>
+                                <td style="font-weight: 700;text-align: left;width:31%;padding: 10px;">Total</td>
+                                    <td style="font-weight: 700;text-align: center;width:31%;padding: 10px;">
+                                        <span id="total_counted"></span>
+                                    </td>
+                                    <td style="font-weight: 700;text-align: center;width:31%;padding: 10px;">
+                                        <span id="total_expected">
+                                            <t t-esc="env.pos.session_data['total_expected']"/>
+                                        </span>
+                                    </td>
+                                    <td style="font-weight: 700;text-align: center;width:28%;padding: 10px;color: #e02e2e;">
+                                        <span id="total_variance"></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br/>
+                    </div>
+                </div>
+                <br/>
+                <div style="">
+                    <button id="print_and_close" t-on-click="printAndClose()"
+                            style="width: 100%;height: 55px;font-size: 25px;background: #d4d0d2;border: 1px solid #afa8a8;">Post And Close Session</button>
+                </div>
+                <br/>
+                <br/>
+            </div>
+        </div>
+    </t>
+</templates>

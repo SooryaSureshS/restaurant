@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+	<record id="menu_wine_template" model="website.menu">
+		<field name="name">Wine-Home</field>
+		<field name="parent_id" ref="website.main_menu" />
+		<field name="sequence" type="int">22</field>
+		<field name="url">/</field>
+	</record>
+
+	<record id="menu_whisky_template" model="website.menu">
+		<field name="name">Whisky Home</field>
+		<field name="parent_id" ref="website.main_menu" />
+		<field name="sequence" type="int">23</field>
+		<field name="url">/whisky-homepage</field>
+	</record>
+
+	<record id="menu_vodka_template" model="website.menu">
+		<field name="name">Vodka Home</field>
+		<field name="parent_id" ref="website.main_menu" />
+		<field name="sequence" type="int">24</field>
+		<field name="url">/vodka-homepage</field>
+	</record>
+
+	<record id="menu_restaurant_template" model="website.menu">
+		<field name="name">Restaurant</field>
+		<field name="parent_id" ref="website.main_menu" />
+		<field name="sequence" type="int">25</field>
+		<field name="url">/restaurant</field>
+	</record>
+
+	<record id="menu_wines_template" model="website.menu">
+		<field name="name">Our Wines</field>
+		<field name="parent_id" ref="website.main_menu" />
+		<field name="sequence" type="int">26</field>
+		<field name="url">/our-wines</field>
+	</record>
+
+	<record id="menu_estate_template" model="website.menu">
+		<field name="name">The Estate</field>
+		<field name="parent_id" ref="website.main_menu" />
+		<field name="sequence" type="int">27</field>
+		<field name="url">/estate</field>
+	</record>
+
+	<record id="menu_about_template" model="website.menu">
+		<field name="name">About Us</field>
+		<field name="parent_id" ref="website.main_menu" />
+		<field name="sequence" type="int">28</field>
+		<field name="url">#</field>
+	</record>
+
+</odoo>

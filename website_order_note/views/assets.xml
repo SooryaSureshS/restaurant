@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="website_order_line_note_assets" name="Website order line note wine Assets" inherit_id="website.assets_frontend">
+		<xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/css" href="/website_order_note/static/src/css/style.css"/>
+            <link rel="stylesheet" type="text/css" href="/website_order_note/static/src/css/model_css.css"/>
+            <script type="text/javascript" src="/website_order_note/static/src/js/website_order_line_note.js" />
+            <script type="text/javascript" src="/website_order_note/static/src/js/lis.modal.js" />
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="ProductReturnButton" owl="1">
+        <span class="control-button Product_return__order">
+            <i class="fa fa-rotate-left"></i>
+            <span> </span>
+            <span>Product Return</span>
+        </span>
+    </t>
+
+
+    <t t-name="ReturnOrderListScreens" owl="1">
+           <div class="ticket-screen screen">
+            <div class="screen-content">
+                <div class="controls">
+                    <div class="buttons gift_card_header_buttons">
+                        <button class="discard" t-on-click="trigger('close-screen')">Back</button>
+                        <button class="discard" t-on-click="trigger('sale_return-screen')">Sale orders</button>
+                        <button class="discard" t-on-click="trigger('fetch_new-screen')">Sync New orders</button>
+                    </div>
+                    <SearchBar config="searchBarConfig" placeholder="'Search Tickets...'" />
+                </div>
+                <div class="orders">
+                    <div class="header-row">
+                        <div class="col start ">Order Ref</div>
+                        <div class="col start ">Return Ref</div>
+                        <div class="col start">Partner</div>
+                        <div class="col start">Date</div>
+                    </div>
+
+                    <t t-foreach="filteredOrdersList" t-as="order" t-key="order.id">
+                        <div class="order-row pointer">
+                            <div class="col start">
+                                <t t-esc="order.pos_reference"></t>
+                            </div>
+                            <div class="col start">
+                                <t t-if="order.return_ref">
+                                    <t t-esc='order.return_ref'/>
+                                </t>
+                            </div>
+                            <div class="col start">
+                                <t t-esc="order.partner_id[1]"></t>
+                            </div>
+                            <div class="col start">
+                                <t t-esc="order.date_order"></t>
+                            </div>
+
+                            <div class="col start narrow">
+                                  <span id="edit_giftcard" title="Edit" t-att-data-id='order.id' style="cursor:pointer" t-on-click="ReturnClick(order.id)">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Return
+                                </span>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </div>
+
+    </t>
+
+
+    <t t-name="ReturnPopupsWidget" owl="1">
+        <div class="modal-dialog" role="dialog">
+            <div class="popup popup-selection product_return_pos" >
+                <p class="title">Return Order</p>
+                <div class='selection scrollable-y touch-scrollable'>
+                    <table id="list" cellspacing="1px" cellpadding="10px" text-align="center"
+                           width="100%" style="border:1px;padding-left:1.16cm;">
+                        <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Qty</td>
+                                <td>Dis</td>
+                                <td>Returned Quantity</td>
+                            </tr>
+                        </thead>
+                        <tbody id="props_return_popup">
+                            <t t-foreach="props.result" t-as="line" t-key="line.id">
+                                <tr >
+                                    <td>
+                                        <t t-esc="line['product']"></t>
+                                    </td>
+                                    <td>
+                                        <t t-esc="line['qty']"></t>
+                                    </td>
+                                    <td>
+                                        <t t-esc="line['discount']"></t>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="return_qty" maxlength="10" style="margin-bottom: 4px;"
+                                               t-att-data-qty="line['qty']"
+                                               t-att-data-product_id="line['product_id']"
+                                               t-att-data-price_unit="line['price_unit']"
+                                               t-att-data-discount="line['discount']"
+                                               t-att-data-line_id="line['line_id']"
+                                               value="0"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="footer">
+                    <div class="button confirm" t-on-click="confirm_return()">
+                            Return
+                        </div>
+                    <div class="button cancel" t-on-click="cancel">
+                        Cancel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+
+
+
+
+     <t t-name="ReturnSaleListScreens" owl="1">
+           <div class="ticket-screen screen">
+            <div class="screen-content">
+                <div class="controls">
+                    <div class="buttons gift_card_header_buttons">
+                        <button class="discard" t-on-click="trigger('close-screen')">Back</button>
+                        <button class="discard" t-on-click="trigger('pos_return-screen')">Pos orders</button>
+                        <button class="discard" t-on-click="trigger('fetch_new-screen')">Sync New orders</button>
+                    </div>
+                    <SearchBar config="searchBarConfig" placeholder="'Search Tickets...'" />
+                </div>
+                <div class="orders">
+                    <div class="header-row">
+                        <div class="col start ">Order Ref</div>
+                        <div class="col start ">Return Ref</div>
+                        <div class="col start">Partner</div>
+                        <div class="col start">Date</div>
+                        <div class="col start">State</div>
+                    </div>
+
+                    <t t-foreach="filteredSaleOrdersList" t-as="order" t-key="order.id">
+                        <div class="order-row pointer">
+                            <div class="col start">
+                                <t t-esc="order.name"></t>
+                            </div>
+                            <div class="col start">
+                                <t t-if="order.return_status">
+                                    <t t-esc='order.return_status'/>
+                                </t>
+                            </div>
+                            <div class="col start">
+                                <t t-esc="order.partner_id[1]"></t>
+                            </div>
+                            <div class="col start">
+                                <t t-esc="order.date_order"></t>
+                            </div>
+                             <div class="col start" style="justify-content: center;">
+                                <t t-esc="order.state"></t>
+                            </div>
+                            <div class="col start narrow">
+                                  <span id="edit_giftcard" title="Edit" t-att-data-id='order.id' style="cursor:pointer" t-on-click="ReturnClick(order.id)">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true">Return Product</i>
+                                </span>
+                            </div>
+                            <div class="col start narrow">
+                                  <span id="edit_giftcard" title="Edit" t-att-data-id='order.id' style="cursor:pointer" t-on-click="AmountReturn(order.id)">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true">Return Amount</i>
+                                </span>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </div>
+
+    </t>
+
+
+
+    <t t-name="ReturnSaleListPopupsWidget" owl="1">
+        <div class="modal-dialog" role="dialog">
+            <div class="popup popup-selection product_return_pos" >
+                <p class="title">Return Order</p>
+                <label for="option_choose" >Choose a Option:  </label>
+
+                <div class='selection scrollable-y touch-scrollable'>
+                    <table id="list" cellspacing="1px" cellpadding="10px" text-align="center"
+                           width="100%" style="border:1px;padding-left:1.16cm;">
+                        <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Qty</td>
+                                <td>Dis</td>
+                                <td>Returned Quantity</td>
+                            </tr>
+                        </thead>
+                        <tbody id="props_return_popup">
+                            <t t-foreach="props.result" t-as="line" t-key="line.id">
+                                <tr >
+                                    <td>
+                                        <t t-esc="line['product']"></t>
+                                    </td>
+                                    <td>
+                                        <t t-esc="line['qty']"></t>
+                                    </td>
+                                    <td>
+                                        <t t-esc="line['discount']"></t>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="return_qty" maxlength="10" style="margin-bottom: 4px;"
+                                               t-att-data-qty="line['qty']"
+                                               t-att-data-product_id="line['product_id']"
+                                               t-att-data-price_unit="line['price_unit']"
+                                               t-att-data-discount="line['discount']"
+                                               t-att-data-line_id="line['line_id']"
+                                               t-att-value="line['qty']"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="footer">
+                    <div class="button confirm" t-on-click="confirm_return()">
+                            Refund
+                        </div>
+                    <div class="button cancel" t-on-click="cancel">
+                        Cancel
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </t>
+
+    <t t-name="ReturnSaleListAmountWidget" owl="1">
+        <div class="modal-dialog" role="dialog">
+            <div class="popup popup-selection product_return_pos" >
+                <p class="title">Return Order</p>
+                <label for="option_choose" >Choose a Option:  </label>
+
+                <div class='selection scrollable-y touch-scrollable'>
+                    <table id="list" cellspacing="1px" cellpadding="10px"
+                           width="100%" style="text-align: left;border:1px;margin-left: 5px;">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Qty</th>
+                                <th>Dis</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="props_return_popup" >
+                            <t t-foreach="props.result" t-as="line" t-key="line.id">
+                                <tr >
+                                    <td>
+                                        <t t-esc="line['product']" ></t>
+                                    </td>
+                                    <td>
+                                        <t t-esc="line['qty']"></t>
+                                    </td>
+                                    <td>
+                                        <t t-esc="line['discount']"></t>
+                                    </td>
+                                    <td>
+                                        <t t-esc="line['price_total']"></t>
+                                    </td>
+
+                                </tr>
+                            </t>
+
+
+
+                        </tbody>
+
+                    </table>
+                   <label for="return_qty">TOTAL AMOUNT</label>
+                            <input type="text" id="return_amount" maxlength="10" style="margin-bottom: 4px;text-align:center;"
+                                               t-att-value="props.order['amount_total']"
+                                               />
+                            <input  type="hidden" id="amount" maxlength="10" style="margin-bottom: 4px;text-align: center;"
+                           t-att-value="props.order['amount_total']"/>
+
+                </div>
+
+                <div class="footer">
+                    <div class="button confirm" t-on-click="confirm_return(props.order)">
+                            Refund
+                        </div>
+                    <div class="button cancel" t-on-click="cancel">
+                        Cancel
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </t>
+
+
+</templates>

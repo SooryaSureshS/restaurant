@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="safe_count_report_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="o">
+                    <div  style="text-align:center;width:100%;"><h3>Safe Count Report</h3></div>
+                    <br></br>
+                    <table style="width:100%">
+
+                        <tr>
+                            <td style="width:40%">Date:<span t-field="o.date"/>
+
+                            </td>
+                            <td style="width:40%">Manager:<span t-field="o.manager_name"/>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:40%;"></td>
+                            <td style="width:40%">Safe Amount:<span t-field="o.safe_amount"/>
+
+                            </td>
+                        </tr>
+                    </table>
+                    <br></br>
+
+                    <table style="width:35%">
+                        <tr>
+                            <th style="width:5%;">$100</th>
+                            <td style="width:5%;"><strong>X</strong></td>
+                            <td style="width:5%;">
+                                <span t-field="o.hundred_dollar"/>
+                            </td>
+                            <td style="width:5%;"><strong>=</strong></td>
+                            <td style="width:5%;">
+                                <span t-field="o.total_hundred_dollar"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="width:5%;">$50</th>
+                            <td style="width:5%;"><strong>X</strong></td>
+                            <td style="width:5%;">
+                                <span t-field="o.fifty_dollar"/>
+                            </td>
+                            <td style="width:5%;"><strong>=</strong></td>
+
+                            <td style="width:5%;">
+                                <span t-field="o.total_fifty_dollar"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="width:5%;">$20</th>
+                            <td style="width:5%;"><strong>X</strong></td>
+                            <td style="width:5%;">
+                                <span t-field="o.twenty_dollar"/>
+                            </td>
+                            <td style="width:5%;"><strong>=</strong></td>
+                            <td style="width:5%;">
+                                <span t-field="o.total_twenty_dollar"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="width:5%;">$10</th>
+                            <td style="width:5%;"><strong>X</strong></td>
+                            <td style="width:5%;">
+                                <span t-field="o.ten_dollar"/>
+                            </td>
+                            <td style="width:5%;"><strong>=</strong></td>
+                            <td style="width:5%;">
+                                <span t-field="o.total_ten_dollar"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="width:5%;">$5</th>
+                            <td style="width:5%;"><strong>X</strong></td>
+                            <td style="width:5%;">
+                                <span t-field="o.five_dollar"/>
+                            </td>
+                            <td style="width:5%;"><strong>=</strong></td>
+                            <td style="width:5%;">
+                                <span t-field="o.total_five_dollar"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="width:5%;">$2</th>
+                            <td style="width:5%;"><strong>X</strong></td>
+                            <td style="width:5%;">
+                                <span t-field="o.two_dollar"/>
+                            </td>
+                            <td style="width:5%;"><strong>=</strong></td>
+                            <td style="width:5%;">
+                                <span t-field="o.total_two_dollar"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="width:5%;">$1</th>
+                            <td style="width:5%;"><strong>X</strong></td>
+                            <td style="width:5%;">
+                                <span t-field="o.one_dollar"/>
+                            </td>
+                            <td style="width:5%;"><strong>=</strong></td>
+                            <td style="width:5%;">
+                                <span t-field="o.total_one_dollar"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="width:5%;">50c</th>
+                            <td style="width:5%;"><strong>X</strong></td>
+                            <td style="width:5%;">
+                                <span t-field="o.fifty_cent"/>
+                            </td>
+                            <td style="width:5%;"><strong>=</strong></td>
+                            <td style="width:5%;">
+                                <span t-field="o.total_fifty_cent"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="width:5%;">20c</th>
+                            <td style="width:5%;"><strong>X</strong></td>
+                            <td style="width:5%;">
+                                <span t-field="o.twenty_cent"/>
+                            </td>
+                            <td style="width:5%;"><strong>=</strong></td>
+                            <td style="width:5%;">
+                                <span t-field="o.total_twenty_cent"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="width:5%;">10c</th>
+                            <td style="width:5%;"><strong>X</strong></td>
+                            <td style="width:5%;">
+                                <span t-field="o.ten_cent"/>
+                            </td>
+                            <td style="width:5%;"><strong>=</strong></td>
+                            <td style="width:5%;">
+                                <span t-field="o.total_ten_cent"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="width:5%;">5c</th>
+                            <td style="width:5%;"><strong>X</strong></td>
+                            <td style="width:5%;">
+                                <span t-field="o.five_cent"/>
+                            </td>
+                            <td style="width:5%;"><strong>=</strong></td>
+                            <td style="width:5%;">
+                                <span t-field="o.total_five_cent"/>
+                            </td>
+                        </tr>
+                        <tr style="padding:10px;">
+                            <th style="width:5%;"></th>
+                            <td style="width:5%;"><strong></strong></td>
+                            <td colspan="2" style="width:10%;border-top:1px solid black">
+                                    Safe Amount
+                            </td>
+
+                            <td style="width:5%;border-top:1px solid black">
+                                <span t-field="o.safe_amount"/>
+                            </td>
+                        </tr>
+                        <tr style="padding:10px;">
+                            <th style="width:5%;"></th>
+                            <td style="width:5%;"><strong></strong></td>
+                            <td colspan="2" style="width:10%;border-top:1px solid black">
+                                   Expected Safe Amount
+                            </td>
+
+                            <td style="width:5%;border-top:1px solid black">
+                                <span t-field="o.expected_safe_amount"/>
+                            </td>
+                        </tr>
+                        <tr style="padding:10px;">
+                            <th style="width:5%;"></th>
+                            <td style="width:5%;"><strong></strong></td>
+                            <td colspan="2" style="width:10%;border-top:1px solid black">
+                                   Variance
+                            </td>
+
+                            <td style="width:5%;border-top:1px solid black">
+                                <span t-field="o.variance"/>
+                            </td>
+                        </tr>
+                    </table>
+
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

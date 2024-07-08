@@ -1,0 +1,348 @@
+.preview-instruction{
+    margin-top: 20px !important;
+    margin-bottom: 0px !important;
+}
+.banner{
+    background: url('/mask_cutomization/static/src/image/BG.png');
+    background-size: cover;
+    /* width: 70%; */
+    /* margin: auto; */
+    /* height: 1000px; */
+    /* display: flex; */
+    /* flex: 100%; */
+    font-family: 'Montserrat';
+    /* line-height: 2; */
+    color:#E2D6D6;
+    padding: 5%;
+    padding-right: 4%;
+    padding-left: 4%;
+}
+.inner-flex{
+    display: flex;
+}
+.left-flex{
+    /* flex:50%; */
+    flex: 42%;
+    text-align: center;
+}
+.right-flex{
+    flex: 50%;
+    padding-left: 5%;
+    color: white;
+}
+#mask-header{
+    font-size: 30px;
+    font-weight: 700;
+}
+.left-flex img{
+    padding: 8%;
+    padding-bottom: 30%;
+    border-radius: 11px;
+    background-color: #E6E6EE;
+    width: 100%;
+}
+.left-flex .group_preview_container{
+  /*padding: 8%;
+    padding-top: 30%;
+    padding-bottom: 30%;
+    border-radius: 11px;
+    background-color: #E6E6EE;
+    width: 100%;
+      */
+        border-radius: 11px;
+    background-color: #E6E6EE;
+    width: 100%;
+    height: 448px;
+        margin: auto;
+
+}
+.group_preview_container iframe{
+        border: none;
+    border-radius: 11px;
+}
+#process-bar{
+    display: none;
+}
+.colors{
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+}
+.colors div{
+ height: 40px;
+/*height: 92%;*/
+width: 40px;
+/*width: 67%;*/
+border-radius: 4px;
+margin-right: 10px;
+margin-bottom: 76%;
+/* padding-left: 4px; */
+}
+#color1{
+background: #000000;
+}
+#color2{
+background: #F24570;
+}
+#color3{
+background: #FFC107;
+}
+#color4{
+background: #FCF66A;
+}
+#color5{
+background: #27AE60;
+}
+#color6{
+background: #4285F4;
+}
+#color7{
+background: #9B51E0;
+}
+#color8{
+background: #C4C4C4;;
+}
+#color9{
+background: #FFFFFF;
+}
+#color10{
+background: #FFA4A9;
+}
+.right-flex hr{
+    border: 1.72px solid #E6E6EE;
+    opacity: 1;
+    /* color: #E6E6EE; */
+}
+.right-second-flex{
+    display: flex;
+}
+.right-second-flex button{
+    height: 50px;
+    /* width: 221.45px; */
+    width: -webkit-fill-available;
+    border: none;
+    border-radius: 5.4px;
+    margin-top: 17px;
+    margin-left: 10px;
+    font-size: 15px;
+    font-weight: 600;
+}
+#btn-1{
+color: white;
+background-color: #626063;
+}
+#btn-2{
+color: #626063;
+background-color: white;
+}
+.decrement-increment-btn{
+    background-color: white;
+    color: #626063;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    /* width: fit-content;
+     */
+     width: 40%;
+     border-radius: 10px;
+     margin-bottom: 12%;
+}
+.decrement-increment-btn p{
+    text-align: center;
+    padding-top: 15px;
+}
+.qnty-content{
+    flex: 1;
+    text-align-last: right;
+    padding-right: 24%;
+}
+.qnty-content p{
+    margin-top: 16px;
+}
+#preview-btn{
+    height: 50px;
+    font-size: 16px;
+    color: white;
+    background-color: #626063;
+    border-radius: 5.4344px;
+    border: none;
+    /* width: -webkit-fill-available; */
+    /* margin-top: 15%; */
+    margin-top: 3%; 
+    width: 85%;
+}
+@media screen and (max-width: 999px){
+.inner-flex{
+    display: block;
+    padding: 5%;
+}
+.right-flex{
+    padding-left: 0%;
+}
+#right-flex-process{
+    display: none;
+}
+#process-bar{
+    display: block;
+}
+#process-bar img{
+    width: 100%;
+    padding: 5%;
+}
+}
+
+.left-flex-images img{
+margin: auto;
+padding-bottom: 0%;
+background-color: unset;
+width: unset;
+}
+.left-flex-images{
+    display: flex;
+    width: 83%;
+    margin: auto;
+}
+.left-flex-images div{
+    flex: 1;
+}
+.upload-div{
+    display: flex;
+}
+.upload-div button{
+    border: none;
+    color: white;
+    background-color: #626063;
+    height: 50px;
+    border-radius: 5px;
+    width: 222px;
+    margin-right: 3%;
+}
+.upload-div p{
+    margin: auto;
+    width: 39%;
+}
+#qty_order{
+    border: none;
+    width: 74px;
+    text-align: center;
+    pointer-events: none;
+}
+#upload_image_view{
+        width: 45px;
+    height: 45px;
+    margin-top: 5px;
+}
+#upload_file_change{
+border: none;
+    color: white;
+    background-color: #626063;
+    height: 50px;
+    border-radius: 5px;
+    width: 222px;
+    margin-right: 3%;
+}
+.pellete_active{
+            border: 4px solid #98f700;
+}
+
+.pellete_color{
+ height: 40px;
+/*height: 92%;*/
+width: 40px;
+/*width: 67%;*/
+border-radius: 4px;
+margin-right: 10px;
+/* padding-left: 4px; */
+}
+.pellete_color_mask{
+ height: 40px;
+/*height: 92%;*/
+width: 40px;
+/*width: 67%;*/
+border-radius: 4px;
+margin-right: 10px;
+/* padding-left: 4px; */
+}
+.nose_pad_active{
+    border: 1px solid gold;
+}
+@media screen and (max-width: 999px){
+
+    .left-flex .group_preview_container {
+    border-radius: 11px;
+    background-color: #E6E6EE;
+    width: 100%;
+    height: 448px;
+    margin: auto;
+}
+}
+.active_none{
+    display: none !important;
+}
+.active_block{
+    display: block !important;
+}
+.all_btn{
+    cursor: pointer;
+}
+#upload_file_image_name{
+       height: 43px;
+    overflow: hidden;
+    margin-left: 10px;
+    padding-top: 10px;
+}
+#gui_back{
+        cursor: pointer;
+}
+#gui_back:hover{
+    color: white;
+}
+#color_mask{
+    display: inline-flex;
+}
+#submit_form{
+
+height: 50px;
+font-size: 16px;
+    color: white;
+    background-color: #626063;
+    border-radius: 5.4344px;
+    border: none;
+    /* width: -webkit-fill-available; */
+    /* margin-top: 15%; */
+    margin-top: 3%;
+    width: 77%;
+    cursor: pointer;
+        cursor: pointer;
+    text-align: center;
+    padding-top: 10px;
+}
+.fragrance_bread{
+    padding-top:15px;
+}
+.image_fragrance{
+       min-width: 150px;
+    max-height: 150px;
+}
+.fragrance_button{
+     color: #626063;
+    background-color: white;
+}
+.nose_pad_button{
+    color: #626063;
+    background-color: white;
+}
+.nose_pad_button_active{
+    color: white !important;
+    background-color: #626063 !important;
+}
+.fragrance_button_active{
+     color: white !important;
+    background-color: #626063 !important;
+}
+.nose_button_container{
+        width: 50%;
+}
+.fragrance_button_container{
+    width: 60%;
+}

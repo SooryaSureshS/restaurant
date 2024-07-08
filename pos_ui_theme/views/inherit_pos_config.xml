@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_config_inherit__view" model="ir.ui.view">
+        <field name="name">pos.config.form.view</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+          <xpath expr="//form/sheet" position="inside">
+          <h2 class="custom">Custom Theme</h2>
+          <div class="row mt16 o_settings_container custom">
+              <div class="col-xs-12 col-md-6 o_setting_box">
+                    <div class="o_setting_right_pane">
+                        <label for="custom_theme" string="Set Custom Theme"/>
+                        <div class="content-group">
+                               <field name="custom_theme" class="o_light_label" widget="radio" />
+                               <span> <img src="/pos_ui_theme/static/src/img/all-theme-color.png" alt="Theme Color" style="vertical-align:text-top;margin-top:-5px;height:194px;" /></span>
+                               <field name="theme" invisible="1"/>
+                        </div>
+                    </div>
+              </div>
+          </div>
+          </xpath>
+        </field>
+    </record>
+    
+</odoo>

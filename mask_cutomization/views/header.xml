@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="template_header_default1" inherit_id="website.layout" name="Template Header Default" active="True">
+        <xpath expr="//header" position="replace">
+            <link rel="stylesheet" href="/mask_cutomization/static/src/scss/header.css"/>
+            <div class="header_class">
+
+                <div class="upper_header">
+                    <div class="inner_header">
+                        <div class="header_upper_container">
+                            <div class="left_container">
+                                <span class="follow_us">Follow Us</span>
+                                <span class="facebook_icon">
+                                    <img src="/mask_cutomization/static/src/image/Facebook Icon.png"/>
+                                </span>
+                                <span class="twitter_icon">
+                                    <img src="/mask_cutomization/static/src/image/twitter.png"/>
+                                </span>
+                                <span class="p_icons">
+                                    <img src="/mask_cutomization/static/src/image/p_tag.png"/>
+                                </span>
+                                <span class="twitter_icon2">
+                                    <img src="/mask_cutomization/static/src/image/twitter2.png"/>
+                                </span>
+                            </div>
+                            <div class="center_container">
+                                <span>Hot Line: +8527110882</span>
+                            </div>
+                            <div class="right_container">
+                                <a href="#" style="display:flex;">
+                                    <span class="track_icon">
+                                        <img src="/mask_cutomization/static/src/image/Location Icon.png"/>
+                                    </span>
+                                    <span class="track_your_order">Track Order</span>
+                                </a>
+
+                                <div class="dropdown">
+                                    <span>Language</span>
+                                    <span>
+                                        <span class="language_arrow">
+                                            <img src="/mask_cutomization/static/src/image/arrow-down-sign-to-navigate 1.png"/>
+                                        </span>
+                                    </span>
+                                    <div class="dropdown-content">
+                                        <t t-foreach="languages" t-as="lg">
+                                            <a t-att-href="url_for(request.httprequest.path + '?' + keep_query(), lang_code=lg[0])"
+                                               t-attf-class="dropdown-item js_change_lang #{active_lang == lg and 'active'}"
+                                               t-att-data-url_code="lg[1]">
+                                                <p t-if="not no_text" t-esc="lg[2].split('/').pop()"/>
+                                            </a>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="inner_header">
+
+                    <div class="lower_header">
+                        <div class="logo_container">
+                            <img src="/mask_cutomization/static/src/image/image 32.png"/>
+                        </div>
+                        <ul class="navigation">
+                            <a href="/" style="text-decoration: none;">
+                                <li>Product</li>
+                            </a>
+                            <a href="/about_us" style="text-decoration: none;">
+                                <li>About Us</li>
+                            </a>
+                            <a href="/contact_us" style="text-decoration: none;">
+                                <li>Contact Us</li>
+                            </a>
+                        </ul>
+                        <div class="sky_account">
+                            <span class="dropdown">
+                                <img class="dropbtn account" src="/mask_cutomization/static/src/image/user Icon.png"
+                                     onclick="myFunction()"/>
+                                <div id="myDropdown" class="dropdown-content" style="z-index: 9999;">
+                                    <t t-if="not request.env.user._is_public()">
+                                        <p>
+                                            <a href="/web/session/logout">Logout</a>
+                                        </p>
+                                        <p>
+                                            <a href="/my">Account</a>
+                                        </p>
+                                    </t>
+                                    <t t-else="">
+                                        <p>
+                                            <a href="/web/login">Login</a>
+                                        </p>
+                                         <p>
+                                            <a href="/my">Account</a>
+                                        </p>
+                                    </t>
+
+                                </div>
+                            </span>
+                            <script>
+                                function myFunction() {
+                                document.getElementById("myDropdown").classList.toggle("show");
+                                }
+                                window.onclick = function(event) {
+                                if (!event.target.matches('.dropbtn')) {
+                                var dropdowns = document.getElementsByClassName("dropdown-content");
+                                var i;
+                                for (i = 0; i &lt; dropdowns.length; i++) {
+                                var openDropdown = dropdowns[i];
+                                if (openDropdown.classList.contains('show')) {
+                                openDropdown.classList.remove('show');
+                                }
+                                }
+                                }
+                                }
+
+                            </script>
+                            <span class="cart_icons">
+                                <a href="/shop/cart">
+                                    <t t-set="website_sale_order" t-value="website.sale_get_order()"/>
+                                    <t t-if="website_sale_order">
+                                        <span class="cart_number" id="cart_number">
+                                            <t t-esc="request.env['sale.order.line'].sudo().search_count([('order_id','=',website_sale_order.id),('is_delivery','=',False)])"/>
+                                        </span>
+                                    </t>
+
+                                    <img class="cart" src="/mask_cutomization/static/src/image/shopping-cart Icon.png"/>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <div class="topnav" style="display: none;">
+                        <a href="/">
+                            <img src="/mask_cutomization/static/src/image/image 32.png"/>
+                        </a>
+                        <!-- Navigation links (hidden by default) -->
+                        <div id="myLinks">
+                            <a href="/customize/mask">Product</a>
+                            <a href="#">About Us</a>
+                            <a href="#">Contact Us</a>
+                            <t t-if="not request.env.user._is_public()">
+                                <a href="/web/session/logout">Login Out</a>
+                                <a href="/account">Account</a>
+                            </t>
+                            <t t-else="">
+                                <a href="/web/login">Login In</a>
+                            </t>
+                        </div>
+                        <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+                        <a href="javascript:void(0);" class="icon" onclick="myFunction1()">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </div>
+                    <style>
+                        /* Style the navigation menu */
+                        .topnav {
+                        overflow: hidden;
+                        background-color: #AFBCC2;
+                        position: relative;
+                        }
+
+                        /* Hide the links inside the navigation menu (except for logo/home) */
+                        .topnav #myLinks {
+                        display: none;
+                        }
+
+                        /* Style navigation menu links */
+                        .topnav a {
+                        color: white;
+                        padding: 14px 16px;
+                        text-decoration: none;
+                        font-size: 17px;
+                        display: block;
+                        }
+
+                        /* Style the hamburger menu */
+                        .topnav a.icon {
+                        font-size: 25px;
+                        display: block;
+                        position: absolute;
+                        right: 0;
+                        height: 66px;
+                        width: 66px;
+                        color: beige !important;
+                        text-align: center;
+                        top: 0;
+                        background-color: #ddd;
+                        }
+
+                        /* Add a grey background color on mouse-over */
+                        .topnav a:hover {
+                        background-color: #ddd;
+                        color: black;
+                        }
+
+                        /* Style the active link (or home/logo) */
+                        .active {
+                        color: white;
+                        }
+
+
+                        .dropdown {
+                        position: relative;
+                        display: inline-block;
+                        }
+
+                        .dropdown-content {
+                        display: none;
+                        position: absolute;
+                        background-color: #f9f9f9;
+                        min-width: 160px;
+                        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                        padding: 12px 16px;
+                        z-index: 1;
+                        }
+
+                        .dropdown:hover .dropdown-content {
+                        display: block;
+                        }
+                    </style>
+                    <script>
+                        function myFunction1() {
+                        var x = document.getElementById("myLinks");
+                        if (x.style.display === "block") {
+                        x.style.display = "none";
+                        } else {
+                        x.style.display = "block";
+                        }
+                        }
+                    </script>
+
+
+                </div>
+
+
+            </div>
+
+        </xpath>
+    </template>
+</odoo>

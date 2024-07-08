@@ -1,0 +1,62 @@
+<odoo>
+    <data>
+        <record id="restaurant_table_reservation" model="ir.ui.view">
+            <field name="name">restaurant.table.reservation</field>
+            <field name="model">restaurant.table</field>
+            <field name="inherit_id" ref="pos_restaurant.view_restaurant_table_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='seats']" position="after">
+                    <field name="floor_id"/>
+                </xpath>
+            <xpath expr="//group[1]" position="after">
+                <group string="Table Reservation">
+                    <field name="book_date">
+                        <tree editable="bottom">
+                            <field name="date_reserved"/>
+                            <field name="partner_id"/>
+                            <field name="no_of_people"/>
+                            <field name="occasion"/>
+                            <field name="special_request"/>
+                            <field name="date_reserved_end"/>
+                        </tree>
+                    </field>
+                </group>
+
+            </xpath>
+            </field>
+        </record>
+
+        <record id="res_config_settings_view_reservation" model="ir.ui.view">
+            <field name="name">res.config.settings.view.day</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="1"/>
+            <field name="inherit_id" ref="website.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@id='website_selection_settings']" position="after">
+                    <div>
+                        <h2>Reservation For Table</h2>
+                        <span class="o_form_label" style="margin-left: 58px;">Maximum Reservation Time</span>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box"
+                                 title="Here You can set minimum picking time">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <div class="content-group">
+                                        <div class="row">
+                                            <label string="Based on This Configuration End time Will Calculate" for="reservation_time"
+                                                   class="o_light_label" style="width:100%;margin-left: 15px;"/>
+                                            <field name="reservation_time" widget="float_time"
+                                                   style="width:50px;margin-left: 15px;"/>
+                                            <br/>
+                                            <span>HH:MM</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,50 @@
+/*the container must be positioned relative:*/
+.custom-select {
+    width: 16%;
+    height: 51px;
+    margin: 20px;
+    font-size: initial;
+    border: solid 1px rgb(202, 202, 202);
+    text-align: left;
+    background-color: #e2e0e0bf;
+    margin: 35px;
+
+
+}
+.custom-select:focus{
+    background-color: rgb(110,200,155);
+
+}
+.custom-select:active{
+    background-color: rgb(110,200,155);
+
+}
+.custom-select-button {
+   display: inline-block;
+    width: 94px;
+    height: 51px;
+    line-height: 30px;
+    background: #f0eeee;
+    margin: 0 4px;
+    text-align: center;
+    top: -38px;
+    position: relative;
+    border: solid 1px rgb(202, 202, 202);
+
+}
+
+.custom-select-button:focus{
+    background-color: rgb(110,200,155);
+
+}
+.custom-select-button:active{
+    background-color: rgb(110,200,155);
+
+}
+.delivery-button{
+display:none;
+}
+.pos .right-content .phone{
+    text-transform: capitalize;
+}
+

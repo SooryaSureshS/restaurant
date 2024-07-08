@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="booking_table">
+        <div class="floor_container">
+            <div class="floor_class">
+<!--
+                <div class="row" style="margin: auto; ">
+                    <div class="floor_back">
+                        &lt;Back
+                    </div>
+                </div>
+-->
+                <div class="row" style="margin-top: 20px;">
+                    <div class="col-md-12">
+                        <div class="floor_title">
+                            Select a Floor
+                        </div>
+                        <div class="floor_description">
+<!--                            <t t-foreach="widget" t-as="order">-->
+                            <t t-set="selected_time" t-value="widget[0]"/>
+                                The following options are available for a reservation at <span><t t-esc="selected_time['selected_time']"/></span>
+<!--                            </t>-->
+                        </div>
+                        <div class="floor_details">
+                            <t t-foreach="widget" t-as="order">
+                                <br/>
+                                <div class="">
+                                    <div class="border-bottom_hr"/>
+                                        <div class="col-md-6 floor_details_title" style="float:left;">
+                                           <span><t t-esc="order['floor']"/></span>
+                                        </div>
+                                    <div class="col-md-6" style="float:left;text-align: center;">
+                                        <button class="floor_button" t-att-data-id="order['id']"
+                                                t-att-data-table="order['table_id']"><t t-esc="order['table_id']"/></button>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+    <t t-name="booking_details">
+        <div class="your_details_booking">
+            <div class="your_details_container">
+                <div class="rowpp">
+                     <div class="your_details_title">
+                         Your Details
+                     </div>
+                    <div class="border-bottom_hr" style=" width: 100%;"/>
+                    <div class="col-md-12">
+                        <div class="your_message_status" style="display: flex;">
+                            Due to limited availability, we can hold this table for you for<span
+                                style="padding-left: 3px;padding-right: 5px;color: red;" id="count"></span>seconds.
+                        </div>
+                    </div>
+
+                    <div class="col-md-12" style="text-align: center;">
+                        <input id="first_name" type="text" placeholder="First name"
+                               class="input_ypu_details"/>
+                    </div>
+
+                    <div class="col-md-12" style="text-align: center;">
+                        <input id="last_name" type="text" placeholder="Last name"
+                               class="input_ypu_details"/>
+                    </div>
+
+                    <div class="col-md-12" style="text-align: center;">
+                        <input id="phone" type="tel" placeholder="Phone" class="input_ypu_details"/>
+                    </div>
+
+                    <div class="col-md-12" style="text-align: center;">
+                        <input id="email" type="email" placeholder="Email" class="input_ypu_details"/>
+                    </div>
+
+                    <div class="col-md-12" style="text-align: center;">
+                        <select name="" onclick="return false;" id="select_person"
+                          class="input_ypu_details occasion" style="    background-color: white;">
+                            <option value="">Select an occasion(optional) </option>
+                            <option value="none">None</option>
+                            <option value="birthday">Birthday</option>
+                            <option value="date">Date</option>
+                            <option value="business">Business Meal</option>
+                            <option value="special">Special Occasion</option>
+                        </select>
+                        </div>
+                    <div class="col-md-12 " style="text-align: center;">
+                        <input id="request" type="text" placeholder="Add a special request(optional)"
+                        class="input_ypu_details"/>
+                    </div>
+                    <div class="col-md-12 input_datas_details">
+                        <input id="update_reminder" type="checkbox"/>
+                        <span>Yes, I want to get text updates and reminders about my reservations.*</span>
+                    </div>
+
+                    <div class="col-md-12" style="text-align: center;">
+                        <button class="confirm_button">Confirm reservation</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

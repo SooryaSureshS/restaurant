@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="restaurant_print_inherit_pos_open_order" model="ir.ui.view">
+        <field name="name">restaurant.printer</field>
+        <field name="model">restaurant.printer</field>
+        <field name="inherit_id" ref="pos_restaurant.view_restaurant_printer_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='printer_type']" position="after">
+                <field name="is_pass_printer"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="pos_config_view_form_inherit" model="ir.ui.view">
+        <field name="name">pos.config.form.inherit</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='is_order_printer']/div[2]/div[2]" position="after">
+                <div class="content-group" attrs="{'invisible': [('is_order_printer', '=', False)]}">
+                    <div class="mt16">
+                        <label string="Print From" for="trigger_screen" class="o_light_label"/>
+                        <field name="trigger_screen"/>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

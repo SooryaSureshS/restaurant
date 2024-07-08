@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="res_users_inherit" model="ir.ui.view">
+        <field name="name">res.users.inherit.view</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='pos_access_session']" position="after">
+                <field name="table_id" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="pos_order_merge_inherit" model="ir.ui.view">
+        <field name="name">pos.order.merge.inherit.view</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='employee_id']" position="after">
+<!--                <field name="parent_order" />-->
+                <field name="payment_initiation" readonly="1"/>
+                <field name="payment_proceed" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

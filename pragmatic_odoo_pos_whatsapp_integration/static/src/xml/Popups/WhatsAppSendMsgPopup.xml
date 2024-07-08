@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="WhatsAppSendMsgPopup" owl="1">
+        <div role="dialog" class="modal-dialog">
+            <Draggable>
+                <div class="popup popup-sendMsg">
+                    <header class="title drag-handle">
+                        <t t-esc="props.title" />
+                    </header>
+                    <div class="body div">
+                        <p class="text-muted">
+                            <t t-esc="props.body" />
+                        </p>
+                        <div class="whatsapp-template-box" t-if="!props.isSendGroup">
+                            <span class="label">Mobile Number:</span>
+                            <input type="text" class="mobile-number" placeholder="Enter customer mobile number with country code."
+                                   t-model="state.mobileNo" t-ref="mobileNoInput" />
+                            <span class="text-note text-right">A phone number starting with the country code.</span>
+                        </div>
+                        <div class="whatsapp-template-box" t-if="env.pos.config.iface_whatsapp_msg_template">
+	                		<span class="label">Select Message:</span>
+	                		<select class="whatsapp-template needsclick" name="template-msg" t-ref="MsgTemplate"
+                                    t-on-click="trigger('click-template')" t-model="state.template_id">
+	                			<t t-foreach="props.list" t-as="item" t-key="item.id">
+			                		<option t-att-data-id="item.id" t-att-value="item.id"
+                                        t-on-click="selectItem(item.id)">
+			                    		<t t-esc="item.label" />
+			                		</option>
+			            		</t>
+			            	</select>
+			            </div>
+                        <div class="whatsapp-template-box">
+                            <span class="label">Message:</span>
+                            <textarea class="message-textarea" t-model="state.message" t-ref="MsgInput"></textarea>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="button confirm" t-on-click="confirm">
+                            <t t-esc="props.confirmText" />
+                        </div>
+                        <div class="button cancel" t-on-click="cancel">
+                            <t t-esc="props.cancelText" />
+                        </div>
+                    </div>
+                </div>
+            </Draggable>
+        </div>
+    </t>
+
+</templates>

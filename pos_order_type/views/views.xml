@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <template id="pos_order_type" inherit_id="point_of_sale.assets">
+          <xpath expr="." position="inside">
+           <script type="text/javascript" src="/pos_order_type/static/src/js/OrderList.js"></script>
+           <script type="text/javascript" src="/pos_order_type/static/src/js/models.js"></script>
+           <link rel="stylesheet" type="text/css" href="/pos_order_type/static/src/css/custom_css.css" />
+          </xpath>
+        </template>
+
+    <record id="pos_order_view" model="ir.ui.view">
+        <field name="name">pos.order</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='fiscal_position_id']" position="after">
+                <field name="delivery_type"/>
+                <field name="table_name"/>
+                <field name="delivery_note"/>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

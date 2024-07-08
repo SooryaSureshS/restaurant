@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="product_category_types_view" model="ir.ui.view">
+        <field name="name">product.category.types.view</field>
+        <field name="model">product.category.types</field>
+        <field name="arch" type="xml">
+            <tree string="Product category Types" editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="product_category_type_action" model="ir.actions.act_window">
+        <field name="name">Product Category Types</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.category.types</field>
+        <field name="view_id" ref="product_category_types_view"/>
+    </record>
+    <menuitem id="menu_product_category_type" name="Product Category Types"
+              parent="stock.menu_product_in_config_stock" action="product_category_type_action" />
+
+
+
+
+</odoo>

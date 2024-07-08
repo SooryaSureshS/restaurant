@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="BundleProductsModal" owl="1">
+        <div class="modal-dialog" role="dialog">
+            <div class="popup popup-selection product_return_pos" style="max-width: 1000px;">
+                <header class="title drag-handle">
+                    <t t-esc="props.title" />
+                    <br/>
+                    <t t-if="ClickProduct">
+                        <br/>
+                        <input style="display:none;" id="parent_product" t-att-value="ClickProduct['id']"></input>
+                        <tr style="">
+                            <td style="float: left;padding-left: 10px;width: 250px;text-align: left;margin: auto;">
+                                <t t-esc="ClickProduct['name']"></t>
+                            </td>
+                            <td style="float: left;padding-left: 5px;width: 100px;text-align: left;">
+                                <t t-esc="env.pos.format_currency(Math.round(ClickProduct['list_price']*100)/100)"></t>
+                            </td>
+                            <td style="width: 150px;">
+                                 <div class="qty_container" style="display: inline-flex;height: 41px;">
+                                     <div class="button " t-on-click="prepend_bundle_qty()" style="width: 35px;">
+                                        <i class="fa fa-minus"></i>
+                                    </div>
+                                    <input id="parent_qty" style="text-align: center;width: 30%;margin-right: 10px;margin-top: 9px;" type="number" value="1"></input>
+                                    <div class="button" t-on-click="append_bundle_qty()" style="width: 35px;right: -55px;">
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </div>
+                            </td>
+<!--
+                            <td style="width: 150px;">
+                                 <div class="qty_container" style="position: relative;width: 74px;height: 41px;">
+                                     <div class="button " t-on-click="prepend_qty()" style="position: absolute;width: 35px;">
+                                        <i class="fa fa-minus"></i>
+                                    </div>
+                                    <input id="parent_qty" style="text-align: center;width: 50%;margin-bottom: 7px;margin-top: 7px;" type="text" value="1"></input>
+                                    <div class="button" t-on-click="append_qty()" style="    position: absolute;    width: 35px;right: -55px;">
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </div>
+                            </td>
+-->
+                        </tr>
+                    </t>
+
+                </header>
+                <main class="body selection scrollable-y touch-scrollable" style="max-height:400px;">
+                    <div style="display: inline-grid;width: 100%;height:600px;padding-left: 2%;">
+                        <t t-set="select_pro" t-value="1"/>
+                        <t t-foreach="productsToDisplay" t-as="line" t-key="line['bundle_product_id']">
+                            <t t-set="custom_value" t-value="1"/>
+                            <t t-set="choice_count" t-value="1"/>
+                            <t t-set="btn_count" t-value="1"/>
+                            <t t-foreach="line['bundle_product_qty']" t-as="l">
+                                <span class="parent_product" style="vertical-align: top">
+                                    <tr style="">
+                                        <td style="vertical-align: top;float: left;width: 400px;text-align: left;">
+                                            <label class="categ_label" style="color: #432d3e;font-size: 22px;font-weight: 700;">
+                                                <t t-esc="line['bundle_product_name']"></t> - <t t-esc="choice_count"/>
+                                            </label>
+                                        </td>
+                                        <td style="float: left">
+                                            <button style="border: 1px solid #e01e1e;background: #f0eeee;color: #171010;"
+                                                    t-att-class="'customize'+custom_value+line['bundle_product_id']+btn_count"
+                                                    t-on-click="customise_pos(line['bundle_product_id'],custom_value,choice_count,btn_count)">Open</button>
+                                            <button style="display:none;border: 1px solid #e01e1e;background: #f0eeee;color: #171010;"
+                                                    t-att-class="'close'+custom_value+line['bundle_product_id']+btn_count"
+                                                    t-on-click="close_pos(line['bundle_product_id'],custom_value, choice_count,btn_count)">Close</button>
+                                        </td>
+                                    </tr>
+
+                                    <tr t-att-id="'tr_choice'+choice_count+custom_value+line['bundle_product_id']" style="display:none;">
+                                        <div class="radio_parent">
+                                            <t t-set="var_count" t-value="1"/>
+                                            <t t-set="select_pro" t-value="select_pro+1"/>
+
+                                            <t t-foreach="line['choice_products']" t-as="products">
+                                                <div class="radio_options">
+                                                    <div style="display: flex;font-size: 16px;font-weight: 700;">
+
+                                                        <input style="margin-top: 1.4%;width: 25px;height: 25px;" class="radio_choice" type="radio"
+                                                               t-att-id="products['choice_product_id']"
+                                                               t-att-variant_id="products['choice_product_id']"
+                                                               t-att-value="products['choice_product_id']"
+                                                               t-att-choice_price="products['bundle_extra_price']"
+                                                               t-att-choice_name="choice_count+'choice'+products['choice_product_id']+'choice_check_radio'"
+                                                               t-att-name="select_pro+'choice'+'choice_check_radio'"/>
+
+                                                        <span class="container" t-att-id="var_count+choice_count+custom_value+products['choice_product_id']+'label'"
+                                                               style="display: -webkit-inline-box;width: 800px;text-align: left;padding-top: 4px;font-size: 20px;">
+                                                            <tr>
+                                                                <td style="width: 400px;">
+                                                                    <span><t t-esc="products['choice_product_name']"/></span>
+                                                                </td>
+                                                                <td>
+                                                                    <span>
+                                                                        <t t-if="products['bundle_extra_price'] > 0">
+                                                                            <t t-esc="env.pos.format_currency(Math.round(products['bundle_extra_price']*100)/100)"/>
+                                                                        </t>
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                            <t t-if="products['optional_product_length'] > 0">
+                                                                <button style="margin-left: 13px;border: 1px solid #443c3c;background: #f0eeee;color: #171010;"
+                                                                        t-att-class="'open'+custom_value+line['bundle_product_id']+var_count"
+                                                                        t-on-click="customise_variant(line['bundle_product_id'],custom_value,choice_count,var_count)">Customise</button>
+                                                                <button style="margin-left: 13px;display:none;border: 1px solid #443c3c;background: #f0eeee;color: #171010;"
+                                                                        t-att-class="'done'+custom_value+line['bundle_product_id']+var_count"
+                                                                        t-on-click="close_variant(line['bundle_product_id'],custom_value, choice_count,var_count)">Done</button>
+
+                                                            </t>
+
+                                                        </span>
+
+                                                    </div>
+                                                    <t t-set="choice_product_data" t-value="products['choice_product_id']"/>
+                                                    <t t-set="choice_check_val" t-value="custom_value+line['bundle_product_id']+var_count"/>
+                                                    <t t-set="choice_check_data" t-value="var_count+choice_count+products['choice_product_id']"/>
+
+
+                                                    <div class="optional_product" style="display:none;padding-left: 5%;text-align:left;" t-att-id="custom_value+line['bundle_product_id']+var_count" t-att-class="custom_value+'optional'+line['bundle_product_id']+'optional'+var_count">
+                                                        <t t-foreach="products['optional_product']" t-as="optional_pro">
+                                                            <strong><t t-esc="optional_pro['optional_product_name']"/></strong>
+                                                            <t t-foreach="optional_pro['products']" t-as="variants">
+                                                                <div>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <input t-att-name="choice_count+'choice'+products['choice_product_id']+'choice_check_radio'" style="width: 20px;height: 20px;box-shadow: unset;margin-top: 20px;" t-att-check_val="choice_check_val" class="variant_checkbox" t-att-variant_value="choice_product_data" t-att-id="variants['product_id']" t-att-price="variants['price']" type="checkbox"></input>
+                                                                        </td>
+                                                                        <td style="vertical-align: middle;width: 400px;">
+                                                                            <strong style="width: 70%;padding-left: 2%;">
+                                                                                <tr>
+                                                                                   <td style="width: 400px;">
+                                                                                        <t t-esc="variants['product_name']"/>
+                                                                                    </td>
+                                                                                    <td style="width: 100px;">
+                                                                                        <label style="padding-left:5px;"></label> <t t-esc="env.pos.format_currency(Math.round(variants['price']*100)/100)"/>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </strong>
+                                                                        </td>
+                                                                    </tr>
+
+                                                                </div>
+                                                            </t>
+                                                        </t>
+                                                    </div>
+                                                </div>
+                                                <t t-set="var_count" t-value="var_count+1"/>
+                                            </t>
+                                        </div>
+                                    </tr>
+                                </span>
+                                <t t-set="choice_count" t-value="choice_count+1"/>
+                                <t t-set="btn_count" t-value="btn_count+1"/>
+                            </t>
+                            <t t-set="custom_value" t-value="custom_value+1"/>
+
+                        </t>
+                    </div>
+                </main>
+                <footer class="footer">
+                    <label id="add_button_validation" style="float: left;padding-left: 24px;margin-top: 16px;display:none;color:red;">Please choose products from all categories</label>
+                    <div class="button confirm" t-on-click="confirm_addqty">
+                        Add
+                    </div>
+                    <div class="button cancel" t-on-click="cancel">
+                        <t t-esc="props.cancelText" />
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </t>
+</templates>

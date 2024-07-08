@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="res_partner_location" model="ir.ui.view">
+        <field name="name">res.partner.loc</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="before">
+                <field name="user_lat"/>
+                <field name="user_long"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sale_order_line_kitchen_status2" model="ir.ui.view">
+        <field name="name">sale.order.line.delivery_type</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payment_term_id']" position='after'>
+                <field name="website_delivery_type"/>
+                <field name="pickup_date" invisible="1"/>
+                <field name="pickup_date_string"/>
+                <field name="vehicle_type"/>
+                <field name="vehicle_make"/>
+                <field name="vehicle_color"/>
+                <field name="license_plate_no"/>
+                <field name="approximate_location"/>
+                <field name="feedback_face"/>
+                <field name="feedback_note"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <!--Vehicle Type-->
+    <record id="view_vehicle_type_tree" model="ir.ui.view">
+        <field name="name">vehicle.type.tree</field>
+        <field name="model">vehicle.type</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="type_name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_vehicle_type_form" model="ir.ui.view">
+        <field name="name">vehicle.type.form</field>
+        <field name="model">vehicle.type</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle Type">
+                <sheet>
+                    <group>
+                        <h1>
+                            <field name="type_name"/>
+                        </h1>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_vehicle_type" model="ir.actions.act_window">
+        <field name="name">Vehicle Type</field>
+        <field name="res_model">vehicle.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_vehicle_type_tree"/>
+        <field name="help" type="html">
+            <p>
+                Vehicle Type
+            </p>
+        </field>
+    </record>
+    <menuitem id="menu_vehicle_type"
+              name="Vehicle Type"
+              action="action_vehicle_type"
+              parent="website.menu_website_global_configuration"
+              sequence="4"/>
+
+    <!--Vehicle Make-->
+    <record id="view_vehicle_make_tree" model="ir.ui.view">
+        <field name="name">vehicle.make.tree</field>
+        <field name="model">vehicle.make</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="make_name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_vehicle_make_form" model="ir.ui.view">
+        <field name="name">vehicle.make.form</field>
+        <field name="model">vehicle.make</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle Make">
+                <sheet>
+                    <group>
+                        <h1>
+                            <field name="make_name"/>
+                        </h1>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_vehicle_make" model="ir.actions.act_window">
+        <field name="name">Vehicle Make</field>
+        <field name="res_model">vehicle.make</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_vehicle_make_tree"/>
+        <field name="help" type="html">
+            <p>
+                Vehicle Make
+            </p>
+        </field>
+    </record>
+    <menuitem id="menu_vehicle_make"
+              name="Vehicle Make"
+              action="action_vehicle_make"
+              parent="website.menu_website_global_configuration"
+              sequence="5"/>
+
+    <!--Vehicle Location-->
+    <record id="view_vehicle_location_tree" model="ir.ui.view">
+        <field name="name">vehicle.location.tree</field>
+        <field name="model">vehicle.location</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="location_name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_vehicle_location_form" model="ir.ui.view">
+        <field name="name">vehicle.location.form</field>
+        <field name="model">vehicle.location</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle Location">
+                <sheet>
+                    <group>
+                        <h1>
+                            <field name="location_name"/>
+                        </h1>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_vehicle_location" model="ir.actions.act_window">
+        <field name="name">Vehicle Location</field>
+        <field name="res_model">vehicle.location</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_vehicle_location_tree"/>
+        <field name="help" type="html">
+            <p>
+                Vehicle Location
+            </p>
+        </field>
+    </record>
+    <menuitem id="menu_vehicle_location"
+              name="Vehicle Location"
+              action="action_vehicle_location"
+              parent="website.menu_website_global_configuration"
+              sequence="6"/>
+
+</odoo>

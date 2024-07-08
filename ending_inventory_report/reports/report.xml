@@ -1,0 +1,23 @@
+<odoo>
+    <record model="report.paperformat" id="paperformat_ending_inventory_report">
+        <field name="name">paperformat.ending.inventory</field>
+        <field name="format">A4</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">30</field>
+        <field name="margin_right">10</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">15</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">30</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <report id="report_ending_inventory"
+            model="ending.inventory.report"
+            string="Ending Inventory Report"
+            report_type="qweb-pdf"
+            name="ending_inventory_report.ending_inventory_report_template"
+            paperformat="paperformat_ending_inventory_report"
+            menu="False"/>
+</odoo>

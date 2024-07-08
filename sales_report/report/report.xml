@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<data>
+		<record id="sales_details_pdf_report" model="ir.actions.report">
+            <field name="name">Sales Report</field>
+            <field name="model">report.sales_report.report_pos_pdf</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sales_report.report_pos_pdf</field>
+        </record>
+
+        <record id="sales_details_xlsx_report" model="ir.actions.report">
+            <field name="name">Sales Excel Report</field>
+            <field name="model">sales.report.wizard</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">sales_report.report_pos_xlsx</field>
+            <field name="report_file">Sales Report</field>
+        </record>
+    </data>
+
+</odoo>

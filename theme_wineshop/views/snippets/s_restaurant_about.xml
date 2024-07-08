@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_restaurant_about" name="Restaurant About">
+		<section class="restaurant-about pt72 pb152">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6 mb-4 mb-md-0">
+							<div class="content">
+								<p class="subtitle text-primary">ABOUT</p>
+								<h1>Restaurant</h1>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam malesuada sem est, ut feugiat nibh interdum nec. Curabitur vel cursus justo. Nulla dignissim ullamcorper arcu, quis hendrerit nulla. Nam et aliquet ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+								<p>Curabitur convallis, quam vitae pretium vulputate, purus magna vehicula libero, ac varius tortor dolor sit amet nisi. Nunc sapien eros, vulputate ut rutrum porta, porttitor sed nibh.</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="image">
+								<img class="img img-fluid" src="/theme_wineshop/static/src/img/about-us-platter.jpg" alt="image"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+	</template>
+</odoo>

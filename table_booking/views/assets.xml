@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="website_qr_coded_assets" name="Website table booking wine Assets" inherit_id="website.assets_frontend">
+		<xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/css" href="/table_booking/static/src/css/booking.css"/>
+            <link rel="stylesheet" type="text/css" href="/table_booking/static/src/css/nice-select.css"/>
+            <script type="text/javascript" src="/table_booking/static/src/js/table_booking.js" />
+            <script type="text/javascript" src="/table_booking/static/src/js/jquery.nice-select.js" />
+        </xpath>
+    </template>
+</odoo>

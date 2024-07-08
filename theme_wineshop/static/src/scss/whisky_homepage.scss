@@ -1,0 +1,227 @@
+.whisky-banner{
+	.content{
+		h1{
+		    font-size: 60px;
+    		margin-bottom: 15px;
+		}
+		p{
+		    font-size: 20px;
+		    line-height: 30px;
+		    margin-top: 15px;
+		    margin-bottom: 30px;
+		}
+		h2{
+		    font-size: 50px;
+		    text-transform: uppercase;
+		    margin-bottom: 30px;
+		}
+		a.btn{
+		    font-size: 16px;
+		    line-height: 24px;
+		    letter-spacing: 0px;
+		    border-radius: 0;
+		    padding: 14px 53px;
+		    box-shadow: none;
+		    text-transform: uppercase;
+		    font-family: "Playfair Display";
+		}
+	}
+
+	.carousel-control-prev, .carousel-control-next{
+		.fa{
+			font-size: 20px;
+		    width: 40px;
+		    height: 40px;
+		    background-color: rgba(0, 0, 0, 0.25);
+		    color: white;
+		    opacity: 1 !important;
+		    line-height: 40px;
+		    border-radius: 50%;
+		    cursor: pointer;
+		    -webkit-transition: all ease-in-out 0.3s;
+		    -moz-transition: all ease-in-out 0.3s;
+		    -ms-transition: all ease-in-out 0.3s;
+		    -o-transition: all ease-in-out 0.3s;
+		    transition: all ease-in-out 0.3s;
+		    &:hover{
+		    	background-color: rgba(0, 0, 0, 1);
+		    }
+		}
+		@media (min-width: 768px) and (max-width: 1199.98px) {
+			width: 7%;
+		}
+		@media (max-width: 767.98px) {
+		    width: 15%;
+		}
+		opacity: 1;
+		width: 4%;
+	}
+
+	.carousel-item {
+		background-size: cover;
+		background-position: center;
+	    padding: 223px 0;
+	}
+
+	@media (max-width: 767.98px) {
+		.content{
+			h1{
+			    font-size: 23px;
+			    margin-bottom: 10px;
+			}
+			.img{
+				max-width: 80%;
+			}
+			p{
+			    font-size: 12px;
+			    margin-top: 10px;
+		    	margin-bottom: 20px;
+	    	    line-height: 24px;
+			}
+			h2{
+			    font-size: 18px;
+			    margin-bottom: 20px;
+			}
+			a.btn{
+			    font-size: 12px;
+			    padding: 5px 30px;
+			}
+		}
+		.carousel-item {
+			background-size: cover;
+			background-position: center;
+		    padding: 90px 0;
+		}
+	}
+
+	@media (min-width: 768px) and (max-width: 991.98px) {
+		.content{
+			h1{
+			    font-size: 45px;
+			}
+			p{
+			    font-size: 16px;
+			}
+			h2{
+			    font-size: 40px;
+			}
+			a.btn{
+			    padding: 12px 45px;
+			}
+		}
+		.carousel-item {
+			background-size: cover;
+			background-position: center;
+		    padding: 130px 0;
+		}
+	}
+}
+
+.whisky-homepage-brands{
+	.image{
+		.img{
+			filter: invert(1);
+		}
+	}
+}
+
+.whisky-homepage-sale{
+	.image{
+		.img{
+			-webkit-transition: all ease-in-out 0.3s;
+		    -moz-transition: all ease-in-out 0.3s;
+		    -ms-transition: all ease-in-out 0.3s;
+		    -o-transition: all ease-in-out 0.3s;
+		    transition: all ease-in-out 0.3s;
+		    &:hover{
+		    	transform: scale(1.1);
+		    }
+		}
+		overflow: hidden;
+	}
+}
+
+.whisky-homepage-service{
+	.title{
+		h3{
+			font-size: 35px;
+		}
+	}
+
+	.service-box{
+		.fa{
+		    font-size: 35px;
+		}
+		h6{
+			font-size: 22px;
+    		margin: 15px 0;
+		}
+		p{
+			font-size: 16px;
+		}
+		@media (max-width: 767.98px) {
+			text-align: center;
+		}
+	}
+}
+
+.whisky-homepage-testimonial{
+	.title{
+		h3{
+			font-size: 35px;
+		}
+	}
+
+	.content{
+		.fa{
+		    font-size: 35px;
+    		margin-bottom: 10px;
+		}
+		p{
+			font-size: 16px;
+		    font-weight: 400;
+		    font-style: normal;
+		    line-height: 24px;
+		    margin: 0;
+		}
+		position: relative;
+	    padding: 53px 30px 70px 30px;
+	    background-color: #252525;
+	    margin-bottom: 30px;
+	    &:after{
+	    	content: '';
+	    	display: block;
+	    	border-color: #252525 transparent transparent transparent;
+    		left: 10%;
+		    position: absolute;
+		    margin-left: -5px;
+		    width: 0;
+		    height: 0;
+		    border-style: solid;
+		    border-width: 10px 10px 0;
+		    bottom: -10px;
+	    }
+	}
+
+	.author{
+		.img{
+		    width: 80px;
+    		height: 80px;
+    		border-radius: 50%;
+    		margin-right: 10px;
+		}
+		.info{
+			h6{
+				font-size: 18px;
+			    line-height: 27px;
+			    margin:0;
+			}
+			p{
+				font-size: 16px;
+			    line-height: 19px;
+			    margin:0;
+			}
+		}
+	}
+
+}

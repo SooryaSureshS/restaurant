@@ -1,0 +1,24 @@
+
+.payment-form-banner{
+    background: url("/mask_cutomization/static/src/image/BG.png") no-repeat;
+    background-size: cover;
+  /* height: 55%;
+  width: 65%; */
+  margin: auto;
+  padding: 4%;
+  font-family: 'Montserrat';
+  text-align: justify;
+}
+h4{
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+p{
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+}
+.container_mask_image{
+     content:url("/mask_cutomization/static/src/image/account/PagePaymentAnd Delivery.png");
+}

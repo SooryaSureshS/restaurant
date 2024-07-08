@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+     <t t-name="RewardButton" owl="1">
+        <span class="control-button">
+            <i class="fa fa-star"></i>
+            <span> </span>
+            <span>Reward</span>
+        </span>
+    </t>
+
+    <t t-name="PosloyaltyPopup" owl="1">
+                <div style="padding:10px;overflow:scroll;height: 600px;" class="redeem_popup">
+            <header class="title">
+                <i style="font-size:25px;float:right;margin-top:-5px;cursor:pointer" t-on-click="cancel"
+                   aria-hidden="true"
+                   class="fa fa-times cancel"></i>
+            </header>
+                    <div class="loyalty_image">
+                        <h3 style="font-size:18px">Point Redemption</h3></div>
+
+                    <div >
+                <div>
+                    <table>
+                        <tr>
+                            <td style="text-align:left">
+                                <h3 style="font-size:16px;margin-left:11px">Customer Name</h3>
+                            </td>
+                            <td>
+                                <h3 style="color:green;margin-left: 101px;"><span t-esc="OrderDetails.name"/></h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left">
+                                <h3 style="font-size:16px;margin-left:11px">My Rewards</h3>
+                            </td>
+                            <td>
+                                <h3 style="color:green;margin-left: 101px;"><span t-esc="OrderDetails.point"/></h3>
+                            </td>
+                        </tr>
+
+                    </table><br/>
+                        <t t-foreach="OrderDetails.all_rule" t-as="i">
+
+
+                                <span style="font-size: 19px;font-family: fantasy;color: black;"><t t-esc="i.points_end"/> Points will reduce from your account.
+                                <br/>
+                                </span>
+                        <br/>
+                     <div style="font-size: 19px;text-align: left;margin-left: 21%;">
+                        <t t-foreach="i.products" t-as="j">
+
+                                <input type="radio" t-att-id="i.line_id" t-att-points_end="i.points_end" name="product_loyalty" t-att-value="j.product_id" style="font-size: 19px;"/>
+                                <label for="i.line_id" style="font-size: 19px;">
+                                    <t t-esc="j.product_name"/>
+                                </label>
+                                <br/>
+
+
+                        </t>
+                            </div>
+                         <br/>
+
+
+                    </t>
+
+                </div>
+            </div>
+                    <footer>
+                <button class="button redeem_now"  t-on-click="confirmOrder(OrderDetails)">REDEEM NOW</button>
+            </footer>
+        </div>
+
+    </t>
+
+    <t t-name="PosloyaltyRule" owl="1">
+                <div style="padding:10px;overflow:scroll;height: 500px;" class="redeem_popup">
+            <header class="title">
+                <i style="font-size:25px;float:right;margin-top:-5px;cursor:pointer" t-on-click="cancel"
+                   aria-hidden="true"
+                   class="fa fa-times cancel"></i>
+            </header>
+                    <div class="loyalty_image">
+                        <h3 style="font-size:18px">Point Redemption</h3></div>
+
+                    <div >
+                <div>
+                    <table>
+
+                        <tr>
+                            <td style="text-align:left">
+                                <h3 style="font-size:16px;margin-left:90px;  padding: 20px;background-color: #f44336;color: white;">
+                                    My Rewards : <t t-esc="CurrentPoint"/><br/><br/>
+                                    Not enough points to redeem</h3>
+                            </td>
+
+                        </tr>
+
+                    </table><br/>
+                        <t t-foreach="OrderDetails" t-as="i">
+
+                                <span style="font-size: 19px;font-family: fantasy;color: black;font-weight: bold;">For <t t-esc="i.points_end"/> points Following one item is free! .
+                                <br/>
+                                </span>
+                        <br/>
+                     <div style="font-size: 19px;text-align: left;margin-left: 21%;">
+                        <t t-foreach="i.product_name" t-as="j">
+                                <span><t t-esc="j"/></span>
+
+                                <br/>
+
+
+                        </t>
+                            </div>
+                         <br/>
+
+
+                    </t>
+
+                </div>
+            </div>
+        </div>
+
+    </t>
+
+ </templates>

@@ -1,0 +1,92 @@
+<?xml version ="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="sh_timesheet_tree_view" model="ir.ui.view">
+        <field name="name">sh.timesheet.tree.view</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="inside">
+                
+                <field name="state" readonly="1" />
+                <button name="action_approve_timesheet" string="Approve" class="oe_highlight" type="object" attrs="{'invisible':[('state','in',['draft','approved','rejected'])]}" groups="hr_timesheet.group_timesheet_manager" />
+                <button name="action_reject_timesheet" string="Reject" class="oe_highlight" type="object" attrs="{'invisible':[('state','in',['draft','approved','rejected'])]}" groups="hr_timesheet.group_timesheet_manager" />
+                <button name="action_draft" string="Set To Draft" class="oe_highlight" type="object" attrs="{'invisible':[('state','in',['draft','submitted'])]}" groups="hr_timesheet.group_timesheet_manager" />
+            </xpath>
+        </field>
+    </record>
+    <record id="sh_timesheet_form_view" model="ir.ui.view">
+        <field name="name">sh.timesheet.form.view</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <header>
+                    <button name="action_submit_timesheet" string="Submit to Manager" class="oe_highlight" type="object" attrs="{'invisible':[('state','in',['submitted','approved','rejected'])]}" />
+                    <button name="action_approve_timesheet" string="Approve" class="oe_highlight" type="object" attrs="{'invisible':[('state','in',['draft','approved','rejected'])]}" groups="hr_timesheet.group_timesheet_manager" />
+                    <button name="action_reject_timesheet" string="Reject" class="oe_highlight" type="object" attrs="{'invisible':[('state','in',['draft','approved','rejected'])]}" groups="hr_timesheet.group_timesheet_manager" />
+                    <button name="action_draft" string="Set To Draft" class="oe_highlight" type="object" attrs="{'invisible':[('state','in',['draft','submitted'])]}" groups="hr_timesheet.group_timesheet_manager" />
+                    <field name="state" widget="statusbar" />
+                </header>
+            </xpath>
+            <field name="unit_amount" position="after">
+                <field name="sh_reject_reason" />
+                <field name="sh_rejected_by" />
+                <field name="sh_rejected_date" />
+            </field>
+            <field name="name" position="after">
+                <field name="sh_approved_by" />
+                <field name="sh_approved_date" />
+                <field name="base_url" widget="url" invisible="1" />
+            </field>
+            <xpath expr="//sheet" position="after">
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </xpath>
+            <field name="date" position="attributes">
+                <attribute name="attrs">{'readonly':[('state','in',['approved','rejected'])]}</attribute>
+            </field>
+            <field name="amount" position="attributes">
+                <attribute name="attrs">{'readonly':[('state','in',['approved','rejected'])]}</attribute>
+            </field>
+            <field name="project_id" position="attributes">
+                <attribute name="attrs">{'readonly':[('state','in',['approved','rejected'])]}</attribute>
+            </field>
+            <field name="task_id" position="attributes">
+                <attribute name="attrs">{'readonly':[('state','in',['approved','rejected'])]}</attribute>
+            </field>
+            <field name="name" position="attributes">
+                <attribute name="attrs">{'readonly':[('state','in',['approved','rejected'])]}</attribute>
+            </field>
+            <field name="unit_amount" position="attributes">
+                <attribute name="attrs">{'readonly':[('state','in',['approved','rejected'])]}</attribute>
+            </field>
+        </field>
+    </record>
+    <record id="sh_mass_approved_action" model="ir.actions.server">
+        <field name="name">Approve Timesheet</field>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="hr_timesheet.model_account_analytic_line" />
+        <field name="binding_model_id" ref="hr_timesheet.model_account_analytic_line" />
+        <field name="groups_id" eval="[(4, ref('hr_timesheet.group_hr_timesheet_approver'))]"/>
+        <field name="code">
+            records.sh_mass_approved_timesheet()
+        </field>
+    </record>
+    <record id="sh_to_approve_timesheet_action" model="ir.actions.act_window">
+        <field name="name">To Approve Timesheets</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">account.analytic.line</field>
+        <field name="view_mode">tree,form</field>
+        <field
+            name="view_ids"
+            eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('sh_timesheet_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('sh_timesheet_form_view')})]"
+        />
+        <field name="domain">[('state','in',['submitted'])]</field>
+    </record>
+    <menuitem id="sh_to_approve_timesheet_menu" name="To Approve Timesheets" parent="hr_timesheet.menu_hr_time_tracking" action="sh_to_approve_timesheet_action" />
+</odoo>

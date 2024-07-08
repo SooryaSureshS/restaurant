@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<template id="optional_product_cart_custom_inherit"
+			inherit_id="website_delivery_type.order_confirm_inherit" priority="100">
+			<xpath expr="//div[hasclass('col-xl-12')]" position="before">
+			<div id="order_drinks_repeat" style="margin-bottom:10px;" class="col-lg-12" t-if="order.qrcode_order">
+				<a t-attf-href="/order/repeat?id=#{order.id}"
+					style="" class="myButton_status">
+					Drinks Reorder
+				</a>
+				</div>
+			</xpath>
+		</template>
+	</data>
+</odoo>
+    

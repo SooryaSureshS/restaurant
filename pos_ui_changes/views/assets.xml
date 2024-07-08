@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <template id="assets_pos_ui_data_order" inherit_id="point_of_sale.assets">
+          <xpath expr="." position="inside">
+              <script type="text/javascript" src="/pos_ui_changes/static/src/js/leftpanelWidget.js"></script>
+              <script type="text/javascript" src="/pos_ui_changes/static/src/js/orderline.js"></script>
+              <script type="text/javascript" src="/pos_ui_changes/static/src/js/addQty.js"></script>
+              <script type="text/javascript" src="/pos_ui_changes/static/src/js/OptionalProductPopupInherit.js"></script>
+              <script type="text/javascript" src="/pos_ui_changes/static/src/js/CustomerChromeWidget.js"></script>
+              <script type="text/javascript" src="/pos_ui_changes/static/src/js/jquery.nice-select.js"></script>
+              <script type="text/javascript" src="/pos_ui_changes/static/src/js/models.js"></script>
+              <script type="text/javascript" src="/pos_ui_changes/static/src/js/productFilterWidgets.js"></script>
+              <script type="text/javascript" src="/pos_ui_changes/static/src/js/productSearchFilterInherited.js"></script>
+              <script type="text/javascript" src="/pos_ui_changes/static/src/js/productCategoryInherited.js"></script>
+              <script type="text/javascript" src="/pos_ui_changes/static/src/js/productParentCategory.js"></script>
+              <script type="text/javascript" src="/pos_ui_changes/static/src/js/productDiscount.js"></script>
+              <script type="text/javascript" src="/pos_ui_changes/static/src/js/posReturn.js"></script>
+              <script type="text/javascript" src="/pos_ui_changes/static/src/js/ChromeScreen.js"></script>
+              <script type="text/javascript" src="/pos_ui_changes/static/src/js/kitchenScreen.js"></script>
+              <script type="text/javascript" src="/pos_ui_changes/static/src/js/PosComponents.js"></script>
+<!--              <link rel="stylesheet" type="text/css" href="/pos_return/static/src/css/pos.css"/>-->
+<!--              <link rel="stylesheet" type="text/css" href="/pos_return/static/src/css/pos.css"/>-->
+              <link rel="stylesheet" type="text/css" href="/pos_ui_changes/static/src/css/pos.css"/>
+              <link rel="stylesheet" type="text/css" href="/pos_ui_changes/static/src/css/nice-select.css"/>
+          </xpath>
+        </template>
+</odoo>

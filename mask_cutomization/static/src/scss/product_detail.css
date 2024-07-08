@@ -1,0 +1,98 @@
+.banner{
+    background: url("/mask_cutomization/static/src/image/BG.png");
+    background-size: cover;
+    /* width: 70%; */
+    /* margin: auto; */
+    /* height: 1000px; */
+    /* display: flex; */
+    /* flex: 100%; */
+    font-family: 'Montserrat';
+    /* line-height: 2; */
+    color:#6E6E70;
+    padding: 7%;
+}
+
+.inner-upper-content{
+background-color: #B7B7B7;
+padding: 5%;
+/* display: flex; */
+border-radius: 20px;
+font-size: 21px;
+}
+.inner-upper-content p{
+line-height: 89%;
+font-weight: 600;
+}
+#header-kf96{
+    color: #556970;
+    font-size: 28px;
+    font-weight: 700;
+}
+.inner-banner{
+    display: flex;
+    flex: 100%;
+}
+.inner-banner-1{
+    /* flex: 67%; */
+    flex: 81%;
+}
+.inner-banner-2{
+    /* flex: 67%; */
+    flex: 65%;
+    text-align-last: center;
+}
+.inner-banner-3{
+    /* flex: 50%; */
+    flex: 63%;
+}
+.inner-banner-3 button{
+    /* float: right; */
+    border-radius: 10px;
+    border: none;
+    height: 60px;
+    width: 100%;
+    color: white;
+    background-color: #626063;
+
+}
+@media screen and (max-width: 990px){
+.inner-banner{
+    flex-wrap: wrap-reverse;
+}
+.inner-upper-content{
+    font-size: 14px;
+}
+.inner-banner-3{
+    display: none;
+}
+.customise-button {
+    display: unset!important;
+}
+}
+
+.customise-button button{
+border-radius: 10px;
+border: none;
+height: 60px;
+width: 100%;
+color: white;
+background-color: #626063;
+/* display: none; */
+}
+.customise-button{
+    display: none;
+}
+#perfomance p{
+        font-weight: 400;
+}
+.table-bordered {
+    border: none !important;
+}
+
+#product_details_page ul {
+  list-style: none;
+}
+
+#product_details_page ul li:before {
+  content: '✓';
+}

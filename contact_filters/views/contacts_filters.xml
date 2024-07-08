@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="customer_guest_loyalist_search_view" model="ir.ui.view">
+        <field name="name">Search</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <!--                <filter name="loyalist" string="loyalist" domain="[]" context="{'group_by':'loyalist'}"/>-->
+                <filter string="Loyalist Contacts" name="name" domain="[('user_ids','!=',False)]"/>
+                <filter string="Guest Contacts" name="name" domain="[('user_ids','=',False),('type','=','contact')]"/>
+                <filter string="not purchased in last month" name="order"
+                        domain="[('sale_order_ids.date_order','&lt;=', (context_today() - relativedelta(months=1)).strftime('%Y-%m-%d'))]"/>
+                <filter string="not purchased in 60 days" name="order"
+                        domain="[('sale_order_ids.date_order','&lt;=', (context_today() - relativedelta(months=2)).strftime('%Y-%m-%d'))]"/>
+                <filter string="not purchased in 90 days" name="order"
+                        domain="[('sale_order_ids.date_order','&lt;=', (context_today() - relativedelta(months=3)).strftime('%Y-%m-%d'))]"/>
+                <filter string="Orderd pickup only" name="order"
+                        domain="['&amp;',('sale_order_ids.website_delivery_type','=','pickup'),('sale_order_ids.state','not in', ('draft','sent','cancel'))]"/>
+                <filter string="Orderd delivery only" name="order"
+                        domain="['&amp;',('sale_order_ids.website_delivery_type','=','delivery'),('sale_order_ids.state','not in', ('draft','sent','cancel'))]"/>
+                <filter string="Used a voucher to purchase" name="order"
+                        domain="[('sale_order_ids.applied_coupon_ids','ilike','')]"/>
+                <filter name="sale_order_count" string="only purchased once" domain="[('sale_order_count','=',1)]"/>
+                <filter name="sale_order_count" string="only purchased twice" domain="[('sale_order_count','=',2)]"/>
+                <filter name="sale_order_count" string="purchased more than 3 times" domain="[('sale_order_count','>=',3)]"/>
+                <field name="name" string="Pos order product name"
+                       filter_domain="[('pos_order_ids.lines.product_id.name','ilike',self)]"/>
+                <field name="name" string="product name"
+                       filter_domain="['|',('pos_order_ids.lines.product_id.name','ilike',self),('sale_order_ids.order_line.product_id.name','ilike',self)]"/>
+
+
+
+                <!--                <field name="name" string="guest"-->
+                <!--                       filter_domain="['|','|',('name','ilike',self),('parent_id','ilike',self),('ref','=',self),('user_ids','=',False)]"/>-->
+
+<!--                <filter name="name" string="Order Date" domain="[]" context="{'group_by':'date_deadline'}"/>-->
+<!--                    <filter name="name" string="not purchased in last month" domain="[('sale_order_ids.date_order','&lt;=', (context_today() - relativedelta(months=1)).strftime('%Y-%m-%d'))]" context="{'group_by':'email'}"/>-->
+
+<!--                    <filter name="name" string="only purcha" domain="[]" context="{'group_by':'sale_order_ids.date_order'}"/>-->
+
+
+            </field>
+        </field>
+    </record>
+<!--    <record id="view_order_tree_contact" model="ir.ui.view">-->
+<!--        <field name="name">sale.order.tree.ext</field>-->
+<!--        <field name="model">sale.order</field>-->
+<!--        <field name="inherit_id" ref="sale.view_order_tree"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//field[@name='state']" position="after">-->
+<!--                <field name="website_delivery_type" optional="hide"/>-->
+<!--                <field name="voucher_code" optional="hide"/>-->
+<!--                <field name="applied_coupon_ids" optional="hide"/>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+
+
+</odoo>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="assets_frontend_Web_shop" name="Ecommerce Website" inherit_id="web.assets_frontend">
+                <xpath expr="." position="inside">
+                    <link type="stylesheet" href="/sale_order_modification/static/src/css/style.css"/>
+                </xpath>
+        </template>
+    </data>
+</odoo>

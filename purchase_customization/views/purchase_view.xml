@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem action="purchase.purchase_rfq" id="purchase.menu_purchase_rfq"
+              parent="purchase.menu_procurement_management"
+              sequence="0" name="Purchase Requests"/>
+    <record id="purchase.purchase_action_dashboard_list" model="ir.actions.act_window">
+        <field name="name">Purchase Requests</field>
+        <field name="res_model">purchase.order</field>
+        <field name="view_mode">form,tree,kanban,pivot,graph,calendar,activity</field>
+        <field name="view_id" ref="purchase.purchase_order_kpis_tree"/>
+        <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
+        <field name="target">main</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_empty_folder">
+                No PRs to display
+            </p>
+        </field>
+    </record>
+    <record id="purchase.purchase_rfq" model="ir.actions.act_window">
+        <field name="name">Purchase Requests</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">purchase.order</field>
+        <field name="view_mode">tree,kanban,form,pivot,graph,calendar,activity</field>
+        <field name="view_id" ref="purchase.purchase_order_kpis_tree"/>
+        <field name="domain">[]</field>
+        <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
+        <field name="context">{'quotation_only': True}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No purchase request found. Let's create one!
+            </p>
+            <p>
+                Requests for quotation are documents that will be sent to your suppliers to request prices for different
+                products you consider buying.
+                Once an agreement has been found with the supplier, they will be confirmed and turned into purchase
+                orders.
+            </p>
+        </field>
+    </record>
+    <record id="purchase.purchase_action_dashboard_list" model="ir.actions.act_window">
+        <field name="name">Purchase Requests</field>
+        <field name="res_model">purchase.order</field>
+        <field name="view_mode">form,tree,kanban,pivot,graph,calendar,activity</field>
+        <field name="view_id" ref="purchase.purchase_order_kpis_tree"/>
+        <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
+        <field name="target">main</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_empty_folder">
+                No PRs to display
+            </p>
+        </field>
+    </record>
+    <record id="purchase.purchase_action_dashboard_kanban" model="ir.actions.act_window">
+        <field name="name">Purchase Requests</field>
+        <field name="res_model">purchase.order</field>
+        <field name="view_mode">form,tree,kanban,pivot,graph,calendar,activity</field>
+        <field name="view_id" ref="purchase.view_purchase_order_kanban"/>
+        <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
+        <field name="target">main</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_empty_folder">
+                No PRs to display
+            </p>
+        </field>
+    </record>
+    <record id="purchase_order_form_extend" model="ir.ui.view">
+        <field name="name">purchase.order.form</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='print_quotation']" position="attributes">
+                <attribute name="string">Print PR</attribute>
+            </xpath>
+            <xpath expr="//button[@name='print_quotation'][2]" position="attributes">
+                <attribute name="string">Print PR</attribute>
+            </xpath>
+            <xpath expr="//sheet/div[hasclass('oe_title')]/span" position="replace">
+                <span class="o_form_label" attrs="{'invisible': [('state','not in',('draft','sent'))]}">Purchase
+                    Request
+                </span>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_purchase_order_filter_extend" model="ir.ui.view">
+        <field name="name">request.quotation.select</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='draft']" position="attributes">
+                <attribute name="string">PRs</attribute>
+            </xpath>
+            <xpath expr="//filter[@name='draft_rfqs']" position="attributes">
+                <attribute name="string">Draft PRs</attribute>
+            </xpath>
+            <xpath expr="//filter[@name='waiting_rfqs']" position="attributes">
+                <attribute name="string">Waiting PRs</attribute>
+            </xpath>
+            <xpath expr="//filter[@name='late_rfqs']" position="attributes">
+                <attribute name="string">Late PRs</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,55 @@
+<odoo>
+    <data>
+        <template id="privacy_policy_page" name="Payment and delivery Process">
+            <t t-call="website.layout">
+                <t t-set="additional_title">Privacy Policy</t>
+                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/privacypolicy.css"/>
+                <t t-set="no_footer" t-value="1"/>
+                <t t-call="mask_cutomization.header_banner_xml"/>
+                <div class="container">
+                    <div class="privacy-form-banner">
+                        <p>The privacy policy is one of the most essential legal requirements for websites.</p>
+
+                        <p>Even if you just have a small business or a blog with no income at all, you might be
+                            surprised to discover that you still need a privacy policy.
+                        </p>
+
+                        <p>Basically, if your website collects personal data, you need a privacy policy that informs
+                            your users about this according to privacy laws in most jurisdictions, including the EU and
+                            the US.
+                        </p>
+
+                        <p>Almost all modern websites function with the use of cookies, so chances are high that your
+                            website is collecting personal data, for example for statistical, functional or marketing
+                            purposes.
+                        </p>
+
+                        <p>In this blogpost, we take a look at what constitutes a good privacy policy, how to make a
+                            compliant GDPR privacy policy and whether using a privacy policy generator is a good idea.
+                        </p>
+
+                        <p>Learn what the privacy policy is and how to get one for your website below.</p>
+
+                        <h4>What is a privacy policy?</h4>
+                        <p>A privacy policy is a document that states what personal data you collect from your users,
+                            why, and how you keep it private.
+                        </p>
+
+                        <p>The purpose of the privacy policy is to inform your users about how their data is being
+                            handled.
+                        </p>
+
+                        <p>Hence, the privacy policy should be accessible for your users and kept in a plain and
+                            readable language.
+                        </p>
+
+                        <p>Most countries have privacy laws requiring that websites collecting personal data have a
+                            proper privacy policy in place.
+                        </p>
+                    </div>
+
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

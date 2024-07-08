@@ -1,0 +1,25 @@
+<odoo>
+    <data>
+
+        <template id="account_invoice" name="Invoice">
+            <t t-call="website.layout">
+                <t t-set="additional_title">Invoice</t>
+                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/contact_us.css"/>
+                <t t-set="no_footer" t-value="1"/>
+                <t t-call="mask_cutomization.header_banner_xml"/>
+                <div class="container contactbanner s_website_form" >
+                    <div style="text-align:right;"><a role="button" target="_blank" t-attf-href="/report/pdf/mask_cutomization.report_invoice/{{order.id}}" style="background:#626063; padding:6px 26px; color:white; border-radius:8px;"><i class="fa fa-print" aria-hidden="true"></i> Print</a></div>
+                    <div style="background:white; margin-top:20px; padding:20px 100px 20px 100px;">
+                        <t t-call="mask_cutomization.report_invoice_document"/>
+                    </div>
+                </div>
+                <style>
+                    .container_mask_image{
+                             content:url("/mask_cutomization/static/src/image/account/Page T.png");
+                        }
+                </style>
+                <t t-call="mask_cutomization.skypro_footer"/>
+            </t>
+        </template>
+    </data>
+</odoo>

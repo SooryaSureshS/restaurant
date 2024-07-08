@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="custom_mask_website_sequence_view_list" model="ir.ui.view">
+            <field name="model">custom.mask.website.sequence</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="sequence"/>
+                    <field name="product_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="custom_mask_website_sequence_action" model="ir.actions.act_window">
+            <field name="name">Custom Mask Website Sequence</field>
+            <field name="res_model">custom.mask.website.sequence</field>
+            <field name="view_mode">tree</field>
+        </record>
+        <menuitem id="custom_mask_website_sequence"
+                  action="custom_mask_website_sequence_action"
+                  parent="website_sale.menu_catalog"
+                  sequence="1"/>
+    </data>
+</odoo>

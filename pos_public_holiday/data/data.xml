@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="product_public_holiday" model="product.product">
+            <field name="name">product Holiday</field>
+            <field name="typ">service</field>
+<!--            <field name="available_in_pos">True</field>-->
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_template_inherit_kitchen_order" model="ir.ui.view">
+        <field name="name">product.template</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet/div/div/div[2]" position="after">
+                <div>
+                    <field name="is_fried_product"/>
+                    <label for="is_fried_product"/>
+                </div>
+            </xpath>
+            <xpath expr="//group[@name='sale']" position="after">
+                <group name="Fried Products" groups="product.group_product_variant">
+                    <group string="Fried Products">
+                        <field name="fried_products" widget="many2many_tags" options="{'color_field': 'color'}"
+                               domain="[('is_fried_product', '=', True)]"/>
+                    </group>
+                </group>
+                <group name="UHC Products" groups="product.group_product_variant">
+                    <group string="UHC Products">
+                        <field name="uhc_products" widget="many2many_tags" options="{'color_field': 'color'}"
+                               domain="[('id', '!=', active_id), '|', ('company_id', '=', company_id), ('company_id', '=', False)]"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

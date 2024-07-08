@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="report_feedback" model="ir.actions.report">
+        <field name="name">FeedBack Report</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">website_delivery_type.report_feed_back</field>
+        <field name="report_file">website_delivery_type.report_feed_back</field>
+        <field name="binding_model_id" ref="model_sale_order"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="operational_report_wizard_form_feedback" model="ir.ui.view">
+        <field name="name">Feedback Report</field>
+        <field name="model">feedback.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Feed back Report">
+                <group>
+                    <group>
+                        <field name="from_date"/>
+                    </group>
+                    <group>
+                        <field name="to_date"/>
+                    </group>
+                    <group>
+                        <field name="feedback_face"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="print_report" string="Print" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_feed_back" model="ir.actions.act_window">
+        <field name="name">FeedBack Report</field>
+        <field name="res_model">feedback.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="operational_report_wizard_form_feedback"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_feed_back_report"
+              name="Feedback Report"
+              action="action_feed_back"
+              parent="website_sale.menu_reporting"
+              sequence="3"/>
+
+    <template id="report_feed_back">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="website_delivery_type.report_feed_back_document"/>
+            </t>
+        </t>
+
+        <template id="report_feed_back_document">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <!-- Is there a discount on at least one line? -->
+
+                    <table class="table table-sm o_main_table" style="border: 1px solid black;">
+                        <!-- In case we want to repeat the header, remove "display: table-row-group" -->
+                        <thead style="display: table-row-group">
+                            <tr style="border: 1px solid black;">
+                                <th style="border: 1px solid black;">Customers</th>
+                                <th style="border: 1px solid black;">Orders</th>
+                                <th style="border: 1px solid black;">Dates</th>
+                                <th style="border: 1px solid black;">Face</th>
+                                <th style="border: 1px solid black;">Comments</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <t t-foreach="data" t-as="line">
+
+                                <tr style="border: 1px solid black;">
+                                    <td style="border: 1px solid black;">
+                                        <span t-field="line.partner_id.name"/>
+                                    </td >
+
+                                    <td style="border: 1px solid black;">
+                                        <span t-field="line.name"/>
+                                    </td>
+                                    <td style="border: 1px solid black;">
+                                        <span t-field="line.date_order"/>
+                                    </td>
+
+                                <td style="border: 1px solid black;">
+                                    <t t-if="line.feedback_face=='sad'">
+<!--                                        <span style='font-size:100px;color:#e3d952;'>&#128532;</span>-->
+                                        <img src="/website_delivery_type/static/images/sad.jpeg" class=""/>
+                                    </t>
+                                    <t t-if="line.feedback_face=='good'">
+<!--                                        <span style='font-size:100px;color:#e3d952;'>&#128522;</span>-->
+                                        <img src="/website_delivery_type/static/images/smile.jpeg" class=""/>
+                                    </t>
+
+                                    </td>
+
+                                    <td style="border: 1px solid black;">
+                                        <span t-field="line.feedback_note"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </t>
+        </template>
+
+
+    </template>
+</odoo>

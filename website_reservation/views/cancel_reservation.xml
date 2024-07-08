@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="cancel_reservation" name="Cancel Reservation">
+            <t t-call="website.layout">
+                <br/>
+                <t t-set="reservation_id" t-value="reservation.token_random"/>
+                <div class="container" style="text-align: center;font-size: 22px;margin-top: 10%;margin-bottom: 10%;">
+                    <p>Cancel Your Table Reservation on <t t-esc="reservation.date_reserved"/> ?</p>
+                    <a t-att-href="'/sale/reservation/%s' %str(reservation_id)" class="cancel_reservation">Yes</a>
+                    <a href="/" class="no_cancel">No</a>
+                </div>
+                <br/>
+            </t>
+        </template>
+
+        <template id="cancel_reservation_success" name="Cancel Reservation Success">
+            <t t-call="website.layout">
+                <br/>
+                <div class="container" style="text-align: center;font-size: 22px;margin-top: 10%;margin-bottom: 10%;">
+                    <p>Your Reservation Is Cancelled</p>
+                </div>
+                <br/>
+            </t>
+        </template>
+    </data>
+</odoo>

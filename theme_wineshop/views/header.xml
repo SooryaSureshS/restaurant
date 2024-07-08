@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<template id="wineshop_header" inherit_id="website.layout" name="WineShop Header" active="True">
+		<xpath expr="//header//nav" position="replace">
+			<div class="search-box">
+				<div class="container">
+					<div class="close-btn">
+						<span class="text-primary fa fa-remove close-search"></span>
+					</div>
+					<a class="nav-link p-0">
+						<form method="get" data-snippet="s_products_searchbar_input" class="o_wsale_products_searchbar_form o_wait_lazy_js s_wsale_products_searchbar_input" action="/shop">
+		                <div role="search" class="input-group">
+		                  <input type="search" name="search" class="search-query form-control oe_search_box" data-limit="5" data-display-description="true" data-display-price="true" data-display-image="true" placeholder="Search..."/>
+		                  <div class="input-group-append">
+		                    <button type="submit" class="btn btn-primary oe_search_button" aria-label="Search" title="Search">
+		                      <i class="fa fa-search"/>
+		                    </button>
+		                  </div>
+		                </div>
+		                <input name="order" type="hidden" class="o_wsale_search_order_by" value=""/>
+		              </form>
+					</a>
+				</div>
+				
+			</div>
+			<nav data-name="Navbar" id="bizople_header" t-attf-class="wineshop_header o_affix_enabled navbar navbar-expand-md p-0">
+				
+				<!-- <nav class=""> -->
+					<div class="container p-md-0">
+						<div class="navigation-header navbar-light w-100">
+							<div class="row align-items-center">
+								<div class="col-xl-2 col-lg-3 text-center">
+									<div class="website-logo align-items-center d-flex">
+										<div class="website-logo-left align-items-center d-flex">
+											
+										</div>
+										<div class="collapse-btn ml-auto">
+											<button type="button" class="navbar-toggler collapsed navbar-light ml-auto" data-toggle="collapse" data-target="#header-menuitem" aria-expanded="false">
+												<span class="fa fa-bars"></span>
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="col-xl-7 col-lg-6 justify-content-center">
+									<nav class="navbar navbar-expand-lg" id="wineshop-header">
+										<div class="collapse navbar-collapse justify-content-center" id="header-menuitem">
+											<ul class="nav navbar-nav justify-content-center" id="top_menu">
+												<t t-foreach="website.menu_id.child_id" t-as="submenu">
+													<t t-call="website.submenu">
+														<t t-set="item_class" t-value="'nav-item'" />
+														<t t-set="link_class" t-value="'nav-link'" />
+													</t>
+												</t>
+												<li class="nav-item dropdown d-block d-lg-none" t-ignore="true" t-if="not user_id._is_public()">
+													<a href="#" class="nav-link dropdown-toggle"
+														data-toggle="dropdown">
+														<b>
+															<span
+																t-esc="user_id.name[:23] + '...' if user_id.name and len(user_id.name) &gt; 25 else user_id.name" />
+														</b>
+													</a>
+													<div class="dropdown-menu js_usermenu" role="menu">
+														<a t-attf-href="/my/home" role="menuitem" class="dropdown-item">My Account</a>
+														<a id="o_logout" class="dropdown-item"
+															t-attf-href="/web/session/logout?redirect=/"
+															role="menuitem">Logout</a>
+													</div>
+												</li>
+												<li class="nav-item cart d-block d-lg-none">
+													<t t-set="website_sale_order" t-value="website.sale_get_order()" />
+													<a href="/shop/cart" class="nav-link">
+														<i class="text-white icon icon-FullShoppingCart"></i>
+														<sup t-attf-class="my_cart_quantity badge badge-primary"
+															t-esc="website_sale_order and website_sale_order.cart_quantity or '0'" />
+													</a>
+												</li>
+												<li class="nav-item wishlist d-block d-lg-none">
+													<t t-if="is_view_active('website_sale_wishlist.add_to_wishlist')">
+														<t t-set='wishcount' t-value="len(request.env['product.wishlist'].current())" />
+														<a href="/shop/wishlist" class="nav-link">
+															<i class="text-white icon icon-Heart" />
+															<sup t-attf-class="my_wish_quantity o_animate_blink badge badge-primary">
+																<t t-esc='wishcount' />
+															</sup>
+														</a>
+													</t>
+												</li>
+												<li class="nav-item language d-block d-lg-none">
+													<ul class="menu-language js_language_selector mb0 list-inline text-lg-center d-block d-lg-none" t-if="(request and request.is_frontend_multilang and len(languages) &gt; 1) or (website and (editable or translatable))">
+									                    <li class="d-inline-block">
+												            <div class="dropdown">
+												                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+											                     	<span class="lang_local_code text-uppercase" t-esc="list(filter(lambda lg : lg[0] == lang, languages))[0][1]"/>
+												                    <span class="caret ml4"/>
+												                </button>
+												                <div class="dropdown-menu" role="menu">
+												                    <t t-foreach="languages" t-as="lg">
+												                        <a t-att-href="url_for(request.httprequest.path + '?' + keep_query(), lang_code=lg[0])"
+												                           class="dropdown-item js_change_lang"
+												                           t-att-data-url_code="lg[1]">
+												                            <t t-esc="lg[2].split('/').pop()"/>
+												                        </a>
+												                    </t>
+												                </div>
+												            </div>
+												        </li>
+												    </ul>
+												</li>
+												<li class="nav-item search d-block d-lg-none">
+													<span class="icon icon-Search show-search text-white" onclick="myFunction()"></span>
+												</li>
+											</ul>
+										</div>
+									</nav>
+								</div>
+								<div class="col-lg-3 text-center header-right-icons d-none d-lg-block">
+									<div class="row justify-content-center align-items-center">
+				                		<div class="col-2 bizople-add-to-cart">
+				                			 <t t-set="website_sale_order" t-value="website.sale_get_order()" />
+				                			<div id="my_cart" t-attf-class="o_wsale_my_cart header_cart nav-item#{'' if website_sale_order and website_sale_order.cart_quantity else ''}">
+												<a href="/shop/cart" class="nav-link">
+													<i class="text-white icon icon-FullShoppingCart"></i>
+													<sup t-attf-class="my_cart_quantity badge badge-primary"
+														t-esc="website_sale_order and website_sale_order.cart_quantity or '0'" />
+												</a>
+											</div>
+				                		</div>
+				                		<t t-if="is_view_active('website_sale_wishlist.add_to_wishlist')">
+					                		<div class="col-2 bizople-wishlist">
+												<t t-set='wishcount' t-value="len(request.env['product.wishlist'].current())"/>
+												<div id="my_wish o_wsale_my_wish" class="nav-item header_wishlist o_wsale_my_wish d-block">
+													<a href="/shop/wishlist" class="nav-link">
+														<i class="text-white icon icon-Heart" />
+														<sup t-attf-class="my_wish_quantity o_animate_blink badge badge-primary">
+															<t t-esc='wishcount' />
+														</sup>
+													</a>
+												</div>
+					                		</div>
+										</t>
+				                		<div class="col-2 js_language_selector mb0 list-inline text-center" t-if="(request and request.is_frontend_multilang and len(languages) &gt; 1) or (website and (editable or translatable))">
+								            <div class="dropdown">
+								                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							                     	<span class="lang_local_code text-uppercase" t-esc="list(filter(lambda lg : lg[0] == lang, languages))[0][1]"/>
+								                    <span class="caret ml4"/>
+								                </button>
+								                <div class="dropdown-menu" role="menu">
+								                    <t t-foreach="languages" t-as="lg">
+								                        <a t-att-href="url_for(request.httprequest.path + '?' + keep_query(), lang_code=lg[0])"
+								                           class="dropdown-item js_change_lang"
+								                           t-att-data-url_code="lg[1]">
+								                            <t t-esc="lg[2].split('/').pop()"/>
+								                        </a>
+								                    </t>
+								                </div>
+								            </div>
+										</div>
+										<div class="col-2 bizople-search">
+				                		</div>
+				                		<div class="col-2 bizople-acc-user">
+				                			<a href="#" class="nav-link dropdown-toggle acc-dropdown" data-toggle="dropdown">
+												<span class="icon icon-User text-white"></span>
+											</a>
+											<div class="dropdown-menu js_usermenu" role="menu">
+												<div class="main-content" t-ignore="true" t-if="not user_id._is_public()">
+													<div class="text-center font-weight-bold">
+														<span t-esc="user_id.name[:23] + '...' if user_id.name and len(user_id.name) &gt; 25 else user_id.name" />
+													</div>
+													<a t-attf-href="/my/home" role="menuitem" class="dropdown-item my-acc text-center">My Account</a>
+													<a id="o_logout" class="dropdown-item text-center"
+														t-attf-href="/web/session/logout?redirect=/"
+														role="menuitem">Logout</a>
+												</div>
+												<div groups="base.group_public">
+													<a class="nav-link" t-attf-href="/web/login">
+														<span class="text-muted">Sign in</span>
+													</a>
+													<a class="nav-link" t-attf-href="/web/signup">
+														<span class="text-muted">Register</span>
+													</a>
+												</div>
+											</div>
+				                		</div>
+				                	</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				<!-- </nav> -->
+			</nav>
+		</xpath>
+	</template>
+
+	<template id="wineshop_header_logo" inherit_id="theme_wineshop.wineshop_header" name="Show Header Logo" active="True" customize_show="True">
+		<xpath expr="//div[hasclass('website-logo-left')]" postion="inside">
+			<a href="/" class="navbar-brand logo">
+	            <span t-field="website.logo" t-options="{'widget': 'image'}" role="img" t-att-aria-label="'Logo of %s' % website.name" t-att-title="website.name" />
+	        </a>
+		</xpath>
+	</template>
+
+	<template id="wineshop_header_search" inherit_id="theme_wineshop.wineshop_header" name="Show Header Search" active="True" customize_show="True">
+		<xpath expr="//div[hasclass('bizople-search')]" postion="inside">
+			<div class="search">
+				<span class="icon icon-Search show-search text-white" onclick="myFunction()"></span>
+			</div>
+		</xpath>
+	</template>
+
+</odoo>

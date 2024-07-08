@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_config_settings_view_form_inherited_form" model="ir.ui.view">
+            <field name="name">sale.res.config.settings.view.form</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@id='discount_sale_order_lines']" position="after">
+                    <div class="col-12 col-lg-6 o_setting_box"
+                            id="holiday_surcharge_facility"
+                            title="Set the public holiday surcharge.">
+                            <div class="o_setting_left_pane">
+                                <field name="holiday_surcharge"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="holiday_surcharge"/>
+                                <div class="text-muted">
+                                    Set public holiday surcharge.
+                                </div>
+                                <group>
+
+                                    <field name="surcharge_product" style="width: 100px" attrs="{'invisible': [('holiday_surcharge', '=', False)]}"/>
+                                    <field name="start_date" style="width: 100px" attrs="{'invisible': [('holiday_surcharge', '=', False)]}"/>
+                                    <field name="end_date" style="width: 100px" attrs="{'invisible': [('holiday_surcharge', '=', False)]}"/>
+                                    <field name="choose_price" style="width: 100px" attrs="{'invisible': [('holiday_surcharge', '=', False)]}"/>
+                                    <field name="percentage" style="width: 100px" attrs="{'invisible': ['|', ('holiday_surcharge', '!=', True), ('choose_price', '!=', 'percentage')]}"/>
+                                    <field name="amount" style="width: 100px" attrs="{'invisible': ['|', ('holiday_surcharge', '!=', True), ('choose_price', '!=', 'amount')]}"/>
+                                </group>
+                            </div>
+                        </div>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

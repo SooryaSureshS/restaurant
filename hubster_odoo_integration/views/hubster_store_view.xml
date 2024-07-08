@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="hubster_odoo_integration_tree_view" model="ir.ui.view">
+            <field name="name">Hubster Odoo Integration Store tree view</field>
+            <field name="model">hubster.store</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="hubster_sequence_id"/>
+                    <field name="name"/>
+                    <field name="company_id"/>
+                    <field name="hubster_id"/>
+                    <field name="hubster_store_detail"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="Hubster_configuration">
+            <field name="name">Hubster Config</field>
+            <field name="model">hubster.config</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="hubster_endpoint"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="Hubster_menu_configuration">
+            <field name="name">Hubster Menu</field>
+            <field name="model">hubster.menu</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="Hubster_orders_configuration">
+            <field name="name">Hubster Order</field>
+            <field name="model">hubster.order</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="create_date"/>
+                    <field name="event_id"/>
+                    <field name="event_time"/>
+                    <field name="event_type"/>
+                    <field name="source"/>
+                    <!--                    <field name="external_identifiers"/>-->
+                    <!--                    <field name="friendly_id"/>-->
+                    <field name="ordered_at"/>
+                    <field name="currency_code"/>
+                    <!--                    <field name="customer"/>-->
+                    <!--                    <field name="customer_note"/>-->
+                    <field name="status"/>
+                    <!--                    <field name="delivery_info"/>-->
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="hubster_configuration_form_view" model="ir.ui.view">
+            <field name="name">Configure hubster</field>
+            <field name="model">hubster.config</field>
+            <field name="arch" type="xml">
+                <form string="Configuration">
+                    <header>
+                        <button type="object" name="action_activate" string="Get New Access Token"
+                                class="oe_highlight"/>
+                        <!--                              <button type="object" name="action_activate_sync" string="Sync auth" class="oe_highlight"/>-->
+                        <button type="object" name="action_check" string="Check connection" class="oe_highlight"/>
+
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="hubster_endpoint"/>
+                                <field name="client_id" password="True"/>
+                                <field name="client_secret" password="True"/>
+                                <field name="description"/>
+                                <field name="store_id"/>
+                                <field name="token"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="hubster_odoo_integration_form_view" model="ir.ui.view">
+            <field name="name">Hubster Odoo Integration Store form view</field>
+            <field name="model">hubster.store</field>
+            <field name="arch" type="xml">
+                <form string="Configuration">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="hubster_sequence_id"/>
+                                <field name="name"/>
+                                <field name="company_id"/>
+                                <field name="hubster_id"/>
+                                <field name="hubster_store_detail"/>
+                                <field name="active"/>
+                            </group>
+                        </group>
+                        <group>
+                            <!--                                <button type="object" name="action_activate" string="Authenticate" class="oe_highlight"/>-->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="hubster_odoo_menus_integration_form_view" model="ir.ui.view">
+            <field name="name">Hubster Menu Integration Store form view</field>
+            <field name="model">hubster.menu</field>
+            <field name="arch" type="xml">
+                <form string="Menu">
+                    <header>
+                        <button type="object" name="action_publish" string="Publish Menu" class="oe_highlight"/>
+                        <button type="object" name="check_connection" string="Check Connection" class="oe_highlight"/>
+                        <button type="object" name="webhook_event_trigger" string="Webhook event trigger"
+                                class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label class="oe_edit_only" for="name" string="Menu Name"/>
+                            <h1>
+                                <field name="name"/>
+
+                            </h1>
+                        </div>
+                        <!--                            <group>-->
+                        <group col="2" colspan="1">
+                            <field name="description"/>
+                            <field name="fulfillmentModes"/>
+                            <field name="hubster_id"/>
+                            <field name="configuration"/>
+                            <field name="category_line" widget="many2many_tags"/>
+                        </group>
+                        <group col="2" colspan="1">
+                            <field name="hours_line" widget="many2many_tags"/>
+                            <field name="status"/>
+                            <field name="job_ref"/>
+                            <field name="upsert_token"/>
+                        </group>
+
+                        <!--                            </group>-->
+
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="view_order_hubster_info_form" model="ir.ui.view">
+            <field name="name">hubster.order.inherit.form</field>
+            <field name="model">hubster.order</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Hubster Order">
+                    <header>
+                        <!--                        <button name="create_action_invoice" id="action_invoice" string="Create Invoice" class="btn-primary" type="object" attrs="{'invisible': ['|', '|', ('invoice_created', '=', True),('state', 'not in', ['confirm']), ('pay_at','=','destination')]}"/>-->
+                        <!--                        <button name="confirm_complete" id="Complete" string="Complete" class="btn-primary" type="object" attrs="{'invisible': ['|', '|', ('invoice_created', '=', False), ('state', 'not in', ['confirm']),('pay_at','=','destination')]}"/>-->
+
+                        <!--                        <button name="create_action_invoice" id="action_invoice" string="Create Invoice" class="btn-primary" type="object" attrs="{'invisible': ['|', '|', ('invoice_created', '=', True),('state', 'not in', ['done']), ('pay_at','!=','destination')]}"/>-->
+                        <!--                        <button name="confirm_complete_detination" id="Complete" string="Complete" class="btn-primary" type="object" attrs="{'invisible': ['|', ('state', 'not in', ['confirm']),('pay_at','!=','destination')]}"/>-->
+
+                        <!--                        <button name="confirm_draft" id="confirm" string="Confirm" class="btn-primary" type="object" attrs="{'invisible': [('state', 'not in', ['draft'])]}"/>-->
+                        <!--                        <button name="confirm_complete" id="Complete" string="Complete" class="btn-primary" type="object" attrs="{'invisible': ['|','|', ('invoice_created', '=', False),('state', 'not in', ['confirm']),('pay_at','!=','destination')]}"/>-->
+                        <!--                          <button name="confirm_drelivery" id="confirm_delivery" string="Confirm Delivery" class="btn-primary" type="object" attrs="{'invisible': [('state', 'not in', ['done','confirm'])]}"/>-->
+                        <!--                        <button name="confirm_cancel" id="confirm" string="Cancel" class="btn-primary" type="object" attrs="{'invisible': [('state', 'not in', ['confirm','draft'])]}"/>-->
+                        <!--                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done,cancelled"/>-->
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <!--                                <button name="action_view_invoice"-->
+                            <!--                                    type="object"-->
+                            <!--                                    class="oe_stat_button" attrs="{'invisible': [('invoice_created', '!=', True)]}"-->
+                            <!--                                    icon="fa-pencil-square-o"><field name="invoice_count" widget="statinfo"/>-->
+                            <!--                                </button>-->
+
+                        </div>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group col="2" colspan="1">
+                                <field name="event_id"/>
+                                <field name="event_time"/>
+                                <field name="event_type"/>
+                                <!--                                    <field name="event_type" />-->
+                                <field name="source"/>
+                                <!--                                    <field name="source" />-->
+                                <field name="partner"/>
+                                <field name="source_document"/>
+                            </group>
+
+                            <group col="2" colspan="1">
+                                <field name="external_identifiers"/>
+                                <field name="friendly_id"/>
+                                <field name="ordered_at"/>
+                                <field name="currency_code"/>
+                                <field name="customer"/>
+                                <field name="customer_note"/>
+                                <field name="status"/>
+                                <field name="delivery_info"/>
+                            </group>
+                        </group>
+
+                        <notebook colspan="4">
+                            <page string="Order Information">
+                                <field name="order_line">
+                                    <tree>
+                                        <field name="sku_price"/>
+                                        <!--                                        <field name="product_template_id"/>-->
+                                        <field name="product_id"/>
+                                        <field name="name"/>
+                                        <field name="qty"/>
+                                        <field name="note"/>
+                                        <field name="category"/>
+                                        <field name="base_price"/>
+                                    </tree>
+                                </field>
+                                <!--                                   <group class="oe_subtotal_footer oe_right" colspan="2">-->
+                                <!--                                        <field name="amount_total" />-->
+                                <!--                                    </group>-->
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_stock_product_template_view_hubster" model="ir.ui.view">
+            <field name="name">product.template.hubster.inherit.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='barcode']" position="after">
+                    <field name="publish_hubster"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_stock_product_template_view_hubster_order_View" model="ir.ui.view">
+            <field name="name">sale.order.new.state.inherit.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date_order']" position="after">
+                    <field name="friendly_id"/>
+                    <field name="is_hubster"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_hubster_view" model="ir.actions.act_window">
+            <field name="name">Hubster Stores</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hubster.store</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+
+        <record id="action_hubster_config_view" model="ir.actions.act_window">
+            <field name="name">Hubster Configuration</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hubster.config</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+
+        <record id="action_hubster_menu_view" model="ir.actions.act_window">
+            <field name="name">Hubster Menu Configuration</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hubster.menu</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+
+        <record id="action_hubster_orders_view" model="ir.actions.act_window">
+            <field name="name">Hubster Order</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hubster.order</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+
+        <record id="view_stock_product_hubster_payload" model="ir.ui.view">
+            <field name="name">hubster.payload.form</field>
+            <field name="model">hubster.payloads</field>
+            <field name="arch" type="xml">
+                <form string="Payload">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="payloads"/>
+                            <field name="payloads_date" widget="date"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="Hubster_orders_payload">
+            <field name="name">Hubster Payload</field>
+            <field name="model">hubster.payloads</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="payloads"/>
+                    <field name="payloads_date" widget="date"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="action_hubster_payload" model="ir.actions.act_window">
+            <field name="name">Hubster Payload</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hubster.payloads</field>
+            <field name="view_mode">tree,form</field>
+            <!--            <field name="target">current</field>-->
+        </record>
+
+        <menuitem
+                id="menu_hubster"
+                name="Hubster Integration"
+                sequence="0"
+        />
+
+        <menuitem
+                id="menu_hubster_1"
+                action="action_hubster_view"
+                name="Hubster Stores" parent="menu_hubster" sequence="1"/>
+
+        <menuitem
+                id="menu_hubster_5"
+                action="action_hubster_payload"
+                name="Hubster Payload" parent="menu_hubster" sequence="4"/>
+
+        <menuitem
+                id="menu_hubster_2"
+                action="action_hubster_config_view"
+                name="Hubster Configuration" parent="menu_hubster" sequence="3"/>
+
+        <menuitem
+                id="menu_hubster_3"
+                action="action_hubster_menu_view"
+                name="Hubster Menu" parent="menu_hubster" sequence="1"/>
+
+        <menuitem
+                id="menu_hubster_4"
+                action="action_hubster_orders_view"
+                name="Hubster Order" parent="menu_hubster" sequence="2"/>
+
+    </data>
+</odoo>

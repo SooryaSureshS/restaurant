@@ -1,0 +1,39 @@
+$primarycolor: #b0976d !default;
+$secondarycolor: #000000 !default;
+$primarygamma: #a8393c !default;
+$ptextcolor: #6a6c72 !default;
+$feature: #ff4272 !default;
+
+
+/* -------------------------- Main Colors ------------------------*/
+$o-theme-color-palettes: (
+    (
+        'o-color-1': $primarycolor,
+        'o-color-2': $secondarycolor,
+        'o-color-3': #a8393c,
+        'o-color-4': #333333,
+        'o-color-5': #bbbfc6,
+    ),
+);
+/* -------------------------- Text Colors ------------------------*/
+$o-base-color-combination: (
+    
+		'body': null, // Default to bootstrap
+	    'menu': #F9F9F9,
+	    'footer': #F9F9F9,
+	    'text': #6d7175,
+	    'h1':  #202430,
+	    'h2':  #202430,
+	    'h3':  #202430,
+	    'h4':  #202430,
+	    'h5':  #202430,
+	    'h6':  #202430,
+    
+);
+/* -------------------------- State Colors ------------------------*/
+$success:       #00b115 !default;
+$info:          #ffaa50 !default;
+$warning:       #ff5050 !default;
+$danger:        #900000 !default;
+
+

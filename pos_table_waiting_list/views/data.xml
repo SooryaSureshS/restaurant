@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="seq_waiting_list" model="ir.sequence">
+            <field name="name">Waiting List</field>
+            <field name="code">waiting.list.sequence</field>
+            <field name="prefix">WL_</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

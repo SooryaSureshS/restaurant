@@ -1,0 +1,41 @@
+
+
+.product_check_box_style{
+width:18px;
+height:18px;
+background-color: #ffffff;
+  color: #ad823a;
+    border: 2px solid #ad823a;
+
+
+
+}
+
+.checkbox-custom_product input[type=checkbox]~b {
+  cursor: pointer;
+  outline: 0;
+  display: inline-block;
+  background-color: #ffffff;
+  border: 2px solid #ad823a;
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  line-height: 1;
+  text-align: center;
+  font-size: 20px;
+  color: #ad823a;
+}
+
+.checkbox-custom_product input[type=checkbox]:checked~b:after {
+  content: '\2713';
+}
+
+.checkbox-custom_product {
+
+}
+
+.checkbox-custom_product input[type=checkbox] {
+  display: none;
+}
+
+

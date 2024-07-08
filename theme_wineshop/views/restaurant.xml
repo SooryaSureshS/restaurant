@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="restaurant_page" model="ir.ui.view">
+		<field name="name">Restaurant</field>
+		<field name="type">qweb</field>
+		<field name="key">website.restaurant_page</field>
+		<field name="arch" type="xml">
+			<t name="Restaurant" t-name="restaurant_page">
+				<t t-call="website.layout">
+					<div class="oe_structure oe_empty" id="wrap">
+						<div class="oe_structure"/>
+						<!-- banner start -->
+						<section class="our-wines-banner-image">
+							<div class="image">
+								<img class="img img-fluid" src="/theme_wineshop/static/src/img/restaurant-banner.jpg" alt="image"/>
+							</div>
+						</section>
+						<!-- banner end -->
+						<div class="oe_structure"/>
+						<!-- title start -->
+						<section class="our-wines-title pt152 pb152">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-8 col-lg-6">
+										<div class="content">
+											<p class="subtitle text-primary">THE RESTAURANT AT WINESHOP</p>
+											<h1 class="text-black">RESTAURANT</h1>
+											<p class="text-black">Cras dignissim mi diam, sit amet efficitur magna porta efficitur. Nulla ultricies dictum neque. Pellentesque faucibus lacus eu facilisis aliquet.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- title end -->
+						<div class="oe_structure"/>
+						<!-- image carousel start -->
+						<section class="estate-image-carousel">
+							<div id="estate-carousel" class="estate-gallery-slider carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="7000">
+					          	<div class="carousel-inner" role="listbox">
+					            	<div class="carousel-item active ls-slide">
+					            		<img class="img img-fluid" src="/theme_wineshop/static/src/img/restaurant-gallery-1-1.jpg" alt="image"/>
+					            	</div>
+					            	<div class="carousel-item ls-slide">
+					            		<img class="img img-fluid" src="/theme_wineshop/static/src/img/restaurant-gallery-2-1.jpg" alt="image"/>
+						            </div>
+						            <div class="carousel-item ls-slide">
+					            		<img class="img img-fluid" src="/theme_wineshop/static/src/img/restaurant-gallery-3-1.jpg" alt="image"/>
+						            </div>
+						            <div class="carousel-item ls-slide">
+					            		<img class="img img-fluid" src="/theme_wineshop/static/src/img/restaurant-gallery-4-1.jpg" alt="image"/>
+						            </div>
+						            <div class="carousel-item ls-slide">
+					            		<img class="img img-fluid" src="/theme_wineshop/static/src/img/restaurant-gallery-5-1.jpg" alt="image"/>
+						            </div>
+						            <div class="slider-control">
+					              		<a class="left carousel-control-prev text-white font-14" data-target="#estate-carousel" role="button" data-slide="prev">
+						                	<span class="fa fa-angle-left"/>
+						               	 	<b class="sr-only font-normal o_default_snippet_text">Previous</b>
+						              	</a>
+						              	<a class="right carousel-control-next text-white font-14" data-target="#estate-carousel" role="button" data-slide="next">
+						                	<span class="fa fa-angle-right"/>
+						                	<b class="sr-only font-normal o_default_snippet_text">Next</b>
+						              	</a>
+						            </div>
+					          	</div>
+					        </div>
+						</section>
+						<!-- image carousel end -->
+						<div class="oe_structure"/>
+						<!-- reservation start -->
+						<section class="restaurant-reservation pt152 pb72">
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-6 p-0">
+										<div class="content text-center bg-primary">
+											<div class="icon bg-white text-center mx-auto">
+												<span class="fa fa-phone text-primary"></span>
+											</div>
+											<p class="text-white subtitle">RESTAURANT</p>
+											<h1 class="text-white">Efficitur Magna Porta</h1>
+											<p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non libero consequat, sodales ipsum malesuada, ullamcorper nisi.</p>
+											<div class="s_btn" data-name="Button">
+												<a href="#" class="btn flat btn-secondary btn-lg text-white">call us now</a>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6 p-0">
+										<div class="content text-center bg-secondary">
+											<div class="icon bg-white text-center mx-auto">
+												<span class="fa fa-cutlery text-secondary"></span>
+											</div>
+											<p class="text-white subtitle">RESTAURANT</p>
+											<h1 class="text-white">Efficitur Magna Porta</h1>
+											<p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non libero consequat, sodales ipsum malesuada, ullamcorper nisi.</p>
+											<div class="s_btn" data-name="Button">
+												<a href="#" class="btn flat btn-primary btn-lg text-white">call us now</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- reservation end -->
+						<div class="oe_structure"/>
+						<!-- about start -->
+						<section class="restaurant-about pt72 pb152">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-6 mb-4 mb-md-0">
+										<div class="content">
+											<p class="subtitle text-primary">ABOUT</p>
+											<h1>Restaurant</h1>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam malesuada sem est, ut feugiat nibh interdum nec. Curabitur vel cursus justo. Nulla dignissim ullamcorper arcu, quis hendrerit nulla. Nam et aliquet ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+											<p>Curabitur convallis, quam vitae pretium vulputate, purus magna vehicula libero, ac varius tortor dolor sit amet nisi. Nunc sapien eros, vulputate ut rutrum porta, porttitor sed nibh.</p>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="image">
+											<img class="img img-fluid" src="/theme_wineshop/static/src/img/about-us-platter.jpg" alt="image"/>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- about end -->
+						<div class="oe_structure"/>
+						<!-- tasting start -->
+						<section class="wineshop-home-tasting">
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-6 p-0">
+										<div class="image">
+											<img class="img img-fluid" src="/theme_wineshop/static/src/img/restaurant-menu-1.jpg" alt="image"/>
+										</div>
+									</div>
+									<div class="col-lg-6 p-0">
+										<section class="content text-center h-100 bg-light">
+											<p class="subtitle text-primary">DONEC FAUCIBUS</p>
+											<h1>Menu</h1>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing. Cras vel iaculis urna. Cras bibendum ex id dolor facilisis, in tempor lacus dapibus.</p>
+											<div class="s_btn" data-name="Button">
+												<a href="#" class="btn flat btn-secondary btn-lg">read more</a>
+											</div>
+										</section>
+									</div>
+									<div class="col-lg-6 p-0 order">
+										<section class="content text-center h-100 bg-light">
+											<p class="subtitle text-primary">DONEC FAUCIBUS</p>
+											<h1>Our Chef</h1>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing. Cras vel iaculis urna. Cras bibendum ex id dolor facilisis, in tempor lacus dapibus.</p>
+											<div class="s_btn" data-name="Button">
+												<a href="#" class="btn flat btn-secondary btn-lg">read more</a>
+											</div>
+										</section>
+									</div>
+									<div class="col-lg-6 p-0">
+										<div class="image">
+											<img class="img img-fluid" src="/theme_wineshop/static/src/img/restaurant-menu-2.jpg" alt="image"/>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- tasting end -->
+						<div class="oe_structure"/>
+						<!-- hours start -->
+						<section class="restaurant-hours pt152 pb152">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-6 mb-4 mb-md-0">
+										<div class="content">
+											<p class="subtitle text-primary">RESTAURANT</p>
+											<h1>Dinner Hours</h1>
+											<div class="list">
+												<p>
+													<span class="left">Sunday - Monday</span>
+													<span class="right">7:00pm -11:00pm</span>
+												</p>
+												<p>
+													<span class="left">Tuesday - Saturday</span>
+													<span class="right">7:00pm - 10:00pm</span>
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="content">
+											<p class="subtitle text-primary">RESTAURANT</p>
+											<h1>Lunch Hours</h1>
+											<div class="list">
+												<p>
+													<span class="left">Monday - Saturday</span>
+													<span class="right">11:30am - 3:30pm</span>
+												</p>
+												<p>
+													<span class="left">Sunday Brunch</span>
+													<span class="right">10:30am - 3:30pm</span>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- hours end -->
+						<div class="oe_structure"/>
+						<!-- contact start -->
+						<section class="restaurant-contact pt152 pb152" style="background-image: url('/theme_wineshop/static/src/img/restaurant-contact.jpg');">
+							<div class="container">
+								<div class="col-xl-6">
+									<div class="content">
+										<h1 class="text-white">Pellentesque faucibus lacus eu facilisis</h1>
+										<p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut neque leo, tempus ac consequat eget, malesuada vel lectus. Fusce rhoncus ornare vulputate.</p>
+										<div class="s_btn" data-name="Button">
+											<a href="#" class="btn flat btn-light btn-lg">Contact us now</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!-- contact end -->
+					</div>
+				</t>
+			</t>
+		</field>
+	</record>
+
+	<record id="restaurant_page_menu" model="website.page">
+		<field name="website_published">True</field>
+		<field name="url">/restaurant</field>
+		<field name="view_id" ref="restaurant_page" />
+	</record>
+</odoo>

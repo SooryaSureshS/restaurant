@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template inherit_id="purchase.report_purchasequotation_document" id="report_purchasequotation_document_extend">
+        <xpath expr="//div[hasclass('page')]//h2" position="replace">
+            <h2>Purchase Request
+                <span t-field="o.name"/>
+            </h2>
+        </xpath>
+    </template>
+</odoo>

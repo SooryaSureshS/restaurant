@@ -1,0 +1,90 @@
+
+.aboutbanner{
+    background: url('/mask_cutomization/static/src/image/BG.png'); 
+    background-size: cover;
+  margin: auto;
+  padding: 4%;
+  font-family: 'Montserrat';
+  text-align: justify;
+  
+}
+.container_mask_image{
+     content:url("/mask_cutomization/static/src/image/about_us.png");
+}
+.aboutmaincontent{
+ display: flex;
+}
+.aboutimg{
+  /* flex: 20%; */
+  padding-top: 5%;
+}
+.aboutimg img{
+  width: 18vw;
+ 
+    
+}
+
+.aboutcontent{
+  text-align: justify;
+  /* flex: 30%; */
+  margin: auto;
+  color:white;
+  padding-top: 10%;
+  padding-left: 7%;
+  padding-right: 7%;
+
+}
+.aboutcontenth4{
+  font-size: 25px;
+  font-weight: 600;
+}
+.aboutcontent p{
+  font-size: 15px;
+  font-weight: 400;
+ 
+}
+.subimg{
+  padding-left: 10%;
+  padding-top: 5%;
+  padding-right: 10%;
+  display: flex;
+  color: white;
+  flex-direction: row;
+  font-size: 16px;
+  font-weight: 600;
+}
+.smallimg1,.smallimg2{
+ flex:30% ;
+
+}
+.subimg img{
+  align-items: center;
+  padding-left: 40px;
+
+}
+@media only screen and (max-width:1000px){
+  .aboutmaincontent{
+    display: grid;
+  }
+  .aboutimg{
+    align-items: center;
+    
+  }
+  .aboutimg img{
+    width: 80%;
+  }
+  
+}
+@media only screen and (max-width:650px){
+  .subimg{
+    display: grid;
+    grid-template-columns: auto;
+  }
+  .subimg{
+    padding-left: 30%;
+  }
+  .aboutimg img{
+    width: 100%;
+  }
+
+}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_wine_counter_left" name="Wine Counter Left">
+		<section class="wineshop-home-counter pt152 pb152">
+			<div class="container-fluid">
+				<div class="row align-items-center">
+					<div class="col-md-7 col-lg-8 pl-0 pr-0 pr-md-5">
+						<div class="left-content">
+							<div class="image mb-5 mr-5 mr-md-0">
+								<img class="img img-fluid" src="/theme_wineshop/static/src/img/red-bottle.png" alt="image"/>
+							</div>
+							<div class="row text-center m-0">
+								<div class="col-md-4">
+									<div class="counter-box">
+										<h1 class="counter">3</h1>
+										<p class="text-primary">VARIETALS</p>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="counter-box">
+										<h1 class="counter">149</h1>
+										<p class="text-primary">WINE PRODUCED</p>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="counter-box">
+										<h1 class="counter">41</h1>
+										<p class="text-primary">AWARDS WON</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-5 col-lg-4 p-0 mt-4 mt-md-0">
+						<section class="right-content bg-white">
+							<p class="subtitle text-primary">DONEC FAUCIBUS</p>
+							<h3>Red Wines</h3>
+							<ul>
+								<li>Proin Tempor</li>
+								<li>Curabitur</li>
+								<li>Interdum Nibh</li>
+							</ul>
+							<div class="s_btn" data-name="Button">
+								<a href="#" class="btn flat btn-secondary btn-lg">Shop now</a>
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+		</section>
+	</template>
+</odoo>

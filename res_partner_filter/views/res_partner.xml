@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_partner_custom_filter" model="ir.ui.view">
+            <field name="name">customer.statements.filter</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='type_person']" position="before">
+                    <filter name="customer" string="Customers" domain="[('customer_rank' ,'>', 0)]"/>
+                    <filter name="supplier" string="Vendors" domain="[('supplier_rank', '>', 0)]"/>
+                    <separator/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

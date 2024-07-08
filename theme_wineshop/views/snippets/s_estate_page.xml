@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_estate_page" name="Estate Page">
+		<section class="s_estate_page">
+			<div class="oe_structure"/>
+			<!-- banner start -->
+			<section class="our-wines-banner-image">
+				<div class="image">
+					<img class="img img-fluid" src="/theme_wineshop/static/src/img/estate-banner.jpg" alt="image"/>
+				</div>
+			</section>
+			<!-- banner end -->
+			<div class="oe_structure"/>
+			<!-- title start -->
+			<section class="our-wines-title pt152 pb152">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="content">
+								<p class="subtitle text-primary">WINESHOP</p>
+								<h1 class="text-black">VINEYARD</h1>
+								<p class="text-black">Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst. Mauris sed diam libero.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- title end -->
+			<div class="oe_structure"/>
+			<!-- image carousel start -->
+			<section class="estate-image-carousel">
+				<div id="estate-carousel" class="estate-gallery-slider carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="7000">
+		          	<div class="carousel-inner" role="listbox">
+		            	<div class="carousel-item active ls-slide">
+		            		<img class="img img-fluid" src="/theme_wineshop/static/src/img/estate-gallery-1.jpg" alt="image"/>
+		            	</div>
+		            	<div class="carousel-item ls-slide">
+		            		<img class="img img-fluid" src="/theme_wineshop/static/src/img/estate-gallery-2.jpg" alt="image"/>
+			            </div>
+			            <div class="carousel-item ls-slide">
+		            		<img class="img img-fluid" src="/theme_wineshop/static/src/img/estate-gallery-3.jpg" alt="image"/>
+			            </div>
+			            <div class="carousel-item ls-slide">
+		            		<img class="img img-fluid" src="/theme_wineshop/static/src/img/estate-gallery-4.jpg" alt="image"/>
+			            </div>
+			            <div class="slider-control">
+		              		<a class="left carousel-control-prev text-white font-14" data-target="#estate-carousel" role="button" data-slide="prev">
+			                	<span class="fa fa-angle-left"/>
+			               	 	<b class="sr-only font-normal o_default_snippet_text">Previous</b>
+			              	</a>
+			              	<a class="right carousel-control-next text-white font-14" data-target="#estate-carousel" role="button" data-slide="next">
+			                	<span class="fa fa-angle-right"/>
+			                	<b class="sr-only font-normal o_default_snippet_text">Next</b>
+			              	</a>
+			            </div>
+		          	</div>
+		        </div>
+			</section>
+			<!-- image carousel end -->
+			<div class="oe_structure"/>
+			<!-- estate story start -->
+			<section class="estate-story pt152 pb88">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-md-11 col-xl-8">
+							<div class="content">
+								<div class="title text-center">
+									<p class="subtitle text-primary">DONEC FAUCIBUS</p>
+									<h1>Wineshop Vineyard</h1>
+								</div>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at mauris sapien. Etiam nec leo ac metus tempor facilisis. Morbi imperdiet erat hendrerit ante congue maximus. Mauris sed diam libero.</p>
+								<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+								<div class="list">
+									<p>
+										<span class="left">Interdum</span>
+										<span class="right">Lorem ipsum dolor sit amet</span>
+									</p>
+									<p>
+										<span class="left">Consectetur</span>
+										<span class="right">Lorem ipsum dolor sit amet</span>
+									</p>
+									<p>
+										<span class="left">Hendrerit</span>
+										<span class="right">Lorem ipsum dolor sit amet</span>
+									</p>
+									<p>
+										<span class="left">Donec</span>
+										<span class="right">Lorem ipsum dolor sit amet</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- estate story end -->
+			<div class="oe_structure"/>
+			<!-- estate-info start -->
+			<section class="estate-info pt64 pb152" style="background-image: url('/theme_wineshop/static/src/img/the-estate-background.jpg');">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-4 mb-4">
+							<div class="info-box bg-primary">
+								<div class="icon">
+									<span class="fa fa-angle-double-down text-white"></span>
+								</div>
+								<h3>Donec</h3>
+								<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+							</div>
+						</div>
+						<div class="col-lg-4 mb-4">
+							<div class="info-box bg-white">
+								<div class="icon">
+									<span class="fa fa-cloud text-primary"></span>
+								</div>
+								<h3>Consectetur</h3>
+								<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+							</div>
+						</div>
+						<div class="col-lg-4 mb-4">
+							<div class="info-box bg-primary">
+								<div class="icon">
+									<span class="fa fa-share-alt text-white"></span>
+								</div>
+								<h3>Hendrerit</h3>
+								<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+							</div>
+						</div>
+						<div class="col-lg-4 mb-4">
+							<div class="info-box bg-white">
+								<div class="icon">
+									<span class="fa fa-sun-o text-primary"></span>
+								</div>
+								<h3>Interdum</h3>
+								<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+							</div>
+						</div>
+						<div class="col-lg-4 mb-4">
+							<div class="info-box bg-primary">
+								<div class="icon">
+									<span class="fa fa-bullseye text-white"></span>
+								</div>
+								<h3>Volutpat</h3>
+								<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+							</div>
+						</div>
+						<div class="col-lg-4 mb-4">
+							<div class="info-box bg-white">
+								<div class="icon">
+									<span class="fa fa-beer text-primary"></span>
+								</div>
+								<h3>Habitasse</h3>
+								<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- estate-info end -->
+			<div class="oe_structure"/>
+			<!-- location start -->
+			<section class="estate-location pt152 pb152">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 mb-4 mb-md-0">
+							<div class="title">
+								<p class="subtitle text-primary">WINESHOP VINEYARD</p>
+								<h1>Location</h1>
+							</div>
+						</div>
+						<div class="col-md-4 mb-4 mb-md-0">
+							<div class="image text-center">
+								<img class="img img-fluid" src="/theme_wineshop/static/src/img/estate-location.png" alt="image"/>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="content">
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at mauris sapien. Etiam nec leo ac metus tempor facilisis. Morbi imperdiet erat hendrerit ante congue maximus. Mauris sed diam libero. Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- location end -->
+			<div class="oe_structure"/>
+			<!-- tasting start -->
+			<section class="wineshop-home-tasting">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6 p-0">
+							<div class="image">
+								<img class="img img-fluid" src="/theme_wineshop/static/src/img/current-release.jpg" alt="image"/>
+							</div>
+						</div>
+						<div class="col-lg-6 p-0">
+							<section class="content text-center h-100 bg-light">
+								<p class="subtitle text-primary">DONEC FAUCIBUS</p>
+								<h1>Proin &amp; Tempor</h1>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at mauris sapien. Etiam nec leo ac metus tempor facilisis.</p>
+								<div class="s_btn" data-name="Button">
+									<a href="#" class="btn flat btn-secondary btn-lg">read more</a>
+								</div>
+							</section>
+						</div>
+						<div class="col-lg-6 p-0 order">
+							<section class="content text-center h-100 bg-light">
+								<p class="subtitle text-primary">DONEC FAUCIBUS</p>
+								<h1>Proin &amp; Tempor</h1>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at mauris sapien. Etiam nec leo ac metus tempor facilisis.</p>
+								<div class="s_btn" data-name="Button">
+									<a href="#" class="btn flat btn-secondary btn-lg">read more</a>
+								</div>
+							</section>
+						</div>
+						<div class="col-lg-6 p-0">
+							<div class="image">
+								<img class="img img-fluid" src="/theme_wineshop/static/src/img/weddings-private-events.jpg" alt="image"/>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-6 p-0">
+							<div class="image">
+								<img class="img img-fluid" src="/theme_wineshop/static/src/img/estate-corporate.jpg" alt="image"/>
+							</div>
+						</div>
+						<div class="col-lg-6 p-0">
+							<section class="content text-center h-100 bg-light">
+								<p class="subtitle text-primary">DONEC FAUCIBUS</p>
+								<h1>Proin &amp; Tempor</h1>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at mauris sapien. Etiam nec leo ac metus tempor facilisis.</p>
+								<div class="s_btn" data-name="Button">
+									<a href="#" class="btn flat btn-secondary btn-lg">read more</a>
+								</div>
+							</section>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- tasting end -->
+		</section>
+	</template>
+</odoo>

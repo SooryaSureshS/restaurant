@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_sale_order_form_inherited_new" model="ir.ui.view">
+            <field name="name">sale.order.inherit.fields</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+<!--                    <field name="delivery_status" context="{'defaul_delivery_status':'order'}"/>-->
+                    <field name="latitude"/>
+                    <field name="longitude"/>
+                    <field name="payment_method"/>
+                </xpath>
+                <xpath expr="//field[@name='date_order']" position="after">
+                    <field name="delivery_boy"/>
+<!--                    <field name="reject"/>-->
+              <field name="cancel_reason"/>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                   <page name="reject_delivery" string="Rejected List Information">
+                        <field name="rejected_order_ids" nolabel="1" widget="many2many">
+                            <tree editable="bottom">
+                                <field name="delivery_boy"/>
+                                <field name="reject_reason"/>
+                           </tree>
+                        </field>
+                   </page>
+                </xpath>
+            </field>
+        </record>
+	    <record id="view_partner_form_inherited_is_rider" model="ir.ui.view">
+            <field name="name">res.partner.inherit.fav</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='type']" position="after">
+                    <field name="is_rider"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

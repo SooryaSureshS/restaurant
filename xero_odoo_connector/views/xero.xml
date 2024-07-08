@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_xero_account_tree" model="ir.ui.view">
+        <field name="name">view.xero.xero.tree</field>
+        <field name="model">xero.xero</field>
+        <field name="arch" type="xml">
+            <tree string="Xero Configuration">
+                <field name="name"/>
+                <field name="clientkey"/>
+                <field name="clientsecret"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_xero_account_form" model="ir.ui.view">
+        <field name="name">view.xero.xero.form</field>
+        <field name="model">xero.xero</field>
+        <field name="arch" type="xml">
+            <form string="Xero Configuration">
+                <header>
+                    <button type='object' string='Authorize &amp; Get Token' name='authorize_and_get_token' class='oe_highlight'/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" default_focus="1" placeholder="Application Name"/>
+                        </h1>
+                    </div>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <group>
+                        <group>
+                            <field name="company_id" widget="selection" required="1"/>
+                        </group>
+                        <group>
+                            <field name="active" invisible="1"/>
+                        </group>
+                    </group>
+                    <separator string="Authentication Information"/>
+                    <group>
+                        <field name="xero_referral_id" invisible="1" />
+                        <group>
+                            <field name="clientkey" password="True"/>
+                            <field name="redirect_url"/>
+                        </group>
+                        <group>
+                            <field name="clientsecret" password="True"/>
+                            <field name="scopes" invisible="1"/>
+                        </group>
+                        <field name="access_token_url" invisible="1" />
+                        <field name="authorization_url" invisible="1" />
+                        <field name="access_token" style='word-break: break-all;' invisible="1" />
+                    </group>
+                    
+                    <group string="Xero ⇄ Odoo">
+                        <group>
+                            <field name="options" options="{'horizontal': true}" attrs="{'invisible': ['|',('access_token', '=', False),('xero_referral_id', '=', False)]}" widget="radio"/>
+                            <field name="no_product" string="Product Optional ?" attrs="{'invisible': ['|',('access_token', '=', False),('xero_referral_id', '=', False)]}"/>
+                        </group>
+                        <group>
+                            <field name="inventory_options" attrs="{'invisible': ['|',('access_token', '=', False),('xero_referral_id', '=', False)]}"/>
+                            <field name="mapped_categ_id" attrs="{'invisible': [('inventory_options','=',False)]}"/>
+                            <field name="unmapped_categ_id" attrs="{'invisible': [('inventory_options','=',False)]}"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <group>
+                            <field name="manual_import" attrs="{'invisible': ['|',('access_token', '=', False),('xero_referral_id', '=', False)]}"/>
+                        </group>
+                        <group>
+                            <field name="manual_export" attrs="{'invisible': ['|',('access_token', '=', False),('xero_referral_id', '=', False)]}"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Sale/Purchase Configuration" name="sale_purchase">
+                            <group>
+                                <group>
+                                    <field name="sale_journal_id" required="1" widget="selection" domain="[('type', '=', 'sale'), ('company_id', '=', company_id)]"/>
+                                    <field name="misc_journal_id" required="1" widget="selection" domain="[('type', '=', 'general'), ('company_id', '=', company_id)]"/>
+                                </group>
+                                <group>
+                                    <field name="purchase_journal_id" required="1" widget="selection" domain="[('type', '=', 'purchase'), ('company_id', '=', company_id)]"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Payment Configuration" name="payment_config">
+                            <field name="journal_ids">
+                                <tree>
+                                    <field name="name" string="Name"/>
+                                    <field name="code" string="Code"/>
+                                    <field name="type"/>
+                                    <field name="company_id"/>
+                                    <field name="payment_debit_account_id"/>
+                                    <field name="payment_credit_account_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Manual Import" name="manual_import_tab" attrs="{'invisible': [('manual_import', '=', False)]}">
+                            <group col="3">
+                                <button name="xero_get_currency" string="Currencies" type="object" class="oe_stat_button oe_highlight" icon="fa-dollar" style="margin-bottom: 2%;"/>
+                                <button name="xero_get_contact" string="Contacts" type="object" class="oe_stat_button oe_highlight" icon="fa-user" style="margin-bottom: 2%;"/>
+                                <button name="xero_get_invoice" string="Invoices" type="object" class="oe_stat_button oe_highlight" icon="fa-pencil-square-o" style="margin-bottom: 2%;"/>
+                                
+                                <button name="xero_get_account" string="Chart of Accounts" type="object" class="oe_stat_button oe_highlight" icon="fa-bars" style="margin-bottom: 2%;"/>
+                                <button name="xero_get_tax" string="Taxes" type="object" class="oe_stat_button oe_highlight" icon="fa-file-text" style="margin-bottom: 2%;"/>
+                                <button name="xero_get_refund_invoices" string="Credit Notes" type="object" class="oe_stat_button oe_highlight" icon="fa-caret-square-o-left " style="margin-bottom: 2%;"/>
+                                <button name="xero_get_journal" string="Manual Journals" type="object" class="oe_stat_button oe_highlight" icon="fa-money" style="margin-bottom: 2%;"/>
+                                
+                                <button name="xero_get_bank_account" string="Bank Accounts" type="object" class="oe_stat_button oe_highlight" icon="fa-bank" style="margin-bottom: 2%;"/>
+                                <button name="xero_get_product" string="Products" type="object" class="oe_stat_button oe_highlight" icon="fa-product-hunt" style="margin-bottom: 2%;"/>
+                                <button name="xero_get_employee" string="Employee" type="object" class="oe_stat_button oe_highlight" icon="fa-product-hunt" style="margin-bottom: 2%;"/>
+                                <button name="xero_get_employee_payslip" string="Employee Payslip" type="object" class="oe_stat_button oe_highlight" icon="fa-product-hunt" style="margin-bottom: 2%;"/>
+                            </group>
+                        </page>
+                        <page string="Manual Export" name="manual_export_tab" attrs="{'invisible': [('manual_export', '=', False)]}">
+                            <group col="3">
+                                <button name="xero_post_currency" string="Currencies" type="object" class="oe_stat_button oe_highlight" icon="fa-dollar" style="margin-bottom: 2%;"/>
+                                <button name="xero_post_contact" string="Contacts" type="object" class="oe_stat_button oe_highlight" icon="fa-user" style="margin-bottom: 2%;"/>
+                                <button name="xero_post_product" string="Products" type="object" class="oe_stat_button oe_highlight" icon="fa-product-hunt" style="margin-bottom: 2%;"/>
+                                <button name="xero_post_account" string="Chart of Accounts" type="object" class="oe_stat_button oe_highlight" icon="fa-bars" style="margin-bottom: 2%;"/>
+                                <button name="xero_post_journal" string="Journals" type="object" class="oe_stat_button oe_highlight" icon="fa-money" style="margin-bottom: 2%;"/>
+                                <button name="xero_post_invoice" string="Invoices" type="object" class="oe_stat_button oe_highlight" icon="fa-pencil-square-o" style="margin-bottom: 2%;"/>
+                                <button name="xero_post_bank_account" string="Bank Accounts" type="object" class="oe_stat_button oe_highlight" icon="fa-bank" style="margin-bottom: 2%;"/>
+                                <button name="xero_post_tax" string="Taxes" type="object" class="oe_stat_button oe_highlight" icon="fa-file-text" style="margin-bottom: 2%;"/>
+                                <button name="xero_post_refund_invoices" string="Credit Notes" type="object" class="oe_stat_button oe_highlight" icon="fa-caret-square-o-left " style="margin-bottom: 2%;"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_xero_odoo_connector" model="ir.actions.act_window">
+        <field name="name">Xero Configuration</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">xero.xero</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="view_error_tree">
+        <field name="name">view.error.log.tree</field>
+        <field name="model">error.log</field>
+        <field name="arch" type="xml">
+            <tree create="0" edit="0">
+                <field name="name"/>
+                <field name="model"/>
+                <field name="base_id"/>
+                <field name="date_operation"/>
+                <field name="detail"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_error_log" model="ir.actions.act_window">
+        <field name="name">Error Log</field>
+        <field name="res_model">error.log</field>
+        <field name="view_mode">tree</field>
+    </record>
+</odoo>

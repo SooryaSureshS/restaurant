@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="default" name="pos_default_theme" inherit_id="point_of_sale.assets" active="False">
+	        <xpath expr="." position="inside">
+	        	<link rel="stylesheet" href="/point_of_sale/static/src/css/pos.css" />
+	        </xpath>
+	    </template>
+	    <template id="theme1" name="pos_theme_theme1" inherit_id="point_of_sale.assets" active="False">
+	        <xpath expr="." position="inside">
+	        	<link rel="stylesheet" href="/pos_ui_theme/static/src/css/pos_theme1.css" />
+	        </xpath>
+	    </template>
+	    <template id="theme2" name="pos_theme_theme2" inherit_id="point_of_sale.assets" active="False">
+	        <xpath expr="." position="inside">
+	        	<link rel="stylesheet" href="/pos_ui_theme/static/src/css/pos_theme2.css" />
+	        </xpath>
+	    </template>
+	    <template id="theme3" name="pos_theme_theme3" inherit_id="point_of_sale.assets" active="False">
+	        <xpath expr="." position="inside">
+	        	<link rel="stylesheet" href="/pos_ui_theme/static/src/css/pos_theme3.css" />
+	        </xpath>
+	    </template>
+	    <template id="theme4" name="pos_theme_theme4" inherit_id="point_of_sale.assets" active="False">
+	        <xpath expr="." position="inside">
+	        	<link rel="stylesheet" href="/pos_ui_theme/static/src/css/pos_theme4.css" />
+	        </xpath>
+	    </template>
+	    <template id="theme5" name="pos_theme_theme5" inherit_id="point_of_sale.assets" active="False">
+	        <xpath expr="." position="inside">
+	        	<link rel="stylesheet" href="/pos_ui_theme/static/src/css/pos_theme5.css" />
+	        </xpath>
+	    </template>
+	    <template id="theme6" name="pos_theme_theme6" inherit_id="point_of_sale.assets" active="False">
+	        <xpath expr="." position="inside">
+	        	<link rel="stylesheet" href="/pos_ui_theme/static/src/css/pos_theme6.css" />
+	        </xpath>
+	    </template>
+	    <template id="theme7" name="pos_theme_theme7" inherit_id="point_of_sale.assets" active="False">
+	        <xpath expr="." position="inside">
+	        	<link rel="stylesheet" href="/pos_ui_theme/static/src/css/pos_theme7.css" />
+	        </xpath>
+	    </template>
+	    
+	    <template id="assets_backend" name="Backend Theme" inherit_id="web.assets_backend">
+		    <xpath expr=".">
+		    	<link rel="stylesheet" type="text/css" href="/pos_ui_theme/static/src/css/index_html.css"/>
+		    	<link href="https://fonts.googleapis.com/css?family=Rajdhani:400,500,600,700" rel="stylesheet"/>
+				<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+		    </xpath>
+	    </template>
+    </data>
+</odoo>

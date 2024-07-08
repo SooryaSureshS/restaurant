@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <template id="assets_pos_optional_product" inherit_id="point_of_sale.assets">
+          <xpath expr="." position="inside">
+              <script type="text/javascript" src="/pos_optional_products/static/src/js/ProductClick.js"></script>
+              <script type="text/javascript" src="/pos_optional_products/static/src/js/OptionalProductsPopup.js"></script>
+              <script type="text/javascript" src="/pos_optional_products/static/src/js/BundleProductsPopup.js"></script>
+              <script type="text/javascript" src="/pos_optional_products/static/src/js/models.js"></script>
+              <script type="text/javascript" src="/pos_optional_products/static/src/js/ProductsPopupLarge.js"></script>
+              <link rel="stylesheet" type="text/css" href="/pos_optional_products/static/src/css/style.css"/>
+
+          </xpath>
+        </template>
+
+</odoo>

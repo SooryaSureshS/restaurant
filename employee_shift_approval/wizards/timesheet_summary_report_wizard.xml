@@ -1,0 +1,34 @@
+<odoo>
+    <record id="view_timesheet_summary_report_wizard" model="ir.ui.view">
+        <field name="name">timesheet.summary.report</field>
+        <field name="model">timesheet.approval.report</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Employee Scheduling And Productivity Report">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="start_date"/>
+                        </group>
+                        <group>
+                            <field name="end_date"/>
+                        </group>
+                    </group>
+
+                    <footer>
+                        <button name="print_report" string="Print" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_timesheet_summary" model="ir.actions.act_window">
+        <field name="name">Employee Scheduling And Productivity Report</field>
+        <field name="res_model">timesheet.approval.report</field>
+        <field name="view_id" ref="view_timesheet_summary_report_wizard"/>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

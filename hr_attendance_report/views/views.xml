@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="attendance_report_template" model="ir.actions.report">
+            <field name="name">Attendance Report</field>
+            <field name="model">hr.attendance</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">hr_attendance_report.report_template_custom</field>
+            <field name="report_file">hr_attendance_report.report_template_custom</field>
+            <field name="binding_model_id" ref="model_hr_attendance"/>
+            <field name="binding_type">report</field>
+        </record>
+</odoo>

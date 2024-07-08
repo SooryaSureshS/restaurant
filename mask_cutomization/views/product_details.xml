@@ -1,0 +1,71 @@
+<odoo>
+    <data>
+        <template id="product_details" name="Product Details">
+            <t t-call="website.layout">
+                <t t-set="additional_title">Product Details</t>
+                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/product_detail.css"/>
+                <t t-set="no_footer" t-value="1"/>
+                <t t-call="mask_cutomization.header_banner_xml"/>
+
+                <div class="banner container" id="product_details_page">
+
+                    <div class="inner-upper-content">
+                        <div class="inner-banner">
+                            <div class="inner-banner-1">
+                                <p id="header-kf96">
+                                    <t t-esc="product.name"/>
+                                </p>
+                                <P>
+                                    <t t-set="product_product" t-value="request.env['product.product'].search([('product_tmpl_id','=',int(product.id))],limit=1)"/>
+                                    <t t-set="product_price" t-value="product.list_price * 1000"/>
+                                    <span>HK$</span><t t-esc="product_price"/>/ 1000pcs
+<!--                                    <t t-esc="product.description_offer_qty"/>-->
+                                </P>
+                                <p>
+                                    <t t-esc="product.description_offer_box"/>
+                                </p>
+                            </div>
+                            <div class="inner-banner-2">
+                                <img alt="mask" style="width: 90%;"
+                                     t-attf-src="data:image/png;base64,{{product.image_1920}}"/>
+                            </div>
+                            <div class="inner-banner-3">
+                                <button id="customize_mask" t-att-data-value="product.id">
+                                    <i class="fa fa-paint-brush"></i>
+                                    Customise
+                                </button>
+                            </div>
+                        </div>
+                        <!-- <br> -->
+                        <!-- description -->
+                        <t t-set="language" t-value="request.httprequest.cookies.get('frontend_lang')"/>
+                        <t t-if="language == 'zh_HK'">
+                            <t t-if="product.discription_chinese">
+                                <t t-esc="product.discription_chinese"/>
+                            </t>
+                        </t>
+                        <t t-else="">
+                            <t t-if="product.discription">
+                                <t t-esc="product.discription"/>
+                            </t>
+                        </t>
+
+                        <div class="customise-button">
+                            <button>
+                                <i class="fa fa-paint-brush"></i>
+                                Customise
+                            </button>
+                        </div>
+                    </div>
+                <style>
+                    #product_details_page p span{
+                            color: false !important;
+                        font-size: false !important;
+                    }
+                </style>
+                </div>
+                <t t-call="mask_cutomization.skypro_footer"/>
+            </t>
+        </template>
+    </data>
+</odoo>

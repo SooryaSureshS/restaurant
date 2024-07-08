@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit Form View to Modify it -->
+    <record id="cyber_acquire_form" model="ir.ui.view">
+        <field name="name">cyber.acquire.form</field>
+        <field name="model">payment.acquirer</field>
+        <field name="inherit_id" ref="payment.payment_acquirer_form"/>
+        <field name="arch" type="xml">
+            <xpath expr='//page[@name="configuration"]' position='before'>
+                <page string="Credentials" name="acquirer_credentials">
+                    <group attrs="{'invisible': [('provider','!=', 'cyber')]}">
+                        <field name="cybersource_merchant_id" attrs="{'invisible': [('provider','!=', 'cyber')]}"/>
+                        <field name="cybersource_key" attrs="{'invisible': [('provider','!=', 'cyber')]}"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

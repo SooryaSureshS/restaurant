@@ -1,0 +1,23 @@
+<odoo>
+    <record model="report.paperformat" id="paperformat_accounting_summary_report">
+        <field name="name">paperformat.accounting_summary</field>
+        <field name="format">A4</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">30</field>
+        <field name="margin_right">10</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">15</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">30</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <report id="report_accounting_summary"
+            model="accounting.summary.report"
+            string="Accounting Summary Report"
+            report_type="qweb-pdf"
+            name="accounting_summary_report.accounting_summary_template"
+            paperformat="paperformat_accounting_summary_report"
+            menu="False"/>
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="auth_signup_fields_extend" inherit_id="auth_signup.fields" name="store list">
+            <xpath expr="//div[hasclass('field-confirm_password')]" position="after">
+
+                <div class="form-group field-state">
+                            <t t-set="stores" t-value="website.get_store_data()"/>
+                            <label class="control-label" for="store_id">Primary Stores</label>
+                    <select id="store_id" name="store_id" class="form-control">
+                        <option value="">Stores...</option>
+                        <t t-foreach="stores" t-as="s">
+                            <option t-att-value="s.id">
+                                <t t-esc="s.name" />
+                            </option>
+                        </t>
+                    </select>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>

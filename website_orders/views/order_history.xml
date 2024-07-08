@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+<data>
+      <template id="order_history">
+                  <t t-call="website.layout">
+                    <div id="wrap">
+                      <div class="oe_structure">
+                      <div class="container" stule="padding-top:50px;">
+                          <h1>Order History</h1>
+                          <table class="table-striped table">
+                              <thead>
+                                  <tr>
+                                      <td style="display:none;">
+                                          Order ID
+                                      </td>
+                                      <td>
+                                          Order
+                                      </td>
+                                      <td>
+                                          Product
+                                      </td>
+                                      <td>
+                                          Ordered Quantity
+                                      </td>
+                                      <td>
+                                          Delivery Status
+                                      </td>
+
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                   <t t-foreach="orderlist" t-as="orderl">
+                                      <tr>
+                                          <t t-set="line_id" t-value="orderl['ids']"/>
+                                          <td style="display:none;">
+                                              <t t-esc="orderl['Order_ID']"/>
+                                          </td>
+                                          <td style="display:none;">
+                                              <t t-esc="orderl['ids']"/>
+                                          </td>
+                                          <td>
+                                              <t t-esc="orderl['Order']"/>
+                                          </td>
+                                          <td>
+                                              <t t-esc="orderl['product']"/>
+                                          </td>
+                                          <td>
+                                              <t t-esc="orderl['Ordered_Quantity']"/>
+                                          </td>
+                                          <td>
+                                              <t t-esc="orderl['Delivery_Status']"/>
+                                          </td>
+                                            <td>
+
+                                              <!--<t t-if="orderl['Delivery_Status'] == 'Out for Delivery' ">
+                                                    <a t-att-href="'/cancel/%s' %str(line_id)">Cancel</a>                                              </t>-->
+<!--
+                                              <t t-if="orderl['Delivery_Status'] == 'Waiting' ">
+                                                      <a t-att-href="'/cancel/%s' %str(line_id)">Cancel</a>
+                                              </t>
+-->
+<!--
+                                              <t t-if="orderl['Delivery_Status'] == 'Preparing' ">
+                                                      <a t-att-href="'/cancel/%s' %str(line_id)">Cancel</a>
+                                              </t>
+-->
+                                              <!--<t t-if="orderl['Delivery_Status'] == 'Delivered'">
+                                                      <a t-att-href="'/return/%s' %str(line_id)">Return</a>
+                                              </t>-->
+                                              </td>
+                                      </tr>
+                                   </t>
+                              </tbody>
+                          </table>
+                              </div>
+                      </div>
+                    </div>
+                </t>
+        </template>
+
+    <record id="order_history_menu" model="website.menu">
+        <field name="name">Order History</field>
+        <field name="url">/order_history</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">99</field>
+    </record>
+    
+    <record id="menu_my_order_new_menu" model="website.menu">
+        <field name="name">My Account</field>
+        <field name="url">/my</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">99</field>
+    </record>
+    
+</data>
+
+</odoo>

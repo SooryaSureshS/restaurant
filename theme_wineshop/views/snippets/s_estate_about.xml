@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_estate_about" name="Estate About">
+		<section class="estate-story pt152 pb88">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-md-11 col-xl-8">
+							<div class="content">
+								<div class="title text-center">
+									<p class="subtitle text-primary">DONEC FAUCIBUS</p>
+									<h1>Wineshop Vineyard</h1>
+								</div>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at mauris sapien. Etiam nec leo ac metus tempor facilisis. Morbi imperdiet erat hendrerit ante congue maximus. Mauris sed diam libero.</p>
+								<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+								<div class="list">
+									<p>
+										<span class="left">Interdum</span>
+										<span class="right">Lorem ipsum dolor sit amet</span>
+									</p>
+									<p>
+										<span class="left">Consectetur</span>
+										<span class="right">Lorem ipsum dolor sit amet</span>
+									</p>
+									<p>
+										<span class="left">Hendrerit</span>
+										<span class="right">Lorem ipsum dolor sit amet</span>
+									</p>
+									<p>
+										<span class="left">Donec</span>
+										<span class="right">Lorem ipsum dolor sit amet</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+	</template>
+</odoo>

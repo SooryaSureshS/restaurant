@@ -1,0 +1,9 @@
+<odoo>
+
+    <record id="restrict_employee" model="ir.rule">
+        <field name="name">Restrict Menu from Users</field>
+        <field ref="base.model_ir_ui_menu" name="model_id"/>
+        <field name="domain_force">[]</field>
+    </record>
+
+</odoo>

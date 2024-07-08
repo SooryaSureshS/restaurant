@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_whisky_banner" name="Whisky Banner">
+		<section class="whisky-banner">
+				<div id="banner-carousel" class="whisky-banner-slider carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="7000">
+		          	<div class="carousel-inner" role="listbox">
+		            	<div class="carousel-item active ls-slide" style="background-image: url('/theme_wineshop/static/src/img/whisky-banner1.jpg');">
+		            		<div class="container">
+			            		<div class="content text-center">
+			            			<h1 class="text-white">Drinks for Cognoscente</h1>
+			            			<img class="img img-fluid" src="/theme_wineshop/static/src/img/down-lines.png" alt="image"/>
+			            			<p class="text-white w-100 w-lg-75 mx-auto">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem.</p>
+			            			<h2 class="discount text-white">Get 25% OFF</h2>
+			            			<div class="s_btn" data-name="Button">
+				            			<a href="#" class="btn btn-outline-primary btn-lg">Shop Now</a>
+				            		</div>
+			            		</div>
+			              	</div>
+		            	</div>
+		            	<div class="carousel-item ls-slide" style="background-image: url('/theme_wineshop/static/src/img/whisky-banner2.jpg');">
+		            		<div class="container">
+			            		<div class="content text-center">
+			            			<h1 class="text-white">Drinks for Cognoscente</h1>
+			            			<img class="img img-fluid" src="/theme_wineshop/static/src/img/down-lines.png" alt="image"/>
+			            			<p class="text-white w-100 w-lg-75 mx-auto">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem.</p>
+			            			<h2 class="discount text-white">Get 25% OFF</h2>
+			            			<div class="s_btn" data-name="Button">
+				            			<a href="#" class="btn btn-outline-primary btn-lg">Shop Now</a>
+				            		</div>
+			            		</div>
+			              	</div>
+			            </div>
+			            <div class="carousel-item ls-slide" style="background-image: url('/theme_wineshop/static/src/img/whisky-banner3.jpg');">
+		            		<div class="container">
+			            		<div class="content text-center">
+			            			<h1 class="text-white">Drinks for Cognoscente</h1>
+			            			<img class="img img-fluid" src="/theme_wineshop/static/src/img/down-lines.png" alt="image"/>
+			            			<p class="text-white w-100 w-lg-75 mx-auto">Proin tempor massa vitae tellus luctus, vel porta est eleifend. Curabitur non est efficitur, interdum nibh in, pellentesque sem.</p>
+			            			<h2 class="discount text-white">Get 25% OFF</h2>
+			            			<div class="s_btn" data-name="Button">
+				            			<a href="#" class="btn btn-outline-primary btn-lg">Shop Now</a>
+				            		</div>
+			            		</div>
+			              	</div>
+			            </div>
+			            <div class="slider-control">
+		              		<a class="left carousel-control-prev text-white font-14" data-target="#banner-carousel" role="button" data-slide="prev">
+			                	<span class="fa fa-angle-left"/>
+			               	 	<b class="sr-only font-normal o_default_snippet_text">Previous</b>
+			              	</a>
+			              	<a class="right carousel-control-next text-white font-14" data-target="#banner-carousel" role="button" data-slide="next">
+			                	<span class="fa fa-angle-right"/>
+			                	<b class="sr-only font-normal o_default_snippet_text">Next</b>
+			              	</a>
+			            </div>
+		          	</div>
+		        </div>
+			</section>
+	</template>
+</odoo>

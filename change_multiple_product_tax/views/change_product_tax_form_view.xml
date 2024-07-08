@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="change_product_tax_form_view" model="ir.ui.view">
+        <field name="name">Change Multiple Product Tax</field>
+        <field name="model">change.tax</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="change_type" widget="radio"/>
+                    </group>
+                    <group>
+                        <field name="change_tax_type" widget="radio"/>
+                        <field name="taxes_id" string="Customer Tax" widget="many2many_tags" options="{'no_create': True, 'no_create_edit':True}" domain="[('type_tax_use', '=', 'sale')]" attrs="{'invisible': [('change_tax_type', '=', 'vendor')], 'required': [('change_tax_type', 'in', ['customer', 'both'])]}"/>
+                        <field name="supplier_taxes_id" string="Vendor Tax" widget="many2many_tags" options="{'no_create': True, 'no_create_edit':True}" context="{'default_type_tax_use': 'purchase'}" attrs="{'invisible': [('change_tax_type', '=', 'customer')], 'required': [('change_tax_type', 'in', ['vendor', 'both'])]}"/>
+                    </group>
+                </group>
+                <group>
+                    <field name="categ_id" attrs="{'invisible': [('change_type', '!=', 'category')], 'required': [('change_type', '=', 'category')]}"/>
+                    <field name="pos_categ_id" attrs="{'invisible': [('change_type', '!=', 'pos_category')], 'required': [('change_type', '=', 'pos_category')]}"/>
+                    <field name="product_id" attrs="{'invisible': [('change_type', '!=', 'product')], 'required': [('change_type', '=', 'product')]}"/>
+                </group>
+                <footer>
+                    <button string="Apply" class="btn-primary" type="object" name="change_product_tax"/>
+                    <button string="Close" class="btn-primary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

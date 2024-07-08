@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- Copyright (c) 2018-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+    <data>
+        <record id="frequently_bought_products_id" model="ir.ui.view">
+            <field name="name">Frequently Bought Products</field>
+            <field name="model">frequently.bought.products.conf</field>
+            <field name="arch" type="xml">
+               <form string="Frequently Bought Products" class="oe_form_configuration">
+                    <group>
+                        <field name="website_id" required='1'/>
+                        <field name="product_check_default"/>
+                        <field name="fbtp_header"/>
+                        <field name="cart_button_text"/>
+
+                    </group>
+                    <group string="Description On Website">
+                            <field name="description" nolabel="1"/>
+                    </group>
+                    <footer>
+                        <button string="Apply" type="object" name="execute" class="oe_highlight"/>
+                        or
+                        <button special="cancel" string="Cancel" class="btn-default"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_frequently_bought_products" model="ir.actions.act_window">
+            <field name="name">Frequently Bought Products</field>
+            <field name="res_model">frequently.bought.products.conf</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

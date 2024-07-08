@@ -1,0 +1,112 @@
+.content-banner{
+    background: url('/mask_cutomization/static/src/image/BG.png');
+padding: 6%;
+padding-left: 4% !important;
+padding-right: 4% !important;
+}
+.table{    
+    background-color: white; 
+    text-align: center;
+    vertical-align: middle!important;
+    border-radius: 6px;  
+    /* border-radius: 11px; */
+    overflow: hidden;
+}
+td,th{
+    border-width: 3px!important;
+}
+#qnty-width{
+    /* width: 69%; */
+    border: none;
+    width: 100%;
+    background: #E6E6EE;
+    border-radius: 5px;
+    padding-left: 11px;
+}
+.second-table{
+    width: 59%;
+    margin-inline-start: auto;
+}
+#table-second-row{
+vertical-align: unset!important;
+height: 18vh;
+}
+.second-table button{
+    width: -webkit-fill-available;
+    color: white;
+    background-color: #626063;
+    border: none;
+    border-radius: 11px;
+    height: 60px;
+}
+.bg-color{
+    background-color: white;
+    padding: 2%;
+    border-radius: 10px;
+}
+#table_cart{
+    border: 3px solid #d8d8d8;
+}
+.table{
+        border-radius: 0px !important;
+}
+.table th{
+    border-top: 1px solid #DEE2E6 !important;
+    border-right: 1px solid #DEE2E6 !important;
+    border-left: 1px solid #DEE2E6 !important;
+
+    border-bottom: 1px solid #DEE2E6 !important;
+
+}
+.table td{
+    border-top: 1px solid #DEE2E6 !important;
+    border-right: 1px solid #DEE2E6 !important;
+    border-left: 1px solid #DEE2E6 !important;
+
+    border-bottom: 1px solid #DEE2E6 !important;
+
+}
+#product_delete:hover{
+        background: red;
+    width: 24px;
+    height: 26px;
+    margin: auto;
+    color: white;
+    border-radius: 20px;
+    padding: 1px;
+}
+#product_delete {
+        cursor: pointer;
+}
+.container_mask_image{
+     content:url("/mask_cutomization/static/src/image/image_package/Page T (2).png");
+}
+
+#overlay{
+      position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+#checkout_button{
+        width: -webkit-fill-available;
+    color: white;
+    background-color: #626063;
+    border: none;
+    border-radius: 11px;
+    height: 60px;
+    font-size: large;
+}
+
+@media only screen and (max-width: 500px) {
+        .bg-color{
+                overflow-x: auto;
+        }
+}

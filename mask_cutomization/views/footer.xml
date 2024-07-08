@@ -1,0 +1,78 @@
+<odoo>
+    <data>
+<!--        <template id="skypro_footer" name="Skypro Footer">-->
+
+<!--        </template>-->
+         <template id="skypro_footer" name="Print Area Mask">
+                <t t-set="additional_title">Print Area Mask</t>
+                <link rel="stylesheet" href="/mask_cutomization/static/src/scss/footer.css"/>
+                <div class="conatiner_sky container">
+                    <div class="container_footer">
+                        <div class="logo_container_footer">
+                            <img src="/mask_cutomization/static/src/image/image 32.png"/>
+                        </div>
+                        <div class="first_span_footer">
+                            <h5 class="Montserrat-normal footer_header"><span>Quick Links</span></h5>
+                            <hr class="ml-0" style="border-bottom: 2px solid #6E6E70; width:15px;"></hr>
+                            <div class="footer_span"><a href="/" style="color: #6E6E70;text-decoration: none;"><span>Product</span></a></div>
+                            <div class="footer_span"><a href="/about_us" style="color: #6E6E70;text-decoration: none;"><span>About Us</span></a></div>
+                            <div class="footer_span"><a href="/contact_us" style="color: #6E6E70;text-decoration: none;"><span>Contact US</span></a></div>
+
+                        </div>
+                        <div class="second_span_footer">
+                            <h5 class="Montserrat-normal footer_header"><span>Company</span></h5>
+                                    <hr class="ml-0" style="border-bottom: 2px solid #6E6E70; width:15px;"></hr>
+                            <div class="footer_span"><span>Privacy Policy</span></div>
+                            <div class="footer_span"><span>Payment and Delivery</span></div>
+                        </div>
+                        <div class="third_container_footer">
+                             <h5 class="text-center Montserrat-normal footer_header">We Accepts</h5>
+                                    <hr class="ml-0" style="border-bottom: 2px solid #6E6E70; width:15px;"></hr>
+                                    <span class="cards_image ml_7">
+                                        <img src="/mask_cutomization/static/src/footer_image/Visa Card.png"/>
+                                    </span>
+                                     <span class="cards_image ml_7">
+                                        <img src="/mask_cutomization/static/src/footer_image/Maestro visa.png"/>
+                                    </span>
+                                    <span class="cards_image ml_7">
+                                        <img src="/mask_cutomization/static/src/footer_image/payme.png"/>
+                                    </span>
+                                    <span class="cards_image ml_7">
+                                        <img src="/mask_cutomization/static/src/footer_image/alipay.png"/>
+                                    </span>
+                                     <span class="cards_image ml_7">
+                                        <img src="/mask_cutomization/static/src/footer_image/fps.png"/>
+                                    </span>
+                            <span class="cards_image">
+                                <h5 class="text-center Montserrat-normal footer_header" style="margin-top: 34px;">Follow Us:</h5></span>
+                                <hr class="ml-0" style="border-bottom: 2px solid #6E6E70; width:15px;"></hr>
+                                <span class="cards_image1">
+                                    <img src="/mask_cutomization/static/src/footer_image/facebook.png"/>
+                                </span>
+                                <span class="cards_image1">
+                                    <img src="/mask_cutomization/static/src/footer_image/Twitter Icon.png"/>
+                                </span>
+                                <span class="cards_image1">
+                                    <img src="/mask_cutomization/static/src/footer_image/Pinterest icon.png"/>
+                                </span>
+                                <span class="cards_image1">
+                                    <img src="/mask_cutomization/static/src/footer_image/Twitter Icon.png"/>
+                                </span>
+                                <span class="cards_image1">
+                                    <img src="/mask_cutomization/static/src/footer_image/Instagram.png"/>
+                                </span>
+                        </div>
+                    </div>
+                    <div class="container_footer_last">
+                         <hr class="ml-0" style="border-bottom: 0px solid #6E6E70; width:100%;"></hr>
+                        <div class="copy_rights">
+                            <span>Copyright 2022 SkyPro</span>
+                        </div>
+                        <div class="move_to_top">
+                            <img src="/mask_cutomization/static/src/footer_image/Back To Top Icon.png"/>
+                        </div>
+                    </div>
+                </div>
+        </template>
+    </data>
+</odoo>

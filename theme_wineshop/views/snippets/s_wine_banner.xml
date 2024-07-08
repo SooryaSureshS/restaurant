@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_wine_banner" name="Wine Banner">
+		<section class="wineshop-home-banner pt112 pb112" style="background-image: url('/theme_wineshop/static/src/img/banner-bg.jpg');">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-md-5 mb-5 mb-md-0 o_anim_fade_in_left o_animate">
+						<div class="content text-center text-md-left">
+							<p class="text-primary">Introducing WineShop Wines</p>
+							<h2 class="text-white">Refreshment</h2>
+							<h1 class="text-white">inside box</h1>
+						</div>
+					</div>
+					<div class="col-md-7">
+						<img class="img img-fluid o_animate o_anim_fade_in_right" src="/theme_wineshop/static/src/img/banner-bottle.png" alt="image"/>
+					</div>
+				</div>
+			</div>
+		</section>
+	</template>
+</odoo>

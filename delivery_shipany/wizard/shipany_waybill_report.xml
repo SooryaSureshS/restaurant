@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <odoo>
+        <record id="view_delivery_shipany_waybill" model="ir.ui.view">
+            <field name="name">ShipAny WayBill</field>
+            <field name="model">shipany.waybill</field>
+            <field name="arch" type="xml">
+                <form string="ShipAny WayBill">
+                    <group>
+                        <field name="shipany_trk_no" invisible="1"/>
+                        <field name="stock_picking_id" invisible="1"/>
+                        <field name="waybill_url" invisible="1"/>
+                        <field name="waybill" widget="pdf_viewer"/>
+                    </group>
+                    <footer>
+                        <button name="action_print_report" type="object" string="Add to Attachment" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="act_delivery_shipany_waybill" model="ir.actions.act_window">
+            <field name="name">ShipAny WayBill</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">shipany.waybill</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </odoo>

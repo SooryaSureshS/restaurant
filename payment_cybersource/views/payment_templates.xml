@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="inline_form">
+        <div t-attf-id="test-container-{{acquirer_id}}">
+            <input type="hidden" name="data_set" data-create-route="/payment/cybersource/s2s/create_json_3ds"/>
+              <link rel="stylesheet" href="/payment_cybersource/static/src/css/inline_style.css"/>
+            <div class="mt8">
+                <t t-set="finaltext_iframe" t-value="'https://h.online-metrix.net/fp/tags?'+'org_id='+str(order.company_id.cybersource_org_id)+'&amp;session_id='+str(order.company_id.cybersource_merchant_id)+''+str(order.id)"/>
+                <noscript>
+                    <iframe style="width: 100px; height: 100px; border: 0; position:absolute; "
+                    t-att-src="finaltext_iframe"
+                    >
+                    </iframe>
+                </noscript>
+                <label>NAME OF CARD *</label>
+                <div t-att-class="'form-group col-md-5' if bootstrap_formatting else 'form-group'">
+                    <input type="text" name="cc_holder_name" id="cc_holder_name" class="form-control" placeholder="Card Holder Name" data-is-required="true" required="1"/>
+                </div>
+                 <label>CARD NUMBER *</label>
+                <div t-att-class="'form-group col-md-5' if bootstrap_formatting else 'form-group'">
+                    <input type="text" name="cc_number" id="cc_number" class="form-control" placeholder="Card Number" data-is-required="true" required="1"/>
+                </div>
+
+                <div t-att-class="'form-group col-md-5' if bootstrap_formatting else 'form-group'">
+                    <input type="text" name="recaptcha" id="recaptcha" class="form-control" placeholder="Recaptcha" data-is-required="true" disabled="true" hidden="false" required="1"/>
+                </div>
+                 <label>EXP. DATE(MM/YY)*</label>
+                <div t-att-class="'form-group col-md-3' if bootstrap_formatting else 'form-group'">
+                    <input type="text" name="cc_expiry" id="cc_expiry" class="form-control" maxlength="7" placeholder="Expiry (11 / 21)" data-is-required="true"  required="1"/>
+                </div>
+                <label>CVV*</label>
+                <div t-att-class="'form-group col-md-4' if bootstrap_formatting else 'form-group'">
+                    <input type="password" name="cc_cvc" id="cc_cvc" class="form-control" maxlength="4" placeholder="CVV" data-is-required="true" required="1"/>
+                </div>
+                <center>
+                   <script src='https://www.google.com/recaptcha/api.js'></script>
+					<div class="g-recaptcha" t-att-data-sitekey="request.params.get('google_site_key')" data-callback="recaptchaCallback"></div>
+					<br/>
+                </center>
+            </div>
+            <input type="hidden" name="acquirer_id" id="acquirer_id" t-att-value="id"/>
+            <input type="hidden" name="csrf_token" id="csrf_token" t-att-value="request.csrf_token()"/>
+            <input t-if="partner_id" type="hidden" name="partner_id" id="partner_id" t-att-value="partner_id"/>
+        </div>
+    </template>
+
+</odoo>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="s_estate_info" name="Estate Info">
+		<section class="estate-info pt64 pb152" style="background-image: url('/theme_wineshop/static/src/img/the-estate-background.jpg');">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-4 mb-4">
+							<div class="info-box bg-primary">
+								<div class="icon">
+									<span class="fa fa-angle-double-down text-white"></span>
+								</div>
+								<h3>Donec</h3>
+								<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+							</div>
+						</div>
+						<div class="col-lg-4 mb-4">
+							<div class="info-box bg-white">
+								<div class="icon">
+									<span class="fa fa-cloud text-primary"></span>
+								</div>
+								<h3>Consectetur</h3>
+								<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+							</div>
+						</div>
+						<div class="col-lg-4 mb-4">
+							<div class="info-box bg-primary">
+								<div class="icon">
+									<span class="fa fa-share-alt text-white"></span>
+								</div>
+								<h3>Hendrerit</h3>
+								<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+							</div>
+						</div>
+						<div class="col-lg-4 mb-4">
+							<div class="info-box bg-white">
+								<div class="icon">
+									<span class="fa fa-sun-o text-primary"></span>
+								</div>
+								<h3>Interdum</h3>
+								<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+							</div>
+						</div>
+						<div class="col-lg-4 mb-4">
+							<div class="info-box bg-primary">
+								<div class="icon">
+									<span class="fa fa-bullseye text-white"></span>
+								</div>
+								<h3>Volutpat</h3>
+								<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+							</div>
+						</div>
+						<div class="col-lg-4 mb-4">
+							<div class="info-box bg-white">
+								<div class="icon">
+									<span class="fa fa-beer text-primary"></span>
+								</div>
+								<h3>Habitasse</h3>
+								<p>Vestibulum tempor libero erat, at volutpat dui gravida eu. Fusce tincidunt lectus odio. Donec varius enim in ex interdum semper. In hac habitasse platea dictumst.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+	</template>
+</odoo>

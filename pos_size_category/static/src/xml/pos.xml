@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+
+
+
+     <t t-name="ProductList" t-inherit="point_of_sale.ProductList" t-inherit-mode="extension" owl="1">
+		 <xpath expr="//div[hasclass('product-list-container')]" position="replace">
+			 <div class="leftpane" style="max-width: fit-content;">
+				  <div class="product-list-container">
+							<div t-if="props.products.length != 0" class="product-list">
+								<t t-foreach="props.products" t-as="product" t-key="product.id">
+									<ProductItem product="product" />
+								</t>
+							</div>
+							<div t-else="" class="product-list-empty">
+								<div class="product-list-empty">
+									<t t-if="props.searchWord !== ''">
+										<p>
+											No results found for "
+											<b t-esc="props.searchWord"></b>
+											".
+										</p>
+									</t>
+									<t t-else="">
+										<p>There are no products in this category.</p>
+									</t>
+								</div>
+							</div>
+						</div>
+
+
+				 <div style="text-align:right;">
+<!--					<t t-name="ProductSizeCategory" owl="1">-->
+<!--					 <div style="position: absolute;top: 65px;right: 0;padding: 0px;margin: 6px;font-size: initial;">-->
+<!--						<t t-foreach="props.product_size_category" t-as="size_category">-->
+
+<!--							<span class="control-button" style="width: 90px;    color: aliceblue;    background: #7f82ac;text-align: left;" t-on-click="trigger('switch-size-categor', size_category.id)">-->
+<!--								<i class="fa fa-list-alt"></i>-->
+<!--								<span><t t-esc="size_category.name"/>  </span>-->
+
+<!--							</span>-->
+<!--							<br></br>-->
+<!--						</t>-->
+<!--					 </div>-->
+<!--					 <ProductSizeCategory product_size_category="product_size_category"/>-->
+					 <ProductSizeCategory />
+				</div>
+			 </div>
+        </xpath>
+    </t>
+
+
+
+
+	<t t-name="ProductSizeCategory" owl="1">
+		 <div style="position: absolute;top: 65px;right: 0;padding: 0px;margin: 6px;font-size: initial;">
+			<t t-foreach="product_size_category" t-as="size_category">
+				<span class="control-button size_class_loop" t-att-id="size_category.id+'size_category'" t-att-data-size="size_category.id" style="width: 90px;    color: aliceblue;    background: #7f82ac;text-align: left;" t-on-click="trigger('switch-size-category', size_category.id)">
+					<i class="fa fa-list-alt"></i>
+					<span><t t-esc="size_category.name"/>  </span>
+				</span>
+				<br></br>
+			</t>
+		 </div>
+	</t>
+
+
+	<t t-name="ProductsWidget"  t-inherit="point_of_sale.ProductsWidget" t-inherit-mode="extension" owl="1">
+		<xpath expr="//div[hasclass('products-widget')]" position="replace">
+			  <div class="products-widget">
+					<t t-if="!hasNoCategories">
+						<ProductsWidgetControlPanel breadcrumbs="breadcrumbs" subcategories="subcategories" />
+					</t>
+					<ProductList products="productsToDisplay" searchWord="searchWord" product_size_category="product_size_categorys"/>
+			</div>
+		</xpath>
+
+    </t>
+	 <t t-name="ProductItem" t-inherit="point_of_sale.ProductItem" t-inherit-mode="extension" owl="1">
+		 <xpath expr="//article[hasclass('product')]" position="replace">
+			     <article class="product" tabindex="0" t-on-keypress="spaceClickProduct"
+						 t-on-click="trigger('click-product', props.product)"
+						 t-att-data-product-id="props.product.id"
+						 t-attf-aria-labelledby="article_product_{{props.product.id}}" id="product_info_list">
+<!--					 <div class="circle">V</div>-->
+<!--					 <t t-if="props.product.v">-->
+<!--						 <div class="circle_cat_v"><span>V</span></div>-->
+<!--					 </t>-->
+<!--					 <t t-if="props.product.gf">-->
+<!--						 <div class="circle_cat_gf"><span>G</span></div>-->
+<!--					 </t>-->
+<!--					 <t t-if="props.product.veg">-->
+<!--						 <div class="circle_cat_veg"><span>VEG</span></div>-->
+<!--					 </t>-->
+
+
+
+
+					<div class="product-img">
+						 <t t-if="props.product.v">
+						 <div class="price-tag" style="right: unset;background-color: #3e8033;min-width: 20px;font-weight: 900;font-size: 13px;"><span>V</span></div>
+					 </t>
+					 <t t-if="props.product.gf">
+						 <div class="price-tag" style="right: unset;background-color: red;min-width: 20px;font-weight: 900;font-size: 13px;"><span>GF</span></div>
+					 </t>
+					 <t t-if="props.product.veg">
+						 <div class="price-tag" style="right: unset;background-color: #acbf10;min-width: 20px;font-weight: 900;font-size: 13px;"><span>VEG</span></div>
+					 </t>
+					<t t-if="props.product.df">
+						 <div class="price-tag" style="right: unset;background-color: #3f31b9;min-width: 20px;font-weight: 900;font-size: 13px;"><span>DF</span></div>
+					 </t>
+						<img t-att-src="imageUrl" t-att-alt="props.product.display_name" />
+						<span class="price-tag">
+							<t t-esc="price" />
+						</span>
+					</div>
+					<div class="product-name" t-attf-id="article_product_{{props.product.id}}">
+						<t t-esc="props.product.display_name" />
+					</div>
+				</article>
+		 </xpath>
+
+    </t>
+	<t t-name="ProductItemSize">
+<!--		<article class="abc"><t t-esc="product"></t> </article>-->
+			 <article class="product" tabindex="0" t-on-keypress="spaceClickProduct"
+					 t-on-click="trigger('click-product', product)"
+					 t-att-data-product-id="product.id"
+					 t-attf-aria-labelledby="article_product_{{product.id}}" id="product_info_list_size">
+				<div class="product-img">
+<!--					<img t-att-src="/web/image?model=product.product&amp;field=image_128&amp;id=${product.id}&amp;write_date=${product.write_date}&amp;unique=1" t-att-alt="product.display_name" />-->
+					<span class="price-tag">
+						<t t-esc="price" />
+					</span>
+				</div>
+				<div class="product-name" t-attf-id="article_product_{{product.id}}">
+					<t t-esc="product.display_name" />
+				</div>
+			</article>
+
+    </t>
+
+
+</templates>
+

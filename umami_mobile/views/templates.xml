@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="tmp_customer_form" name="Payment Form">
+        <!--        <t t-call="website.layout">-->
+        <style>
+            .payment_coloumn{
+            width:auto;
+            padding:50px;
+            height:90vh;
+            margin:0px auto;
+            background-image: linear-gradient(#f0ebeb, white);
+            border-radius:20px;
+            }
+
+            .group{
+            display:block;
+            width:inherit;
+            font-weight:bolder;
+            font-size:15px;
+            margin-bottom:15px;
+            }
+            .button{
+            margin:20px auto;
+            height:40px;
+            width:80px;
+            font-size:15px;
+            border:4px solid black;
+            font-weight:bolder;
+            border-radius:25px;
+            transition:tansform 450ms;
+            }
+            .button:hover{
+            transform:scale(1.08);
+            -webkit-filter: invert(100%);
+            filter: invert(100%);
+            }
+            .button_div{
+            margin:-25px auto;
+            text-align:center;
+            }
+            .input_box{
+            height:50px;
+            border:2px solid black;
+            border-radius:20px;
+            font-weight:bolder;
+            font-size:20px;
+            margin:10px auto;
+            }
+            .input_box:focus{
+            outline:none;
+            }
+            .input_label{
+            display:inline-block;
+            width:350px;
+            }
+        </style>
+        <div id="wrap payment_container">
+            <div class="container payment_coloumn">
+                <div class="col-md-12">
+                    <form action="/customer/form/submit">
+                        <div class="form-group group">
+                            <label for="name" class="input_label">Card number</label>
+                            <input type="number" class="form-control input_box" name="card_number" id="card_number"
+                                   required="true"/>
+                        </div>
+                        <div class="form-group group">
+                            <label for="exp_month" class="input_label">Exp month</label>
+                            <input type="number" class="form-control input_box" name="exp_month" id="exp_month"
+                                   required="true"/>
+                        </div>
+                        <div class="group">
+                            <label for="exp_year" class="input_label">Exp year</label>
+                            <input type="number" class="form-control input_box" name="exp_year" id="exp_year"
+                                   required="true"/>
+                        </div>
+
+
+                        <div class="form-group group">
+                            <label for="cvv" class="input_label">CVV</label>
+                            <input type="number" class="form-control input_box" name="cvv" id="cvv" required="true"/>
+                        </div>
+                        <div class="form-group group">
+                            <input type="hidden" class="form-control input_box" name="order_id" t-att-value="order_id"
+                                   id="order_id" required="true"/>
+                        </div>
+                        <div class="button_div">
+                            <button type="submit" class="btn btn-primary button">Pay</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--          </t>-->
+    </template>
+</odoo>

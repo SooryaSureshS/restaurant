@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="organize_employee_print_badge" model="ir.actions.report">
+        <field name="name">Organize Badge</field>
+        <field name="model">organize.slot</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">organize_email_template.organize_report_template</field>
+        <field name="report_file">organize_email_template.organize_report_template</field>
+        <field name="print_report_name">'Organize Slots - %s' % (object.name).replace('/', '')</field>
+    </record>
+
+
+    <template id="organize_report_template">
+        <!--        <t t-call="web.basic_layout">-->
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="header_class" style=" margin: auto;text-align:center;">
+                        <h1>WEEKLY SHIFTS</h1>
+                    </div>
+                    <br></br>
+                    <style>
+                        @media print
+                        {
+                          tr { page-break-inside:avoid; page-break-after:auto }
+                        }
+                    </style>
+                    <table style="width:100%;border: 1px solid grey;width:100%;border-collapse: collapse;
+                    text-align: center;">
+                        <tr>
+                            <td style="border: 1px solid grey;border-collapse: collapse;" rowspan="2">
+                                <strong>
+                                    <center>Schedule</center>
+                                </strong>
+                            </td>
+                            <td style="border: 1px solid grey;border-collapse: collapse;" colspan="7">
+                                <strong>
+                                    <t t-esc="dates['start_date']" style="text-align:center"/>
+                                </strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <t t-foreach="dates_list" t-as="day">
+                                <td style="border: 1px solid grey;border-collapse: collapse; width: 100px;">
+                                    <t t-esc="day"/>
+                                </td>
+                            </t>
+                        </tr>
+                        <t t-foreach="dict_date" t-as="i">
+                            <tr>
+                                <td style="border: 1px solid grey;border-collapse: collapse; margin-top:5%;">
+                                    <t t-esc="dict_date[i][0][7] or 'Unknown'"/>
+                                </td>
+                                <td colspan="7">
+                                    <table style="text-align: center;">
+                                        <t t-foreach="dict_date[i]" t-as="d">
+                                            <tr>
+                                                <td style="border: 1px solid grey;border-collapse: collapse; width: 100px;">
+                                                    <t t-if="d[0]=='0'">
+                                                        <div style="background-color: white;color:white">null</div>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <div style="background-color: white;color:black;">
+                                                            <t t-esc="d[0]"/>
+                                                        </div>
+                                                    </t>
+                                                </td>
+
+                                                <t t-if="d[1]=='0'">
+                                                    <td style="border: 1px solid grey;border-collapse: collapse; width: 100px;">
+                                                        <div style="background-color: white;color:white;">null</div>
+                                                    </td>
+                                                </t>
+                                                <t t-else="">
+                                                    <td style="border: 1px solid grey;border-collapse: collapse; width: 100px;">
+                                                        <div style="background-color: white;color:black;">
+                                                            <t t-esc="d[1]"/>
+                                                        </div>
+                                                    </td>
+                                                </t>
+                                                <t t-if="d[2]=='0'">
+                                                    <td style="border: 1px solid grey;border-collapse: collapse; width: 100px;">
+                                                        <div style="background-color: white;color:white">null</div>
+                                                    </td>
+                                                </t>
+                                                <t t-else="">
+                                                    <td style="border: 1px solid grey;border-collapse: collapse; width: 100px;">
+                                                        <div style="background-color: white;color:black;">
+                                                            <t t-esc="d[2]"/>
+                                                        </div>
+                                                    </td>
+                                                </t>
+                                                <t t-if="d[3]=='0'">
+                                                    <td style="border: 1px solid grey;border-collapse: collapse; width: 100px;">
+                                                        <div style="background-color: white;color:white">null</div>
+                                                    </td>
+                                                </t>
+                                                <t t-else="">
+                                                    <td style="border: 1px solid grey;border-collapse: collapse; width: 100px;">
+                                                        <div style="background-color: white;color:black;">
+                                                            <t t-esc="d[3]"/>
+                                                        </div>
+                                                    </td>
+                                                </t>
+                                                <t t-if="d[4]=='0'">
+                                                    <td style="border: 1px solid grey;border-collapse: collapse; width: 100px;">
+                                                        <div style="background-color: white;color:white">null</div>
+                                                    </td>
+                                                </t>
+                                                <t t-else="">
+                                                    <td style="border: 1px solid grey;border-collapse: collapse; width: 100px;">
+                                                        <div style="background-color: white;color:black;">
+                                                            <t t-esc="d[4]"/>
+                                                        </div>
+                                                    </td>
+                                                </t>
+                                                <t t-if="d[5]=='0'">
+                                                    <td style="border: 1px solid grey;border-collapse: collapse; width: 100px;">
+
+                                                        <div style="background-color: white;color:white;">null</div>
+                                                    </td>
+                                                </t>
+                                                <t t-else="">
+                                                    <td style="border: 1px solid grey;border-collapse: collapse; width: 100px;">
+                                                        <div style="background-color: white;color:black;">
+                                                            <t t-esc="d[5]"/>
+                                                        </div>
+                                                    </td>
+                                                </t>
+                                                <t t-if="d[6]=='0'">
+                                                    <td style="border: 1px solid grey;border-collapse: collapse; width: 100px;">
+                                                        <div style="background-color: white;color:white">null</div>
+                                                    </td>
+                                                </t>
+                                                <t t-else="">
+                                                    <td style="border: 1px solid grey;border-collapse: collapse; width: 100px;">
+                                                        <div style="background-color: white;color:black;">
+                                                            <t t-esc="d[6]"/>
+                                                        </div>
+                                                    </td>
+                                                </t>
+                                            </tr>
+                                        </t>
+                                    </table>
+                                </td>
+                            </tr>
+                        </t>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

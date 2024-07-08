@@ -1,0 +1,19 @@
+<templates xml:space="preserve">
+
+    <t t-name="website_orders.feedback" t-extend="portal.chatter_message_count">
+        <t t-jquery=".o_message_counter" t-operation="append">
+            <div class="o_message_counter">
+                <t t-if="count">
+                    <span class="fa fa-comments"/>
+                    <span class="o_message_count"> <t t-esc="count"/></span>
+                    <t t-if="count == 1">comment</t>
+                    <t t-else="">comments</t>
+                </t>
+                <t t-else="">
+                    Please share your valuable feedback.
+                </t>
+            </div>
+        </t>
+    </t>
+
+</templates>

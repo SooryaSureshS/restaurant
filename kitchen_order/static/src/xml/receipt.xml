@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+            <t t-name="OrderReceiptKitchenScreenPOS">
+             <div class="pos-receipt"
+                  style="border:1px solid black !important;padding:25px !important;font-family: system-ui;margin-left:0px">
+
+<!--                                 <t t-if="printObj">-->
+                 <t t-if="widget.env.pos.config.pos_logo">
+                                    <img class="pos-receipt-logo"
+                                         t-att-src="'data:image/png;base64,'+widget.env.pos.config.pos_logo" alt="Logo"
+                                         width="100px" height="100px"/>
+                                 </t>
+                 <div class="pos-receipt-contact"
+                      style="text-align:left;margin-top:30px; font-size:16px;font-weight:700;">
+
+                      <div>Order No:<span><t t-esc="printObj['pos_reference']"/> </span>
+                          <!--                          <span style="text-align:right;">-->
+
+                          <!--                          </span>-->
+                      </div>
+
+                     <div>Order type:<span style="text-align:left;margin-right:10px !important;line-height:25px;">
+                                    <t t-if="printObj['delivery_type']=='dine_in'"><span>Dine In</span></t>
+                         <t t-if="printObj['delivery_type']=='takeway'"><span>TA</span></t>
+                         <t t-if="printObj['delivery_type']=='woosh'"><span>Woosh</span></t>
+                         <t t-if="printObj['delivery_type']=='phone'"><span>Phone</span></t>
+
+                                </span>
+                         <t t-if="printObj['delivery_type']=='dine_in'">
+                               <span style="text-align:right;margin-right:0px !important;float:right !important;">
+                                   Table No:<t t-esc="printObj['table']"/>
+                               </span>
+                          </t>
+                         <t t-if="printObj['delivery_type']!='dine_in'">
+                         <span style="text-align:right;margin-right:0px !important;float:right !important;">Due by:
+                             <!--                             <t t-if="">-->
+
+                             <t t-set="preparation_time" t-value="ASAP"/>
+
+                             <t t-foreach="printObj['lines']" t-as="line"
+                                t-key="line.id">
+                                                        <t t-set="preparation_time"
+                                                           t-value="line.preparation_time"/>
+                                              </t>
+                             <t t-if="preparation_time>30">
+                                 ASAP
+                             </t>
+                             <t t-else="">
+                                    <t t-esc="preparation_time"/>
+                                 <t t-if="preparation_time!=ASAP">Min</t>
+
+                             </t>
+                             <!--                             </t>-->
+
+                          </span>
+                        </t>
+                     </div>
+                     <div style="line-height:22px;">Received:<span><t t-esc="printObj['order_time']"/></span></div>
+                     <div style="line-height:22px;">Name:<span><t t-if="printObj['customer']" ><t  t-if="printObj['customer'][1]" t-esc="printObj['customer'][1]"/> </t></span></div>
+                     <div style="line-height:22px;">Phone:<span><t t-if="printObj['partner_contact']" t-esc="printObj['partner_contact']"/></span></div>
+                            </div>
+                 <!--                 <t t-if="printObj['delivery_type']=='phone'">-->
+                 <!--                                         <div class="pos-receipt-contact"-->
+                 <!--                      style="line-height:25px;border-bottom:1ps solid black;text-align:left;font-size:14px;font-weight:700;font-size:16px">-->
+
+                 <!--                                <t t-if="printObj['customer']">-->
+                 <!--                                    <div>-->
+                 <!--                                    <span>-->
+                 <!--                                    Address:-->
+                 <!--                                    <t t-if="printObj['street']"><t t-esc="printObj['street']"/>,</t>-->
+
+                 <!--                                        <t t-if="printObj['street2']"><t t-esc="printObj['street2']"/>,</t>-->
+                 <!--                                        <t t-if="printObj['city']"><t t-esc="printObj['city']"/>,</t>-->
+                 <!--                                        <t t-if="printObj['zip']"><t  t-esc="printObj['zip']"/></t>-->
+                 <!--                                    </span>-->
+                 <!--                                </div>-->
+                 <!--                                </t>-->
+
+                 <!--                            </div>-->
+
+                 <!--                 </t>-->
+
+                 <div class="pos-receipt-contact"
+                      style="line-height:22px;font-size:16px;border-bottom:1px solid black;text-align:left;font-weight:700;border-top:2px solid black;min-height:20px;">
+                                <div>
+                                    <span>Order note:<t t-if="printObj['pos_order_note']"
+                                                        t-esc="printObj['pos_order_note']"/> </span>
+                                </div>
+                            </div>
+                 <t t-foreach="printObj['all_category']" t-as="cat">
+                                 <t t-set="cat_sel" t-value="0"/>
+                     <t t-set="draw_line" t-value="0"/>
+                     <t t-foreach="printObj['lines']" t-as="line" t-key="line.id">
+                                     <t t-if="cat.id==line.pos_categ_id ">
+                                         <t t-if="cat_sel==0 &amp;&amp;!line.parent_line">
+                                             <span t-esc="cat.name"
+                                                   style="text-decoration: underline;font-weight:700;"/>
+                                             <br></br>
+                                         </t>
+                                         <t t-if="!line.parent_line">
+                                             <span style="font-weight:700;">
+                                                 <t t-esc="line.product_uom_qty"/>x
+                                                 <t t-esc="line.full_product_name"/>
+                                                 <t t-set="draw_line" t-value="1"/>
+                                             </span>
+
+                                             <br></br>
+                                         </t>
+                                         <t t-foreach="printObj['lines']" t-as="line2">
+
+
+                                              <t t-if="line2.parent_line==line.id">
+
+                                                    <span style="margin-left:20px;"><t t-if="line2.icon" t-esc="line2.icon"/>
+                                                        <t t-esc="line2.product_uom_qty"/>x
+                                                        <t t-esc="line2.full_product_name"/>
+                                                    </span>
+                                                  <br></br>
+
+                                              </t>
+                                          </t>
+                                         <t t-if="!line.parent_line">
+                                             <t t-if="line.note">
+                                                  Note:<t t-if="line.note" t-esc="line.note"/>
+                                                 <br></br>
+                                             </t>
+
+                                         </t>
+
+                                         <t t-set="cat_sel" t-value="1"/>
+                                     </t>
+
+
+                             </t>
+                     <t t-if="draw_line==1">
+                                                          <div class="pos-receipt-contact"
+                                                               style="border-bottom:1px solid black;text-align:left;font-weight:700;"></div>
+                                          </t>
+
+
+                             </t>
+                 <div class="pos-receipt-contact">
+                                     <div>
+                                         <span>
+                                             Enjoy Your Meal!
+
+                                             <br></br>
+                                             <br></br>
+                                         </span>
+                                     </div>
+                     <div>
+                                         <span>
+                                             Contact us if you have any issues!
+                                         </span>
+                                     </div>
+                     <div>
+                                         <span>
+                                           <t t-esc="widget.env.pos.company.phone"/>
+                                         </span>
+                                     </div>
+                     <div>
+                                         <span>
+                                            <t t-esc="widget.env.pos.company.email"/>
+                                         </span>
+                                     </div>
+                     <div>
+                                         <span>
+                                            <t t-esc="widget.env.pos.company.website"/>
+                                         </span>
+                                     </div>
+                     <br></br>
+                     <br></br>
+                     <div>Signup For Exclusive Members Only
+
+                                     </div>
+                     <div>discounts and deals!
+
+                                     </div>
+
+                                 </div>
+
+
+             </div>
+        </t>
+
+    <t t-name="OrderReceiptKitchenScreenSale">
+             <div class="pos-receipt"
+                  style="border:1px solid black !important;padding:25px !important;font-family: system-ui;">
+
+<!--                                 <t t-if="printObj">-->
+                 <t t-if="widget.env.pos.config.pos_logo">
+                                    <img class="pos-receipt-logo"
+                                         t-att-src="'data:image/png;base64,'+widget.env.pos.config.pos_logo" alt="Logo"
+                                         width="100px" height="100px"/>
+                                 </t>
+                 <div class="pos-receipt-contact"
+                      style="text-align:left;margin-top:30px; font-size:16px;font-weight:700;line-height:25px;">
+
+                       <div>Order No:<span><t t-esc="printObj['order_id'][1]"/> </span></div>
+                     <div>Order type:<span>
+                         <t t-if="printObj['website_delivery_type']=='dine_in'"><span>Dine In</span></t>
+                         <t t-if="printObj['website_delivery_type']=='curb'"><span>TA</span></t>
+                         <t t-if="printObj['website_delivery_type']=='pickup'"><span>Pick Up</span></t>
+                         <t t-if="printObj['website_delivery_type']=='delivery'"><span>Delivery</span></t>
+
+                     </span>
+                         <t t-if="printObj['website_delivery_type']=='dine_in'">
+                               <span style="text-align:right;margin-right:0px !important;float:right !important;">
+                                   Table No:<t t-esc="printObj['dine_in_table']"/>
+                               </span>
+                          </t>
+                         <t t-if="printObj['website_delivery_type']!='dine_in'">
+                         &amp;nbsp;<span style="text-align:right;margin-right:0px !important;float:right !important;">Due by:
+                             <!--                             <t t-if="">-->
+
+                             <t t-set="preparation_time" t-value="ASAP"/>
+
+                             <t t-foreach="printObj['lines']" t-as="line"
+                                t-key="line.id">
+                                                        <t t-set="preparation_time"
+                                                           t-value="line.preparation_time"/>
+                                              </t>
+                             <t t-if="preparation_time>30">
+                                 ASAP
+                             </t>
+                             <t t-else="">
+                                    <t t-esc="preparation_time"/>
+                                 <t t-if="preparation_time!=ASAP">Min</t>
+
+                             </t>
+                             <!--                             </t>-->
+
+                          </span>
+                        </t>
+
+                     </div>
+                     <div style="line-height:22px;">Received:<span><t t-esc="printObj['order_time']"/></span></div>
+                     <div style="line-height:22px;">Name:<span><t t-if="printObj['customer']" t-esc="printObj['customer']"/></span></div>
+                     <div>Phone:<span><t t-if="printObj['partner_contact']" t-esc="printObj['partner_contact']"/></span></div>
+                            </div>
+
+                 <div class="pos-receipt-contact"
+                      style="border-bottom:1ps solid black;text-align:left;font-size:16px;font-weight:700;">
+                                 <t t-if="printObj['website_delivery_type']=='dine_in'">
+                                     Table No:
+                                     <t t-if="printObj['dine_in_table']" t-esc="printObj['dine_in_table']"/>
+                                     <br></br>
+
+                                 </t>
+                     <t t-if="printObj['customer']">
+                                    <div>
+                                         <t t-if="printObj['website_delivery_type']=='delivery'">
+                                                <span>
+                                                Address:
+                                                <t t-if="printObj['street']"><t t-esc="printObj['street']"/>,</t>
+
+                                                    <t t-if="printObj['street2']"><t t-esc="printObj['street2']"/>,</t>
+                                                    <t t-if="printObj['city']"><t t-esc="printObj['city']"/>,</t>
+                                                    <t t-if="printObj['zip']"><t  t-esc="printObj['zip']"/>,</t>
+                                                </span>
+                                        </t>
+                                        <div class="kerb_side_delivery">
+
+                                            <t t-if="printObj['website_delivery_type'] == 'curb'">
+                                                  <a class="product-title kerb_side_delivery">
+                                                      Vehicle Type: <t
+                                                          t-if="printObj['vehicle_type']">
+                                                                <t t-esc="printObj['vehicle_type']"/>
+                                                          </t>
+                                                  </a>
+                                                <br/>
+                                                <a class="product-title kerb_side_delivery">
+                                                      Vehicle Make: <t
+                                                        t-if="printObj['vehicle_make']">
+                                                                <t t-esc="printObj['vehicle_make']"/>
+                                                          </t>
+                                                  </a>
+                                                <br/>
+                                                <a class="product-title kerb_side_delivery">
+                                                      Vehicle Color: <t
+                                                        t-if="printObj['vehicle_color']">
+                                                                <t t-esc="printObj['vehicle_color']"/>
+                                                          </t>
+                                                  </a>
+                                                <br/>
+                                                <a class="product-title kerb_side_delivery">
+                                                      License Plate No: <t
+                                                        t-if="printObj['license_plate_no']">
+                                                                <t t-esc="printObj['license_plate_no']"/>
+                                                          </t>
+                                                  </a>
+                                                <br/>
+                                                <a class="product-title kerb_side_delivery">
+                                                      Location: <t
+                                                        t-if="printObj['approximate_location']">
+                                                                <t t-esc="printObj['approximate_location']"/>
+                                                          </t>
+                                                  </a>
+                                                <br/>
+                                                <a class="product-title kerb_side_delivery">
+                                                  Location Note:<t
+                                                        t-if="printObj['location_notes']">
+                                                                <t t-esc="printObj['location_notes']"/>
+                                                          </t>
+                                                  </a>
+
+
+                                              </t>
+
+                                          </div>
+
+                                </div>
+                                </t>
+                     <div t-if="printObj['website_delivery_type']=='delivery'">
+                                             <span>
+                                                 Delivery Note: Ring the bell when you Arrive thanks!
+                                             </span>
+                                         </div>
+                     <br></br>
+                     <br></br>
+                            </div>
+                 <div class="pos-receipt-contact"
+                      style="font-size:16px;border-bottom:1px solid black;text-align:left;font-weight:700;border-top:2px solid black;">
+                                <div>
+                                    <span>Order note: <t t-if="printObj['checkout_note']"
+                                                         t-esc="printObj['checkout_note']"/></span>
+                                </div>
+                            </div>
+                 <t t-foreach="printObj['all_category']" t-as="cat">
+                                 <t t-set="cat_sel" t-value="0"/>
+                     <t t-set="draw_line" t-value="0"/>
+                     <t t-foreach="printObj['lines']" t-as="line" t-key="line.id">
+                                     <t t-if="cat.id==line.pos_categ_id ">
+                                         <t t-if="cat_sel==0 &amp;&amp;!line.parent_line">
+                                             <span t-esc="cat.name"
+                                                   style="text-decoration: underline;font-weight:700;"/>
+                                             <br></br>
+                                         </t>
+                                         <t t-if="!line.parent_line">
+                                             <span style="font-weight:700;">
+                                                 <t t-esc="line.product_uom_qty"/>x
+                                                 <t t-esc="line.product_id[1]"/>
+                                                 <t t-set="draw_line" t-value="1"/>
+                                             </span>
+
+                                             <br></br>
+                                         </t>
+                                         <t t-foreach="printObj['lines']" t-as="line2">
+
+
+                                              <t t-if="line2.parent_line==line.id">
+
+                                                    <span style="margin-left:20px;"><t t-if="line2.icon" t-esc="line2.icon"/>
+                                                        <t t-esc="line2.product_uom_qty"/>x
+                                                        <t t-esc="line2.product_id[1]"/>
+                                                    </span>
+                                                  <br></br>
+
+                                              </t>
+                                          </t>
+
+                                         <t t-if="!line.parent_line">
+                                             <t t-if="line.checkout_note">
+<!--                                                 checkout_note-->
+                                                Note:<t t-if="line.checkout_note" t-esc="line.checkout_note"/>
+                                                 <br></br>
+                                             </t>
+
+                                         </t>
+
+                                         <t t-set="cat_sel" t-value="1"/>
+                                     </t>
+
+                             </t>
+                     <t t-if="draw_line==1">
+<!--                                          <div>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</div>-->
+                         <div class="pos-receipt-contact"
+                              style="border-bottom:1px solid black;text-align:left;font-weight:700;"></div>
+                                          </t>
+
+
+                             </t>
+                 <div class="pos-receipt-contact">
+                                     <div>
+                                         <span>
+                                             Enjoy Your Meal!
+                                             <br></br>
+                                             <br></br>
+                                         </span>
+                                     </div>
+                     <div>
+                                         <span>
+                                             Contact us if you have any issues!
+                                         </span>
+                                     </div>
+                     <div>
+                                         <span>
+                                           <t t-esc="widget.env.pos.company.phone"/>
+                                         </span>
+                                     </div>
+                     <div>
+                                         <span>
+                                            <t t-esc="widget.env.pos.company.email"/>
+                                         </span>
+                                     </div>
+                     <div>
+                                         <span>
+                                            <t t-esc="widget.env.pos.company.website"/>
+
+                                         </span>
+                                     </div>
+                     <br></br>
+                     <br></br>
+                     <div>Signup For Exclusive Members Only
+
+                                     </div>
+                     <div>discounts and deals!
+
+                                     </div>
+
+                                 </div>
+
+
+             </div>
+        </t>
+
+
+    <t t-name="OrderReceiptKitchenScreen">
+             <div class="pos-receipt">
+
+<!--                                 <t t-if="printObj">-->
+                 <t t-if="widget.env.pos.company_logo_base64">
+                                    <img class="pos-receipt-logo" t-att-src="widget.env.pos.company_logo_base64"
+                                         alt="Logo"/>
+                                 </t>
+
+                 <t t-if="!widget.env.pos.company_logo_base64">
+                                    <h2 class="pos-receipt-center-align">
+                                        <t t-esc="widget.env.pos.company.name"/>
+                                    </h2>
+                     <br/>
+                                </t>
+
+                 <div class="pos-receipt-contact">
+                                    <t t-if="widget.env.pos.company.phone">
+                                        <div>Tel:<t t-esc="widget.env.pos.company.phone"/></div>
+                                    </t>
+                     <t t-if="widget.env.pos.company.vat">
+                                        <div>
+                                            <t t-esc="widget.env.pos.company.vat"/></div>
+                                    </t>
+                     <t t-if="widget.env.pos.company.email">
+                                        <div><t t-esc="widget.env.pos.company.email" /></div>
+                                    </t>
+                     <t t-if="widget.env.pos.company.website">
+                                        <div><t t-esc="widget.env.pos.company.website" /></div>
+                                    </t>
+                     <br/>
+                     <br/>
+                     <t t-if="printObj.type == 'pos'">
+                                         <t t-if="printObj['pos_reference']">
+                                            Pos Ref:<t t-esc="printObj['pos_reference']"/>
+                                             <br/>
+                                        </t>
+                         <t t-if="printObj['customer'][1]">
+                                            Customer:<t t-esc="printObj['customer'][1]"/>
+                             <br/>
+                                        </t>
+                         <t t-if="printObj['order_time']">
+                                            Order Time:<t t-esc="printObj['order_time']"/>
+                             <br/>
+                                        </t>
+                         <!--
+                                                                      <t t-if="printObj['preparation_time']">
+                                                                     Preparation Time:<t t-esc="printObj['preparation_time']"/>
+                                                                          min
+                                                                          <br/>
+                                                                 </t>
+                         -->
+                                    </t>
+                     <t t-if="printObj.type == 'sale'">
+                                         <t t-if="printObj['order_id'][1]">
+                                            Sale Ref:<t t-esc="printObj['order_id'][1]"/>
+                                             <br/>
+                                        </t>
+                         <t t-if="printObj['customer'][1]">
+                                            Customer:<t t-esc="printObj['customer']"/>
+                             <br/>
+                                        </t>
+                         <t t-if="printObj['order_time']">
+                                            Order Time:<t t-esc="printObj['order_time']"/>
+                             <br/>
+                                        </t>
+                         <t t-if="printObj['website_delivery_type'] == 'dine_in'">
+                                                 <t t-if="printObj['order_time']">
+                                                    Table:<t t-esc="printObj['dine_in_table']"/>
+                                                     <br/>
+                                                </t>
+
+                                             </t>
+                         <!--
+                                                                      <t t-if="printObj['preparation_time']">
+                                                                     Preparation Time:<t t-esc="printObj['preparation_time']"/>min
+                                                                          <br/>
+                                                                 </t>
+                         -->
+                                    </t>
+
+                                </div>
+                 <br/>
+                 <br/>
+
+                 <!-- Orderlines -->
+                 <t t-if="printObj.type == 'pos'">
+                                     <div class="orderlines">
+                                            <t t-foreach="printObj['lines']" t-as="line" t-key="line.id">
+                                                    <div>
+                                                        <t t-esc="line.full_product_name"
+                                                           class="price_display pos-receipt-left-align"/>
+                                                        <span t-esc="widget.env.pos.format_currency_no_symbol(line.price_display)"
+                                                              class="price_display pos-receipt-right-align"/>
+                                                    </div>
+                                                <!--                                                <WrappedProductNameLines line="line"/>-->
+                                            </t>
+                                        </div>
+                     <br/>
+
+                     <div class="pos-receipt-right-align">--------</div>
+                     <br/>
+                     <div>Subtotal<span t-esc="widget.env.pos.format_currency(printObj.amount_total)"
+                                        class="pos-receipt-right-align"/></div>
+                     <!--                                <t t-foreach="receipt.tax_details" t-as="tax" t-key="tax.name">-->
+                     <!--                                    <div>-->
+                     <!--                                        <t t-esc="tax.name" />-->
+                     <span t-esc='widget.env.pos.format_currency_no_symbol(printObj.amount_tax)'
+                           class="pos-receipt-right-align"/>
+                     <!--                                    </div>-->
+                     <!--                                </t>-->
+                     <!--                            </t>-->
+                     <!--                -->
+                     <!-- Total -->
+                     <br/>
+                     <div class="pos-receipt-right-align">--------</div>
+                     <br/>
+                     <div class="pos-receipt-amount">
+                                            TOTAL
+                                            <span t-esc="widget.env.pos.format_currency(printObj.amount_total)"
+                                                  class="pos-receipt-right-align"/>
+                                        </div>
+                                </t>
+                 <t t-if="printObj.type == 'sale'">
+                                     <div class="orderlines">
+                                            <t t-foreach="printObj['lines']" t-as="line" t-key="line.id">
+                                                    <div>
+                                                        <t t-esc="line.product_id[1]"
+                                                           class="price_display pos-receipt-left-align"/>
+                                                        <span t-esc="widget.env.pos.format_currency_no_symbol(line.price_subtotal)"
+                                                              class="price_display pos-receipt-right-align"/>
+                                                    </div>
+                                                <!--                                                <WrappedProductNameLines line="line"/>-->
+                                            </t>
+                                        </div>
+                     <br/>
+
+                     <div class="pos-receipt-right-align">--------</div>
+                     <br/>
+                     <div>Subtotal<span t-esc="widget.env.pos.format_currency(printObj.amount_untaxed)"
+                                        class="pos-receipt-right-align"/></div>
+                     <!--                                <t t-foreach="receipt.tax_details" t-as="tax" t-key="tax.name">-->
+                     <!--                                    <div>-->
+                     <!--                                        <t t-esc="tax.name" />-->
+                     <span t-esc='widget.env.pos.format_currency_no_symbol(printObj.amount_tax)'
+                           class="pos-receipt-right-align"/>
+                     <!--                                    </div>-->
+                     <!--                                </t>-->
+                     <!--                            </t>-->
+                     <!--                -->
+                     <!-- Total -->
+                     <br/>
+                     <div class="pos-receipt-right-align">--------</div>
+                     <br/>
+                     <div class="pos-receipt-amount">
+                                            TOTAL
+                                            <span t-esc="widget.env.pos.format_currency(printObj.amount_total)"
+                                                  class="pos-receipt-right-align"/>
+                                        </div>
+
+                     <div class="kerbside_pickup_receipt pos-receipt-center-align">
+                                            <div class="kerb_side_delivery">
+                                                <br/>
+                                                <t t-if="printObj['website_delivery_type'] == 'curb'">
+                                                  <a class="product-title kerb_side_delivery">
+                                                      Vehicle Type: <t
+                                                          t-if="printObj['vehicle_type']">
+                                                                <t t-esc="printObj['vehicle_type']"/>
+                                                          </t>
+                                                  </a>
+                                                    <br/>
+                                                    <br/>
+                                                    <a class="product-title kerb_side_delivery">
+                                                      Vehicle Make: <t
+                                                            t-if="printObj['vehicle_make']">
+                                                                <t t-esc="printObj['vehicle_make']"/>
+                                                          </t>
+                                                  </a>
+                                                    <br/>
+                                                    <br/>
+                                                    <a class="product-title kerb_side_delivery">
+                                                      Vehicle Color: <t
+                                                            t-if="printObj['vehicle_color']">
+                                                                <t t-esc="printObj['vehicle_color']"/>
+                                                          </t>
+                                                  </a>
+                                                    <br/>
+                                                    <br/>
+                                                    <a class="product-title kerb_side_delivery">
+                                                      License Plate No: <t
+                                                            t-if="printObj['license_plate_no']">
+                                                                <t t-esc="printObj['license_plate_no']"/>
+                                                          </t>
+                                                  </a>
+                                                    <br/>
+                                                    <br/>
+                                                    <a class="product-title kerb_side_delivery">
+                                                      Location: <t
+                                                            t-if="printObj['approximate_location']">
+                                                                <t t-esc="printObj['approximate_location']"/>
+                                                          </t>
+                                                  </a>
+                                                    <br/>
+                                                    <br/>
+                                                    <a class="product-title kerb_side_delivery">
+                                                  Location Note:<t
+                                                            t-if="printObj['location_notes']">
+                                                                <t t-esc="printObj['location_notes']"/>
+                                                          </t>
+                                                  </a>
+                                                    <br/>
+                                                    <br/>
+                                              </t>
+
+                                          </div>
+                                    </div>
+                                </t>
+
+                 <!--                                 </t>-->
+
+
+             </div>
+        </t>
+</templates>

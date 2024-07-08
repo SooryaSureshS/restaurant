@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_loyalist_contacts,loyalist_contacts,model_loyalist_contacts,,1,1,1,1
+access_guest_contacts,guest_contacts,model_guest_contacts,,1,1,1,1
+access_purchase_filter_wizard,purchase_filter_wizard,model_purchase_filter_wizard,,1,1,1,1
+
+

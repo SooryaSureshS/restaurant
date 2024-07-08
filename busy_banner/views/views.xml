@@ -1,0 +1,64 @@
+<odoo>
+    <data>
+        <record id="res_config_settings_view_busy_banner" model="ir.ui.view">
+            <field name="name">res.config.settings.view.busy.banner</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="1"/>
+            <field name="inherit_id" ref="website.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@id='website_selection_settings']" position="after">
+                    <div class="banner" string="Banner">
+                        <h2>Busy Banner</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box"
+                                 title="Here You can set busy banner">
+
+                                <div class="o_setting_left_pane">
+                                    <field name="enable_busy_banner"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="enable_busy_banner" string="Busy Banner"/>
+                                    <div class="text-muted mb16">
+                                        Banner Display Time
+                                    </div>
+                                    <div class="content-group pos_iot_config"
+                                         attrs="{'invisible' : [('enable_busy_banner', '=', False)]}">
+                                        <div class="row">
+                                            <label string="Busy Banner" for="busy_banner_display"
+                                                   class="col-lg-4 o_light_label"/>
+                                            <field name="busy_banner_display" widget="float_time"
+                                                   style="width:50px;margin-left: 15px;"/>
+                                            <span>HH:MM</span>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <label string="Banner Title" for="banner_title"
+                                                   class="col-lg-4 o_light_label"/>
+                                            <field name="banner_title" />
+                                        </div>
+
+                                        <div class="row">
+                                            <label string="Banner Message" for="banner_body"
+                                                   class="col-lg-4 o_light_label"/>
+                                             <field name="banner_body" />
+
+                                        </div>
+
+                                         <div class="row">
+                                            <label string="Banner Timing" for="popup_timing"
+                                                   class="col-lg-4 o_light_label"/>
+                                             <field name="popup_timing" />
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

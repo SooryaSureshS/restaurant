@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+<!--        <record id="action_hourly_sales_reporting" model="ir.actions.client">-->
+<!--            <field name="name">Hourly sales reporting</field>-->
+<!--            <field name="tag">hourly_sales_reporting</field>-->
+<!--        </record>-->
+
+        <record id="action_weekly_sales_reporting" model="ir.actions.act_window">
+            <field name="name">Weekly sales reporting</field>
+            <field name="res_model">sales.report.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+<!--        <menuitem id="menu_hourly_sales_reporting"-->
+<!--              name="Hourly sales reporting"-->
+<!--              action="action_hourly_sales_reporting"-->
+<!--              parent="reporting.menu_reporting"-->
+<!--              groups="base.group_user"/>-->
+
+        <menuitem id="menu_weekly_sales_reporting"
+              name="Weekly sales reporting"
+              action="action_weekly_sales_reporting"
+              parent="reporting.menu_reporting"
+              groups="base.group_user"/>
+    </data>
+</odoo>

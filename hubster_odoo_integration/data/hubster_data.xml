@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="sequence_hubster_store" model="ir.sequence">
+           <field name="name">Hubster Store</field>
+           <field name="code">hubster_store</field>
+           <field name="active">TRUE</field>
+           <field name="prefix">WOOSH_AU_HUB_STORE_</field>
+        </record>
+    </data>
+
+      <data>
+        <record id="seq_hubster_stores_order" model="ir.sequence">
+            <field name="name">Hubster Store</field>
+            <field name="code">hubster.store.sequence</field>
+            <field name="prefix">WOOSH_AU_HUB_STORE_</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+     <data>
+        <record id="seq_hubster_order" model="ir.sequence">
+            <field name="name">Hubster Sequence</field>
+            <field name="code">hubster.order.sequence</field>
+            <field name="prefix">HUB</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

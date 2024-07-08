@@ -1,0 +1,8 @@
+div .close_button{
+    display: none !important;
+}
+
+.pos .product-screen .products-widget .leftpane{
+    height: auto !important;
+    overflow: auto !important;
+}

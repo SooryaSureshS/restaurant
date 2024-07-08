@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_automatic_session_close_automatic_session_close,automatic_session_close.automatic_session_close,model_automatic_session_close_automatic_session_close,,1,1,1,1

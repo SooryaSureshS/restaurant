@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <record id="view_recurring_form" model="ir.ui.view">
+            <field name="name">recurring.leave.form</field>
+            <field name="model">recurring.leave</field>
+            <field name="arch" type="xml">
+                <form string="Recurring time off">
+                    <header>
+                        <button string="Confirm" name="action_confirm"
+                                attrs="{'invisible': [('stages', '!=', 'draft')]}" type="object"
+                                class="oe_highlight"/>
+                        <button string="Approve" name="action_approve" type="object" groups="hr_holidays.group_hr_holidays_manager" class="oe_highlight"
+                                attrs="{'invisible': [('stages', '!=', 'confirmed')]}"/>
+                        <button string="Refuse" name="action_refuse"
+                                attrs="{'invisible': [('stages', '!=', 'confirmed')]}" type="object"
+                                groups="hr_holidays.group_hr_holidays_manager" class="oe_highlight"/>
+                        <field class="statusbar" name="stages" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="holiday_type" invisible="1"/>
+                                <field name="employee_id" groups="hr_holidays.group_hr_holidays_user"
+                                       attrs="{'required': [('holiday_type', '=', 'employee')],'invisible': [('holiday_type', '!=', 'employee')],'readonly': [('stages', '!=', 'draft')]}"/>
+                                <field name="mode_company_id" string="Company"
+                                       groups="hr_holidays.group_hr_holidays_user"
+                                       attrs="{'required': [('holiday_type', '=', 'company')],'invisible': [('holiday_type', '!=', 'company')]}"/>
+                                <field name="category_id" groups="hr_holidays.group_hr_holidays_user"
+                                       attrs="{'required': [('holiday_type', '=', 'category')],'invisible': [('holiday_type', '!=','category')]}"/>
+                                <field name="department_id" groups="hr_holidays.group_hr_holidays_user"
+                                       attrs="{'required': [('holiday_type', '=', 'department')],'invisible': [('holiday_type', 'not in', ('employee', 'department'))],'readonly': [('stages', '!=', 'draft')]}"/>
+                                <field name="request_date_from" attrs="{'readonly': [('stages', '!=', 'draft')]}"/>
+                                <field name="request_date_to" attrs="{'readonly': [('stages', '!=', 'draft')]}"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Time off">
+                                <field name="leave_ids">
+                                    <tree string="Time off">
+                                        <field name="timings" no_label="1"/>
+                                        <field name="monday" widget="boolean_toggle"/>
+                                        <field name="tuesday" widget="boolean_toggle"/>
+                                        <field name="wednesday" widget="boolean_toggle"/>
+                                        <field name="thursday" widget="boolean_toggle"/>
+                                        <field name="friday" widget="boolean_toggle"/>
+                                        <field name="saturday" widget="boolean_toggle"/>
+                                        <field name="sunday" widget="boolean_toggle"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="recurring_leave_tree" model="ir.ui.view">
+            <field name="name">recurring.leave.view.tree</field>
+            <field name="model">recurring.leave</field>
+            <field name="arch" type="xml">
+                <tree string="Recurring time off">
+                    <field name="employee_id" widget="many2one_avatar_employee" required="1"
+                           attrs="{'readonly': [('stages', '!=', 'draft')]}"/>
+                    <field name="department_id" optional="hidden" attrs="{'readonly': [('stages', '!=', 'draft')]}"/>
+                    <field name="request_date_from" required="1" attrs="{'readonly': [('stages', '!=', 'draft')]}"/>
+                    <field name="request_date_to" required="1" attrs="{'readonly': [('stages', '!=', 'draft')]}"/>
+                    <field name="stages" widget="badge" required="1" attrs="{'readonly': [('stages', '!=', 'draft')]}"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="menu_action_recurring_form" model="ir.actions.act_window">
+            <field name="name">Recurring leaves</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">recurring.leave</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem
+                id="hr_holidays_menu_recurring_menu"
+                name="Recurring time off"
+                parent="hr_holidays.menu_hr_holidays_approvals"
+                action="menu_action_recurring_form"
+                sequence="3"/>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="wizard_session_summary_wizard" model="ir.ui.view">
+        <field name="name">Session Summary</field>
+        <field name="model">pos.session.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Change Product Qty">
+                <group>
+                    <group>
+                        <field name="session" readonly="1"/>
+                        <field name="session_user" readonly="1"/>
+                        <field name="starting_balance" readonly="0"/>
+                    </group>
+                    <group>
+                        <field name="opening_date" readonly="1"/>
+                        <field name="orders_count" readonly="1"/>
+                        <field name="total_payments_amount" readonly="1"/>
+                    </group>
+                    <group>
+                        <field name="total_cash" readonly="1"/>
+                        <field name="total_eftpos" readonly="1"/>
+                        <field name="total_expected" readonly="1"/>
+                    </group>
+                </group>
+                <group>
+                    <group>
+                        <field name="counted_cash" readonly="0"/>
+                        <field name="counted_eftpos" readonly="0"/>
+                        <field name="counted_total" readonly="1"/>
+                    </group>
+                    <group>
+                        <field name="cash_variance" readonly="1"/>
+                        <field name="eftpos_variance" readonly="1"/>
+                        <field name="total_variance" readonly="1"/>
+                    </group>
+                    <group>
+                        <field name="payments_and_opening_balance" readonly="1"/>
+                        <field name="closing_date" readonly="1"/>
+                        <field name="pos_config" readonly="1"/>
+                        <field name="journal_entries" readonly="1"/>
+                    </group>
+                    <group>
+                        <field name="redeem_card_amount" readonly="1"/>
+                        <field name="discount_amount" readonly="1"/>
+                        <field name="loyalty_points_used" readonly="1"/>
+                        <field name="total_tips" readonly="1"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="create_session_data" string="Approve"
+                            colspan="1" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="res_users_view_access" model="ir.ui.view">
+        <field name="name">res.users.form.access</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='pos_delete_order']" position="after">
+                <field name="pos_access_session"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
